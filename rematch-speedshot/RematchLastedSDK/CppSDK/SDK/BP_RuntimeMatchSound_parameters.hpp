@@ -19,6 +19,15 @@
 namespace SDK::Params
 {
 
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.TimerLeftEvent
+// 0x0008 (0x0008 - 0x0000)
+struct BP_RuntimeMatchSound_C_TimerLeftEvent final
+{
+public:
+	struct FGameplayTag                           MatchTimerEvent;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_TimerLeftEvent;
+
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.StateChangeDyn
 // 0x0008 (0x0008 - 0x0000)
 struct BP_RuntimeMatchSound_C_StateChangeDyn final
@@ -80,15 +89,6 @@ public:
 };
 DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_SetARHomeTeamForMusic;
 
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.TimerLeftEvent
-// 0x0008 (0x0008 - 0x0000)
-struct BP_RuntimeMatchSound_C_TimerLeftEvent final
-{
-public:
-	struct FGameplayTag                           MatchTimerEvent;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_TimerLeftEvent;
-
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.Post Music Trigger
 // 0x0008 (0x0008 - 0x0000)
 struct BP_RuntimeMatchSound_C_Post_Music_Trigger final
@@ -125,6 +125,25 @@ public:
 };
 DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_OnMatchOver;
 
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnGameFlowStateChanged
+// 0x0010 (0x0010 - 0x0000)
+struct BP_RuntimeMatchSound_C_OnGameFlowStateChanged final
+{
+public:
+	struct FGameplayTag                           _previous;                                         // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTag                           _current;                                          // 0x0008(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_OnGameFlowStateChanged;
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnCountdownReach GO
+// 0x0008 (0x0008 - 0x0000)
+struct BP_RuntimeMatchSound_C_OnCountdownReach_GO final
+{
+public:
+	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_OnCountdownReach_GO;
+
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.IsLastGoalToWin
 // 0x0014 (0x0014 - 0x0000)
 struct BP_RuntimeMatchSound_C_IsLastGoalToWin final
@@ -140,6 +159,15 @@ public:
 	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_IsLastGoalToWin;
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.Interface AddNarrativeMalus
+// 0x0008 (0x0008 - 0x0000)
+struct BP_RuntimeMatchSound_C_Interface_AddNarrativeMalus final
+{
+public:
+	double                                        NarrativeIntensityMalustoAdd;                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_Interface_AddNarrativeMalus;
 
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.IsLastGoalTiebreak
 // 0x001C (0x001C - 0x0000)
@@ -158,43 +186,6 @@ public:
 	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_IsLastGoalTiebreak;
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnGameFlowStateChanged
-// 0x0010 (0x0010 - 0x0000)
-struct BP_RuntimeMatchSound_C_OnGameFlowStateChanged final
-{
-public:
-	struct FGameplayTag                           _previous;                                         // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTag                           _current;                                          // 0x0008(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_OnGameFlowStateChanged;
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.Interface AddNarrativeMalus
-// 0x0008 (0x0008 - 0x0000)
-struct BP_RuntimeMatchSound_C_Interface_AddNarrativeMalus final
-{
-public:
-	double                                        NarrativeIntensityMalustoAdd;                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_Interface_AddNarrativeMalus;
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.Interface AddNarrativeBonus
-// 0x0008 (0x0008 - 0x0000)
-struct BP_RuntimeMatchSound_C_Interface_AddNarrativeBonus final
-{
-public:
-	double                                        NarrativeIntensityBonusToAdd;                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_Interface_AddNarrativeBonus;
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnCountdownReach GO
-// 0x0008 (0x0008 - 0x0000)
-struct BP_RuntimeMatchSound_C_OnCountdownReach_GO final
-{
-public:
-	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_OnCountdownReach_GO;
 
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.HasWonByMercyOrScore
 // 0x0024 (0x0024 - 0x0000)
@@ -253,14 +244,14 @@ public:
 };
 DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_GetScoreDiff;
 
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.BPE_OnGameStateHandleBeginPlay
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.Interface AddNarrativeBonus
 // 0x0008 (0x0008 - 0x0000)
-struct BP_RuntimeMatchSound_C_BPE_OnGameStateHandleBeginPlay final
+struct BP_RuntimeMatchSound_C_Interface_AddNarrativeBonus final
 {
 public:
-	class ASCGameState*                           _gameState;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	double                                        NarrativeIntensityBonusToAdd;                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_BPE_OnGameStateHandleBeginPlay;
+DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_Interface_AddNarrativeBonus;
 
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.GetControlledPlayerTeamID
 // 0x0020 (0x0020 - 0x0000)
@@ -449,6 +440,15 @@ public:
 	int32                                         _iballInfluencingTeam;                             // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_ClutchStateChanged;
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.BPE_OnGameStateHandleBeginPlay
+// 0x0008 (0x0008 - 0x0000)
+struct BP_RuntimeMatchSound_C_BPE_OnGameStateHandleBeginPlay final
+{
+public:
+	class ASCGameState*                           _gameState;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_RuntimeMatchSound_C_BPE_OnGameStateHandleBeginPlay;
 
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.ShouldPlayNeutralStateMusic
 // 0x0260 (0x0260 - 0x0000)

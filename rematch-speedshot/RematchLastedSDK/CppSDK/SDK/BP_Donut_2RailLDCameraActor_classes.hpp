@@ -38,18 +38,18 @@ public:
 	double                                        InterpSpeedToReachBlend;                           // 0x0DC0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void UpdateTimeAndSplineLookAtActor(double DeltaTime);
-	void GetDebugTime2(double* DebugTime2_0);
 	void UpdateTimeAndSplineFollowActor(double DeltaTime);
 	void UpdateCameraPositionAndLookAt(double DeltaTime);
 	void ScrubDebugTime();
+	void GetDebugTime2(double* DebugTime2_0);
+	void UpdateTimeAndSplineLookAtActor(double DeltaTime);
 	void DrawDebug2(double Time1, double Time2, struct FVector* TargetPos);
-	bool BPE_SwitchToLDCamera(const class AActor* _actorToFollowRef, const class AActor* _actorToLookAtRef, TSubclassOf<class USCCameraData> _overrideCamera);
 	void BPE_SwitchToGameplayCamera();
+	bool BPE_SwitchToLDCamera(const class AActor* _actorToFollowRef, const class AActor* _actorToLookAtRef, TSubclassOf<class USCCameraData> _overrideCamera);
 
+	void GetWantedAngleCamera(double* Deg) const;
 	float GetCurrentTime2() const;
 	void GetCurrentFramingSystemTime2(double* Current_Framing_System_Time_2_0) const;
-	void GetWantedAngleCamera(double* Deg) const;
 
 public:
 	static class UClass* StaticClass()

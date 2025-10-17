@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "SCCore_structs.hpp"
 #include "BPE_ControlDisplayCategory_structs.hpp"
 #include "BPE_ControlDisplayLayout_structs.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK

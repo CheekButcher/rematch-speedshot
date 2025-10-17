@@ -216,9 +216,7 @@
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_ExtraEffortAutoTap_SweeperModifier_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_FastTap_ForceFromDirection_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_FastTap_ForceFromSpeed_functions.cpp" />
-    <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_FinisherCenter_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_FinisherDistanceFromWall_functions.cpp" />
-    <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_FinisherLineOnFieldLength_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_GameFlowSystem_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_GameInstance_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_GamemodeMultiplierExperienceComponent_functions.cpp" />
@@ -396,7 +394,6 @@
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\EyeTracker_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\FieldSystemEngine_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\Finisher_Gesture_Gratitude_Sequence_functions.cpp" />
-    <ClCompile Include="RematchLastedSDK\CppSDK\SDK\Finisher_Gesture_IloveYou_Sequence_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\Foliage_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\FreeMoveTransitionDB_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\FreezeFrame_Lob_functions.cpp" />

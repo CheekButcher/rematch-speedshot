@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "UMG_structs.hpp"
+#include "WBP_TabAbstract_Parent_classes.hpp"
 #include "SlateCore_structs.hpp"
 #include "Engine_structs.hpp"
-#include "WBP_TabAbstract_Parent_classes.hpp"
 
 
 namespace SDK

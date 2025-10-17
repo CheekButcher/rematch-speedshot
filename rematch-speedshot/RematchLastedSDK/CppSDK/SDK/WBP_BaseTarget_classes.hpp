@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "SCCore_structs.hpp"
-#include "UITargetDisplayDescription_structs.hpp"
 #include "Runtime_classes.hpp"
 #include "CoreUObject_structs.hpp"
+#include "UITargetDisplayDescription_structs.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK

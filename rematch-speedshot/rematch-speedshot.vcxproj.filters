@@ -933,9 +933,6 @@
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\Finisher_Gesture_Gratitude_Sequence_functions.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="RematchLastedSDK\CppSDK\SDK\Finisher_Gesture_IloveYou_Sequence_functions.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\Foliage_functions.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
@@ -1224,13 +1221,7 @@
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_FastTap_ForceFromSpeed_functions.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_FinisherCenter_functions.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_FinisherDistanceFromWall_functions.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_FinisherLineOnFieldLength_functions.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\BP_GameFlowSystem_functions.cpp">

@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "GameplayAbilities_structs.hpp"
+#include "FreezeFrameOverrideStruct_structs.hpp"
 #include "SCCombatSystem_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "FreezeFrameOverrideStruct_structs.hpp"
 #include "SCCore_structs.hpp"
 
 

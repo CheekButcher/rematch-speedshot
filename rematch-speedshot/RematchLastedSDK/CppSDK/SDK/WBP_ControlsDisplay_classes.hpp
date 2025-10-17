@@ -15,9 +15,9 @@
 #include "GameplayTags_structs.hpp"
 #include "UMG_structs.hpp"
 #include "SlateCore_structs.hpp"
+#include "BPE_ControlDisplayCategory_structs.hpp"
 #include "Runtime_classes.hpp"
 #include "CoreUObject_structs.hpp"
-#include "BPE_ControlDisplayCategory_structs.hpp"
 
 
 namespace SDK

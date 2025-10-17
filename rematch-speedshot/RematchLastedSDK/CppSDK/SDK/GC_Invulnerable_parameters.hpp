@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "GASFeaturesData_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
+#include "GASFeaturesData_structs.hpp"
 
 
 namespace SDK::Params

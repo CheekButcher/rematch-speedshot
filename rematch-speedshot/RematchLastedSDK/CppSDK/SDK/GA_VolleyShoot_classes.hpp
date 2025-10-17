@@ -12,10 +12,10 @@
 
 #include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
-#include "GA_BaseShoot_classes.hpp"
 #include "GameplayTags_structs.hpp"
 #include "Runtime_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
+#include "GA_BaseShoot_classes.hpp"
 
 
 namespace SDK

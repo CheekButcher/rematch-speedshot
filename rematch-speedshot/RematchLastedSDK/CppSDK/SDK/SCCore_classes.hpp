@@ -18655,6 +18655,7 @@ class USCGameplayStatics final : public UBlueprintFunctionLibrary
 {
 public:
 	static void BPF_AsyncGetGameState(const class UObject* _worldContextObject, const struct FLatentActionInfo& _inLatentInfo, class AGameStateBase** _outGameState);
+	static void BPF_AsyncGetLocalPlayerPawn(const class UObject* _worldContextObject, const struct FLatentActionInfo& _inLatentInfo, class APawn** _outLocalPlayerPawn);
 	static void BPF_AsyncGetPlayerStateFromController(const class AController* _inController, const struct FLatentActionInfo& _inLatentInfo, class APlayerState** _outPlayerState);
 	static void BPF_AsyncGetPlayerStateFromPawn(const class APawn* _inPawn, const struct FLatentActionInfo& _inLatentInfo, class APlayerState** _outPlayerState);
 	static void BPF_DisplayErrorMessage(class FName _title, const class FString& _message);

@@ -33,12 +33,12 @@ public:
 	struct FGameplayTag                           ShootAbilityTag;                                   // 0x0400(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void RemoveInvuEffects(class UAbilitySystemComponent* InAsc);
 	void ReceiveBeginPlay();
+	void RemoveInvuEffects(class UAbilitySystemComponent* InAsc);
 	void OnTagChanged(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount);
 	void OnShootAbilityTagChanged(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount);
-	void ExecuteUbergraph_BP_GoalKeeperVolumeAttributor(int32 EntryPoint);
 	void BPE_RemoveCurrentEffectOwner(class AActor* _actor);
+	void ExecuteUbergraph_BP_GoalKeeperVolumeAttributor(int32 EntryPoint);
 	void BPE_CantRemoveEffectFromTarget(class AActor* _actor);
 	void BPE_AssignCurrentEffectOwner(class AActor* _actor);
 

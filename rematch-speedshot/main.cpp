@@ -11,15 +11,27 @@
 #include <process.h>
 #include <cstdlib>
 #include <vector>
+#include <fstream>
+#include <mutex>
+#include <string>
+
+inline void LogFast(const std::string& msg)
+{
+    static std::mutex mtx;
+    static std::ofstream logFile("RematchHook.log", std::ios::app);
+    std::lock_guard<std::mutex> lock(mtx);
+    logFile << msg << '\n';
+}
 
 // MinHook
 #include "libs/minhook/include/MinHook.h"
 
 // SDK headers (adjust include path as needed)
+#undef GetCurrentTime
 #pragma warning(push)
 #pragma warning(disable: 4309 4369)
 #include "RematchLastedSDK/CppSDK/SDK.hpp"
-#pragma warning(pop)
+//#pragma warning(pop)
 #include "RematchLastedSDK/CppSDK/SDK/Runtime_parameters.hpp"
 #include "RematchLastedSDK/CppSDK/SDK/Basic.hpp"
 #pragma warning(pop)
@@ -27,6 +39,9 @@
 // =========================================================
 // Globals
 // =========================================================
+
+
+
 bool bSpeedHackEnabled = false;
 float fSpeedMultiplier = 1.2f;
 
@@ -164,11 +179,12 @@ void HookedProcessEvent(SDK::UObject* Object, SDK::UFunction* Function, void* Pa
     std::string funcName = Function->GetName();
 
     if (debugProcessEvent) {
-        std::cout << "[DBG] Function: " << funcName << std::endl;
+        LogFast("[DBG] Function: " + funcName);
         if (Parms) {
-            DumpAsFloats(Parms, 32);
+            DumpAsFloats(Parms, 32);   // this can stay; it doesn’t block much
         }
     }
+
 
     // === Prevent ball steals / possession loss (when enabled) ===
     if (bUnstealable && (
@@ -178,7 +194,7 @@ void HookedProcessEvent(SDK::UObject* Object, SDK::UFunction* Function, void* Pa
         funcName == "GC_BallStealSuccess"))
     {
         if (debugProcessEvent) {
-            std::cout << "[DBG] Blocked possession change: " << funcName << "\n";
+            LogFast("[DBG] Blocked possession change: " + funcName);
         }
         return; // skip calling original -> ownership won't change
     }
@@ -191,37 +207,46 @@ void HookedProcessEvent(SDK::UObject* Object, SDK::UFunction* Function, void* Pa
             if (p && p->Speed > 0.f && p->Speed < 20000.f) {
                 p->Speed *= fPlayerSpeedMultiplier;
                 if (debugProcessEvent) {
-                    std::cout << "[DBG] Patched Sprint speed -> " << p->Speed << "\n";
+                    LogFast("[DBG] Patched Sprint speed -> " + std::to_string(p->Speed));
                 }
             }
         }
         else if (funcName.find("LockMoveHasBall_SpeedDescriptionDB") != std::string::npos && Parms) {
             auto* p = reinterpret_cast<LockMoveHasBall_SpeedDescriptionDB_Params*>(Parms);
             if (p) {
-                if (p->BaseSpeed > 0.f && p->BaseSpeed < 20000.f) p->BaseSpeed *= fPlayerSpeedMultiplier;
-                if (p->MaxSpeed > 0.f && p->MaxSpeed < 20000.f) p->MaxSpeed *= fPlayerSpeedMultiplier;
+                if (p->BaseSpeed > 0.f && p->BaseSpeed < 20000.f)
+                    p->BaseSpeed *= fPlayerSpeedMultiplier;
+                if (p->MaxSpeed > 0.f && p->MaxSpeed < 20000.f)
+                    p->MaxSpeed *= fPlayerSpeedMultiplier;
                 if (debugProcessEvent) {
-                    std::cout << "[DBG] Patched LockMove Base=" << p->BaseSpeed << " Max=" << p->MaxSpeed << "\n";
+                    LogFast("[DBG] Patched LockMove Base=" + std::to_string(p->BaseSpeed) +
+                        " Max=" + std::to_string(p->MaxSpeed));
                 }
             }
         }
         else if (funcName.find("FreeMove_SpeedDescriptionDB") != std::string::npos && Parms) {
             auto* p = reinterpret_cast<FreeMove_SpeedDescriptionDB_Params*>(Parms);
             if (p) {
-                if (p->WalkSpeed > 0.f && p->WalkSpeed < 20000.f) p->WalkSpeed *= fPlayerSpeedMultiplier;
-                if (p->RunSpeed > 0.f && p->RunSpeed < 20000.f) p->RunSpeed *= fPlayerSpeedMultiplier;
-                if (p->SprintSpeed > 0.f && p->SprintSpeed < 20000.f) p->SprintSpeed *= fPlayerSpeedMultiplier;
+                if (p->WalkSpeed > 0.f && p->WalkSpeed < 20000.f)
+                    p->WalkSpeed *= fPlayerSpeedMultiplier;
+                if (p->RunSpeed > 0.f && p->RunSpeed < 20000.f)
+                    p->RunSpeed *= fPlayerSpeedMultiplier;
+                if (p->SprintSpeed > 0.f && p->SprintSpeed < 20000.f)
+                    p->SprintSpeed *= fPlayerSpeedMultiplier;
                 if (debugProcessEvent) {
-                    std::cout << "[DBG] Patched FreeMove Walk=" << p->WalkSpeed << " Run=" << p->RunSpeed << " Sprint=" << p->SprintSpeed << "\n";
+                    LogFast("[DBG] Patched FreeMove Walk=" + std::to_string(p->WalkSpeed) +
+                        " Run=" + std::to_string(p->RunSpeed) +
+                        " Sprint=" + std::to_string(p->SprintSpeed));
                 }
             }
         }
         else if (funcName.find("ExtraEffort_SpeedDescriptionDB") != std::string::npos && Parms) {
             auto* p = reinterpret_cast<ExtraEffort_SpeedDescriptionDB_Params*>(Parms);
             if (p) {
-                if (p->EffortMultiplier > 0.f && p->EffortMultiplier < 100.f) p->EffortMultiplier *= fPlayerSpeedMultiplier;
+                if (p->EffortMultiplier > 0.f && p->EffortMultiplier < 100.f)
+                    p->EffortMultiplier *= fPlayerSpeedMultiplier;
                 if (debugProcessEvent) {
-                    std::cout << "[DBG] Patched ExtraEffort Mult=" << p->EffortMultiplier << "\n";
+                    LogFast("[DBG] Patched ExtraEffort Mult=" + std::to_string(p->EffortMultiplier));
                 }
             }
         }
@@ -244,7 +269,7 @@ void HookedProcessEvent(SDK::UObject* Object, SDK::UFunction* Function, void* Pa
                 p->ReturnValue *= fSpeedMultiplier;
             }
             if (debugProcessEvent && (processEventCallCount % 50 == 0)) {
-                std::cout << "[DBG] BPF_GetShootForce Return=" << p->ReturnValue << "\n";
+                LogFast("[DBG] BPF_GetShootForce Return=" + std::to_string(p->ReturnValue));
                 DumpAsFloats(&p->_data, 32);
             }
         }
@@ -262,7 +287,7 @@ void HookedProcessEvent(SDK::UObject* Object, SDK::UFunction* Function, void* Pa
                 }
             }
             if (debugProcessEvent && (processEventCallCount % 100 == 0)) {
-                std::cout << "[DBG] UpdateShootForce\n";
+                LogFast("[DBG] UpdateShootForce");
                 DumpAsFloats(&p->_ShootData, 32);
             }
         }
@@ -272,31 +297,32 @@ void HookedProcessEvent(SDK::UObject* Object, SDK::UFunction* Function, void* Pa
                 p->ReturnValue *= fSpeedMultiplier;
             }
             if (debugProcessEvent && (processEventCallCount % 100 == 0)) {
-                std::cout << "[DBG] BPE_ApplyMultiplierForce Return=" << p->ReturnValue << "\n";
+                LogFast("[DBG] BPE_ApplyMultiplierForce Return=" + std::to_string(p->ReturnValue));
                 DumpAsFloats(&p->_ShootData, 32);
             }
         }
         return;
     }
 
+
     // Default passthrough
     OriginalProcessEvent(Object, Function, Parms);
 }
 
-// =========================================================
+/// =========================================================
 // Hook setup & cleanup
 // =========================================================
 bool FindAndHookProcessEvent() {
     // try to get UWorld
     SDK::UWorld* World = SDK::UWorld::GetWorld();
     if (!World) {
-        std::cout << "[ERR] No UWorld\n";
+        LogFast("[ERR] No UWorld");
         return false;
     }
 
     void** vtable = *reinterpret_cast<void***>(World);
     if (!vtable) {
-        std::cout << "[ERR] No vtable from UWorld\n";
+        LogFast("[ERR] No vtable from UWorld");
         return false;
     }
 
@@ -304,20 +330,29 @@ bool FindAndHookProcessEvent() {
     void* processEventAddress = vtable[SDK::Offsets::ProcessEventIdx];
 
     if (MH_Initialize() != MH_OK) {
-        std::cout << "[ERR] MH_Initialize failed\n";
-        return false;
-    }
-    if (MH_CreateHook(processEventAddress, &HookedProcessEvent,
-        reinterpret_cast<void**>(&OriginalProcessEvent)) != MH_OK) {
-        std::cout << "[ERR] MH_CreateHook failed\n";
-        return false;
-    }
-    if (MH_EnableHook(processEventAddress) != MH_OK) {
-        std::cout << "[ERR] MH_EnableHook failed\n";
+        LogFast("[ERR] MH_Initialize failed");
         return false;
     }
 
-    std::cout << "[OK] Hooked ProcessEvent @" << PtrHex(processEventAddress) << "\n";
+    // Create the hook first
+    if (MH_CreateHook(
+        processEventAddress,
+        &HookedProcessEvent,
+        reinterpret_cast<void**>(&OriginalProcessEvent)
+    ) != MH_OK)
+    {
+        LogFast("[ERR] MH_CreateHook failed");
+        return false;
+    }
+
+    // Then enable it
+    if (MH_EnableHook(processEventAddress) != MH_OK) {
+        LogFast("[ERR] MH_EnableHook failed at " + PtrHex(processEventAddress));
+        return false;
+    }
+
+
+    LogFast("[OK] Hooked ProcessEvent @" + PtrHex(processEventAddress));
     return true;
 }
 
@@ -325,72 +360,76 @@ void CleanupHooks() {
     MH_DisableHook(MH_ALL_HOOKS);
     MH_Uninitialize();
     OriginalProcessEvent = nullptr;
-    std::cout << "[CLEANUP] Hooks removed\n";
+    LogFast("[CLEANUP] Hooks removed");
 }
 
 // =========================================================
 // Console loop / main thread
 // =========================================================
 void DisplayInfo() {
-    std::cout << "\n=== CHEAT INFO ===\n";
-    std::cout << "Ball Speed Hack: " << (bSpeedHackEnabled ? "ENABLED" : "DISABLED") << " (" << fSpeedMultiplier << "x)\n";
-    std::cout << "Player Speed: " << (bPlayerSpeedEnabled ? "ENABLED" : "DISABLED") << " (" << fPlayerSpeedMultiplier << "x)\n";
-    std::cout << "Unstealable: " << (bUnstealable ? "ENABLED" : "DISABLED") << "\n";
-    std::cout << "Calls: " << processEventCallCount.load() << "\n";
-    std::cout << "==================\n";
+    LogFast("=== CHEAT INFO ===");
+    LogFast(std::string("Ball Speed Hack: ") + (bSpeedHackEnabled ? "ENABLED" : "DISABLED") + " (" + std::to_string(fSpeedMultiplier) + "x)");
+    LogFast(std::string("Player Speed: ") + (bPlayerSpeedEnabled ? "ENABLED" : "DISABLED") + " (" + std::to_string(fPlayerSpeedMultiplier) + "x)");
+    LogFast(std::string("Unstealable: ") + (bUnstealable ? "ENABLED" : "DISABLED"));
+    LogFast(std::string("Calls: ") + std::to_string(processEventCallCount.load()));
+    LogFast("==================");
 }
 
 unsigned int __stdcall MainThread(void* param) {
     HMODULE Module = static_cast<HMODULE>(param);
 
-    AllocConsole();
-    FILE* f; freopen_s(&f, "CONOUT$", "w", stdout);
+    // Optional: comment out AllocConsole to avoid blocking console I/O on the game thread.
+    // AllocConsole();
+    // FILE* f; freopen_s(&f, "CONOUT$", "w", stdout);
 
     // Set config path to DLL folder
     SetConfigPathToDLLFolder(Module);
 
-    std::cout << "[INFO] DLL injected\n";
+    LogFast("[INFO] DLL injected");
     LoadConfig(); // load settings from DLL folder ini
 
     if (!FindAndHookProcessEvent()) {
-        std::cout << "[ERR] Hook failed\n";
-        FreeConsole();
+        LogFast("[ERR] Hook failed");
+        // If you opened a console earlier, close it here.
+        // FreeConsole();
         FreeLibraryAndExitThread(Module, 1);
+        return 1;
     }
 
     // Input loop
     while (!(GetAsyncKeyState(VK_END) & 1)) {
         if (GetAsyncKeyState(VK_F2) & 1) {
             bSpeedHackEnabled = !bSpeedHackEnabled;
-            std::cout << "[CHEAT] Ball SpeedHack " << (bSpeedHackEnabled ? "ENABLED" : "DISABLED") << "\n";
+            LogFast(std::string("[CHEAT] Ball SpeedHack ") + (bSpeedHackEnabled ? "ENABLED" : "DISABLED"));
         }
         if (GetAsyncKeyState(VK_F3) & 1) {
             fSpeedMultiplier = (fSpeedMultiplier >= 5.f) ? 1.f : fSpeedMultiplier + 0.5f;
-            std::cout << "[INFO] Ball Speed Multiplier=" << fSpeedMultiplier << "x\n";
+            LogFast(std::string("[INFO] Ball Speed Multiplier=") + std::to_string(fSpeedMultiplier) + "x");
         }
         if (GetAsyncKeyState(VK_F4) & 1) DisplayInfo();
         if (GetAsyncKeyState(VK_F5) & 1) {
             debugProcessEvent = !debugProcessEvent;
-            std::cout << "[DEBUG] " << (debugProcessEvent ? "ON" : "OFF") << "\n";
+            LogFast(std::string("[DEBUG] ") + (debugProcessEvent ? "ON" : "OFF"));
         }
         if (GetAsyncKeyState(VK_F6) & 1) {
             bUnstealable = !bUnstealable;
-            std::cout << "[CHEAT] Unstealable possession " << (bUnstealable ? "ENABLED" : "DISABLED") << "\n";
+            LogFast(std::string("[CHEAT] Unstealable possession ") + (bUnstealable ? "ENABLED" : "DISABLED"));
         }
         if (GetAsyncKeyState(VK_F7) & 1) {
             bPlayerSpeedEnabled = !bPlayerSpeedEnabled;
-            std::cout << "[CHEAT] Player Speed " << (bPlayerSpeedEnabled ? "ENABLED" : "DISABLED") << "\n";
+            LogFast(std::string("[CHEAT] Player Speed ") + (bPlayerSpeedEnabled ? "ENABLED" : "DISABLED"));
         }
         if (GetAsyncKeyState(VK_F8) & 1) {
             fPlayerSpeedMultiplier = (fPlayerSpeedMultiplier >= 5.f) ? 1.f : fPlayerSpeedMultiplier + 0.5f;
-            std::cout << "[INFO] Player Speed Multiplier=" << fPlayerSpeedMultiplier << "x\n";
+            LogFast(std::string("[INFO] Player Speed Multiplier=") + std::to_string(fPlayerSpeedMultiplier) + "x");
         }
         if (GetAsyncKeyState(VK_F9) & 1) {
             LoadConfig();
-            std::cout << "[CONFIG] Reloaded from INI\n";
+            LogFast("[CONFIG] Reloaded from INI");
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        // reduce polling frequency to reduce CPU and minimize risk of tick delays
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }
 
     // cleanup and exit

@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "SCCore_structs.hpp"
 #include "WBP_StoreBtn_classes.hpp"
 #include "UMG_structs.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK

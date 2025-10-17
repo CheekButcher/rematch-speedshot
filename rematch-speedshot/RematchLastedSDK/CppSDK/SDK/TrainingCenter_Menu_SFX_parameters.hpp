@@ -17,15 +17,6 @@
 namespace SDK::Params
 {
 
-// Function TrainingCenter_Menu_SFX.TrainingCenter_Menu_SFX_C.ReceiveEndPlay
-// 0x0001 (0x0001 - 0x0000)
-struct TrainingCenter_Menu_SFX_C_ReceiveEndPlay final
-{
-public:
-	EEndPlayReason                                EndPlayReason;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_TrainingCenter_Menu_SFX_C_ReceiveEndPlay;
-
 // Function TrainingCenter_Menu_SFX.TrainingCenter_Menu_SFX_C.ExecuteUbergraph_TrainingCenter_Menu_SFX
 // 0x0060 (0x0060 - 0x0000)
 struct TrainingCenter_Menu_SFX_C_ExecuteUbergraph_TrainingCenter_Menu_SFX final
@@ -47,6 +38,15 @@ public:
 	int32                                         CallFunc_PostAssociatedAkEvent_ReturnValue_2;      // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_TrainingCenter_Menu_SFX_C_ExecuteUbergraph_TrainingCenter_Menu_SFX;
+
+// Function TrainingCenter_Menu_SFX.TrainingCenter_Menu_SFX_C.ReceiveEndPlay
+// 0x0001 (0x0001 - 0x0000)
+struct TrainingCenter_Menu_SFX_C_ReceiveEndPlay final
+{
+public:
+	EEndPlayReason                                EndPlayReason;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_TrainingCenter_Menu_SFX_C_ReceiveEndPlay;
 
 }
 

@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "PingDataContainer_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "PingDataContainer_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Runtime_structs.hpp"

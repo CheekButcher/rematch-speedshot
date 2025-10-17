@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
-#include "UIBaseColors_structs.hpp"
+#include "Enum_CustomMatch_BPParams_structs.hpp"
 #include "Engine_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "Enum_CustomMatch_BPParams_structs.hpp"
 #include "StructUtilsEngine_structs.hpp"
 #include "SOS_structs.hpp"
 #include "Runtime_structs.hpp"
 #include "SlateCore_structs.hpp"
+#include "UIBaseColors_structs.hpp"
 
 
 namespace SDK::Params
@@ -293,7 +293,7 @@ public:
 DUMPER7_ASSERTS_BP_Library_Menu_C_GetGameModeName;
 
 // Function BP_Library_Menu.BP_Library_Menu_C.GetItemNameFromAssetRef
-// 0x0098 (0x0098 - 0x0000)
+// 0x00D0 (0x00D0 - 0x0000)
 struct BP_Library_Menu_C_GetItemNameFromAssetRef final
 {
 public:
@@ -301,22 +301,30 @@ public:
 	class UObject*                                __WorldContext;                                    // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	class FText                                   Display_Name;                                      // 0x0010(0x0010)(Parm, OutParm)
 	class FText                                   Description;                                       // 0x0020(0x0010)(Parm, OutParm)
-	class UPlayerProfileTextureAsset*             K2Node_DynamicCast_AsPlayer_Profile_Texture_Asset; // 0x0030(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInstance*                      K2Node_DynamicCast_AsMaterial_Instance;            // 0x0030(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPlayerProfileBaseAsset*                K2Node_DynamicCast_AsPlayer_Profile_Base_Asset;    // 0x0040(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UPlayerProfileTextureAsset*             K2Node_DynamicCast_AsPlayer_Profile_Texture_Asset; // 0x0040(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class USCBaseCustomizationDataAsset*          K2Node_DynamicCast_AsSCBase_Customization_Data_Asset; // 0x0050(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UTexture*                               K2Node_DynamicCast_AsTexture;                      // 0x0060(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_69[0x7];                                       // 0x0069(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TScriptInterface<class IInterface_AssetUserData> CallFunc_GetAssetUserDataOfClass_self_CastInput; // 0x0070(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAssetUserData*                         CallFunc_GetAssetUserDataOfClass_ReturnValue;      // 0x0080(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	class UCustomizationTextureUserData*          K2Node_DynamicCast_AsCustomization_Texture_User_Data; // 0x0088(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	TScriptInterface<class IInterface_AssetUserData> CallFunc_GetAssetUserDataOfClass_self_CastInput; // 0x0050(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAssetUserData*                         CallFunc_GetAssetUserDataOfClass_ReturnValue;      // 0x0060(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	class UCustomizationTextureUserData*          K2Node_DynamicCast_AsCustomization_Texture_User_Data; // 0x0068(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_71[0x7];                                       // 0x0071(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPlayerProfileBaseAsset*                K2Node_DynamicCast_AsPlayer_Profile_Base_Asset;    // 0x0078(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_3;                     // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class USCBaseCustomizationDataAsset*          K2Node_DynamicCast_AsSCBase_Customization_Data_Asset; // 0x0088(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess_4;                     // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_91[0x7];                                       // 0x0091(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTexture*                               K2Node_DynamicCast_AsTexture;                      // 0x0098(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_5;                     // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_A1[0x7];                                       // 0x00A1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TScriptInterface<class IInterface_AssetUserData> CallFunc_GetAssetUserDataOfClass_self_CastInput_1; // 0x00A8(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAssetUserData*                         CallFunc_GetAssetUserDataOfClass_ReturnValue_1;    // 0x00B8(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	class UCustomizationTextureUserData*          K2Node_DynamicCast_AsCustomization_Texture_User_Data_1; // 0x00C0(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_6;                     // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_Library_Menu_C_GetItemNameFromAssetRef;
 

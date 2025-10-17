@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
+#include "Struct_QualityTier_structs.hpp"
 #include "ThumbnailAssetMode_structs.hpp"
+#include "SCCharacterCustomization_structs.hpp"
 #include "ThumbnailSceneMode_structs.hpp"
 #include "SlateCore_structs.hpp"
 #include "UMG_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "SOSBindings_structs.hpp"
-#include "SCCharacterCustomization_structs.hpp"
-#include "Struct_QualityTier_structs.hpp"
 #include "Struct_ThumbnailSceneParams_structs.hpp"
 
 

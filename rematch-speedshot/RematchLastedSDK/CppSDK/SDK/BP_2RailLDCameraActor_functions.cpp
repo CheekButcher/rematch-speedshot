@@ -17,26 +17,6 @@
 namespace SDK
 {
 
-// Function BP_2RailLDCameraActor.BP_2RailLDCameraActor_C.UpdateTimeAndSplineLookAtActor
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// double                                  DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_2RailLDCameraActor_C::UpdateTimeAndSplineLookAtActor(double DeltaTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_2RailLDCameraActor_C", "UpdateTimeAndSplineLookAtActor");
-
-	Params::BP_2RailLDCameraActor_C_UpdateTimeAndSplineLookAtActor Parms{};
-
-	Parms.DeltaTime = DeltaTime;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function BP_2RailLDCameraActor.BP_2RailLDCameraActor_C.UpdateTimeAndSplineFollowActor
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -50,6 +30,26 @@ void ABP_2RailLDCameraActor_C::UpdateTimeAndSplineFollowActor(double DeltaTime)
 		Func = Class->GetFunction("BP_2RailLDCameraActor_C", "UpdateTimeAndSplineFollowActor");
 
 	Params::BP_2RailLDCameraActor_C_UpdateTimeAndSplineFollowActor Parms{};
+
+	Parms.DeltaTime = DeltaTime;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_2RailLDCameraActor.BP_2RailLDCameraActor_C.UpdateTimeAndSplineLookAtActor
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// double                                  DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_2RailLDCameraActor_C::UpdateTimeAndSplineLookAtActor(double DeltaTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_2RailLDCameraActor_C", "UpdateTimeAndSplineLookAtActor");
+
+	Params::BP_2RailLDCameraActor_C_UpdateTimeAndSplineLookAtActor Parms{};
 
 	Parms.DeltaTime = DeltaTime;
 

@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "GameplayTags_structs.hpp"
 #include "FreezeFrameOverrideStruct_structs.hpp"
 #include "SCCombatSystem_structs.hpp"
 #include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
+#include "GameplayTags_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
 #include "Runtime_classes.hpp"
 

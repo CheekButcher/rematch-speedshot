@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "PingDataContainer_structs.hpp"
 #include "PingOverrideStruct_structs.hpp"
+#include "PingDataContainer_structs.hpp"
 #include "BP_AbstractPingDataGetter_classes.hpp"
 
 

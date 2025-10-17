@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "GA_BallSteal_Tackle_classes.hpp"
 #include "Engine_structs.hpp"
+#include "GA_BallSteal_Tackle_classes.hpp"
 
 
 namespace SDK

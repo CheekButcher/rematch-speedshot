@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "BP_LDCameraActor_classes.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "BP_LDCameraActor_classes.hpp"
 
 
 namespace SDK
@@ -86,34 +86,34 @@ public:
 public:
 	void UserConstructionScript();
 	void UpdateTimeAndSplineLookAtActor(double DeltaTime);
-	void UpdateTimeAndSplineFollowActor(double DeltaTime);
 	void UpdateSound();
 	void UpdateCameraPositionAndLookAt(double DeltaTime);
 	void SetLookAtActorRef(class AActor* TargetChar_0);
-	void ReceiveBeginPlay();
-	void PlaceholderBlend(double Blend_0, class UCurveFloat* BlendCurve_0);
-	void ManageDebugIconVisibility();
+	void UpdateTimeAndSplineFollowActor(double DeltaTime);
 	void SetActorRef(class AActor* TargetChar_0);
+	void ScrubDebugTime();
+	void ReceiveBeginPlay();
+	void ManageDebugIconVisibility();
 	void GlobalUpdate(double DeltaTime);
 	void GlobalDebug();
-	void ScrubDebugTime();
+	void PlaceholderBlend(double Blend_0, class UCurveFloat* BlendCurve_0);
 	struct FTransform GetLookAtActorRefTransform(float _fDt);
 	void GetDebugTime(double* DebugTime_0);
 	void ExecuteUbergraph_BP_1RailLDCameraActor(int32 EntryPoint);
 	void DrawDebug(double Time, struct FVector* TargetPos);
-	void ComputeLookAtTargetPos(double Dt, class USplineComponent* Spline, float Time);
 	bool BPE_SwitchToLDCamera(const class AActor* _actorToFollowRef, const class AActor* _actorToLookAtRef, TSubclassOf<class USCCameraData> _overrideCamera);
-	void BlendToTargetRailTimeline__UpdateFunc();
 	void BPE_SwitchToGameplayCamera();
+	void ComputeLookAtTargetPos(double Dt, class USplineComponent* Spline, float Time);
+	void BlendToTargetRailTimeline__UpdateFunc();
 	void BlendToTargetRailTimeline__FinishedFunc();
 	void BlendToTargetRail(double NewRailWeight);
 	struct FTransform BPE_GetActorRefTransform(float _fDt);
 
 	void GetLookAtTargetCharPos(struct FVector* LookAt_Target_Char_Pos_0) const;
 	void GetFollowTargetCharPos(struct FVector* TargetCharPos) const;
-	void GetCurrentTime(float* Current_Time) const;
-	void GetCurrentFramingSystemTime(double* Current_Framing_System_Time_0) const;
 	void GetCurrentLookAtTargetPos(struct FVector* LookAt_Target_Char_Pos_0) const;
+	void GetCurrentFramingSystemTime(double* Current_Framing_System_Time_0) const;
+	void GetCurrentTime(float* Current_Time) const;
 
 public:
 	static class UClass* StaticClass()

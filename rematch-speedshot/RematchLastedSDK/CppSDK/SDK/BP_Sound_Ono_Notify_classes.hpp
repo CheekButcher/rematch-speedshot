@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "BP_Sound_Base_Notify_classes.hpp"
 #include "AkAudio_structs.hpp"
+#include "BP_Sound_Base_Notify_classes.hpp"
 
 
 namespace SDK

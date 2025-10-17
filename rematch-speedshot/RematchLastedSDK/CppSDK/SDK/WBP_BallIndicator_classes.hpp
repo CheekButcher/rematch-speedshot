@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "WBP_BaseTarget_classes.hpp"
 #include "Engine_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "WBP_BaseTarget_classes.hpp"
 
 
 namespace SDK

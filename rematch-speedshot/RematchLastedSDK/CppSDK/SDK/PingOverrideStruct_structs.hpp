@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "PingDataContainer_structs.hpp"
 #include "SCCore_structs.hpp"
+#include "PingDataContainer_structs.hpp"
 
 
 namespace SDK

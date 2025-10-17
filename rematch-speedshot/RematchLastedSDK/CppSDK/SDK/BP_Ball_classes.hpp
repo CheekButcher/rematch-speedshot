@@ -23,8 +23,7 @@ namespace SDK
 
 // BlueprintGeneratedClass BP_Ball.BP_Ball_C
 // 0x01E0 (0x05A0 - 0x03C0)
-#pragma pack(push, 0x1)
-class alignas(0x10) ABP_Ball_C : public ABall
+class ABP_Ball_C : public ABall
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x03C0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
@@ -66,10 +65,12 @@ public:
 	bool                                          UseCustomBallMaterial;                             // 0x058A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_58B[0x5];                                      // 0x058B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	class UMaterialInterface*                     CustomBallMaterial;                                // 0x0590(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class APlayerState*                           PlayerStateWaitingPawn;                            // 0x0598(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void AnimateRoll();
-	void ApplyBallCustomization();
+	void Apply_Captain_Custo(class ARuntimeMatchGameState* _gameState);
+	void ApplyLastScorerCusto(class ARuntimeMatchGameState* _gameState, bool* _bHasLastScorer);
 	void Ball_Control_VFX();
 	void BindServiceState();
 	void BndEvt__BP_Ball_m_BallPhysicComponent_K2Node_ComponentBoundEvent_1_OnShootSignature__DelegateSignature(const class ABall* _ball, const struct FShootParams& _shootParams);
@@ -79,20 +80,23 @@ public:
 	void CompareRequests(const struct FBallInteractionRequestData& RequestData, const struct FBallInteractionRequestData& ComparedData, bool* HasAdvantage);
 	void ExecuteUbergraph_BP_Ball(int32 EntryPoint);
 	void OnCharacterCustomizationGenerated(class UCharacterCustomizationComponent* _Character_Customization_Component, bool _bWasCharacterGenerated);
+	void OnGoalHistoryReplicated();
 	void OnLockBallStateUpdate(EServiceStateUpdate eStateUpdate);
-	void OnMatchCaptainSet(class ARuntimeMatchGameState* _gameState);
-	void OnMatchGoalScored(const struct FGoalDescription& _goal);
-	void OnMatchStarted(class ASCGameState* _gameState);
+	void OnMatchStateChanged(class FName _newMatchState);
 	void OnPawnSet(class APlayerState* Player, class APawn* NewPawn, class APawn* OldPawn);
+	void OnPlayerAdded(class APlayerState* _PlayerStateAdded);
 	void ReceiveBeginPlay();
 	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void ReceiveTick(float DeltaSeconds);
 	void RegisterToHUD(class UHUD_Widget* _HUD);
 	void SetPlayerApplyingBallCustomization(class ARuntimeCharacter* _playerCharacter, bool _bBind);
+	void SetupBallCustomization();
 	void UnbindBallCustomization();
 	void UnbindServiceState();
+	void UpdateBallCusto();
 	void UpdateBallMPC(float _fDeltaTime);
 	void UserConstructionScript();
+	void WaitForPlayerStatePawn(class APlayerState* _playerState);
 
 	double GetLagSpeedfactor(double VelocityPrct) const;
 	double GetVelocityPrct() const;
@@ -111,7 +115,6 @@ public:
 		return GetDefaultObjImpl<ABP_Ball_C>();
 	}
 };
-#pragma pack(pop)
 DUMPER7_ASSERTS_ABP_Ball_C;
 
 }

@@ -55,29 +55,6 @@ void ABP_LDCameraActor_C::ReceiveBeginPlay()
 }
 
 
-// Function BP_LDCameraActor.BP_LDCameraActor_C.GetLookAtActorRefTransform
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// float                                   _fDt                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FTransform                       ReturnValue                                            (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-struct FTransform ABP_LDCameraActor_C::GetLookAtActorRefTransform(float _fDt)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_LDCameraActor_C", "GetLookAtActorRefTransform");
-
-	Params::BP_LDCameraActor_C_GetLookAtActorRefTransform Parms{};
-
-	Parms._fDt = _fDt;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
 // Function BP_LDCameraActor.BP_LDCameraActor_C.ManageDebugIconVisibility
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -139,6 +116,43 @@ bool ABP_LDCameraActor_C::BPE_SwitchToLDCamera(const class AActor* _actorToFollo
 }
 
 
+// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_SwitchToGameplayCamera
+// (Event, Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_LDCameraActor_C::BPE_SwitchToGameplayCamera()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_LDCameraActor_C", "BPE_SwitchToGameplayCamera");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_LDCameraActor.BP_LDCameraActor_C.GetLookAtActorRefTransform
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                                   _fDt                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FTransform                       ReturnValue                                            (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+struct FTransform ABP_LDCameraActor_C::GetLookAtActorRefTransform(float _fDt)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_LDCameraActor_C", "GetLookAtActorRefTransform");
+
+	Params::BP_LDCameraActor_C_GetLookAtActorRefTransform Parms{};
+
+	Parms._fDt = _fDt;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
 // Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_GetActorRefTransform
 // (Event, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -159,20 +173,6 @@ struct FTransform ABP_LDCameraActor_C::BPE_GetActorRefTransform(float _fDt)
 	UObject::ProcessEvent(Func, &Parms);
 
 	return Parms.ReturnValue;
-}
-
-
-// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_SwitchToGameplayCamera
-// (Event, Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_LDCameraActor_C::BPE_SwitchToGameplayCamera()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_LDCameraActor_C", "BPE_SwitchToGameplayCamera");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

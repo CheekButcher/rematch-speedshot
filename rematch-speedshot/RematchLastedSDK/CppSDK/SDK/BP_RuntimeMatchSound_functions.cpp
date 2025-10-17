@@ -17,6 +17,40 @@
 namespace SDK
 {
 
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.UnbindAllEvents
+// (BlueprintCallable, BlueprintEvent)
+
+void UBP_RuntimeMatchSound_C::UnbindAllEvents()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "UnbindAllEvents");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.TimerLeftEvent
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// const struct FGameplayTag&              MatchTimerEvent                                        (BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor, HasGetValueTypeHash)
+
+void UBP_RuntimeMatchSound_C::TimerLeftEvent(const struct FGameplayTag& MatchTimerEvent)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "TimerLeftEvent");
+
+	Params::BP_RuntimeMatchSound_C_TimerLeftEvent Parms{};
+
+	Parms.MatchTimerEvent = std::move(MatchTimerEvent);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.StateChangeDyn
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -34,20 +68,6 @@ void UBP_RuntimeMatchSound_C::StateChangeDyn(class FName _newMatchState)
 	Parms._newMatchState = _newMatchState;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.UnbindAllEvents
-// (BlueprintCallable, BlueprintEvent)
-
-void UBP_RuntimeMatchSound_C::UnbindAllEvents()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "UnbindAllEvents");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -99,26 +119,6 @@ void UBP_RuntimeMatchSound_C::ScoreChanged()
 }
 
 
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.TimerLeftEvent
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const struct FGameplayTag&              MatchTimerEvent                                        (BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor, HasGetValueTypeHash)
-
-void UBP_RuntimeMatchSound_C::TimerLeftEvent(const struct FGameplayTag& MatchTimerEvent)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "TimerLeftEvent");
-
-	Params::BP_RuntimeMatchSound_C_TimerLeftEvent Parms{};
-
-	Parms.MatchTimerEvent = std::move(MatchTimerEvent);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.Post Music Trigger
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -156,34 +156,6 @@ void UBP_RuntimeMatchSound_C::OvertimeStarted(class ARuntimeMatchGameState* _gam
 	Parms._gameState = _gameState;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnReplayStarted
-// (BlueprintCallable, BlueprintEvent)
-
-void UBP_RuntimeMatchSound_C::OnReplayStarted()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "OnReplayStarted");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnReplayFinished
-// (BlueprintCallable, BlueprintEvent)
-
-void UBP_RuntimeMatchSound_C::OnReplayFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "OnReplayFinished");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -227,6 +199,76 @@ void UBP_RuntimeMatchSound_C::OnMatchOver(class ASCGameState* InGameState)
 }
 
 
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnGameFlowStateChanged
+// (HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// const struct FGameplayTag&              _previous                                              (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+// const struct FGameplayTag&              _current                                               (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+
+void UBP_RuntimeMatchSound_C::OnGameFlowStateChanged(const struct FGameplayTag& _previous, const struct FGameplayTag& _current)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "OnGameFlowStateChanged");
+
+	Params::BP_RuntimeMatchSound_C_OnGameFlowStateChanged Parms{};
+
+	Parms._previous = std::move(_previous);
+	Parms._current = std::move(_current);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnReplayStarted
+// (BlueprintCallable, BlueprintEvent)
+
+void UBP_RuntimeMatchSound_C::OnReplayStarted()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "OnReplayStarted");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnCountdownReach GO
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class ARuntimeMatchGameState*           _gameState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+
+void UBP_RuntimeMatchSound_C::OnCountdownReach_GO(class ARuntimeMatchGameState* _gameState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "OnCountdownReach GO");
+
+	Params::BP_RuntimeMatchSound_C_OnCountdownReach_GO Parms{};
+
+	Parms._gameState = _gameState;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.MusicInit
+// (BlueprintCallable, BlueprintEvent)
+
+void UBP_RuntimeMatchSound_C::MusicInit()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "MusicInit");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.IsLastGoalToWin
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
@@ -251,23 +293,17 @@ void UBP_RuntimeMatchSound_C::IsLastGoalToWin(uint8 IndexTeam, bool* IsLastGoal)
 }
 
 
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.IsLastGoalTiebreak
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnReplayFinished
+// (BlueprintCallable, BlueprintEvent)
 
-bool UBP_RuntimeMatchSound_C::IsLastGoalTiebreak()
+void UBP_RuntimeMatchSound_C::OnReplayFinished()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "IsLastGoalTiebreak");
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "OnReplayFinished");
 
-	Params::BP_RuntimeMatchSound_C_IsLastGoalTiebreak Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -282,28 +318,6 @@ void UBP_RuntimeMatchSound_C::Interface_ResetMatchNarrativeBonus()
 		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "Interface ResetMatchNarrativeBonus");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnGameFlowStateChanged
-// (HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const struct FGameplayTag&              _previous                                              (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
-// const struct FGameplayTag&              _current                                               (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
-
-void UBP_RuntimeMatchSound_C::OnGameFlowStateChanged(const struct FGameplayTag& _previous, const struct FGameplayTag& _current)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "OnGameFlowStateChanged");
-
-	Params::BP_RuntimeMatchSound_C_OnGameFlowStateChanged Parms{};
-
-	Parms._previous = std::move(_previous);
-	Parms._current = std::move(_current);
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -341,57 +355,23 @@ void UBP_RuntimeMatchSound_C::Interface_AddNarrativeMalus(double NarrativeIntens
 }
 
 
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.Interface AddNarrativeBonus
-// (BlueprintCallable, BlueprintEvent)
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.IsLastGoalTiebreak
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
-// double                                  NarrativeIntensityBonusToAdd                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UBP_RuntimeMatchSound_C::Interface_AddNarrativeBonus(double NarrativeIntensityBonusToAdd)
+bool UBP_RuntimeMatchSound_C::IsLastGoalTiebreak()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "Interface AddNarrativeBonus");
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "IsLastGoalTiebreak");
 
-	Params::BP_RuntimeMatchSound_C_Interface_AddNarrativeBonus Parms{};
-
-	Parms.NarrativeIntensityBonusToAdd = NarrativeIntensityBonusToAdd;
+	Params::BP_RuntimeMatchSound_C_IsLastGoalTiebreak Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
-}
 
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.OnCountdownReach GO
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class ARuntimeMatchGameState*           _gameState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void UBP_RuntimeMatchSound_C::OnCountdownReach_GO(class ARuntimeMatchGameState* _gameState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "OnCountdownReach GO");
-
-	Params::BP_RuntimeMatchSound_C_OnCountdownReach_GO Parms{};
-
-	Parms._gameState = _gameState;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.InitReplay
-// (BlueprintCallable, BlueprintEvent)
-
-void UBP_RuntimeMatchSound_C::InitReplay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "InitReplay");
-
-	UObject::ProcessEvent(Func, nullptr);
+	return Parms.ReturnValue;
 }
 
 
@@ -439,20 +419,6 @@ void UBP_RuntimeMatchSound_C::GoalScored(const struct FGoalDescription& _goal)
 }
 
 
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.MusicInit
-// (BlueprintCallable, BlueprintEvent)
-
-void UBP_RuntimeMatchSound_C::MusicInit()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "MusicInit");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.GetScoreDiff
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
@@ -474,37 +440,23 @@ void UBP_RuntimeMatchSound_C::GetScoreDiff(int32* GoalDiff)
 }
 
 
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.BPE_OnGameStateHandleBeginPlay
-// (Event, Protected, BlueprintEvent)
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.Interface AddNarrativeBonus
+// (BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class ASCGameState*                     _gameState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// double                                  NarrativeIntensityBonusToAdd                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UBP_RuntimeMatchSound_C::BPE_OnGameStateHandleBeginPlay(class ASCGameState* _gameState)
+void UBP_RuntimeMatchSound_C::Interface_AddNarrativeBonus(double NarrativeIntensityBonusToAdd)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "BPE_OnGameStateHandleBeginPlay");
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "Interface AddNarrativeBonus");
 
-	Params::BP_RuntimeMatchSound_C_BPE_OnGameStateHandleBeginPlay Parms{};
+	Params::BP_RuntimeMatchSound_C_Interface_AddNarrativeBonus Parms{};
 
-	Parms._gameState = _gameState;
+	Parms.NarrativeIntensityBonusToAdd = NarrativeIntensityBonusToAdd;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.BPE_Deinitialize
-// (Event, Protected, BlueprintEvent)
-
-void UBP_RuntimeMatchSound_C::BPE_Deinitialize()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "BPE_Deinitialize");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -525,20 +477,6 @@ uint8 UBP_RuntimeMatchSound_C::GetControlledPlayerTeamID()
 	UObject::ProcessEvent(Func, &Parms);
 
 	return Parms.ReturnValue;
-}
-
-
-// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.AttackDefenseCompute
-// (BlueprintCallable, BlueprintEvent)
-
-void UBP_RuntimeMatchSound_C::AttackDefenseCompute()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "AttackDefenseCompute");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -579,6 +517,68 @@ void UBP_RuntimeMatchSound_C::ClutchStateChanged(EClutchTimeState _clutchTimeSta
 
 	Parms._clutchTimeState = _clutchTimeState;
 	Parms._iballInfluencingTeam = _iballInfluencingTeam;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.InitReplay
+// (BlueprintCallable, BlueprintEvent)
+
+void UBP_RuntimeMatchSound_C::InitReplay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "InitReplay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.BPE_Deinitialize
+// (Event, Protected, BlueprintEvent)
+
+void UBP_RuntimeMatchSound_C::BPE_Deinitialize()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "BPE_Deinitialize");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.AttackDefenseCompute
+// (BlueprintCallable, BlueprintEvent)
+
+void UBP_RuntimeMatchSound_C::AttackDefenseCompute()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "AttackDefenseCompute");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_RuntimeMatchSound.BP_RuntimeMatchSound_C.BPE_OnGameStateHandleBeginPlay
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class ASCGameState*                     _gameState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+
+void UBP_RuntimeMatchSound_C::BPE_OnGameStateHandleBeginPlay(class ASCGameState* _gameState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeMatchSound_C", "BPE_OnGameStateHandleBeginPlay");
+
+	Params::BP_RuntimeMatchSound_C_BPE_OnGameStateHandleBeginPlay Parms{};
+
+	Parms._gameState = _gameState;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

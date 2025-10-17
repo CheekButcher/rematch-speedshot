@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "SOSBindings_classes.hpp"
 #include "BPE_StatUnit_structs.hpp"
+#include "SOSBindings_classes.hpp"
 #include "SOS_structs.hpp"
 
 

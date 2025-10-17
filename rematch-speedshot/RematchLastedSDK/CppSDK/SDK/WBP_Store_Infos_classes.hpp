@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "WBP_MenuPage_Abstract_classes.hpp"
 #include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
-#include "WBP_MenuPage_Abstract_classes.hpp"
 #include "UMG_structs.hpp"
 
 

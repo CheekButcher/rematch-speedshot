@@ -32,18 +32,6 @@ public:
 };
 DUMPER7_ASSERTS_BP_LDCameraActor_C_SetAudioState;
 
-// Function BP_LDCameraActor.BP_LDCameraActor_C.GetLookAtActorRefTransform
-// 0x00D0 (0x00D0 - 0x0000)
-struct BP_LDCameraActor_C_GetLookAtActorRefTransform final
-{
-public:
-	float                                         _fDt;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             ReturnValue;                                       // 0x0010(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0070(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_LDCameraActor_C_GetLookAtActorRefTransform;
-
 // Function BP_LDCameraActor.BP_LDCameraActor_C.ManageDebugIconVisibility
 // 0x0001 (0x0001 - 0x0000)
 struct BP_LDCameraActor_C_ManageDebugIconVisibility final
@@ -116,18 +104,6 @@ public:
 };
 DUMPER7_ASSERTS_BP_LDCameraActor_C_BPE_SwitchToLDCamera;
 
-// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_GetActorRefTransform
-// 0x00D0 (0x00D0 - 0x0000)
-struct BP_LDCameraActor_C_BPE_GetActorRefTransform final
-{
-public:
-	float                                         _fDt;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             ReturnValue;                                       // 0x0010(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0070(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_LDCameraActor_C_BPE_GetActorRefTransform;
-
 // Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_SwitchToGameplayCamera
 // 0x0030 (0x0030 - 0x0000)
 struct BP_LDCameraActor_C_BPE_SwitchToGameplayCamera final
@@ -143,6 +119,30 @@ public:
 	class FName                                   CallFunc_BPF_GetKeyNameFromCameraSlot_DynamicActorRefBlackBoardKey; // 0x0024(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_LDCameraActor_C_BPE_SwitchToGameplayCamera;
+
+// Function BP_LDCameraActor.BP_LDCameraActor_C.GetLookAtActorRefTransform
+// 0x00D0 (0x00D0 - 0x0000)
+struct BP_LDCameraActor_C_GetLookAtActorRefTransform final
+{
+public:
+	float                                         _fDt;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             ReturnValue;                                       // 0x0010(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0070(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_LDCameraActor_C_GetLookAtActorRefTransform;
+
+// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_GetActorRefTransform
+// 0x00D0 (0x00D0 - 0x0000)
+struct BP_LDCameraActor_C_BPE_GetActorRefTransform final
+{
+public:
+	float                                         _fDt;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             ReturnValue;                                       // 0x0010(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0070(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_LDCameraActor_C_BPE_GetActorRefTransform;
 
 }
 

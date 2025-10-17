@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "BP_Binder_Passes_classes.hpp"
 #include "Engine_structs.hpp"
+#include "BP_Binder_Passes_classes.hpp"
 #include "GameplayTags_structs.hpp"
 #include "Runtime_structs.hpp"
 

@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "AnimGraphRuntime_structs.hpp"
 #include "PlayerBase_Skeleton_AnimBP_structs.hpp"
 #include "TurnInPlaceSettings_structs.hpp"
-#include "AnimGraphRuntime_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "ControlRig_structs.hpp"
 #include "CoreUObject_structs.hpp"

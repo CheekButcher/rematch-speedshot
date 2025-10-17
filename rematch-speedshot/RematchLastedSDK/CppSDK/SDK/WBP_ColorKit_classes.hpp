@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "EColorKitModes_structs.hpp"
 #include "Engine_structs.hpp"
 #include "SCCore_classes.hpp"
+#include "EColorKitModes_structs.hpp"
 
 
 namespace SDK

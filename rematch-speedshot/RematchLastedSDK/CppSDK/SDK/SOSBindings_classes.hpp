@@ -2426,13 +2426,14 @@ public:
 DUMPER7_ASSERTS_UVoiceChatProxy;
 
 // Class SOSBindings.VoiceChatViewImGui
-// 0x0018 (0x0040 - 0x0028)
+// 0x0020 (0x0048 - 0x0028)
 class UVoiceChatViewImGui final : public UViewImGuiBase
 {
 public:
 	class UVoiceChatProxy*                        m_ModelProxy;                                      // 0x0028(0x0008)(ZeroConstructor, Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	class UVoiceChatViewModel*                    m_ViewModel;                                       // 0x0030(0x0008)(ZeroConstructor, Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	class UAuthenticationViewModel*               m_AuthenticationViewModel;                         // 0x0038(0x0008)(ZeroConstructor, Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_40[0x8];                                       // 0x0040(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "BP_Binder_BallAnyOwnerChanged_classes.hpp"
 #include "Runtime_structs.hpp"
+#include "BP_Binder_BallAnyOwnerChanged_classes.hpp"
 
 
 namespace SDK

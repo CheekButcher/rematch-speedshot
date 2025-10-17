@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "GA_BaseShoot_classes.hpp"
 #include "GameplayTags_structs.hpp"
+#include "GA_BaseShoot_classes.hpp"
 #include "SCCore_structs.hpp"
 
 

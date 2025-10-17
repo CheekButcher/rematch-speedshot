@@ -18,11 +18,11 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_Ball_Custo.BP_Ball_Custo_C
-// 0x0000 (0x05A0 - 0x05A0)
+// 0x0010 (0x05B0 - 0x05A0)
 class ABP_Ball_Custo_C final : public ABP_Ball_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame_BP_Ball_Custo_C;                    // 0x0598(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	struct FPointerToUberGraphFrame               UberGraphFrame_BP_Ball_Custo_C;                    // 0x05A0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 
 public:
 	void ExecuteUbergraph_BP_Ball_Custo(int32 EntryPoint);

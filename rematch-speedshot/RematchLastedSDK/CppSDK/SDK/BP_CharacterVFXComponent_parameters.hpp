@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "Struct_VFX_FootStep_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "GameplayTags_structs.hpp"
+#include "Struct_VFX_FootStep_structs.hpp"
 #include "EVFXFootSide_structs.hpp"
 #include "Engine_structs.hpp"
 #include "EFootStepFXSize_structs.hpp"

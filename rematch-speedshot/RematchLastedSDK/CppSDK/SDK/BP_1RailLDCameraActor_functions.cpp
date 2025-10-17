@@ -51,26 +51,6 @@ void ABP_1RailLDCameraActor_C::UpdateTimeAndSplineLookAtActor(double DeltaTime)
 }
 
 
-// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.UpdateTimeAndSplineFollowActor
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// double                                  DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_1RailLDCameraActor_C::UpdateTimeAndSplineFollowActor(double DeltaTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "UpdateTimeAndSplineFollowActor");
-
-	Params::BP_1RailLDCameraActor_C_UpdateTimeAndSplineFollowActor Parms{};
-
-	Parms.DeltaTime = DeltaTime;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.UpdateSound
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -125,53 +105,23 @@ void ABP_1RailLDCameraActor_C::SetLookAtActorRef(class AActor* TargetChar_0)
 }
 
 
-// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ABP_1RailLDCameraActor_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.PlaceholderBlend
+// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.UpdateTimeAndSplineFollowActor
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// double                                  Blend_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class UCurveFloat*                      BlendCurve_0                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// double                                  DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_1RailLDCameraActor_C::PlaceholderBlend(double Blend_0, class UCurveFloat* BlendCurve_0)
+void ABP_1RailLDCameraActor_C::UpdateTimeAndSplineFollowActor(double DeltaTime)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "PlaceholderBlend");
+		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "UpdateTimeAndSplineFollowActor");
 
-	Params::BP_1RailLDCameraActor_C_PlaceholderBlend Parms{};
+	Params::BP_1RailLDCameraActor_C_UpdateTimeAndSplineFollowActor Parms{};
 
-	Parms.Blend_0 = Blend_0;
-	Parms.BlendCurve_0 = BlendCurve_0;
+	Parms.DeltaTime = DeltaTime;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.ManageDebugIconVisibility
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_1RailLDCameraActor_C::ManageDebugIconVisibility()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "ManageDebugIconVisibility");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -192,6 +142,48 @@ void ABP_1RailLDCameraActor_C::SetActorRef(class AActor* TargetChar_0)
 	Parms.TargetChar_0 = TargetChar_0;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.ScrubDebugTime
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void ABP_1RailLDCameraActor_C::ScrubDebugTime()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "ScrubDebugTime");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void ABP_1RailLDCameraActor_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.ManageDebugIconVisibility
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_1RailLDCameraActor_C::ManageDebugIconVisibility()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "ManageDebugIconVisibility");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -229,17 +221,25 @@ void ABP_1RailLDCameraActor_C::GlobalDebug()
 }
 
 
-// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.ScrubDebugTime
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.PlaceholderBlend
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// double                                  Blend_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UCurveFloat*                      BlendCurve_0                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void ABP_1RailLDCameraActor_C::ScrubDebugTime()
+void ABP_1RailLDCameraActor_C::PlaceholderBlend(double Blend_0, class UCurveFloat* BlendCurve_0)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "ScrubDebugTime");
+		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "PlaceholderBlend");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::BP_1RailLDCameraActor_C_PlaceholderBlend Parms{};
+
+	Parms.Blend_0 = Blend_0;
+	Parms.BlendCurve_0 = BlendCurve_0;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -331,30 +331,6 @@ void ABP_1RailLDCameraActor_C::DrawDebug(double Time, struct FVector* TargetPos)
 }
 
 
-// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.ComputeLookAtTargetPos
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// double                                  Dt                                                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class USplineComponent*                 Spline                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-// float                                   Time                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_1RailLDCameraActor_C::ComputeLookAtTargetPos(double Dt, class USplineComponent* Spline, float Time)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "ComputeLookAtTargetPos");
-
-	Params::BP_1RailLDCameraActor_C_ComputeLookAtTargetPos Parms{};
-
-	Parms.Dt = Dt;
-	Parms.Spline = Spline;
-	Parms.Time = Time;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.BPE_SwitchToLDCamera
 // (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -382,20 +358,6 @@ bool ABP_1RailLDCameraActor_C::BPE_SwitchToLDCamera(const class AActor* _actorTo
 }
 
 
-// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.BlendToTargetRailTimeline__UpdateFunc
-// (BlueprintEvent)
-
-void ABP_1RailLDCameraActor_C::BlendToTargetRailTimeline__UpdateFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "BlendToTargetRailTimeline__UpdateFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.BPE_SwitchToGameplayCamera
 // (Event, Public, BlueprintCallable, BlueprintEvent)
 
@@ -405,6 +367,44 @@ void ABP_1RailLDCameraActor_C::BPE_SwitchToGameplayCamera()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "BPE_SwitchToGameplayCamera");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.ComputeLookAtTargetPos
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// double                                  Dt                                                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class USplineComponent*                 Spline                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+// float                                   Time                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_1RailLDCameraActor_C::ComputeLookAtTargetPos(double Dt, class USplineComponent* Spline, float Time)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "ComputeLookAtTargetPos");
+
+	Params::BP_1RailLDCameraActor_C_ComputeLookAtTargetPos Parms{};
+
+	Parms.Dt = Dt;
+	Parms.Spline = Spline;
+	Parms.Time = Time;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.BlendToTargetRailTimeline__UpdateFunc
+// (BlueprintEvent)
+
+void ABP_1RailLDCameraActor_C::BlendToTargetRailTimeline__UpdateFunc()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "BlendToTargetRailTimeline__UpdateFunc");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -509,24 +509,24 @@ void ABP_1RailLDCameraActor_C::GetFollowTargetCharPos(struct FVector* TargetChar
 }
 
 
-// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.GetCurrentTime
+// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.GetCurrentLookAtTargetPos
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:
-// float*                                  Current_Time                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FVector*                         LookAt_Target_Char_Pos_0                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_1RailLDCameraActor_C::GetCurrentTime(float* Current_Time) const
+void ABP_1RailLDCameraActor_C::GetCurrentLookAtTargetPos(struct FVector* LookAt_Target_Char_Pos_0) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "GetCurrentTime");
+		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "GetCurrentLookAtTargetPos");
 
-	Params::BP_1RailLDCameraActor_C_GetCurrentTime Parms{};
+	Params::BP_1RailLDCameraActor_C_GetCurrentLookAtTargetPos Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (Current_Time != nullptr)
-		*Current_Time = Parms.Current_Time;
+	if (LookAt_Target_Char_Pos_0 != nullptr)
+		*LookAt_Target_Char_Pos_0 = std::move(Parms.LookAt_Target_Char_Pos_0);
 }
 
 
@@ -551,24 +551,24 @@ void ABP_1RailLDCameraActor_C::GetCurrentFramingSystemTime(double* Current_Frami
 }
 
 
-// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.GetCurrentLookAtTargetPos
+// Function BP_1RailLDCameraActor.BP_1RailLDCameraActor_C.GetCurrentTime
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:
-// struct FVector*                         LookAt_Target_Char_Pos_0                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float*                                  Current_Time                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_1RailLDCameraActor_C::GetCurrentLookAtTargetPos(struct FVector* LookAt_Target_Char_Pos_0) const
+void ABP_1RailLDCameraActor_C::GetCurrentTime(float* Current_Time) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "GetCurrentLookAtTargetPos");
+		Func = Class->GetFunction("BP_1RailLDCameraActor_C", "GetCurrentTime");
 
-	Params::BP_1RailLDCameraActor_C_GetCurrentLookAtTargetPos Parms{};
+	Params::BP_1RailLDCameraActor_C_GetCurrentTime Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (LookAt_Target_Char_Pos_0 != nullptr)
-		*LookAt_Target_Char_Pos_0 = std::move(Parms.LookAt_Target_Char_Pos_0);
+	if (Current_Time != nullptr)
+		*Current_Time = Parms.Current_Time;
 }
 
 }

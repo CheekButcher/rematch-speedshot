@@ -17,47 +17,6 @@
 namespace SDK
 {
 
-// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.UpdateTimeAndSplineLookAtActor
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// double                                  DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Donut_2RailLDCameraActor_C::UpdateTimeAndSplineLookAtActor(double DeltaTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Donut_2RailLDCameraActor_C", "UpdateTimeAndSplineLookAtActor");
-
-	Params::BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineLookAtActor Parms{};
-
-	Parms.DeltaTime = DeltaTime;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.GetDebugTime2
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// double*                                 DebugTime2_0                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Donut_2RailLDCameraActor_C::GetDebugTime2(double* DebugTime2_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Donut_2RailLDCameraActor_C", "GetDebugTime2");
-
-	Params::BP_Donut_2RailLDCameraActor_C_GetDebugTime2 Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (DebugTime2_0 != nullptr)
-		*DebugTime2_0 = Parms.DebugTime2_0;
-}
-
-
 // Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.UpdateTimeAndSplineFollowActor
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -112,6 +71,47 @@ void ABP_Donut_2RailLDCameraActor_C::ScrubDebugTime()
 }
 
 
+// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.GetDebugTime2
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// double*                                 DebugTime2_0                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_Donut_2RailLDCameraActor_C::GetDebugTime2(double* DebugTime2_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Donut_2RailLDCameraActor_C", "GetDebugTime2");
+
+	Params::BP_Donut_2RailLDCameraActor_C_GetDebugTime2 Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (DebugTime2_0 != nullptr)
+		*DebugTime2_0 = Parms.DebugTime2_0;
+}
+
+
+// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.UpdateTimeAndSplineLookAtActor
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// double                                  DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_Donut_2RailLDCameraActor_C::UpdateTimeAndSplineLookAtActor(double DeltaTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Donut_2RailLDCameraActor_C", "UpdateTimeAndSplineLookAtActor");
+
+	Params::BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineLookAtActor Parms{};
+
+	Parms.DeltaTime = DeltaTime;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.DrawDebug2
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -135,6 +135,20 @@ void ABP_Donut_2RailLDCameraActor_C::DrawDebug2(double Time1, double Time2, stru
 
 	if (TargetPos != nullptr)
 		*TargetPos = std::move(Parms.TargetPos);
+}
+
+
+// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.BPE_SwitchToGameplayCamera
+// (Event, Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_Donut_2RailLDCameraActor_C::BPE_SwitchToGameplayCamera()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Donut_2RailLDCameraActor_C", "BPE_SwitchToGameplayCamera");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -165,17 +179,24 @@ bool ABP_Donut_2RailLDCameraActor_C::BPE_SwitchToLDCamera(const class AActor* _a
 }
 
 
-// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.BPE_SwitchToGameplayCamera
-// (Event, Public, BlueprintCallable, BlueprintEvent)
+// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.GetWantedAngleCamera
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// double*                                 Deg                                                    (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_Donut_2RailLDCameraActor_C::BPE_SwitchToGameplayCamera()
+void ABP_Donut_2RailLDCameraActor_C::GetWantedAngleCamera(double* Deg) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Donut_2RailLDCameraActor_C", "BPE_SwitchToGameplayCamera");
+		Func = Class->GetFunction("BP_Donut_2RailLDCameraActor_C", "GetWantedAngleCamera");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::BP_Donut_2RailLDCameraActor_C_GetWantedAngleCamera Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Deg != nullptr)
+		*Deg = Parms.Deg;
 }
 
 
@@ -217,27 +238,6 @@ void ABP_Donut_2RailLDCameraActor_C::GetCurrentFramingSystemTime2(double* Curren
 
 	if (Current_Framing_System_Time_2_0 != nullptr)
 		*Current_Framing_System_Time_2_0 = Parms.Current_Framing_System_Time_2_0;
-}
-
-
-// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.GetWantedAngleCamera
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// double*                                 Deg                                                    (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Donut_2RailLDCameraActor_C::GetWantedAngleCamera(double* Deg) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Donut_2RailLDCameraActor_C", "GetWantedAngleCamera");
-
-	Params::BP_Donut_2RailLDCameraActor_C_GetWantedAngleCamera Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Deg != nullptr)
-		*Deg = Parms.Deg;
 }
 
 }

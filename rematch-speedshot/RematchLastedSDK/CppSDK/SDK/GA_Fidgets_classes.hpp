@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "FidgetOverrideStruct_structs.hpp"
+#include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "SCCore_classes.hpp"
-#include "FidgetOverrideStruct_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
 
 

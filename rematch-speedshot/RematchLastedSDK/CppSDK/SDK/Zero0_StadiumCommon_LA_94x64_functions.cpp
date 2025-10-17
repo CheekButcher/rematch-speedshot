@@ -17,6 +17,20 @@
 namespace SDK
 {
 
+// Function 00_StadiumCommon_LA_94x64.00_StadiumCommon_LA_94x64_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void AZero0_StadiumCommon_LA_94x64_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("00_StadiumCommon_LA_94x64_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function 00_StadiumCommon_LA_94x64.00_StadiumCommon_LA_94x64_C.ExecuteUbergraph_00_StadiumCommon_LA_94x64
 // (Final, UbergraphFunction)
 // Parameters:
@@ -34,20 +48,6 @@ void AZero0_StadiumCommon_LA_94x64_C::ExecuteUbergraph_00_StadiumCommon_LA_94x64
 	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function 00_StadiumCommon_LA_94x64.00_StadiumCommon_LA_94x64_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void AZero0_StadiumCommon_LA_94x64_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("00_StadiumCommon_LA_94x64_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

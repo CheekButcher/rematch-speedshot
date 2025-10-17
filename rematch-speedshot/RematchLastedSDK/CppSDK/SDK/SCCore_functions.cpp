@@ -35581,6 +35581,37 @@ void USCGameplayStatics::BPF_AsyncGetGameState(const class UObject* _worldContex
 }
 
 
+// Function SCCore.SCGameplayStatics.BPF_AsyncGetLocalPlayerPawn
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const class UObject*                    _worldContextObject                                    (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FLatentActionInfo&         _inLatentInfo                                          (Parm, NoDestructor, NativeAccessSpecifierPublic)
+// class APawn**                           _outLocalPlayerPawn                                    (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void USCGameplayStatics::BPF_AsyncGetLocalPlayerPawn(const class UObject* _worldContextObject, const struct FLatentActionInfo& _inLatentInfo, class APawn** _outLocalPlayerPawn)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SCGameplayStatics", "BPF_AsyncGetLocalPlayerPawn");
+
+	Params::SCGameplayStatics_BPF_AsyncGetLocalPlayerPawn Parms{};
+
+	Parms._worldContextObject = _worldContextObject;
+	Parms._inLatentInfo = std::move(_inLatentInfo);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outLocalPlayerPawn != nullptr)
+		*_outLocalPlayerPawn = Parms._outLocalPlayerPawn;
+}
+
+
 // Function SCCore.SCGameplayStatics.BPF_AsyncGetPlayerStateFromController
 // (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
 // Parameters:

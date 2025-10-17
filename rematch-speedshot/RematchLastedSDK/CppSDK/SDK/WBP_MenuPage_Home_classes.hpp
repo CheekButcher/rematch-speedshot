@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "Runtime_structs.hpp"
 #include "WBP_MenuPage_Parent_classes.hpp"
 #include "UMG_structs.hpp"
 #include "SOS_structs.hpp"
 #include "SCCore_structs.hpp"
-#include "Runtime_structs.hpp"
 
 
 namespace SDK

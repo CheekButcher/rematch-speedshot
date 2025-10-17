@@ -31,17 +31,47 @@ void ABP_Ball_C::AnimateRoll()
 }
 
 
-// Function BP_Ball.BP_Ball_C.ApplyBallCustomization
+// Function BP_Ball.BP_Ball_C.Apply Captain Custo
 // (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class ARuntimeMatchGameState*           _gameState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void ABP_Ball_C::ApplyBallCustomization()
+void ABP_Ball_C::Apply_Captain_Custo(class ARuntimeMatchGameState* _gameState)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Ball_C", "ApplyBallCustomization");
+		Func = Class->GetFunction("BP_Ball_C", "Apply Captain Custo");
 
-	UObject::ProcessEvent(Func, nullptr);
+	Params::BP_Ball_C_Apply_Captain_Custo Parms{};
+
+	Parms._gameState = _gameState;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_Ball.BP_Ball_C.ApplyLastScorerCusto
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class ARuntimeMatchGameState*           _gameState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// bool*                                   _bHasLastScorer                                        (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_Ball_C::ApplyLastScorerCusto(class ARuntimeMatchGameState* _gameState, bool* _bHasLastScorer)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Ball_C", "ApplyLastScorerCusto");
+
+	Params::BP_Ball_C_ApplyLastScorerCusto Parms{};
+
+	Parms._gameState = _gameState;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (_bHasLastScorer != nullptr)
+		*_bHasLastScorer = Parms._bHasLastScorer;
 }
 
 
@@ -223,6 +253,20 @@ void ABP_Ball_C::OnCharacterCustomizationGenerated(class UCharacterCustomization
 }
 
 
+// Function BP_Ball.BP_Ball_C.OnGoalHistoryReplicated
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_Ball_C::OnGoalHistoryReplicated()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Ball_C", "OnGoalHistoryReplicated");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function BP_Ball.BP_Ball_C.OnLockBallStateUpdate
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -243,61 +287,21 @@ void ABP_Ball_C::OnLockBallStateUpdate(EServiceStateUpdate eStateUpdate)
 }
 
 
-// Function BP_Ball.BP_Ball_C.OnMatchCaptainSet
+// Function BP_Ball.BP_Ball_C.OnMatchStateChanged
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class ARuntimeMatchGameState*           _gameState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class FName                             _newMatchState                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_Ball_C::OnMatchCaptainSet(class ARuntimeMatchGameState* _gameState)
+void ABP_Ball_C::OnMatchStateChanged(class FName _newMatchState)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Ball_C", "OnMatchCaptainSet");
+		Func = Class->GetFunction("BP_Ball_C", "OnMatchStateChanged");
 
-	Params::BP_Ball_C_OnMatchCaptainSet Parms{};
+	Params::BP_Ball_C_OnMatchStateChanged Parms{};
 
-	Parms._gameState = _gameState;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Ball.BP_Ball_C.OnMatchGoalScored
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const struct FGoalDescription&          _goal                                                  (BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
-
-void ABP_Ball_C::OnMatchGoalScored(const struct FGoalDescription& _goal)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Ball_C", "OnMatchGoalScored");
-
-	Params::BP_Ball_C_OnMatchGoalScored Parms{};
-
-	Parms._goal = std::move(_goal);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Ball.BP_Ball_C.OnMatchStarted
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class ASCGameState*                     _gameState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Ball_C::OnMatchStarted(class ASCGameState* _gameState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Ball_C", "OnMatchStarted");
-
-	Params::BP_Ball_C_OnMatchStarted Parms{};
-
-	Parms._gameState = _gameState;
+	Parms._newMatchState = _newMatchState;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -322,6 +326,26 @@ void ABP_Ball_C::OnPawnSet(class APlayerState* Player, class APawn* NewPawn, cla
 	Parms.Player = Player;
 	Parms.NewPawn = NewPawn;
 	Parms.OldPawn = OldPawn;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_Ball.BP_Ball_C.OnPlayerAdded
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APlayerState*                     _PlayerStateAdded                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+
+void ABP_Ball_C::OnPlayerAdded(class APlayerState* _PlayerStateAdded)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Ball_C", "OnPlayerAdded");
+
+	Params::BP_Ball_C_OnPlayerAdded Parms{};
+
+	Parms._PlayerStateAdded = _PlayerStateAdded;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -423,6 +447,20 @@ void ABP_Ball_C::SetPlayerApplyingBallCustomization(class ARuntimeCharacter* _pl
 }
 
 
+// Function BP_Ball.BP_Ball_C.SetupBallCustomization
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_Ball_C::SetupBallCustomization()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Ball_C", "SetupBallCustomization");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function BP_Ball.BP_Ball_C.UnbindBallCustomization
 // (Public, BlueprintCallable, BlueprintEvent)
 
@@ -446,6 +484,20 @@ void ABP_Ball_C::UnbindServiceState()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("BP_Ball_C", "UnbindServiceState");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_Ball.BP_Ball_C.UpdateBallCusto
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_Ball_C::UpdateBallCusto()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Ball_C", "UpdateBallCusto");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -482,6 +534,26 @@ void ABP_Ball_C::UserConstructionScript()
 		Func = Class->GetFunction("BP_Ball_C", "UserConstructionScript");
 
 	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_Ball.BP_Ball_C.WaitForPlayerStatePawn
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class APlayerState*                     _playerState                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+
+void ABP_Ball_C::WaitForPlayerStatePawn(class APlayerState* _playerState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Ball_C", "WaitForPlayerStatePawn");
+
+	Params::BP_Ball_C_WaitForPlayerStatePawn Parms{};
+
+	Parms._playerState = _playerState;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 

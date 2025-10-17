@@ -12878,6 +12878,17 @@ public:
 };
 DUMPER7_ASSERTS_SCGameplayStatics_BPF_AsyncGetGameState;
 
+// Function SCCore.SCGameplayStatics.BPF_AsyncGetLocalPlayerPawn
+// 0x0028 (0x0028 - 0x0000)
+struct SCGameplayStatics_BPF_AsyncGetLocalPlayerPawn final
+{
+public:
+	const class UObject*                          _worldContextObject;                               // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLatentActionInfo                      _inLatentInfo;                                     // 0x0008(0x0018)(Parm, NoDestructor, NativeAccessSpecifierPublic)
+	class APawn*                                  _outLocalPlayerPawn;                               // 0x0020(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_SCGameplayStatics_BPF_AsyncGetLocalPlayerPawn;
+
 // Function SCCore.SCGameplayStatics.BPF_AsyncGetPlayerStateFromController
 // 0x0028 (0x0028 - 0x0000)
 struct SCGameplayStatics_BPF_AsyncGetPlayerStateFromController final

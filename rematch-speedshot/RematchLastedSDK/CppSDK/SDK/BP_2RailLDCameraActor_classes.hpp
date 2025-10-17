@@ -36,8 +36,8 @@ public:
 	bool                                          DrawDebugSpline2;                                  // 0x0DB0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void UpdateTimeAndSplineLookAtActor(double DeltaTime);
 	void UpdateTimeAndSplineFollowActor(double DeltaTime);
+	void UpdateTimeAndSplineLookAtActor(double DeltaTime);
 	void UpdateCameraPositionAndLookAt(double DeltaTime);
 	void ScrubDebugTime();
 	void GlobalDebug();

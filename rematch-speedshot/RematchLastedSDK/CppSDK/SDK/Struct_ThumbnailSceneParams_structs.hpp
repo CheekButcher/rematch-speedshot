@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "ThumbnailSceneMode_structs.hpp"
 #include "SCCharacterCustomization_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "ThumbnailSceneMode_structs.hpp"
 
 
 namespace SDK

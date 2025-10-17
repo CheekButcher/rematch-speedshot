@@ -17,6 +17,20 @@
 namespace SDK
 {
 
+// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void ABP_GoalKeeperVolumeAttributor_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.RemoveInvuEffects
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -34,20 +48,6 @@ void ABP_GoalKeeperVolumeAttributor_C::RemoveInvuEffects(class UAbilitySystemCom
 	Parms.InAsc = InAsc;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ABP_GoalKeeperVolumeAttributor_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -99,26 +99,6 @@ void ABP_GoalKeeperVolumeAttributor_C::OnShootAbilityTagChanged(const class USCA
 }
 
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ExecuteUbergraph_BP_GoalKeeperVolumeAttributor
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_GoalKeeperVolumeAttributor_C::ExecuteUbergraph_BP_GoalKeeperVolumeAttributor(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "ExecuteUbergraph_BP_GoalKeeperVolumeAttributor");
-
-	Params::BP_GoalKeeperVolumeAttributor_C_ExecuteUbergraph_BP_GoalKeeperVolumeAttributor Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_RemoveCurrentEffectOwner
 // (Event, Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -134,6 +114,26 @@ void ABP_GoalKeeperVolumeAttributor_C::BPE_RemoveCurrentEffectOwner(class AActor
 	Params::BP_GoalKeeperVolumeAttributor_C_BPE_RemoveCurrentEffectOwner Parms{};
 
 	Parms._actor = _actor;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ExecuteUbergraph_BP_GoalKeeperVolumeAttributor
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_GoalKeeperVolumeAttributor_C::ExecuteUbergraph_BP_GoalKeeperVolumeAttributor(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "ExecuteUbergraph_BP_GoalKeeperVolumeAttributor");
+
+	Params::BP_GoalKeeperVolumeAttributor_C_ExecuteUbergraph_BP_GoalKeeperVolumeAttributor Parms{};
+
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

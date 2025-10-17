@@ -61,19 +61,6 @@ public:
 };
 DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_OnShootAbilityTagChanged;
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ExecuteUbergraph_BP_GoalKeeperVolumeAttributor
-// 0x0028 (0x0028 - 0x0000)
-struct BP_GoalKeeperVolumeAttributor_C_ExecuteUbergraph_BP_GoalKeeperVolumeAttributor final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValidSoftObjectReference_ReturnValue;   // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetDisplayName_ReturnValue;               // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0018(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_ExecuteUbergraph_BP_GoalKeeperVolumeAttributor;
-
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_RemoveCurrentEffectOwner
 // 0x0040 (0x0040 - 0x0000)
 struct BP_GoalKeeperVolumeAttributor_C_BPE_RemoveCurrentEffectOwner final
@@ -87,6 +74,19 @@ public:
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_BPE_RemoveCurrentEffectOwner;
+
+// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ExecuteUbergraph_BP_GoalKeeperVolumeAttributor
+// 0x0028 (0x0028 - 0x0000)
+struct BP_GoalKeeperVolumeAttributor_C_ExecuteUbergraph_BP_GoalKeeperVolumeAttributor final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValidSoftObjectReference_ReturnValue;   // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetDisplayName_ReturnValue;               // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x0018(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_ExecuteUbergraph_BP_GoalKeeperVolumeAttributor;
 
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_CantRemoveEffectFromTarget
 // 0x0038 (0x0038 - 0x0000)

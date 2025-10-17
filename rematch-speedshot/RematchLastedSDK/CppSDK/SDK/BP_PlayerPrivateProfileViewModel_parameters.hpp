@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "BPE_StatUnit_structs.hpp"
 #include "SOS_structs.hpp"
 #include "UIRankedLeagues_structs.hpp"
+#include "BPE_StatUnit_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
 
