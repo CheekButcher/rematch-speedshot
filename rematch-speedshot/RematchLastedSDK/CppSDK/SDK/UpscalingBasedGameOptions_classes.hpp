@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "SCCore_classes.hpp"
 #include "UpscalingBasedGameOptions_structs.hpp"
+#include "SCCore_classes.hpp"
 #include "Engine_classes.hpp"
 
 

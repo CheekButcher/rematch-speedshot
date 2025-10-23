@@ -18,11 +18,11 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass GA_VolleyAerialPushBall.GA_VolleyAerialPushBall_C
-// 0x0000 (0x0F50 - 0x0F50)
+// 0x0000 (0x0F60 - 0x0F60)
 class UGA_VolleyAerialPushBall_C : public UGA_VolleyPushBall_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame_GA_VolleyAerialPushBall_C;          // 0x0F48(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	struct FPointerToUberGraphFrame               UberGraphFrame_GA_VolleyAerialPushBall_C;          // 0x0F58(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 
 public:
 	void AdditionalBehavior();

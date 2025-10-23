@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "Runtime_classes.hpp"
 #include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
-#include "Runtime_classes.hpp"
 
 
 namespace SDK
@@ -73,10 +73,12 @@ public:
 	void OnCancelled_1FFC394346EB2206EFC4ABAFC88E2385();
 	void OnCompleted_1FFC394346EB2206EFC4ABAFC88E2385();
 	void OnEnded_AF171FC04E05DC241F34469EFF2C6ABF();
+	void OnFinish_E95C2B41407AC1555FF3F583CC39370A();
 	void OnInterrupted_1FFC394346EB2206EFC4ABAFC88E2385();
-	void OnStateEnded_E3DF55D84CEB290C199EBE87D30ABFD9();
-	void OnStateInterrupted_E3DF55D84CEB290C199EBE87D30ABFD9();
+	void OnStateEnded_312320D7486721E22D8550B95B7787F5();
+	void OnStateInterrupted_312320D7486721E22D8550B95B7787F5();
 	void PrepareTargetData(const struct FGameplayAbilityTargetDataHandle& TargetData_In, struct FGameplayAbilityTargetDataHandle* TargetData_Out);
+	void StartStateTasks_312320D7486721E22D8550B95B7787F5();
 
 public:
 	static class UClass* StaticClass()

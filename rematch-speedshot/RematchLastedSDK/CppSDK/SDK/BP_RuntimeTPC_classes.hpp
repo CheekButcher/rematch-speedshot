@@ -10,15 +10,15 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "SCCharacterCustomization_structs.hpp"
-#include "GameplayTags_structs.hpp"
-#include "GameplayAbilities_structs.hpp"
-#include "EPlayerTargetTypes_structs.hpp"
-#include "PhysicsControl_structs.hpp"
-#include "SCCore_structs.hpp"
 #include "Runtime_structs.hpp"
 #include "Runtime_classes.hpp"
+#include "SCCharacterCustomization_structs.hpp"
+#include "Engine_structs.hpp"
+#include "GameplayTags_structs.hpp"
+#include "EPlayerTargetTypes_structs.hpp"
+#include "PhysicsControl_structs.hpp"
+#include "GameplayAbilities_structs.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK
@@ -160,7 +160,7 @@ public:
 	void SetInfiniteStaminaEnabled(bool Enabled);
 	void SetupPhysicControlComponent();
 	void Toggle_Ball_Look_At();
-	void TriggerLookAtGoal(class AActor* inTarget);
+	void TriggerLookAtGoal(class AActor* InTarget);
 	void TriggerPhysicControlUpdate();
 	void UpdatePlayerSkin(const TArray<struct FSCCharacterCustomizationDescription>& InAdditionalCusto);
 	void UserConstructionScript();

@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
 #include "Runtime_classes.hpp"
+#include "Engine_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "SCCore_structs.hpp"
 
@@ -21,8 +21,9 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass GA_BaseShoot.GA_BaseShoot_C
-// 0x0400 (0x0DB0 - 0x09B0)
-class UGA_BaseShoot_C : public URuntimeShootGameplayAbility
+// 0x0410 (0x0DC0 - 0x09B0)
+#pragma pack(push, 0x1)
+class alignas(0x10) UGA_BaseShoot_C : public URuntimeShootGameplayAbility
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x09B0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
@@ -46,13 +47,16 @@ public:
 	bool                                          UseTargetLookAt;                                   // 0x0DA0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_DA1[0x7];                                      // 0x0DA1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	double                                        MinDistanceBetweenTargetAndPlayerForLookAt;        // 0x0DA8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          LockCameraOption;                                  // 0x0DB0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void BindLookatOnFreezeFrameEnd(class ABall* Ball);
 	void ExecuteUbergraph_GA_BaseShoot(int32 EntryPoint);
-	void FindAimPoint(bool UseTrajectoryFirstBounce, class ABall* Ball, struct FVector* ImpactPoint, bool* AllowLookAt);
+	void FindAimPointByCamera(ELockDirectionOption LockDirectionOption, class ABall* Ball, struct FVector* Aim_Point);
+	void RemoveLookAt();
 	void TriggerFinalLookAt(class ABall* _ball, const struct FBounceData& _bounceData, float _fSpeedAtBounce);
-	void TriggerLookAtToAimPoint(bool IsFinalLookAt, class ABall* Ball);
+	void TriggerLookAtToAimPoint(class ABall* Ball, ELockDirectionOption LockDirectionOption);
+	void TryToTriggerLookAt(ELockDirectionOption LockDirectionOption, class ABall* Ball);
 
 	void MakeShootDirectionTargetData(const struct FShootPrepTargetData& InShootPrep, struct FGameplayAbilityTargetDataHandle* Result) const;
 
@@ -70,6 +74,7 @@ public:
 		return GetDefaultObjImpl<UGA_BaseShoot_C>();
 	}
 };
+#pragma pack(pop)
 DUMPER7_ASSERTS_UGA_BaseShoot_C;
 
 }

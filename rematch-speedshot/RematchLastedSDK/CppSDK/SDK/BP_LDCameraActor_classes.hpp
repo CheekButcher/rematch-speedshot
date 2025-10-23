@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "AkAudio_structs.hpp"
 #include "BP_EnumCameraLDSlot_structs.hpp"
 #include "SCCore_classes.hpp"
-#include "AkAudio_structs.hpp"
 
 
 namespace SDK
@@ -45,11 +45,11 @@ public:
 	void SetAudioState(class UAkAudioEvent* WhooshEvent, class FName AMB_Camera_State, double VolumeOffset_0);
 	void ReceiveBeginPlay();
 	void ManageDebugIconVisibility();
-	void ExecuteUbergraph_BP_LDCameraActor(int32 EntryPoint);
-	bool BPE_SwitchToLDCamera(const class AActor* _actorToFollowRef, const class AActor* _actorToLookAtRef, TSubclassOf<class USCCameraData> _overrideCamera);
 	void BPE_SwitchToGameplayCamera();
 	struct FTransform GetLookAtActorRefTransform(float _fDt);
 	struct FTransform BPE_GetActorRefTransform(float _fDt);
+	void ExecuteUbergraph_BP_LDCameraActor(int32 EntryPoint);
+	bool BPE_SwitchToLDCamera(const class AActor* _actorToFollowRef, const class AActor* _actorToLookAtRef, TSubclassOf<class USCCameraData> _overrideCamera);
 
 public:
 	static class UClass* StaticClass()

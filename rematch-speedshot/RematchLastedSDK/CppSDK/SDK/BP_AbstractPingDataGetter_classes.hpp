@@ -21,7 +21,7 @@ namespace SDK
 class UBP_AbstractPingDataGetter_C : public UPingBehavior
 {
 public:
-	struct FPingDataContainer Get_Data(class AActor* InOwner, class AActor* inTarget, bool bInIsMarker) const;
+	struct FPingDataContainer Get_Data(class AActor* InOwner, class AActor* InTarget, bool bInIsMarker) const;
 	TArray<class UTexture2D*> GetReferencedTextures() const;
 
 public:

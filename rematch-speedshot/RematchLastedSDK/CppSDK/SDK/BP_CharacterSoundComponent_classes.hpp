@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "EGenders_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "StructUtilsEngine_structs.hpp"
 #include "AkAudio_structs.hpp"
 #include "EBodyTypes_structs.hpp"
+#include "EGenders_structs.hpp"
+#include "StructUtilsEngine_structs.hpp"
 
 
 namespace SDK

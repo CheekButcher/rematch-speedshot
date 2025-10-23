@@ -386,6 +386,20 @@ void UGA_DiveHorizontal_C::OnStateEnded_464AA855450252AFA82A34B0051DDF1F()
 }
 
 
+// Function GA_DiveHorizontal.GA_DiveHorizontal_C.StartStateTasks_464AA855450252AFA82A34B0051DDF1F
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_DiveHorizontal_C::StartStateTasks_464AA855450252AFA82A34B0051DDF1F()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_DiveHorizontal_C", "StartStateTasks_464AA855450252AFA82A34B0051DDF1F");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function GA_DiveHorizontal.GA_DiveHorizontal_C.OnStateInterrupted_3D54D3FA445E84FE865A0FAD4BC25E45
 // (BlueprintCallable, BlueprintEvent)
 
@@ -409,6 +423,20 @@ void UGA_DiveHorizontal_C::OnStateEnded_3D54D3FA445E84FE865A0FAD4BC25E45()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("GA_DiveHorizontal_C", "OnStateEnded_3D54D3FA445E84FE865A0FAD4BC25E45");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function GA_DiveHorizontal.GA_DiveHorizontal_C.StartStateTasks_3D54D3FA445E84FE865A0FAD4BC25E45
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_DiveHorizontal_C::StartStateTasks_3D54D3FA445E84FE865A0FAD4BC25E45()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_DiveHorizontal_C", "StartStateTasks_3D54D3FA445E84FE865A0FAD4BC25E45");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

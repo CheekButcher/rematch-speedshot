@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "WBP_MenuPage_Abstract_classes.hpp"
+#include "SOS_structs.hpp"
 #include "Engine_structs.hpp"
+#include "WBP_MenuPage_Abstract_classes.hpp"
 #include "SCCore_structs.hpp"
 #include "AkAudio_structs.hpp"
-#include "SOS_structs.hpp"
 #include "UMG_structs.hpp"
 
 

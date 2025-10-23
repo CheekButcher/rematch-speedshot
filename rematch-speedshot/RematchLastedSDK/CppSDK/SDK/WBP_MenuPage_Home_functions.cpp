@@ -59,6 +59,28 @@ void UWBP_MenuPage_Home_C::BndEvt__WBP_MenuPage_Home_Btn_News_K2Node_ComponentBo
 }
 
 
+// Function WBP_MenuPage_Home.WBP_MenuPage_Home_C.BndEvt__WBP_MenuPage_Home_WBP_Store_Item_AssociateBundle_99_K2Node_ComponentBoundEvent_1_ButtonUserWidgetClickDelegate__DelegateSignature
+// (BlueprintEvent)
+// Parameters:
+// class USCButtonUserWidget*              _button                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+// bool                                    _bWithMouse                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_MenuPage_Home_C::BndEvt__WBP_MenuPage_Home_WBP_Store_Item_AssociateBundle_99_K2Node_ComponentBoundEvent_1_ButtonUserWidgetClickDelegate__DelegateSignature(class USCButtonUserWidget* _button, bool _bWithMouse)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_MenuPage_Home_C", "BndEvt__WBP_MenuPage_Home_WBP_Store_Item_AssociateBundle_99_K2Node_ComponentBoundEvent_1_ButtonUserWidgetClickDelegate__DelegateSignature");
+
+	Params::WBP_MenuPage_Home_C_BndEvt__WBP_MenuPage_Home_WBP_Store_Item_AssociateBundle_99_K2Node_ComponentBoundEvent_1_ButtonUserWidgetClickDelegate__DelegateSignature Parms{};
+
+	Parms._button = _button;
+	Parms._bWithMouse = _bWithMouse;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function WBP_MenuPage_Home.WBP_MenuPage_Home_C.BPE_OnActionPressed
 // (Event, Protected, HasOutParams, BlueprintEvent)
 // Parameters:

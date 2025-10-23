@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "AkAudio_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "SCCore_classes.hpp"
+#include "AkAudio_structs.hpp"
 
 
 namespace SDK

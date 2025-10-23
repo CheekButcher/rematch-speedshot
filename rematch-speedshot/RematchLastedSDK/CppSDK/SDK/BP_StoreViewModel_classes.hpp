@@ -36,6 +36,7 @@ public:
 
 	void CanUseStore(bool* Purchase_in_Progress) const;
 	void GetCatalogBundleAtIndex(int32 Index_0, class USOSBindingsStoreBundleViewModel** Bundle) const;
+	void GetCatalogBundleFromID(const class FString& BundleID, class USOSBindingsStoreBundleViewModel** BundleVM) const;
 	void GetCatalogBundlesFromIndex(int32 Index_0, TArray<class USOSBindingsStoreBundleViewModel*>* Bundles) const;
 	void GetCurrentSeasonName(class FText* Name_0) const;
 	void GetCurrentSeasonNumber(int32* Number) const;

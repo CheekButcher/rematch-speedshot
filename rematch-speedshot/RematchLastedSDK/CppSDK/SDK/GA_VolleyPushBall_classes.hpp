@@ -12,37 +12,39 @@
 
 #include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "GA_BaseShoot_classes.hpp"
 #include "SCCore_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "GA_BaseShoot_classes.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass GA_VolleyPushBall.GA_VolleyPushBall_C
-// 0x01A0 (0x0F50 - 0x0DB0)
+// 0x01A0 (0x0F60 - 0x0DC0)
 #pragma pack(push, 0x1)
 class alignas(0x10) UGA_VolleyPushBall_C : public UGA_BaseShoot_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame_GA_VolleyPushBall_C;                // 0x0DB0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	TSubclassOf<class UAnimSequencePicker>        BuildUpPicker;                                     // 0x0DB8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	class USCInputAction*                         IADirection;                                       // 0x0DC0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 ShootPicker;                                       // 0x0DC8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	TArray<class UClass*>                         Status;                                            // 0x0DD0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	struct FBallInterceptionPointTargetData       BallTargetData;                                    // 0x0DE0(0x0120)(Edit, BlueprintVisible, DisableEditOnInstance, AdvancedDisplay)
-	class UBasicMontagePlayerConfiguration*       BuildUp_Configuration;                             // 0x0F00(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FSCNetworkSyncData                     SCNetworkSyncData;                                 // 0x0F08(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	bool                                          DebugVolleyStack;                                  // 0x0F18(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_F19[0x3];                                      // 0x0F19(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTag                           ShootTypeTagForSync;                               // 0x0F1C(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	bool                                          VolleyPaddingFinished;                             // 0x0F24(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_F25[0x3];                                      // 0x0F25(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAbilityTask_NetworkSyncShootData*      NetworkSyncTask;                                   // 0x0F28(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class UAbilityTask_SCPlayMontageAndWait*      BuildUpTask;                                       // 0x0F30(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	TSubclassOf<class UGameplayEffect>            TackleCooldownAfterReleaseBall;                    // 0x0F38(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	class UAbilityTask_BallInteractionRequest*    VolleyRequestTask;                                 // 0x0F40(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_DB1[0x7];                                      // 0x0DB1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPointerToUberGraphFrame               UberGraphFrame_GA_VolleyPushBall_C;                // 0x0DB8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	TSubclassOf<class UAnimSequencePicker>        BuildUpPicker;                                     // 0x0DC0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	class USCInputAction*                         IADirection;                                       // 0x0DC8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 ShootPicker;                                       // 0x0DD0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	TArray<class UClass*>                         Status;                                            // 0x0DD8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	uint8                                         Pad_DE8[0x8];                                      // 0x0DE8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallInterceptionPointTargetData       BallTargetData;                                    // 0x0DF0(0x0120)(Edit, BlueprintVisible, DisableEditOnInstance, AdvancedDisplay)
+	class UBasicMontagePlayerConfiguration*       BuildUp_Configuration;                             // 0x0F10(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FSCNetworkSyncData                     SCNetworkSyncData;                                 // 0x0F18(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	bool                                          DebugVolleyStack;                                  // 0x0F28(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_F29[0x3];                                      // 0x0F29(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTag                           ShootTypeTagForSync;                               // 0x0F2C(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	bool                                          VolleyPaddingFinished;                             // 0x0F34(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_F35[0x3];                                      // 0x0F35(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAbilityTask_NetworkSyncShootData*      NetworkSyncTask;                                   // 0x0F38(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class UAbilityTask_SCPlayMontageAndWait*      BuildUpTask;                                       // 0x0F40(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	TSubclassOf<class UGameplayEffect>            TackleCooldownAfterReleaseBall;                    // 0x0F48(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	class UAbilityTask_BallInteractionRequest*    VolleyRequestTask;                                 // 0x0F50(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void AdditionalBehavior();

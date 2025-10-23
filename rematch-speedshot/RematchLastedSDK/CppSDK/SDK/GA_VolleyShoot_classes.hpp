@@ -10,42 +10,44 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "SCCore_structs.hpp"
-#include "GameplayTags_structs.hpp"
-#include "Runtime_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
+#include "Engine_structs.hpp"
+#include "Runtime_structs.hpp"
+#include "GameplayTags_structs.hpp"
 #include "GA_BaseShoot_classes.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass GA_VolleyShoot.GA_VolleyShoot_C
-// 0x0250 (0x1000 - 0x0DB0)
+// 0x0250 (0x1010 - 0x0DC0)
 class UGA_VolleyShoot_C : public UGA_BaseShoot_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame_GA_VolleyShoot_C;                   // 0x0DB0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UClass*                                 Picker;                                            // 0x0DB8(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTagContainer                  CameraShootGameplayTag;                            // 0x0DC0(0x0020)(Edit, BlueprintVisible, BlueprintReadOnly)
-	struct FBallInterceptionPointTargetData       InterceptionPointTargetData;                       // 0x0DE0(0x0120)(Edit, BlueprintVisible, Transient, DisableEditOnInstance)
-	TArray<class UClass*>                         Status;                                            // 0x0F00(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly)
-	class USCInputAction*                         IAMagnus;                                          // 0x0F10(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 CameraShake;                                       // 0x0F18(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayAbilityTargetDataHandle       ShootDirectionTargetData;                          // 0x0F20(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance)
-	bool                                          DebugVolleyStack;                                  // 0x0F48(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          VolleyPaddingFinished;                             // 0x0F49(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_F4A[0x6];                                      // 0x0F4A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAbilityTask_NetworkSyncShootData*      NetworkSyncTask;                                   // 0x0F50(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	double                                        MediumShootThreashold;                             // 0x0F58(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UAbilityTask_BallInteractionRequest*    VolleyRequestTask;                                 // 0x0F60(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FTargetingResultMeta                   TargetingResultMeta;                               // 0x0F68(0x0038)(Edit, BlueprintVisible, DisableEditOnInstance)
-	struct FGameplayTagContainer                  ShootRefusedPhaseTag;                              // 0x0FA0(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class UClass*                                 MKDirectionComputation;                            // 0x0FC0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 MKRotationForceComputation;                        // 0x0FC8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayAbilityTargetDataHandle       OverrideComputation;                               // 0x0FD0(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance)
-	bool                                          LockCameraShoot;                                   // 0x0FF8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_DB1[0x7];                                      // 0x0DB1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPointerToUberGraphFrame               UberGraphFrame_GA_VolleyShoot_C;                   // 0x0DB8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class UClass*                                 Picker;                                            // 0x0DC0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTagContainer                  CameraShootGameplayTag;                            // 0x0DC8(0x0020)(Edit, BlueprintVisible, BlueprintReadOnly)
+	uint8                                         Pad_DE8[0x8];                                      // 0x0DE8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallInterceptionPointTargetData       InterceptionPointTargetData;                       // 0x0DF0(0x0120)(Edit, BlueprintVisible, Transient, DisableEditOnInstance)
+	TArray<class UClass*>                         Status;                                            // 0x0F10(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly)
+	class USCInputAction*                         IAMagnus;                                          // 0x0F20(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 CameraShake;                                       // 0x0F28(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayAbilityTargetDataHandle       ShootDirectionTargetData;                          // 0x0F30(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance)
+	bool                                          DebugVolleyStack;                                  // 0x0F58(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          VolleyPaddingFinished;                             // 0x0F59(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_F5A[0x6];                                      // 0x0F5A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAbilityTask_NetworkSyncShootData*      NetworkSyncTask;                                   // 0x0F60(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	double                                        MediumShootThreashold;                             // 0x0F68(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAbilityTask_BallInteractionRequest*    VolleyRequestTask;                                 // 0x0F70(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FTargetingResultMeta                   TargetingResultMeta;                               // 0x0F78(0x0038)(Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FGameplayTagContainer                  ShootRefusedPhaseTag;                              // 0x0FB0(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
+	class UClass*                                 MKDirectionComputation;                            // 0x0FD0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 MKRotationForceComputation;                        // 0x0FD8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayAbilityTargetDataHandle       OverrideComputation;                               // 0x0FE0(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance)
+	bool                                          LockCameraShoot;                                   // 0x1008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void BPE_BuildPayload();
@@ -75,8 +77,8 @@ public:
 	void OnTimedOut_61CC6DF6450479D2E0FDBDA156BE0705();
 	void OnTimedOutAndDestinationReached_61CC6DF6450479D2E0FDBDA156BE0705();
 	void OnTimeOut_5DFB8AFA446967FB184509BC9E7DC572(const struct FGameplayAbilityTargetDataHandle& Data);
-	void OverrideComputationForKeyBoard(bool IsKeyBoardController);
-	void OverrideLockShot(bool IsKeyboard, int32 GameOption);
+	void OverrideComputationForKeyBoard(bool IsKeyBoardController, int32 LockGameOption);
+	void OverrideLockShot(bool isKeyboard, int32 GameOption);
 	void UpdateShootParamsTags(const struct FShootParams& in_ShootParams, struct FShootParams* out_ShootParams);
 	void UpdateShootPrep();
 

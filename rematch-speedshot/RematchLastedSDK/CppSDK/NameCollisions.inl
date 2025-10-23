@@ -14,14 +14,14 @@ namespace PostProcess_AnimBP { struct FAnimBlueprintGeneratedConstantData; }
 namespace GameplayAbilities { struct FServerAbilityRPCBatch; }
 
 
-namespace PlayerBase_Skeleton_AnimBP
+namespace AnimBP_Thumbnails
 {
 	struct FAnimBlueprintGeneratedMutableData;
 	struct FAnimBlueprintGeneratedConstantData;
 }
 
-namespace AnimBP_Thumbnails
+namespace PlayerBase_Skeleton_AnimBP
 {
-	struct FAnimBlueprintGeneratedMutableData;
 	struct FAnimBlueprintGeneratedConstantData;
+	struct FAnimBlueprintGeneratedMutableData;
 }

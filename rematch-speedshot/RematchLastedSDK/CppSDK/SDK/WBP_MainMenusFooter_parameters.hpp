@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "SOS_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "UMG_structs.hpp"
+#include "SOS_structs.hpp"
 #include "SCCore_structs.hpp"
 
 

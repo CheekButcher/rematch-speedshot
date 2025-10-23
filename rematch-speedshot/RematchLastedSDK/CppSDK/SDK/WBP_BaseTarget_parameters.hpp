@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "SCCore_structs.hpp"
 #include "UIInfoDisplayDescription_structs.hpp"
+#include "SCCore_structs.hpp"
 #include "SlateCore_structs.hpp"
 
 

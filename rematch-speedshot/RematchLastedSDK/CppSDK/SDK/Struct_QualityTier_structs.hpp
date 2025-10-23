@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "SOSBindings_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "SOSBindings_structs.hpp"
 
 
 namespace SDK

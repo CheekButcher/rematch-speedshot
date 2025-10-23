@@ -523,6 +523,20 @@ void UGA_Locomotion_C::OnEnded_AF171FC04E05DC241F34469EFF2C6ABF()
 }
 
 
+// Function GA_Locomotion.GA_Locomotion_C.OnFinish_E95C2B41407AC1555FF3F583CC39370A
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_Locomotion_C::OnFinish_E95C2B41407AC1555FF3F583CC39370A()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_Locomotion_C", "OnFinish_E95C2B41407AC1555FF3F583CC39370A");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function GA_Locomotion.GA_Locomotion_C.OnInterrupted_1FFC394346EB2206EFC4ABAFC88E2385
 // (BlueprintCallable, BlueprintEvent)
 
@@ -537,29 +551,29 @@ void UGA_Locomotion_C::OnInterrupted_1FFC394346EB2206EFC4ABAFC88E2385()
 }
 
 
-// Function GA_Locomotion.GA_Locomotion_C.OnStateEnded_E3DF55D84CEB290C199EBE87D30ABFD9
+// Function GA_Locomotion.GA_Locomotion_C.OnStateEnded_312320D7486721E22D8550B95B7787F5
 // (BlueprintCallable, BlueprintEvent)
 
-void UGA_Locomotion_C::OnStateEnded_E3DF55D84CEB290C199EBE87D30ABFD9()
+void UGA_Locomotion_C::OnStateEnded_312320D7486721E22D8550B95B7787F5()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GA_Locomotion_C", "OnStateEnded_E3DF55D84CEB290C199EBE87D30ABFD9");
+		Func = Class->GetFunction("GA_Locomotion_C", "OnStateEnded_312320D7486721E22D8550B95B7787F5");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function GA_Locomotion.GA_Locomotion_C.OnStateInterrupted_E3DF55D84CEB290C199EBE87D30ABFD9
+// Function GA_Locomotion.GA_Locomotion_C.OnStateInterrupted_312320D7486721E22D8550B95B7787F5
 // (BlueprintCallable, BlueprintEvent)
 
-void UGA_Locomotion_C::OnStateInterrupted_E3DF55D84CEB290C199EBE87D30ABFD9()
+void UGA_Locomotion_C::OnStateInterrupted_312320D7486721E22D8550B95B7787F5()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GA_Locomotion_C", "OnStateInterrupted_E3DF55D84CEB290C199EBE87D30ABFD9");
+		Func = Class->GetFunction("GA_Locomotion_C", "OnStateInterrupted_312320D7486721E22D8550B95B7787F5");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -586,6 +600,20 @@ void UGA_Locomotion_C::PrepareTargetData(const struct FGameplayAbilityTargetData
 
 	if (TargetData_Out != nullptr)
 		*TargetData_Out = std::move(Parms.TargetData_Out);
+}
+
+
+// Function GA_Locomotion.GA_Locomotion_C.StartStateTasks_312320D7486721E22D8550B95B7787F5
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_Locomotion_C::StartStateTasks_312320D7486721E22D8550B95B7787F5()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_Locomotion_C", "StartStateTasks_312320D7486721E22D8550B95B7787F5");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

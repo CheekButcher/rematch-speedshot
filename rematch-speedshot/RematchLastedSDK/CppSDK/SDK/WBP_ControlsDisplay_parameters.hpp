@@ -13,8 +13,8 @@
 #include "UMG_structs.hpp"
 #include "Slate_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "InputCore_structs.hpp"
 #include "SCCore_structs.hpp"
+#include "InputCore_structs.hpp"
 #include "BPE_ControlDisplayCategory_structs.hpp"
 
 

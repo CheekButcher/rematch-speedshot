@@ -21,9 +21,12 @@ namespace SDK
 class UBPL_ArtTools_C final : public UBlueprintFunctionLibrary
 {
 public:
+	static void CalculateImageScaleForParallelogramExpansion(double Scale, const struct FVector2D& RectangleSize, double ShearAngle, class UObject* __WorldContext, struct FVector2D* OutScale);
 	static void GetPrefix(const class FString& In, class UObject* __WorldContext, class FString* OutValue);
 	static void GetSuffix(const class FString& In, class UObject* __WorldContext, class FString* OutValue);
+	static void InverseLerp(double A, double B, double Alpha, class UObject* __WorldContext, double* OutValue);
 
+	void Convert2D_PositionToParallelogram(const struct FVector2D& Position, const struct FVector2D& RectangleSize, double ShearAngle, class UObject* __WorldContext, struct FVector2D* OutPosition);
 	void OklabBlend_IgnoringAlpha_(const struct FLinearColor& A, const struct FLinearColor& B, double Alpha, class UObject* __WorldContext, struct FLinearColor* Result);
 
 public:

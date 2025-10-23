@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "GameplayAbilities_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "GameplayAbilities_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 

@@ -10,16 +10,30 @@
 
 #include "Basic.hpp"
 
+#include "BPE_BPVersion_structs.hpp"
 #include "Runtime_classes.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_RuntimeSaveObjectGameData.BP_RuntimeSaveObjectGameData_C
-// 0x0000 (0x03B8 - 0x03B8)
+// 0x0010 (0x03C8 - 0x03B8)
 class UBP_RuntimeSaveObjectGameData_C final : public URuntimeSaveObjectGameData
 {
+public:
+	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x03B8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	EBPE_BPVersion                                BPVersion;                                         // 0x03C0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          GameOptionsWasReset;                               // 0x03C1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+public:
+	void BPE_FillSaveWithDefaultValues();
+	void ExecuteUbergraph_BP_RuntimeSaveObjectGameData(int32 EntryPoint);
+	void GetLatestBPVersion(EBPE_BPVersion* CurrentVersion);
+	void SetLatestBPVersion();
+	void ShouldResetCrosshair(bool* bResetCrosshair);
+
 public:
 	static class UClass* StaticClass()
 	{

@@ -10,15 +10,15 @@
 
 #include "Basic.hpp"
 
-#include "Runtime_classes.hpp"
+#include "BP_BaseVolumeAttributor_classes.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_SweeperVolumeAttributor.BP_SweeperVolumeAttributor_C
-// 0x0000 (0x0340 - 0x0340)
-class ABP_SweeperVolumeAttributor_C final : public ARoleVolumeAttributor
+// 0x0000 (0x0370 - 0x0370)
+class ABP_SweeperVolumeAttributor_C final : public ABP_BaseVolumeAttributor_C
 {
 public:
 	bool BPE_CanUseEffectAttributorVolume() const;

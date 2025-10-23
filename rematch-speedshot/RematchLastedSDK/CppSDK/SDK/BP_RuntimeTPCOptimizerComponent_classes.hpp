@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_RuntimeTPCOptimizerComponent.BP_RuntimeTPCOptimizerComponent_C
-// 0x0000 (0x0168 - 0x0168)
+// 0x0000 (0x0178 - 0x0178)
 class UBP_RuntimeTPCOptimizerComponent_C final : public USCActorOptimizerComponent
 {
 public:

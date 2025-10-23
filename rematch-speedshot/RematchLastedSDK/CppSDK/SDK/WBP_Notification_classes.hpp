@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
+#include "SOS_structs.hpp"
 #include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "SCCore_classes.hpp"
-#include "AkAudio_structs.hpp"
-#include "SOS_structs.hpp"
 #include "UMG_structs.hpp"
+#include "AkAudio_structs.hpp"
 
 
 namespace SDK

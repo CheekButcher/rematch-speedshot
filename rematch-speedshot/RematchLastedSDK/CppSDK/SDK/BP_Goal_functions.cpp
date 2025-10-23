@@ -17,53 +17,7 @@
 namespace SDK
 {
 
-// Function BP_Goal.BP_Goal_C.AfterScoredGoal
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class ABall*                            ScoringBall                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::AfterScoredGoal(class ABall* ScoringBall)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "AfterScoredGoal");
-
-	Params::BP_Goal_C_AfterScoredGoal Parms{};
-
-	Parms.ScoringBall = ScoringBall;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.BndEvt__BP_Goal_[Coll] Goal Hitbox_K2Node_ComponentBoundEvent_3_ComponentEndOverlapSignature__DelegateSignature
-// (BlueprintEvent)
-// Parameters:
-// class UPrimitiveComponent*              OverlappedComponent                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// class UPrimitiveComponent*              OtherComp                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-// int32                                   OtherBodyIndex                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::BndEvt__BP_Goal__Coll__Goal_Hitbox_K2Node_ComponentBoundEvent_3_ComponentEndOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "BndEvt__BP_Goal_[Coll] Goal Hitbox_K2Node_ComponentBoundEvent_3_ComponentEndOverlapSignature__DelegateSignature");
-
-	Params::BP_Goal_C_BndEvt__BP_Goal__Coll__Goal_Hitbox_K2Node_ComponentBoundEvent_3_ComponentEndOverlapSignature__DelegateSignature Parms{};
-
-	Parms.OverlappedComponent = OverlappedComponent;
-	Parms.OtherActor = OtherActor;
-	Parms.OtherComp = OtherComp;
-	Parms.OtherBodyIndex = OtherBodyIndex;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.BndEvt__BP_Goal_Box_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature
+// Function BP_Goal.BP_Goal_C.BndEvt__BP_Goal_[Coll] Goal Hitbox_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature
 // (HasOutParams, BlueprintEvent)
 // Parameters:
 // class UPrimitiveComponent*              OverlappedComponent                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
@@ -73,14 +27,14 @@ void ABP_Goal_C::BndEvt__BP_Goal__Coll__Goal_Hitbox_K2Node_ComponentBoundEvent_3
 // bool                                    bFromSweep                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const struct FHitResult&                SweepResult                                            (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, ContainsInstancedReference)
 
-void ABP_Goal_C::BndEvt__BP_Goal_Box_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
+void ABP_Goal_C::BndEvt__BP_Goal__Coll__Goal_Hitbox_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "BndEvt__BP_Goal_Box_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature");
+		Func = Class->GetFunction("BP_Goal_C", "BndEvt__BP_Goal_[Coll] Goal Hitbox_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature");
 
-	Params::BP_Goal_C_BndEvt__BP_Goal_Box_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature Parms{};
+	Params::BP_Goal_C_BndEvt__BP_Goal__Coll__Goal_Hitbox_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature Parms{};
 
 	Parms.OverlappedComponent = OverlappedComponent;
 	Parms.OtherActor = OtherActor;
@@ -88,6 +42,32 @@ void ABP_Goal_C::BndEvt__BP_Goal_Box_K2Node_ComponentBoundEvent_0_ComponentBegin
 	Parms.OtherBodyIndex = OtherBodyIndex;
 	Parms.bFromSweep = bFromSweep;
 	Parms.SweepResult = std::move(SweepResult);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_Goal.BP_Goal_C.BndEvt__BP_Goal_[Coll] Goal Hitbox_K2Node_ComponentBoundEvent_2_ComponentEndOverlapSignature__DelegateSignature
+// (BlueprintEvent)
+// Parameters:
+// class UPrimitiveComponent*              OverlappedComponent                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           OtherActor                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class UPrimitiveComponent*              OtherComp                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+// int32                                   OtherBodyIndex                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_Goal_C::BndEvt__BP_Goal__Coll__Goal_Hitbox_K2Node_ComponentBoundEvent_2_ComponentEndOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Goal_C", "BndEvt__BP_Goal_[Coll] Goal Hitbox_K2Node_ComponentBoundEvent_2_ComponentEndOverlapSignature__DelegateSignature");
+
+	Params::BP_Goal_C_BndEvt__BP_Goal__Coll__Goal_Hitbox_K2Node_ComponentBoundEvent_2_ComponentEndOverlapSignature__DelegateSignature Parms{};
+
+	Parms.OverlappedComponent = OverlappedComponent;
+	Parms.OtherActor = OtherActor;
+	Parms.OtherComp = OtherComp;
+	Parms.OtherBodyIndex = OtherBodyIndex;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -121,85 +101,6 @@ void ABP_Goal_C::BndEvt__BP_Goal_SM_StadiumColiseum_GoalsColl_01_B_1_K2Node_Comp
 }
 
 
-// Function BP_Goal.BP_Goal_C.BPE_OnDisplayGoalScored_Event
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const struct FGoalDescription&          _goalDescription                                       (BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
-
-void ABP_Goal_C::BPE_OnDisplayGoalScored_Event(const struct FGoalDescription& _goalDescription)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "BPE_OnDisplayGoalScored_Event");
-
-	Params::BP_Goal_C_BPE_OnDisplayGoalScored_Event Parms{};
-
-	Parms._goalDescription = std::move(_goalDescription);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.ChangeGoalClosureState
-// (Private, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    GoalClosure                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::ChangeGoalClosureState(bool GoalClosure)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "ChangeGoalClosureState");
-
-	Params::BP_Goal_C_ChangeGoalClosureState Parms{};
-
-	Parms.GoalClosure = GoalClosure;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.CheckGoalRules
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UHurtboxSolverComponent*          Hurtbox_Solver_Component                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-// class ABall*                            Scoring_Ball_0                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-bool ABP_Goal_C::CheckGoalRules(class UHurtboxSolverComponent* Hurtbox_Solver_Component, class ABall* Scoring_Ball_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "CheckGoalRules");
-
-	Params::BP_Goal_C_CheckGoalRules Parms{};
-
-	Parms.Hurtbox_Solver_Component = Hurtbox_Solver_Component;
-	Parms.Scoring_Ball_0 = Scoring_Ball_0;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function BP_Goal.BP_Goal_C.CustomEvent
-// (BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::CustomEvent()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "CustomEvent");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function BP_Goal.BP_Goal_C.ExecuteUbergraph_BP_Goal
 // (Final, UbergraphFunction, HasDefaults)
 // Parameters:
@@ -220,36 +121,12 @@ void ABP_Goal_C::ExecuteUbergraph_BP_Goal(int32 EntryPoint)
 }
 
 
-// Function BP_Goal.BP_Goal_C.GetCharacterFromRuntimePlayerState
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class ARuntimePlayerState*              Runtime_Player_State                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// class ACharacter**                      Character                                              (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::GetCharacterFromRuntimePlayerState(class ARuntimePlayerState* Runtime_Player_State, class ACharacter** Character)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "GetCharacterFromRuntimePlayerState");
-
-	Params::BP_Goal_C_GetCharacterFromRuntimePlayerState Parms{};
-
-	Parms.Runtime_Player_State = Runtime_Player_State;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Character != nullptr)
-		*Character = Parms.Character;
-}
-
-
 // Function BP_Goal.BP_Goal_C.GetGoalCollision
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, Const)
 // Parameters:
 // class UBoxComponent**                   GoalCollision                                          (Parm, OutParm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 
-void ABP_Goal_C::GetGoalCollision(class UBoxComponent** GoalCollision)
+void ABP_Goal_C::GetGoalCollision(class UBoxComponent** GoalCollision) const
 {
 	static class UFunction* Func = nullptr;
 
@@ -262,489 +139,6 @@ void ABP_Goal_C::GetGoalCollision(class UBoxComponent** GoalCollision)
 
 	if (GoalCollision != nullptr)
 		*GoalCollision = Parms.GoalCollision;
-}
-
-
-// Function BP_Goal.BP_Goal_C.GetRuntimePlayerStateFromBall
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class ABall*                            Scoring_Ball_0                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// class ARuntimePlayerState**             Runtime_Player_State                                   (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::GetRuntimePlayerStateFromBall(class ABall* Scoring_Ball_0, class ARuntimePlayerState** Runtime_Player_State)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "GetRuntimePlayerStateFromBall");
-
-	Params::BP_Goal_C_GetRuntimePlayerStateFromBall Parms{};
-
-	Parms.Scoring_Ball_0 = Scoring_Ball_0;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Runtime_Player_State != nullptr)
-		*Runtime_Player_State = Parms.Runtime_Player_State;
-}
-
-
-// Function BP_Goal.BP_Goal_C.Goal Invincibility Active
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class FName                             Data_Table_Row_Name                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::Goal_Invincibility_Active(class FName Data_Table_Row_Name)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Goal Invincibility Active");
-
-	Params::BP_Goal_C_Goal_Invincibility_Active Parms{};
-
-	Parms.Data_Table_Row_Name = Data_Table_Row_Name;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.Goal Invincibility Deactivation
-// (BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::Goal_Invincibility_Deactivation()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Goal Invincibility Deactivation");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.GoalClosure
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// double                                  DeltaTime                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::GoalClosure(double DeltaTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "GoalClosure");
-
-	Params::BP_Goal_C_GoalClosure Parms{};
-
-	Parms.DeltaTime = DeltaTime;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.GoalWave_Timeline__FinishedFunc
-// (BlueprintEvent)
-
-void ABP_Goal_C::GoalWave_Timeline__FinishedFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "GoalWave_Timeline__FinishedFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.GoalWave_Timeline__UpdateFunc
-// (BlueprintEvent)
-
-void ABP_Goal_C::GoalWave_Timeline__UpdateFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "GoalWave_Timeline__UpdateFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.HandleScore
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    HandleOnScoreBallTags                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::HandleScore(bool HandleOnScoreBallTags)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "HandleScore");
-
-	Params::BP_Goal_C_HandleScore Parms{};
-
-	Parms.HandleOnScoreBallTags = HandleOnScoreBallTags;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.InitGoal
-// (BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::InitGoal()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "InitGoal");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.OnBallRegistered
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class ABall*                            _ball                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::OnBallRegistered(class ABall* _ball)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "OnBallRegistered");
-
-	Params::BP_Goal_C_OnBallRegistered Parms{};
-
-	Parms._ball = _ball;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.OnDelayElapsed
-// (BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::OnDelayElapsed()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "OnDelayElapsed");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.OnDisplayReplayGoalBurst
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const struct FGoalDescription&          _goalDescription                                       (BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor)
-
-void ABP_Goal_C::OnDisplayReplayGoalBurst(const struct FGoalDescription& _goalDescription)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "OnDisplayReplayGoalBurst");
-
-	Params::BP_Goal_C_OnDisplayReplayGoalBurst Parms{};
-
-	Parms._goalDescription = std::move(_goalDescription);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.OnReplayFinished
-// (BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::OnReplayFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "OnReplayFinished");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.OnReplayStarted
-// (BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::OnReplayStarted()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "OnReplayStarted");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.OpenCloseGoal
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// double                                  OpeningRatio                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::OpenCloseGoal(double OpeningRatio)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "OpenCloseGoal");
-
-	Params::BP_Goal_C_OpenCloseGoal Parms{};
-
-	Parms.OpeningRatio = OpeningRatio;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.Play CrowdCelebration
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::Play_CrowdCelebration()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Play CrowdCelebration");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.Play FXGoal
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::Play_FXGoal()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Play FXGoal");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ABP_Goal_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.ReceiveEndPlay
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// EEndPlayReason                          EndPlayReason                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::ReceiveEndPlay(EEndPlayReason EndPlayReason)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "ReceiveEndPlay");
-
-	Params::BP_Goal_C_ReceiveEndPlay Parms{};
-
-	Parms.EndPlayReason = EndPlayReason;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.ReceiveTick
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::ReceiveTick(float DeltaSeconds)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "ReceiveTick");
-
-	Params::BP_Goal_C_ReceiveTick Parms{};
-
-	Parms.DeltaSeconds = DeltaSeconds;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Goal.BP_Goal_C.ScoreGoal
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class ABall*                            InScoringBall                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// bool                                    HandleScoreBallTags                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool*                                   bPlayVFX                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::ScoreGoal(class ABall* InScoringBall, bool HandleScoreBallTags, bool* bPlayVFX)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "ScoreGoal");
-
-	Params::BP_Goal_C_ScoreGoal Parms{};
-
-	Parms.InScoringBall = InScoringBall;
-	Parms.HandleScoreBallTags = HandleScoreBallTags;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (bPlayVFX != nullptr)
-		*bPlayVFX = Parms.bPlayVFX;
-}
-
-
-// Function BP_Goal.BP_Goal_C.Set Goal Position MPC
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::Set_Goal_Position_MPC()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Set Goal Position MPC");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.Stop SFXGoal
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::Stop_SFXGoal()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Stop SFXGoal");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.Timeline Deactivation Goal__FinishedFunc
-// (BlueprintEvent)
-
-void ABP_Goal_C::Timeline_Deactivation_Goal__FinishedFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Timeline Deactivation Goal__FinishedFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.Timeline Deactivation Goal__UpdateFunc
-// (BlueprintEvent)
-
-void ABP_Goal_C::Timeline_Deactivation_Goal__UpdateFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Timeline Deactivation Goal__UpdateFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.Timeline__FinishedFunc
-// (BlueprintEvent)
-
-void ABP_Goal_C::Timeline__FinishedFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Timeline__FinishedFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.Timeline__UpdateFunc
-// (BlueprintEvent)
-
-void ABP_Goal_C::Timeline__UpdateFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "Timeline__UpdateFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.UpdateGoalScoredCollision
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::UpdateGoalScoredCollision()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "UpdateGoalScoredCollision");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.UserConstructionScript
-// (Event, Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_Goal_C::UserConstructionScript()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "UserConstructionScript");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Goal.BP_Goal_C.BPE_GetCollision
-// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent, Const)
-// Parameters:
-// class USceneComponent**                 _outCollision                                          (Parm, OutParm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Goal_C::BPE_GetCollision(class USceneComponent** _outCollision) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Goal_C", "BPE_GetCollision");
-
-	Params::BP_Goal_C_BPE_GetCollision Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (_outCollision != nullptr)
-		*_outCollision = Parms._outCollision;
 }
 
 }

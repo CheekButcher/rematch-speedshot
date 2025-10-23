@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "Runtime_classes.hpp"
 #include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "Runtime_classes.hpp"
 
 
 namespace SDK
@@ -48,6 +48,7 @@ public:
 	void OnInterrupted_59D21BBF432DACAF5469409C3E617229();
 	void OnStateEnded_ECFD459C417AF23340E39897D6E26252();
 	void OnStateInterrupted_ECFD459C417AF23340E39897D6E26252();
+	void StartStateTasks_ECFD459C417AF23340E39897D6E26252();
 
 public:
 	static class UClass* StaticClass()

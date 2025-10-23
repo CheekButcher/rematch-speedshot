@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "Engine_structs.hpp"
 #include "BP_Runtime_PlayerController_classes.hpp"
 
 

@@ -750,9 +750,9 @@ void ABP_RuntimeTPC_C::Toggle_Ball_Look_At()
 // Function BP_RuntimeTPC.BP_RuntimeTPC_C.TriggerLookAtGoal
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class AActor*                           inTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           InTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void ABP_RuntimeTPC_C::TriggerLookAtGoal(class AActor* inTarget)
+void ABP_RuntimeTPC_C::TriggerLookAtGoal(class AActor* InTarget)
 {
 	static class UFunction* Func = nullptr;
 
@@ -761,7 +761,7 @@ void ABP_RuntimeTPC_C::TriggerLookAtGoal(class AActor* inTarget)
 
 	Params::BP_RuntimeTPC_C_TriggerLookAtGoal Parms{};
 
-	Parms.inTarget = inTarget;
+	Parms.InTarget = InTarget;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

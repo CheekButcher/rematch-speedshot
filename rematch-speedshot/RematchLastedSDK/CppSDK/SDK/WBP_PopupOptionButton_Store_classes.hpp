@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "WBP_Abstract_GenericButton_classes.hpp"
 #include "UMG_structs.hpp"
+#include "WBP_Abstract_GenericButton_classes.hpp"
 
 
 namespace SDK

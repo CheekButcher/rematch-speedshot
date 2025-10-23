@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "StructUtilsEngine_structs.hpp"
-#include "SOS_structs.hpp"
 #include "StructUtils_structs.hpp"
+#include "SOS_structs.hpp"
 #include "Runtime_structs.hpp"
 
 
@@ -29,7 +29,7 @@ public:
 DUMPER7_ASSERTS_BP_CustomMatchParametersViewModel_C_BPE_UpdateFromMatchParams;
 
 // Function BP_CustomMatchParametersViewModel.BP_CustomMatchParametersViewModel_C.ExecuteUbergraph_BP_CustomMatchParametersViewModel
-// 0x00F8 (0x00F8 - 0x0000)
+// 0x0100 (0x0100 - 0x0000)
 struct BP_CustomMatchParametersViewModel_C_ExecuteUbergraph_BP_CustomMatchParametersViewModel final
 {
 public:
@@ -45,41 +45,41 @@ public:
 	struct FSOSCustomMatchParamsGameplayBase      CallFunc_GetInstancedStructValue_Value;            // 0x0021(0x0003)(ConstParm, NoDestructor)
 	EStructUtilsResult                            CallFunc_GetInstancedStructValue_ExecResult_1;     // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeMatchParameters                CallFunc_GetInstancedStructValue_Value_1;          // 0x0028(0x00B0)(ConstParm)
-	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_1; // 0x00D9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_2; // 0x00DA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_3; // 0x00DB(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x00DC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BPF_HasBit_64_ReturnValue;                // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_4; // 0x00E1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_5; // 0x00E2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BPF_HasBit_64_ReturnValue_1;              // 0x00E3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BPF_HasBit_64_ReturnValue_2;              // 0x00E4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_6; // 0x00E5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_7; // 0x00E6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BPF_HasBit_64_ReturnValue_3;              // 0x00E7(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_8; // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_9; // 0x00E9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_10; // 0x00EA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_11; // 0x00EB(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_12; // 0x00EC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_13; // 0x00ED(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_14; // 0x00EE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x00EF(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_15; // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_16; // 0x00F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_17; // 0x00F2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_18; // 0x00F3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_19; // 0x00F4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_20; // 0x00F5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_21; // 0x00F6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_22; // 0x00F7(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRuntimeMatchParameters                CallFunc_GetInstancedStructValue_Value_1;          // 0x0028(0x00B8)(ConstParm)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x00E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_1; // 0x00E1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_2; // 0x00E2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_3; // 0x00E3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x00E4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BPF_HasBit_64_ReturnValue;                // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_4; // 0x00E9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_5; // 0x00EA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BPF_HasBit_64_ReturnValue_1;              // 0x00EB(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BPF_HasBit_64_ReturnValue_2;              // 0x00EC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_6; // 0x00ED(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_7; // 0x00EE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BPF_HasBit_64_ReturnValue_3;              // 0x00EF(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_8; // 0x00F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_9; // 0x00F1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_10; // 0x00F2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_11; // 0x00F3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_12; // 0x00F4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_13; // 0x00F5(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_14; // 0x00F6(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess_1;                    // 0x00F7(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_15; // 0x00F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_16; // 0x00F9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_17; // 0x00FA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_18; // 0x00FB(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_19; // 0x00FC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_20; // 0x00FD(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_21; // 0x00FE(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPropertyValueAndBroadcast_ReturnValue_22; // 0x00FF(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_CustomMatchParametersViewModel_C_ExecuteUbergraph_BP_CustomMatchParametersViewModel;
 
 // Function BP_CustomMatchParametersViewModel.BP_CustomMatchParametersViewModel_C.BPE_GenerateMatchParams
-// 0x0178 (0x0178 - 0x0000)
+// 0x0180 (0x0180 - 0x0000)
 struct BP_CustomMatchParametersViewModel_C_BPE_GenerateMatchParams final
 {
 public:
@@ -106,8 +106,8 @@ public:
 	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x00B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_B1[0x3];                                       // 0x00B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	int32                                         CallFunc_Subtract_IntInt_ReturnValue;              // 0x00B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRuntimeMatchParameters                K2Node_MakeStruct_RuntimeMatchParameters;          // 0x00B8(0x00B0)()
-	struct FInstancedStruct                       CallFunc_MakeInstancedStruct_ReturnValue;          // 0x0168(0x0010)()
+	struct FRuntimeMatchParameters                K2Node_MakeStruct_RuntimeMatchParameters;          // 0x00B8(0x00B8)()
+	struct FInstancedStruct                       CallFunc_MakeInstancedStruct_ReturnValue;          // 0x0170(0x0010)()
 };
 DUMPER7_ASSERTS_BP_CustomMatchParametersViewModel_C_BPE_GenerateMatchParams;
 

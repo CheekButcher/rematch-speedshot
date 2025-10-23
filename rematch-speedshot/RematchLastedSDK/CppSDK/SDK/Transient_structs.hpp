@@ -14,177 +14,17 @@
 #include "CoreUObject_structs.hpp"
 #include "RigVM_structs.hpp"
 #include "AnimationCore_structs.hpp"
-#include "PBIK_structs.hpp"
 #include "Engine_structs.hpp"
+#include "PBIK_structs.hpp"
 #include "EAbilityShootType_structs.hpp"
 
 
 namespace SDK
 {
 
-// PropertyBag Transient.PropertyBag_8449770de4c18d8f
-// 0x0EB0 (0x0EB0 - 0x0000)
-struct FPropertyBag_8449770de4c18d8f final
-{
-public:
-	class FName                                   RigVMModel___GetCurveValue_Curve__Const;           // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Less_1_B__Const;                      // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        ResetVariables___ResetVariables_VariableNode_36_Value__Const; // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          ResetVariables___ResetVariables_VariableNode_6_1_1_Value__Const; // 0x0018(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          ResetVariables___ResetVariables_VariableNode_Value__Const; // 0x0019(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  ResetVariables___ResetVariables_VariableNode_1_Value__Const; // 0x0020(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                ResetVariables___ResetVariables_VariableNode_3_Value__Const; // 0x0040(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_58[0x8];                                       // 0x0058(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___To_World_1_Value__Const;              // 0x0060(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	EEulerRotationOrder                           RigVMModel___RigVMFunction_MathQuaternionToEuler_RotationOrder__Const; // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RigVMModel___Remap_bClamp__Const;                  // 0x00C1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C2[0x6];                                       // 0x00C2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        RigVMModel___Multiply_2_1_B__Const;                // 0x00C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Greater_4_B__Const;                   // 0x00D0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Greater_1_B__Const;                   // 0x00D8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RigVMModel___VariableNode_6_1_Value__Const;        // 0x00E0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_E1[0x3];                                       // 0x00E1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   RigVMModel___RotateBoneInPlace_0_1_BoneName__Const; // 0x00E4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionFromEuler_Euler__Const; // 0x00F0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_Item__Const; // 0x0108(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	ERigVMTransformSpace                          RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_Space__Const; // 0x0114(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_bInitial__Const; // 0x0115(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_116[0xA];                                      // 0x0116(0x000A)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_Value__Const; // 0x0120(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_Weight__Const; // 0x0180(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_bPropagateToChildren__Const; // 0x0184(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_185[0x3];                                      // 0x0185(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        RigVMModel___Greater_2_B__Const;                   // 0x0188(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_MathQuaternionFromEuler_2_2_Euler__Const; // 0x0190(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculatePelvisRotation___CalculatePelvisRotation_Interpolate_2_A__Const; // 0x01A8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRuntimeFloatCurve                     CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_AnimEvalRichCurve_Curve__Const; // 0x01B0(0x0088)(Edit)
-	float                                         CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_AnimEvalRichCurve_SourceMinimum__Const; // 0x0238(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_AnimEvalRichCurve_SourceMaximum__Const; // 0x023C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	EEulerRotationOrder                           CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_MathQuaternionFromEuler_2_2_RotationOrder__Const; // 0x0240(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_241[0x3];                                      // 0x0241(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigElementKey                         CalculatePelvisRotation___CalculatePelvisRotation_GetTransform_Item__Const; // 0x0244(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	ERigVMTransformSpace                          CalculatePelvisRotation___CalculatePelvisRotation_GetTransform_Space__Const; // 0x0250(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CalculatePelvisRotation___CalculatePelvisRotation_GetTransform_bInitial__Const; // 0x0251(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_252[0xE];                                      // 0x0252(0x000E)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RotateAroundPoint_0_1_2___RotateAroundPoint_Return_Outputtransform__Const; // 0x0260(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_SourceMinimum__Const; // 0x02C0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_TargetMaximum__Const; // 0x02C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_bClamp__Const; // 0x02D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2D1[0x3];                                      // 0x02D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigElementKey                         CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_3_1_Item__Const; // 0x02D4(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	ERigVMTransformSpace                          CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_3_1_Space__Const; // 0x02E0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_3_1_bInitial__Const; // 0x02E1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2E2[0x6];                                      // 0x02E2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                CalculatePelvisTranslation___CalculatePelvisTranslation_RotateAroundPoint_0_1_2_1_2_PointToRotateAround__Const; // 0x02E8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RotateAroundPoint_0_1_2_1_2___RotateAroundPoint_Return_Outputtransform__Const; // 0x0300(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             CalculatePelvisTranslation___CalculatePelvisTranslation_Interpolate_3_2_A__Const; // 0x0360(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRuntimeFloatCurve                     CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalRichCurve_1_1_1_Curve__Const; // 0x03C0(0x0088)(Edit)
-	float                                         CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalRichCurve_1_1_1_SourceMinimum__Const; // 0x0448(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalRichCurve_1_1_1_SourceMaximum__Const; // 0x044C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_1_TargetMinimum__Const; // 0x0450(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_1_TargetMaximum__Const; // 0x0458(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_4_Item__Const; // 0x0460(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_46C[0x4];                                      // 0x046C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RotateAroundPoint_0_1_2_1___RotateAroundPoint_Return_Outputtransform__Const; // 0x0470(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_2_1_Item__Const; // 0x04D0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4DC[0x4];                                      // 0x04DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RotateAroundPoint_0_1_2_1_1___RotateAroundPoint_Return_Outputtransform__Const; // 0x04E0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Multiply_B__Const; // 0x0540(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Multiply_1_B__Const; // 0x0548(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRuntimeVectorCurve                    CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalVectorCurve_2_1_1_Curve__Const; // 0x0550(0x0188)(Edit)
-	struct FVector                                CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalVectorCurve_2_1_1_SourceMaximum__Const; // 0x06D8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculateFeetTransforms___CalculateFeetTransforms_Remap_1_1_TargetMinimum__Const; // 0x06F0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculateFeetTransforms___CalculateFeetTransforms_Remap_1_1_TargetMaximum__Const; // 0x06F8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CalculateFeetTransforms___CalculateFeetTransforms_Remap_1_1_bClamp__Const; // 0x0700(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_701[0x7];                                      // 0x0701(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeVectorCurve                    CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_AnimEvalVectorCurve_2_1_Curve__Const; // 0x0708(0x0188)(Edit)
-	struct FVector                                CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_AnimEvalVectorCurve_2_1_SourceMinimum__Const; // 0x0890(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_AnimEvalVectorCurve_2_1_SourceMaximum__Const; // 0x08A8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         CalculateFeetTransforms___CalculateFeetTransforms_GetTransform_1_1_1_Item__Const; // 0x08C0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	ERigVMTransformSpace                          CalculateFeetTransforms___CalculateFeetTransforms_GetTransform_1_1_1_Space__Const; // 0x08CC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CalculateFeetTransforms___CalculateFeetTransforms_GetTransform_1_1_1_bInitial__Const; // 0x08CD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_8CE[0x2];                                      // 0x08CE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             CalculateFeetTransforms___CalculateFeetTransforms_Interpolate_3_1_B__Const; // 0x08D0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CalculateFeetTransforms___CalculateFeetTransforms_Interpolate_A__Const; // 0x0930(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRuntimeVectorCurve                    CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_AnimEvalVectorCurve_Curve__Const; // 0x0938(0x0188)(Edit)
-	EEulerRotationOrder                           CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_MathQuaternionFromEuler_2_RotationOrder__Const; // 0x0AC0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_AC1[0xF];                                      // 0x0AC1(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RotateAroundPoint_0_1___RotateAroundPoint_Return_Outputtransform__Const; // 0x0AD0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         CalculateFeetTransforms___CalculateFeetTransforms_GetTransform_1_1_1_1_Item__Const; // 0x0B30(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_B3C[0x4];                                      // 0x0B3C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RotateAroundPoint_0_1_1___RotateAroundPoint_Return_Outputtransform__Const; // 0x0B40(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   RigVMModel___RotateBoneInPlace_0_1_1_BoneName__Const; // 0x0BA0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_Item__Const; // 0x0BA8(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	ERigVMTransformSpace                          RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_Space__Const; // 0x0BB4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_bInitial__Const; // 0x0BB5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_BB6[0xA];                                      // 0x0BB6(0x000A)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_Value__Const; // 0x0BC0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_Weight__Const; // 0x0C20(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_bPropagateToChildren__Const; // 0x0C24(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C25[0x3];                                      // 0x0C25(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigElementKey                         RigVMModel___Set_Transform_1_Item__Const;          // 0x0C28(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	ERigVMTransformSpace                          RigVMModel___Set_Transform_1_Space__Const;         // 0x0C34(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C35[0x3];                                      // 0x0C35(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         RigVMModel___Set_Transform_1_Weight__Const;        // 0x0C38(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C3C[0x4];                                      // 0x0C3C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FRigElementKey>                 RigVMModel___RigUnit_ItemArray_Items__Const;       // 0x0C40(0x0010)(Edit)
-	float                                         RigVMModel___CCDIKItemArray_Precision__Const;      // 0x0C50(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         RigVMModel___CCDIKItemArray_MaxIterations__Const;  // 0x0C54(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___CCDIKItemArray_BaseRotationLimit__Const; // 0x0C58(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C5C[0x4];                                      // 0x0C5C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FRigUnit_CCDIK_RotationLimitPerItem> RigVMModel___CCDIKItemArray_RotationLimits__Const; // 0x0C60(0x0010)(Edit)
-	TArray<struct FRigElementKey>                 RigVMModel___RigUnit_ItemArray_1_Items__Const;     // 0x0C70(0x0010)(Edit)
-	struct FRigElementKey                         RigVMModel___Set_Transform_2_Item__Const;          // 0x0C80(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___Set_Transform_2_1_Item__Const;        // 0x0C8C(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___GetTransform_1_1_1_1_1_Item__Const;   // 0x0C98(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_CA4[0x4];                                      // 0x0CA4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeVectorCurve                    RigVMModel___RigVMFunction_AnimEvalVectorCurve_2_Curve__Const; // 0x0CA8(0x0188)(Edit)
-	struct FVector                                RigVMModel___RigVMFunction_AnimEvalVectorCurve_2_SourceMaximum__Const; // 0x0E30(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_E48[0x8];                                      // 0x0E48(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RotateAroundPoint_0_1_3___RotateAroundPoint_Return_Outputtransform__Const; // 0x0E50(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_FPropertyBag_8449770de4c18d8f;
-
-// PropertyBag Transient.PropertyBag_cd10ee68cd3c0b6f
-// 0x00A0 (0x00A0 - 0x0000)
-struct FPropertyBag_cd10ee68cd3c0b6f final
-{
-public:
-	double                                        RigVMModel___Greater_B__Const;                     // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigUnit_ModifyTransforms_PerItem      RigVMModel___DISPATCH_RigVMDispatch_ArraySetAtIndex_Element__Const; // 0x0010(0x0070)(Edit, NoDestructor)
-	struct FRigElementKey                         RigVMModel___GetTransform_Item__Const;             // 0x0080(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	ERigVMTransformSpace                          RigVMModel___GetTransform_Space__Const;            // 0x008C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RigVMModel___GetTransform_bInitial__Const;         // 0x008D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_8E[0x2];                                       // 0x008E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         RigVMModel___ModifyTransforms_WeightMinimum__Const; // 0x0090(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___ModifyTransforms_WeightMaximum__Const; // 0x0094(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	EControlRigModifyBoneMode                     RigVMModel___ModifyTransforms_Mode__Const;         // 0x0098(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_FPropertyBag_cd10ee68cd3c0b6f;
-
-// ScriptStruct Transient.ChaosDestructionEvent_SWC
-// 0x0044 (0x0044 - 0x0000)
-struct FChaosDestructionEvent_SWC final
-{
-public:
-	struct FVector3f                              Position;                                          // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector3f                              Normal;                                            // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector3f                              Velocity;                                          // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector3f                              AngularVelocity;                                   // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         ExtentMin;                                         // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ExtentMax;                                         // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParticleID;                                        // 0x0038(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Time;                                              // 0x003C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Type;                                              // 0x0040(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FChaosDestructionEvent_SWC;
-
-// PropertyBag Transient.PropertyBag_3604df484a087efd
+// PropertyBag Transient.PropertyBag_3d9c8a7cf8176cbe
 // 0x04C0 (0x04C0 - 0x0000)
-struct FPropertyBag_3604df484a087efd final
+struct FPropertyBag_3d9c8a7cf8176cbe final
 {
 public:
 	float                                         RigVMModel___IsNearlyZero_Tolerance__Const;        // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -260,25 +100,11 @@ public:
 	struct FRigElementKey                         RigVMModel___Set_Transform_4_2_Item__Const;        // 0x04A8(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
 	struct FRigElementKey                         RigVMModel___Set_Transform_4_Item__Const;          // 0x04B4(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_3604df484a087efd;
+DUMPER7_ASSERTS_FPropertyBag_3d9c8a7cf8176cbe;
 
-// PropertyBag Transient.PropertyBag_e1e48cc342a0ffd1
-// 0x0030 (0x0030 - 0x0000)
-struct FPropertyBag_e1e48cc342a0ffd1 final
-{
-public:
-	double                                        DistanceEnterDefMode;                              // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        DistanceLeaveDefMode;                              // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        DistancetoTackle;                                  // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        DelayBeforeTackle;                                 // 0x0018(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        DelayVarBeforeTackle;                              // 0x0020(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        DelayToTackle;                                     // 0x0028(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_FPropertyBag_e1e48cc342a0ffd1;
-
-// PropertyBag Transient.PropertyBag_308cd7ed55cc7da0
+// PropertyBag Transient.PropertyBag_7cca3092bff43f99
 // 0x0100 (0x0100 - 0x0000)
-struct FPropertyBag_308cd7ed55cc7da0 final
+struct FPropertyBag_7cca3092bff43f99 final
 {
 public:
 	struct FVector                                RigVMModel___VariableNode_22_Value__Const;         // 0x0000(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -303,11 +129,382 @@ public:
 	struct FRigElementKey                         RigVMModel___OffsetTransformForItem_1_Item__Const; // 0x00E4(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
 	float                                         RigVMModel___Scale_Factor__Const;                  // 0x00F0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_308cd7ed55cc7da0;
+DUMPER7_ASSERTS_FPropertyBag_7cca3092bff43f99;
 
-// PropertyBag Transient.PropertyBag_7b7c2a01581b818
+// PropertyBag Transient.PropertyBag_e7c44ae8fe81738
+// 0x0048 (0x0048 - 0x0000)
+struct FPropertyBag_e7c44ae8fe81738 final
+{
+public:
+	double                                        DistanceToRelax;                                   // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        DistanceToRush;                                    // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        DistancetoTackle;                                  // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        DistanceToDive;                                    // 0x0018(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        TimeToDive;                                        // 0x0020(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          bIsPlayerTarget;                                   // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AActor*                                 ActorTarget;                                       // 0x0030(0x0008)(Edit, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	EAbilityShootType                             ShootType;                                         // 0x0038(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        PowerRatio;                                        // 0x0040(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_FPropertyBag_e7c44ae8fe81738;
+
+// PropertyBag Transient.PropertyBag_a88a59f2889e5148
+// 0x0008 (0x0008 - 0x0000)
+struct FPropertyBag_a88a59f2889e5148 final
+{
+public:
+	class FName                                   IkTargetBone;                                      // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_FPropertyBag_a88a59f2889e5148;
+
+// ScriptStruct Transient.ChaosDestructionEvent_SWC
+// 0x0044 (0x0044 - 0x0000)
+struct FChaosDestructionEvent_SWC final
+{
+public:
+	struct FVector3f                              Position;                                          // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector3f                              Normal;                                            // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector3f                              Velocity;                                          // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector3f                              AngularVelocity;                                   // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         ExtentMin;                                         // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ExtentMax;                                         // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParticleID;                                        // 0x0038(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Time;                                              // 0x003C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Type;                                              // 0x0040(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FChaosDestructionEvent_SWC;
+
+// PropertyBag Transient.PropertyBag_e560d60383698421
+// 0x0450 (0x0450 - 0x0000)
+struct FPropertyBag_e560d60383698421 final
+{
+public:
+	int32                                         RigVMModel___Greater_B__Const;                     // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___DISPATCH_RigVMDispatch_If_True__Const; // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___DISPATCH_RigVMDispatch_If_False__Const; // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_Index__Const; // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ERigVMTransformSpace                          RigVMModel___RigUnit_SetRotation_Space__Const;     // 0x0010(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RigVMModel___RigUnit_SetRotation_bInitial__Const;  // 0x0011(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_12[0x2];                                       // 0x0012(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_Index__Const; // 0x0014(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ERigVMTransformSpace                          RigVMModel___RigUnit_GetTransform_2_Space__Const;  // 0x0018(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_Primary__Const;           // 0x0020(0x0048)(Edit, NoDestructor)
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_Index__Const; // 0x0068(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_Strength__Const;         // 0x006C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_CriticalDamping__Const;  // 0x0070(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                RigVMModel___SpringInterp_Force__Const;            // 0x0078(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_TargetVelocityAmount__Const; // 0x0090(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_94[0x4];                                       // 0x0094(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_Secondary__Const;         // 0x0098(0x0048)(Edit, NoDestructor)
+	struct FRigUnit_AimBone_DebugSettings         RigVMModel___AimBoneMath_DebugSettings__Const;     // 0x00E0(0x0070)(Edit, NoDestructor)
+	EEulerRotationOrder                           RigVMModel___RigVMFunction_MathQuaternionToEuler_RotationOrder__Const; // 0x0150(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_151[0x7];                                      // 0x0151(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                RigVMModel___Clamp_Minimum__Const;                 // 0x0158(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Clamp_Maximum__Const;                 // 0x0170(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RigVMModel___RigUnit_SetRotation_bPropagateToChildren__Const; // 0x0188(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_189[0x3];                                      // 0x0189(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_Index__Const; // 0x018C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigUnit_SetTranslation_1_Value__Const; // 0x0190(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1A8[0x8];                                      // 0x01A8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___Make_Relative_2_Global__Const;        // 0x01B0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_1_Strength__Const;       // 0x0210(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_1_CriticalDamping__Const; // 0x0214(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Clamp_3_Minimum__Const;               // 0x0218(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Clamp_3_Maximum__Const;               // 0x0230(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Multiply_1_B__Const;                  // 0x0248(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Remap_SourceMinimum__Const;           // 0x0250(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Remap_SourceMaximum__Const;           // 0x0258(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Remap_TargetMaximum__Const;           // 0x0260(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_3_Force__Const;          // 0x0268(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_Index__Const; // 0x026C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Remap_1_SourceMaximum__Const;         // 0x0270(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Remap_1_TargetMinimum__Const;         // 0x0278(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_Index__Const; // 0x0280(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_284[0x4];                                      // 0x0284(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                RigVMModel___Add_B__Const;                         // 0x0288(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Multiply_2_B__Const;                  // 0x02A0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_1_Primary__Const;         // 0x02A8(0x0048)(Edit, NoDestructor)
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_Index__Const; // 0x02F0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EAxis                                         RigVMModel___ClampSpatially_1_Axis__Const;         // 0x02F4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ERigVMClampSpatialMode                        RigVMModel___ClampSpatially_1_Type__Const;         // 0x02F5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2F6[0x2];                                      // 0x02F6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         RigVMModel___ClampSpatially_1_Minimum__Const;      // 0x02F8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___ClampSpatially_1_Maximum__Const;      // 0x02FC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FLinearColor                           RigVMModel___ClampSpatially_1_DebugColor__Const;   // 0x0300(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_1_Secondary__Const;       // 0x0310(0x0048)(Edit, NoDestructor)
+	struct FVector                                RigVMModel___Clamp_1_Minimum__Const;               // 0x0358(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Clamp_1_Maximum__Const;               // 0x0370(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionFromEuler_Euler__Const; // 0x0388(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigVMFunction_MathTransformMake_Scale__Const; // 0x03A0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_1_1_1_Index__Const; // 0x03B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3BC[0x4];                                      // 0x03BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                RigVMModel___Set_Transform_4_Value__Const;         // 0x03C0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FRigElementKeyCollection>       RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Array__Const; // 0x03D8(0x0010)(Edit)
+	struct FRigElementKey                         RigVMModel___RigUnit_SetTranslation_2_Item__Const; // 0x03E8(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3F4[0x4];                                      // 0x03F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                RigVMModel___RigVMFunction_MathTransformMake_3_Translation__Const; // 0x03F8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FQuat                                  RigVMModel___RigVMFunction_MathTransformMake_3_Rotation__Const; // 0x0410(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___RigUnit_GetTransform_6_Item__Const;   // 0x0430(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___RigUnit_GetTransform_4_1_Item__Const; // 0x043C(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_FPropertyBag_e560d60383698421;
+
+// PropertyBag Transient.PropertyBag_7ad7f9a9d1bb255c
+// 0x0360 (0x0360 - 0x0000)
+struct FPropertyBag_7ad7f9a9d1bb255c final
+{
+public:
+	struct FVector                                RigVMModel___SpringInterp_Result;                  // 0x0000(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Multiply_Multiply_2_Result;           // 0x0018(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Multiply_Multiply_1_Result;           // 0x0030(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Multiply_Multiply_Result;             // 0x0048(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Multiply_Multiply_2_B;                // 0x0060(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_Strength;                // 0x0078(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_CriticalDamping;         // 0x007C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___SpringInterp_Velocity;                // 0x0080(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FVector>                        RigVMModel___SpringInterp_SimulatedResult;         // 0x0098(0x0010)(Edit)
+	TArray<struct FVectorSpringState>             RigVMModel___SpringInterp_SpringState;             // 0x00A8(0x0010)(Edit)
+	bool                                          RigVMModel___IsNearlyZero_Result;                  // 0x00B8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        RigVMModel___IsNearlyZero_Value;                   // 0x00C0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RigVMModel___IsNearlyZero_1_Result;                // 0x00C8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        RigVMModel___IsNearlyZero_1_Value;                 // 0x00D0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   RigVMModel___RigVMFunction_ControlFlowBranch_2_BlockToRun; // 0x00D8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___GetTransform_1_1_Transform;           // 0x00E0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_1_CachedIndex;         // 0x0140(0x0010)(Edit)
+	struct FTransform                             RigVMModel___GetTransform_1_Transform;             // 0x0150(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_CachedIndex;           // 0x01B0(0x0010)(Edit)
+	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_Result; // 0x01C0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionFromEuler_Euler__IO; // 0x01E0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1F8[0x8];                                      // 0x01F8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___OffsetTransformForItem_OffsetTransform__IO; // 0x0200(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___OffsetTransformForItem_CachedIndex;   // 0x0260(0x0010)(Edit)
+	class FName                                   RigVMModel___RigVMFunction_ControlFlowBranch_BlockToRun; // 0x0270(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_278[0x8];                                      // 0x0278(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  RigVMModel___Scale_Result;                         // 0x0280(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_1_Result; // 0x02A0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Multiply_2_Result;                    // 0x02C0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Multiply_2_B;                         // 0x02C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionFromEuler_1_Euler__IO; // 0x02D0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2E8[0x8];                                      // 0x02E8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___OffsetTransformForItem_1_OffsetTransform__IO; // 0x02F0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___OffsetTransformForItem_1_CachedIndex; // 0x0350(0x0010)(Edit)
+};
+DUMPER7_ASSERTS_FPropertyBag_7ad7f9a9d1bb255c;
+
+// PropertyBag Transient.PropertyBag_6cbdd47ebf474b6c
+// 0x1370 (0x1370 - 0x0000)
+struct FPropertyBag_6cbdd47ebf474b6c final
+{
+public:
+	struct FRigElementKeyCollection               RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Element; // 0x0000(0x0010)(Edit, HasGetValueTypeHash)
+	float                                         RigVMModel___DISPATCH_RigVMDispatch_If_Result;     // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RigVMModel___Greater_Result;                       // 0x0014(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Index; // 0x0018(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_Element; // 0x001C(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_1_Result; // 0x0030(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Clamp_Result;                         // 0x0050(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Scale_Result;                         // 0x0068(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionToEuler_Result; // 0x0080(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  RigVMModel___Make_Relative_Local;                  // 0x00A0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___AimBoneMath_Result;                   // 0x00C0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___RigUnit_GetTransform_2_Transform;     // 0x0120(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_Element; // 0x0180(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_18C[0x4];                                      // 0x018C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_2_CachedIndex;   // 0x0190(0x0010)(Edit)
+	struct FVector                                RigVMModel___SpringInterp_Result;                  // 0x01A0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1B8[0x8];                                      // 0x01B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___RigUnit_GetTransform_3_Transform;     // 0x01C0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_Element; // 0x0220(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_22C[0x4];                                      // 0x022C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_3_CachedIndex;   // 0x0230(0x0010)(Edit)
+	struct FVector                                RigVMModel___SpringInterp_Target;                  // 0x0240(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___SpringInterp_Velocity;                // 0x0258(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FVector>                        RigVMModel___SpringInterp_SimulatedResult;         // 0x0270(0x0010)(Edit)
+	TArray<struct FVectorSpringState>             RigVMModel___SpringInterp_SpringState;             // 0x0280(0x0010)(Edit)
+	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_Primary__IO;              // 0x0290(0x0048)(Edit, NoDestructor)
+	TArray<struct FCachedRigElement>              RigVMModel___AimBoneMath_PrimaryCachedSpace;       // 0x02D8(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___AimBoneMath_SecondaryCachedSpace;     // 0x02E8(0x0010)(Edit)
+	TArray<bool>                                  RigVMModel___AimBoneMath_bIsInitialized;           // 0x02F8(0x0010)(Edit)
+	uint8                                         Pad_308[0x8];                                      // 0x0308(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  RigVMModel___Make_Relative_Global;                 // 0x0310(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___GetTransform_1_Transform;             // 0x0330(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___HierarchyGetParent_1_Parent;          // 0x0390(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_39C[0x4];                                      // 0x039C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_CachedChild;     // 0x03A0(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_CachedParent;    // 0x03B0(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_CachedIndex;           // 0x03C0(0x0010)(Edit)
+	struct FQuat                                  RigVMModel___Make_Relative_Parent;                 // 0x03D0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_SetRotation_CachedIndex;      // 0x03F0(0x0010)(Edit)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_Element; // 0x0400(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_40C[0x4];                                      // 0x040C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___GetTransform_2_Transform;             // 0x0410(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_2_Element; // 0x0470(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_47C[0x4];                                      // 0x047C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_2_CachedIndex;           // 0x0480(0x0010)(Edit)
+	struct FVector                                RigVMModel___Clamp_3_Result;                       // 0x0490(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4A8[0x8];                                      // 0x04A8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___Make_Relative_2_Local;                // 0x04B0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___SpringInterp_1_Result;                // 0x0510(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_528[0x8];                                      // 0x0528(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___RigUnit_GetTransform_5_Transform;     // 0x0530(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_Element; // 0x0590(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_59C[0x4];                                      // 0x059C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_5_CachedIndex;   // 0x05A0(0x0010)(Edit)
+	struct FVector                                RigVMModel___SpringInterp_1_Target;                // 0x05B0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___SpringInterp_1_Velocity;              // 0x05C8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FVector>                        RigVMModel___SpringInterp_1_SimulatedResult;       // 0x05E0(0x0010)(Edit)
+	TArray<struct FVectorSpringState>             RigVMModel___SpringInterp_1_SpringState;           // 0x05F0(0x0010)(Edit)
+	struct FTransform                             RigVMModel___Make_Relative_2_Global__IO;           // 0x0600(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___GetTransform_1_3_Transform;           // 0x0660(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___HierarchyGetParent_1_2_Parent;        // 0x06C0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_6CC[0x4];                                      // 0x06CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_2_CachedChild;   // 0x06D0(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_2_CachedParent;  // 0x06E0(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_3_CachedIndex;         // 0x06F0(0x0010)(Edit)
+	struct FVector                                RigVMModel___Clamp_3_Value;                        // 0x0700(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigUnit_SetTranslation_1_Value__IO;   // 0x0718(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_SetTranslation_1_CachedIndex; // 0x0730(0x0010)(Edit)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_1_1_1_Element; // 0x0740(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_3_Result;                // 0x074C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Multiply_Result;                      // 0x0750(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Multiply_1_Result;                    // 0x0758(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Remap_Result;                         // 0x0760(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___RigVMFunction_MathVectorDistance_Result; // 0x0768(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_76C[0x4];                                      // 0x076C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___GetRelativeTransformForItem_2_1_RelativeTransform; // 0x0770(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_1_Element; // 0x07D0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___HierarchyGetParent_Parent;            // 0x07DC(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_1_1_Element; // 0x07E8(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_7F4[0x4];                                      // 0x07F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_CachedChild;       // 0x07F8(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_CachedParent;      // 0x0808(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___GetRelativeTransformForItem_2_1_CachedChild; // 0x0818(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___GetRelativeTransformForItem_2_1_CachedParent; // 0x0828(0x0010)(Edit)
+	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_A;   // 0x0838(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___GetRelativeTransformForItem_2_RelativeTransform; // 0x0850(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___GetRelativeTransformForItem_2_CachedChild; // 0x08B0(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___GetRelativeTransformForItem_2_CachedParent; // 0x08C0(0x0010)(Edit)
+	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_B;   // 0x08D0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Remap_Value;                          // 0x08E8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_3_Target;                // 0x08F0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___SpringInterp_3_Velocity;              // 0x08F4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<float>                                 RigVMModel___SpringInterp_3_SimulatedResult;       // 0x08F8(0x0010)(Edit)
+	TArray<struct FFloatSpringState>              RigVMModel___SpringInterp_3_SpringState;           // 0x0908(0x0010)(Edit)
+	uint8                                         Pad_918[0x8];                                      // 0x0918(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___OffsetTransformForItem_OffsetTransform__IO; // 0x0920(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___OffsetTransformForItem_CachedIndex;   // 0x0980(0x0010)(Edit)
+	double                                        RigVMModel___Remap_1_Result;                       // 0x0990(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionToEuler_1_Result; // 0x0998(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___GetTransform_1_1_Transform;           // 0x09B0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_Element; // 0x0A10(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_A1C[0x4];                                      // 0x0A1C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_1_CachedIndex;         // 0x0A20(0x0010)(Edit)
+	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionToEuler_1_Value; // 0x0A30(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Remap_1_Value;                        // 0x0A50(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_Element; // 0x0A58(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_A64[0x4];                                      // 0x0A64(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                RigVMModel___Add_Result;                           // 0x0A68(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___GetTransform_Transform;               // 0x0A80(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_CachedIndex;             // 0x0AE0(0x0010)(Edit)
+	struct FVector                                RigVMModel___Add_A;                                // 0x0AF0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Multiply_2_Result;                    // 0x0B08(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Add_B__IO;                            // 0x0B10(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___Set_Transform_5_Weight;               // 0x0B28(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B2C[0x4];                                      // 0x0B2C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___Set_Transform_5_CachedIndex;          // 0x0B30(0x0010)(Edit)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_1_Element; // 0x0B40(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B4C[0x4];                                      // 0x0B4C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_1_1_Result; // 0x0B50(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___Clamp_1_Result;                       // 0x0B70(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionToEuler_2_Result; // 0x0B88(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FQuat                                  RigVMModel___Make_Relative_1_Local;                // 0x0BA0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___AimBoneMath_1_Result;                 // 0x0BC0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___RigUnit_GetTransform_2_1_Transform;   // 0x0C20(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_Element; // 0x0C80(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C8C[0x4];                                      // 0x0C8C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_2_1_CachedIndex; // 0x0C90(0x0010)(Edit)
+	struct FVector                                RigVMModel___ClampSpatially_1_Result;              // 0x0CA0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___SpringInterp_2_Result;                // 0x0CB8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___RigUnit_GetTransform_3_1_Transform;   // 0x0CD0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_Element; // 0x0D30(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_D3C[0x4];                                      // 0x0D3C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_3_1_CachedIndex; // 0x0D40(0x0010)(Edit)
+	struct FVector                                RigVMModel___SpringInterp_2_Target;                // 0x0D50(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___SpringInterp_2_Velocity;              // 0x0D68(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FVector>                        RigVMModel___SpringInterp_2_SimulatedResult;       // 0x0D80(0x0010)(Edit)
+	TArray<struct FVectorSpringState>             RigVMModel___SpringInterp_2_SpringState;           // 0x0D90(0x0010)(Edit)
+	struct FTransform                             RigVMModel___ClampSpatially_1_Space__IO;           // 0x0DA0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_1_Primary__IO;            // 0x0E00(0x0048)(Edit, NoDestructor)
+	TArray<struct FCachedRigElement>              RigVMModel___AimBoneMath_1_PrimaryCachedSpace;     // 0x0E48(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___AimBoneMath_1_SecondaryCachedSpace;   // 0x0E58(0x0010)(Edit)
+	TArray<bool>                                  RigVMModel___AimBoneMath_1_bIsInitialized;         // 0x0E68(0x0010)(Edit)
+	uint8                                         Pad_E78[0x8];                                      // 0x0E78(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  RigVMModel___Make_Relative_1_Global;               // 0x0E80(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RigVMModel___GetTransform_1_2_Transform;           // 0x0EA0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___HierarchyGetParent_1_1_Parent;        // 0x0F00(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_F0C[0x4];                                      // 0x0F0C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_1_CachedChild;   // 0x0F10(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_1_CachedParent;  // 0x0F20(0x0010)(Edit)
+	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_2_CachedIndex;         // 0x0F30(0x0010)(Edit)
+	struct FQuat                                  RigVMModel___Make_Relative_1_Parent;               // 0x0F40(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_SetRotation_1_CachedIndex;    // 0x0F60(0x0010)(Edit)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_1_1_Element; // 0x0F70(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_F7C[0x4];                                      // 0x0F7C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___RigVMFunction_MathTransformMake_Result; // 0x0F80(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_Result; // 0x0FE0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FQuat                                  RigVMModel___Set_Transform_3_Value;                // 0x1000(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___Set_Transform_3_Weight;               // 0x1020(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1024[0x4];                                     // 0x1024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___Set_Transform_3_CachedIndex;          // 0x1028(0x0010)(Edit)
+	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_1_1_1_Element; // 0x1038(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___Set_Transform_4_Weight;               // 0x1044(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___Set_Transform_4_CachedIndex;          // 0x1048(0x0010)(Edit)
+	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Count; // 0x1058(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Ratio; // 0x105C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_BlockToRun; // 0x1060(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1068[0x8];                                     // 0x1068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___RigVMFunction_MathTransformMake_3_Result; // 0x1070(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                RigVMModel___RigUnit_SetTranslation_2_Value;       // 0x10D0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Remap_2_Result;                       // 0x10E8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Divide_1_Result;                      // 0x10F0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___RigVMFunction_MathVectorDistance_1_1_Result; // 0x10F8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_10FC[0x4];                                     // 0x10FC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___RigUnit_GetTransform_6_Transform;     // 0x1100(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_6_CachedIndex;   // 0x1160(0x0010)(Edit)
+	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_1_1_A; // 0x1170(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1188[0x8];                                     // 0x1188(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___RigUnit_GetTransform_4_1_Transform;   // 0x1190(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_4_1_CachedIndex; // 0x11F0(0x0010)(Edit)
+	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_1_1_B; // 0x1200(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Divide_1_A;                           // 0x1218(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___RigVMFunction_MathVectorDistance_1_Result; // 0x1220(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1224[0xC];                                     // 0x1224(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___RigUnit_GetTransform_Transform;       // 0x1230(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_CachedIndex;     // 0x1290(0x0010)(Edit)
+	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_1_A; // 0x12A0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_12B8[0x8];                                     // 0x12B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___RigUnit_GetTransform_4_Transform;     // 0x12C0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_4_CachedIndex;   // 0x1320(0x0010)(Edit)
+	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_1_B; // 0x1330(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Divide_1_B;                           // 0x1348(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___RigUnit_SetTranslation_2_Weight;      // 0x1350(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1354[0x4];                                     // 0x1354(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_SetTranslation_2_CachedIndex; // 0x1358(0x0010)(Edit)
+};
+DUMPER7_ASSERTS_FPropertyBag_6cbdd47ebf474b6c;
+
+// PropertyBag Transient.PropertyBag_c48da5218bf8fa8f
 // 0x1FF0 (0x1FF0 - 0x0000)
-struct FPropertyBag_7b7c2a01581b818 final
+struct FPropertyBag_c48da5218bf8fa8f final
 {
 public:
 	bool                                          RigVMModel___IsNearlyZero_Result;                  // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -558,337 +755,29 @@ public:
 	class FName                                   RigVMModel___RigVMFunction_ControlFlowBranch_1_1_BlockToRun; // 0x1FD8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FName                                   RigVMModel___RigVMFunction_ControlFlowBranch_BlockToRun; // 0x1FE0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_7b7c2a01581b818;
+DUMPER7_ASSERTS_FPropertyBag_c48da5218bf8fa8f;
 
-// PropertyBag Transient.PropertyBag_514a769e0cc4bd02
-// 0x0360 (0x0360 - 0x0000)
-struct FPropertyBag_514a769e0cc4bd02 final
+// PropertyBag Transient.PropertyBag_2d874de43dd9f18e
+// 0x00A0 (0x00A0 - 0x0000)
+struct FPropertyBag_2d874de43dd9f18e final
 {
 public:
-	struct FVector                                RigVMModel___SpringInterp_Result;                  // 0x0000(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Multiply_Multiply_2_Result;           // 0x0018(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Multiply_Multiply_1_Result;           // 0x0030(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Multiply_Multiply_Result;             // 0x0048(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Multiply_Multiply_2_B;                // 0x0060(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_Strength;                // 0x0078(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_CriticalDamping;         // 0x007C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___SpringInterp_Velocity;                // 0x0080(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FVector>                        RigVMModel___SpringInterp_SimulatedResult;         // 0x0098(0x0010)(Edit)
-	TArray<struct FVectorSpringState>             RigVMModel___SpringInterp_SpringState;             // 0x00A8(0x0010)(Edit)
-	bool                                          RigVMModel___IsNearlyZero_Result;                  // 0x00B8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        RigVMModel___IsNearlyZero_Value;                   // 0x00C0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RigVMModel___IsNearlyZero_1_Result;                // 0x00C8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        RigVMModel___IsNearlyZero_1_Value;                 // 0x00D0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   RigVMModel___RigVMFunction_ControlFlowBranch_2_BlockToRun; // 0x00D8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___GetTransform_1_1_Transform;           // 0x00E0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_1_CachedIndex;         // 0x0140(0x0010)(Edit)
-	struct FTransform                             RigVMModel___GetTransform_1_Transform;             // 0x0150(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_CachedIndex;           // 0x01B0(0x0010)(Edit)
-	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_Result; // 0x01C0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionFromEuler_Euler__IO; // 0x01E0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1F8[0x8];                                      // 0x01F8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___OffsetTransformForItem_OffsetTransform__IO; // 0x0200(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___OffsetTransformForItem_CachedIndex;   // 0x0260(0x0010)(Edit)
-	class FName                                   RigVMModel___RigVMFunction_ControlFlowBranch_BlockToRun; // 0x0270(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_278[0x8];                                      // 0x0278(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  RigVMModel___Scale_Result;                         // 0x0280(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_1_Result; // 0x02A0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Multiply_2_Result;                    // 0x02C0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Multiply_2_B;                         // 0x02C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionFromEuler_1_Euler__IO; // 0x02D0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2E8[0x8];                                      // 0x02E8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___OffsetTransformForItem_1_OffsetTransform__IO; // 0x02F0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___OffsetTransformForItem_1_CachedIndex; // 0x0350(0x0010)(Edit)
+	double                                        RigVMModel___Greater_B__Const;                     // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigUnit_ModifyTransforms_PerItem      RigVMModel___DISPATCH_RigVMDispatch_ArraySetAtIndex_Element__Const; // 0x0010(0x0070)(Edit, NoDestructor)
+	struct FRigElementKey                         RigVMModel___GetTransform_Item__Const;             // 0x0080(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	ERigVMTransformSpace                          RigVMModel___GetTransform_Space__Const;            // 0x008C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RigVMModel___GetTransform_bInitial__Const;         // 0x008D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_8E[0x2];                                       // 0x008E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         RigVMModel___ModifyTransforms_WeightMinimum__Const; // 0x0090(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___ModifyTransforms_WeightMaximum__Const; // 0x0094(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EControlRigModifyBoneMode                     RigVMModel___ModifyTransforms_Mode__Const;         // 0x0098(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_514a769e0cc4bd02;
+DUMPER7_ASSERTS_FPropertyBag_2d874de43dd9f18e;
 
-// PropertyBag Transient.PropertyBag_66cd8a5b63428dd5
-// 0x0450 (0x0450 - 0x0000)
-struct FPropertyBag_66cd8a5b63428dd5 final
-{
-public:
-	int32                                         RigVMModel___Greater_B__Const;                     // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___DISPATCH_RigVMDispatch_If_True__Const; // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___DISPATCH_RigVMDispatch_If_False__Const; // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_Index__Const; // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ERigVMTransformSpace                          RigVMModel___RigUnit_SetRotation_Space__Const;     // 0x0010(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RigVMModel___RigUnit_SetRotation_bInitial__Const;  // 0x0011(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_12[0x2];                                       // 0x0012(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_Index__Const; // 0x0014(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ERigVMTransformSpace                          RigVMModel___RigUnit_GetTransform_2_Space__Const;  // 0x0018(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_Primary__Const;           // 0x0020(0x0048)(Edit, NoDestructor)
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_Index__Const; // 0x0068(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_Strength__Const;         // 0x006C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_CriticalDamping__Const;  // 0x0070(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                RigVMModel___SpringInterp_Force__Const;            // 0x0078(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_TargetVelocityAmount__Const; // 0x0090(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_94[0x4];                                       // 0x0094(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_Secondary__Const;         // 0x0098(0x0048)(Edit, NoDestructor)
-	struct FRigUnit_AimBone_DebugSettings         RigVMModel___AimBoneMath_DebugSettings__Const;     // 0x00E0(0x0070)(Edit, NoDestructor)
-	EEulerRotationOrder                           RigVMModel___RigVMFunction_MathQuaternionToEuler_RotationOrder__Const; // 0x0150(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_151[0x7];                                      // 0x0151(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                RigVMModel___Clamp_Minimum__Const;                 // 0x0158(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Clamp_Maximum__Const;                 // 0x0170(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RigVMModel___RigUnit_SetRotation_bPropagateToChildren__Const; // 0x0188(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_189[0x3];                                      // 0x0189(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_Index__Const; // 0x018C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigUnit_SetTranslation_1_Value__Const; // 0x0190(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1A8[0x8];                                      // 0x01A8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___Make_Relative_2_Global__Const;        // 0x01B0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_1_Strength__Const;       // 0x0210(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_1_CriticalDamping__Const; // 0x0214(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Clamp_3_Minimum__Const;               // 0x0218(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Clamp_3_Maximum__Const;               // 0x0230(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Multiply_1_B__Const;                  // 0x0248(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Remap_SourceMinimum__Const;           // 0x0250(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Remap_SourceMaximum__Const;           // 0x0258(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Remap_TargetMaximum__Const;           // 0x0260(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_3_Force__Const;          // 0x0268(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_Index__Const; // 0x026C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Remap_1_SourceMaximum__Const;         // 0x0270(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Remap_1_TargetMinimum__Const;         // 0x0278(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_Index__Const; // 0x0280(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_284[0x4];                                      // 0x0284(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                RigVMModel___Add_B__Const;                         // 0x0288(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Multiply_2_B__Const;                  // 0x02A0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_1_Primary__Const;         // 0x02A8(0x0048)(Edit, NoDestructor)
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_Index__Const; // 0x02F0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	EAxis                                         RigVMModel___ClampSpatially_1_Axis__Const;         // 0x02F4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ERigVMClampSpatialMode                        RigVMModel___ClampSpatially_1_Type__Const;         // 0x02F5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2F6[0x2];                                      // 0x02F6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         RigVMModel___ClampSpatially_1_Minimum__Const;      // 0x02F8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___ClampSpatially_1_Maximum__Const;      // 0x02FC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FLinearColor                           RigVMModel___ClampSpatially_1_DebugColor__Const;   // 0x0300(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_1_Secondary__Const;       // 0x0310(0x0048)(Edit, NoDestructor)
-	struct FVector                                RigVMModel___Clamp_1_Minimum__Const;               // 0x0358(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Clamp_1_Maximum__Const;               // 0x0370(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionFromEuler_Euler__Const; // 0x0388(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigVMFunction_MathTransformMake_Scale__Const; // 0x03A0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_1_1_1_Index__Const; // 0x03B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3BC[0x4];                                      // 0x03BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                RigVMModel___Set_Transform_4_Value__Const;         // 0x03C0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FRigElementKeyCollection>       RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Array__Const; // 0x03D8(0x0010)(Edit)
-	struct FRigElementKey                         RigVMModel___RigUnit_SetTranslation_2_Item__Const; // 0x03E8(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3F4[0x4];                                      // 0x03F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                RigVMModel___RigVMFunction_MathTransformMake_3_Translation__Const; // 0x03F8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FQuat                                  RigVMModel___RigVMFunction_MathTransformMake_3_Rotation__Const; // 0x0410(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___RigUnit_GetTransform_6_Item__Const;   // 0x0430(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___RigUnit_GetTransform_4_1_Item__Const; // 0x043C(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_FPropertyBag_66cd8a5b63428dd5;
-
-// PropertyBag Transient.PropertyBag_8f36dd70f07ed946
-// 0x1370 (0x1370 - 0x0000)
-struct FPropertyBag_8f36dd70f07ed946 final
-{
-public:
-	struct FRigElementKeyCollection               RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Element; // 0x0000(0x0010)(Edit, HasGetValueTypeHash)
-	float                                         RigVMModel___DISPATCH_RigVMDispatch_If_Result;     // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          RigVMModel___Greater_Result;                       // 0x0014(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Index; // 0x0018(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_Element; // 0x001C(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_1_Result; // 0x0030(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Clamp_Result;                         // 0x0050(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Scale_Result;                         // 0x0068(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionToEuler_Result; // 0x0080(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  RigVMModel___Make_Relative_Local;                  // 0x00A0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___AimBoneMath_Result;                   // 0x00C0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___RigUnit_GetTransform_2_Transform;     // 0x0120(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_Element; // 0x0180(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_18C[0x4];                                      // 0x018C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_2_CachedIndex;   // 0x0190(0x0010)(Edit)
-	struct FVector                                RigVMModel___SpringInterp_Result;                  // 0x01A0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1B8[0x8];                                      // 0x01B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___RigUnit_GetTransform_3_Transform;     // 0x01C0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_Element; // 0x0220(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_22C[0x4];                                      // 0x022C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_3_CachedIndex;   // 0x0230(0x0010)(Edit)
-	struct FVector                                RigVMModel___SpringInterp_Target;                  // 0x0240(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___SpringInterp_Velocity;                // 0x0258(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FVector>                        RigVMModel___SpringInterp_SimulatedResult;         // 0x0270(0x0010)(Edit)
-	TArray<struct FVectorSpringState>             RigVMModel___SpringInterp_SpringState;             // 0x0280(0x0010)(Edit)
-	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_Primary__IO;              // 0x0290(0x0048)(Edit, NoDestructor)
-	TArray<struct FCachedRigElement>              RigVMModel___AimBoneMath_PrimaryCachedSpace;       // 0x02D8(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___AimBoneMath_SecondaryCachedSpace;     // 0x02E8(0x0010)(Edit)
-	TArray<bool>                                  RigVMModel___AimBoneMath_bIsInitialized;           // 0x02F8(0x0010)(Edit)
-	uint8                                         Pad_308[0x8];                                      // 0x0308(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  RigVMModel___Make_Relative_Global;                 // 0x0310(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___GetTransform_1_Transform;             // 0x0330(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___HierarchyGetParent_1_Parent;          // 0x0390(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_39C[0x4];                                      // 0x039C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_CachedChild;     // 0x03A0(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_CachedParent;    // 0x03B0(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_CachedIndex;           // 0x03C0(0x0010)(Edit)
-	struct FQuat                                  RigVMModel___Make_Relative_Parent;                 // 0x03D0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_SetRotation_CachedIndex;      // 0x03F0(0x0010)(Edit)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_Element; // 0x0400(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_40C[0x4];                                      // 0x040C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___GetTransform_2_Transform;             // 0x0410(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_2_Element; // 0x0470(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_47C[0x4];                                      // 0x047C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_2_CachedIndex;           // 0x0480(0x0010)(Edit)
-	struct FVector                                RigVMModel___Clamp_3_Result;                       // 0x0490(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4A8[0x8];                                      // 0x04A8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___Make_Relative_2_Local;                // 0x04B0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___SpringInterp_1_Result;                // 0x0510(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_528[0x8];                                      // 0x0528(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___RigUnit_GetTransform_5_Transform;     // 0x0530(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_Element; // 0x0590(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_59C[0x4];                                      // 0x059C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_5_CachedIndex;   // 0x05A0(0x0010)(Edit)
-	struct FVector                                RigVMModel___SpringInterp_1_Target;                // 0x05B0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___SpringInterp_1_Velocity;              // 0x05C8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FVector>                        RigVMModel___SpringInterp_1_SimulatedResult;       // 0x05E0(0x0010)(Edit)
-	TArray<struct FVectorSpringState>             RigVMModel___SpringInterp_1_SpringState;           // 0x05F0(0x0010)(Edit)
-	struct FTransform                             RigVMModel___Make_Relative_2_Global__IO;           // 0x0600(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___GetTransform_1_3_Transform;           // 0x0660(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___HierarchyGetParent_1_2_Parent;        // 0x06C0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_6CC[0x4];                                      // 0x06CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_2_CachedChild;   // 0x06D0(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_2_CachedParent;  // 0x06E0(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_3_CachedIndex;         // 0x06F0(0x0010)(Edit)
-	struct FVector                                RigVMModel___Clamp_3_Value;                        // 0x0700(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigUnit_SetTranslation_1_Value__IO;   // 0x0718(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_SetTranslation_1_CachedIndex; // 0x0730(0x0010)(Edit)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_1_1_1_Element; // 0x0740(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_3_Result;                // 0x074C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Multiply_Result;                      // 0x0750(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Multiply_1_Result;                    // 0x0758(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Remap_Result;                         // 0x0760(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___RigVMFunction_MathVectorDistance_Result; // 0x0768(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_76C[0x4];                                      // 0x076C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___GetRelativeTransformForItem_2_1_RelativeTransform; // 0x0770(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_1_Element; // 0x07D0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___HierarchyGetParent_Parent;            // 0x07DC(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_2_1_1_1_1_1_1_1_Element; // 0x07E8(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_7F4[0x4];                                      // 0x07F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_CachedChild;       // 0x07F8(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_CachedParent;      // 0x0808(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___GetRelativeTransformForItem_2_1_CachedChild; // 0x0818(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___GetRelativeTransformForItem_2_1_CachedParent; // 0x0828(0x0010)(Edit)
-	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_A;   // 0x0838(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___GetRelativeTransformForItem_2_RelativeTransform; // 0x0850(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___GetRelativeTransformForItem_2_CachedChild; // 0x08B0(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___GetRelativeTransformForItem_2_CachedParent; // 0x08C0(0x0010)(Edit)
-	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_B;   // 0x08D0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Remap_Value;                          // 0x08E8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_3_Target;                // 0x08F0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___SpringInterp_3_Velocity;              // 0x08F4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<float>                                 RigVMModel___SpringInterp_3_SimulatedResult;       // 0x08F8(0x0010)(Edit)
-	TArray<struct FFloatSpringState>              RigVMModel___SpringInterp_3_SpringState;           // 0x0908(0x0010)(Edit)
-	uint8                                         Pad_918[0x8];                                      // 0x0918(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___OffsetTransformForItem_OffsetTransform__IO; // 0x0920(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___OffsetTransformForItem_CachedIndex;   // 0x0980(0x0010)(Edit)
-	double                                        RigVMModel___Remap_1_Result;                       // 0x0990(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionToEuler_1_Result; // 0x0998(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___GetTransform_1_1_Transform;           // 0x09B0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_Element; // 0x0A10(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_A1C[0x4];                                      // 0x0A1C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_1_CachedIndex;         // 0x0A20(0x0010)(Edit)
-	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionToEuler_1_Value; // 0x0A30(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Remap_1_Value;                        // 0x0A50(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_Element; // 0x0A58(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_A64[0x4];                                      // 0x0A64(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                RigVMModel___Add_Result;                           // 0x0A68(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___GetTransform_Transform;               // 0x0A80(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_CachedIndex;             // 0x0AE0(0x0010)(Edit)
-	struct FVector                                RigVMModel___Add_A;                                // 0x0AF0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Multiply_2_Result;                    // 0x0B08(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Add_B__IO;                            // 0x0B10(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___Set_Transform_5_Weight;               // 0x0B28(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_B2C[0x4];                                      // 0x0B2C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___Set_Transform_5_CachedIndex;          // 0x0B30(0x0010)(Edit)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_1_Element; // 0x0B40(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_B4C[0x4];                                      // 0x0B4C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_1_1_Result; // 0x0B50(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___Clamp_1_Result;                       // 0x0B70(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionToEuler_2_Result; // 0x0B88(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FQuat                                  RigVMModel___Make_Relative_1_Local;                // 0x0BA0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___AimBoneMath_1_Result;                 // 0x0BC0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___RigUnit_GetTransform_2_1_Transform;   // 0x0C20(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_Element; // 0x0C80(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C8C[0x4];                                      // 0x0C8C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_2_1_CachedIndex; // 0x0C90(0x0010)(Edit)
-	struct FVector                                RigVMModel___ClampSpatially_1_Result;              // 0x0CA0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___SpringInterp_2_Result;                // 0x0CB8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___RigUnit_GetTransform_3_1_Transform;   // 0x0CD0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_Element; // 0x0D30(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_D3C[0x4];                                      // 0x0D3C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_3_1_CachedIndex; // 0x0D40(0x0010)(Edit)
-	struct FVector                                RigVMModel___SpringInterp_2_Target;                // 0x0D50(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___SpringInterp_2_Velocity;              // 0x0D68(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FVector>                        RigVMModel___SpringInterp_2_SimulatedResult;       // 0x0D80(0x0010)(Edit)
-	TArray<struct FVectorSpringState>             RigVMModel___SpringInterp_2_SpringState;           // 0x0D90(0x0010)(Edit)
-	struct FTransform                             RigVMModel___ClampSpatially_1_Space__IO;           // 0x0DA0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigUnit_AimItem_Target                RigVMModel___AimBoneMath_1_Primary__IO;            // 0x0E00(0x0048)(Edit, NoDestructor)
-	TArray<struct FCachedRigElement>              RigVMModel___AimBoneMath_1_PrimaryCachedSpace;     // 0x0E48(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___AimBoneMath_1_SecondaryCachedSpace;   // 0x0E58(0x0010)(Edit)
-	TArray<bool>                                  RigVMModel___AimBoneMath_1_bIsInitialized;         // 0x0E68(0x0010)(Edit)
-	uint8                                         Pad_E78[0x8];                                      // 0x0E78(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  RigVMModel___Make_Relative_1_Global;               // 0x0E80(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             RigVMModel___GetTransform_1_2_Transform;           // 0x0EA0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FRigElementKey                         RigVMModel___HierarchyGetParent_1_1_Parent;        // 0x0F00(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_F0C[0x4];                                      // 0x0F0C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_1_CachedChild;   // 0x0F10(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___HierarchyGetParent_1_1_CachedParent;  // 0x0F20(0x0010)(Edit)
-	TArray<struct FCachedRigElement>              RigVMModel___GetTransform_1_2_CachedIndex;         // 0x0F30(0x0010)(Edit)
-	struct FQuat                                  RigVMModel___Make_Relative_1_Parent;               // 0x0F40(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_SetRotation_1_CachedIndex;    // 0x0F60(0x0010)(Edit)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_1_1_Element; // 0x0F70(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_F7C[0x4];                                      // 0x0F7C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___RigVMFunction_MathTransformMake_Result; // 0x0F80(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FQuat                                  RigVMModel___RigVMFunction_MathQuaternionFromEuler_Result; // 0x0FE0(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FQuat                                  RigVMModel___Set_Transform_3_Value;                // 0x1000(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___Set_Transform_3_Weight;               // 0x1020(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1024[0x4];                                     // 0x1024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___Set_Transform_3_CachedIndex;          // 0x1028(0x0010)(Edit)
-	struct FRigElementKey                         RigVMModel___DISPATCH_RigVMDispatch_ArrayGetAtIndex_1_1_1_1_1_1_Element; // 0x1038(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___Set_Transform_4_Weight;               // 0x1044(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___Set_Transform_4_CachedIndex;          // 0x1048(0x0010)(Edit)
-	int32                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Count; // 0x1058(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_Ratio; // 0x105C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   RigVMModel___DISPATCH_RigVMDispatch_ArrayIterator_BlockToRun; // 0x1060(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1068[0x8];                                     // 0x1068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___RigVMFunction_MathTransformMake_3_Result; // 0x1070(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                RigVMModel___RigUnit_SetTranslation_2_Value;       // 0x10D0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Remap_2_Result;                       // 0x10E8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Divide_1_Result;                      // 0x10F0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___RigVMFunction_MathVectorDistance_1_1_Result; // 0x10F8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_10FC[0x4];                                     // 0x10FC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___RigUnit_GetTransform_6_Transform;     // 0x1100(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_6_CachedIndex;   // 0x1160(0x0010)(Edit)
-	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_1_1_A; // 0x1170(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1188[0x8];                                     // 0x1188(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___RigUnit_GetTransform_4_1_Transform;   // 0x1190(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_4_1_CachedIndex; // 0x11F0(0x0010)(Edit)
-	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_1_1_B; // 0x1200(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Divide_1_A;                           // 0x1218(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___RigVMFunction_MathVectorDistance_1_Result; // 0x1220(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1224[0xC];                                     // 0x1224(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___RigUnit_GetTransform_Transform;       // 0x1230(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_CachedIndex;     // 0x1290(0x0010)(Edit)
-	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_1_A; // 0x12A0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_12B8[0x8];                                     // 0x12B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RigVMModel___RigUnit_GetTransform_4_Transform;     // 0x12C0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_GetTransform_4_CachedIndex;   // 0x1320(0x0010)(Edit)
-	struct FVector                                RigVMModel___RigVMFunction_MathVectorDistance_1_B; // 0x1330(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        RigVMModel___Divide_1_B;                           // 0x1348(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         RigVMModel___RigUnit_SetTranslation_2_Weight;      // 0x1350(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1354[0x4];                                     // 0x1354(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FCachedRigElement>              RigVMModel___RigUnit_SetTranslation_2_CachedIndex; // 0x1358(0x0010)(Edit)
-};
-DUMPER7_ASSERTS_FPropertyBag_8f36dd70f07ed946;
-
-// PropertyBag Transient.PropertyBag_41491d79a3c4b8d1
+// PropertyBag Transient.PropertyBag_bd9bd38a30128275
 // 0x0250 (0x0250 - 0x0000)
-struct FPropertyBag_41491d79a3c4b8d1 final
+struct FPropertyBag_bd9bd38a30128275 final
 {
 public:
 	double                                        RigVMModel___Add_Result;                           // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -922,11 +811,136 @@ public:
 	TArray<struct FRigUnit_ModifyTransforms_WorkData> RigVMModel___ModifyTransforms_WorkData;        // 0x0238(0x0010)(Edit)
 	class FName                                   RigVMModel___RigVMFunction_ControlFlowBranch_BlockToRun; // 0x0248(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_41491d79a3c4b8d1;
+DUMPER7_ASSERTS_FPropertyBag_bd9bd38a30128275;
 
-// PropertyBag Transient.PropertyBag_d469dd654f8c228
+// PropertyBag Transient.PropertyBag_4c6ca37cd05831bb
+// 0x0EB0 (0x0EB0 - 0x0000)
+struct FPropertyBag_4c6ca37cd05831bb final
+{
+public:
+	class FName                                   RigVMModel___GetCurveValue_Curve__Const;           // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Less_1_B__Const;                      // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        ResetVariables___ResetVariables_VariableNode_36_Value__Const; // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          ResetVariables___ResetVariables_VariableNode_6_1_1_Value__Const; // 0x0018(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          ResetVariables___ResetVariables_VariableNode_Value__Const; // 0x0019(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  ResetVariables___ResetVariables_VariableNode_1_Value__Const; // 0x0020(0x0020)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                ResetVariables___ResetVariables_VariableNode_3_Value__Const; // 0x0040(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_58[0x8];                                       // 0x0058(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RigVMModel___To_World_1_Value__Const;              // 0x0060(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EEulerRotationOrder                           RigVMModel___RigVMFunction_MathQuaternionToEuler_RotationOrder__Const; // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RigVMModel___Remap_bClamp__Const;                  // 0x00C1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C2[0x6];                                       // 0x00C2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        RigVMModel___Multiply_2_1_B__Const;                // 0x00C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Greater_4_B__Const;                   // 0x00D0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        RigVMModel___Greater_1_B__Const;                   // 0x00D8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RigVMModel___VariableNode_6_1_Value__Const;        // 0x00E0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_E1[0x3];                                       // 0x00E1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   RigVMModel___RotateBoneInPlace_0_1_BoneName__Const; // 0x00E4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                RigVMModel___RigVMFunction_MathQuaternionFromEuler_Euler__Const; // 0x00F0(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_Item__Const; // 0x0108(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	ERigVMTransformSpace                          RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_Space__Const; // 0x0114(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_bInitial__Const; // 0x0115(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_116[0xA];                                      // 0x0116(0x000A)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_Value__Const; // 0x0120(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_Weight__Const; // 0x0180(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RotateBoneInPlace_0_1___RotateBoneInPlace_Set_Transform_bPropagateToChildren__Const; // 0x0184(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_185[0x3];                                      // 0x0185(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        RigVMModel___Greater_2_B__Const;                   // 0x0188(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_MathQuaternionFromEuler_2_2_Euler__Const; // 0x0190(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculatePelvisRotation___CalculatePelvisRotation_Interpolate_2_A__Const; // 0x01A8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRuntimeFloatCurve                     CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_AnimEvalRichCurve_Curve__Const; // 0x01B0(0x0088)(Edit)
+	float                                         CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_AnimEvalRichCurve_SourceMinimum__Const; // 0x0238(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_AnimEvalRichCurve_SourceMaximum__Const; // 0x023C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EEulerRotationOrder                           CalculatePelvisRotation___CalculatePelvisRotation_RigVMFunction_MathQuaternionFromEuler_2_2_RotationOrder__Const; // 0x0240(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_241[0x3];                                      // 0x0241(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigElementKey                         CalculatePelvisRotation___CalculatePelvisRotation_GetTransform_Item__Const; // 0x0244(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	ERigVMTransformSpace                          CalculatePelvisRotation___CalculatePelvisRotation_GetTransform_Space__Const; // 0x0250(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CalculatePelvisRotation___CalculatePelvisRotation_GetTransform_bInitial__Const; // 0x0251(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_252[0xE];                                      // 0x0252(0x000E)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RotateAroundPoint_0_1_2___RotateAroundPoint_Return_Outputtransform__Const; // 0x0260(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_SourceMinimum__Const; // 0x02C0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_TargetMaximum__Const; // 0x02C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_bClamp__Const; // 0x02D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2D1[0x3];                                      // 0x02D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigElementKey                         CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_3_1_Item__Const; // 0x02D4(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	ERigVMTransformSpace                          CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_3_1_Space__Const; // 0x02E0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_3_1_bInitial__Const; // 0x02E1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2E2[0x6];                                      // 0x02E2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                CalculatePelvisTranslation___CalculatePelvisTranslation_RotateAroundPoint_0_1_2_1_2_PointToRotateAround__Const; // 0x02E8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             RotateAroundPoint_0_1_2_1_2___RotateAroundPoint_Return_Outputtransform__Const; // 0x0300(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             CalculatePelvisTranslation___CalculatePelvisTranslation_Interpolate_3_2_A__Const; // 0x0360(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRuntimeFloatCurve                     CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalRichCurve_1_1_1_Curve__Const; // 0x03C0(0x0088)(Edit)
+	float                                         CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalRichCurve_1_1_1_SourceMinimum__Const; // 0x0448(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalRichCurve_1_1_1_SourceMaximum__Const; // 0x044C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_1_TargetMinimum__Const; // 0x0450(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Remap_1_TargetMaximum__Const; // 0x0458(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_4_Item__Const; // 0x0460(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_46C[0x4];                                      // 0x046C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RotateAroundPoint_0_1_2_1___RotateAroundPoint_Return_Outputtransform__Const; // 0x0470(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         CalculatePelvisTranslation___CalculatePelvisTranslation_GetTransform_1_1_2_1_Item__Const; // 0x04D0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4DC[0x4];                                      // 0x04DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RotateAroundPoint_0_1_2_1_1___RotateAroundPoint_Return_Outputtransform__Const; // 0x04E0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Multiply_B__Const; // 0x0540(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculatePelvisTranslation___CalculatePelvisTranslation_Multiply_1_B__Const; // 0x0548(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRuntimeVectorCurve                    CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalVectorCurve_2_1_1_Curve__Const; // 0x0550(0x0188)(Edit)
+	struct FVector                                CalculatePelvisTranslation___CalculatePelvisTranslation_RigVMFunction_AnimEvalVectorCurve_2_1_1_SourceMaximum__Const; // 0x06D8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculateFeetTransforms___CalculateFeetTransforms_Remap_1_1_TargetMinimum__Const; // 0x06F0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculateFeetTransforms___CalculateFeetTransforms_Remap_1_1_TargetMaximum__Const; // 0x06F8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CalculateFeetTransforms___CalculateFeetTransforms_Remap_1_1_bClamp__Const; // 0x0700(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_701[0x7];                                      // 0x0701(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRuntimeVectorCurve                    CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_AnimEvalVectorCurve_2_1_Curve__Const; // 0x0708(0x0188)(Edit)
+	struct FVector                                CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_AnimEvalVectorCurve_2_1_SourceMinimum__Const; // 0x0890(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_AnimEvalVectorCurve_2_1_SourceMaximum__Const; // 0x08A8(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         CalculateFeetTransforms___CalculateFeetTransforms_GetTransform_1_1_1_Item__Const; // 0x08C0(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	ERigVMTransformSpace                          CalculateFeetTransforms___CalculateFeetTransforms_GetTransform_1_1_1_Space__Const; // 0x08CC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CalculateFeetTransforms___CalculateFeetTransforms_GetTransform_1_1_1_bInitial__Const; // 0x08CD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_8CE[0x2];                                      // 0x08CE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             CalculateFeetTransforms___CalculateFeetTransforms_Interpolate_3_1_B__Const; // 0x08D0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CalculateFeetTransforms___CalculateFeetTransforms_Interpolate_A__Const; // 0x0930(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRuntimeVectorCurve                    CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_AnimEvalVectorCurve_Curve__Const; // 0x0938(0x0188)(Edit)
+	EEulerRotationOrder                           CalculateFeetTransforms___CalculateFeetTransforms_RigVMFunction_MathQuaternionFromEuler_2_RotationOrder__Const; // 0x0AC0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_AC1[0xF];                                      // 0x0AC1(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RotateAroundPoint_0_1___RotateAroundPoint_Return_Outputtransform__Const; // 0x0AD0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         CalculateFeetTransforms___CalculateFeetTransforms_GetTransform_1_1_1_1_Item__Const; // 0x0B30(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B3C[0x4];                                      // 0x0B3C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RotateAroundPoint_0_1_1___RotateAroundPoint_Return_Outputtransform__Const; // 0x0B40(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   RigVMModel___RotateBoneInPlace_0_1_1_BoneName__Const; // 0x0BA0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_Item__Const; // 0x0BA8(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	ERigVMTransformSpace                          RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_Space__Const; // 0x0BB4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_bInitial__Const; // 0x0BB5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_BB6[0xA];                                      // 0x0BB6(0x000A)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_Value__Const; // 0x0BC0(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_Weight__Const; // 0x0C20(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RotateBoneInPlace_0_1_1___RotateBoneInPlace_Set_Transform_bPropagateToChildren__Const; // 0x0C24(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C25[0x3];                                      // 0x0C25(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRigElementKey                         RigVMModel___Set_Transform_1_Item__Const;          // 0x0C28(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	ERigVMTransformSpace                          RigVMModel___Set_Transform_1_Space__Const;         // 0x0C34(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C35[0x3];                                      // 0x0C35(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         RigVMModel___Set_Transform_1_Weight__Const;        // 0x0C38(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C3C[0x4];                                      // 0x0C3C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FRigElementKey>                 RigVMModel___RigUnit_ItemArray_Items__Const;       // 0x0C40(0x0010)(Edit)
+	float                                         RigVMModel___CCDIKItemArray_Precision__Const;      // 0x0C50(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         RigVMModel___CCDIKItemArray_MaxIterations__Const;  // 0x0C54(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         RigVMModel___CCDIKItemArray_BaseRotationLimit__Const; // 0x0C58(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C5C[0x4];                                      // 0x0C5C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FRigUnit_CCDIK_RotationLimitPerItem> RigVMModel___CCDIKItemArray_RotationLimits__Const; // 0x0C60(0x0010)(Edit)
+	TArray<struct FRigElementKey>                 RigVMModel___RigUnit_ItemArray_1_Items__Const;     // 0x0C70(0x0010)(Edit)
+	struct FRigElementKey                         RigVMModel___Set_Transform_2_Item__Const;          // 0x0C80(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___Set_Transform_2_1_Item__Const;        // 0x0C8C(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	struct FRigElementKey                         RigVMModel___GetTransform_1_1_1_1_1_Item__Const;   // 0x0C98(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_CA4[0x4];                                      // 0x0CA4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRuntimeVectorCurve                    RigVMModel___RigVMFunction_AnimEvalVectorCurve_2_Curve__Const; // 0x0CA8(0x0188)(Edit)
+	struct FVector                                RigVMModel___RigVMFunction_AnimEvalVectorCurve_2_SourceMaximum__Const; // 0x0E30(0x0018)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_E48[0x8];                                      // 0x0E48(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             RotateAroundPoint_0_1_3___RotateAroundPoint_Return_Outputtransform__Const; // 0x0E50(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_FPropertyBag_4c6ca37cd05831bb;
+
+// PropertyBag Transient.PropertyBag_e891681a10ecd488
 // 0x1820 (0x1820 - 0x0000)
-struct FPropertyBag_d469dd654f8c228 final
+struct FPropertyBag_e891681a10ecd488 final
 {
 public:
 	bool                                          RigVMModel___Less_1_Result;                        // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -1192,11 +1206,11 @@ public:
 	class FName                                   RigVMModel___RigVMFunction_ControlFlowBranch_BlockToRun; // 0x1808(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	class FName                                   RigVMModel___RigVMFunction_ControlFlowBranch_5_BlockToRun; // 0x1810(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_d469dd654f8c228;
+DUMPER7_ASSERTS_FPropertyBag_e891681a10ecd488;
 
-// PropertyBag Transient.PropertyBag_80f3b7158aa2d9c6
+// PropertyBag Transient.PropertyBag_fdaee63e35cee5d7
 // 0x0280 (0x0280 - 0x0000)
-struct FPropertyBag_80f3b7158aa2d9c6 final
+struct FPropertyBag_fdaee63e35cee5d7 final
 {
 public:
 	struct FRigElementKey                         RigVMModel___GetTransform_2_2_Item__Const;         // 0x0000(0x000C)(Edit, NoDestructor, HasGetValueTypeHash)
@@ -1230,11 +1244,11 @@ public:
 	TArray<struct FRigElementKey>                 RigVMModel___RigUnit_ItemArray_4_Items__Const;     // 0x0258(0x0010)(Edit)
 	TArray<struct FRigElementKey>                 RigVMModel___RigUnit_ItemArray_3_Items__Const;     // 0x0268(0x0010)(Edit)
 };
-DUMPER7_ASSERTS_FPropertyBag_80f3b7158aa2d9c6;
+DUMPER7_ASSERTS_FPropertyBag_fdaee63e35cee5d7;
 
-// PropertyBag Transient.PropertyBag_60c5013d9fc7d92e
+// PropertyBag Transient.PropertyBag_66d84311596366a0
 // 0x0440 (0x0440 - 0x0000)
-struct FPropertyBag_60c5013d9fc7d92e final
+struct FPropertyBag_66d84311596366a0 final
 {
 public:
 	struct FTransform                             RigVMModel___GetTransform_2_2_Transform;           // 0x0000(0x0060)(Edit, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -1289,96 +1303,82 @@ public:
 	TArray<struct FRigElementKey>                 RigVMModel___RigUnit_ItemArray_4_Items__IO;        // 0x0420(0x0010)(Edit)
 	TArray<struct FRigElementKey>                 RigVMModel___RigUnit_ItemArray_3_Items__IO;        // 0x0430(0x0010)(Edit)
 };
-DUMPER7_ASSERTS_FPropertyBag_60c5013d9fc7d92e;
+DUMPER7_ASSERTS_FPropertyBag_66d84311596366a0;
 
-// PropertyBag Transient.PropertyBag_f697f77c52301408
+// PropertyBag Transient.PropertyBag_707e6e4024659353
 // 0x0008 (0x0008 - 0x0000)
-struct FPropertyBag_f697f77c52301408 final
+struct FPropertyBag_707e6e4024659353 final
 {
 public:
 	class FName                                   IkTargetBone;                                      // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_f697f77c52301408;
+DUMPER7_ASSERTS_FPropertyBag_707e6e4024659353;
 
-// PropertyBag Transient.PropertyBag_e49962a9e7ab8c30
+// PropertyBag Transient.PropertyBag_6ce1661852bea1c5
 // 0x0008 (0x0008 - 0x0000)
-struct FPropertyBag_e49962a9e7ab8c30 final
+struct FPropertyBag_6ce1661852bea1c5 final
 {
 public:
 	class FName                                   IkTargetBone;                                      // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_e49962a9e7ab8c30;
+DUMPER7_ASSERTS_FPropertyBag_6ce1661852bea1c5;
 
-// PropertyBag Transient.PropertyBag_ff09a64c2206474d
+// PropertyBag Transient.PropertyBag_554a7584a48dcf9
 // 0x0008 (0x0008 - 0x0000)
-struct FPropertyBag_ff09a64c2206474d final
+struct FPropertyBag_554a7584a48dcf9 final
 {
 public:
 	class FName                                   IkTargetBone;                                      // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_ff09a64c2206474d;
+DUMPER7_ASSERTS_FPropertyBag_554a7584a48dcf9;
 
-// PropertyBag Transient.PropertyBag_8f821dea9267e30a
-// 0x0008 (0x0008 - 0x0000)
-struct FPropertyBag_8f821dea9267e30a final
-{
-public:
-	class FName                                   IkTargetBone;                                      // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_FPropertyBag_8f821dea9267e30a;
-
-// PropertyBag Transient.PropertyBag_bfc353d084f054ca
+// PropertyBag Transient.PropertyBag_298698a6a1948ed
 // 0x0018 (0x0018 - 0x0000)
-struct FPropertyBag_bfc353d084f054ca final
+struct FPropertyBag_298698a6a1948ed final
 {
 public:
 	double                                        DistanceToOpponentToStartDribble;                  // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	double                                        DistanceToGoalToShoot;                             // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	double                                        DistanceToFriendToShoot;                           // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_bfc353d084f054ca;
+DUMPER7_ASSERTS_FPropertyBag_298698a6a1948ed;
 
-// PropertyBag Transient.PropertyBag_6cc2ed80484e4780
-// 0x0048 (0x0048 - 0x0000)
-struct FPropertyBag_6cc2ed80484e4780 final
-{
-public:
-	double                                        DistanceToRelax;                                   // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        DistanceToRush;                                    // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        DistancetoTackle;                                  // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        DistanceToDive;                                    // 0x0018(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        TimeToDive;                                        // 0x0020(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          bIsPlayerTarget;                                   // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 ActorTarget;                                       // 0x0030(0x0008)(Edit, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	EAbilityShootType                             ShootType;                                         // 0x0038(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        PowerRatio;                                        // 0x0040(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_FPropertyBag_6cc2ed80484e4780;
-
-// PropertyBag Transient.PropertyBag_d9ec7c524a2d40e1
+// PropertyBag Transient.PropertyBag_a52398fc90b0b5c8
 // 0x0010 (0x0010 - 0x0000)
-struct FPropertyBag_d9ec7c524a2d40e1 final
+struct FPropertyBag_a52398fc90b0b5c8 final
 {
 public:
 	double                                        DistancetoTackle;                                  // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	double                                        DelayAfterTackle;                                  // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_d9ec7c524a2d40e1;
+DUMPER7_ASSERTS_FPropertyBag_a52398fc90b0b5c8;
 
-// PropertyBag Transient.PropertyBag_2ba491f33dec5063
+// PropertyBag Transient.PropertyBag_13835ca315425ea4
+// 0x0030 (0x0030 - 0x0000)
+struct FPropertyBag_13835ca315425ea4 final
+{
+public:
+	double                                        DistanceEnterDefMode;                              // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        DistanceLeaveDefMode;                              // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        DistancetoTackle;                                  // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        DelayBeforeTackle;                                 // 0x0018(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        DelayVarBeforeTackle;                              // 0x0020(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        DelayToTackle;                                     // 0x0028(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_FPropertyBag_13835ca315425ea4;
+
+// PropertyBag Transient.PropertyBag_83921f55975a573e
 // 0x0008 (0x0008 - 0x0000)
-struct FPropertyBag_2ba491f33dec5063 final
+struct FPropertyBag_83921f55975a573e final
 {
 public:
 	double                                        DistanceToLeaveSimpleDefAndStartRush;              // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_2ba491f33dec5063;
+DUMPER7_ASSERTS_FPropertyBag_83921f55975a573e;
 
-// PropertyBag Transient.PropertyBag_5d86b92c74ad2155
+// PropertyBag Transient.PropertyBag_5efae0dc81b5f00e
 // 0x0028 (0x0028 - 0x0000)
-struct FPropertyBag_5d86b92c74ad2155 final
+struct FPropertyBag_5efae0dc81b5f00e final
 {
 public:
 	double                                        DistanceToBallToBlock;                             // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -1387,7 +1387,7 @@ public:
 	double                                        TapForce;                                          // 0x0018(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	double                                        LobForce;                                          // 0x0020(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_FPropertyBag_5d86b92c74ad2155;
+DUMPER7_ASSERTS_FPropertyBag_5efae0dc81b5f00e;
 
 }
 

@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
 #include "Runtime_classes.hpp"
+#include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 
@@ -72,7 +72,7 @@ public:
 	void RefreshPawns();
 	void RegisterDebugCmds();
 	void ResetSteamAchievements(class FName ActionName);
-	void ServerRefillFullStamina(class AActor* inTarget);
+	void ServerRefillFullStamina(class AActor* InTarget);
 	void ServerResetBallAtLocation(const struct FVector& InLocation);
 	void ServerResetBallVelocity(const struct FVector& Pos, const struct FVector& Velocity);
 	void ServerResetCharacterAtLocationAndRotation(const struct FVector& Pos, const struct FRotator& Rot);

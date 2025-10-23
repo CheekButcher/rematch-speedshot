@@ -12,10 +12,35 @@
 
 #include "Engine_structs.hpp"
 #include "GameplayTags_structs.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function BP_RuntimeSaveSystem.BP_RuntimeSaveSystem_C.BPE_BroadcastOnSaveLoaded
+// 0x0001 (0x0001 - 0x0000)
+struct BP_RuntimeSaveSystem_C_BPE_BroadcastOnSaveLoaded final
+{
+public:
+	ELoadResult                                   _eLoadResult;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_RuntimeSaveSystem_C_BPE_BroadcastOnSaveLoaded;
+
+// Function BP_RuntimeSaveSystem.BP_RuntimeSaveSystem_C.ExecuteUbergraph_BP_RuntimeSaveSystem
+// 0x0020 (0x0020 - 0x0000)
+struct BP_RuntimeSaveSystem_C_ExecuteUbergraph_BP_RuntimeSaveSystem final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UWorld*                                 CallFunc_BPF_GetCurrentPlayWorld_ReturnValue;      // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UBP_RuntimeSaveObjectGameData_C*        K2Node_DynamicCast_AsBP_Runtime_Save_Object_Game_Data; // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_ShouldResetCrosshair_bResetCrosshair;     // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ELoadResult                                   K2Node_Event__eLoadResult;                         // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_RuntimeSaveSystem_C_ExecuteUbergraph_BP_RuntimeSaveSystem;
 
 // Function BP_RuntimeSaveSystem.BP_RuntimeSaveSystem_C.Launch Debug Save
 // 0x00B8 (0x00B8 - 0x0000)

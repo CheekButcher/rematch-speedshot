@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "SCCharacterCustomization_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "SCCharacterCustomization_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "StructUtils_structs.hpp"
 #include "CoreUObject_structs.hpp"
@@ -328,6 +328,26 @@ public:
 	}
 };
 DUMPER7_ASSERTS_USCBaseCharacterCustomizationUIBuilderAsset;
+
+// Class SCCharacterCustomization.SCTransientSkeletalMeshComponent
+// 0x0000 (0x1050 - 0x1050)
+class USCTransientSkeletalMeshComponent final : public USkeletalMeshComponent
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("SCTransientSkeletalMeshComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"SCTransientSkeletalMeshComponent")
+	}
+	static class USCTransientSkeletalMeshComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<USCTransientSkeletalMeshComponent>();
+	}
+};
+DUMPER7_ASSERTS_USCTransientSkeletalMeshComponent;
 
 // Class SCCharacterCustomization.SCCharacterCustomizationParameterLinks
 // 0x0010 (0x0040 - 0x0030)
@@ -1080,26 +1100,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_USCMergedMeshCachingSubsystem;
-
-// Class SCCharacterCustomization.SCTransientSkeletalMeshComponent
-// 0x0000 (0x1050 - 0x1050)
-class USCTransientSkeletalMeshComponent final : public USkeletalMeshComponent
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("SCTransientSkeletalMeshComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"SCTransientSkeletalMeshComponent")
-	}
-	static class USCTransientSkeletalMeshComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<USCTransientSkeletalMeshComponent>();
-	}
-};
-DUMPER7_ASSERTS_USCTransientSkeletalMeshComponent;
 
 }
 

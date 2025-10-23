@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "AkAudio_structs.hpp"
-#include "SOS_structs.hpp"
-#include "UIBaseColors_structs.hpp"
-#include "Runtime_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "Runtime_structs.hpp"
+#include "UIBaseColors_structs.hpp"
+#include "SOS_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "UMG_structs.hpp"
 

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "PingDataContainer_structs.hpp"
 #include "PingOverrideStruct_structs.hpp"
+#include "PingDataContainer_structs.hpp"
 
 
 namespace SDK::Params
@@ -23,7 +23,7 @@ struct BP_OverridablePingDataGetter_C_Get_Data final
 {
 public:
 	class AActor*                                 InOwner;                                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class AActor*                                 inTarget;                                          // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 InTarget;                                          // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	bool                                          bInIsMarker;                                       // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_11[0xF];                                       // 0x0011(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FPingDataContainer                     ReturnValue;                                       // 0x0020(0x0110)(Parm, OutParm, ReturnParm, HasGetValueTypeHash)

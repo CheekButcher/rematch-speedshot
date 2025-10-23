@@ -14,10 +14,10 @@
 #include "SlateCore_structs.hpp"
 #include "InputCore_structs.hpp"
 #include "SCCore_structs.hpp"
-#include "GameplayTags_structs.hpp"
-#include "AkAudio_structs.hpp"
-#include "SOS_structs.hpp"
 #include "Engine_structs.hpp"
+#include "SOS_structs.hpp"
+#include "AkAudio_structs.hpp"
+#include "GameplayTags_structs.hpp"
 
 
 namespace SDK::Params

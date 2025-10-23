@@ -69,8 +69,9 @@ void UGA_Shoot_GoalKeeper_C::ExecuteUbergraph_GA_Shoot_GoalKeeper(int32 EntryPoi
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // bool                                    IsKeyBoardController                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   LockGameOption                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UGA_Shoot_GoalKeeper_C::InitOverrideComputationForKeyBoard(bool IsKeyBoardController)
+void UGA_Shoot_GoalKeeper_C::InitOverrideComputationForKeyBoard(bool IsKeyBoardController, int32 LockGameOption)
 {
 	static class UFunction* Func = nullptr;
 
@@ -80,6 +81,7 @@ void UGA_Shoot_GoalKeeper_C::InitOverrideComputationForKeyBoard(bool IsKeyBoardC
 	Params::GA_Shoot_GoalKeeper_C_InitOverrideComputationForKeyBoard Parms{};
 
 	Parms.IsKeyBoardController = IsKeyBoardController;
+	Parms.LockGameOption = LockGameOption;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -541,9 +543,9 @@ void UGA_Shoot_GoalKeeper_C::OnTimeOut_63F2E00741CD4BB948BC938AE8AA78A3(const st
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // int32                                   GameOption                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsKeyboard                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    isKeyboard                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UGA_Shoot_GoalKeeper_C::OverrideLockShoot(int32 GameOption, bool IsKeyboard)
+void UGA_Shoot_GoalKeeper_C::OverrideLockShoot(int32 GameOption, bool isKeyboard)
 {
 	static class UFunction* Func = nullptr;
 
@@ -553,7 +555,7 @@ void UGA_Shoot_GoalKeeper_C::OverrideLockShoot(int32 GameOption, bool IsKeyboard
 	Params::GA_Shoot_GoalKeeper_C_OverrideLockShoot Parms{};
 
 	Parms.GameOption = GameOption;
-	Parms.IsKeyboard = IsKeyboard;
+	Parms.isKeyboard = isKeyboard;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

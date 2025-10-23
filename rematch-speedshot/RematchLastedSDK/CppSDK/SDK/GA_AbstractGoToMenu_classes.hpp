@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "Runtime_classes.hpp"
 #include "Engine_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "Runtime_classes.hpp"
 #include "SCCore_structs.hpp"
 
 

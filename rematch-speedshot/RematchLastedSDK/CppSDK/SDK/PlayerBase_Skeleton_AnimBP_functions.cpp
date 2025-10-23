@@ -336,6 +336,28 @@ void UPlayerBase_Skeleton_AnimBP_C::InitLookAtTarget()
 }
 
 
+// Function PlayerBase_Skeleton_AnimBP.PlayerBase_Skeleton_AnimBP_C.InvalidateTransitionStopReason
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// const struct FAnimUpdateContext&        Context                                                (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// const struct FAnimNodeReference&        Node                                                   (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor)
+
+void UPlayerBase_Skeleton_AnimBP_C::InvalidateTransitionStopReason(const struct FAnimUpdateContext& Context, const struct FAnimNodeReference& Node)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PlayerBase_Skeleton_AnimBP_C", "InvalidateTransitionStopReason");
+
+	Params::PlayerBase_Skeleton_AnimBP_C_InvalidateTransitionStopReason Parms{};
+
+	Parms.Context = std::move(Context);
+	Parms.Node = std::move(Node);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function PlayerBase_Skeleton_AnimBP.PlayerBase_Skeleton_AnimBP_C.LogTouchBallFoot
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -481,28 +503,6 @@ void UPlayerBase_Skeleton_AnimBP_C::OnCountdownOver_Event(class ARuntimeMatchGam
 	Params::PlayerBase_Skeleton_AnimBP_C_OnCountdownOver_Event Parms{};
 
 	Parms._gameState = _gameState;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function PlayerBase_Skeleton_AnimBP.PlayerBase_Skeleton_AnimBP_C.OnEnterIdleRun
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const struct FAnimUpdateContext&        Context                                                (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-// const struct FAnimNodeReference&        Node                                                   (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor)
-
-void UPlayerBase_Skeleton_AnimBP_C::OnEnterIdleRun(const struct FAnimUpdateContext& Context, const struct FAnimNodeReference& Node)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PlayerBase_Skeleton_AnimBP_C", "OnEnterIdleRun");
-
-	Params::PlayerBase_Skeleton_AnimBP_C_OnEnterIdleRun Parms{};
-
-	Parms.Context = std::move(Context);
-	Parms.Node = std::move(Node);
 
 	UObject::ProcessEvent(Func, &Parms);
 }

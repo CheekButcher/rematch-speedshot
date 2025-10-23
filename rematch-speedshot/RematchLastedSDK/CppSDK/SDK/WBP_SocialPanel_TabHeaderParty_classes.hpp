@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "SOS_structs.hpp"
 #include "Engine_structs.hpp"
 #include "SCCore_classes.hpp"
-#include "SOS_structs.hpp"
 #include "UMG_structs.hpp"
 
 
@@ -48,29 +48,29 @@ public:
 	class UBP_VM_CustomFriendSystem_C*            BP_VM_CustomFriendSystem;                          // 0x0C90(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ExecuteUbergraph_WBP_SocialPanel_TabHeaderParty(int32 EntryPoint);
-	void PreConstruct(bool IsDesignTime);
 	void SetSquadVisibility(ESOSClientCustomMatchState eCustomMatchStatus);
+	void PreConstruct(bool IsDesignTime);
+	void ExecuteUbergraph_WBP_SocialPanel_TabHeaderParty(int32 EntryPoint);
 
-	void __115b5d1c_4ac4_d08d_1e57_adb061dfc9a0_SourceToDest(int32* OutputIndex) const;
-	void __1a724803_4cac_3100_db10_e0b79982c7d0_SourceToDest(int32* OutputIndex) const;
-	void __1ac1c30e_4102_fac5_3017_b8804384f94c_SourceToDest(int32* OutputIndex) const;
-	void __203a45d1_48e4_84af_bf83_5a9cc5411d26_SourceToDest(bool* IsOwner) const;
-	void __658a904a_4394_d71b_7dc1_9fb4f5eb5530_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
-	void __69b01706_4650_e5b2_9474_ceb8ef902186_SourceToDest(bool* IsOwner) const;
-	void __6f061834_45a2_d455_5f9b_82be56b3e934_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
-	void __7ece07af_4063_6353_5ae8_4ea7cc198047_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
-	void __9612f3c9_4ac9_c28f_7c8a_a29c8a8c5ea5_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
-	void __ad62fe23_46a3_f6f0_fd78_5bb5dd2e3ebd_SourceToDest(int32* OutputIndex) const;
-	void __adfd06ac_4c2c_a806_65bd_e9ba6fe96a56_SourceToDest(bool* IsVisible_0) const;
-	void __b3fefe60_40ee_7c07_85c6_98b6367a5c7a_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
-	void __c1520176_48c7_a6f4_8044_92980a7ef9de_SourceToDest(bool* IsOwner) const;
-	void __c6befb20_4f69_f96a_019f_3eabb91c7d1d_SourceToDest(class FString* Global_Notif_Count) const;
-	void __c944efa4_4045_65ef_285a_8dafd224135d_SourceToDest(int32* OutputIndex) const;
-	void __e16b39a5_4098_c195_876e_258e00b992d9_SourceToDest(bool* IsOwner) const;
-	void __f9464a68_4421_ff9d_693d_da9d7ae61df5_SourceToDest(bool* IsOwner) const;
-	void GetGlobalNotifcount(int32 PartyInviteCount, int32 FriendRequestCount, class FString* Global_Notif_Count) const;
 	void SetNotificationsVisibility(int32 InvitesCount, int32 FriendRequestCount, bool* IsVisible_0) const;
+	void GetGlobalNotifcount(int32 PartyInviteCount, int32 FriendRequestCount, class FString* Global_Notif_Count) const;
+	void __f9464a68_4421_ff9d_693d_da9d7ae61df5_SourceToDest(bool* IsOwner) const;
+	void __e16b39a5_4098_c195_876e_258e00b992d9_SourceToDest(bool* IsOwner) const;
+	void __c944efa4_4045_65ef_285a_8dafd224135d_SourceToDest(int32* OutputIndex) const;
+	void __c6befb20_4f69_f96a_019f_3eabb91c7d1d_SourceToDest(class FString* Global_Notif_Count) const;
+	void __c1520176_48c7_a6f4_8044_92980a7ef9de_SourceToDest(bool* IsOwner) const;
+	void __b3fefe60_40ee_7c07_85c6_98b6367a5c7a_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
+	void __adfd06ac_4c2c_a806_65bd_e9ba6fe96a56_SourceToDest(bool* IsVisible_0) const;
+	void __ad62fe23_46a3_f6f0_fd78_5bb5dd2e3ebd_SourceToDest(int32* OutputIndex) const;
+	void __9612f3c9_4ac9_c28f_7c8a_a29c8a8c5ea5_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
+	void __7ece07af_4063_6353_5ae8_4ea7cc198047_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
+	void __6f061834_45a2_d455_5f9b_82be56b3e934_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
+	void __69b01706_4650_e5b2_9474_ceb8ef902186_SourceToDest(bool* IsOwner) const;
+	void __658a904a_4394_d71b_7dc1_9fb4f5eb5530_SourceToDest(class UPartyMemberViewModel** PartyMember) const;
+	void __203a45d1_48e4_84af_bf83_5a9cc5411d26_SourceToDest(bool* IsOwner) const;
+	void __1ac1c30e_4102_fac5_3017_b8804384f94c_SourceToDest(int32* OutputIndex) const;
+	void __1a724803_4cac_3100_db10_e0b79982c7d0_SourceToDest(int32* OutputIndex) const;
+	void __115b5d1c_4ac4_d08d_1e57_adb061dfc9a0_SourceToDest(int32* OutputIndex) const;
 
 public:
 	static class UClass* StaticClass()

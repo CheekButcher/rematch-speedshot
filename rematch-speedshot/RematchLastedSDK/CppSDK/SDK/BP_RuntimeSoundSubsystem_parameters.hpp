@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "GameplayTags_structs.hpp"
 #include "AkAudio_structs.hpp"
+#include "GameplayTags_structs.hpp"
 
 
 namespace SDK::Params
@@ -508,6 +508,16 @@ public:
 	bool                                          Succeeded;                                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_RuntimeSoundSubsystem_C_Set_to_Turkish;
+
+// Function BP_RuntimeSoundSubsystem.BP_RuntimeSoundSubsystem_C.SetAudioMixPresetFromOption
+// 0x0008 (0x0008 - 0x0000)
+struct BP_RuntimeSoundSubsystem_C_SetAudioMixPresetFromOption final
+{
+public:
+	int32                                         OptionValue;                                       // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchInteger_CmpSuccess;                   // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_RuntimeSoundSubsystem_C_SetAudioMixPresetFromOption;
 
 // Function BP_RuntimeSoundSubsystem.BP_RuntimeSoundSubsystem_C.SetMixPresetHeadphones
 // 0x0008 (0x0008 - 0x0000)

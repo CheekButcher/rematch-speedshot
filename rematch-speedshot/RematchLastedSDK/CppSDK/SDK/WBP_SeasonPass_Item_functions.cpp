@@ -40,9 +40,9 @@ void UWBP_SeasonPass_Item_C::ExecuteUbergraph_WBP_SeasonPass_Item(int32 EntryPoi
 // Function WBP_SeasonPass_Item.WBP_SeasonPass_Item_C.FadeInAnimation
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
-// int32                                   AnimationID                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Enum_SP_TiersAnimation                  AnimationType                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_SeasonPass_Item_C::FadeInAnimation(int32 AnimationID)
+void UWBP_SeasonPass_Item_C::FadeInAnimation(Enum_SP_TiersAnimation AnimationType)
 {
 	static class UFunction* Func = nullptr;
 
@@ -51,7 +51,7 @@ void UWBP_SeasonPass_Item_C::FadeInAnimation(int32 AnimationID)
 
 	Params::WBP_SeasonPass_Item_C_FadeInAnimation Parms{};
 
-	Parms.AnimationID = AnimationID;
+	Parms.AnimationType = AnimationType;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -66,20 +66,6 @@ void UWBP_SeasonPass_Item_C::InitHighlight()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("WBP_SeasonPass_Item_C", "InitHighlight");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_SeasonPass_Item.WBP_SeasonPass_Item_C.initTierItem
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void UWBP_SeasonPass_Item_C::initTierItem()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_SeasonPass_Item_C", "initTierItem");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

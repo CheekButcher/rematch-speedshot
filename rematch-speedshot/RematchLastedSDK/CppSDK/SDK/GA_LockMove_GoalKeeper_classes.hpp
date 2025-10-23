@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "GA_LockMove_classes.hpp"
+#include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
 
 
@@ -51,6 +51,7 @@ public:
 	void OnStateEnded_52E4A186449F66DB05C7DEA72A3782EB();
 	void OnStateInterrupted_52E4A186449F66DB05C7DEA72A3782EB();
 	void PrepareTargetData(const struct FGameplayAbilityTargetDataHandle& TargetData_In, struct FGameplayAbilityTargetDataHandle* TargetData_Out);
+	void StartStateTasks_52E4A186449F66DB05C7DEA72A3782EB();
 	void ValidateHit(const struct FGameplayAbilityTargetDataHandle& _context, bool* _bReturnResult);
 
 public:

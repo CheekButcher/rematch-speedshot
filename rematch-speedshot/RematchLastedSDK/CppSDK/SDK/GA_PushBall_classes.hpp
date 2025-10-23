@@ -12,26 +12,27 @@
 
 #include "Engine_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "GA_BaseShoot_classes.hpp"
 #include "SCCore_structs.hpp"
+#include "GA_BaseShoot_classes.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass GA_PushBall.GA_PushBall_C
-// 0x0060 (0x0E10 - 0x0DB0)
+// 0x0060 (0x0E20 - 0x0DC0)
 class UGA_PushBall_C : public UGA_BaseShoot_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame_GA_PushBall_C;                      // 0x0DB0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	TArray<class UClass*>                         Status;                                            // 0x0DB8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TSubclassOf<class UAnimSequencePicker>        Picker;                                            // 0x0DC8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	struct FGameplayTagContainer                  AvailabilityLayerTags;                             // 0x0DD0(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	double                                        Duration_Before_Apply_Tags;                        // 0x0DF0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        Duration_Tags;                                     // 0x0DF8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class ABall*                                  Ball;                                              // 0x0E00(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	TSubclassOf<class UGameplayEffect>            TackleCooldownAfterReleaseBall;                    // 0x0E08(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	uint8                                         Pad_DB1[0x7];                                      // 0x0DB1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPointerToUberGraphFrame               UberGraphFrame_GA_PushBall_C;                      // 0x0DB8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	TArray<class UClass*>                         Status;                                            // 0x0DC0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TSubclassOf<class UAnimSequencePicker>        Picker;                                            // 0x0DD0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	struct FGameplayTagContainer                  AvailabilityLayerTags;                             // 0x0DD8(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
+	double                                        Duration_Before_Apply_Tags;                        // 0x0DF8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        Duration_Tags;                                     // 0x0E00(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ABall*                                  Ball;                                              // 0x0E08(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	TSubclassOf<class UGameplayEffect>            TackleCooldownAfterReleaseBall;                    // 0x0E10(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 
 public:
 	void BPE_BuildPayload();

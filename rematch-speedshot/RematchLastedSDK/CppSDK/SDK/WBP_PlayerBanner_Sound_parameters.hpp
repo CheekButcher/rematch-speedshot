@@ -16,33 +16,19 @@
 namespace SDK::Params
 {
 
-// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.ExecuteUbergraph_WBP_PlayerBanner_Sound
-// 0x0038 (0x0038 - 0x0000)
-struct WBP_PlayerBanner_Sound_C_ExecuteUbergraph_WBP_PlayerBanner_Sound final
-{
-public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLinearColor                           Temp_struct_Variable;                              // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FLinearColor                           Temp_struct_Variable_1;                            // 0x0018(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FLinearColor                           K2Node_Select_Default;                             // 0x0028(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_PlayerBanner_Sound_C_ExecuteUbergraph_WBP_PlayerBanner_Sound;
-
-// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.SetIsDeafen
+// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.SetIsTalking
 // 0x0010 (0x0010 - 0x0000)
-struct WBP_PlayerBanner_Sound_C_SetIsDeafen final
+struct WBP_PlayerBanner_Sound_C_SetIsTalking final
 {
 public:
-	bool                                          IsDeafen;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          isTalking_0;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	int32                                         Temp_int_Variable;                                 // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Variable_1;                               // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         K2Node_Select_Default;                             // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_PlayerBanner_Sound_C_SetIsDeafen;
+DUMPER7_ASSERTS_WBP_PlayerBanner_Sound_C_SetIsTalking;
 
 // Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.SetIsMuted
 // 0x0010 (0x0010 - 0x0000)
@@ -58,19 +44,33 @@ public:
 };
 DUMPER7_ASSERTS_WBP_PlayerBanner_Sound_C_SetIsMuted;
 
-// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.SetIsTalking
+// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.SetIsDeafen
 // 0x0010 (0x0010 - 0x0000)
-struct WBP_PlayerBanner_Sound_C_SetIsTalking final
+struct WBP_PlayerBanner_Sound_C_SetIsDeafen final
 {
 public:
-	bool                                          isTalking_0;                                       // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsDeafen;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	int32                                         Temp_int_Variable;                                 // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         Temp_int_Variable_1;                               // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         K2Node_Select_Default;                             // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_PlayerBanner_Sound_C_SetIsTalking;
+DUMPER7_ASSERTS_WBP_PlayerBanner_Sound_C_SetIsDeafen;
+
+// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.ExecuteUbergraph_WBP_PlayerBanner_Sound
+// 0x0038 (0x0038 - 0x0000)
+struct WBP_PlayerBanner_Sound_C_ExecuteUbergraph_WBP_PlayerBanner_Sound final
+{
+public:
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLinearColor                           Temp_struct_Variable;                              // 0x0008(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FLinearColor                           Temp_struct_Variable_1;                            // 0x0018(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FLinearColor                           K2Node_Select_Default;                             // 0x0028(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_PlayerBanner_Sound_C_ExecuteUbergraph_WBP_PlayerBanner_Sound;
 
 // Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.__29d241ff-429d-91fe-10a3-4785c2788624_SourceToDest
 // 0x0003 (0x0003 - 0x0000)

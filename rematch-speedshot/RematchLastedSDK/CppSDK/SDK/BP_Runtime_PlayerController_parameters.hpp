@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "SCCore_structs.hpp"
-#include "Struct_ControlDisplay_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
+#include "Struct_ControlDisplay_structs.hpp"
+#include "SCCore_structs.hpp"
 #include "Engine_structs.hpp"
 
 

@@ -10,17 +10,17 @@
 
 #include "Basic.hpp"
 
-#include "GameplayTags_structs.hpp"
-#include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
 #include "Runtime_classes.hpp"
+#include "Engine_structs.hpp"
+#include "GameplayTags_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_Binder_BallAnyOwnerChanged.BP_Binder_BallAnyOwnerChanged_C
-// 0x0298 (0x03A8 - 0x0110)
+// 0x0250 (0x0360 - 0x0110)
 #pragma pack(push, 0x1)
 class alignas(0x08) UBP_Binder_BallAnyOwnerChanged_C : public UBallInteractionBinder
 {
@@ -32,28 +32,25 @@ public:
 	double                                        m_fMaxDurationBetweenInteractions;                 // 0x0230(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FGameplayTagQuery                      ShootTypeQuery;                                    // 0x0238(0x0048)(Edit, BlueprintVisible)
 	struct FGameplayTagQuery                      PreviousOwnerTagQuery;                             // 0x0280(0x0048)(Edit, BlueprintVisible)
-	struct FGameplayTagQuery                      OldPreviousTagQuery;                               // 0x02C8(0x0048)(Edit, BlueprintVisible)
-	struct FGameplayTagQuery                      m_PreviousShootTypeQuery;                          // 0x0310(0x0048)(Edit, BlueprintVisible)
-	struct FGameplayTagQuery                      CurrentOwnerQuery;                                 // 0x0358(0x0048)(Edit, BlueprintVisible)
-	bool                                          m_bIgnoreKickOff;                                  // 0x03A0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          m_bOnlyOnTeamChanged;                              // 0x03A1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTagQuery                      m_PreviousShootTypeQuery;                          // 0x02C8(0x0048)(Edit, BlueprintVisible)
+	struct FGameplayTagQuery                      CurrentOwnerQuery;                                 // 0x0310(0x0048)(Edit, BlueprintVisible)
+	bool                                          m_bIgnoreKickOff;                                  // 0x0358(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          m_bOnlyOnTeamChanged;                              // 0x0359(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void BPE_OnBallInteraction(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType);
+	void BPE_OnBallInteraction(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
 	void BPE_Reset();
-	bool Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType);
+	bool Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
 	void ExecuteUbergraph_BP_Binder_BallAnyOwnerChanged(int32 EntryPoint);
-	void OnAnyOwnersChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType);
-	void PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType);
+	void OnAnyOwnersChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
+	void PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
 	void SaveCurrentTime();
 	void SetPrevious(class UBallPlayersInteractionComponent* _ballPlayersInteraction);
 
 	void CheckPlayerTags(class ARuntimePlayerState* _playerState, const struct FGameplayTagQuery& _tagQuery, bool* QueryResult) const;
 	bool CheckTagsOrQueryEmpty(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagQuery& TagQuery) const;
 	class ARuntimePlayerState* GetPreviousInteracter(class UBallPlayersInteractionComponent* BallPlayersInteraction, EBallInteractionType BallInteractionType, int32 _iIndexInteracter) const;
-	bool HasTeamInfluenceChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType) const;
 	bool IsCorrectPass() const;
-	bool IsKickOff(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType) const;
 
 public:
 	static class UClass* StaticClass()

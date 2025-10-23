@@ -341,6 +341,42 @@ public:
 };
 DUMPER7_ASSERTS_UInterchangeDecalMaterialNode;
 
+// Class InterchangeNodes.InterchangeMaterialInstanceNode
+// 0x0010 (0x0070 - 0x0060)
+class UInterchangeMaterialInstanceNode final : public UInterchangeBaseNode
+{
+public:
+	uint8                                         Pad_60[0x10];                                      // 0x0060(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	bool AddScalarParameterValue(const class FString& ParameterName, float AttributeValue);
+	bool AddStaticSwitchParameterValue(const class FString& ParameterName, bool AttributeValue);
+	bool AddTextureParameterValue(const class FString& ParameterName, const class FString& AttributeValue);
+	bool AddVectorParameterValue(const class FString& ParameterName, const struct FLinearColor& AttributeValue);
+
+	bool GetCustomParent(class FString* AttributeValue) const;
+	bool GetScalarParameterValue(const class FString& ParameterName, float* AttributeValue) const;
+	bool GetStaticSwitchParameterValue(const class FString& ParameterName, bool* AttributeValue) const;
+	bool GetTextureParameterValue(const class FString& ParameterName, class FString* AttributeValue) const;
+	bool GetVectorParameterValue(const class FString& ParameterName, struct FLinearColor* AttributeValue) const;
+	bool SetCustomParent(const class FString& AttributeValue) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("InterchangeMaterialInstanceNode")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"InterchangeMaterialInstanceNode")
+	}
+	static class UInterchangeMaterialInstanceNode* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UInterchangeMaterialInstanceNode>();
+	}
+};
+DUMPER7_ASSERTS_UInterchangeMaterialInstanceNode;
+
 // Class InterchangeNodes.InterchangeDecalNode
 // 0x0030 (0x0090 - 0x0060)
 class UInterchangeDecalNode final : public UInterchangeBaseNode
@@ -406,6 +442,59 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UInterchangeBaseLightNode;
+
+// Class InterchangeNodes.InterchangeTextureNode
+// 0x0030 (0x0090 - 0x0060)
+class UInterchangeTextureNode : public UInterchangeBaseNode
+{
+public:
+	uint8                                         Pad_60[0x30];                                      // 0x0060(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	bool SetCustombFlipGreenChannel(const bool& AttributeValue);
+	bool SetCustomFilter(const EInterchangeTextureFilterMode& AttributeValue);
+	bool SetCustomSRGB(const bool& AttributeValue);
+	void SetPayLoadKey(const class FString& PayloadKey);
+
+	bool GetCustombFlipGreenChannel(bool* AttributeValue) const;
+	bool GetCustomFilter(EInterchangeTextureFilterMode* AttributeValue) const;
+	bool GetCustomSRGB(bool* AttributeValue) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("InterchangeTextureNode")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"InterchangeTextureNode")
+	}
+	static class UInterchangeTextureNode* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UInterchangeTextureNode>();
+	}
+};
+DUMPER7_ASSERTS_UInterchangeTextureNode;
+
+// Class InterchangeNodes.InterchangeTextureCubeArrayNode
+// 0x0000 (0x0090 - 0x0090)
+class UInterchangeTextureCubeArrayNode final : public UInterchangeTextureNode
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("InterchangeTextureCubeArrayNode")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"InterchangeTextureCubeArrayNode")
+	}
+	static class UInterchangeTextureCubeArrayNode* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UInterchangeTextureCubeArrayNode>();
+	}
+};
+DUMPER7_ASSERTS_UInterchangeTextureCubeArrayNode;
 
 // Class InterchangeNodes.InterchangeLightNode
 // 0x0060 (0x0100 - 0x00A0)
@@ -505,44 +594,6 @@ public:
 };
 DUMPER7_ASSERTS_UInterchangeSpotLightNode;
 
-// Class InterchangeNodes.InterchangeShaderGraphNode
-// 0x0060 (0x00D0 - 0x0070)
-class UInterchangeShaderGraphNode final : public UInterchangeShaderNode
-{
-public:
-	uint8                                         Pad_70[0x60];                                      // 0x0070(0x0060)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	bool SetCustomBlendMode(int32 AttributeValue);
-	bool SetCustomIsAShaderFunction(const bool& AttributeValue);
-	bool SetCustomOpacityMaskClipValue(const float& AttributeValue, bool bAddApplyDelegate);
-	bool SetCustomScreenSpaceReflections(const bool& AttributeValue);
-	bool SetCustomTwoSided(const bool& AttributeValue);
-	bool SetCustomTwoSidedTransmission(const bool& AttributeValue);
-
-	bool GetCustomBlendMode(int32* AttributeValue) const;
-	bool GetCustomIsAShaderFunction(bool* AttributeValue) const;
-	bool GetCustomOpacityMaskClipValue(float* AttributeValue) const;
-	bool GetCustomScreenSpaceReflections(bool* AttributeValue) const;
-	bool GetCustomTwoSided(bool* AttributeValue) const;
-	bool GetCustomTwoSidedTransmission(bool* AttributeValue) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("InterchangeShaderGraphNode")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"InterchangeShaderGraphNode")
-	}
-	static class UInterchangeShaderGraphNode* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UInterchangeShaderGraphNode>();
-	}
-};
-DUMPER7_ASSERTS_UInterchangeShaderGraphNode;
-
 // Class InterchangeNodes.InterchangeRectLightNode
 // 0x0020 (0x0120 - 0x0100)
 class UInterchangeRectLightNode final : public UInterchangeLightNode
@@ -573,6 +624,37 @@ public:
 };
 DUMPER7_ASSERTS_UInterchangeRectLightNode;
 
+// Class InterchangeNodes.InterchangeSceneVariantSetsNode
+// 0x0020 (0x0080 - 0x0060)
+class UInterchangeSceneVariantSetsNode final : public UInterchangeBaseNode
+{
+public:
+	uint8                                         Pad_60[0x20];                                      // 0x0060(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	bool AddCustomVariantSetUid(const class FString& VariantUid);
+	bool RemoveCustomVariantSetUid(const class FString& VariantUid);
+
+	void GetCustomVariantSetUid(const int32 Index_0, class FString* OutVariantUid) const;
+	int32 GetCustomVariantSetUidCount() const;
+	void GetCustomVariantSetUids(TArray<class FString>* OutVariantUids) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("InterchangeSceneVariantSetsNode")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"InterchangeSceneVariantSetsNode")
+	}
+	static class UInterchangeSceneVariantSetsNode* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UInterchangeSceneVariantSetsNode>();
+	}
+};
+DUMPER7_ASSERTS_UInterchangeSceneVariantSetsNode;
+
 // Class InterchangeNodes.InterchangeDirectionalLightNode
 // 0x0000 (0x00A0 - 0x00A0)
 class UInterchangeDirectionalLightNode final : public UInterchangeBaseLightNode
@@ -592,59 +674,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UInterchangeDirectionalLightNode;
-
-// Class InterchangeNodes.InterchangeTextureNode
-// 0x0030 (0x0090 - 0x0060)
-class UInterchangeTextureNode : public UInterchangeBaseNode
-{
-public:
-	uint8                                         Pad_60[0x30];                                      // 0x0060(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	bool SetCustombFlipGreenChannel(const bool& AttributeValue);
-	bool SetCustomFilter(const EInterchangeTextureFilterMode& AttributeValue);
-	bool SetCustomSRGB(const bool& AttributeValue);
-	void SetPayLoadKey(const class FString& PayloadKey);
-
-	bool GetCustombFlipGreenChannel(bool* AttributeValue) const;
-	bool GetCustomFilter(EInterchangeTextureFilterMode* AttributeValue) const;
-	bool GetCustomSRGB(bool* AttributeValue) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("InterchangeTextureNode")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"InterchangeTextureNode")
-	}
-	static class UInterchangeTextureNode* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UInterchangeTextureNode>();
-	}
-};
-DUMPER7_ASSERTS_UInterchangeTextureNode;
-
-// Class InterchangeNodes.InterchangeVolumeTextureNode
-// 0x0000 (0x0090 - 0x0090)
-class UInterchangeVolumeTextureNode final : public UInterchangeTextureNode
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("InterchangeVolumeTextureNode")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"InterchangeVolumeTextureNode")
-	}
-	static class UInterchangeVolumeTextureNode* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UInterchangeVolumeTextureNode>();
-	}
-};
-DUMPER7_ASSERTS_UInterchangeVolumeTextureNode;
 
 // Class InterchangeNodes.InterchangeTexture2DArrayNode
 // 0x0000 (0x0090 - 0x0090)
@@ -666,26 +695,6 @@ public:
 };
 DUMPER7_ASSERTS_UInterchangeTexture2DArrayNode;
 
-// Class InterchangeNodes.InterchangeTextureCubeArrayNode
-// 0x0000 (0x0090 - 0x0090)
-class UInterchangeTextureCubeArrayNode final : public UInterchangeTextureNode
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("InterchangeTextureCubeArrayNode")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"InterchangeTextureCubeArrayNode")
-	}
-	static class UInterchangeTextureCubeArrayNode* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UInterchangeTextureCubeArrayNode>();
-	}
-};
-DUMPER7_ASSERTS_UInterchangeTextureCubeArrayNode;
-
 // Class InterchangeNodes.InterchangeTextureCubeNode
 // 0x0000 (0x0090 - 0x0090)
 class UInterchangeTextureCubeNode final : public UInterchangeTextureNode
@@ -705,41 +714,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UInterchangeTextureCubeNode;
-
-// Class InterchangeNodes.InterchangeShaderPortsAPI
-// 0x0000 (0x0028 - 0x0028)
-class UInterchangeShaderPortsAPI final : public UObject
-{
-public:
-	static bool ConnectDefaultOuputToInput(class UInterchangeBaseNode* InterchangeNode, const class FString& InputName, const class FString& ExpressionUid);
-	static bool ConnectOuputToInputByIndex(class UInterchangeBaseNode* InterchangeNode, const class FString& InputName, const class FString& ExpressionUid, int32 OutputIndex);
-	static bool ConnectOuputToInputByName(class UInterchangeBaseNode* InterchangeNode, const class FString& InputName, const class FString& ExpressionUid, const class FString& OutputName);
-	static void GatherInputs(const class UInterchangeBaseNode* InterchangeNode, TArray<class FString>* OutInputNames);
-	static bool GetInputConnection(const class UInterchangeBaseNode* InterchangeNode, const class FString& InputName, class FString* OutExpressionUid, class FString* OutputName);
-	static bool HasInput(const class UInterchangeBaseNode* InterchangeNode, const class FName& InInputName);
-	static bool HasParameter(const class UInterchangeBaseNode* InterchangeNode, const class FName& InInputName);
-	static bool IsAnInput(const class FString& AttributeKey);
-	static bool IsAParameter(const class FString& AttributeKey);
-	static class FString MakeInputConnectionKey(const class FString& InputName);
-	static class FString MakeInputName(const class FString& InputKey);
-	static class FString MakeInputParameterKey(const class FString& InputName);
-	static class FString MakeInputValueKey(const class FString& InputName);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("InterchangeShaderPortsAPI")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"InterchangeShaderPortsAPI")
-	}
-	static class UInterchangeShaderPortsAPI* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UInterchangeShaderPortsAPI>();
-	}
-};
-DUMPER7_ASSERTS_UInterchangeShaderPortsAPI;
 
 // Class InterchangeNodes.InterchangeTextureLightProfileNode
 // 0x0000 (0x0090 - 0x0090)
@@ -796,72 +770,25 @@ public:
 };
 DUMPER7_ASSERTS_UInterchangeVariantSetNode;
 
-// Class InterchangeNodes.InterchangeSceneVariantSetsNode
-// 0x0020 (0x0080 - 0x0060)
-class UInterchangeSceneVariantSetsNode final : public UInterchangeBaseNode
+// Class InterchangeNodes.InterchangeVolumeTextureNode
+// 0x0000 (0x0090 - 0x0090)
+class UInterchangeVolumeTextureNode final : public UInterchangeTextureNode
 {
-public:
-	uint8                                         Pad_60[0x20];                                      // 0x0060(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	bool AddCustomVariantSetUid(const class FString& VariantUid);
-	bool RemoveCustomVariantSetUid(const class FString& VariantUid);
-
-	void GetCustomVariantSetUid(const int32 Index_0, class FString* OutVariantUid) const;
-	int32 GetCustomVariantSetUidCount() const;
-	void GetCustomVariantSetUids(TArray<class FString>* OutVariantUids) const;
-
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("InterchangeSceneVariantSetsNode")
+		STATIC_CLASS_IMPL("InterchangeVolumeTextureNode")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"InterchangeSceneVariantSetsNode")
+		STATIC_NAME_IMPL(L"InterchangeVolumeTextureNode")
 	}
-	static class UInterchangeSceneVariantSetsNode* GetDefaultObj()
+	static class UInterchangeVolumeTextureNode* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UInterchangeSceneVariantSetsNode>();
+		return GetDefaultObjImpl<UInterchangeVolumeTextureNode>();
 	}
 };
-DUMPER7_ASSERTS_UInterchangeSceneVariantSetsNode;
-
-// Class InterchangeNodes.InterchangeMaterialInstanceNode
-// 0x0010 (0x0070 - 0x0060)
-class UInterchangeMaterialInstanceNode final : public UInterchangeBaseNode
-{
-public:
-	uint8                                         Pad_60[0x10];                                      // 0x0060(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	bool AddScalarParameterValue(const class FString& ParameterName, float AttributeValue);
-	bool AddStaticSwitchParameterValue(const class FString& ParameterName, bool AttributeValue);
-	bool AddTextureParameterValue(const class FString& ParameterName, const class FString& AttributeValue);
-	bool AddVectorParameterValue(const class FString& ParameterName, const struct FLinearColor& AttributeValue);
-
-	bool GetCustomParent(class FString* AttributeValue) const;
-	bool GetScalarParameterValue(const class FString& ParameterName, float* AttributeValue) const;
-	bool GetStaticSwitchParameterValue(const class FString& ParameterName, bool* AttributeValue) const;
-	bool GetTextureParameterValue(const class FString& ParameterName, class FString* AttributeValue) const;
-	bool GetVectorParameterValue(const class FString& ParameterName, struct FLinearColor* AttributeValue) const;
-	bool SetCustomParent(const class FString& AttributeValue) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("InterchangeMaterialInstanceNode")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"InterchangeMaterialInstanceNode")
-	}
-	static class UInterchangeMaterialInstanceNode* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UInterchangeMaterialInstanceNode>();
-	}
-};
-DUMPER7_ASSERTS_UInterchangeMaterialInstanceNode;
+DUMPER7_ASSERTS_UInterchangeVolumeTextureNode;
 
 // Class InterchangeNodes.InterchangeMeshNode
 // 0x0188 (0x01E8 - 0x0060)
@@ -986,6 +913,41 @@ public:
 };
 DUMPER7_ASSERTS_UInterchangeSceneNode;
 
+// Class InterchangeNodes.InterchangeShaderPortsAPI
+// 0x0000 (0x0028 - 0x0028)
+class UInterchangeShaderPortsAPI final : public UObject
+{
+public:
+	static bool ConnectDefaultOuputToInput(class UInterchangeBaseNode* InterchangeNode, const class FString& InputName, const class FString& ExpressionUid);
+	static bool ConnectOuputToInputByIndex(class UInterchangeBaseNode* InterchangeNode, const class FString& InputName, const class FString& ExpressionUid, int32 OutputIndex);
+	static bool ConnectOuputToInputByName(class UInterchangeBaseNode* InterchangeNode, const class FString& InputName, const class FString& ExpressionUid, const class FString& OutputName);
+	static void GatherInputs(const class UInterchangeBaseNode* InterchangeNode, TArray<class FString>* OutInputNames);
+	static bool GetInputConnection(const class UInterchangeBaseNode* InterchangeNode, const class FString& InputName, class FString* OutExpressionUid, class FString* OutputName);
+	static bool HasInput(const class UInterchangeBaseNode* InterchangeNode, const class FName& InInputName);
+	static bool HasParameter(const class UInterchangeBaseNode* InterchangeNode, const class FName& InInputName);
+	static bool IsAnInput(const class FString& AttributeKey);
+	static bool IsAParameter(const class FString& AttributeKey);
+	static class FString MakeInputConnectionKey(const class FString& InputName);
+	static class FString MakeInputName(const class FString& InputKey);
+	static class FString MakeInputParameterKey(const class FString& InputName);
+	static class FString MakeInputValueKey(const class FString& InputName);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("InterchangeShaderPortsAPI")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"InterchangeShaderPortsAPI")
+	}
+	static class UInterchangeShaderPortsAPI* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UInterchangeShaderPortsAPI>();
+	}
+};
+DUMPER7_ASSERTS_UInterchangeShaderPortsAPI;
+
 // Class InterchangeNodes.InterchangeFunctionCallShaderNode
 // 0x0010 (0x0080 - 0x0070)
 class UInterchangeFunctionCallShaderNode final : public UInterchangeShaderNode
@@ -1013,6 +975,44 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UInterchangeFunctionCallShaderNode;
+
+// Class InterchangeNodes.InterchangeShaderGraphNode
+// 0x0060 (0x00D0 - 0x0070)
+class UInterchangeShaderGraphNode final : public UInterchangeShaderNode
+{
+public:
+	uint8                                         Pad_70[0x60];                                      // 0x0070(0x0060)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	bool SetCustomBlendMode(int32 AttributeValue);
+	bool SetCustomIsAShaderFunction(const bool& AttributeValue);
+	bool SetCustomOpacityMaskClipValue(const float& AttributeValue, bool bAddApplyDelegate);
+	bool SetCustomScreenSpaceReflections(const bool& AttributeValue);
+	bool SetCustomTwoSided(const bool& AttributeValue);
+	bool SetCustomTwoSidedTransmission(const bool& AttributeValue);
+
+	bool GetCustomBlendMode(int32* AttributeValue) const;
+	bool GetCustomIsAShaderFunction(bool* AttributeValue) const;
+	bool GetCustomOpacityMaskClipValue(float* AttributeValue) const;
+	bool GetCustomScreenSpaceReflections(bool* AttributeValue) const;
+	bool GetCustomTwoSided(bool* AttributeValue) const;
+	bool GetCustomTwoSidedTransmission(bool* AttributeValue) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("InterchangeShaderGraphNode")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"InterchangeShaderGraphNode")
+	}
+	static class UInterchangeShaderGraphNode* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UInterchangeShaderGraphNode>();
+	}
+};
+DUMPER7_ASSERTS_UInterchangeShaderGraphNode;
 
 // Class InterchangeNodes.InterchangeTexture2DNode
 // 0x0098 (0x0128 - 0x0090)

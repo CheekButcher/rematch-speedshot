@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "Runtime_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "Slate_structs.hpp"
 #include "InputCore_structs.hpp"
-#include "GameplayAbilities_structs.hpp"
 #include "Engine_structs.hpp"
+#include "Runtime_structs.hpp"
+#include "GameplayAbilities_structs.hpp"
 
 
 namespace SDK::Params
@@ -616,7 +616,7 @@ DUMPER7_ASSERTS_BP_RuntimeCheatManager_C_ResetSteamAchievements;
 struct BP_RuntimeCheatManager_C_ServerRefillFullStamina final
 {
 public:
-	class AActor*                                 inTarget;                                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 InTarget;                                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_RuntimeCheatManager_C_ServerRefillFullStamina;
 

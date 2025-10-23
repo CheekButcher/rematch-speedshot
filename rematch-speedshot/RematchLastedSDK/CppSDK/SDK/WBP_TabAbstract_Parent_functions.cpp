@@ -17,49 +17,21 @@
 namespace SDK
 {
 
-// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.BPE_OnClicked
-// (Event, Protected, BlueprintEvent)
-
-void UWBP_TabAbstract_Parent_C::BPE_OnClicked()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabAbstract_Parent_C", "BPE_OnClicked");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.Construct
+// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.PreConstruct
 // (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UWBP_TabAbstract_Parent_C::Construct()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabAbstract_Parent_C", "Construct");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.ExecuteUbergraph_WBP_TabAbstract_Parent
-// (Final, UbergraphFunction)
 // Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabAbstract_Parent_C::ExecuteUbergraph_WBP_TabAbstract_Parent(int32 EntryPoint)
+void UWBP_TabAbstract_Parent_C::PreConstruct(bool IsDesignTime)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabAbstract_Parent_C", "ExecuteUbergraph_WBP_TabAbstract_Parent");
+		Func = Class->GetFunction("WBP_TabAbstract_Parent_C", "PreConstruct");
 
-	Params::WBP_TabAbstract_Parent_C_ExecuteUbergraph_WBP_TabAbstract_Parent Parms{};
+	Params::WBP_TabAbstract_Parent_C_PreConstruct Parms{};
 
-	Parms.EntryPoint = EntryPoint;
+	Parms.IsDesignTime = IsDesignTime;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -85,23 +57,51 @@ void UWBP_TabAbstract_Parent_C::FocusButton(bool ButtonFocused)
 }
 
 
-// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.PreConstruct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.ExecuteUbergraph_WBP_TabAbstract_Parent
+// (Final, UbergraphFunction)
 // Parameters:
-// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabAbstract_Parent_C::PreConstruct(bool IsDesignTime)
+void UWBP_TabAbstract_Parent_C::ExecuteUbergraph_WBP_TabAbstract_Parent(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabAbstract_Parent_C", "PreConstruct");
+		Func = Class->GetFunction("WBP_TabAbstract_Parent_C", "ExecuteUbergraph_WBP_TabAbstract_Parent");
 
-	Params::WBP_TabAbstract_Parent_C_PreConstruct Parms{};
+	Params::WBP_TabAbstract_Parent_C_ExecuteUbergraph_WBP_TabAbstract_Parent Parms{};
 
-	Parms.IsDesignTime = IsDesignTime;
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void UWBP_TabAbstract_Parent_C::Construct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabAbstract_Parent_C", "Construct");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.BPE_OnClicked
+// (Event, Protected, BlueprintEvent)
+
+void UWBP_TabAbstract_Parent_C::BPE_OnClicked()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabAbstract_Parent_C", "BPE_OnClicked");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

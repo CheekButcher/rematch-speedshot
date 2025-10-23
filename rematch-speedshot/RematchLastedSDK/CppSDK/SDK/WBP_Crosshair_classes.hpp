@@ -13,14 +13,13 @@
 #include "Engine_structs.hpp"
 #include "UMG_structs.hpp"
 #include "UMG_classes.hpp"
-#include "CoreUObject_structs.hpp"
 
 
 namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WBP_Crosshair.WBP_Crosshair_C
-// 0x0088 (0x0410 - 0x0388)
+// 0x0060 (0x03E8 - 0x0388)
 class UWBP_Crosshair_C final : public UUserWidget
 {
 public:
@@ -40,12 +39,8 @@ public:
 	class UMaterialInstanceDynamic*               CrosshairMaterial;                                 // 0x03C8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 	EUMGSequencePlayMode                          PlayDefenseMode;                                   // 0x03D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_3D1[0x7];                                      // 0x03D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        BallShootedFeedbackMaxIntensity;                   // 0x03D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class UCurveFloat*                            CrosshairBallShootedAnim;                          // 0x03E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	double                                        ShotForceMinimumFillPercentage;                    // 0x03E8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CurrentScale;                                      // 0x03F0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FLinearColor>                   AvailableColors;                                   // 0x03F8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	double                                        BlackColorIndex;                                   // 0x0408(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UCurveFloat*                            CrosshairBallShootedAnim;                          // 0x03D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	double                                        ShotForceMinimumFillPercentage;                    // 0x03E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void AbilityActivated(const struct FGameplayAbilitySpecHandle& _abilityHanddle, class UGameplayAbility* _abilityActivated);
@@ -69,12 +64,12 @@ public:
 	void PlayAimingIn();
 	void PlayAimingOut();
 	void PlayDefense(EUMGSequencePlayMode PlayMode);
+	void SequenceEvent__ENTRYPOINTWBP_Crosshair();
 	void Setup(class APawn* Pawn);
 	void ShootAbilityActivated(class UGameplayAbility* GameplayAbility);
 	void Tick(const struct FGeometry& MyGeometry, float InDeltaTime);
 	void UnregisterEvents(class APawn* Pawn);
-	void Update_Crosshair_Color(double OptionValue);
-	void UpdateCrosshairSize(double OptionValue);
+	void UpdateForceAndMagnus();
 
 public:
 	static class UClass* StaticClass()

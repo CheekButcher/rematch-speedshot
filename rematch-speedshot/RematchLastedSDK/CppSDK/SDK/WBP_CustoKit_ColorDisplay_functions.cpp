@@ -74,11 +74,11 @@ void UWBP_CustoKit_ColorDisplay_C::PreConstruct(bool IsDesignTime)
 // Function WBP_CustoKit_ColorDisplay.WBP_CustoKit_ColorDisplay_C.SetColors
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// const struct FLinearColor&              Color1                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const struct FLinearColor&              color1                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const struct FLinearColor&              Color2                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const struct FLinearColor&              Color3                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_CustoKit_ColorDisplay_C::SetColors(const struct FLinearColor& Color1, const struct FLinearColor& Color2, const struct FLinearColor& Color3)
+void UWBP_CustoKit_ColorDisplay_C::SetColors(const struct FLinearColor& color1, const struct FLinearColor& Color2, const struct FLinearColor& Color3)
 {
 	static class UFunction* Func = nullptr;
 
@@ -87,7 +87,7 @@ void UWBP_CustoKit_ColorDisplay_C::SetColors(const struct FLinearColor& Color1, 
 
 	Params::WBP_CustoKit_ColorDisplay_C_SetColors Parms{};
 
-	Parms.Color1 = std::move(Color1);
+	Parms.color1 = std::move(color1);
 	Parms.Color2 = std::move(Color2);
 	Parms.Color3 = std::move(Color3);
 

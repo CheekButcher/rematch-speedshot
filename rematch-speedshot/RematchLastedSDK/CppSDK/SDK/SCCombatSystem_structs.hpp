@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "Engine_structs.hpp"
@@ -183,29 +183,6 @@ public:
 };
 DUMPER7_ASSERTS_FPendingHit;
 
-// ScriptStruct SCCombatSystem.BaseHitboxHandler
-// 0x00F8 (0x00F8 - 0x0000)
-struct alignas(0x08) FBaseHitboxHandler
-{
-public:
-	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          m_bPlaceHurtboxInFrontOfHitboxMovement;            // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bKeepActorLocationTargetData;                    // 0x0009(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0xEE];                                       // 0x000A(0x00EE)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FBaseHitboxHandler;
-
-// ScriptStruct SCCombatSystem.AttackHitboxHandler
-// 0x0008 (0x0100 - 0x00F8)
-struct FAttackHitboxHandler final : public FBaseHitboxHandler
-{
-public:
-	float                                         m_fMaxSampleTimeInterval;                          // 0x00F8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bEvaluatePlayingMontage;                         // 0x00FC(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_FD[0x3];                                       // 0x00FD(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FAttackHitboxHandler;
-
 // ScriptStruct SCCombatSystem.AttackID
 // 0x0008 (0x0018 - 0x0010)
 struct FAttackID final : public FSCGameplayAbilityTargetData
@@ -280,6 +257,29 @@ public:
 	struct FPendingHit                            m_LastHit;                                         // 0x0020(0x0350)(BlueprintVisible, BlueprintReadOnly, ContainsInstancedReference, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FBaseAttackState;
+
+// ScriptStruct SCCombatSystem.BaseHitboxHandler
+// 0x00F8 (0x00F8 - 0x0000)
+struct alignas(0x08) FBaseHitboxHandler
+{
+public:
+	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          m_bPlaceHurtboxInFrontOfHitboxMovement;            // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bKeepActorLocationTargetData;                    // 0x0009(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0xEE];                                       // 0x000A(0x00EE)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FBaseHitboxHandler;
+
+// ScriptStruct SCCombatSystem.AttackHitboxHandler
+// 0x0008 (0x0100 - 0x00F8)
+struct FAttackHitboxHandler final : public FBaseHitboxHandler
+{
+public:
+	float                                         m_fMaxSampleTimeInterval;                          // 0x00F8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bEvaluatePlayingMontage;                         // 0x00FC(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_FD[0x3];                                       // 0x00FD(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FAttackHitboxHandler;
 
 // ScriptStruct SCCombatSystem.AttackMontagePlayer
 // 0x0020 (0x0078 - 0x0058)

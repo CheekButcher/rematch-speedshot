@@ -714,6 +714,26 @@ void UBP_RuntimeSoundSubsystem_C::Set_to_Turkish(bool Succeeded)
 }
 
 
+// Function BP_RuntimeSoundSubsystem.BP_RuntimeSoundSubsystem_C.SetAudioMixPresetFromOption
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int32                                   OptionValue                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UBP_RuntimeSoundSubsystem_C::SetAudioMixPresetFromOption(int32 OptionValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeSoundSubsystem_C", "SetAudioMixPresetFromOption");
+
+	Params::BP_RuntimeSoundSubsystem_C_SetAudioMixPresetFromOption Parms{};
+
+	Parms.OptionValue = OptionValue;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function BP_RuntimeSoundSubsystem.BP_RuntimeSoundSubsystem_C.SetMixPresetHeadphones
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:

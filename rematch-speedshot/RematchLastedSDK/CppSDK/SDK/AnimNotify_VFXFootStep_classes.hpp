@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "EFootStepFXSize_structs.hpp"
+#include "EVFXFootSide_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "Engine_classes.hpp"
-#include "EVFXFootSide_structs.hpp"
 
 
 namespace SDK

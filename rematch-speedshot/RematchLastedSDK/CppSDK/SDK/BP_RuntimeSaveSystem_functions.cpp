@@ -17,6 +17,46 @@
 namespace SDK
 {
 
+// Function BP_RuntimeSaveSystem.BP_RuntimeSaveSystem_C.BPE_BroadcastOnSaveLoaded
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// ELoadResult                             _eLoadResult                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UBP_RuntimeSaveSystem_C::BPE_BroadcastOnSaveLoaded(ELoadResult _eLoadResult)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeSaveSystem_C", "BPE_BroadcastOnSaveLoaded");
+
+	Params::BP_RuntimeSaveSystem_C_BPE_BroadcastOnSaveLoaded Parms{};
+
+	Parms._eLoadResult = _eLoadResult;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_RuntimeSaveSystem.BP_RuntimeSaveSystem_C.ExecuteUbergraph_BP_RuntimeSaveSystem
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UBP_RuntimeSaveSystem_C::ExecuteUbergraph_BP_RuntimeSaveSystem(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_RuntimeSaveSystem_C", "ExecuteUbergraph_BP_RuntimeSaveSystem");
+
+	Params::BP_RuntimeSaveSystem_C_ExecuteUbergraph_BP_RuntimeSaveSystem Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function BP_RuntimeSaveSystem.BP_RuntimeSaveSystem_C.Launch Debug Save
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 

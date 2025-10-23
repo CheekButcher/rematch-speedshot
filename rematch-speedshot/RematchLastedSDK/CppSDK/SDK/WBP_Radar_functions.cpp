@@ -338,26 +338,6 @@ void UWBP_Radar_C::OnInitialized()
 }
 
 
-// Function WBP_Radar.WBP_Radar_C.OnLoaded_B6B0786E4ED71AF25BDB26B035322340
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UObject*                          Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Radar_C::OnLoaded_B6B0786E4ED71AF25BDB26B035322340(class UObject* Loaded)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Radar_C", "OnLoaded_B6B0786E4ED71AF25BDB26B035322340");
-
-	Params::WBP_Radar_C_OnLoaded_B6B0786E4ED71AF25BDB26B035322340 Parms{};
-
-	Parms.Loaded = Loaded;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function WBP_Radar.WBP_Radar_C.OnOwnershipChanged
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -460,26 +440,6 @@ void UWBP_Radar_C::PlayBallCallOnRadar(class APawn* PingingPawn, bool PlayBallCa
 }
 
 
-// Function WBP_Radar.WBP_Radar_C.PreConstruct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-// Parameters:
-// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Radar_C::PreConstruct(bool IsDesignTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Radar_C", "PreConstruct");
-
-	Params::WBP_Radar_C_PreConstruct Parms{};
-
-	Parms.IsDesignTime = IsDesignTime;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function WBP_Radar.WBP_Radar_C.ReleaseBallCallLineWidget
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -531,26 +491,6 @@ void UWBP_Radar_C::SetAllyAndEnemyColors()
 		Func = Class->GetFunction("WBP_Radar_C", "SetAllyAndEnemyColors");
 
 	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_Radar.WBP_Radar_C.SetBackgroundTexture
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// TSoftObjectPtr<class UTexture>          Texture                                                (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
-
-void UWBP_Radar_C::SetBackgroundTexture(TSoftObjectPtr<class UTexture> Texture)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Radar_C", "SetBackgroundTexture");
-
-	Params::WBP_Radar_C_SetBackgroundTexture Parms{};
-
-	Parms.Texture = Texture;
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 

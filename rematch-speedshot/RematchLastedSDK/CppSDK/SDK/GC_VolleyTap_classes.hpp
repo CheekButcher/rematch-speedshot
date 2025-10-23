@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "GC_Tap_classes.hpp"
 #include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
-#include "GC_Tap_classes.hpp"
 #include "AkAudio_structs.hpp"
 
 

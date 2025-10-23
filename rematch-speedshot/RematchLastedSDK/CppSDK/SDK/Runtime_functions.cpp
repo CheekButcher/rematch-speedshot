@@ -17,39 +17,6 @@
 namespace SDK
 {
 
-// Function Runtime.ExperienceComponentBase.BPE_ComputeComponentData
-// (Native, Event, Protected, HasOutParams, BlueprintEvent, Const)
-// Parameters:
-// const class UObject*                    _worldContext                                          (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   _iOldTotalExperience                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const class FName&                      _playerId                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TArray<struct FExperienceComponentData>&_outComponentsData                                     (Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-
-void UExperienceComponentBase::BPE_ComputeComponentData(const class UObject* _worldContext, int32 _iOldTotalExperience, const class FName& _playerId, TArray<struct FExperienceComponentData>& _outComponentsData) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ExperienceComponentBase", "BPE_ComputeComponentData");
-
-	Params::ExperienceComponentBase_BPE_ComputeComponentData Parms{};
-
-	Parms._worldContext = _worldContext;
-	Parms._iOldTotalExperience = _iOldTotalExperience;
-	Parms._playerId = _playerId;
-	Parms._outComponentsData = std::move(_outComponentsData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	_outComponentsData = std::move(Parms._outComponentsData);
-}
-
-
 // Function Runtime.AbilityOwnerSelector.OnOverlapBegin
 // (Final, Native, Public, HasOutParams)
 // Parameters:
@@ -170,57 +137,6 @@ void UAbilityTask_ApplyAbilityCostOverTime::BPF_SetCheckCommitAbilityCostConditi
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Goal.BPE_GetCollision
-// (Event, Public, HasOutParams, BlueprintEvent, Const)
-// Parameters:
-// class USceneComponent**                 _outCollision                                          (Parm, OutParm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AGoal::BPE_GetCollision(class USceneComponent** _outCollision) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Goal", "BPE_GetCollision");
-
-	Params::Goal_BPE_GetCollision Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (_outCollision != nullptr)
-		*_outCollision = Parms._outCollision;
-}
-
-
-// Function Runtime.Goal.BPF_IsPointInGoal
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FVector&                   _vPoint                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bUseGoalExtraSize                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool AGoal::BPF_IsPointInGoal(const struct FVector& _vPoint, bool _bUseGoalExtraSize) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Goal", "BPF_IsPointInGoal");
-
-	Params::Goal_BPF_IsPointInGoal Parms{};
-
-	Parms._vPoint = std::move(_vPoint);
-	Parms._bUseGoalExtraSize = _bUseGoalExtraSize;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -367,23 +283,27 @@ class UAbilityTask_ApplyVolleyShoot* UAbilityTask_ApplyVolleyShoot::BPF_ApplyVol
 }
 
 
-// Function Runtime.BallStealBinder.OnBallStolen
-// (Final, Native, Protected)
+// Function Runtime.ExperienceComponentBase.BPE_ComputeComponentData
+// (Native, Event, Protected, HasOutParams, BlueprintEvent, Const)
 // Parameters:
-// class ARuntimePlayerState*              _playerStateThief                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ARuntimePlayerState*              _playerStateStolen                                     (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class UObject*                    _worldContext                                          (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   _iOldTotalExperience                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FName&                      _playerId                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TArray<struct FExperienceComponentData>&_outComponentsData                                     (Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 
-void UBallStealBinder::OnBallStolen(class ARuntimePlayerState* _playerStateThief, class ARuntimePlayerState* _playerStateStolen)
+void UExperienceComponentBase::BPE_ComputeComponentData(const class UObject* _worldContext, int32 _iOldTotalExperience, const class FName& _playerId, TArray<struct FExperienceComponentData>& _outComponentsData) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BallStealBinder", "OnBallStolen");
+		Func = Class->GetFunction("ExperienceComponentBase", "BPE_ComputeComponentData");
 
-	Params::BallStealBinder_OnBallStolen Parms{};
+	Params::ExperienceComponentBase_BPE_ComputeComponentData Parms{};
 
-	Parms._playerStateThief = _playerStateThief;
-	Parms._playerStateStolen = _playerStateStolen;
+	Parms._worldContext = _worldContext;
+	Parms._iOldTotalExperience = _iOldTotalExperience;
+	Parms._playerId = _playerId;
+	Parms._outComponentsData = std::move(_outComponentsData);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -391,6 +311,8 @@ void UBallStealBinder::OnBallStolen(class ARuntimePlayerState* _playerStateThief
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
+
+	_outComponentsData = std::move(Parms._outComponentsData);
 }
 
 
@@ -559,6 +481,107 @@ class UAbilityTask_HandleHindering* UAbilityTask_HandleHindering::BPF_HandleHind
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeGameFlowState.GetMatchStateArray
+// (Final, Native, Static, Public)
+// Parameters:
+// TArray<class FName>                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+
+TArray<class FName> URuntimeGameFlowState::GetMatchStateArray()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeGameFlowState", "GetMatchStateArray");
+
+	Params::RuntimeGameFlowState_GetMatchStateArray Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeGameFlowState.BPF_ResetBallsAndCharacters
+// (Final, Native, Protected, BlueprintCallable)
+
+void URuntimeGameFlowState::BPF_ResetBallsAndCharacters()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeGameFlowState", "BPF_ResetBallsAndCharacters");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.LevelSequenceFlowState.OnLevelSequenceFinished
+// (Final, Native, Public)
+
+void ULevelSequenceFlowState::OnLevelSequenceFinished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("LevelSequenceFlowState", "OnLevelSequenceFinished");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.LevelSequenceFlowState.OnLevelSequencePlay
+// (Native, Public)
+
+void ULevelSequenceFlowState::OnLevelSequencePlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("LevelSequenceFlowState", "OnLevelSequencePlay");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.LevelSequenceFlowState.PlayLevelSequenceOnClient
+// (Final, Native, Private)
+
+void ULevelSequenceFlowState::PlayLevelSequenceOnClient()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("LevelSequenceFlowState", "PlayLevelSequenceOnClient");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
 }
 
 
@@ -957,6 +980,57 @@ void UAbilityTask_NetworkHitProjection::ServerReceiveTargetData(const struct FGa
 }
 
 
+// Function Runtime.Goal.BPE_GetCollision
+// (Event, Public, HasOutParams, BlueprintEvent, Const)
+// Parameters:
+// class USceneComponent**                 _outCollision                                          (Parm, OutParm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AGoal::BPE_GetCollision(class USceneComponent** _outCollision) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Goal", "BPE_GetCollision");
+
+	Params::Goal_BPE_GetCollision Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (_outCollision != nullptr)
+		*_outCollision = Parms._outCollision;
+}
+
+
+// Function Runtime.Goal.BPF_IsPointInGoal
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FVector&                   _vPoint                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bUseGoalExtraSize                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool AGoal::BPF_IsPointInGoal(const struct FVector& _vPoint, bool _bUseGoalExtraSize) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Goal", "BPF_IsPointInGoal");
+
+	Params::Goal_BPF_IsPointInGoal Parms{};
+
+	Parms._vPoint = std::move(_vPoint);
+	Parms._bUseGoalExtraSize = _bUseGoalExtraSize;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function Runtime.AbilityTask_NetworkHitValidation.BPF_NetworkHitValidation
 // (Final, Native, Static, Private, HasOutParams, BlueprintCallable)
 // Parameters:
@@ -1094,48 +1168,23 @@ void UAbilityTask_NetworkSyncShootData::BPF_GetShootParams(struct FShootParams* 
 }
 
 
-// Function Runtime.GoalScopedBinder.OnGoalRegistered
-// (Native, Protected)
-// Parameters:
-// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGoalScopedBinder::OnGoalRegistered(class AGoal* _goal)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GoalScopedBinder", "OnGoalRegistered");
-
-	Params::GoalScopedBinder_OnGoalRegistered Parms{};
-
-	Parms._goal = _goal;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.GoalCrossbarHitBinder.OnGoalCrossbarHit
+// Function Runtime.BallStealBinder.OnBallStolen
 // (Final, Native, Protected)
 // Parameters:
-// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// uint8                                   _uiTeam                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ARuntimePlayerState*              _playerStateThief                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ARuntimePlayerState*              _playerStateStolen                                     (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UGoalCrossbarHitBinder::OnGoalCrossbarHit(class AGoal* _goal, uint8 _uiTeam)
+void UBallStealBinder::OnBallStolen(class ARuntimePlayerState* _playerStateThief, class ARuntimePlayerState* _playerStateStolen)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GoalCrossbarHitBinder", "OnGoalCrossbarHit");
+		Func = Class->GetFunction("BallStealBinder", "OnBallStolen");
 
-	Params::GoalCrossbarHitBinder_OnGoalCrossbarHit Parms{};
+	Params::BallStealBinder_OnBallStolen Parms{};
 
-	Parms._goal = _goal;
-	Parms._uiTeam = _uiTeam;
+	Parms._playerStateThief = _playerStateThief;
+	Parms._playerStateStolen = _playerStateStolen;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -1367,107 +1416,6 @@ void UAbilityTask_NetworkWaitTargetData::OnSignalCallback()
 }
 
 
-// Function Runtime.RuntimeGameFlowState.GetMatchStateArray
-// (Final, Native, Static, Public)
-// Parameters:
-// TArray<class FName>                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-
-TArray<class FName> URuntimeGameFlowState::GetMatchStateArray()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeGameFlowState", "GetMatchStateArray");
-
-	Params::RuntimeGameFlowState_GetMatchStateArray Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeGameFlowState.BPF_ResetBallsAndCharacters
-// (Final, Native, Protected, BlueprintCallable)
-
-void URuntimeGameFlowState::BPF_ResetBallsAndCharacters()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeGameFlowState", "BPF_ResetBallsAndCharacters");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.LevelSequenceFlowState.OnLevelSequenceFinished
-// (Final, Native, Public)
-
-void ULevelSequenceFlowState::OnLevelSequenceFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LevelSequenceFlowState", "OnLevelSequenceFinished");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.LevelSequenceFlowState.OnLevelSequencePlay
-// (Native, Public)
-
-void ULevelSequenceFlowState::OnLevelSequencePlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LevelSequenceFlowState", "OnLevelSequencePlay");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.LevelSequenceFlowState.PlayLevelSequenceOnClient
-// (Final, Native, Private)
-
-void ULevelSequenceFlowState::PlayLevelSequenceOnClient()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("LevelSequenceFlowState", "PlayLevelSequenceOnClient");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function Runtime.AbilityTask_PlayMontageFromAestheticMontage.BPF_PlayMontageFromAestheticMontage
 // (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
 // Parameters:
@@ -1679,6 +1627,144 @@ float UAbilityTask_PlaySimulatedAestheticMontage::GetMontageInstancePosition() c
 }
 
 
+// Function Runtime.ShopItemFilter.BPE_ShouldBeRemoved
+// (Native, Event, Protected, HasOutParams, BlueprintEvent, Const)
+// Parameters:
+// const class UCustomizationSubsystem*    _subsystem                                             (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShopItem&                 _item                                                  (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// bool                                    _bIsActivated                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShopItemFilter::BPE_ShouldBeRemoved(const class UCustomizationSubsystem* _subsystem, const struct FShopItem& _item, bool _bIsActivated) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShopItemFilter", "BPE_ShouldBeRemoved");
+
+	Params::ShopItemFilter_BPE_ShouldBeRemoved Parms{};
+
+	Parms._subsystem = _subsystem;
+	Parms._item = std::move(_item);
+	Parms._bIsActivated = _bIsActivated;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.HinderingGameplayAbility.OnPlayerStateRemoved
+// (Final, Native, Public)
+// Parameters:
+// class APlayerState*                     _playerState                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHinderingGameplayAbility::OnPlayerStateRemoved(class APlayerState* _playerState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HinderingGameplayAbility", "OnPlayerStateRemoved");
+
+	Params::HinderingGameplayAbility_OnPlayerStateRemoved Parms{};
+
+	Parms._playerState = _playerState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.HinderingGameplayAbility.ServerNotifyHindering
+// (Net, NetReliable, Native, Event, Public, NetServer)
+// Parameters:
+// class APlayerState*                     _player                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _fClientServerTime                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _fTimeSinceLastServerTime                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHinderingGameplayAbility::ServerNotifyHindering(class APlayerState* _player, float _fClientServerTime, float _fTimeSinceLastServerTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HinderingGameplayAbility", "ServerNotifyHindering");
+
+	Params::HinderingGameplayAbility_ServerNotifyHindering Parms{};
+
+	Parms._player = _player;
+	Parms._fClientServerTime = _fClientServerTime;
+	Parms._fTimeSinceLastServerTime = _fTimeSinceLastServerTime;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.HinderingGameplayAbility.ServerNotifyHinderingFast
+// (Net, NetReliable, Native, Event, Public, NetServer)
+// Parameters:
+// class APlayerState*                     _player                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _fClientServerTime                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHinderingGameplayAbility::ServerNotifyHinderingFast(class APlayerState* _player, float _fClientServerTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HinderingGameplayAbility", "ServerNotifyHinderingFast");
+
+	Params::HinderingGameplayAbility_ServerNotifyHinderingFast Parms{};
+
+	Parms._player = _player;
+	Parms._fClientServerTime = _fClientServerTime;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.HinderingGameplayAbility.ServerNotifyHinderingStop
+// (Net, NetReliable, Native, Event, Public, NetServer)
+// Parameters:
+// class APlayerState*                     _player                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHinderingGameplayAbility::ServerNotifyHinderingStop(class APlayerState* _player)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HinderingGameplayAbility", "ServerNotifyHinderingStop");
+
+	Params::HinderingGameplayAbility_ServerNotifyHinderingStop Parms{};
+
+	Parms._player = _player;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function Runtime.AbilityTask_PlaySyncMontageBase.BPF_CancelBlendOutDuration
 // (Final, Native, Public, BlueprintCallable)
 
@@ -1838,61 +1924,6 @@ class UAbilityTask_PlaySyncAestheticMontage* UAbilityTask_PlaySyncAestheticMonta
 }
 
 
-// Function Runtime.ShopItemSorter.BPE_Compare
-// (Native, Event, Protected, HasOutParams, BlueprintEvent, Const)
-// Parameters:
-// const struct FShopItem&                 _first                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const struct FShopItem&                 _second                                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// ESortResult                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-ESortResult UShopItemSorter::BPE_Compare(const struct FShopItem& _first, const struct FShopItem& _second) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShopItemSorter", "BPE_Compare");
-
-	Params::ShopItemSorter_BPE_Compare Parms{};
-
-	Parms._first = std::move(_first);
-	Parms._second = std::move(_second);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.HUD_NameTagManagerWidget.BPF_SortNameTagArrayByDistanceFromTarget
-// (Final, Native, Protected, BlueprintCallable)
-// Parameters:
-// class AActor*                           _target                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UHUD_NameTagManagerWidget::BPF_SortNameTagArrayByDistanceFromTarget(class AActor* _target)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HUD_NameTagManagerWidget", "BPF_SortNameTagArrayByDistanceFromTarget");
-
-	Params::HUD_NameTagManagerWidget_BPF_SortNameTagArrayByDistanceFromTarget Parms{};
-
-	Parms._target = _target;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function Runtime.BallCaptureCondition.BPF_PredictCapture
 // (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
@@ -1956,6 +1987,58 @@ class UAbilityTask_PredictBallCapture* UAbilityTask_PredictBallCapture::BPF_Pred
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.GoalScopedBinder.OnGoalRegistered
+// (Native, Protected)
+// Parameters:
+// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UGoalScopedBinder::OnGoalRegistered(class AGoal* _goal)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GoalScopedBinder", "OnGoalRegistered");
+
+	Params::GoalScopedBinder_OnGoalRegistered Parms{};
+
+	Parms._goal = _goal;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.GoalCrossbarHitBinder.OnGoalCrossbarHit
+// (Final, Native, Protected)
+// Parameters:
+// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// uint8                                   _uiTeam                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UGoalCrossbarHitBinder::OnGoalCrossbarHit(class AGoal* _goal, uint8 _uiTeam)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GoalCrossbarHitBinder", "OnGoalCrossbarHit");
+
+	Params::GoalCrossbarHitBinder_OnGoalCrossbarHit Parms{};
+
+	Parms._goal = _goal;
+	Parms._uiTeam = _uiTeam;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
 }
 
 
@@ -2147,6 +2230,31 @@ void UAbilityTask_WaitForComponentOverlap::OnHitCallback(class UPrimitiveCompone
 }
 
 
+// Function Runtime.LockerRoomPrematchStateViewModel.BPF_GetSelectedPalette
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FColorPalette                    ReturnValue                                            (Parm, OutParm, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FColorPalette ULockerRoomPrematchStateViewModel::BPF_GetSelectedPalette() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("LockerRoomPrematchStateViewModel", "BPF_GetSelectedPalette");
+
+	Params::LockerRoomPrematchStateViewModel_BPF_GetSelectedPalette Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function Runtime.AbilityTask_WaitForCondition.BPF_WaitForCondition
 // (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
@@ -2236,31 +2344,6 @@ class UAbilityTask_WaitTagContainerAdded* UAbilityTask_WaitTagContainerAdded::BP
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.MatchCountdownStartBinder.OnMatchCountdownStart
-// (Final, Native, Protected)
-// Parameters:
-// class ARuntimeMatchGameState*           _matchGameState                                        (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UMatchCountdownStartBinder::OnMatchCountdownStart(class ARuntimeMatchGameState* _matchGameState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MatchCountdownStartBinder", "OnMatchCountdownStart");
-
-	Params::MatchCountdownStartBinder_OnMatchCountdownStart Parms{};
-
-	Parms._matchGameState = _matchGameState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
 }
 
 
@@ -2379,6 +2462,33 @@ void AActionCommandsStep::BPE_UpdateStepHelpers()
 }
 
 
+// Function Runtime.RuntimeLevelSequenceActor.OnLocalCharacterCustomizationChange
+// (Final, Native, Protected)
+// Parameters:
+// class UCharacterCustomizationComponent* _characterCustomizationComponent                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bWasCharacterGenerated                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ARuntimeLevelSequenceActor::OnLocalCharacterCustomizationChange(class UCharacterCustomizationComponent* _characterCustomizationComponent, bool _bWasCharacterGenerated)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeLevelSequenceActor", "OnLocalCharacterCustomizationChange");
+
+	Params::RuntimeLevelSequenceActor_OnLocalCharacterCustomizationChange Parms{};
+
+	Parms._characterCustomizationComponent = _characterCustomizationComponent;
+	Parms._bWasCharacterGenerated = _bWasCharacterGenerated;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function Runtime.ActionDirectionComputation.BPE_Deinitialize
 // (Event, Protected, BlueprintEvent)
 
@@ -2492,19 +2602,19 @@ float UActionDirectionComputation::BPF_GetValue() const
 }
 
 
-// Function Runtime.LockerRoomPrematchStateViewModel.BPF_GetSelectedPalette
+// Function Runtime.MatchEffectEmitterComponent.BPF_GetTeam
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// struct FColorPalette                    ReturnValue                                            (Parm, OutParm, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FColorPalette ULockerRoomPrematchStateViewModel::BPF_GetSelectedPalette() const
+int32 UMatchEffectEmitterComponent::BPF_GetTeam() const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("LockerRoomPrematchStateViewModel", "BPF_GetSelectedPalette");
+		Func = Class->GetFunction("MatchEffectEmitterComponent", "BPF_GetTeam");
 
-	Params::LockerRoomPrematchStateViewModel_BPF_GetSelectedPalette Parms{};
+	Params::MatchEffectEmitterComponent_BPF_GetTeam Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -2517,51 +2627,28 @@ struct FColorPalette ULockerRoomPrematchStateViewModel::BPF_GetSelectedPalette()
 }
 
 
-// Function Runtime.MatchingBoneDiveAnimWeightEvaluation.IsMatchingSectionNotifyState
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Function Runtime.MatchCountdownStartBinder.OnMatchCountdownStart
+// (Final, Native, Protected)
 // Parameters:
-// const class USection_NotifyState*       _notifyState                                           (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ARuntimeMatchGameState*           _matchGameState                                        (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UMatchingBoneDiveAnimWeightEvaluation::IsMatchingSectionNotifyState(const class USection_NotifyState* _notifyState)
+void UMatchCountdownStartBinder::OnMatchCountdownStart(class ARuntimeMatchGameState* _matchGameState)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("MatchingBoneDiveAnimWeightEvaluation", "IsMatchingSectionNotifyState");
+		Func = Class->GetFunction("MatchCountdownStartBinder", "OnMatchCountdownStart");
 
-	Params::MatchingBoneDiveAnimWeightEvaluation_IsMatchingSectionNotifyState Parms{};
+	Params::MatchCountdownStartBinder_OnMatchCountdownStart Parms{};
 
-	Parms._notifyState = _notifyState;
+	Parms._matchGameState = _matchGameState;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.MatchEffectAction.BPE_DoProcess
-// (Event, Public, HasOutParams, BlueprintEvent, Const)
-// Parameters:
-// const TArray<TSoftObjectPtr<class UMatchEffectEmitterComponent>>&_emitters                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, UObjectWrapper, NativeAccessSpecifierPublic)
-
-void UMatchEffectAction::BPE_DoProcess(const TArray<TSoftObjectPtr<class UMatchEffectEmitterComponent>>& _emitters) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MatchEffectAction", "BPE_DoProcess");
-
-	Params::MatchEffectAction_BPE_DoProcess Parms{};
-
-	Parms._emitters = std::move(_emitters);
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -2658,33 +2745,6 @@ float ABall::BPF_GetBallRadius() const
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeLevelSequenceActor.OnLocalCharacterCustomizationChange
-// (Final, Native, Protected)
-// Parameters:
-// class UCharacterCustomizationComponent* _characterCustomizationComponent                       (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bWasCharacterGenerated                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ARuntimeLevelSequenceActor::OnLocalCharacterCustomizationChange(class UCharacterCustomizationComponent* _characterCustomizationComponent, bool _bWasCharacterGenerated)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeLevelSequenceActor", "OnLocalCharacterCustomizationChange");
-
-	Params::RuntimeLevelSequenceActor_OnLocalCharacterCustomizationChange Parms{};
-
-	Parms._characterCustomizationComponent = _characterCustomizationComponent;
-	Parms._bWasCharacterGenerated = _bWasCharacterGenerated;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
 }
 
 
@@ -2936,503 +2996,6 @@ class ABall* UBallScopedBinder::BPF_GetBall(int32 _iIndex) const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.MatchEffectEmitterComponent.BPF_GetTeam
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UMatchEffectEmitterComponent::BPF_GetTeam() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MatchEffectEmitterComponent", "BPF_GetTeam");
-
-	Params::MatchEffectEmitterComponent_BPF_GetTeam Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallEngagedBinder.OnBallEngaged
-// (Final, Native, Protected)
-// Parameters:
-// class ARuntimePlayerState*              _playerState                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UBallEngagedBinder::OnBallEngaged(class ARuntimePlayerState* _playerState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallEngagedBinder", "OnBallEngaged");
-
-	Params::BallEngagedBinder_OnBallEngaged Parms{};
-
-	Parms._playerState = _playerState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.MoveAlongSplineComponent.BPF_SetLocationOnPath
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// float                                   _fDistanceOnPath                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UMoveAlongSplineComponent::BPF_SetLocationOnPath(float _fDistanceOnPath)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MoveAlongSplineComponent", "BPF_SetLocationOnPath");
-
-	Params::MoveAlongSplineComponent_BPF_SetLocationOnPath Parms{};
-
-	Parms._fDistanceOnPath = _fDistanceOnPath;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.MoveAlongSplineComponent.SetPath
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class ASplineActor*                     _newPath                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UMoveAlongSplineComponent::SetPath(class ASplineActor* _newPath)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MoveAlongSplineComponent", "SetPath");
-
-	Params::MoveAlongSplineComponent_SetPath Parms{};
-
-	Parms._newPath = _newPath;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.BallShootHitReaction.BPF_GenerateShootPrepTargetData
-// (Native, Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// const class USCGameplayAbility*         _ability                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FPendingHit&               _hit                                                   (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// class UBallPhysicComponent*             _ballPhysicComponent                                   (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FShootPrepTargetData*            _result                                                (Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void UBallShootHitReaction::BPF_GenerateShootPrepTargetData(const class USCGameplayAbility* _ability, const struct FPendingHit& _hit, class UBallPhysicComponent* _ballPhysicComponent, struct FShootPrepTargetData* _result) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallShootHitReaction", "BPF_GenerateShootPrepTargetData");
-
-	Params::BallShootHitReaction_BPF_GenerateShootPrepTargetData Parms{};
-
-	Parms._ability = _ability;
-	Parms._hit = std::move(_hit);
-	Parms._ballPhysicComponent = _ballPhysicComponent;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_result != nullptr)
-		*_result = std::move(Parms._result);
-}
-
-
-// Function Runtime.BallInteractionBinder.BPE_OnBallInteraction
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UBallInteractionBinder::BPE_OnBallInteraction(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallInteractionBinder", "BPE_OnBallInteraction");
-
-	Params::BallInteractionBinder_BPE_OnBallInteraction Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-	Parms._eBallInteractionType = _eBallInteractionType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.BallInteractionBinder.BPE_OnBallReset
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UBallInteractionBinder::BPE_OnBallReset(class UBallPlayersInteractionComponent* _ballPlayersInteraction)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallInteractionBinder", "BPE_OnBallReset");
-
-	Params::BallInteractionBinder_BPE_OnBallReset Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.BallInteractionBinder.OnBallReset
-// (Final, Native, Protected)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayerInteraction                                 (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UBallInteractionBinder::OnBallReset(class UBallPlayersInteractionComponent* _ballPlayerInteraction)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallInteractionBinder", "OnBallReset");
-
-	Params::BallInteractionBinder_OnBallReset Parms{};
-
-	Parms._ballPlayerInteraction = _ballPlayerInteraction;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.BallInteractionBinder.OnOwnershipChanged
-// (Native, Protected)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UBallInteractionBinder::OnOwnershipChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallInteractionBinder", "OnOwnershipChanged");
-
-	Params::BallInteractionBinder_OnOwnershipChanged Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.BallInteractionBinder.OnPreviousOwnerChanged
-// (Native, Protected)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EBallInteractionType                    _eInteractionType                                      (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UBallInteractionBinder::OnPreviousOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eInteractionType)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallInteractionBinder", "OnPreviousOwnerChanged");
-
-	Params::BallInteractionBinder_OnPreviousOwnerChanged Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-	Parms._eInteractionType = _eInteractionType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.BallInteractionBinder.BPF_CanTrigger
-// (Final, Native, Protected, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootParams&              _shootParams                                           (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayTagQuery&         _newOwnerQuery                                         (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const struct FGameplayTagQuery&         _shootTypeQuery                                        (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// bool                                    _bIngoreKickOffCpp                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bOnlyOnTeamChanged                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayTagQuery&         _PreviousOwnerQuery                                    (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const struct FGameplayTagQuery&         _PreviousShootTypeQuery                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const struct FShootParams&              _PreviousShootParams                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UBallInteractionBinder::BPF_CanTrigger(class UBallPlayersInteractionComponent* _ballPlayersInteraction, const struct FShootParams& _shootParams, EBallInteractionType _eBallInteractionType, const struct FGameplayTagQuery& _newOwnerQuery, const struct FGameplayTagQuery& _shootTypeQuery, bool _bIngoreKickOffCpp, bool _bOnlyOnTeamChanged, const struct FGameplayTagQuery& _PreviousOwnerQuery, const struct FGameplayTagQuery& _PreviousShootTypeQuery, const struct FShootParams& _PreviousShootParams) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallInteractionBinder", "BPF_CanTrigger");
-
-	Params::BallInteractionBinder_BPF_CanTrigger Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-	Parms._shootParams = std::move(_shootParams);
-	Parms._eBallInteractionType = _eBallInteractionType;
-	Parms._newOwnerQuery = std::move(_newOwnerQuery);
-	Parms._shootTypeQuery = std::move(_shootTypeQuery);
-	Parms._bIngoreKickOffCpp = _bIngoreKickOffCpp;
-	Parms._bOnlyOnTeamChanged = _bOnlyOnTeamChanged;
-	Parms._PreviousOwnerQuery = std::move(_PreviousOwnerQuery);
-	Parms._PreviousShootTypeQuery = std::move(_PreviousShootTypeQuery);
-	Parms._PreviousShootParams = std::move(_PreviousShootParams);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallInteractionBinder.BPF_GetNewAndPreviousInteracters
-// (Final, Native, Protected, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ARuntimePlayerState**             _outNewInteracter                                      (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ARuntimePlayerState**             _outPreviousInteracter                                 (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UBallInteractionBinder::BPF_GetNewAndPreviousInteracters(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, class ARuntimePlayerState** _outNewInteracter, class ARuntimePlayerState** _outPreviousInteracter) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallInteractionBinder", "BPF_GetNewAndPreviousInteracters");
-
-	Params::BallInteractionBinder_BPF_GetNewAndPreviousInteracters Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-	Parms._eBallInteractionType = _eBallInteractionType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outNewInteracter != nullptr)
-		*_outNewInteracter = Parms._outNewInteracter;
-
-	if (_outPreviousInteracter != nullptr)
-		*_outPreviousInteracter = Parms._outPreviousInteracter;
-}
-
-
-// Function Runtime.BallInteractionBinder.BPF_GetPreviousInteracter
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   _iIndexInteraction                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ARuntimePlayerState*              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class ARuntimePlayerState* UBallInteractionBinder::BPF_GetPreviousInteracter(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, int32 _iIndexInteraction) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallInteractionBinder", "BPF_GetPreviousInteracter");
-
-	Params::BallInteractionBinder_BPF_GetPreviousInteracter Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-	Parms._eBallInteractionType = _eBallInteractionType;
-	Parms._iIndexInteraction = _iIndexInteraction;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallInteractionBinder.BPF_HasTeamChanged
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UBallInteractionBinder::BPF_HasTeamChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallInteractionBinder", "BPF_HasTeamChanged");
-
-	Params::BallInteractionBinder_BPF_HasTeamChanged Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-	Parms._eBallInteractionType = _eBallInteractionType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallInterceptionPointTargetDatasource.BPF_FindSingleTarget
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FGameplayAbilityTargetDataHandle&_handle                                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// struct FBallInterceptionPointTargetData*_outData                                               (Parm, OutParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UBallInterceptionPointTargetDatasource::BPF_FindSingleTarget(const struct FGameplayAbilityTargetDataHandle& _handle, struct FBallInterceptionPointTargetData* _outData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("BallInterceptionPointTargetDatasource", "BPF_FindSingleTarget");
-
-	Params::BallInterceptionPointTargetDatasource_BPF_FindSingleTarget Parms{};
-
-	Parms._handle = std::move(_handle);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outData != nullptr)
-		*_outData = std::move(Parms._outData);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallInterceptionPointTargetDatasource.BPF_GetBall
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FBallInterceptionPointTargetData&_targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// class ABall*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class ABall* UBallInterceptionPointTargetDatasource::BPF_GetBall(const struct FBallInterceptionPointTargetData& _targetData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("BallInterceptionPointTargetDatasource", "BPF_GetBall");
-
-	Params::BallInterceptionPointTargetDatasource_BPF_GetBall Parms{};
-
-	Parms._targetData = std::move(_targetData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.GetOffsetedBallInterceptionPointDatasource.BPF_FindSingleTarget
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FGameplayAbilityTargetDataHandle&_handle                                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// struct FBallInterceptionPointTargetData*_outData                                               (Parm, OutParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGetOffsetedBallInterceptionPointDatasource::BPF_FindSingleTarget(const struct FGameplayAbilityTargetDataHandle& _handle, struct FBallInterceptionPointTargetData* _outData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("GetOffsetedBallInterceptionPointDatasource", "BPF_FindSingleTarget");
-
-	Params::GetOffsetedBallInterceptionPointDatasource_BPF_FindSingleTarget Parms{};
-
-	Parms._handle = std::move(_handle);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outData != nullptr)
-		*_outData = std::move(Parms._outData);
 
 	return Parms.ReturnValue;
 }
@@ -3951,24 +3514,47 @@ bool UMatchViewModel::BPF_IsSquadLeader() const
 }
 
 
-// Function Runtime.BallInterceptionPointHelpers.BPF_GetStatus
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Function Runtime.BallEngagedBinder.OnBallEngaged
+// (Final, Native, Protected)
 // Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FBallInterceptionPointTargetData&_ballInterceptionPointTargetData                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// struct FGameplayTagContainer            ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+// class ARuntimePlayerState*              _playerState                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FGameplayTagContainer UBallInterceptionPointHelpers::BPF_GetStatus(const class AActor* _actor, const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData)
+void UBallEngagedBinder::OnBallEngaged(class ARuntimePlayerState* _playerState)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("BallInterceptionPointHelpers", "BPF_GetStatus");
+		Func = Class->GetFunction("BallEngagedBinder", "OnBallEngaged");
 
-	Params::BallInterceptionPointHelpers_BPF_GetStatus Parms{};
+	Params::BallEngagedBinder_OnBallEngaged Parms{};
 
-	Parms._actor = _actor;
-	Parms._ballInterceptionPointTargetData = std::move(_ballInterceptionPointTargetData);
+	Parms._playerState = _playerState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.MatchingBoneDiveAnimWeightEvaluation.IsMatchingSectionNotifyState
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class USection_NotifyState*       _notifyState                                           (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UMatchingBoneDiveAnimWeightEvaluation::IsMatchingSectionNotifyState(const class USection_NotifyState* _notifyState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("MatchingBoneDiveAnimWeightEvaluation", "IsMatchingSectionNotifyState");
+
+	Params::MatchingBoneDiveAnimWeightEvaluation_IsMatchingSectionNotifyState Parms{};
+
+	Parms._notifyState = _notifyState;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -3981,104 +3567,26 @@ struct FGameplayTagContainer UBallInterceptionPointHelpers::BPF_GetStatus(const 
 }
 
 
-// Function Runtime.BallInterceptionPointHelpers.BPF_IsEmpty
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Function Runtime.BallShootHitReaction.BPF_GenerateShootPrepTargetData
+// (Native, Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:
-// const struct FBallInterceptionPointTargetData&_ballInterceptionPointTargetData                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class USCGameplayAbility*         _ability                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FPendingHit&               _hit                                                   (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// class UBallPhysicComponent*             _ballPhysicComponent                                   (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FShootPrepTargetData*            _result                                                (Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
 
-bool UBallInterceptionPointHelpers::BPF_IsEmpty(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData)
+void UBallShootHitReaction::BPF_GenerateShootPrepTargetData(const class USCGameplayAbility* _ability, const struct FPendingHit& _hit, class UBallPhysicComponent* _ballPhysicComponent, struct FShootPrepTargetData* _result) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("BallInterceptionPointHelpers", "BPF_IsEmpty");
+		Func = Class->GetFunction("BallShootHitReaction", "BPF_GenerateShootPrepTargetData");
 
-	Params::BallInterceptionPointHelpers_BPF_IsEmpty Parms{};
+	Params::BallShootHitReaction_BPF_GenerateShootPrepTargetData Parms{};
 
-	Parms._ballInterceptionPointTargetData = std::move(_ballInterceptionPointTargetData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallInterceptionPointHelpers.BPF_IsImmobile
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FBallInterceptionPointTargetData&_ballInterceptionPointTargetData                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UBallInterceptionPointHelpers::BPF_IsImmobile(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("BallInterceptionPointHelpers", "BPF_IsImmobile");
-
-	Params::BallInterceptionPointHelpers_BPF_IsImmobile Parms{};
-
-	Parms._ballInterceptionPointTargetData = std::move(_ballInterceptionPointTargetData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallInterceptionPointHelpers.BPF_IsValid
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FBallInterceptionPointTargetData&_ballInterceptionPointTargetData                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UBallInterceptionPointHelpers::BPF_IsValid(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("BallInterceptionPointHelpers", "BPF_IsValid");
-
-	Params::BallInterceptionPointHelpers_BPF_IsValid Parms{};
-
-	Parms._ballInterceptionPointTargetData = std::move(_ballInterceptionPointTargetData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.PlayerBallOwnership.BPF_GetBall
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// class ABall**                           _outBallRef                                            (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EExecSuccessEnum*                       _OutExecBranches                                       (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UPlayerBallOwnership::BPF_GetBall(class ABall** _outBallRef, EExecSuccessEnum* _OutExecBranches)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PlayerBallOwnership", "BPF_GetBall");
-
-	Params::PlayerBallOwnership_BPF_GetBall Parms{};
+	Parms._ability = _ability;
+	Parms._hit = std::move(_hit);
+	Parms._ballPhysicComponent = _ballPhysicComponent;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4087,113 +3595,50 @@ void UPlayerBallOwnership::BPF_GetBall(class ABall** _outBallRef, EExecSuccessEn
 
 	Func->FunctionFlags = Flgs;
 
-	if (_outBallRef != nullptr)
-		*_outBallRef = Parms._outBallRef;
-
-	if (_OutExecBranches != nullptr)
-		*_OutExecBranches = Parms._OutExecBranches;
+	if (_result != nullptr)
+		*_result = std::move(Parms._result);
 }
 
 
-// Function Runtime.PlayerBallOwnership.BPF_SetBall
-// (Final, Native, Public, BlueprintCallable)
+// Function Runtime.MatchEffectAction.BPE_DoProcess
+// (Event, Public, HasOutParams, BlueprintEvent, Const)
 // Parameters:
-// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bSteal                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const TArray<TSoftObjectPtr<class UMatchEffectEmitterComponent>>&_emitters                                              (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, UObjectWrapper, NativeAccessSpecifierPublic)
 
-bool UPlayerBallOwnership::BPF_SetBall(class ABall* _ball, bool _bSteal)
+void UMatchEffectAction::BPE_DoProcess(const TArray<TSoftObjectPtr<class UMatchEffectEmitterComponent>>& _emitters) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PlayerBallOwnership", "BPF_SetBall");
+		Func = Class->GetFunction("MatchEffectAction", "BPE_DoProcess");
 
-	Params::PlayerBallOwnership_BPF_SetBall Parms{};
+	Params::MatchEffectAction_BPE_DoProcess Parms{};
 
-	Parms._ball = _ball;
-	Parms._bSteal = _bSteal;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
+	Parms._emitters = std::move(_emitters);
 
 	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
-// Function Runtime.PlayerBallOwnership.BPF_GetBallPure
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Runtime.BallInteractionBinder.BPE_OnBallInteraction
+// (Native, Event, Protected, BlueprintEvent)
 // Parameters:
-// class ABall*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bIsSamePreviousOwner                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class ABall* UPlayerBallOwnership::BPF_GetBallPure() const
+void UBallInteractionBinder::BPE_OnBallInteraction(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("PlayerBallOwnership", "BPF_GetBallPure");
+		Func = Class->GetFunction("BallInteractionBinder", "BPE_OnBallInteraction");
 
-	Params::PlayerBallOwnership_BPF_GetBallPure Parms{};
+	Params::BallInteractionBinder_BPE_OnBallInteraction Parms{};
 
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.PlayerBallOwnership.BPF_GetPlayerState
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class ARuntimePlayerState*              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class ARuntimePlayerState* UPlayerBallOwnership::BPF_GetPlayerState() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("PlayerBallOwnership", "BPF_GetPlayerState");
-
-	Params::PlayerBallOwnership_BPF_GetPlayerState Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_ApplyShoot
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FShootParams&              _shootParams                                           (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const class UGameplayAbility*           _instigatorAbility                                     (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bAttachedToPlayer                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UBallPhysicComponent::BPF_ApplyShoot(const struct FShootParams& _shootParams, const class UGameplayAbility* _instigatorAbility, bool _bAttachedToPlayer)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_ApplyShoot");
-
-	Params::BallPhysicComponent_BPF_ApplyShoot Parms{};
-
-	Parms._shootParams = std::move(_shootParams);
-	Parms._instigatorAbility = _instigatorAbility;
-	Parms._bAttachedToPlayer = _bAttachedToPlayer;
+	Parms._ballPlayersInteraction = _ballPlayersInteraction;
+	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4204,111 +3649,21 @@ void UBallPhysicComponent::BPF_ApplyShoot(const struct FShootParams& _shootParam
 }
 
 
-// Function Runtime.BallPhysicComponent.BPF_GetTimeToReachLocation
-// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// Function Runtime.BallInteractionBinder.BPE_OnBallReset
+// (Native, Event, Protected, BlueprintEvent)
 // Parameters:
-// const struct FVector&                   _vLocationToReach                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-float UBallPhysicComponent::BPF_GetTimeToReachLocation(const struct FVector& _vLocationToReach)
+void UBallInteractionBinder::BPE_OnBallReset(class UBallPlayersInteractionComponent* _ballPlayersInteraction)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetTimeToReachLocation");
+		Func = Class->GetFunction("BallInteractionBinder", "BPE_OnBallReset");
 
-	Params::BallPhysicComponent_BPF_GetTimeToReachLocation Parms{};
+	Params::BallInteractionBinder_BPE_OnBallReset Parms{};
 
-	Parms._vLocationToReach = std::move(_vLocationToReach);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_IsLocationOnFutureTrajectory
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FVector&                   _vLocation                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _fExcludePointBeforeTime                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _fDistanceTolerance                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UBallPhysicComponent::BPF_IsLocationOnFutureTrajectory(const struct FVector& _vLocation, float _fExcludePointBeforeTime, float _fDistanceTolerance)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_IsLocationOnFutureTrajectory");
-
-	Params::BallPhysicComponent_BPF_IsLocationOnFutureTrajectory Parms{};
-
-	Parms._vLocation = std::move(_vLocation);
-	Parms._fExcludePointBeforeTime = _fExcludePointBeforeTime;
-	Parms._fDistanceTolerance = _fDistanceTolerance;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_IsPointOnFutureTrajectory
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FPredictProjectilePathPointData&keypoint                                               (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// float                                   _fDistanceTolerance                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UBallPhysicComponent::BPF_IsPointOnFutureTrajectory(const struct FPredictProjectilePathPointData& keypoint, float _fDistanceTolerance)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_IsPointOnFutureTrajectory");
-
-	Params::BallPhysicComponent_BPF_IsPointOnFutureTrajectory Parms{};
-
-	Parms.keypoint = std::move(keypoint);
-	Parms._fDistanceTolerance = _fDistanceTolerance;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_TryToBroadcastRejectedShootEvent
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const struct FShootParams&              _shootParamsOverride                                   (Parm, NativeAccessSpecifierPublic)
-
-void UBallPhysicComponent::BPF_TryToBroadcastRejectedShootEvent(const struct FShootParams& _shootParamsOverride)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_TryToBroadcastRejectedShootEvent");
-
-	Params::BallPhysicComponent_BPF_TryToBroadcastRejectedShootEvent Parms{};
-
-	Parms._shootParamsOverride = std::move(_shootParamsOverride);
+	Parms._ballPlayersInteraction = _ballPlayersInteraction;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4319,38 +3674,19 @@ void UBallPhysicComponent::BPF_TryToBroadcastRejectedShootEvent(const struct FSh
 }
 
 
-// Function Runtime.BallPhysicComponent.OnBallInteractionPrioUpdated
-// (Final, Native, Private)
-
-void UBallPhysicComponent::OnBallInteractionPrioUpdated()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "OnBallInteractionPrioUpdated");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.BallPhysicComponent.OnBallOwnerChanged
-// (Final, Native, Private)
+// Function Runtime.BallInteractionBinder.OnBallReset
+// (Final, Native, Protected)
 // Parameters:
 // class UBallPlayersInteractionComponent* _ballPlayerInteraction                                 (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UBallPhysicComponent::OnBallOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction)
+void UBallInteractionBinder::OnBallReset(class UBallPlayersInteractionComponent* _ballPlayerInteraction)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "OnBallOwnerChanged");
+		Func = Class->GetFunction("BallInteractionBinder", "OnBallReset");
 
-	Params::BallPhysicComponent_OnBallOwnerChanged Parms{};
+	Params::BallInteractionBinder_OnBallReset Parms{};
 
 	Parms._ballPlayerInteraction = _ballPlayerInteraction;
 
@@ -4363,41 +3699,96 @@ void UBallPhysicComponent::OnBallOwnerChanged(class UBallPlayersInteractionCompo
 }
 
 
-// Function Runtime.BallPhysicComponent.OnRep_ServerTrajectoryStartingPoint
-// (Final, Native, Private)
+// Function Runtime.BallInteractionBinder.OnOwnershipChanged
+// (Native, Protected)
+// Parameters:
+// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UBallPhysicComponent::OnRep_ServerTrajectoryStartingPoint()
+void UBallInteractionBinder::OnOwnershipChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "OnRep_ServerTrajectoryStartingPoint");
+		Func = Class->GetFunction("BallInteractionBinder", "OnOwnershipChanged");
+
+	Params::BallInteractionBinder_OnOwnershipChanged Parms{};
+
+	Parms._ballPlayersInteraction = _ballPlayersInteraction;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, nullptr);
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 }
 
 
-// Function Runtime.BallPhysicComponent.BPF_CurrentTrajectoryStartedFromSpecifiedBounce
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Runtime.BallInteractionBinder.OnPreviousOwnerChanged
+// (Native, Protected)
 // Parameters:
-// int32                                   _iSurfaces                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EBallInteractionType                    _eInteractionType                                      (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bIsSamePreviousOwner                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UBallPhysicComponent::BPF_CurrentTrajectoryStartedFromSpecifiedBounce(int32 _iSurfaces) const
+void UBallInteractionBinder::OnPreviousOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eInteractionType, bool _bIsSamePreviousOwner)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_CurrentTrajectoryStartedFromSpecifiedBounce");
+		Func = Class->GetFunction("BallInteractionBinder", "OnPreviousOwnerChanged");
 
-	Params::BallPhysicComponent_BPF_CurrentTrajectoryStartedFromSpecifiedBounce Parms{};
+	Params::BallInteractionBinder_OnPreviousOwnerChanged Parms{};
 
-	Parms._iSurfaces = _iSurfaces;
+	Parms._ballPlayersInteraction = _ballPlayersInteraction;
+	Parms._eInteractionType = _eInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.BallInteractionBinder.BPF_CanTrigger
+// (Final, Native, Protected, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootParams&              _shootParams                                           (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayTagQuery&         _newOwnerQuery                                         (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const struct FGameplayTagQuery&         _shootTypeQuery                                        (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// bool                                    _bIngoreKickOffCpp                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bOnlyOnTeamChanged                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayTagQuery&         _PreviousOwnerQuery                                    (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const struct FGameplayTagQuery&         _PreviousShootTypeQuery                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const struct FShootParams&              _PreviousShootParams                                   (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// bool                                    _bIsSamePreviousOwner                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallInteractionBinder::BPF_CanTrigger(class UBallPlayersInteractionComponent* _ballPlayersInteraction, const struct FShootParams& _shootParams, EBallInteractionType _eBallInteractionType, const struct FGameplayTagQuery& _newOwnerQuery, const struct FGameplayTagQuery& _shootTypeQuery, bool _bIngoreKickOffCpp, bool _bOnlyOnTeamChanged, const struct FGameplayTagQuery& _PreviousOwnerQuery, const struct FGameplayTagQuery& _PreviousShootTypeQuery, const struct FShootParams& _PreviousShootParams, bool _bIsSamePreviousOwner) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallInteractionBinder", "BPF_CanTrigger");
+
+	Params::BallInteractionBinder_BPF_CanTrigger Parms{};
+
+	Parms._ballPlayersInteraction = _ballPlayersInteraction;
+	Parms._shootParams = std::move(_shootParams);
+	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._newOwnerQuery = std::move(_newOwnerQuery);
+	Parms._shootTypeQuery = std::move(_shootTypeQuery);
+	Parms._bIngoreKickOffCpp = _bIngoreKickOffCpp;
+	Parms._bOnlyOnTeamChanged = _bOnlyOnTeamChanged;
+	Parms._PreviousOwnerQuery = std::move(_PreviousOwnerQuery);
+	Parms._PreviousShootTypeQuery = std::move(_PreviousShootTypeQuery);
+	Parms._PreviousShootParams = std::move(_PreviousShootParams);
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -4410,278 +3801,160 @@ bool UBallPhysicComponent::BPF_CurrentTrajectoryStartedFromSpecifiedBounce(int32
 }
 
 
-// Function Runtime.BallPhysicComponent.BPF_GetAttachedBall
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Function Runtime.BallInteractionBinder.BPF_GetNewAndPreviousInteracters
+// (Final, Native, Protected, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
+// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bIsSamePreviousOwner                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ARuntimePlayerState**             _outNewInteracter                                      (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ARuntimePlayerState**             _outPreviousInteracter                                 (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UBallInteractionBinder::BPF_GetNewAndPreviousInteracters(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner, class ARuntimePlayerState** _outNewInteracter, class ARuntimePlayerState** _outPreviousInteracter) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallInteractionBinder", "BPF_GetNewAndPreviousInteracters");
+
+	Params::BallInteractionBinder_BPF_GetNewAndPreviousInteracters Parms{};
+
+	Parms._ballPlayersInteraction = _ballPlayersInteraction;
+	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outNewInteracter != nullptr)
+		*_outNewInteracter = Parms._outNewInteracter;
+
+	if (_outPreviousInteracter != nullptr)
+		*_outPreviousInteracter = Parms._outPreviousInteracter;
+}
+
+
+// Function Runtime.BallInteractionBinder.BPF_GetPreviousInteracter
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   _iIndexInteraction                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ARuntimePlayerState*              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ARuntimePlayerState* UBallInteractionBinder::BPF_GetPreviousInteracter(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, int32 _iIndexInteraction) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallInteractionBinder", "BPF_GetPreviousInteracter");
+
+	Params::BallInteractionBinder_BPF_GetPreviousInteracter Parms{};
+
+	Parms._ballPlayersInteraction = _ballPlayersInteraction;
+	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._iIndexInteraction = _iIndexInteraction;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallInteractionBinder.BPF_HasTeamChanged
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EBallInteractionType                    _eBallInteractionType                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bIsSamePreviousOwner                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallInteractionBinder::BPF_HasTeamChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallInteractionBinder", "BPF_HasTeamChanged");
+
+	Params::BallInteractionBinder_BPF_HasTeamChanged Parms{};
+
+	Parms._ballPlayersInteraction = _ballPlayersInteraction;
+	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallInterceptionPointTargetDatasource.BPF_FindSingleTarget
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FGameplayAbilityTargetDataHandle&_handle                                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// struct FBallInterceptionPointTargetData*_outData                                               (Parm, OutParm, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallInterceptionPointTargetDatasource::BPF_FindSingleTarget(const struct FGameplayAbilityTargetDataHandle& _handle, struct FBallInterceptionPointTargetData* _outData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("BallInterceptionPointTargetDatasource", "BPF_FindSingleTarget");
+
+	Params::BallInterceptionPointTargetDatasource_BPF_FindSingleTarget Parms{};
+
+	Parms._handle = std::move(_handle);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outData != nullptr)
+		*_outData = std::move(Parms._outData);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallInterceptionPointTargetDatasource.BPF_GetBall
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FBallInterceptionPointTargetData&_targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 // class ABall*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class ABall* UBallPhysicComponent::BPF_GetAttachedBall() const
+class ABall* UBallInterceptionPointTargetDatasource::BPF_GetBall(const struct FBallInterceptionPointTargetData& _targetData)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetAttachedBall");
+		Func = StaticClass()->GetFunction("BallInterceptionPointTargetDatasource", "BPF_GetBall");
 
-	Params::BallPhysicComponent_BPF_GetAttachedBall Parms{};
+	Params::BallInterceptionPointTargetDatasource_BPF_GetBall Parms{};
 
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_GetCurrentShootParams
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FShootParams               ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-const struct FShootParams UBallPhysicComponent::BPF_GetCurrentShootParams() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetCurrentShootParams");
-
-	Params::BallPhysicComponent_BPF_GetCurrentShootParams Parms{};
+	Parms._targetData = std::move(_targetData);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_GetLastShootParamsFromHistory
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FShootParams*                    _shootParams                                           (Parm, OutParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UBallPhysicComponent::BPF_GetLastShootParamsFromHistory(struct FShootParams* _shootParams) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetLastShootParamsFromHistory");
-
-	Params::BallPhysicComponent_BPF_GetLastShootParamsFromHistory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_shootParams != nullptr)
-		*_shootParams = std::move(Parms._shootParams);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_GetStatusTimeLimit
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FGameplayTag&              _tag                                                   (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool*                                   _bSuccess                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bGetShootInstigatorTime                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UBallPhysicComponent::BPF_GetStatusTimeLimit(const struct FGameplayTag& _tag, bool* _bSuccess, bool _bGetShootInstigatorTime) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetStatusTimeLimit");
-
-	Params::BallPhysicComponent_BPF_GetStatusTimeLimit Parms{};
-
-	Parms._tag = std::move(_tag);
-	Parms._bGetShootInstigatorTime = _bGetShootInstigatorTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_bSuccess != nullptr)
-		*_bSuccess = Parms._bSuccess;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_GetTrajectory
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FBallTrajectoryResult            ReturnValue                                            (Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-struct FBallTrajectoryResult UBallPhysicComponent::BPF_GetTrajectory() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetTrajectory");
-
-	Params::BallPhysicComponent_BPF_GetTrajectory Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_GetVelocity
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UBallPhysicComponent::BPF_GetVelocity() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetVelocity");
-
-	Params::BallPhysicComponent_BPF_GetVelocity Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_HasBallStatus
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FGameplayTag&              _tag                                                   (ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const bool                              _bOnShootInstigator                                    (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UBallPhysicComponent::BPF_HasBallStatus(const struct FGameplayTag& _tag, const bool _bOnShootInstigator) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_HasBallStatus");
-
-	Params::BallPhysicComponent_BPF_HasBallStatus Parms{};
-
-	Parms._tag = std::move(_tag);
-	Parms._bOnShootInstigator = _bOnShootInstigator;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_MakeBallInterceptionPointTargetData
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   _fTime                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FBallInterceptionPointTargetData*_result                                                (Parm, OutParm, NativeAccessSpecifierPublic)
-
-void UBallPhysicComponent::BPF_MakeBallInterceptionPointTargetData(float _fTime, struct FBallInterceptionPointTargetData* _result) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_MakeBallInterceptionPointTargetData");
-
-	Params::BallPhysicComponent_BPF_MakeBallInterceptionPointTargetData Parms{};
-
-	Parms._fTime = _fTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_result != nullptr)
-		*_result = std::move(Parms._result);
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_MakeBallInterceptionPointTargetDataFromCurrentState
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   _fTime                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FBallInterceptionPointTargetData*_result                                                (Parm, OutParm, NativeAccessSpecifierPublic)
-
-void UBallPhysicComponent::BPF_MakeBallInterceptionPointTargetDataFromCurrentState(float _fTime, struct FBallInterceptionPointTargetData* _result) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_MakeBallInterceptionPointTargetDataFromCurrentState");
-
-	Params::BallPhysicComponent_BPF_MakeBallInterceptionPointTargetDataFromCurrentState Parms{};
-
-	Parms._fTime = _fTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_result != nullptr)
-		*_result = std::move(Parms._result);
-}
-
-
-// Function Runtime.BallPhysicComponent.BPF_MakeBallPathPointData
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   _fTime                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FPredictProjectilePathPointData  ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-
-struct FPredictProjectilePathPointData UBallPhysicComponent::BPF_MakeBallPathPointData(float _fTime) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BallPhysicComponent", "BPF_MakeBallPathPointData");
-
-	Params::BallPhysicComponent_BPF_MakeBallPathPointData Parms{};
-
-	Parms._fTime = _fTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -5116,6 +4389,722 @@ const TArray<struct FBallInteractionRequestData> UBallPlayersInteractionComponen
 		Func = Class->GetFunction("BallPlayersInteractionComponent", "GetBallInteractionRequests");
 
 	Params::BallPlayersInteractionComponent_GetBallInteractionRequests Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.GetOffsetedBallInterceptionPointDatasource.BPF_FindSingleTarget
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FGameplayAbilityTargetDataHandle&_handle                                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// struct FBallInterceptionPointTargetData*_outData                                               (Parm, OutParm, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UGetOffsetedBallInterceptionPointDatasource::BPF_FindSingleTarget(const struct FGameplayAbilityTargetDataHandle& _handle, struct FBallInterceptionPointTargetData* _outData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("GetOffsetedBallInterceptionPointDatasource", "BPF_FindSingleTarget");
+
+	Params::GetOffsetedBallInterceptionPointDatasource_BPF_FindSingleTarget Parms{};
+
+	Parms._handle = std::move(_handle);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outData != nullptr)
+		*_outData = std::move(Parms._outData);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallInterceptionPointHelpers.BPF_GetStatus
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FBallInterceptionPointTargetData&_ballInterceptionPointTargetData                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// struct FGameplayTagContainer            ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+
+struct FGameplayTagContainer UBallInterceptionPointHelpers::BPF_GetStatus(const class AActor* _actor, const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("BallInterceptionPointHelpers", "BPF_GetStatus");
+
+	Params::BallInterceptionPointHelpers_BPF_GetStatus Parms{};
+
+	Parms._actor = _actor;
+	Parms._ballInterceptionPointTargetData = std::move(_ballInterceptionPointTargetData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallInterceptionPointHelpers.BPF_IsEmpty
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FBallInterceptionPointTargetData&_ballInterceptionPointTargetData                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallInterceptionPointHelpers::BPF_IsEmpty(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("BallInterceptionPointHelpers", "BPF_IsEmpty");
+
+	Params::BallInterceptionPointHelpers_BPF_IsEmpty Parms{};
+
+	Parms._ballInterceptionPointTargetData = std::move(_ballInterceptionPointTargetData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallInterceptionPointHelpers.BPF_IsImmobile
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FBallInterceptionPointTargetData&_ballInterceptionPointTargetData                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallInterceptionPointHelpers::BPF_IsImmobile(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("BallInterceptionPointHelpers", "BPF_IsImmobile");
+
+	Params::BallInterceptionPointHelpers_BPF_IsImmobile Parms{};
+
+	Parms._ballInterceptionPointTargetData = std::move(_ballInterceptionPointTargetData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallInterceptionPointHelpers.BPF_IsValid
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FBallInterceptionPointTargetData&_ballInterceptionPointTargetData                       (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallInterceptionPointHelpers::BPF_IsValid(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("BallInterceptionPointHelpers", "BPF_IsValid");
+
+	Params::BallInterceptionPointHelpers_BPF_IsValid Parms{};
+
+	Parms._ballInterceptionPointTargetData = std::move(_ballInterceptionPointTargetData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.MoveAlongSplineComponent.BPF_SetLocationOnPath
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                                   _fDistanceOnPath                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UMoveAlongSplineComponent::BPF_SetLocationOnPath(float _fDistanceOnPath)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MoveAlongSplineComponent", "BPF_SetLocationOnPath");
+
+	Params::MoveAlongSplineComponent_BPF_SetLocationOnPath Parms{};
+
+	Parms._fDistanceOnPath = _fDistanceOnPath;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.MoveAlongSplineComponent.SetPath
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class ASplineActor*                     _newPath                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UMoveAlongSplineComponent::SetPath(class ASplineActor* _newPath)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MoveAlongSplineComponent", "SetPath");
+
+	Params::MoveAlongSplineComponent_SetPath Parms{};
+
+	Parms._newPath = _newPath;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_ApplyShoot
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FShootParams&              _shootParams                                           (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const class UGameplayAbility*           _instigatorAbility                                     (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bAttachedToPlayer                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UBallPhysicComponent::BPF_ApplyShoot(const struct FShootParams& _shootParams, const class UGameplayAbility* _instigatorAbility, bool _bAttachedToPlayer)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_ApplyShoot");
+
+	Params::BallPhysicComponent_BPF_ApplyShoot Parms{};
+
+	Parms._shootParams = std::move(_shootParams);
+	Parms._instigatorAbility = _instigatorAbility;
+	Parms._bAttachedToPlayer = _bAttachedToPlayer;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_GetTimeToReachLocation
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// const struct FVector&                   _vLocationToReach                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UBallPhysicComponent::BPF_GetTimeToReachLocation(const struct FVector& _vLocationToReach)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetTimeToReachLocation");
+
+	Params::BallPhysicComponent_BPF_GetTimeToReachLocation Parms{};
+
+	Parms._vLocationToReach = std::move(_vLocationToReach);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_IsLocationOnFutureTrajectory
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FVector&                   _vLocation                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _fExcludePointBeforeTime                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _fDistanceTolerance                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallPhysicComponent::BPF_IsLocationOnFutureTrajectory(const struct FVector& _vLocation, float _fExcludePointBeforeTime, float _fDistanceTolerance)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_IsLocationOnFutureTrajectory");
+
+	Params::BallPhysicComponent_BPF_IsLocationOnFutureTrajectory Parms{};
+
+	Parms._vLocation = std::move(_vLocation);
+	Parms._fExcludePointBeforeTime = _fExcludePointBeforeTime;
+	Parms._fDistanceTolerance = _fDistanceTolerance;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_IsPointOnFutureTrajectory
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FPredictProjectilePathPointData&keypoint                                               (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// float                                   _fDistanceTolerance                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallPhysicComponent::BPF_IsPointOnFutureTrajectory(const struct FPredictProjectilePathPointData& keypoint, float _fDistanceTolerance)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_IsPointOnFutureTrajectory");
+
+	Params::BallPhysicComponent_BPF_IsPointOnFutureTrajectory Parms{};
+
+	Parms.keypoint = std::move(keypoint);
+	Parms._fDistanceTolerance = _fDistanceTolerance;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_TryToBroadcastRejectedShootEvent
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// const struct FShootParams&              _shootParamsOverride                                   (Parm, NativeAccessSpecifierPublic)
+
+void UBallPhysicComponent::BPF_TryToBroadcastRejectedShootEvent(const struct FShootParams& _shootParamsOverride)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_TryToBroadcastRejectedShootEvent");
+
+	Params::BallPhysicComponent_BPF_TryToBroadcastRejectedShootEvent Parms{};
+
+	Parms._shootParamsOverride = std::move(_shootParamsOverride);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.BallPhysicComponent.OnBallInteractionPrioUpdated
+// (Final, Native, Private)
+
+void UBallPhysicComponent::OnBallInteractionPrioUpdated()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "OnBallInteractionPrioUpdated");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.BallPhysicComponent.OnBallOwnerChanged
+// (Final, Native, Private)
+// Parameters:
+// class UBallPlayersInteractionComponent* _ballPlayerInteraction                                 (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UBallPhysicComponent::OnBallOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "OnBallOwnerChanged");
+
+	Params::BallPhysicComponent_OnBallOwnerChanged Parms{};
+
+	Parms._ballPlayerInteraction = _ballPlayerInteraction;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.BallPhysicComponent.OnRep_ServerTrajectoryStartingPoint
+// (Final, Native, Private, HasOutParams)
+// Parameters:
+// const struct FShootStartPoint&          _prevServerTrajectoryStartingPoint                     (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void UBallPhysicComponent::OnRep_ServerTrajectoryStartingPoint(const struct FShootStartPoint& _prevServerTrajectoryStartingPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "OnRep_ServerTrajectoryStartingPoint");
+
+	Params::BallPhysicComponent_OnRep_ServerTrajectoryStartingPoint Parms{};
+
+	Parms._prevServerTrajectoryStartingPoint = std::move(_prevServerTrajectoryStartingPoint);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_CurrentTrajectoryStartedFromSpecifiedBounce
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   _iSurfaces                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallPhysicComponent::BPF_CurrentTrajectoryStartedFromSpecifiedBounce(int32 _iSurfaces) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_CurrentTrajectoryStartedFromSpecifiedBounce");
+
+	Params::BallPhysicComponent_BPF_CurrentTrajectoryStartedFromSpecifiedBounce Parms{};
+
+	Parms._iSurfaces = _iSurfaces;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_GetAttachedBall
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class ABall*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ABall* UBallPhysicComponent::BPF_GetAttachedBall() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetAttachedBall");
+
+	Params::BallPhysicComponent_BPF_GetAttachedBall Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_GetCurrentShootParams
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FShootParams               ReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+const struct FShootParams UBallPhysicComponent::BPF_GetCurrentShootParams() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetCurrentShootParams");
+
+	Params::BallPhysicComponent_BPF_GetCurrentShootParams Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_GetLastShootParamsFromHistory
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FShootParams*                    _shootParams                                           (Parm, OutParm, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallPhysicComponent::BPF_GetLastShootParamsFromHistory(struct FShootParams* _shootParams) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetLastShootParamsFromHistory");
+
+	Params::BallPhysicComponent_BPF_GetLastShootParamsFromHistory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_shootParams != nullptr)
+		*_shootParams = std::move(Parms._shootParams);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_GetStatusTimeLimit
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FGameplayTag&              _tag                                                   (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool*                                   _bSuccess                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bGetShootInstigatorTime                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UBallPhysicComponent::BPF_GetStatusTimeLimit(const struct FGameplayTag& _tag, bool* _bSuccess, bool _bGetShootInstigatorTime) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetStatusTimeLimit");
+
+	Params::BallPhysicComponent_BPF_GetStatusTimeLimit Parms{};
+
+	Parms._tag = std::move(_tag);
+	Parms._bGetShootInstigatorTime = _bGetShootInstigatorTime;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_bSuccess != nullptr)
+		*_bSuccess = Parms._bSuccess;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_GetTrajectory
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FBallTrajectoryResult            ReturnValue                                            (Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+struct FBallTrajectoryResult UBallPhysicComponent::BPF_GetTrajectory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetTrajectory");
+
+	Params::BallPhysicComponent_BPF_GetTrajectory Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_GetVelocity
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UBallPhysicComponent::BPF_GetVelocity() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_GetVelocity");
+
+	Params::BallPhysicComponent_BPF_GetVelocity Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_HasBallStatus
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FGameplayTag&              _tag                                                   (ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const bool                              _bOnShootInstigator                                    (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UBallPhysicComponent::BPF_HasBallStatus(const struct FGameplayTag& _tag, const bool _bOnShootInstigator) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_HasBallStatus");
+
+	Params::BallPhysicComponent_BPF_HasBallStatus Parms{};
+
+	Parms._tag = std::move(_tag);
+	Parms._bOnShootInstigator = _bOnShootInstigator;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_MakeBallInterceptionPointTargetData
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   _fTime                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FBallInterceptionPointTargetData*_result                                                (Parm, OutParm, NativeAccessSpecifierPublic)
+
+void UBallPhysicComponent::BPF_MakeBallInterceptionPointTargetData(float _fTime, struct FBallInterceptionPointTargetData* _result) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_MakeBallInterceptionPointTargetData");
+
+	Params::BallPhysicComponent_BPF_MakeBallInterceptionPointTargetData Parms{};
+
+	Parms._fTime = _fTime;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_result != nullptr)
+		*_result = std::move(Parms._result);
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_MakeBallInterceptionPointTargetDataFromCurrentState
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   _fTime                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FBallInterceptionPointTargetData*_result                                                (Parm, OutParm, NativeAccessSpecifierPublic)
+
+void UBallPhysicComponent::BPF_MakeBallInterceptionPointTargetDataFromCurrentState(float _fTime, struct FBallInterceptionPointTargetData* _result) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_MakeBallInterceptionPointTargetDataFromCurrentState");
+
+	Params::BallPhysicComponent_BPF_MakeBallInterceptionPointTargetDataFromCurrentState Parms{};
+
+	Parms._fTime = _fTime;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_result != nullptr)
+		*_result = std::move(Parms._result);
+}
+
+
+// Function Runtime.BallPhysicComponent.BPF_MakeBallPathPointData
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   _fTime                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FPredictProjectilePathPointData  ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+
+struct FPredictProjectilePathPointData UBallPhysicComponent::BPF_MakeBallPathPointData(float _fTime) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BallPhysicComponent", "BPF_MakeBallPathPointData");
+
+	Params::BallPhysicComponent_BPF_MakeBallPathPointData Parms{};
+
+	Parms._fTime = _fTime;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -5591,362 +5580,6 @@ void UColorPaletteHelpers::BPF_GetPaletteColors(const class UObject* _context, c
 
 	if (_tertiaryColor != nullptr)
 		*_tertiaryColor = std::move(Parms._tertiaryColor);
-}
-
-
-// Function Runtime.TutorialManager.BPE_OnStartCurrentStep
-// (Event, Public, BlueprintEvent)
-
-void ATutorialManager::BPE_OnStartCurrentStep()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPE_OnStartCurrentStep");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialManager.BPE_OnStartTutorial
-// (Event, Public, BlueprintEvent)
-
-void ATutorialManager::BPE_OnStartTutorial()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPE_OnStartTutorial");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialManager.BPE_OnTutorialComplete
-// (Event, Protected, BlueprintEvent)
-
-void ATutorialManager::BPE_OnTutorialComplete()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPE_OnTutorialComplete");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialManager.BPE_OnWaitingPlayerInputToStart
-// (Event, Public, BlueprintEvent)
-
-void ATutorialManager::BPE_OnWaitingPlayerInputToStart()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPE_OnWaitingPlayerInputToStart");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialManager.InitTutorial
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class UCommonActivatableWidget*         _widgetToUse                                           (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ATutorialManager::InitTutorial(class UCommonActivatableWidget* _widgetToUse)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "InitTutorial");
-
-	Params::TutorialManager_InitTutorial Parms{};
-
-	Parms._widgetToUse = _widgetToUse;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialManager.OnLevelSequencePlayedAtTheBeginningFinished
-// (Final, Native, Protected)
-
-void ATutorialManager::OnLevelSequencePlayedAtTheBeginningFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "OnLevelSequencePlayedAtTheBeginningFinished");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialManager.OnLevelSequencePlayedAtTheEndFinished
-// (Final, Native, Protected)
-
-void ATutorialManager::OnLevelSequencePlayedAtTheEndFinished()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "OnLevelSequencePlayedAtTheEndFinished");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialManager.OnPossessedPawnChanged
-// (Final, Native, Public)
-// Parameters:
-// class APawn*                            _oldPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class APawn*                            _newPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void ATutorialManager::OnPossessedPawnChanged(class APawn* _oldPawn, class APawn* _newPawn)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "OnPossessedPawnChanged");
-
-	Params::TutorialManager_OnPossessedPawnChanged Parms{};
-
-	Parms._oldPawn = _oldPawn;
-	Parms._newPawn = _newPawn;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialManager.OnSkipIntroductionInputPressed
-// (Final, Native, Public, BlueprintCallable)
-
-void ATutorialManager::OnSkipIntroductionInputPressed()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "OnSkipIntroductionInputPressed");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialManager.OnStepSucceeded
-// (Final, Native, Public)
-
-void ATutorialManager::OnStepSucceeded()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "OnStepSucceeded");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialManager.BPF_FindTutorialActor
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FGameplayTag&              _tag                                                   (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ATutorialActor*                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class ATutorialActor* ATutorialManager::BPF_FindTutorialActor(const struct FGameplayTag& _tag) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPF_FindTutorialActor");
-
-	Params::TutorialManager_BPF_FindTutorialActor Parms{};
-
-	Parms._tag = std::move(_tag);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TutorialManager.BPF_GetCurrentStepNumber
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 ATutorialManager::BPF_GetCurrentStepNumber() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPF_GetCurrentStepNumber");
-
-	Params::TutorialManager_BPF_GetCurrentStepNumber Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TutorialManager.BPF_GetObjectiveCountInCurrentStep
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 ATutorialManager::BPF_GetObjectiveCountInCurrentStep() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPF_GetObjectiveCountInCurrentStep");
-
-	Params::TutorialManager_BPF_GetObjectiveCountInCurrentStep Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TutorialManager.BPF_GetObjectiveCountInCurrentStepWithIteration
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 ATutorialManager::BPF_GetObjectiveCountInCurrentStepWithIteration() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPF_GetObjectiveCountInCurrentStepWithIteration");
-
-	Params::TutorialManager_BPF_GetObjectiveCountInCurrentStepWithIteration Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TutorialManager.BPF_GetStepCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 ATutorialManager::BPF_GetStepCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPF_GetStepCount");
-
-	Params::TutorialManager_BPF_GetStepCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TutorialManager.BPF_MoveToNextLevel
-// (Final, Native, Public, BlueprintCallable, Const)
-
-void ATutorialManager::BPF_MoveToNextLevel() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "BPF_MoveToNextLevel");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialManager.CanStartTutorialFromInput
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool ATutorialManager::CanStartTutorialFromInput() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialManager", "CanStartTutorialFromInput");
-
-	Params::TutorialManager_CanStartTutorialFromInput Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -7847,6 +7480,34 @@ bool AEffectAttributorVolume::BPF_IsMatchingCurrentMatchFlowAndStateRequirement(
 }
 
 
+// Function Runtime.EffectAttributorVolume.BPF_IsRemovalBlockedByOngoingAbility
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool AEffectAttributorVolume::BPF_IsRemovalBlockedByOngoingAbility(const class AActor* _actor) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("EffectAttributorVolume", "BPF_IsRemovalBlockedByOngoingAbility");
+
+	Params::EffectAttributorVolume_BPF_IsRemovalBlockedByOngoingAbility Parms{};
+
+	Parms._actor = _actor;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function Runtime.EffectAttributorVolume.BPF_ShouldLogDetailedInfos
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
@@ -7860,6 +7521,31 @@ bool AEffectAttributorVolume::BPF_ShouldLogDetailedInfos() const
 		Func = Class->GetFunction("EffectAttributorVolume", "BPF_ShouldLogDetailedInfos");
 
 	Params::EffectAttributorVolume_BPF_ShouldLogDetailedInfos Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.EffectAttributorVolume.BPF_VLOGCategory
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class FName                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FName AEffectAttributorVolume::BPF_VLOGCategory() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("EffectAttributorVolume", "BPF_VLOGCategory");
+
+	Params::EffectAttributorVolume_BPF_VLOGCategory Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -7924,38 +7610,6 @@ void UGoalScoredBinder::OnGoaldScored(const struct FGoalDescription& _goalDescri
 }
 
 
-// Function Runtime.ShopItemFilter.BPE_ShouldBeRemoved
-// (Native, Event, Protected, HasOutParams, BlueprintEvent, Const)
-// Parameters:
-// const class UCustomizationSubsystem*    _subsystem                                             (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShopItem&                 _item                                                  (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// bool                                    _bIsActivated                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UShopItemFilter::BPE_ShouldBeRemoved(const class UCustomizationSubsystem* _subsystem, const struct FShopItem& _item, bool _bIsActivated) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShopItemFilter", "BPE_ShouldBeRemoved");
-
-	Params::ShopItemFilter_BPE_ShouldBeRemoved Parms{};
-
-	Parms._subsystem = _subsystem;
-	Parms._item = std::move(_item);
-	Parms._bIsActivated = _bIsActivated;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function Runtime.CharacterHinderingConfig.BPF_GetHinderingConfig
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
@@ -7986,112 +7640,6 @@ class UHinderingConfig* UCharacterHinderingConfig::BPF_GetHinderingConfig(const 
 }
 
 
-// Function Runtime.HinderingGameplayAbility.OnPlayerStateRemoved
-// (Final, Native, Public)
-// Parameters:
-// class APlayerState*                     _playerState                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UHinderingGameplayAbility::OnPlayerStateRemoved(class APlayerState* _playerState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HinderingGameplayAbility", "OnPlayerStateRemoved");
-
-	Params::HinderingGameplayAbility_OnPlayerStateRemoved Parms{};
-
-	Parms._playerState = _playerState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.HinderingGameplayAbility.ServerNotifyHindering
-// (Net, NetReliable, Native, Event, Public, NetServer)
-// Parameters:
-// class APlayerState*                     _player                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _fClientServerTime                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _fTimeSinceLastServerTime                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UHinderingGameplayAbility::ServerNotifyHindering(class APlayerState* _player, float _fClientServerTime, float _fTimeSinceLastServerTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HinderingGameplayAbility", "ServerNotifyHindering");
-
-	Params::HinderingGameplayAbility_ServerNotifyHindering Parms{};
-
-	Parms._player = _player;
-	Parms._fClientServerTime = _fClientServerTime;
-	Parms._fTimeSinceLastServerTime = _fTimeSinceLastServerTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.HinderingGameplayAbility.ServerNotifyHinderingFast
-// (Net, NetReliable, Native, Event, Public, NetServer)
-// Parameters:
-// class APlayerState*                     _player                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _fClientServerTime                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UHinderingGameplayAbility::ServerNotifyHinderingFast(class APlayerState* _player, float _fClientServerTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HinderingGameplayAbility", "ServerNotifyHinderingFast");
-
-	Params::HinderingGameplayAbility_ServerNotifyHinderingFast Parms{};
-
-	Parms._player = _player;
-	Parms._fClientServerTime = _fClientServerTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.HinderingGameplayAbility.ServerNotifyHinderingStop
-// (Net, NetReliable, Native, Event, Public, NetServer)
-// Parameters:
-// class APlayerState*                     _player                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UHinderingGameplayAbility::ServerNotifyHinderingStop(class APlayerState* _player)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HinderingGameplayAbility", "ServerNotifyHinderingStop");
-
-	Params::HinderingGameplayAbility_ServerNotifyHinderingStop Parms{};
-
-	Parms._player = _player;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function Runtime.HUDRegisterableInterface.RegisterToHUD
 // (Native, Event, Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -8112,6 +7660,31 @@ void IHUDRegisterableInterface::RegisterToHUD(class UHUD_Widget* _HUD)
 	Func->FunctionFlags |= 0x400;
 
 	AsUObject()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.HUD_NameTagManagerWidget.BPF_SortNameTagArrayByDistanceFromTarget
+// (Final, Native, Protected, BlueprintCallable)
+// Parameters:
+// class AActor*                           _target                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UHUD_NameTagManagerWidget::BPF_SortNameTagArrayByDistanceFromTarget(class AActor* _target)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HUD_NameTagManagerWidget", "BPF_SortNameTagArrayByDistanceFromTarget");
+
+	Params::HUD_NameTagManagerWidget_BPF_SortNameTagArrayByDistanceFromTarget Parms{};
+
+	Parms._target = _target;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 }
@@ -8570,6 +8143,116 @@ void UPingBinder::OnPingTriggered(const struct FPingStateDescription& _pingState
 }
 
 
+// Function Runtime.PlayerBallOwnership.BPF_GetBall
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// class ABall**                           _outBallRef                                            (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EExecSuccessEnum*                       _OutExecBranches                                       (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UPlayerBallOwnership::BPF_GetBall(class ABall** _outBallRef, EExecSuccessEnum* _OutExecBranches)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PlayerBallOwnership", "BPF_GetBall");
+
+	Params::PlayerBallOwnership_BPF_GetBall Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outBallRef != nullptr)
+		*_outBallRef = Parms._outBallRef;
+
+	if (_OutExecBranches != nullptr)
+		*_OutExecBranches = Parms._OutExecBranches;
+}
+
+
+// Function Runtime.PlayerBallOwnership.BPF_SetBall
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bSteal                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UPlayerBallOwnership::BPF_SetBall(class ABall* _ball, bool _bSteal)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PlayerBallOwnership", "BPF_SetBall");
+
+	Params::PlayerBallOwnership_BPF_SetBall Parms{};
+
+	Parms._ball = _ball;
+	Parms._bSteal = _bSteal;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.PlayerBallOwnership.BPF_GetBallPure
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class ABall*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ABall* UPlayerBallOwnership::BPF_GetBallPure() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PlayerBallOwnership", "BPF_GetBallPure");
+
+	Params::PlayerBallOwnership_BPF_GetBallPure Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.PlayerBallOwnership.BPF_GetPlayerState
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class ARuntimePlayerState*              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ARuntimePlayerState* UPlayerBallOwnership::BPF_GetPlayerState() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("PlayerBallOwnership", "BPF_GetPlayerState");
+
+	Params::PlayerBallOwnership_BPF_GetPlayerState Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function Runtime.PlayerJoinBinder.OnPlayerAdded
 // (Final, Native, Protected)
 // Parameters:
@@ -8783,85 +8466,22 @@ void UPlayerProfileHelpers::BPF_SetCategoryAsset(struct FPlayerProfileDescriptio
 }
 
 
-// Function Runtime.ThumbnailFunctionLibrary.BPF_ClearThumbnailSceneCache
-// (Final, Native, Static, Private, BlueprintCallable)
+// Function Runtime.StringsHelper.BPF_HashString
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
-// bool                                    bCollectGarbage                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FString&                    _str                                                   (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UThumbnailFunctionLibrary::BPF_ClearThumbnailSceneCache(bool bCollectGarbage)
+int32 UStringsHelper::BPF_HashString(const class FString& _str)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_ClearThumbnailSceneCache");
+		Func = StaticClass()->GetFunction("StringsHelper", "BPF_HashString");
 
-	Params::ThumbnailFunctionLibrary_BPF_ClearThumbnailSceneCache Parms{};
+	Params::StringsHelper_BPF_HashString Parms{};
 
-	Parms.bCollectGarbage = bCollectGarbage;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ThumbnailFunctionLibrary.BPF_CreateLevelSequence
-// (Final, Native, Static, Private, HasOutParams, HasDefaults, BlueprintCallable)
-// Parameters:
-// class UObject*                          WorldContextObject                                     (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ULevelSequence*                   InLevelSequence                                        (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FMovieSceneSequencePlaybackSettings&Settings                                               (Parm, NoDestructor, NativeAccessSpecifierPublic)
-// const struct FTransform&                Transform                                              (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AThumbnailLevelSequenceActor**    OutActor                                               (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ULevelSequencePlayer*             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class ULevelSequencePlayer* UThumbnailFunctionLibrary::BPF_CreateLevelSequence(class UObject* WorldContextObject, class ULevelSequence* InLevelSequence, const struct FMovieSceneSequencePlaybackSettings& Settings, const struct FTransform& Transform, class AThumbnailLevelSequenceActor** OutActor)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_CreateLevelSequence");
-
-	Params::ThumbnailFunctionLibrary_BPF_CreateLevelSequence Parms{};
-
-	Parms.WorldContextObject = WorldContextObject;
-	Parms.InLevelSequence = InLevelSequence;
-	Parms.Settings = std::move(Settings);
-	Parms.Transform = std::move(Transform);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (OutActor != nullptr)
-		*OutActor = Parms.OutActor;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ThumbnailFunctionLibrary.BPF_GetSpawnables
-// (Final, Native, Static, Private, BlueprintCallable)
-// Parameters:
-// class AThumbnailLevelSequenceActor*     Actor                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TArray<class UObject*>                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-
-TArray<class UObject*> UThumbnailFunctionLibrary::BPF_GetSpawnables(class AThumbnailLevelSequenceActor* Actor)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_GetSpawnables");
-
-	Params::ThumbnailFunctionLibrary_BPF_GetSpawnables Parms{};
-
-	Parms.Actor = Actor;
+	Parms._str = std::move(_str);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -8871,80 +8491,6 @@ TArray<class UObject*> UThumbnailFunctionLibrary::BPF_GetSpawnables(class AThumb
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ThumbnailFunctionLibrary.BPF_ObjectPathToObjectName
-// (Final, Native, Static, Private, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class FString&                    _objectPath                                            (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class FString UThumbnailFunctionLibrary::BPF_ObjectPathToObjectName(const class FString& _objectPath)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_ObjectPathToObjectName");
-
-	Params::ThumbnailFunctionLibrary_BPF_ObjectPathToObjectName Parms{};
-
-	Parms._objectPath = std::move(_objectPath);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ThumbnailFunctionLibrary.BPF_ReleaseRenderTargets
-// (Final, Native, Static, Private, BlueprintCallable)
-
-void UThumbnailFunctionLibrary::BPF_ReleaseRenderTargets()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_ReleaseRenderTargets");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ThumbnailFunctionLibrary.BPF_SetForceMipStreaming
-// (Final, Native, Static, Private, BlueprintCallable)
-// Parameters:
-// class UPrimitiveComponent*              Component                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bForceMipStreaming                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UThumbnailFunctionLibrary::BPF_SetForceMipStreaming(class UPrimitiveComponent* Component, bool bForceMipStreaming)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_SetForceMipStreaming");
-
-	Params::ThumbnailFunctionLibrary_BPF_SetForceMipStreaming Parms{};
-
-	Parms.Component = Component;
-	Parms.bForceMipStreaming = bForceMipStreaming;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
 }
 
 
@@ -9309,6 +8855,122 @@ void UPlayerProfileUIInfosAsset::BPF_GeneratePlayerProfileData()
 }
 
 
+// Function Runtime.TutorialObjective.IsObjectiveOver
+// (Final, Native, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UTutorialObjective::IsObjectiveOver()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialObjective", "IsObjectiveOver");
+
+	Params::TutorialObjective_IsObjectiveOver Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialObjective.ObjectiveAchievedOnce
+// (Native, Public, BlueprintCallable)
+
+void UTutorialObjective::ObjectiveAchievedOnce()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialObjective", "ObjectiveAchievedOnce");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialObjective.ObjectiveCompleted
+// (Final, Native, Public, BlueprintCallable)
+
+void UTutorialObjective::ObjectiveCompleted()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialObjective", "ObjectiveCompleted");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialObjective.OnEndObjective
+// (Event, Public, BlueprintEvent)
+
+void UTutorialObjective::OnEndObjective()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialObjective", "OnEndObjective");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialObjective.OnInitObjective
+// (Event, Public, BlueprintEvent)
+
+void UTutorialObjective::OnInitObjective()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialObjective", "OnInitObjective");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialObjective.GetManagerOwner
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class ATutorialManager*                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ATutorialManager* UTutorialObjective::GetManagerOwner() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialObjective", "GetManagerOwner");
+
+	Params::TutorialObjective_GetManagerOwner Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function Runtime.PreMatchFlowState.ClientGoToNextState
 // (Final, Native, Public)
 // Parameters:
@@ -9365,25 +9027,6 @@ void UPreMatchFlowState::EnteringState(class USCFlowGraphNode* _previousState, c
 }
 
 
-// Function Runtime.UsedColorChannelsAssetUserData.BPF_ComputeUsedColorChannels
-// (Final, Native, Protected, BlueprintCallable)
-
-void UUsedColorChannelsAssetUserData::BPF_ComputeUsedColorChannels()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UsedColorChannelsAssetUserData", "BPF_ComputeUsedColorChannels");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function Runtime.RematchCharacterCustomizationComponent.BPF_SetForceSyncLoad
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -9429,6 +9072,25 @@ void URematchCharacterCustomizationComponent::BPF_SetMainWorld(class UObject* _m
 	Func->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.UsedColorChannelsAssetUserData.BPF_ComputeUsedColorChannels
+// (Final, Native, Protected, BlueprintCallable)
+
+void UUsedColorChannelsAssetUserData::BPF_ComputeUsedColorChannels()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UsedColorChannelsAssetUserData", "BPF_ComputeUsedColorChannels");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
 }
@@ -9490,31 +9152,6 @@ bool URematchMapDataAsset::BPF_ContainsLevelPath(const class FName& _levelPath) 
 }
 
 
-// Function Runtime.VictoryMoodHandlerFlowState.BPF_GetVictoryMoodBindingTag
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class FName                       ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-const class FName UVictoryMoodHandlerFlowState::BPF_GetVictoryMoodBindingTag() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("VictoryMoodHandlerFlowState", "BPF_GetVictoryMoodBindingTag");
-
-	Params::VictoryMoodHandlerFlowState_BPF_GetVictoryMoodBindingTag Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function Runtime.RematchServerMapFlowState.BPF_GetMapDataAssetIndexFromLevelPath
 // (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
@@ -9531,6 +9168,31 @@ int32 URematchServerMapFlowState::BPF_GetMapDataAssetIndexFromLevelPath(const cl
 	Params::RematchServerMapFlowState_BPF_GetMapDataAssetIndexFromLevelPath Parms{};
 
 	Parms._levelPath = _levelPath;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.VictoryMoodHandlerFlowState.BPF_GetVictoryMoodBindingTag
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class FName                       ReturnValue                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+const class FName UVictoryMoodHandlerFlowState::BPF_GetVictoryMoodBindingTag() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("VictoryMoodHandlerFlowState", "BPF_GetVictoryMoodBindingTag");
+
+	Params::VictoryMoodHandlerFlowState_BPF_GetVictoryMoodBindingTag Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -9754,397 +9416,24 @@ void URootMotionModifier_RedirectToBallTrajectory::BPF_GenerateRequiredPayloadFo
 }
 
 
-// Function Runtime.Workshop.AddScore
-// (Final, Native, Public, BlueprintCallable)
+// Function Runtime.ShopItemSorter.BPE_Compare
+// (Native, Event, Protected, HasOutParams, BlueprintEvent, Const)
 // Parameters:
-// int32                                   _iScoreToAdd                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShopItem&                 _first                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const struct FShopItem&                 _second                                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// ESortResult                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void AWorkshop::AddScore(int32 _iScoreToAdd)
+ESortResult UShopItemSorter::BPE_Compare(const struct FShopItem& _first, const struct FShopItem& _second) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "AddScore");
+		Func = Class->GetFunction("ShopItemSorter", "BPE_Compare");
 
-	Params::Workshop_AddScore Parms{};
+	Params::ShopItemSorter_BPE_Compare Parms{};
 
-	Parms._iScoreToAdd = _iScoreToAdd;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Workshop.BPE_FinishWorkshop
-// (Event, Public, BlueprintEvent)
-
-void AWorkshop::BPE_FinishWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "BPE_FinishWorkshop");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.Workshop.BPE_PauseWorkshop
-// (Event, Public, BlueprintEvent)
-
-void AWorkshop::BPE_PauseWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "BPE_PauseWorkshop");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.Workshop.BPE_RestartWorkshop
-// (Event, Public, BlueprintEvent)
-
-void AWorkshop::BPE_RestartWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "BPE_RestartWorkshop");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.Workshop.BPE_StartWorkshop
-// (Event, Public, BlueprintEvent)
-
-void AWorkshop::BPE_StartWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "BPE_StartWorkshop");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.Workshop.BPE_UnpauseWorkshop
-// (Event, Public, BlueprintEvent)
-
-void AWorkshop::BPE_UnpauseWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "BPE_UnpauseWorkshop");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.Workshop.BPF_SnapBallToWorkshopUser
-// (Final, Native, Public, BlueprintCallable)
-
-void AWorkshop::BPF_SnapBallToWorkshopUser()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "BPF_SnapBallToWorkshopUser");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Workshop.CheckAchievements
-// (Final, Native, Public)
-
-void AWorkshop::CheckAchievements()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "CheckAchievements");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Workshop.FinishWorkshop
-// (Final, Native, Public, BlueprintCallable)
-
-void AWorkshop::FinishWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "FinishWorkshop");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Workshop.OnSkipIntroductionInputPressed
-// (Final, Native, Public, BlueprintCallable)
-
-void AWorkshop::OnSkipIntroductionInputPressed()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "OnSkipIntroductionInputPressed");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Workshop.PauseWorkshop
-// (Final, Native, Public, BlueprintCallable)
-
-void AWorkshop::PauseWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "PauseWorkshop");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Workshop.RequestStartWorkshop
-// (Final, Native, Public, BlueprintCallable)
-
-void AWorkshop::RequestStartWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "RequestStartWorkshop");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Workshop.RestartWorkshop
-// (Final, Native, Public, BlueprintCallable)
-
-void AWorkshop::RestartWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "RestartWorkshop");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Workshop.UnpauseWorkshop
-// (Final, Native, Public, BlueprintCallable)
-
-void AWorkshop::UnpauseWorkshop()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "UnpauseWorkshop");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.Workshop.BPF_ComputeMedalWithScore
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   _iScore                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EWorkshopMedal                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EWorkshopMedal AWorkshop::BPF_ComputeMedalWithScore(int32 _iScore) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "BPF_ComputeMedalWithScore");
-
-	Params::Workshop_BPF_ComputeMedalWithScore Parms{};
-
-	Parms._iScore = _iScore;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.Workshop.BPF_ComputeMedalWithTime
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   _fTime                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EWorkshopMedal                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EWorkshopMedal AWorkshop::BPF_ComputeMedalWithTime(float _fTime) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "BPF_ComputeMedalWithTime");
-
-	Params::Workshop_BPF_ComputeMedalWithTime Parms{};
-
-	Parms._fTime = _fTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.Workshop.BPF_GetWorkshopTimer
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float AWorkshop::BPF_GetWorkshopTimer() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "BPF_GetWorkshopTimer");
-
-	Params::Workshop_BPF_GetWorkshopTimer Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.Workshop.CanStartWorkshopFromInput
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool AWorkshop::CanStartWorkshopFromInput() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "CanStartWorkshopFromInput");
-
-	Params::Workshop_CanStartWorkshopFromInput Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.Workshop.GetWorkshopScore
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 AWorkshop::GetWorkshopScore() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "GetWorkshopScore");
-
-	Params::Workshop_GetWorkshopScore Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.Workshop.GetWorkshopState
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// EWorkshopState                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-EWorkshopState AWorkshop::GetWorkshopState() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("Workshop", "GetWorkshopState");
-
-	Params::Workshop_GetWorkshopState Parms{};
+	Parms._first = std::move(_first);
+	Parms._second = std::move(_second);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -10763,235 +10052,6 @@ bool URuntimeAbilitySystemComponent::BPF_GetActiveRuntimeGameplayEffectContext(c
 }
 
 
-// Function Runtime.ItemThumbnailScene.AddComponent
-// (Final, Native, Protected, HasOutParams, HasDefaults, BlueprintCallable)
-// Parameters:
-// TSubclassOf<class UActorComponent>      Class_0                                                (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FTransform&                LocalToWorld                                           (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bAttachToRoot                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UActorComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UActorComponent* UItemThumbnailScene::AddComponent(TSubclassOf<class UActorComponent> Class_0, const struct FTransform& LocalToWorld, bool bAttachToRoot)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailScene", "AddComponent");
-
-	Params::ItemThumbnailScene_AddComponent Parms{};
-
-	Parms.Class_0 = Class_0;
-	Parms.LocalToWorld = std::move(LocalToWorld);
-	Parms.bAttachToRoot = bAttachToRoot;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ItemThumbnailScene.GetThumbnailWorld
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure)
-// Parameters:
-// class UWorld*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UWorld* UItemThumbnailScene::GetThumbnailWorld()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailScene", "GetThumbnailWorld");
-
-	Params::ItemThumbnailScene_GetThumbnailWorld Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ItemThumbnailScene.PrepareScene
-// (Event, Protected, BlueprintEvent)
-
-void UItemThumbnailScene::PrepareScene()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailScene", "PrepareScene");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.ItemThumbnailScene.SetBackgroundColor
-// (Final, Native, Protected, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FLinearColor&              InColor                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UItemThumbnailScene::SetBackgroundColor(const struct FLinearColor& InColor)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailScene", "SetBackgroundColor");
-
-	Params::ItemThumbnailScene_SetBackgroundColor Parms{};
-
-	Parms.InColor = std::move(InColor);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ItemThumbnailScene.SpawnActor
-// (Final, Native, Protected, BlueprintCallable)
-// Parameters:
-// TSubclassOf<class AActor>               Class_0                                                (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class AActor* UItemThumbnailScene::SpawnActor(TSubclassOf<class AActor> Class_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailScene", "SpawnActor");
-
-	Params::ItemThumbnailScene_SpawnActor Parms{};
-
-	Parms.Class_0 = Class_0;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ItemThumbnailScene.SpawnActorForKey
-// (Final, Native, Protected, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FGenericStruct&            Key                                                    (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// TSubclassOf<class AActor>               Class_0                                                (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32*                                  OutViewIndex                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class AActor* UItemThumbnailScene::SpawnActorForKey(const struct FGenericStruct& Key, TSubclassOf<class AActor> Class_0, int32* OutViewIndex)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailScene", "SpawnActorForKey");
-
-	Params::ItemThumbnailScene_SpawnActorForKey Parms{};
-
-	Parms.Key = std::move(Key);
-	Parms.Class_0 = Class_0;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (OutViewIndex != nullptr)
-		*OutViewIndex = Parms.OutViewIndex;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ItemThumbnailScene.GetActorForView
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ViewIndex                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class AActor* UItemThumbnailScene::GetActorForView(int32 ViewIndex) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailScene", "GetActorForView");
-
-	Params::ItemThumbnailScene_GetActorForView Parms{};
-
-	Parms.ViewIndex = ViewIndex;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ItemThumbnailScene.GetViewMatrixParameters
-// (Event, Protected, HasOutParams, BlueprintEvent, Const)
-// Parameters:
-// int32                                   SceneView                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FViewParameters*                 OutParameters                                          (Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void UItemThumbnailScene::GetViewMatrixParameters(int32 SceneView, struct FViewParameters* OutParameters) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailScene", "GetViewMatrixParameters");
-
-	Params::ItemThumbnailScene_GetViewMatrixParameters Parms{};
-
-	Parms.SceneView = SceneView;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (OutParameters != nullptr)
-		*OutParameters = std::move(Parms.OutParameters);
-}
-
-
-// Function Runtime.ItemThumbnailScene.OnBuildActor
-// (Final, Native, Protected, BlueprintCallable, Const)
-
-void UItemThumbnailScene::OnBuildActor() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailScene", "OnBuildActor");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function Runtime.RuntimeAIController.BPF_SetStateTreeRef
 // (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
@@ -11486,34 +10546,6 @@ class ARuntimeCharacter* URuntimeAISubsystem::BPF_SpawnAI(const struct FAISpawnP
 	Func->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.StringsHelper.BPF_HashString
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class FString&                    _str                                                   (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UStringsHelper::BPF_HashString(const class FString& _str)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("StringsHelper", "BPF_HashString");
-
-	Params::StringsHelper_BPF_HashString Parms{};
-
-	Parms._str = std::move(_str);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -12342,9 +11374,8 @@ void ARuntimeCharacter::ClientNotifyBallServerOwnerUpdate(class ABall* _ball, cl
 // class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // class UPlayerBallOwnership*             _owner                                                 (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FShootStartPoint&          _serverTrajectoryStartingPoint                         (ConstParm, Parm, ReferenceParm, NativeAccessSpecifierPublic)
-// const struct FRevisionID&               _revisionID                                            (ConstParm, Parm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
 
-void ARuntimeCharacter::ClientNotifyBallServerTrajectoryUpdate(class ABall* _ball, class UPlayerBallOwnership* _owner, const struct FShootStartPoint& _serverTrajectoryStartingPoint, const struct FRevisionID& _revisionID)
+void ARuntimeCharacter::ClientNotifyBallServerTrajectoryUpdate(class ABall* _ball, class UPlayerBallOwnership* _owner, const struct FShootStartPoint& _serverTrajectoryStartingPoint)
 {
 	static class UFunction* Func = nullptr;
 
@@ -12356,7 +11387,6 @@ void ARuntimeCharacter::ClientNotifyBallServerTrajectoryUpdate(class ABall* _bal
 	Parms._ball = _ball;
 	Parms._owner = _owner;
 	Parms._serverTrajectoryStartingPoint = std::move(_serverTrajectoryStartingPoint);
-	Parms._revisionID = std::move(_revisionID);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -13182,6 +12212,196 @@ void URuntimeCheatManager::ServerSetScore(const TArray<uint8>& _scores)
 }
 
 
+// Function Runtime.ThumbnailFunctionLibrary.BPF_ClearThumbnailSceneCache
+// (Final, Native, Static, Private, BlueprintCallable)
+// Parameters:
+// bool                                    bCollectGarbage                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UThumbnailFunctionLibrary::BPF_ClearThumbnailSceneCache(bool bCollectGarbage)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_ClearThumbnailSceneCache");
+
+	Params::ThumbnailFunctionLibrary_BPF_ClearThumbnailSceneCache Parms{};
+
+	Parms.bCollectGarbage = bCollectGarbage;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_CreateLevelSequence
+// (Final, Native, Static, Private, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// class UObject*                          WorldContextObject                                     (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ULevelSequence*                   InLevelSequence                                        (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FMovieSceneSequencePlaybackSettings&Settings                                               (Parm, NoDestructor, NativeAccessSpecifierPublic)
+// const struct FTransform&                Transform                                              (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AThumbnailLevelSequenceActor**    OutActor                                               (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ULevelSequencePlayer*             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ULevelSequencePlayer* UThumbnailFunctionLibrary::BPF_CreateLevelSequence(class UObject* WorldContextObject, class ULevelSequence* InLevelSequence, const struct FMovieSceneSequencePlaybackSettings& Settings, const struct FTransform& Transform, class AThumbnailLevelSequenceActor** OutActor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_CreateLevelSequence");
+
+	Params::ThumbnailFunctionLibrary_BPF_CreateLevelSequence Parms{};
+
+	Parms.WorldContextObject = WorldContextObject;
+	Parms.InLevelSequence = InLevelSequence;
+	Parms.Settings = std::move(Settings);
+	Parms.Transform = std::move(Transform);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (OutActor != nullptr)
+		*OutActor = Parms.OutActor;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_GetRenderTargetCapacity
+// (Final, Native, Static, Private, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector2D UThumbnailFunctionLibrary::BPF_GetRenderTargetCapacity()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_GetRenderTargetCapacity");
+
+	Params::ThumbnailFunctionLibrary_BPF_GetRenderTargetCapacity Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_GetSpawnables
+// (Final, Native, Static, Private, BlueprintCallable)
+// Parameters:
+// class AThumbnailLevelSequenceActor*     Actor                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TArray<class UObject*>                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+
+TArray<class UObject*> UThumbnailFunctionLibrary::BPF_GetSpawnables(class AThumbnailLevelSequenceActor* Actor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_GetSpawnables");
+
+	Params::ThumbnailFunctionLibrary_BPF_GetSpawnables Parms{};
+
+	Parms.Actor = Actor;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_ObjectPathToObjectName
+// (Final, Native, Static, Private, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class FString&                    _objectPath                                            (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FString UThumbnailFunctionLibrary::BPF_ObjectPathToObjectName(const class FString& _objectPath)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_ObjectPathToObjectName");
+
+	Params::ThumbnailFunctionLibrary_BPF_ObjectPathToObjectName Parms{};
+
+	Parms._objectPath = std::move(_objectPath);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_ReleaseRenderTargets
+// (Final, Native, Static, Private, BlueprintCallable)
+
+void UThumbnailFunctionLibrary::BPF_ReleaseRenderTargets()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_ReleaseRenderTargets");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_SetForceMipStreaming
+// (Final, Native, Static, Private, BlueprintCallable)
+// Parameters:
+// class UPrimitiveComponent*              Component                                              (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bForceMipStreaming                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UThumbnailFunctionLibrary::BPF_SetForceMipStreaming(class UPrimitiveComponent* Component, bool bForceMipStreaming)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ThumbnailFunctionLibrary", "BPF_SetForceMipStreaming");
+
+	Params::ThumbnailFunctionLibrary_BPF_SetForceMipStreaming Parms{};
+
+	Parms.Component = Component;
+	Parms.bForceMipStreaming = bForceMipStreaming;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function Runtime.RuntimeCustomizationHelpers.BPF_ApplyPaletteToParts
 // (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
 // Parameters:
@@ -13273,133 +12493,6 @@ void URuntimeCustomizationHelpers::BPF_RemovePaletteFromParts(const struct FColo
 
 	if (_inOutDescription != nullptr)
 		*_inOutDescription = std::move(Parms._inOutDescription);
-}
-
-
-// Function Runtime.TouchBallComponent.BPF_SetParalyzed
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    _bParalized                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class FName                             _idName                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _fBlendAttachDuration                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UTouchBallComponent::BPF_SetParalyzed(bool _bParalized, class FName _idName, float _fBlendAttachDuration)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TouchBallComponent", "BPF_SetParalyzed");
-
-	Params::TouchBallComponent_BPF_SetParalyzed Parms{};
-
-	Parms._bParalized = _bParalized;
-	Parms._idName = _idName;
-	Parms._fBlendAttachDuration = _fBlendAttachDuration;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TouchBallComponent.OnBallOwnershipGained
-// (Final, Native, Protected)
-// Parameters:
-// class ABall*                            _nextBall                                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UTouchBallComponent::OnBallOwnershipGained(class ABall* _nextBall)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TouchBallComponent", "OnBallOwnershipGained");
-
-	Params::TouchBallComponent_OnBallOwnershipGained Parms{};
-
-	Parms._nextBall = _nextBall;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TouchBallComponent.OnBallOwnershipLost
-// (Final, Native, Protected)
-
-void UTouchBallComponent::OnBallOwnershipLost()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TouchBallComponent", "OnBallOwnershipLost");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TouchBallComponent.OnMontageStarted
-// (Final, Native, Protected)
-// Parameters:
-// class UAnimMontage*                     _animMontage                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UTouchBallComponent::OnMontageStarted(class UAnimMontage* _animMontage)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TouchBallComponent", "OnMontageStarted");
-
-	Params::TouchBallComponent_OnMontageStarted Parms{};
-
-	Parms._animMontage = _animMontage;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TouchBallComponent.OnMovementModeChanged
-// (Final, Native, Protected)
-// Parameters:
-// class ACharacter*                       _character                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EMovementMode                           _ePrevMovementMode                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// uint8                                   _uiPreviousCustomMode                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UTouchBallComponent::OnMovementModeChanged(class ACharacter* _character, EMovementMode _ePrevMovementMode, uint8 _uiPreviousCustomMode)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TouchBallComponent", "OnMovementModeChanged");
-
-	Params::TouchBallComponent_OnMovementModeChanged Parms{};
-
-	Parms._character = _character;
-	Parms._ePrevMovementMode = _ePrevMovementMode;
-	Parms._uiPreviousCustomMode = _uiPreviousCustomMode;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
 }
 
 
@@ -13630,6 +12723,90 @@ int32 ARuntimeGameMode::BPE_GetBallPoints(class ABall* _ball, uint8 _uiGoalTeamI
 	Func->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.SimulationStepHelper.BPF_IsCustomOrFreezingSimulationStep
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// ESimulationStep                         _eSimulationStep                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USimulationStepHelper::BPF_IsCustomOrFreezingSimulationStep(ESimulationStep _eSimulationStep)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SimulationStepHelper", "BPF_IsCustomOrFreezingSimulationStep");
+
+	Params::SimulationStepHelper_BPF_IsCustomOrFreezingSimulationStep Parms{};
+
+	Parms._eSimulationStep = _eSimulationStep;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.SimulationStepHelper.BPF_IsFlyingOrRollingSimulationStep
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// ESimulationStep                         _eSimulationStep                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USimulationStepHelper::BPF_IsFlyingOrRollingSimulationStep(ESimulationStep _eSimulationStep)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SimulationStepHelper", "BPF_IsFlyingOrRollingSimulationStep");
+
+	Params::SimulationStepHelper_BPF_IsFlyingOrRollingSimulationStep Parms{};
+
+	Parms._eSimulationStep = _eSimulationStep;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.SimulationStepHelper.BPF_IsSimulationStepValid
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// ESimulationStep                         _eSimulationStep                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool USimulationStepHelper::BPF_IsSimulationStepValid(ESimulationStep _eSimulationStep)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("SimulationStepHelper", "BPF_IsSimulationStepValid");
+
+	Params::SimulationStepHelper_BPF_IsSimulationStepValid Parms{};
+
+	Parms._eSimulationStep = _eSimulationStep;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -14066,6 +13243,127 @@ class APlayerState* ARuntimeFakeCharacter::GetImitatedPlayerState() const
 }
 
 
+// Function Runtime.ItemThumbnailComponent.InvalidateCamera
+// (Native, Public, BlueprintCallable)
+
+void UItemThumbnailComponent::InvalidateCamera()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailComponent", "InvalidateCamera");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ItemThumbnailComponent.OnBeginLoading
+// (Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const TSoftObjectPtr<class UObject>&    AssetName                                              (ConstParm, Parm, OutParm, ReferenceParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bIsInitialLoad                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UItemThumbnailComponent::OnBeginLoading(const TSoftObjectPtr<class UObject>& AssetName, bool bIsInitialLoad)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailComponent", "OnBeginLoading");
+
+	Params::ItemThumbnailComponent_OnBeginLoading Parms{};
+
+	Parms.AssetName = AssetName;
+	Parms.bIsInitialLoad = bIsInitialLoad;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ItemThumbnailComponent.OnFinishLoading
+// (Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const TSoftObjectPtr<class UObject>&    AssetName                                              (ConstParm, Parm, OutParm, ReferenceParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UItemThumbnailComponent::OnFinishLoading(const TSoftObjectPtr<class UObject>& AssetName)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailComponent", "OnFinishLoading");
+
+	Params::ItemThumbnailComponent_OnFinishLoading Parms{};
+
+	Parms.AssetName = AssetName;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ItemThumbnailComponent.SetMaterial
+// (Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FThumbnailMaterial&        InMaterial                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+
+void UItemThumbnailComponent::SetMaterial(const struct FThumbnailMaterial& InMaterial)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailComponent", "SetMaterial");
+
+	Params::ItemThumbnailComponent_SetMaterial Parms{};
+
+	Parms.InMaterial = std::move(InMaterial);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ItemThumbnailComponent.SetSceneClass
+// (Native, Public, BlueprintCallable)
+// Parameters:
+// TSubclassOf<class UItemThumbnailScene>  InSceneClass                                           (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UItemThumbnailComponent::SetSceneClass(TSubclassOf<class UItemThumbnailScene> InSceneClass)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailComponent", "SetSceneClass");
+
+	Params::ItemThumbnailComponent_SetSceneClass Parms{};
+
+	Parms.InSceneClass = InSceneClass;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function Runtime.DistanceTrajectoryStatusDeactivateCondition.BPE_SetDistance
 // (Event, Public, HasOutParams, BlueprintEvent, Const)
 // Parameters:
@@ -14206,110 +13504,25 @@ const class URuntimeGameSettings* URuntimeGameSettings::BPF_GetRuntimeMainSettin
 }
 
 
-// Function Runtime.TutorialObjective.IsObjectiveOver
-// (Final, Native, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UTutorialObjective::IsObjectiveOver()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialObjective", "IsObjectiveOver");
-
-	Params::TutorialObjective_IsObjectiveOver Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TutorialObjective.ObjectiveAchievedOnce
-// (Native, Public, BlueprintCallable)
-
-void UTutorialObjective::ObjectiveAchievedOnce()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialObjective", "ObjectiveAchievedOnce");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialObjective.ObjectiveCompleted
+// Function Runtime.TouchBallComponent.BPF_SetParalyzed
 // (Final, Native, Public, BlueprintCallable)
-
-void UTutorialObjective::ObjectiveCompleted()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialObjective", "ObjectiveCompleted");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialObjective.OnEndObjective
-// (Event, Public, BlueprintEvent)
-
-void UTutorialObjective::OnEndObjective()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialObjective", "OnEndObjective");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialObjective.OnInitObjective
-// (Event, Public, BlueprintEvent)
-
-void UTutorialObjective::OnInitObjective()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialObjective", "OnInitObjective");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialObjective.GetManagerOwner
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// class ATutorialManager*                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bParalized                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class FName                             _idName                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _fBlendAttachDuration                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-class ATutorialManager* UTutorialObjective::GetManagerOwner() const
+void UTouchBallComponent::BPF_SetParalyzed(bool _bParalized, class FName _idName, float _fBlendAttachDuration)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialObjective", "GetManagerOwner");
+		Func = Class->GetFunction("TouchBallComponent", "BPF_SetParalyzed");
 
-	Params::TutorialObjective_GetManagerOwner Parms{};
+	Params::TouchBallComponent_BPF_SetParalyzed Parms{};
+
+	Parms._bParalized = _bParalized;
+	Parms._idName = _idName;
+	Parms._fBlendAttachDuration = _fBlendAttachDuration;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -14317,8 +13530,104 @@ class ATutorialManager* UTutorialObjective::GetManagerOwner() const
 	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
+}
 
-	return Parms.ReturnValue;
+
+// Function Runtime.TouchBallComponent.OnBallOwnershipGained
+// (Final, Native, Protected)
+// Parameters:
+// class ABall*                            _nextBall                                              (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UTouchBallComponent::OnBallOwnershipGained(class ABall* _nextBall)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TouchBallComponent", "OnBallOwnershipGained");
+
+	Params::TouchBallComponent_OnBallOwnershipGained Parms{};
+
+	Parms._nextBall = _nextBall;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TouchBallComponent.OnBallOwnershipLost
+// (Final, Native, Protected)
+
+void UTouchBallComponent::OnBallOwnershipLost()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TouchBallComponent", "OnBallOwnershipLost");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TouchBallComponent.OnMontageStarted
+// (Final, Native, Protected)
+// Parameters:
+// class UAnimMontage*                     _animMontage                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UTouchBallComponent::OnMontageStarted(class UAnimMontage* _animMontage)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TouchBallComponent", "OnMontageStarted");
+
+	Params::TouchBallComponent_OnMontageStarted Parms{};
+
+	Parms._animMontage = _animMontage;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TouchBallComponent.OnMovementModeChanged
+// (Final, Native, Protected)
+// Parameters:
+// class ACharacter*                       _character                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EMovementMode                           _ePrevMovementMode                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// uint8                                   _uiPreviousCustomMode                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UTouchBallComponent::OnMovementModeChanged(class ACharacter* _character, EMovementMode _ePrevMovementMode, uint8 _uiPreviousCustomMode)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TouchBallComponent", "OnMovementModeChanged");
+
+	Params::TouchBallComponent_OnMovementModeChanged Parms{};
+
+	Parms._character = _character;
+	Parms._ePrevMovementMode = _ePrevMovementMode;
+	Parms._uiPreviousCustomMode = _uiPreviousCustomMode;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
 }
 
 
@@ -14468,6 +13777,30 @@ uint8 ARuntimeGameState::BPF_GetTeamCount() const
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.DurationTrajectoryStatusDeactivateCondition.BPE_SetDuration
+// (Event, Public, HasOutParams, BlueprintEvent, Const)
+// Parameters:
+// const struct FShootParams&              _shootParams                                           (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// float*                                  _fDuration                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UDurationTrajectoryStatusDeactivateCondition::BPE_SetDuration(const struct FShootParams& _shootParams, float* _fDuration) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("DurationTrajectoryStatusDeactivateCondition", "BPE_SetDuration");
+
+	Params::DurationTrajectoryStatusDeactivateCondition_BPE_SetDuration Parms{};
+
+	Parms._shootParams = std::move(_shootParams);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (_fDuration != nullptr)
+		*_fDuration = Parms._fDuration;
 }
 
 
@@ -14681,8 +14014,9 @@ void ARuntimeMatchGameState::OnPlayerStateReplicatedInController(class APlayerSt
 // Parameters:
 // class UBallPlayersInteractionComponent* _ballPlayerInteraction                                 (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // EBallInteractionType                    _eInteractionType                                      (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bIsSamePreviousOwner                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void ARuntimeMatchGameState::OnPreviousOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction, EBallInteractionType _eInteractionType)
+void ARuntimeMatchGameState::OnPreviousOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction, EBallInteractionType _eInteractionType, bool _bIsSamePreviousOwner)
 {
 	static class UFunction* Func = nullptr;
 
@@ -14693,6 +14027,7 @@ void ARuntimeMatchGameState::OnPreviousOwnerChanged(class UBallPlayersInteractio
 
 	Parms._ballPlayerInteraction = _ballPlayerInteraction;
 	Parms._eInteractionType = _eInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -16341,6 +15676,59 @@ uint8 ARuntimeMultiPositionAmbientSound::BPF_GetTeam() const
 }
 
 
+// Function Runtime.TutorialLogicStep.OnEndLogicStep
+// (Event, Public, BlueprintEvent)
+
+void UTutorialLogicStep::OnEndLogicStep()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialLogicStep", "OnEndLogicStep");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialLogicStep.OnStartLogicStep
+// (Event, Public, BlueprintEvent)
+
+void UTutorialLogicStep::OnStartLogicStep()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialLogicStep", "OnStartLogicStep");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialLogicStep.GetManagerOwner
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class ATutorialManager*                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ATutorialManager* UTutorialLogicStep::GetManagerOwner() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialLogicStep", "GetManagerOwner");
+
+	Params::TutorialLogicStep_GetManagerOwner Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function Runtime.RuntimePerformanceTelemetry.OnMatchGameStateEndPlay
 // (Final, Native, Private)
 // Parameters:
@@ -16358,31 +15746,6 @@ void URuntimePerformanceTelemetry::OnMatchGameStateEndPlay(class AActor* _actor,
 
 	Parms._actor = _actor;
 	Parms._eEndPlayReason = _eEndPlayReason;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialObjectiveOperator.OnSubObjectiveComplete
-// (Final, Native, Public)
-// Parameters:
-// class UTutorialObjective*               _objective                                             (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UTutorialObjectiveOperator::OnSubObjectiveComplete(class UTutorialObjective* _objective)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialObjectiveOperator", "OnSubObjectiveComplete");
-
-	Params::TutorialObjectiveOperator_OnSubObjectiveComplete Parms{};
-
-	Parms._objective = _objective;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -16786,27 +16149,109 @@ void URuntimePlayerScoreViewModel::OnMVPSet(class ARuntimePlayerState* _runtimeP
 }
 
 
-// Function Runtime.DurationTrajectoryStatusDeactivateCondition.BPE_SetDuration
-// (Event, Public, HasOutParams, BlueprintEvent, Const)
+// Function Runtime.WelcomeFlowViewModel.BPF_GetUnreadContentViewModelsByType
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const struct FShootParams&              _shootParams                                           (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// float*                                  _fDuration                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// ERematchWelcomeFlowContentType          _type                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TArray<class UWelcomeFlowContentViewModel*>ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
 
-void UDurationTrajectoryStatusDeactivateCondition::BPE_SetDuration(const struct FShootParams& _shootParams, float* _fDuration) const
+TArray<class UWelcomeFlowContentViewModel*> UWelcomeFlowViewModel::BPF_GetUnreadContentViewModelsByType(ERematchWelcomeFlowContentType _type) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("DurationTrajectoryStatusDeactivateCondition", "BPE_SetDuration");
+		Func = Class->GetFunction("WelcomeFlowViewModel", "BPF_GetUnreadContentViewModelsByType");
 
-	Params::DurationTrajectoryStatusDeactivateCondition_BPE_SetDuration Parms{};
+	Params::WelcomeFlowViewModel_BPF_GetUnreadContentViewModelsByType Parms{};
 
-	Parms._shootParams = std::move(_shootParams);
+	Parms._type = _type;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (_fDuration != nullptr)
-		*_fDuration = Parms._fDuration;
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.WelcomeFlowViewModel.BPF_HasUnreadContentOfType
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// ERematchWelcomeFlowContentType          _type                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWelcomeFlowViewModel::BPF_HasUnreadContentOfType(ERematchWelcomeFlowContentType _type) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WelcomeFlowViewModel", "BPF_HasUnreadContentOfType");
+
+	Params::WelcomeFlowViewModel_BPF_HasUnreadContentOfType Parms{};
+
+	Parms._type = _type;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.WelcomeFlowViewModel.HasActiveNews
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWelcomeFlowViewModel::HasActiveNews() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WelcomeFlowViewModel", "HasActiveNews");
+
+	Params::WelcomeFlowViewModel_HasActiveNews Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.WelcomeFlowViewModel.HasUnreadContent
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWelcomeFlowViewModel::HasUnreadContent() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WelcomeFlowViewModel", "HasUnreadContent");
+
+	Params::WelcomeFlowViewModel_HasUnreadContent Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
 }
 
 
@@ -17035,937 +16480,6 @@ TArray<class UClass*> URuntimePlayersScoreSubsystem::GetScoreEventClasses() cons
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.WaitForPlayersArrivedFlowState.OnPawnSetInClient
-// (Final, Native, Private)
-// Parameters:
-// class APlayerState*                     _player                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class APawn*                            _newPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class APawn*                            _oldPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UWaitForPlayersArrivedFlowState::OnPawnSetInClient(class APlayerState* _player, class APawn* _newPawn, class APawn* _oldPawn)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "OnPawnSetInClient");
-
-	Params::WaitForPlayersArrivedFlowState_OnPawnSetInClient Parms{};
-
-	Parms._player = _player;
-	Parms._newPawn = _newPawn;
-	Parms._oldPawn = _oldPawn;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.WaitForPlayersArrivedFlowState.OnPlayerStateAddedInClient
-// (Final, Native, Private)
-// Parameters:
-// class APlayerState*                     _PlayerStateAdded                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UWaitForPlayersArrivedFlowState::OnPlayerStateAddedInClient(class APlayerState* _PlayerStateAdded)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "OnPlayerStateAddedInClient");
-
-	Params::WaitForPlayersArrivedFlowState_OnPlayerStateAddedInClient Parms{};
-
-	Parms._PlayerStateAdded = _PlayerStateAdded;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.WaitForPlayersArrivedFlowState.OnPlayerStateReplicatedInController
-// (Final, Native, Private)
-// Parameters:
-// class APlayerState*                     _playerState                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UWaitForPlayersArrivedFlowState::OnPlayerStateReplicatedInController(class APlayerState* _playerState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "OnPlayerStateReplicatedInController");
-
-	Params::WaitForPlayersArrivedFlowState_OnPlayerStateReplicatedInController Parms{};
-
-	Parms._playerState = _playerState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.WaitForPlayersArrivedFlowState.TryToPlayColorChoiceSequences
-// (Final, Native, Private)
-// Parameters:
-// class AController*                      _PlayerController                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UWaitForPlayersArrivedFlowState::TryToPlayColorChoiceSequences(class AController* _PlayerController)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "TryToPlayColorChoiceSequences");
-
-	Params::WaitForPlayersArrivedFlowState_TryToPlayColorChoiceSequences Parms{};
-
-	Parms._PlayerController = _PlayerController;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.WaitForPlayersArrivedFlowState.TryToPlayPlayerColorChoiceSequence
-// (Final, Native, Private)
-// Parameters:
-// class APlayerState*                     _PlayerStateAdded                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UWaitForPlayersArrivedFlowState::TryToPlayPlayerColorChoiceSequence(class APlayerState* _PlayerStateAdded)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "TryToPlayPlayerColorChoiceSequence");
-
-	Params::WaitForPlayersArrivedFlowState_TryToPlayPlayerColorChoiceSequence Parms{};
-
-	Parms._PlayerStateAdded = _PlayerStateAdded;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_EnumerateWorldConfigs
-// (Final, Native, Static, Public, BlueprintCallable)
-// Parameters:
-// TArray<class UCustomizationARDataAsset*>ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-
-TArray<class UCustomizationARDataAsset*> URuntimeStadiumAR::BPF_EnumerateWorldConfigs()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeStadiumAR", "BPF_EnumerateWorldConfigs");
-
-	Params::RuntimeStadiumAR_BPF_EnumerateWorldConfigs Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPE_OnConfigChanged
-// (Event, Public, BlueprintEvent)
-
-void URuntimeStadiumAR::BPE_OnConfigChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnConfigChanged");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPE_OnCurrentWorldTagChanged
-// (Event, Protected, BlueprintEvent)
-
-void URuntimeStadiumAR::BPE_OnCurrentWorldTagChanged()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnCurrentWorldTagChanged");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPE_OnEditorMapOpened
-// (Event, Protected, BlueprintEvent)
-
-void URuntimeStadiumAR::BPE_OnEditorMapOpened()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnEditorMapOpened");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPE_OnGameStateValid
-// (Event, Protected, BlueprintEvent)
-
-void URuntimeStadiumAR::BPE_OnGameStateValid()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnGameStateValid");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPE_OnPlayTransition
-// (Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// const struct FRuntimeARTransition&      _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPE_OnPlayTransition(const struct FRuntimeARTransition& _params)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnPlayTransition");
-
-	Params::RuntimeStadiumAR_BPE_OnPlayTransition Parms{};
-
-	Parms._params = std::move(_params);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPE_OnTransitionStateChanged
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// ESCTransitionState                      _state                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPE_OnTransitionStateChanged(ESCTransitionState _state)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnTransitionStateChanged");
-
-	Params::RuntimeStadiumAR_BPE_OnTransitionStateChanged Parms{};
-
-	Parms._state = _state;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPE_OnTransitionValueChanged
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// float                                   _weight                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _direction                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPE_OnTransitionValueChanged(float _weight, float _direction)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnTransitionValueChanged");
-
-	Params::RuntimeStadiumAR_BPE_OnTransitionValueChanged Parms{};
-
-	Parms._weight = _weight;
-	Parms._direction = _direction;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_AddProjectionMeshes
-// (Final, Native, Protected, BlueprintCallable)
-
-void URuntimeStadiumAR::BPF_AddProjectionMeshes()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_AddProjectionMeshes");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_FindActorInCurrentWorld
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// TSoftObjectPtr<class AActor>            _reference                                             (Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class AActor* URuntimeStadiumAR::BPF_FindActorInCurrentWorld(TSoftObjectPtr<class AActor> _reference)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_FindActorInCurrentWorld");
-
-	Params::RuntimeStadiumAR_BPF_FindActorInCurrentWorld Parms{};
-
-	Parms._reference = _reference;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_FindActorsInCurrentWorld
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FGameplayTagQuery&         _query                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// TArray<class AActor*>                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-
-TArray<class AActor*> URuntimeStadiumAR::BPF_FindActorsInCurrentWorld(const struct FGameplayTagQuery& _query)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_FindActorsInCurrentWorld");
-
-	Params::RuntimeStadiumAR_BPF_FindActorsInCurrentWorld Parms{};
-
-	Parms._query = std::move(_query);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_GetWorldStreamingState
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FGameplayTag&              _tag                                                   (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// ESubworldStreamingState                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-ESubworldStreamingState URuntimeStadiumAR::BPF_GetWorldStreamingState(const struct FGameplayTag& _tag)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetWorldStreamingState");
-
-	Params::RuntimeStadiumAR_BPF_GetWorldStreamingState Parms{};
-
-	Parms._tag = std::move(_tag);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_LoadWorld
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FGameplayTag&              _tag                                                   (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPF_LoadWorld(const struct FGameplayTag& _tag)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_LoadWorld");
-
-	Params::RuntimeStadiumAR_BPF_LoadWorld Parms{};
-
-	Parms._tag = std::move(_tag);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_PlayTransitionSequence
-// (Final, Native, Protected, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FRuntimeARTransition&      _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPF_PlayTransitionSequence(const struct FRuntimeARTransition& _params)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_PlayTransitionSequence");
-
-	Params::RuntimeStadiumAR_BPF_PlayTransitionSequence Parms{};
-
-	Parms._params = std::move(_params);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_SetCapturedWorldFromTeamIndex
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// int32                                   _iTeamIdx                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPF_SetCapturedWorldFromTeamIndex(int32 _iTeamIdx)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_SetCapturedWorldFromTeamIndex");
-
-	Params::RuntimeStadiumAR_BPF_SetCapturedWorldFromTeamIndex Parms{};
-
-	Parms._iTeamIdx = _iTeamIdx;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_SetRenderScale
-// (Final, Native, Protected, BlueprintCallable)
-// Parameters:
-// float                                   _scale                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPF_SetRenderScale(float _scale)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_SetRenderScale");
-
-	Params::RuntimeStadiumAR_BPF_SetRenderScale Parms{};
-
-	Parms._scale = _scale;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_SetTransitionState
-// (Final, Native, Protected, BlueprintCallable)
-// Parameters:
-// class UObject*                          _worldContext                                          (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// ESCTransitionState                      _transitionState                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPF_SetTransitionState(class UObject* _worldContext, ESCTransitionState _transitionState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_SetTransitionState");
-
-	Params::RuntimeStadiumAR_BPF_SetTransitionState Parms{};
-
-	Parms._worldContext = _worldContext;
-	Parms._transitionState = _transitionState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_SpawnActorInCurrentWorld
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// TSubclassOf<class AActor>               Class_0                                                (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class AActor* URuntimeStadiumAR::BPF_SpawnActorInCurrentWorld(TSubclassOf<class AActor> Class_0)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_SpawnActorInCurrentWorld");
-
-	Params::RuntimeStadiumAR_BPF_SpawnActorInCurrentWorld Parms{};
-
-	Parms.Class_0 = Class_0;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_StopTransitionSequence
-// (Final, Native, Protected, BlueprintCallable)
-
-void URuntimeStadiumAR::BPF_StopTransitionSequence()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_StopTransitionSequence");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_TriggerTransitionFinishedEvent
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FRuntimeARTransition&      _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPF_TriggerTransitionFinishedEvent(const struct FRuntimeARTransition& _params)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_TriggerTransitionFinishedEvent");
-
-	Params::RuntimeStadiumAR_BPF_TriggerTransitionFinishedEvent Parms{};
-
-	Parms._params = std::move(_params);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_TriggerTransitionStartedEvent
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FRuntimeARTransition&      _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPF_TriggerTransitionStartedEvent(const struct FRuntimeARTransition& _params)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_TriggerTransitionStartedEvent");
-
-	Params::RuntimeStadiumAR_BPF_TriggerTransitionStartedEvent Parms{};
-
-	Parms._params = std::move(_params);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.GetFieldARConfig
-// (Final, Native, Protected, BlueprintCallable)
-// Parameters:
-// class URTFieldARConfig*                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class URTFieldARConfig* URuntimeStadiumAR::GetFieldARConfig()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "GetFieldARConfig");
-
-	Params::RuntimeStadiumAR_GetFieldARConfig Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.GetStadiumARConfig
-// (Final, Native, Protected, BlueprintCallable)
-// Parameters:
-// class URTStadiumARConfig*               ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class URTStadiumARConfig* URuntimeStadiumAR::GetStadiumARConfig()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "GetStadiumARConfig");
-
-	Params::RuntimeStadiumAR_GetStadiumARConfig Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.OnFinishedTransitionSequence
-// (Final, Native, Protected)
-
-void URuntimeStadiumAR::OnFinishedTransitionSequence()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "OnFinishedTransitionSequence");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.SetCapturedWorldByDataAsset
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class UCustomizationARDataAsset*        _pDataAsset                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::SetCapturedWorldByDataAsset(class UCustomizationARDataAsset* _pDataAsset)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "SetCapturedWorldByDataAsset");
-
-	Params::RuntimeStadiumAR_SetCapturedWorldByDataAsset Parms{};
-
-	Parms._pDataAsset = _pDataAsset;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.SetCapturedWorldByTag_Deprecated
-// (Final, Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FGameplayTag&              _worldContentTag                                       (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::SetCapturedWorldByTag_Deprecated(const struct FGameplayTag& _worldContentTag)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "SetCapturedWorldByTag_Deprecated");
-
-	Params::RuntimeStadiumAR_SetCapturedWorldByTag_Deprecated Parms{};
-
-	Parms._worldContentTag = std::move(_worldContentTag);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.SetRenderScale
-// (Final, Native, Public)
-// Parameters:
-// float                                   _scale                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::SetRenderScale(float _scale)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "SetRenderScale");
-
-	Params::RuntimeStadiumAR_SetRenderScale Parms{};
-
-	Parms._scale = _scale;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.SetTransitionState
-// (Final, Native, Public)
-// Parameters:
-// ESCTransitionState                      _transitionState                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::SetTransitionState(ESCTransitionState _transitionState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "SetTransitionState");
-
-	Params::RuntimeStadiumAR_SetTransitionState Parms{};
-
-	Parms._transitionState = _transitionState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_GetCurrentWorldConfig
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FRTStadiumARWorldConfig          ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-
-struct FRTStadiumARWorldConfig URuntimeStadiumAR::BPF_GetCurrentWorldConfig() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetCurrentWorldConfig");
-
-	Params::RuntimeStadiumAR_BPF_GetCurrentWorldConfig Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_GetTeamWorld
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   _iTeamIdx                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UCustomizationARDataAsset*        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UCustomizationARDataAsset* URuntimeStadiumAR::BPF_GetTeamWorld(int32 _iTeamIdx) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetTeamWorld");
-
-	Params::RuntimeStadiumAR_BPF_GetTeamWorld Parms{};
-
-	Parms._iTeamIdx = _iTeamIdx;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_GetTeamWorldTag
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   _iTeamIdx                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FGameplayTag                     ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FGameplayTag URuntimeStadiumAR::BPF_GetTeamWorldTag(int32 _iTeamIdx) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetTeamWorldTag");
-
-	Params::RuntimeStadiumAR_BPF_GetTeamWorldTag Parms{};
-
-	Parms._iTeamIdx = _iTeamIdx;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_GetTransitionEffectAR
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FGameplayTag&              _tag                                                   (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FRuntimeARTransitionEffect       ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-
-struct FRuntimeARTransitionEffect URuntimeStadiumAR::BPF_GetTransitionEffectAR(const struct FGameplayTag& _tag) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetTransitionEffectAR");
-
-	Params::RuntimeStadiumAR_BPF_GetTransitionEffectAR Parms{};
-
-	Parms._tag = std::move(_tag);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_GetTransitionEffectStadium
-// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FGameplayTag&              _tag                                                   (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    GoalA                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FRuntimeARTransitionEffect       ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-
-struct FRuntimeARTransitionEffect URuntimeStadiumAR::BPF_GetTransitionEffectStadium(const struct FGameplayTag& _tag, bool GoalA) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetTransitionEffectStadium");
-
-	Params::RuntimeStadiumAR_BPF_GetTransitionEffectStadium Parms{};
-
-	Parms._tag = std::move(_tag);
-	Parms.GoalA = GoalA;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStadiumAR.BPF_WorldTagUseOpaqueRendering
-// (Event, Protected, HasOutParams, BlueprintEvent, Const)
-// Parameters:
-// const struct FGameplayTag&              _worldTag                                              (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool*                                   _bResult                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStadiumAR::BPF_WorldTagUseOpaqueRendering(const struct FGameplayTag& _worldTag, bool* _bResult) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_WorldTagUseOpaqueRendering");
-
-	Params::RuntimeStadiumAR_BPF_WorldTagUseOpaqueRendering Parms{};
-
-	Parms._worldTag = std::move(_worldTag);
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (_bResult != nullptr)
-		*_bResult = Parms._bResult;
 }
 
 
@@ -18217,6 +16731,25 @@ bool URuntimeReplaySubsystem::BPF_ScorerIsAnAlly() const
 }
 
 
+// Function Runtime.RTStadiumARLevelStreaming.HandleLevelShown
+// (Final, Native, Public)
+
+void URTStadiumARLevelStreaming::HandleLevelShown()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RTStadiumARLevelStreaming", "HandleLevelShown");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function Runtime.RuntimeSaveSubsystem.OnAuthenticated
 // (Final, Native, Protected, HasOutParams)
 // Parameters:
@@ -18297,6 +16830,4640 @@ struct FRuntimeShootCameraShakeParams UShootCameraShakeHelpers::BPF_GetShootCame
 	Func->FunctionFlags |= 0x400;
 
 	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.MeshMergeFunctionLibrary.BPF_MergeMeshComponents
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const TArray<class USkeletalMeshComponent*>&_meshComponents                                        (Parm, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const struct FSkeletalMeshMergeParams&  _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void UMeshMergeFunctionLibrary::BPF_MergeMeshComponents(const TArray<class USkeletalMeshComponent*>& _meshComponents, const struct FSkeletalMeshMergeParams& _params)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("MeshMergeFunctionLibrary", "BPF_MergeMeshComponents");
+
+	Params::MeshMergeFunctionLibrary_BPF_MergeMeshComponents Parms{};
+
+	Parms._meshComponents = std::move(_meshComponents);
+	Parms._params = std::move(_params);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_ResetCustomMatchParams
+// (Final, Native, Public, BlueprintCallable)
+
+void URuntimeSOSBindingsSubsystem::BPF_ResetCustomMatchParams()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_ResetCustomMatchParams");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_SaveCustomMatchParams
+// (Final, Native, Public, BlueprintCallable)
+
+void URuntimeSOSBindingsSubsystem::BPF_SaveCustomMatchParams()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_SaveCustomMatchParams");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsAllowedToJoinSquads
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FGameplayTag&              _matchType                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URuntimeSOSBindingsSubsystem::BPF_IsAllowedToJoinSquads(const struct FGameplayTag& _matchType) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_IsAllowedToJoinSquads");
+
+	Params::RuntimeSOSBindingsSubsystem_BPF_IsAllowedToJoinSquads Parms{};
+
+	Parms._matchType = std::move(_matchType);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsCustomMatchParamVisible
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// ERuntimeMatchParameterTypes             _eParam                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URuntimeSOSBindingsSubsystem::BPF_IsCustomMatchParamVisible(ERuntimeMatchParameterTypes _eParam) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_IsCustomMatchParamVisible");
+
+	Params::RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchParamVisible Parms{};
+
+	Parms._eParam = _eParam;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsCustomMatchUserParamVisible
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// uint8                                   _eParam                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URuntimeSOSBindingsSubsystem::BPF_IsCustomMatchUserParamVisible(uint8 _eParam) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_IsCustomMatchUserParamVisible");
+
+	Params::RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchUserParamVisible Parms{};
+
+	Parms._eParam = _eParam;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialObjectiveOperator.OnSubObjectiveComplete
+// (Final, Native, Public)
+// Parameters:
+// class UTutorialObjective*               _objective                                             (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UTutorialObjectiveOperator::OnSubObjectiveComplete(class UTutorialObjective* _objective)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialObjectiveOperator", "OnSubObjectiveComplete");
+
+	Params::TutorialObjectiveOperator_OnSubObjectiveComplete Parms{};
+
+	Parms._objective = _objective;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSOSComponent.OnAbilityActivated
+// (Final, Native, Protected)
+// Parameters:
+// const struct FGameplayAbilitySpecHandle&_abilityHanddle                                        (ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UGameplayAbility*                 _abilityActivated                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeSOSComponent::OnAbilityActivated(const struct FGameplayAbilitySpecHandle& _abilityHanddle, class UGameplayAbility* _abilityActivated)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSOSComponent", "OnAbilityActivated");
+
+	Params::RuntimeSOSComponent_OnAbilityActivated Parms{};
+
+	Parms._abilityHanddle = std::move(_abilityHanddle);
+	Parms._abilityActivated = _abilityActivated;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSOSComponent.OnCountdownOver
+// (Final, Native, Protected)
+// Parameters:
+// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeSOSComponent::OnCountdownOver(class ARuntimeMatchGameState* _gameState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSOSComponent", "OnCountdownOver");
+
+	Params::RuntimeSOSComponent_OnCountdownOver Parms{};
+
+	Parms._gameState = _gameState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSOSComponent.OnCountdownStart
+// (Final, Native, Protected)
+// Parameters:
+// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeSOSComponent::OnCountdownStart(class ARuntimeMatchGameState* _gameState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSOSComponent", "OnCountdownStart");
+
+	Params::RuntimeSOSComponent_OnCountdownStart Parms{};
+
+	Parms._gameState = _gameState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSOSComponent.OnPossessedPawnChanged
+// (Final, Native, Protected)
+// Parameters:
+// class APawn*                            _oldPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class APawn*                            _newPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeSOSComponent::OnPossessedPawnChanged(class APawn* _oldPawn, class APawn* _newPawn)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSOSComponent", "OnPossessedPawnChanged");
+
+	Params::RuntimeSOSComponent_OnPossessedPawnChanged Parms{};
+
+	Parms._oldPawn = _oldPawn;
+	Parms._newPawn = _newPawn;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSoundSubsystem.BPE_OnLoadingScreenVisibilityChanged
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// bool                                    _bVisible                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeSoundSubsystem::BPE_OnLoadingScreenVisibilityChanged(bool _bVisible)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSoundSubsystem", "BPE_OnLoadingScreenVisibilityChanged");
+
+	Params::RuntimeSoundSubsystem_BPE_OnLoadingScreenVisibilityChanged Parms{};
+
+	Parms._bVisible = _bVisible;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function Runtime.ItemThumbnailScene.AddComponent
+// (Final, Native, Protected, HasOutParams, HasDefaults, BlueprintCallable)
+// Parameters:
+// TSubclassOf<class UActorComponent>      Class_0                                                (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FTransform&                LocalToWorld                                           (ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bAttachToRoot                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UActorComponent*                  ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UActorComponent* UItemThumbnailScene::AddComponent(TSubclassOf<class UActorComponent> Class_0, const struct FTransform& LocalToWorld, bool bAttachToRoot)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailScene", "AddComponent");
+
+	Params::ItemThumbnailScene_AddComponent Parms{};
+
+	Parms.Class_0 = Class_0;
+	Parms.LocalToWorld = std::move(LocalToWorld);
+	Parms.bAttachToRoot = bAttachToRoot;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ItemThumbnailScene.GetThumbnailWorld
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure)
+// Parameters:
+// class UWorld*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UWorld* UItemThumbnailScene::GetThumbnailWorld()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailScene", "GetThumbnailWorld");
+
+	Params::ItemThumbnailScene_GetThumbnailWorld Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ItemThumbnailScene.PrepareScene
+// (Event, Protected, BlueprintEvent)
+
+void UItemThumbnailScene::PrepareScene()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailScene", "PrepareScene");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.ItemThumbnailScene.SetBackgroundColor
+// (Final, Native, Protected, HasDefaults, BlueprintCallable)
+// Parameters:
+// const struct FLinearColor&              InColor                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UItemThumbnailScene::SetBackgroundColor(const struct FLinearColor& InColor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailScene", "SetBackgroundColor");
+
+	Params::ItemThumbnailScene_SetBackgroundColor Parms{};
+
+	Parms.InColor = std::move(InColor);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ItemThumbnailScene.SpawnActor
+// (Final, Native, Protected, BlueprintCallable)
+// Parameters:
+// TSubclassOf<class AActor>               Class_0                                                (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AActor* UItemThumbnailScene::SpawnActor(TSubclassOf<class AActor> Class_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailScene", "SpawnActor");
+
+	Params::ItemThumbnailScene_SpawnActor Parms{};
+
+	Parms.Class_0 = Class_0;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ItemThumbnailScene.SpawnActorForKey
+// (Final, Native, Protected, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FGenericStruct&            Key                                                    (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// TSubclassOf<class AActor>               Class_0                                                (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32*                                  OutViewIndex                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AActor* UItemThumbnailScene::SpawnActorForKey(const struct FGenericStruct& Key, TSubclassOf<class AActor> Class_0, int32* OutViewIndex)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailScene", "SpawnActorForKey");
+
+	Params::ItemThumbnailScene_SpawnActorForKey Parms{};
+
+	Parms.Key = std::move(Key);
+	Parms.Class_0 = Class_0;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (OutViewIndex != nullptr)
+		*OutViewIndex = Parms.OutViewIndex;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ItemThumbnailScene.GetActorForView
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ViewIndex                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AActor* UItemThumbnailScene::GetActorForView(int32 ViewIndex) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailScene", "GetActorForView");
+
+	Params::ItemThumbnailScene_GetActorForView Parms{};
+
+	Parms.ViewIndex = ViewIndex;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ItemThumbnailScene.GetViewMatrixParameters
+// (Event, Protected, HasOutParams, BlueprintEvent, Const)
+// Parameters:
+// int32                                   SceneView                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FViewParameters*                 OutParameters                                          (Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void UItemThumbnailScene::GetViewMatrixParameters(int32 SceneView, struct FViewParameters* OutParameters) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailScene", "GetViewMatrixParameters");
+
+	Params::ItemThumbnailScene_GetViewMatrixParameters Parms{};
+
+	Parms.SceneView = SceneView;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (OutParameters != nullptr)
+		*OutParameters = std::move(Parms.OutParameters);
+}
+
+
+// Function Runtime.ItemThumbnailScene.OnBuildActor
+// (Final, Native, Protected, BlueprintCallable, Const)
+
+void UItemThumbnailScene::OnBuildActor() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ItemThumbnailScene", "OnBuildActor");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSprintGameplayAbility.CheckIfMoving
+// (Final, Native, Private)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URuntimeSprintGameplayAbility::CheckIfMoving()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "CheckIfMoving");
+
+	Params::RuntimeSprintGameplayAbility_CheckIfMoving Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeSprintGameplayAbility.CheckIfStationnary
+// (Final, Native, Private)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URuntimeSprintGameplayAbility::CheckIfStationnary()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "CheckIfStationnary");
+
+	Params::RuntimeSprintGameplayAbility_CheckIfStationnary Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeSprintGameplayAbility.OnCannotSpendAbilityCost
+// (Final, Native, Private)
+
+void URuntimeSprintGameplayAbility::OnCannotSpendAbilityCost()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "OnCannotSpendAbilityCost");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSprintGameplayAbility.OnSprintInputRelease
+// (Final, Native, Private, HasOutParams)
+// Parameters:
+// const struct FInputActionState&         _state                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// bool                                    _bActivated                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeSprintGameplayAbility::OnSprintInputRelease(const struct FInputActionState& _state, bool _bActivated)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "OnSprintInputRelease");
+
+	Params::RuntimeSprintGameplayAbility_OnSprintInputRelease Parms{};
+
+	Parms._state = std::move(_state);
+	Parms._bActivated = _bActivated;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSprintGameplayAbility.OnStopMoving
+// (Final, Native, Private)
+
+void URuntimeSprintGameplayAbility::OnStopMoving()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "OnStopMoving");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeSequencerBindingLibrary.GetCharacterBodyPart
+// (Final, RequiredAPI, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FMovieSceneDynamicBindingResolveParams&Params_0                                               (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// const struct FCharacterPartEnumHandler& BodyPart                                               (Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FMovieSceneDynamicBindingResolveResultReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+
+struct FMovieSceneDynamicBindingResolveResult URuntimeSequencerBindingLibrary::GetCharacterBodyPart(const struct FMovieSceneDynamicBindingResolveParams& Params_0, const struct FCharacterPartEnumHandler& BodyPart)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeSequencerBindingLibrary", "GetCharacterBodyPart");
+
+	Params::RuntimeSequencerBindingLibrary_GetCharacterBodyPart Parms{};
+
+	Parms.Params_0 = std::move(Params_0);
+	Parms.BodyPart = std::move(BodyPart);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeSequencerBindingLibrary.GoalScorer
+// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// class UObject*                          WorldContextObject                                     (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FMovieSceneDynamicBindingResolveResultReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+
+struct FMovieSceneDynamicBindingResolveResult URuntimeSequencerBindingLibrary::GoalScorer(class UObject* WorldContextObject)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeSequencerBindingLibrary", "GoalScorer");
+
+	Params::RuntimeSequencerBindingLibrary_GoalScorer Parms{};
+
+	Parms.WorldContextObject = WorldContextObject;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeStadiumEditorSystem.LaunchStadiumMapsOptimization
+// (Final, Native, Public, BlueprintCallable)
+
+void URuntimeStadiumEditorSystem::LaunchStadiumMapsOptimization()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumEditorSystem", "LaunchStadiumMapsOptimization");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStatBehaviourTimer.OnOvertimeStart
+// (Final, Native, Public)
+// Parameters:
+// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStatBehaviourTimer::OnOvertimeStart(class ARuntimeMatchGameState* _gameState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStatBehaviourTimer", "OnOvertimeStart");
+
+	Params::RuntimeStatBehaviourTimer_OnOvertimeStart Parms{};
+
+	Parms._gameState = _gameState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStatDataIsInRange.BPF_GetRangeTargetActor
+// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const class APawn*                      _instigatorPawn                                        (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AActor* URuntimeStatDataIsInRange::BPF_GetRangeTargetActor(const class APawn* _instigatorPawn) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStatDataIsInRange", "BPF_GetRangeTargetActor");
+
+	Params::RuntimeStatDataIsInRange_BPF_GetRangeTargetActor Parms{};
+
+	Parms._instigatorPawn = _instigatorPawn;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeStatsSubsystem.OnGoalScored
+// (Final, Native, Protected)
+// Parameters:
+// const struct FGoalDescription&          _goalDescription                                       (Parm, NoDestructor, NativeAccessSpecifierPublic)
+
+void URuntimeStatsSubsystem::OnGoalScored(const struct FGoalDescription& _goalDescription)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStatsSubsystem", "OnGoalScored");
+
+	Params::RuntimeStatsSubsystem_OnGoalScored Parms{};
+
+	Parms._goalDescription = std::move(_goalDescription);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStatsSubsystem.OnMatchCountdownFinished
+// (Final, Native, Public)
+// Parameters:
+// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStatsSubsystem::OnMatchCountdownFinished(class ARuntimeMatchGameState* _gameState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStatsSubsystem", "OnMatchCountdownFinished");
+
+	Params::RuntimeStatsSubsystem_OnMatchCountdownFinished Parms{};
+
+	Parms._gameState = _gameState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStatsSubsystem.OnMatchFirstCountdownFinished
+// (Final, Native, Public)
+// Parameters:
+// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStatsSubsystem::OnMatchFirstCountdownFinished(class ARuntimeMatchGameState* _gameState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStatsSubsystem", "OnMatchFirstCountdownFinished");
+
+	Params::RuntimeStatsSubsystem_OnMatchFirstCountdownFinished Parms{};
+
+	Parms._gameState = _gameState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStatsSubsystem.OnRematch
+// (Final, Native, Protected)
+
+void URuntimeStatsSubsystem::OnRematch()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStatsSubsystem", "OnRematch");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_ComputeSpeedState
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class APawn*                      _pawn                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// ESCCharacterSpeedState                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+ESCCharacterSpeedState URuntimeTools::BPF_ComputeSpeedState(const class APawn* _pawn)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_ComputeSpeedState");
+
+	Params::RuntimeTools_BPF_ComputeSpeedState Parms{};
+
+	Parms._pawn = _pawn;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_GetAllPawns
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _inRefActor                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bShouldBeOnScreen                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bFilterByTeam                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bOnlyAllies                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TArray<class APawn*>                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+
+TArray<class APawn*> URuntimeTools::BPF_GetAllPawns(const class AActor* _inRefActor, bool _bShouldBeOnScreen, bool _bFilterByTeam, bool _bOnlyAllies)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetAllPawns");
+
+	Params::RuntimeTools_BPF_GetAllPawns Parms{};
+
+	Parms._inRefActor = _inRefActor;
+	Parms._bShouldBeOnScreen = _bShouldBeOnScreen;
+	Parms._bFilterByTeam = _bFilterByTeam;
+	Parms._bOnlyAllies = _bOnlyAllies;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_GetCurrentMenuGameFlowSubsystem
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class UObject*                    _worldContext                                          (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class USCGameFlowSubsystem*             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class USCGameFlowSubsystem* URuntimeTools::BPF_GetCurrentMenuGameFlowSubsystem(const class UObject* _worldContext)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetCurrentMenuGameFlowSubsystem");
+
+	Params::RuntimeTools_BPF_GetCurrentMenuGameFlowSubsystem Parms{};
+
+	Parms._worldContext = _worldContext;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_GetLastPlayerScorer
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class UWorld*                     _world                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class APlayerState*                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class APlayerState* URuntimeTools::BPF_GetLastPlayerScorer(const class UWorld* _world)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetLastPlayerScorer");
+
+	Params::RuntimeTools_BPF_GetLastPlayerScorer Parms{};
+
+	Parms._world = _world;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_GetNearestBall
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _inRefActor                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bShouldBeOnScreen                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ABall*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ABall* URuntimeTools::BPF_GetNearestBall(const class AActor* _inRefActor, bool _bShouldBeOnScreen)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetNearestBall");
+
+	Params::RuntimeTools_BPF_GetNearestBall Parms{};
+
+	Parms._inRefActor = _inRefActor;
+	Parms._bShouldBeOnScreen = _bShouldBeOnScreen;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_GetNearestGoal
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _inRefActor                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bShouldBeOnScreen                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bFilterByTeam                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bOnlyOurGoal                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AGoal*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AGoal* URuntimeTools::BPF_GetNearestGoal(const class AActor* _inRefActor, bool _bShouldBeOnScreen, bool _bFilterByTeam, bool _bOnlyOurGoal)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetNearestGoal");
+
+	Params::RuntimeTools_BPF_GetNearestGoal Parms{};
+
+	Parms._inRefActor = _inRefActor;
+	Parms._bShouldBeOnScreen = _bShouldBeOnScreen;
+	Parms._bFilterByTeam = _bFilterByTeam;
+	Parms._bOnlyOurGoal = _bOnlyOurGoal;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_GetNearestPawn
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _inRefActor                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bShouldBeOnScreen                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bFilterByTeam                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bOnlyAllies                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class APawn*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class APawn* URuntimeTools::BPF_GetNearestPawn(const class AActor* _inRefActor, bool _bShouldBeOnScreen, bool _bFilterByTeam, bool _bOnlyAllies)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetNearestPawn");
+
+	Params::RuntimeTools_BPF_GetNearestPawn Parms{};
+
+	Parms._inRefActor = _inRefActor;
+	Parms._bShouldBeOnScreen = _bShouldBeOnScreen;
+	Parms._bFilterByTeam = _bFilterByTeam;
+	Parms._bOnlyAllies = _bOnlyAllies;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_GetPlayerCountInTeam
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class UWorld*                     _world                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const uint8                             _uiTeam                                                (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 URuntimeTools::BPF_GetPlayerCountInTeam(const class UWorld* _world, const uint8 _uiTeam)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetPlayerCountInTeam");
+
+	Params::RuntimeTools_BPF_GetPlayerCountInTeam Parms{};
+
+	Parms._world = _world;
+	Parms._uiTeam = _uiTeam;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_GetRequestedTargets
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// class APawn*                            _requester                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FRuntimeTargetRequest&     _request                                               (Parm, NativeAccessSpecifierPublic)
+// struct FGameplayAbilityTargetDataHandle ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+
+struct FGameplayAbilityTargetDataHandle URuntimeTools::BPF_GetRequestedTargets(class APawn* _requester, const struct FRuntimeTargetRequest& _request)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetRequestedTargets");
+
+	Params::RuntimeTools_BPF_GetRequestedTargets Parms{};
+
+	Parms._requester = _requester;
+	Parms._request = std::move(_request);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_GetSessionId
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// class UWorld*                           World                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class FString URuntimeTools::BPF_GetSessionId(class UWorld* World)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetSessionId");
+
+	Params::RuntimeTools_BPF_GetSessionId Parms{};
+
+	Parms.World = World;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeTools.BPF_ShouldJumpForReception
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// EBallReceptionArea                      _eReceptionArea                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URuntimeTools::BPF_ShouldJumpForReception(EBallReceptionArea _eReceptionArea)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_ShouldJumpForReception");
+
+	Params::RuntimeTools_BPF_ShouldJumpForReception Parms{};
+
+	Parms._eReceptionArea = _eReceptionArea;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeVideoSubsystem.BPF_SetupVideo
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class UBinkMediaPlayer*                 Player                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    bShouldPlay                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   fVideoTime                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeVideoSubsystem::BPF_SetupVideo(class UBinkMediaPlayer* Player, bool bShouldPlay, float fVideoTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeVideoSubsystem", "BPF_SetupVideo");
+
+	Params::RuntimeVideoSubsystem_BPF_SetupVideo Parms{};
+
+	Parms.Player = Player;
+	Parms.bShouldPlay = bShouldPlay;
+	Parms.fVideoTime = fVideoTime;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeVideoSubsystem.BPF_StopVideo
+// (Final, Native, Public, BlueprintCallable)
+
+void URuntimeVideoSubsystem::BPF_StopVideo()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeVideoSubsystem", "BPF_StopVideo");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_GetContentTypeForWelcomeFlowStep
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// EWelcomeFlowStep                        _step                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// ERematchWelcomeFlowContentType          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+ERematchWelcomeFlowContentType URuntimeWelcomeFlowSubsystem::BPF_GetContentTypeForWelcomeFlowStep(EWelcomeFlowStep _step)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_GetContentTypeForWelcomeFlowStep");
+
+	Params::RuntimeWelcomeFlowSubsystem_BPF_GetContentTypeForWelcomeFlowStep Parms{};
+
+	Parms._step = _step;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_EndWelcomeFlow
+// (Native, Event, Protected, BlueprintEvent)
+
+void URuntimeWelcomeFlowSubsystem::BPE_EndWelcomeFlow()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPE_EndWelcomeFlow");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_EndWelcomeFlowStep
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// EWelcomeFlowStep                        _step                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeWelcomeFlowSubsystem::BPE_EndWelcomeFlowStep(EWelcomeFlowStep _step)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPE_EndWelcomeFlowStep");
+
+	Params::RuntimeWelcomeFlowSubsystem_BPE_EndWelcomeFlowStep Parms{};
+
+	Parms._step = _step;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_StartWelcomeFlowStep
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// EWelcomeFlowStep                        _step                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeWelcomeFlowSubsystem::BPE_StartWelcomeFlowStep(EWelcomeFlowStep _step)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPE_StartWelcomeFlowStep");
+
+	Params::RuntimeWelcomeFlowSubsystem_BPE_StartWelcomeFlowStep Parms{};
+
+	Parms._step = _step;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_EndCurrentWelcomeFlowStep
+// (Final, Native, Public, BlueprintCallable)
+
+void URuntimeWelcomeFlowSubsystem::BPF_EndCurrentWelcomeFlowStep()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_EndCurrentWelcomeFlowStep");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_StartWelcomeFlow
+// (Final, Native, Public, BlueprintCallable)
+
+void URuntimeWelcomeFlowSubsystem::BPF_StartWelcomeFlow()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_StartWelcomeFlow");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// TArray<class UWelcomeFlowContentViewModel*>ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+
+TArray<class UWelcomeFlowContentViewModel*> URuntimeWelcomeFlowSubsystem::BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep");
+
+	Params::RuntimeWelcomeFlowSubsystem_BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_HasWelcomeFlowStarted
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool URuntimeWelcomeFlowSubsystem::BPF_HasWelcomeFlowStarted() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_HasWelcomeFlowStarted");
+
+	Params::RuntimeWelcomeFlowSubsystem_BPF_HasWelcomeFlowStarted Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootBinder.BPE_OnBallRegistered
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootBinder::BPE_OnBallRegistered(class ABall* _ball)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "BPE_OnBallRegistered");
+
+	Params::ShootBinder_BPE_OnBallRegistered Parms{};
+
+	Parms._ball = _ball;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.BPE_OnBallUnregistered
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootBinder::BPE_OnBallUnregistered(class ABall* _ball)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "BPE_OnBallUnregistered");
+
+	Params::ShootBinder_BPE_OnBallUnregistered Parms{};
+
+	Parms._ball = _ball;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.BPE_OnGoalRegistered
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootBinder::BPE_OnGoalRegistered(class AGoal* _goal)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "BPE_OnGoalRegistered");
+
+	Params::ShootBinder_BPE_OnGoalRegistered Parms{};
+
+	Parms._goal = _goal;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.BPE_OnGoalUnregistered
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootBinder::BPE_OnGoalUnregistered(class AGoal* _goal)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "BPE_OnGoalUnregistered");
+
+	Params::ShootBinder_BPE_OnGoalUnregistered Parms{};
+
+	Parms._goal = _goal;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.BPE_OnShoot
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// const class ABall*                      _ball                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootParams&              _shootParams                                           (Parm, NativeAccessSpecifierPublic)
+
+void UShootBinder::BPE_OnShoot(const class ABall* _ball, const struct FShootParams& _shootParams)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "BPE_OnShoot");
+
+	Params::ShootBinder_BPE_OnShoot Parms{};
+
+	Parms._ball = _ball;
+	Parms._shootParams = std::move(_shootParams);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.BPE_OnShootBinderTriggered
+// (Native, Event, Protected, BlueprintEvent)
+// Parameters:
+// const class ABall*                      _ball                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootParams&              _shootParams                                           (Parm, NativeAccessSpecifierPublic)
+// class AGoal*                            _goalAimed                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootBinder::BPE_OnShootBinderTriggered(const class ABall* _ball, const struct FShootParams& _shootParams, class AGoal* _goalAimed)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "BPE_OnShootBinderTriggered");
+
+	Params::ShootBinder_BPE_OnShootBinderTriggered Parms{};
+
+	Parms._ball = _ball;
+	Parms._shootParams = std::move(_shootParams);
+	Parms._goalAimed = _goalAimed;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.OnBallRegistered
+// (Native, Protected)
+// Parameters:
+// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootBinder::OnBallRegistered(class ABall* _ball)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "OnBallRegistered");
+
+	Params::ShootBinder_OnBallRegistered Parms{};
+
+	Parms._ball = _ball;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.OnBallUnregistered
+// (Native, Protected)
+// Parameters:
+// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootBinder::OnBallUnregistered(class ABall* _ball)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "OnBallUnregistered");
+
+	Params::ShootBinder_OnBallUnregistered Parms{};
+
+	Parms._ball = _ball;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.OnGoalRegistered
+// (Native, Protected)
+// Parameters:
+// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootBinder::OnGoalRegistered(class AGoal* _goal)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "OnGoalRegistered");
+
+	Params::ShootBinder_OnGoalRegistered Parms{};
+
+	Parms._goal = _goal;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.OnGoalUnregistered
+// (Native, Protected)
+// Parameters:
+// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootBinder::OnGoalUnregistered(class AGoal* _goal)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "OnGoalUnregistered");
+
+	Params::ShootBinder_OnGoalUnregistered Parms{};
+
+	Parms._goal = _goal;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootBinder.OnShoot
+// (Native, Protected)
+// Parameters:
+// const class ABall*                      _ball                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootParams&              _shootParams                                           (Parm, NativeAccessSpecifierPublic)
+
+void UShootBinder::OnShoot(const class ABall* _ball, const struct FShootParams& _shootParams)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ShootBinder", "OnShoot");
+
+	Params::ShootBinder_OnShoot Parms{};
+
+	Parms._ball = _ball;
+	Parms._shootParams = std::move(_shootParams);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ShootAbilityData.BPF_MakePrepTargetDataFromClass
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const TSubclassOf<class UShootAbilityData>&_shootDataClass                                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class UGameplayAbility*           _ability                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   _iPriority                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayAbilityTargetDataHandle&_context                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// EShootOrigin                            _eShootOrigin                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const TSubclassOf<class URuntimeShootCameraShake>_cameraShake                                           (ConstParm, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FShootPrepTargetData             ReturnValue                                            (Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+struct FShootPrepTargetData UShootAbilityData::BPF_MakePrepTargetDataFromClass(const TSubclassOf<class UShootAbilityData>& _shootDataClass, const class UGameplayAbility* _ability, class ABall* _ball, int32 _iPriority, const struct FGameplayAbilityTargetDataHandle& _context, EShootOrigin _eShootOrigin, const TSubclassOf<class URuntimeShootCameraShake> _cameraShake)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootAbilityData", "BPF_MakePrepTargetDataFromClass");
+
+	Params::ShootAbilityData_BPF_MakePrepTargetDataFromClass Parms{};
+
+	Parms._shootDataClass = _shootDataClass;
+	Parms._ability = _ability;
+	Parms._ball = _ball;
+	Parms._iPriority = _iPriority;
+	Parms._context = std::move(_context);
+	Parms._eShootOrigin = _eShootOrigin;
+	Parms._cameraShake = _cameraShake;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.WorkshopViewModel.HasNotWorkshopStarted
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWorkshopViewModel::HasNotWorkshopStarted() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorkshopViewModel", "HasNotWorkshopStarted");
+
+	Params::WorkshopViewModel_HasNotWorkshopStarted Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.WorkshopViewModel.IsWorkshopBasedOnScore
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWorkshopViewModel::IsWorkshopBasedOnScore() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorkshopViewModel", "IsWorkshopBasedOnScore");
+
+	Params::WorkshopViewModel_IsWorkshopBasedOnScore Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.WorkshopViewModel.IsWorkshopBasedOnTime
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWorkshopViewModel::IsWorkshopBasedOnTime() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorkshopViewModel", "IsWorkshopBasedOnTime");
+
+	Params::WorkshopViewModel_IsWorkshopBasedOnTime Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.WorkshopViewModel.IsWorkshopFinished
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWorkshopViewModel::IsWorkshopFinished() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorkshopViewModel", "IsWorkshopFinished");
+
+	Params::WorkshopViewModel_IsWorkshopFinished Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.WorkshopViewModel.IsWorkshopInProgress
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UWorkshopViewModel::IsWorkshopInProgress() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WorkshopViewModel", "IsWorkshopInProgress");
+
+	Params::WorkshopViewModel_IsWorkshopInProgress Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.RTShootAbilityHelper.BPF_TryToGetLockDirectionOption
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FShootPrepTargetData&      _shootPrep                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// ELockDirectionOption                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+ELockDirectionOption URTShootAbilityHelper::BPF_TryToGetLockDirectionOption(const struct FShootPrepTargetData& _shootPrep)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("RTShootAbilityHelper", "BPF_TryToGetLockDirectionOption");
+
+	Params::RTShootAbilityHelper_BPF_TryToGetLockDirectionOption Parms{};
+
+	Parms._shootPrep = std::move(_shootPrep);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.JoystickOrientationHelper.BPF_ConvertJoystickOrientationInDegreeAngle
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const EJoystickOrientation&             _eJoystickOrient                                       (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UJoystickOrientationHelper::BPF_ConvertJoystickOrientationInDegreeAngle(const EJoystickOrientation& _eJoystickOrient)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("JoystickOrientationHelper", "BPF_ConvertJoystickOrientationInDegreeAngle");
+
+	Params::JoystickOrientationHelper_BPF_ConvertJoystickOrientationInDegreeAngle Parms{};
+
+	Parms._eJoystickOrient = _eJoystickOrient;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.JoystickOrientationHelper.BPF_GetJoystickOrientationFromAngle
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FVector2D&                 _v2DJoystickValues                                     (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float*                                  _fAngle                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const float                             _fDeadZone                                             (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const float                             _fEastWestTolerance                                    (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const float                             _fHalfPiInDegree                                       (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EJoystickOrientation                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EJoystickOrientation UJoystickOrientationHelper::BPF_GetJoystickOrientationFromAngle(const struct FVector2D& _v2DJoystickValues, float* _fAngle, const float _fDeadZone, const float _fEastWestTolerance, const float _fHalfPiInDegree)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("JoystickOrientationHelper", "BPF_GetJoystickOrientationFromAngle");
+
+	Params::JoystickOrientationHelper_BPF_GetJoystickOrientationFromAngle Parms{};
+
+	Parms._v2DJoystickValues = std::move(_v2DJoystickValues);
+	Parms._fDeadZone = _fDeadZone;
+	Parms._fEastWestTolerance = _fEastWestTolerance;
+	Parms._fHalfPiInDegree = _fHalfPiInDegree;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_fAngle != nullptr)
+		*_fAngle = Parms._fAngle;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_ComputeShootParams
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FGameplayAbilityTargetDataHandle&_context                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const class USCGameplayAbility*         _ability                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// float                                   _fCatchupTime                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _fCatchupAnimTime                                      (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FShootParams                     ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+
+struct FShootParams UShootHelpers::BPF_ComputeShootParams(const struct FGameplayAbilityTargetDataHandle& _context, const class USCGameplayAbility* _ability, const struct FShootPrepTargetData& _targetData, float _fCatchupTime, float _fCatchupAnimTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_ComputeShootParams");
+
+	Params::ShootHelpers_BPF_ComputeShootParams Parms{};
+
+	Parms._context = std::move(_context);
+	Parms._ability = _ability;
+	Parms._targetData = std::move(_targetData);
+	Parms._fCatchupTime = _fCatchupTime;
+	Parms._fCatchupAnimTime = _fCatchupAnimTime;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromAbilityAtLocation
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class USCGameplayAbility*         _ability                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// struct FShootParams*                    _outResult                                             (Parm, OutParm, NativeAccessSpecifierPublic)
+// const struct FVector&                   _vLocation                                             (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _fWantedCatchupTime                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootHelpers::BPF_ComputeShootParamsFromAbilityAtLocation(const class USCGameplayAbility* _ability, const struct FShootPrepTargetData& _targetData, struct FShootParams* _outResult, const struct FVector& _vLocation, float _fWantedCatchupTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_ComputeShootParamsFromAbilityAtLocation");
+
+	Params::ShootHelpers_BPF_ComputeShootParamsFromAbilityAtLocation Parms{};
+
+	Parms._ability = _ability;
+	Parms._targetData = std::move(_targetData);
+	Parms._vLocation = std::move(_vLocation);
+	Parms._fWantedCatchupTime = _fWantedCatchupTime;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outResult != nullptr)
+		*_outResult = std::move(Parms._outResult);
+}
+
+
+// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromActor
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// struct FShootParams*                    _outResult                                             (Parm, OutParm, NativeAccessSpecifierPublic)
+
+void UShootHelpers::BPF_ComputeShootParamsFromActor(const class AActor* _actor, const struct FShootPrepTargetData& _targetData, struct FShootParams* _outResult)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_ComputeShootParamsFromActor");
+
+	Params::ShootHelpers_BPF_ComputeShootParamsFromActor Parms{};
+
+	Parms._actor = _actor;
+	Parms._targetData = std::move(_targetData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outResult != nullptr)
+		*_outResult = std::move(Parms._outResult);
+}
+
+
+// Function Runtime.ShootHelpers.BPF_FindShootParamsTargetData
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FGameplayAbilityTargetDataHandle&_data                                                  (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// struct FShootParamsTargetData*          _outData                                               (Parm, OutParm, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShootHelpers::BPF_FindShootParamsTargetData(const struct FGameplayAbilityTargetDataHandle& _data, struct FShootParamsTargetData* _outData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_FindShootParamsTargetData");
+
+	Params::ShootHelpers_BPF_FindShootParamsTargetData Parms{};
+
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outData != nullptr)
+		*_outData = std::move(Parms._outData);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_FindShootPrepTargetData
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FGameplayAbilityTargetDataHandle&_data                                                  (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// struct FShootPrepTargetData*            _outData                                               (Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShootHelpers::BPF_FindShootPrepTargetData(const struct FGameplayAbilityTargetDataHandle& _data, struct FShootPrepTargetData* _outData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_FindShootPrepTargetData");
+
+	Params::ShootHelpers_BPF_FindShootPrepTargetData Parms{};
+
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outData != nullptr)
+		*_outData = std::move(Parms._outData);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetAngleFromMagnusInput
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    _bAbsoluteAngle                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootHelpers::BPF_GetAngleFromMagnusInput(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bAbsoluteAngle)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetAngleFromMagnusInput");
+
+	Params::ShootHelpers_BPF_GetAngleFromMagnusInput Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+	Parms._bAbsoluteAngle = _bAbsoluteAngle;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootDirection
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UShootHelpers::BPF_GetShootDirection(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootDirection");
+
+	Params::ShootHelpers_BPF_GetShootDirection Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+	Parms._bUseModifiers = _bUseModifiers;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootForce
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootHelpers::BPF_GetShootForce(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootForce");
+
+	Params::ShootHelpers_BPF_GetShootForce Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+	Parms._bUseModifiers = _bUseModifiers;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootForceMinMax
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FFloatRange                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FFloatRange UShootHelpers::BPF_GetShootForceMinMax(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootForceMinMax");
+
+	Params::ShootHelpers_BPF_GetShootForceMinMax Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+	Parms._bUseModifiers = _bUseModifiers;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootForceNormalized
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _runtimeCharacter                                      (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootHelpers::BPF_GetShootForceNormalized(const class AActor* _runtimeCharacter, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootForceNormalized");
+
+	Params::ShootHelpers_BPF_GetShootForceNormalized Parms{};
+
+	Parms._runtimeCharacter = _runtimeCharacter;
+	Parms._data = std::move(_data);
+	Parms._bUseModifiers = _bUseModifiers;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootForceRange
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _runtimeCharacter                                      (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FFloatRange                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FFloatRange UShootHelpers::BPF_GetShootForceRange(const class AActor* _runtimeCharacter, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootForceRange");
+
+	Params::ShootHelpers_BPF_GetShootForceRange Parms{};
+
+	Parms._runtimeCharacter = _runtimeCharacter;
+	Parms._data = std::move(_data);
+	Parms._bUseModifiers = _bUseModifiers;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootInputTimeFromShootPrep
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootHelpers::BPF_GetShootInputTimeFromShootPrep(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootInputTimeFromShootPrep");
+
+	Params::ShootHelpers_BPF_GetShootInputTimeFromShootPrep Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+	Parms._bUseModifiers = _bUseModifiers;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootRotationForce
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UShootHelpers::BPF_GetShootRotationForce(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootRotationForce");
+
+	Params::ShootHelpers_BPF_GetShootRotationForce Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+	Parms._bUseModifiers = _bUseModifiers;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootRotationForceInput
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector2D UShootHelpers::BPF_GetShootRotationForceInput(const class AActor* _actor, const struct FShootPrepTargetData& _data)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootRotationForceInput");
+
+	Params::ShootHelpers_BPF_GetShootRotationForceInput Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootRotationForceRatio
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UShootHelpers::BPF_GetShootRotationForceRatio(const class AActor* _actor, const struct FShootPrepTargetData& _data)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootRotationForceRatio");
+
+	Params::ShootHelpers_BPF_GetShootRotationForceRatio Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootStartLocationPoint
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _runtimeCharacter                                      (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const struct FGameplayAbilityTargetDataHandle&_context                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const float                             _fCatchupTime                                          (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayAbilityTargetDataHandle&_montageContextFallback                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// struct FShootLocationPointResult        ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+
+struct FShootLocationPointResult UShootHelpers::BPF_GetShootStartLocationPoint(const class AActor* _runtimeCharacter, const struct FShootPrepTargetData& _targetData, const struct FGameplayAbilityTargetDataHandle& _context, const float _fCatchupTime, const struct FGameplayAbilityTargetDataHandle& _montageContextFallback)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootStartLocationPoint");
+
+	Params::ShootHelpers_BPF_GetShootStartLocationPoint Parms{};
+
+	Parms._runtimeCharacter = _runtimeCharacter;
+	Parms._targetData = std::move(_targetData);
+	Parms._context = std::move(_context);
+	Parms._fCatchupTime = _fCatchupTime;
+	Parms._montageContextFallback = std::move(_montageContextFallback);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootTimeRange
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// struct FFloatRange                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FFloatRange UShootHelpers::BPF_GetShootTimeRange(const class AActor* _actor, const struct FShootPrepTargetData& _data)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootTimeRange");
+
+	Params::ShootHelpers_BPF_GetShootTimeRange Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootTimeRatioToBuildUpDuration
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootHelpers::BPF_GetShootTimeRatioToBuildUpDuration(const class AActor* _actor, const struct FShootPrepTargetData& _data)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootTimeRatioToBuildUpDuration");
+
+	Params::ShootHelpers_BPF_GetShootTimeRatioToBuildUpDuration Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetShootType
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const TMap<struct FGameplayTag, struct FFloatRange>&_gameplayTagMap                                        (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// struct FGameplayTag                     ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FGameplayTag UShootHelpers::BPF_GetShootType(const class AActor* _actor, const struct FShootPrepTargetData& _data, const TMap<struct FGameplayTag, struct FFloatRange>& _gameplayTagMap)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootType");
+
+	Params::ShootHelpers_BPF_GetShootType Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+	Parms._gameplayTagMap = std::move(_gameplayTagMap);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetSimulatedShootDataFromShootPrep
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// struct FSimulatedShootData*             _outSimulatedShootData                                 (Parm, OutParm, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShootHelpers::BPF_GetSimulatedShootDataFromShootPrep(const struct FShootPrepTargetData& _data, struct FSimulatedShootData* _outSimulatedShootData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetSimulatedShootDataFromShootPrep");
+
+	Params::ShootHelpers_BPF_GetSimulatedShootDataFromShootPrep Parms{};
+
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outSimulatedShootData != nullptr)
+		*_outSimulatedShootData = std::move(Parms._outSimulatedShootData);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetTrajectoryClosestPointByLocation
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _runtimeCharacter                                      (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FBallTrajectoryResult&     _trajectory                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// struct FVector*                         _vResult                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool*                                   _bFoundResult                                          (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float*                                  _fDistance                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UShootHelpers::BPF_GetTrajectoryClosestPointByLocation(const class AActor* _runtimeCharacter, const struct FBallTrajectoryResult& _trajectory, struct FVector* _vResult, bool* _bFoundResult, float* _fDistance)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetTrajectoryClosestPointByLocation");
+
+	Params::ShootHelpers_BPF_GetTrajectoryClosestPointByLocation Parms{};
+
+	Parms._runtimeCharacter = _runtimeCharacter;
+	Parms._trajectory = std::move(_trajectory);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_vResult != nullptr)
+		*_vResult = std::move(Parms._vResult);
+
+	if (_bFoundResult != nullptr)
+		*_bFoundResult = Parms._bFoundResult;
+
+	if (_fDistance != nullptr)
+		*_fDistance = Parms._fDistance;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_GetTrajectoryFromSimulatedShootData
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FSimulatedShootData&       _simulatedShootData                                    (Parm, NativeAccessSpecifierPublic)
+// struct FShootParams*                    _outShootParams                                        (Parm, OutParm, NativeAccessSpecifierPublic)
+// class UShootAbilityData*                _shootAbilityData                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _fPredictionDuration                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bUseTime                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bApplyModifiers                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FBallTrajectoryResult            ReturnValue                                            (Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+struct FBallTrajectoryResult UShootHelpers::BPF_GetTrajectoryFromSimulatedShootData(const struct FSimulatedShootData& _simulatedShootData, struct FShootParams* _outShootParams, class UShootAbilityData* _shootAbilityData, const class AActor* _actor, class ABall* _ball, float _fPredictionDuration, bool _bUseTime, bool _bApplyModifiers)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetTrajectoryFromSimulatedShootData");
+
+	Params::ShootHelpers_BPF_GetTrajectoryFromSimulatedShootData Parms{};
+
+	Parms._simulatedShootData = std::move(_simulatedShootData);
+	Parms._shootAbilityData = _shootAbilityData;
+	Parms._actor = _actor;
+	Parms._ball = _ball;
+	Parms._fPredictionDuration = _fPredictionDuration;
+	Parms._bUseTime = _bUseTime;
+	Parms._bApplyModifiers = _bApplyModifiers;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_outShootParams != nullptr)
+		*_outShootParams = std::move(Parms._outShootParams);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_HasReleaseShootInput
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShootHelpers::BPF_HasReleaseShootInput(const class AActor* _actor, const struct FShootPrepTargetData& _data)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_HasReleaseShootInput");
+
+	Params::ShootHelpers_BPF_HasReleaseShootInput Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_MakeShootPrepTargetDataHandle
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// struct FGameplayAbilityTargetDataHandle ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+
+struct FGameplayAbilityTargetDataHandle UShootHelpers::BPF_MakeShootPrepTargetDataHandle(const struct FShootPrepTargetData& _data)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_MakeShootPrepTargetDataHandle");
+
+	Params::ShootHelpers_BPF_MakeShootPrepTargetDataHandle Parms{};
+
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_ShootPrep_IsValid
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UShootHelpers::BPF_ShootPrep_IsValid(const struct FShootPrepTargetData& _targetData)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_ShootPrep_IsValid");
+
+	Params::ShootHelpers_BPF_ShootPrep_IsValid Parms{};
+
+	Parms._targetData = std::move(_targetData);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_TimeRemainingBeforeShoot
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootHelpers::BPF_TimeRemainingBeforeShoot(const class AActor* _actor, const struct FShootPrepTargetData& _data)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_TimeRemainingBeforeShoot");
+
+	Params::ShootHelpers_BPF_TimeRemainingBeforeShoot Parms{};
+
+	Parms._actor = _actor;
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_TraceBall
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// ECollisionChannel                       _eCollisionChannel                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const TArray<ECollisionChannel>&        _collisionChannelToIgnore                              (Parm, ZeroConstructor, NativeAccessSpecifierPublic)
+// const struct FVector&                   _vStartPoint                                           (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FVector&                   _vDirection                                            (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector*                         _vOutImpactNormal                                      (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FString&                    _sOverrideDebugString                                  (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bUseMultiHitsInsteadOfSingle                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UShootHelpers::BPF_TraceBall(const class AActor* _actor, ECollisionChannel _eCollisionChannel, const TArray<ECollisionChannel>& _collisionChannelToIgnore, const struct FVector& _vStartPoint, const struct FVector& _vDirection, struct FVector* _vOutImpactNormal, const class FString& _sOverrideDebugString, bool _bUseMultiHitsInsteadOfSingle)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_TraceBall");
+
+	Params::ShootHelpers_BPF_TraceBall Parms{};
+
+	Parms._actor = _actor;
+	Parms._eCollisionChannel = _eCollisionChannel;
+	Parms._collisionChannelToIgnore = std::move(_collisionChannelToIgnore);
+	Parms._vStartPoint = std::move(_vStartPoint);
+	Parms._vDirection = std::move(_vDirection);
+	Parms._sOverrideDebugString = std::move(_sOverrideDebugString);
+	Parms._bUseMultiHitsInsteadOfSingle = _bUseMultiHitsInsteadOfSingle;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_vOutImpactNormal != nullptr)
+		*_vOutImpactNormal = std::move(Parms._vOutImpactNormal);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_TryToGetImpactNormal
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool*                                   _bSuccess                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UShootHelpers::BPF_TryToGetImpactNormal(const struct FShootPrepTargetData& _data, bool* _bSuccess)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_TryToGetImpactNormal");
+
+	Params::ShootHelpers_BPF_TryToGetImpactNormal Parms{};
+
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_bSuccess != nullptr)
+		*_bSuccess = Parms._bSuccess;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_TryToGetImpactPointOnCameraDirection
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool*                                   _bSuccess                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UShootHelpers::BPF_TryToGetImpactPointOnCameraDirection(const struct FShootPrepTargetData& _data, bool* _bSuccess)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_TryToGetImpactPointOnCameraDirection");
+
+	Params::ShootHelpers_BPF_TryToGetImpactPointOnCameraDirection Parms{};
+
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_bSuccess != nullptr)
+		*_bSuccess = Parms._bSuccess;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootHelpers.BPF_TryToGetTargetedPointBySight
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool*                                   _bSuccess                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+struct FVector UShootHelpers::BPF_TryToGetTargetedPointBySight(const struct FShootPrepTargetData& _data, bool* _bSuccess)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_TryToGetTargetedPointBySight");
+
+	Params::ShootHelpers_BPF_TryToGetTargetedPointBySight Parms{};
+
+	Parms._data = std::move(_data);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_bSuccess != nullptr)
+		*_bSuccess = Parms._bSuccess;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootModifierHelpers.BPF_GetMultiplierBySpeedState
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _ShootData                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const float                             _fBlendTime                                            (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FMultiplierSpeedStateData& m_Multipliers                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootModifierHelpers::BPF_GetMultiplierBySpeedState(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, const float _fBlendTime, const struct FMultiplierSpeedStateData& m_Multipliers)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootModifierHelpers", "BPF_GetMultiplierBySpeedState");
+
+	Params::ShootModifierHelpers_BPF_GetMultiplierBySpeedState Parms{};
+
+	Parms._actor = _actor;
+	Parms._ShootData = std::move(_ShootData);
+	Parms._fBlendTime = _fBlendTime;
+	Parms.m_Multipliers = std::move(m_Multipliers);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootModifierHelpers.BPF_GetMultiplierFromShootModifierDataTable
+// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _ShootData                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const class UDataTable*                 _table                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FVector&                   _vOutDirection                                         (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootModifierHelpers::BPF_GetMultiplierFromShootModifierDataTable(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, const class UDataTable* _table, const struct FVector& _vOutDirection)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootModifierHelpers", "BPF_GetMultiplierFromShootModifierDataTable");
+
+	Params::ShootModifierHelpers_BPF_GetMultiplierFromShootModifierDataTable Parms{};
+
+	Parms._actor = _actor;
+	Parms._ShootData = std::move(_ShootData);
+	Parms._table = _table;
+	Parms._vOutDirection = std::move(_vOutDirection);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootModifierHelpers.BPF_GetSourceRatioValue
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _ShootData                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// ESourceModifierType                     _eSourceType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FFloatInterval&            _intervalToComputeRatio                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootModifierHelpers::BPF_GetSourceRatioValue(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, ESourceModifierType _eSourceType, const struct FFloatInterval& _intervalToComputeRatio)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootModifierHelpers", "BPF_GetSourceRatioValue");
+
+	Params::ShootModifierHelpers_BPF_GetSourceRatioValue Parms{};
+
+	Parms._actor = _actor;
+	Parms._ShootData = std::move(_ShootData);
+	Parms._eSourceType = _eSourceType;
+	Parms._intervalToComputeRatio = std::move(_intervalToComputeRatio);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.ShootModifierHelpers.BPF_GetSourceValue
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FShootPrepTargetData&      _ShootData                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// ESourceModifierType                     _eSourceType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UShootModifierHelpers::BPF_GetSourceValue(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, ESourceModifierType _eSourceType)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("ShootModifierHelpers", "BPF_GetSourceValue");
+
+	Params::ShootModifierHelpers_BPF_GetSourceValue Parms{};
+
+	Parms._actor = _actor;
+	Parms._ShootData = std::move(_ShootData);
+	Parms._eSourceType = _eSourceType;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.StadiumWorldSettings.BPF_GetRuntimeWorldSettings
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// const class UObject*                    _context                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    _bForceMainWorld                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AStadiumWorldSettings*            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AStadiumWorldSettings* AStadiumWorldSettings::BPF_GetRuntimeWorldSettings(const class UObject* _context, bool _bForceMainWorld)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("StadiumWorldSettings", "BPF_GetRuntimeWorldSettings");
+
+	Params::StadiumWorldSettings_BPF_GetRuntimeWorldSettings Parms{};
+
+	Parms._context = _context;
+	Parms._bForceMainWorld = _bForceMainWorld;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.StadiumWorldSettings.BPF_GetFieldBox
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FBox                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+
+struct FBox AStadiumWorldSettings::BPF_GetFieldBox() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("StadiumWorldSettings", "BPF_GetFieldBox");
+
+	Params::StadiumWorldSettings_BPF_GetFieldBox Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.SweeperAttributeSet.OnRep_V1
+// (Final, Native, Public, HasOutParams)
+// Parameters:
+// const struct FGameplayAttributeData&    _oldV1                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void USweeperAttributeSet::OnRep_V1(const struct FGameplayAttributeData& _oldV1)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SweeperAttributeSet", "OnRep_V1");
+
+	Params::SweeperAttributeSet_OnRep_V1 Parms{};
+
+	Parms._oldV1 = std::move(_oldV1);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.SweeperAttributeSet.OnRep_V2
+// (Final, Native, Public, HasOutParams)
+// Parameters:
+// const struct FGameplayAttributeData&    _oldV2                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void USweeperAttributeSet::OnRep_V2(const struct FGameplayAttributeData& _oldV2)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SweeperAttributeSet", "OnRep_V2");
+
+	Params::SweeperAttributeSet_OnRep_V2 Parms{};
+
+	Parms._oldV2 = std::move(_oldV2);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.SweeperAttributeSet.OnRep_V3
+// (Final, Native, Public, HasOutParams)
+// Parameters:
+// const struct FGameplayAttributeData&    _oldV3                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void USweeperAttributeSet::OnRep_V3(const struct FGameplayAttributeData& _oldV3)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("SweeperAttributeSet", "OnRep_V3");
+
+	Params::SweeperAttributeSet_OnRep_V3 Parms{};
+
+	Parms._oldV3 = std::move(_oldV3);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.ThumbnailCustomizationIds.BPF_GetThumbnailCustomizationId
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FSCCustomizationId&        _customizationID                                       (ConstParm, Parm, OutParm, ReferenceParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TSoftObjectPtr<class ULevelSequence>*   _viewSequence                                          (Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TSoftObjectPtr<class UAnimSequence>*    _animSequence                                          (Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float*                                  _fAnimTime                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TSoftObjectPtr<class UTexture2D>*       _defaultTexture                                        (Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UThumbnailCustomizationIds::BPF_GetThumbnailCustomizationId(const struct FSCCustomizationId& _customizationID, TSoftObjectPtr<class ULevelSequence>* _viewSequence, TSoftObjectPtr<class UAnimSequence>* _animSequence, float* _fAnimTime, TSoftObjectPtr<class UTexture2D>* _defaultTexture) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("ThumbnailCustomizationIds", "BPF_GetThumbnailCustomizationId");
+
+	Params::ThumbnailCustomizationIds_BPF_GetThumbnailCustomizationId Parms{};
+
+	Parms._customizationID = std::move(_customizationID);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	if (_viewSequence != nullptr)
+		*_viewSequence = Parms._viewSequence;
+
+	if (_animSequence != nullptr)
+		*_animSequence = Parms._animSequence;
+
+	if (_fAnimTime != nullptr)
+		*_fAnimTime = Parms._fAnimTime;
+
+	if (_defaultTexture != nullptr)
+		*_defaultTexture = Parms._defaultTexture;
+}
+
+
+// Function Runtime.TrajectoryPartHelpers.BPF_GetPartPointAtRatioDistance
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FBallTrajectoryPart&       _trajPart                                              (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// float                                   _fRatio                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FPredictProjectilePathPointData  ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+
+struct FPredictProjectilePathPointData UTrajectoryPartHelpers::BPF_GetPartPointAtRatioDistance(const struct FBallTrajectoryPart& _trajPart, float _fRatio)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("TrajectoryPartHelpers", "BPF_GetPartPointAtRatioDistance");
+
+	Params::TrajectoryPartHelpers_BPF_GetPartPointAtRatioDistance Parms{};
+
+	Parms._trajPart = std::move(_trajPart);
+	Parms._fRatio = _fRatio;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TrajectoryPartHelpers.BPF_GetPartTime
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FBallTrajectoryPart&       _trajPart                                              (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float UTrajectoryPartHelpers::BPF_GetPartTime(const struct FBallTrajectoryPart& _trajPart)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("TrajectoryPartHelpers", "BPF_GetPartTime");
+
+	Params::TrajectoryPartHelpers_BPF_GetPartTime Parms{};
+
+	Parms._trajPart = std::move(_trajPart);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialManager.BPE_OnStartCurrentStep
+// (Event, Public, BlueprintEvent)
+
+void ATutorialManager::BPE_OnStartCurrentStep()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPE_OnStartCurrentStep");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialManager.BPE_OnStartTutorial
+// (Event, Public, BlueprintEvent)
+
+void ATutorialManager::BPE_OnStartTutorial()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPE_OnStartTutorial");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialManager.BPE_OnTutorialComplete
+// (Event, Protected, BlueprintEvent)
+
+void ATutorialManager::BPE_OnTutorialComplete()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPE_OnTutorialComplete");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialManager.BPE_OnWaitingPlayerInputToStart
+// (Event, Public, BlueprintEvent)
+
+void ATutorialManager::BPE_OnWaitingPlayerInputToStart()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPE_OnWaitingPlayerInputToStart");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialManager.InitTutorial
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class UCommonActivatableWidget*         _widgetToUse                                           (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ATutorialManager::InitTutorial(class UCommonActivatableWidget* _widgetToUse)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "InitTutorial");
+
+	Params::TutorialManager_InitTutorial Parms{};
+
+	Parms._widgetToUse = _widgetToUse;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialManager.OnLevelSequencePlayedAtTheBeginningFinished
+// (Final, Native, Protected)
+
+void ATutorialManager::OnLevelSequencePlayedAtTheBeginningFinished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "OnLevelSequencePlayedAtTheBeginningFinished");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialManager.OnLevelSequencePlayedAtTheEndFinished
+// (Final, Native, Protected)
+
+void ATutorialManager::OnLevelSequencePlayedAtTheEndFinished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "OnLevelSequencePlayedAtTheEndFinished");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialManager.OnPossessedPawnChanged
+// (Final, Native, Public)
+// Parameters:
+// class APawn*                            _oldPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class APawn*                            _newPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void ATutorialManager::OnPossessedPawnChanged(class APawn* _oldPawn, class APawn* _newPawn)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "OnPossessedPawnChanged");
+
+	Params::TutorialManager_OnPossessedPawnChanged Parms{};
+
+	Parms._oldPawn = _oldPawn;
+	Parms._newPawn = _newPawn;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialManager.OnSkipIntroductionInputPressed
+// (Final, Native, Public, BlueprintCallable)
+
+void ATutorialManager::OnSkipIntroductionInputPressed()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "OnSkipIntroductionInputPressed");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialManager.OnStepSucceeded
+// (Final, Native, Public)
+
+void ATutorialManager::OnStepSucceeded()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "OnStepSucceeded");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialManager.BPF_FindTutorialActor
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// const struct FGameplayTag&              _tag                                                   (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ATutorialActor*                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ATutorialActor* ATutorialManager::BPF_FindTutorialActor(const struct FGameplayTag& _tag) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPF_FindTutorialActor");
+
+	Params::TutorialManager_BPF_FindTutorialActor Parms{};
+
+	Parms._tag = std::move(_tag);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialManager.BPF_GetCurrentStepNumber
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 ATutorialManager::BPF_GetCurrentStepNumber() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPF_GetCurrentStepNumber");
+
+	Params::TutorialManager_BPF_GetCurrentStepNumber Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialManager.BPF_GetObjectiveCountInCurrentStep
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 ATutorialManager::BPF_GetObjectiveCountInCurrentStep() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPF_GetObjectiveCountInCurrentStep");
+
+	Params::TutorialManager_BPF_GetObjectiveCountInCurrentStep Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialManager.BPF_GetObjectiveCountInCurrentStepWithIteration
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 ATutorialManager::BPF_GetObjectiveCountInCurrentStepWithIteration() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPF_GetObjectiveCountInCurrentStepWithIteration");
+
+	Params::TutorialManager_BPF_GetObjectiveCountInCurrentStepWithIteration Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialManager.BPF_GetStepCount
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 ATutorialManager::BPF_GetStepCount() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPF_GetStepCount");
+
+	Params::TutorialManager_BPF_GetStepCount Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialManager.BPF_MoveToNextLevel
+// (Final, Native, Public, BlueprintCallable, Const)
+
+void ATutorialManager::BPF_MoveToNextLevel() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "BPF_MoveToNextLevel");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialManager.CanStartTutorialFromInput
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool ATutorialManager::CanStartTutorialFromInput() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialManager", "CanStartTutorialFromInput");
+
+	Params::TutorialManager_CanStartTutorialFromInput Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialObjectiveListenInput.OnInputActivation
+// (Final, Native, Public, HasOutParams)
+// Parameters:
+// const class USCInputAction*             _uscInputAction                                        (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FInputActionState&         _inputActionState                                      (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+
+void UTutorialObjectiveListenInput::OnInputActivation(const class USCInputAction* _uscInputAction, const struct FInputActionState& _inputActionState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialObjectiveListenInput", "OnInputActivation");
+
+	Params::TutorialObjectiveListenInput_OnInputActivation Parms{};
+
+	Parms._uscInputAction = _uscInputAction;
+	Parms._inputActionState = std::move(_inputActionState);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialStep.EndStep
+// (Final, Native, Public, BlueprintCallable)
+
+void UTutorialStep::EndStep()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialStep", "EndStep");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialStep.GetObjectives
+// (Final, Native, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// TArray<class UTutorialObjective*>       ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+TArray<class UTutorialObjective*> UTutorialStep::GetObjectives()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialStep", "GetObjectives");
+
+	Params::TutorialStep_GetObjectives Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialStep.OnEndStep
+// (Event, Public, BlueprintEvent)
+
+void UTutorialStep::OnEndStep()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialStep", "OnEndStep");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialStep.OnObjectiveComplete
+// (Final, Native, Public)
+// Parameters:
+// class UTutorialObjective*               _objective                                             (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UTutorialStep::OnObjectiveComplete(class UTutorialObjective* _objective)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialStep", "OnObjectiveComplete");
+
+	Params::TutorialStep_OnObjectiveComplete Parms{};
+
+	Parms._objective = _objective;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.TutorialStep.OnStartStep
+// (Event, Public, BlueprintEvent)
+
+void UTutorialStep::OnStartStep()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialStep", "OnStartStep");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.TutorialStep.BPF_GetObjectiveCount
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UTutorialStep::BPF_GetObjectiveCount() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialStep", "BPF_GetObjectiveCount");
+
+	Params::TutorialStep_BPF_GetObjectiveCount Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialStep.BPF_GetObjectiveCountWithIteration
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 UTutorialStep::BPF_GetObjectiveCountWithIteration() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialStep", "BPF_GetObjectiveCountWithIteration");
+
+	Params::TutorialStep_BPF_GetObjectiveCountWithIteration Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.TutorialStep.GetOwner
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// class ATutorialManager*                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class ATutorialManager* UTutorialStep::GetOwner() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TutorialStep", "GetOwner");
+
+	Params::TutorialStep_GetOwner Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.UtilityAIComponent.OnTaskFinished
+// (Final, Native, Protected)
+// Parameters:
+// class UUtilityAITask*                   _taskFinished                                          (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUtilityAIComponent::OnTaskFinished(class UUtilityAITask* _taskFinished)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UtilityAIComponent", "OnTaskFinished");
+
+	Params::UtilityAIComponent_OnTaskFinished Parms{};
+
+	Parms._taskFinished = _taskFinished;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.UtilityAIComponent.SetUtilityAiPreset
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class UUtilityAIPreset*                 _newPreset                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UUtilityAIComponent::SetUtilityAiPreset(class UUtilityAIPreset* _newPreset)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UtilityAIComponent", "SetUtilityAiPreset");
+
+	Params::UtilityAIComponent_SetUtilityAiPreset Parms{};
+
+	Parms._newPreset = _newPreset;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.UtilityAIComponent.StartBehavior
+// (Final, Native, Public, BlueprintCallable)
+
+void UUtilityAIComponent::StartBehavior()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UtilityAIComponent", "StartBehavior");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.UtilityAIComponent.StopBehavior
+// (Final, Native, Public, BlueprintCallable)
+
+void UUtilityAIComponent::StopBehavior()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UtilityAIComponent", "StopBehavior");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.UtilityAITask.BPE_OnTaskStart
+// (Event, Public, BlueprintEvent)
+
+void UUtilityAITask::BPE_OnTaskStart()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UtilityAITask", "BPE_OnTaskStart");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.UtilityAITask.FinishTask
+// (Final, Native, Public, BlueprintCallable)
+
+void UUtilityAITask::FinishTask()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UtilityAITask", "FinishTask");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.UtilityAITask.BPE_ComputeAllConsiderationValue
+// (Event, Public, HasOutParams, BlueprintEvent, Const)
+// Parameters:
+// class AAIController*                    _inAIController                                        (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           _inTargetActor                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TMap<class UCurveFloat*, float>*        _outResult                                             (Parm, OutParm, NativeAccessSpecifierPublic)
+
+void UUtilityAITask::BPE_ComputeAllConsiderationValue(class AAIController* _inAIController, class AActor* _inTargetActor, TMap<class UCurveFloat*, float>* _outResult) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("UtilityAITask", "BPE_ComputeAllConsiderationValue");
+
+	Params::UtilityAITask_BPE_ComputeAllConsiderationValue Parms{};
+
+	Parms._inAIController = _inAIController;
+	Parms._inTargetActor = _inTargetActor;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (_outResult != nullptr)
+		*_outResult = std::move(Parms._outResult);
+}
+
+
+// Function Runtime.VoiceChatBlueprintHelperLibrary.GetActiveInputDevice
+// (Final, Native, Static, Private, BlueprintCallable)
+// Parameters:
+// class UObject*                          _worldContextObject                                    (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FSOSVoiceChatDeviceInfo          ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+
+struct FSOSVoiceChatDeviceInfo UVoiceChatBlueprintHelperLibrary::GetActiveInputDevice(class UObject* _worldContextObject)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("VoiceChatBlueprintHelperLibrary", "GetActiveInputDevice");
+
+	Params::VoiceChatBlueprintHelperLibrary_GetActiveInputDevice Parms{};
+
+	Parms._worldContextObject = _worldContextObject;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.VoiceChatBlueprintHelperLibrary.GetInputDevices
+// (Final, Native, Static, Private, BlueprintCallable)
+// Parameters:
+// class UObject*                          _worldContextObject                                    (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TArray<struct FSOSVoiceChatDeviceInfo>  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+
+TArray<struct FSOSVoiceChatDeviceInfo> UVoiceChatBlueprintHelperLibrary::GetInputDevices(class UObject* _worldContextObject)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("VoiceChatBlueprintHelperLibrary", "GetInputDevices");
+
+	Params::VoiceChatBlueprintHelperLibrary_GetInputDevices Parms{};
+
+	Parms._worldContextObject = _worldContextObject;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.VoiceChatBlueprintHelperLibrary.SetInputDevice
+// (Final, Native, Static, Private, BlueprintCallable)
+// Parameters:
+// class UObject*                          _worldContextObject                                    (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FString&                    _inputDeviceId                                         (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UVoiceChatBlueprintHelperLibrary::SetInputDevice(class UObject* _worldContextObject, const class FString& _inputDeviceId)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("VoiceChatBlueprintHelperLibrary", "SetInputDevice");
+
+	Params::VoiceChatBlueprintHelperLibrary_SetInputDevice Parms{};
+
+	Parms._worldContextObject = _worldContextObject;
+	Parms._inputDeviceId = std::move(_inputDeviceId);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.WaitForPlayersArrivedFlowState.OnPawnSetInClient
+// (Final, Native, Private)
+// Parameters:
+// class APlayerState*                     _player                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class APawn*                            _newPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class APawn*                            _oldPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UWaitForPlayersArrivedFlowState::OnPawnSetInClient(class APlayerState* _player, class APawn* _newPawn, class APawn* _oldPawn)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "OnPawnSetInClient");
+
+	Params::WaitForPlayersArrivedFlowState_OnPawnSetInClient Parms{};
+
+	Parms._player = _player;
+	Parms._newPawn = _newPawn;
+	Parms._oldPawn = _oldPawn;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.WaitForPlayersArrivedFlowState.OnPlayerStateAddedInClient
+// (Final, Native, Private)
+// Parameters:
+// class APlayerState*                     _PlayerStateAdded                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UWaitForPlayersArrivedFlowState::OnPlayerStateAddedInClient(class APlayerState* _PlayerStateAdded)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "OnPlayerStateAddedInClient");
+
+	Params::WaitForPlayersArrivedFlowState_OnPlayerStateAddedInClient Parms{};
+
+	Parms._PlayerStateAdded = _PlayerStateAdded;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.WaitForPlayersArrivedFlowState.OnPlayerStateReplicatedInController
+// (Final, Native, Private)
+// Parameters:
+// class APlayerState*                     _playerState                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UWaitForPlayersArrivedFlowState::OnPlayerStateReplicatedInController(class APlayerState* _playerState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "OnPlayerStateReplicatedInController");
+
+	Params::WaitForPlayersArrivedFlowState_OnPlayerStateReplicatedInController Parms{};
+
+	Parms._playerState = _playerState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.WaitForPlayersArrivedFlowState.TryToPlayColorChoiceSequences
+// (Final, Native, Private)
+// Parameters:
+// class AController*                      _PlayerController                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UWaitForPlayersArrivedFlowState::TryToPlayColorChoiceSequences(class AController* _PlayerController)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "TryToPlayColorChoiceSequences");
+
+	Params::WaitForPlayersArrivedFlowState_TryToPlayColorChoiceSequences Parms{};
+
+	Parms._PlayerController = _PlayerController;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.WaitForPlayersArrivedFlowState.TryToPlayPlayerColorChoiceSequence
+// (Final, Native, Private)
+// Parameters:
+// class APlayerState*                     _PlayerStateAdded                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UWaitForPlayersArrivedFlowState::TryToPlayPlayerColorChoiceSequence(class APlayerState* _PlayerStateAdded)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WaitForPlayersArrivedFlowState", "TryToPlayPlayerColorChoiceSequence");
+
+	Params::WaitForPlayersArrivedFlowState_TryToPlayPlayerColorChoiceSequence Parms{};
+
+	Parms._PlayerStateAdded = _PlayerStateAdded;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.AddScore
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// int32                                   _iScoreToAdd                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AWorkshop::AddScore(int32 _iScoreToAdd)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "AddScore");
+
+	Params::Workshop_AddScore Parms{};
+
+	Parms._iScoreToAdd = _iScoreToAdd;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.BPE_FinishWorkshop
+// (Event, Public, BlueprintEvent)
+
+void AWorkshop::BPE_FinishWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "BPE_FinishWorkshop");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.Workshop.BPE_PauseWorkshop
+// (Event, Public, BlueprintEvent)
+
+void AWorkshop::BPE_PauseWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "BPE_PauseWorkshop");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.Workshop.BPE_RestartWorkshop
+// (Event, Public, BlueprintEvent)
+
+void AWorkshop::BPE_RestartWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "BPE_RestartWorkshop");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.Workshop.BPE_StartWorkshop
+// (Event, Public, BlueprintEvent)
+
+void AWorkshop::BPE_StartWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "BPE_StartWorkshop");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.Workshop.BPE_UnpauseWorkshop
+// (Event, Public, BlueprintEvent)
+
+void AWorkshop::BPE_UnpauseWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "BPE_UnpauseWorkshop");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function Runtime.Workshop.BPF_SnapBallToWorkshopUser
+// (Final, Native, Public, BlueprintCallable)
+
+void AWorkshop::BPF_SnapBallToWorkshopUser()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "BPF_SnapBallToWorkshopUser");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.CheckAchievements
+// (Final, Native, Public)
+
+void AWorkshop::CheckAchievements()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "CheckAchievements");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.FinishWorkshop
+// (Final, Native, Public, BlueprintCallable)
+
+void AWorkshop::FinishWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "FinishWorkshop");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.OnSkipIntroductionInputPressed
+// (Final, Native, Public, BlueprintCallable)
+
+void AWorkshop::OnSkipIntroductionInputPressed()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "OnSkipIntroductionInputPressed");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.PauseWorkshop
+// (Final, Native, Public, BlueprintCallable)
+
+void AWorkshop::PauseWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "PauseWorkshop");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.RequestStartWorkshop
+// (Final, Native, Public, BlueprintCallable)
+
+void AWorkshop::RequestStartWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "RequestStartWorkshop");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.RestartWorkshop
+// (Final, Native, Public, BlueprintCallable)
+
+void AWorkshop::RestartWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "RestartWorkshop");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.UnpauseWorkshop
+// (Final, Native, Public, BlueprintCallable)
+
+void AWorkshop::UnpauseWorkshop()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "UnpauseWorkshop");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.Workshop.BPF_ComputeMedalWithScore
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   _iScore                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EWorkshopMedal                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EWorkshopMedal AWorkshop::BPF_ComputeMedalWithScore(int32 _iScore) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "BPF_ComputeMedalWithScore");
+
+	Params::Workshop_BPF_ComputeMedalWithScore Parms{};
+
+	Parms._iScore = _iScore;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.Workshop.BPF_ComputeMedalWithTime
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   _fTime                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EWorkshopMedal                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EWorkshopMedal AWorkshop::BPF_ComputeMedalWithTime(float _fTime) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "BPF_ComputeMedalWithTime");
+
+	Params::Workshop_BPF_ComputeMedalWithTime Parms{};
+
+	Parms._fTime = _fTime;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.Workshop.BPF_GetWorkshopTimer
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+float AWorkshop::BPF_GetWorkshopTimer() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "BPF_GetWorkshopTimer");
+
+	Params::Workshop_BPF_GetWorkshopTimer Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.Workshop.CanStartWorkshopFromInput
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool AWorkshop::CanStartWorkshopFromInput() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "CanStartWorkshopFromInput");
+
+	Params::Workshop_CanStartWorkshopFromInput Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.Workshop.GetWorkshopScore
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+int32 AWorkshop::GetWorkshopScore() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "GetWorkshopScore");
+
+	Params::Workshop_GetWorkshopScore Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function Runtime.Workshop.GetWorkshopState
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// EWorkshopState                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+EWorkshopState AWorkshop::GetWorkshopState() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("Workshop", "GetWorkshopState");
+
+	Params::Workshop_GetWorkshopState Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -19116,1504 +22283,6 @@ bool ARuntimePlayerState::BPF_IsMvp() const
 }
 
 
-// Function Runtime.MeshMergeFunctionLibrary.BPF_MergeMeshComponents
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const TArray<class USkeletalMeshComponent*>&_meshComponents                                        (Parm, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const struct FSkeletalMeshMergeParams&  _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-void UMeshMergeFunctionLibrary::BPF_MergeMeshComponents(const TArray<class USkeletalMeshComponent*>& _meshComponents, const struct FSkeletalMeshMergeParams& _params)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("MeshMergeFunctionLibrary", "BPF_MergeMeshComponents");
-
-	Params::MeshMergeFunctionLibrary_BPF_MergeMeshComponents Parms{};
-
-	Parms._meshComponents = std::move(_meshComponents);
-	Parms._params = std::move(_params);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_ResetCustomMatchParams
-// (Final, Native, Public, BlueprintCallable)
-
-void URuntimeSOSBindingsSubsystem::BPF_ResetCustomMatchParams()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_ResetCustomMatchParams");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_SaveCustomMatchParams
-// (Final, Native, Public, BlueprintCallable)
-
-void URuntimeSOSBindingsSubsystem::BPF_SaveCustomMatchParams()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_SaveCustomMatchParams");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsAllowedToJoinSquads
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FGameplayTag&              _matchType                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URuntimeSOSBindingsSubsystem::BPF_IsAllowedToJoinSquads(const struct FGameplayTag& _matchType) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_IsAllowedToJoinSquads");
-
-	Params::RuntimeSOSBindingsSubsystem_BPF_IsAllowedToJoinSquads Parms{};
-
-	Parms._matchType = std::move(_matchType);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsCustomMatchParamVisible
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// ERuntimeMatchParameterTypes             _eParam                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URuntimeSOSBindingsSubsystem::BPF_IsCustomMatchParamVisible(ERuntimeMatchParameterTypes _eParam) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_IsCustomMatchParamVisible");
-
-	Params::RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchParamVisible Parms{};
-
-	Parms._eParam = _eParam;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsCustomMatchUserParamVisible
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// uint8                                   _eParam                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URuntimeSOSBindingsSubsystem::BPF_IsCustomMatchUserParamVisible(uint8 _eParam) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSOSBindingsSubsystem", "BPF_IsCustomMatchUserParamVisible");
-
-	Params::RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchUserParamVisible Parms{};
-
-	Parms._eParam = _eParam;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeSOSComponent.OnAbilityActivated
-// (Final, Native, Protected)
-// Parameters:
-// const struct FGameplayAbilitySpecHandle&_abilityHanddle                                        (ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UGameplayAbility*                 _abilityActivated                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeSOSComponent::OnAbilityActivated(const struct FGameplayAbilitySpecHandle& _abilityHanddle, class UGameplayAbility* _abilityActivated)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSOSComponent", "OnAbilityActivated");
-
-	Params::RuntimeSOSComponent_OnAbilityActivated Parms{};
-
-	Parms._abilityHanddle = std::move(_abilityHanddle);
-	Parms._abilityActivated = _abilityActivated;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeSOSComponent.OnCountdownOver
-// (Final, Native, Protected)
-// Parameters:
-// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeSOSComponent::OnCountdownOver(class ARuntimeMatchGameState* _gameState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSOSComponent", "OnCountdownOver");
-
-	Params::RuntimeSOSComponent_OnCountdownOver Parms{};
-
-	Parms._gameState = _gameState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeSOSComponent.OnCountdownStart
-// (Final, Native, Protected)
-// Parameters:
-// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeSOSComponent::OnCountdownStart(class ARuntimeMatchGameState* _gameState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSOSComponent", "OnCountdownStart");
-
-	Params::RuntimeSOSComponent_OnCountdownStart Parms{};
-
-	Parms._gameState = _gameState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeSOSComponent.OnPossessedPawnChanged
-// (Final, Native, Protected)
-// Parameters:
-// class APawn*                            _oldPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class APawn*                            _newPawn                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeSOSComponent::OnPossessedPawnChanged(class APawn* _oldPawn, class APawn* _newPawn)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSOSComponent", "OnPossessedPawnChanged");
-
-	Params::RuntimeSOSComponent_OnPossessedPawnChanged Parms{};
-
-	Parms._oldPawn = _oldPawn;
-	Parms._newPawn = _newPawn;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeSoundSubsystem.BPE_OnLoadingScreenVisibilityChanged
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// bool                                    _bVisible                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeSoundSubsystem::BPE_OnLoadingScreenVisibilityChanged(bool _bVisible)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSoundSubsystem", "BPE_OnLoadingScreenVisibilityChanged");
-
-	Params::RuntimeSoundSubsystem_BPE_OnLoadingScreenVisibilityChanged Parms{};
-
-	Parms._bVisible = _bVisible;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function Runtime.RuntimeSprintGameplayAbility.CheckIfMoving
-// (Final, Native, Private)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URuntimeSprintGameplayAbility::CheckIfMoving()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "CheckIfMoving");
-
-	Params::RuntimeSprintGameplayAbility_CheckIfMoving Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeSprintGameplayAbility.CheckIfStationnary
-// (Final, Native, Private)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URuntimeSprintGameplayAbility::CheckIfStationnary()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "CheckIfStationnary");
-
-	Params::RuntimeSprintGameplayAbility_CheckIfStationnary Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeSprintGameplayAbility.OnCannotSpendAbilityCost
-// (Final, Native, Private)
-
-void URuntimeSprintGameplayAbility::OnCannotSpendAbilityCost()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "OnCannotSpendAbilityCost");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeSprintGameplayAbility.OnSprintInputRelease
-// (Final, Native, Private, HasOutParams)
-// Parameters:
-// const struct FInputActionState&         _state                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// bool                                    _bActivated                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeSprintGameplayAbility::OnSprintInputRelease(const struct FInputActionState& _state, bool _bActivated)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "OnSprintInputRelease");
-
-	Params::RuntimeSprintGameplayAbility_OnSprintInputRelease Parms{};
-
-	Parms._state = std::move(_state);
-	Parms._bActivated = _bActivated;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeSprintGameplayAbility.OnStopMoving
-// (Final, Native, Private)
-
-void URuntimeSprintGameplayAbility::OnStopMoving()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeSprintGameplayAbility", "OnStopMoving");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStadiumEditorSystem.LaunchStadiumMapsOptimization
-// (Final, Native, Public, BlueprintCallable)
-
-void URuntimeStadiumEditorSystem::LaunchStadiumMapsOptimization()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStadiumEditorSystem", "LaunchStadiumMapsOptimization");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStatBehaviourTimer.OnOvertimeStart
-// (Final, Native, Public)
-// Parameters:
-// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStatBehaviourTimer::OnOvertimeStart(class ARuntimeMatchGameState* _gameState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStatBehaviourTimer", "OnOvertimeStart");
-
-	Params::RuntimeStatBehaviourTimer_OnOvertimeStart Parms{};
-
-	Parms._gameState = _gameState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStatDataIsInRange.BPF_GetRangeTargetActor
-// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const class APawn*                      _instigatorPawn                                        (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class AActor* URuntimeStatDataIsInRange::BPF_GetRangeTargetActor(const class APawn* _instigatorPawn) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStatDataIsInRange", "BPF_GetRangeTargetActor");
-
-	Params::RuntimeStatDataIsInRange_BPF_GetRangeTargetActor Parms{};
-
-	Parms._instigatorPawn = _instigatorPawn;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeStatsSubsystem.OnGoalScored
-// (Final, Native, Protected)
-// Parameters:
-// const struct FGoalDescription&          _goalDescription                                       (Parm, NoDestructor, NativeAccessSpecifierPublic)
-
-void URuntimeStatsSubsystem::OnGoalScored(const struct FGoalDescription& _goalDescription)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStatsSubsystem", "OnGoalScored");
-
-	Params::RuntimeStatsSubsystem_OnGoalScored Parms{};
-
-	Parms._goalDescription = std::move(_goalDescription);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStatsSubsystem.OnMatchCountdownFinished
-// (Final, Native, Public)
-// Parameters:
-// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStatsSubsystem::OnMatchCountdownFinished(class ARuntimeMatchGameState* _gameState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStatsSubsystem", "OnMatchCountdownFinished");
-
-	Params::RuntimeStatsSubsystem_OnMatchCountdownFinished Parms{};
-
-	Parms._gameState = _gameState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStatsSubsystem.OnMatchFirstCountdownFinished
-// (Final, Native, Public)
-// Parameters:
-// class ARuntimeMatchGameState*           _gameState                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeStatsSubsystem::OnMatchFirstCountdownFinished(class ARuntimeMatchGameState* _gameState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStatsSubsystem", "OnMatchFirstCountdownFinished");
-
-	Params::RuntimeStatsSubsystem_OnMatchFirstCountdownFinished Parms{};
-
-	Parms._gameState = _gameState;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeStatsSubsystem.OnRematch
-// (Final, Native, Protected)
-
-void URuntimeStatsSubsystem::OnRematch()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeStatsSubsystem", "OnRematch");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_ComputeSpeedState
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class APawn*                      _pawn                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// ESCCharacterSpeedState                  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-ESCCharacterSpeedState URuntimeTools::BPF_ComputeSpeedState(const class APawn* _pawn)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_ComputeSpeedState");
-
-	Params::RuntimeTools_BPF_ComputeSpeedState Parms{};
-
-	Parms._pawn = _pawn;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_GetAllPawns
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _inRefActor                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bShouldBeOnScreen                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bFilterByTeam                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bOnlyAllies                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TArray<class APawn*>                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-
-TArray<class APawn*> URuntimeTools::BPF_GetAllPawns(const class AActor* _inRefActor, bool _bShouldBeOnScreen, bool _bFilterByTeam, bool _bOnlyAllies)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetAllPawns");
-
-	Params::RuntimeTools_BPF_GetAllPawns Parms{};
-
-	Parms._inRefActor = _inRefActor;
-	Parms._bShouldBeOnScreen = _bShouldBeOnScreen;
-	Parms._bFilterByTeam = _bFilterByTeam;
-	Parms._bOnlyAllies = _bOnlyAllies;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_GetCurrentMenuGameFlowSubsystem
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class UObject*                    _worldContext                                          (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class USCGameFlowSubsystem*             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class USCGameFlowSubsystem* URuntimeTools::BPF_GetCurrentMenuGameFlowSubsystem(const class UObject* _worldContext)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetCurrentMenuGameFlowSubsystem");
-
-	Params::RuntimeTools_BPF_GetCurrentMenuGameFlowSubsystem Parms{};
-
-	Parms._worldContext = _worldContext;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_GetLastPlayerScorer
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class UWorld*                     _world                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class APlayerState*                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class APlayerState* URuntimeTools::BPF_GetLastPlayerScorer(const class UWorld* _world)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetLastPlayerScorer");
-
-	Params::RuntimeTools_BPF_GetLastPlayerScorer Parms{};
-
-	Parms._world = _world;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_GetNearestBall
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _inRefActor                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bShouldBeOnScreen                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ABall*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class ABall* URuntimeTools::BPF_GetNearestBall(const class AActor* _inRefActor, bool _bShouldBeOnScreen)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetNearestBall");
-
-	Params::RuntimeTools_BPF_GetNearestBall Parms{};
-
-	Parms._inRefActor = _inRefActor;
-	Parms._bShouldBeOnScreen = _bShouldBeOnScreen;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_GetNearestGoal
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _inRefActor                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bShouldBeOnScreen                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bFilterByTeam                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bOnlyOurGoal                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AGoal*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class AGoal* URuntimeTools::BPF_GetNearestGoal(const class AActor* _inRefActor, bool _bShouldBeOnScreen, bool _bFilterByTeam, bool _bOnlyOurGoal)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetNearestGoal");
-
-	Params::RuntimeTools_BPF_GetNearestGoal Parms{};
-
-	Parms._inRefActor = _inRefActor;
-	Parms._bShouldBeOnScreen = _bShouldBeOnScreen;
-	Parms._bFilterByTeam = _bFilterByTeam;
-	Parms._bOnlyOurGoal = _bOnlyOurGoal;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_GetNearestPawn
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _inRefActor                                            (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bShouldBeOnScreen                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bFilterByTeam                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bOnlyAllies                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class APawn*                            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class APawn* URuntimeTools::BPF_GetNearestPawn(const class AActor* _inRefActor, bool _bShouldBeOnScreen, bool _bFilterByTeam, bool _bOnlyAllies)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetNearestPawn");
-
-	Params::RuntimeTools_BPF_GetNearestPawn Parms{};
-
-	Parms._inRefActor = _inRefActor;
-	Parms._bShouldBeOnScreen = _bShouldBeOnScreen;
-	Parms._bFilterByTeam = _bFilterByTeam;
-	Parms._bOnlyAllies = _bOnlyAllies;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_GetPlayerCountInTeam
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class UWorld*                     _world                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const uint8                             _uiTeam                                                (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 URuntimeTools::BPF_GetPlayerCountInTeam(const class UWorld* _world, const uint8 _uiTeam)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetPlayerCountInTeam");
-
-	Params::RuntimeTools_BPF_GetPlayerCountInTeam Parms{};
-
-	Parms._world = _world;
-	Parms._uiTeam = _uiTeam;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_GetRequestedTargets
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// class APawn*                            _requester                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FRuntimeTargetRequest&     _request                                               (Parm, NativeAccessSpecifierPublic)
-// struct FGameplayAbilityTargetDataHandle ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-
-struct FGameplayAbilityTargetDataHandle URuntimeTools::BPF_GetRequestedTargets(class APawn* _requester, const struct FRuntimeTargetRequest& _request)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_GetRequestedTargets");
-
-	Params::RuntimeTools_BPF_GetRequestedTargets Parms{};
-
-	Parms._requester = _requester;
-	Parms._request = std::move(_request);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeTools.BPF_ShouldJumpForReception
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// EBallReceptionArea                      _eReceptionArea                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URuntimeTools::BPF_ShouldJumpForReception(EBallReceptionArea _eReceptionArea)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeTools", "BPF_ShouldJumpForReception");
-
-	Params::RuntimeTools_BPF_ShouldJumpForReception Parms{};
-
-	Parms._eReceptionArea = _eReceptionArea;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeVideoSubsystem.BPF_SetupVideo
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class UBinkMediaPlayer*                 Player                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bShouldPlay                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   fVideoTime                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeVideoSubsystem::BPF_SetupVideo(class UBinkMediaPlayer* Player, bool bShouldPlay, float fVideoTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeVideoSubsystem", "BPF_SetupVideo");
-
-	Params::RuntimeVideoSubsystem_BPF_SetupVideo Parms{};
-
-	Parms.Player = Player;
-	Parms.bShouldPlay = bShouldPlay;
-	Parms.fVideoTime = fVideoTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeVideoSubsystem.BPF_StopVideo
-// (Final, Native, Public, BlueprintCallable)
-
-void URuntimeVideoSubsystem::BPF_StopVideo()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeVideoSubsystem", "BPF_StopVideo");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_GetContentTypeForWelcomeFlowStep
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// EWelcomeFlowStep                        _step                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// ERematchWelcomeFlowContentType          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-ERematchWelcomeFlowContentType URuntimeWelcomeFlowSubsystem::BPF_GetContentTypeForWelcomeFlowStep(EWelcomeFlowStep _step)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_GetContentTypeForWelcomeFlowStep");
-
-	Params::RuntimeWelcomeFlowSubsystem_BPF_GetContentTypeForWelcomeFlowStep Parms{};
-
-	Parms._step = _step;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_EndWelcomeFlow
-// (Native, Event, Protected, BlueprintEvent)
-
-void URuntimeWelcomeFlowSubsystem::BPE_EndWelcomeFlow()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPE_EndWelcomeFlow");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_EndWelcomeFlowStep
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// EWelcomeFlowStep                        _step                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeWelcomeFlowSubsystem::BPE_EndWelcomeFlowStep(EWelcomeFlowStep _step)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPE_EndWelcomeFlowStep");
-
-	Params::RuntimeWelcomeFlowSubsystem_BPE_EndWelcomeFlowStep Parms{};
-
-	Parms._step = _step;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_StartWelcomeFlowStep
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// EWelcomeFlowStep                        _step                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void URuntimeWelcomeFlowSubsystem::BPE_StartWelcomeFlowStep(EWelcomeFlowStep _step)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPE_StartWelcomeFlowStep");
-
-	Params::RuntimeWelcomeFlowSubsystem_BPE_StartWelcomeFlowStep Parms{};
-
-	Parms._step = _step;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_EndCurrentWelcomeFlowStep
-// (Final, Native, Public, BlueprintCallable)
-
-void URuntimeWelcomeFlowSubsystem::BPF_EndCurrentWelcomeFlowStep()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_EndCurrentWelcomeFlowStep");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_StartWelcomeFlow
-// (Final, Native, Public, BlueprintCallable)
-
-void URuntimeWelcomeFlowSubsystem::BPF_StartWelcomeFlow()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_StartWelcomeFlow");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// TArray<class UWelcomeFlowContentViewModel*>ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-
-TArray<class UWelcomeFlowContentViewModel*> URuntimeWelcomeFlowSubsystem::BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep");
-
-	Params::RuntimeWelcomeFlowSubsystem_BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_HasWelcomeFlowStarted
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool URuntimeWelcomeFlowSubsystem::BPF_HasWelcomeFlowStarted() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RuntimeWelcomeFlowSubsystem", "BPF_HasWelcomeFlowStarted");
-
-	Params::RuntimeWelcomeFlowSubsystem_BPF_HasWelcomeFlowStarted Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootBinder.BPE_OnBallRegistered
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootBinder::BPE_OnBallRegistered(class ABall* _ball)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "BPE_OnBallRegistered");
-
-	Params::ShootBinder_BPE_OnBallRegistered Parms{};
-
-	Parms._ball = _ball;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.BPE_OnBallUnregistered
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootBinder::BPE_OnBallUnregistered(class ABall* _ball)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "BPE_OnBallUnregistered");
-
-	Params::ShootBinder_BPE_OnBallUnregistered Parms{};
-
-	Parms._ball = _ball;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.BPE_OnGoalRegistered
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootBinder::BPE_OnGoalRegistered(class AGoal* _goal)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "BPE_OnGoalRegistered");
-
-	Params::ShootBinder_BPE_OnGoalRegistered Parms{};
-
-	Parms._goal = _goal;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.BPE_OnGoalUnregistered
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootBinder::BPE_OnGoalUnregistered(class AGoal* _goal)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "BPE_OnGoalUnregistered");
-
-	Params::ShootBinder_BPE_OnGoalUnregistered Parms{};
-
-	Parms._goal = _goal;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.BPE_OnShoot
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// const class ABall*                      _ball                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootParams&              _shootParams                                           (Parm, NativeAccessSpecifierPublic)
-
-void UShootBinder::BPE_OnShoot(const class ABall* _ball, const struct FShootParams& _shootParams)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "BPE_OnShoot");
-
-	Params::ShootBinder_BPE_OnShoot Parms{};
-
-	Parms._ball = _ball;
-	Parms._shootParams = std::move(_shootParams);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.BPE_OnShootBinderTriggered
-// (Native, Event, Protected, BlueprintEvent)
-// Parameters:
-// const class ABall*                      _ball                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootParams&              _shootParams                                           (Parm, NativeAccessSpecifierPublic)
-// class AGoal*                            _goalAimed                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootBinder::BPE_OnShootBinderTriggered(const class ABall* _ball, const struct FShootParams& _shootParams, class AGoal* _goalAimed)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "BPE_OnShootBinderTriggered");
-
-	Params::ShootBinder_BPE_OnShootBinderTriggered Parms{};
-
-	Parms._ball = _ball;
-	Parms._shootParams = std::move(_shootParams);
-	Parms._goalAimed = _goalAimed;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.OnBallRegistered
-// (Native, Protected)
-// Parameters:
-// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootBinder::OnBallRegistered(class ABall* _ball)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "OnBallRegistered");
-
-	Params::ShootBinder_OnBallRegistered Parms{};
-
-	Parms._ball = _ball;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.OnBallUnregistered
-// (Native, Protected)
-// Parameters:
-// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootBinder::OnBallUnregistered(class ABall* _ball)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "OnBallUnregistered");
-
-	Params::ShootBinder_OnBallUnregistered Parms{};
-
-	Parms._ball = _ball;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.OnGoalRegistered
-// (Native, Protected)
-// Parameters:
-// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootBinder::OnGoalRegistered(class AGoal* _goal)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "OnGoalRegistered");
-
-	Params::ShootBinder_OnGoalRegistered Parms{};
-
-	Parms._goal = _goal;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.OnGoalUnregistered
-// (Native, Protected)
-// Parameters:
-// class AGoal*                            _goal                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootBinder::OnGoalUnregistered(class AGoal* _goal)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "OnGoalUnregistered");
-
-	Params::ShootBinder_OnGoalUnregistered Parms{};
-
-	Parms._goal = _goal;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootBinder.OnShoot
-// (Native, Protected)
-// Parameters:
-// const class ABall*                      _ball                                                  (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootParams&              _shootParams                                           (Parm, NativeAccessSpecifierPublic)
-
-void UShootBinder::OnShoot(const class ABall* _ball, const struct FShootParams& _shootParams)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ShootBinder", "OnShoot");
-
-	Params::ShootBinder_OnShoot Parms{};
-
-	Parms._ball = _ball;
-	Parms._shootParams = std::move(_shootParams);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ShootAbilityData.BPF_MakePrepTargetDataFromClass
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const TSubclassOf<class UShootAbilityData>&_shootDataClass                                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const class UGameplayAbility*           _ability                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   _iPriority                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayAbilityTargetDataHandle&_context                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// EShootOrigin                            _eShootOrigin                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const TSubclassOf<class URuntimeShootCameraShake>_cameraShake                                           (ConstParm, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FShootPrepTargetData             ReturnValue                                            (Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-struct FShootPrepTargetData UShootAbilityData::BPF_MakePrepTargetDataFromClass(const TSubclassOf<class UShootAbilityData>& _shootDataClass, const class UGameplayAbility* _ability, class ABall* _ball, int32 _iPriority, const struct FGameplayAbilityTargetDataHandle& _context, EShootOrigin _eShootOrigin, const TSubclassOf<class URuntimeShootCameraShake> _cameraShake)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootAbilityData", "BPF_MakePrepTargetDataFromClass");
-
-	Params::ShootAbilityData_BPF_MakePrepTargetDataFromClass Parms{};
-
-	Parms._shootDataClass = _shootDataClass;
-	Parms._ability = _ability;
-	Parms._ball = _ball;
-	Parms._iPriority = _iPriority;
-	Parms._context = std::move(_context);
-	Parms._eShootOrigin = _eShootOrigin;
-	Parms._cameraShake = _cameraShake;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.SimulationStepHelper.BPF_IsCustomOrFreezingSimulationStep
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// ESimulationStep                         _eSimulationStep                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool USimulationStepHelper::BPF_IsCustomOrFreezingSimulationStep(ESimulationStep _eSimulationStep)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("SimulationStepHelper", "BPF_IsCustomOrFreezingSimulationStep");
-
-	Params::SimulationStepHelper_BPF_IsCustomOrFreezingSimulationStep Parms{};
-
-	Parms._eSimulationStep = _eSimulationStep;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.SimulationStepHelper.BPF_IsFlyingOrRollingSimulationStep
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// ESimulationStep                         _eSimulationStep                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool USimulationStepHelper::BPF_IsFlyingOrRollingSimulationStep(ESimulationStep _eSimulationStep)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("SimulationStepHelper", "BPF_IsFlyingOrRollingSimulationStep");
-
-	Params::SimulationStepHelper_BPF_IsFlyingOrRollingSimulationStep Parms{};
-
-	Parms._eSimulationStep = _eSimulationStep;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.SimulationStepHelper.BPF_IsSimulationStepValid
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// ESimulationStep                         _eSimulationStep                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool USimulationStepHelper::BPF_IsSimulationStepValid(ESimulationStep _eSimulationStep)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("SimulationStepHelper", "BPF_IsSimulationStepValid");
-
-	Params::SimulationStepHelper_BPF_IsSimulationStepValid Parms{};
-
-	Parms._eSimulationStep = _eSimulationStep;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function Runtime.RTBlendableReflectionComponent.SetOpacity
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -20639,22 +22308,19 @@ void URTBlendableReflectionComponent::SetOpacity(float _opacity)
 }
 
 
-// Function Runtime.JoystickOrientationHelper.BPF_ConvertJoystickOrientationInDegreeAngle
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Function Runtime.RuntimeStadiumAR.BPF_EnumerateWorldConfigs
+// (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
-// const EJoystickOrientation&             _eJoystickOrient                                       (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TArray<class UCustomizationARDataAsset*>ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
 
-float UJoystickOrientationHelper::BPF_ConvertJoystickOrientationInDegreeAngle(const EJoystickOrientation& _eJoystickOrient)
+TArray<class UCustomizationARDataAsset*> URuntimeStadiumAR::BPF_EnumerateWorldConfigs()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("JoystickOrientationHelper", "BPF_ConvertJoystickOrientationInDegreeAngle");
+		Func = StaticClass()->GetFunction("RuntimeStadiumAR", "BPF_EnumerateWorldConfigs");
 
-	Params::JoystickOrientationHelper_BPF_ConvertJoystickOrientationInDegreeAngle Parms{};
-
-	Parms._eJoystickOrient = _eJoystickOrient;
+	Params::RuntimeStadiumAR_BPF_EnumerateWorldConfigs Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -20667,268 +22333,164 @@ float UJoystickOrientationHelper::BPF_ConvertJoystickOrientationInDegreeAngle(co
 }
 
 
-// Function Runtime.JoystickOrientationHelper.BPF_GetJoystickOrientationFromAngle
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FVector2D&                 _v2DJoystickValues                                     (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float*                                  _fAngle                                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const float                             _fDeadZone                                             (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const float                             _fEastWestTolerance                                    (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const float                             _fHalfPiInDegree                                       (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EJoystickOrientation                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Runtime.RuntimeStadiumAR.BPE_OnConfigChanged
+// (Event, Public, BlueprintEvent)
 
-EJoystickOrientation UJoystickOrientationHelper::BPF_GetJoystickOrientationFromAngle(const struct FVector2D& _v2DJoystickValues, float* _fAngle, const float _fDeadZone, const float _fEastWestTolerance, const float _fHalfPiInDegree)
+void URuntimeStadiumAR::BPE_OnConfigChanged()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("JoystickOrientationHelper", "BPF_GetJoystickOrientationFromAngle");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnConfigChanged");
 
-	Params::JoystickOrientationHelper_BPF_GetJoystickOrientationFromAngle Parms{};
-
-	Parms._v2DJoystickValues = std::move(_v2DJoystickValues);
-	Parms._fDeadZone = _fDeadZone;
-	Parms._fEastWestTolerance = _fEastWestTolerance;
-	Parms._fHalfPiInDegree = _fHalfPiInDegree;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_fAngle != nullptr)
-		*_fAngle = Parms._fAngle;
-
-	return Parms.ReturnValue;
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function Runtime.ShootHelpers.BPF_ComputeShootParams
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FGameplayAbilityTargetDataHandle&_context                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const class USCGameplayAbility*         _ability                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// float                                   _fCatchupTime                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _fCatchupAnimTime                                      (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FShootParams                     ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+// Function Runtime.RuntimeStadiumAR.BPE_OnCurrentWorldTagChanged
+// (Event, Protected, BlueprintEvent)
 
-struct FShootParams UShootHelpers::BPF_ComputeShootParams(const struct FGameplayAbilityTargetDataHandle& _context, const class USCGameplayAbility* _ability, const struct FShootPrepTargetData& _targetData, float _fCatchupTime, float _fCatchupAnimTime)
+void URuntimeStadiumAR::BPE_OnCurrentWorldTagChanged()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_ComputeShootParams");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnCurrentWorldTagChanged");
 
-	Params::ShootHelpers_BPF_ComputeShootParams Parms{};
-
-	Parms._context = std::move(_context);
-	Parms._ability = _ability;
-	Parms._targetData = std::move(_targetData);
-	Parms._fCatchupTime = _fCatchupTime;
-	Parms._fCatchupAnimTime = _fCatchupAnimTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromAbility
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class USCGameplayAbility*         _ability                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// struct FShootParams*                    _outResult                                             (Parm, OutParm, NativeAccessSpecifierPublic)
-// bool                                    _bUseNetSync                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Runtime.RuntimeStadiumAR.BPE_OnEditorMapOpened
+// (Event, Protected, BlueprintEvent)
 
-void UShootHelpers::BPF_ComputeShootParamsFromAbility(const class USCGameplayAbility* _ability, const struct FShootPrepTargetData& _targetData, struct FShootParams* _outResult, bool _bUseNetSync)
+void URuntimeStadiumAR::BPE_OnEditorMapOpened()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_ComputeShootParamsFromAbility");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnEditorMapOpened");
 
-	Params::ShootHelpers_BPF_ComputeShootParamsFromAbility Parms{};
-
-	Parms._ability = _ability;
-	Parms._targetData = std::move(_targetData);
-	Parms._bUseNetSync = _bUseNetSync;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outResult != nullptr)
-		*_outResult = std::move(Parms._outResult);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromAbilityAtLocation
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class USCGameplayAbility*         _ability                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// struct FShootParams*                    _outResult                                             (Parm, OutParm, NativeAccessSpecifierPublic)
-// const struct FVector&                   _vLocation                                             (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _fWantedCatchupTime                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Runtime.RuntimeStadiumAR.BPE_OnGameStateValid
+// (Event, Protected, BlueprintEvent)
 
-void UShootHelpers::BPF_ComputeShootParamsFromAbilityAtLocation(const class USCGameplayAbility* _ability, const struct FShootPrepTargetData& _targetData, struct FShootParams* _outResult, const struct FVector& _vLocation, float _fWantedCatchupTime)
+void URuntimeStadiumAR::BPE_OnGameStateValid()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_ComputeShootParamsFromAbilityAtLocation");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnGameStateValid");
 
-	Params::ShootHelpers_BPF_ComputeShootParamsFromAbilityAtLocation Parms{};
-
-	Parms._ability = _ability;
-	Parms._targetData = std::move(_targetData);
-	Parms._vLocation = std::move(_vLocation);
-	Parms._fWantedCatchupTime = _fWantedCatchupTime;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outResult != nullptr)
-		*_outResult = std::move(Parms._outResult);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromActor
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Function Runtime.RuntimeStadiumAR.BPE_OnPlayTransition
+// (Event, Protected, HasOutParams, BlueprintEvent)
 // Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// struct FShootParams*                    _outResult                                             (Parm, OutParm, NativeAccessSpecifierPublic)
+// const struct FRuntimeARTransition&      _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
 
-void UShootHelpers::BPF_ComputeShootParamsFromActor(const class AActor* _actor, const struct FShootPrepTargetData& _targetData, struct FShootParams* _outResult)
+void URuntimeStadiumAR::BPE_OnPlayTransition(const struct FRuntimeARTransition& _params)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_ComputeShootParamsFromActor");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnPlayTransition");
 
-	Params::ShootHelpers_BPF_ComputeShootParamsFromActor Parms{};
+	Params::RuntimeStadiumAR_BPE_OnPlayTransition Parms{};
 
-	Parms._actor = _actor;
-	Parms._targetData = std::move(_targetData);
+	Parms._params = std::move(_params);
 
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outResult != nullptr)
-		*_outResult = std::move(Parms._outResult);
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function Runtime.ShootHelpers.BPF_FindShootParamsTargetData
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Function Runtime.RuntimeStadiumAR.BPE_OnTransitionStateChanged
+// (Event, Protected, BlueprintEvent)
 // Parameters:
-// const struct FGameplayAbilityTargetDataHandle&_data                                                  (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// struct FShootParamsTargetData*          _outData                                               (Parm, OutParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// ESCTransitionState                      _state                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UShootHelpers::BPF_FindShootParamsTargetData(const struct FGameplayAbilityTargetDataHandle& _data, struct FShootParamsTargetData* _outData)
+void URuntimeStadiumAR::BPE_OnTransitionStateChanged(ESCTransitionState _state)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_FindShootParamsTargetData");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnTransitionStateChanged");
 
-	Params::ShootHelpers_BPF_FindShootParamsTargetData Parms{};
+	Params::RuntimeStadiumAR_BPE_OnTransitionStateChanged Parms{};
 
-	Parms._data = std::move(_data);
+	Parms._state = _state;
 
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outData != nullptr)
-		*_outData = std::move(Parms._outData);
-
-	return Parms.ReturnValue;
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function Runtime.ShootHelpers.BPF_FindShootPrepTargetData
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
+// Function Runtime.RuntimeStadiumAR.BPE_OnTransitionValueChanged
+// (Event, Protected, BlueprintEvent)
 // Parameters:
-// const struct FGameplayAbilityTargetDataHandle&_data                                                  (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// struct FShootPrepTargetData*            _outData                                               (Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _weight                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   _direction                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UShootHelpers::BPF_FindShootPrepTargetData(const struct FGameplayAbilityTargetDataHandle& _data, struct FShootPrepTargetData* _outData)
+void URuntimeStadiumAR::BPE_OnTransitionValueChanged(float _weight, float _direction)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_FindShootPrepTargetData");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPE_OnTransitionValueChanged");
 
-	Params::ShootHelpers_BPF_FindShootPrepTargetData Parms{};
+	Params::RuntimeStadiumAR_BPE_OnTransitionValueChanged Parms{};
 
-	Parms._data = std::move(_data);
+	Parms._weight = _weight;
+	Parms._direction = _direction;
 
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outData != nullptr)
-		*_outData = std::move(Parms._outData);
-
-	return Parms.ReturnValue;
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function Runtime.ShootHelpers.BPF_GetAngleFromMagnusInput
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    _bAbsoluteAngle                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Runtime.RuntimeStadiumAR.BPF_AddProjectionMeshes
+// (Final, Native, Protected, BlueprintCallable)
 
-float UShootHelpers::BPF_GetAngleFromMagnusInput(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bAbsoluteAngle)
+void URuntimeStadiumAR::BPF_AddProjectionMeshes()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetAngleFromMagnusInput");
-
-	Params::ShootHelpers_BPF_GetAngleFromMagnusInput Parms{};
-
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-	Parms._bAbsoluteAngle = _bAbsoluteAngle;
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_AddProjectionMeshes");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.BPF_FindActorInCurrentWorld
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// TSoftObjectPtr<class AActor>            _reference                                             (Parm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AActor* URuntimeStadiumAR::BPF_FindActorInCurrentWorld(TSoftObjectPtr<class AActor> _reference)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_FindActorInCurrentWorld");
+
+	Params::RuntimeStadiumAR_BPF_FindActorInCurrentWorld Parms{};
+
+	Parms._reference = _reference;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -20936,31 +22498,27 @@ float UShootHelpers::BPF_GetAngleFromMagnusInput(const class AActor* _actor, con
 }
 
 
-// Function Runtime.ShootHelpers.BPF_GetShootDirection
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Function Runtime.RuntimeStadiumAR.BPF_FindActorsInCurrentWorld
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayTagQuery&         _query                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// TArray<class AActor*>                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
 
-struct FVector UShootHelpers::BPF_GetShootDirection(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+TArray<class AActor*> URuntimeStadiumAR::BPF_FindActorsInCurrentWorld(const struct FGameplayTagQuery& _query)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootDirection");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_FindActorsInCurrentWorld");
 
-	Params::ShootHelpers_BPF_GetShootDirection Parms{};
+	Params::RuntimeStadiumAR_BPF_FindActorsInCurrentWorld Parms{};
 
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-	Parms._bUseModifiers = _bUseModifiers;
+	Parms._query = std::move(_query);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -20968,31 +22526,27 @@ struct FVector UShootHelpers::BPF_GetShootDirection(const class AActor* _actor, 
 }
 
 
-// Function Runtime.ShootHelpers.BPF_GetShootForce
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Function Runtime.RuntimeStadiumAR.BPF_GetWorldStreamingState
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayTag&              _tag                                                   (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// ESubworldStreamingState                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-float UShootHelpers::BPF_GetShootForce(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+ESubworldStreamingState URuntimeStadiumAR::BPF_GetWorldStreamingState(const struct FGameplayTag& _tag)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootForce");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetWorldStreamingState");
 
-	Params::ShootHelpers_BPF_GetShootForce Parms{};
+	Params::RuntimeStadiumAR_BPF_GetWorldStreamingState Parms{};
 
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-	Parms._bUseModifiers = _bUseModifiers;
+	Parms._tag = std::move(_tag);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -21000,31 +22554,154 @@ float UShootHelpers::BPF_GetShootForce(const class AActor* _actor, const struct 
 }
 
 
-// Function Runtime.ShootHelpers.BPF_GetShootForceMinMax
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Function Runtime.RuntimeStadiumAR.BPF_LoadWorld
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FFloatRange                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayTag&              _tag                                                   (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FFloatRange UShootHelpers::BPF_GetShootForceMinMax(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+void URuntimeStadiumAR::BPF_LoadWorld(const struct FGameplayTag& _tag)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootForceMinMax");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_LoadWorld");
 
-	Params::ShootHelpers_BPF_GetShootForceMinMax Parms{};
+	Params::RuntimeStadiumAR_BPF_LoadWorld Parms{};
 
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-	Parms._bUseModifiers = _bUseModifiers;
+	Parms._tag = std::move(_tag);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.BPF_PlayTransitionSequence
+// (Final, Native, Protected, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FRuntimeARTransition&      _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::BPF_PlayTransitionSequence(const struct FRuntimeARTransition& _params)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_PlayTransitionSequence");
+
+	Params::RuntimeStadiumAR_BPF_PlayTransitionSequence Parms{};
+
+	Parms._params = std::move(_params);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.BPF_SetCapturedWorldFromTeamIndex
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// int32                                   _iTeamIdx                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::BPF_SetCapturedWorldFromTeamIndex(int32 _iTeamIdx)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_SetCapturedWorldFromTeamIndex");
+
+	Params::RuntimeStadiumAR_BPF_SetCapturedWorldFromTeamIndex Parms{};
+
+	Parms._iTeamIdx = _iTeamIdx;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.BPF_SetRenderScale
+// (Final, Native, Protected, BlueprintCallable)
+// Parameters:
+// float                                   _scale                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::BPF_SetRenderScale(float _scale)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_SetRenderScale");
+
+	Params::RuntimeStadiumAR_BPF_SetRenderScale Parms{};
+
+	Parms._scale = _scale;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.BPF_SetTransitionState
+// (Final, Native, Protected, BlueprintCallable)
+// Parameters:
+// class UObject*                          _worldContext                                          (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// ESCTransitionState                      _transitionState                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::BPF_SetTransitionState(class UObject* _worldContext, ESCTransitionState _transitionState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_SetTransitionState");
+
+	Params::RuntimeStadiumAR_BPF_SetTransitionState Parms{};
+
+	Parms._worldContext = _worldContext;
+	Parms._transitionState = _transitionState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.BPF_SpawnActorInCurrentWorld
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// TSubclassOf<class AActor>               Class_0                                                (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class AActor* URuntimeStadiumAR::BPF_SpawnActorInCurrentWorld(TSubclassOf<class AActor> Class_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_SpawnActorInCurrentWorld");
+
+	Params::RuntimeStadiumAR_BPF_SpawnActorInCurrentWorld Parms{};
+
+	Parms.Class_0 = Class_0;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -21032,31 +22709,93 @@ struct FFloatRange UShootHelpers::BPF_GetShootForceMinMax(const class AActor* _a
 }
 
 
-// Function Runtime.ShootHelpers.BPF_GetShootForceNormalized
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _runtimeCharacter                                      (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Runtime.RuntimeStadiumAR.BPF_StopTransitionSequence
+// (Final, Native, Protected, BlueprintCallable)
 
-float UShootHelpers::BPF_GetShootForceNormalized(const class AActor* _runtimeCharacter, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+void URuntimeStadiumAR::BPF_StopTransitionSequence()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootForceNormalized");
-
-	Params::ShootHelpers_BPF_GetShootForceNormalized Parms{};
-
-	Parms._runtimeCharacter = _runtimeCharacter;
-	Parms._data = std::move(_data);
-	Parms._bUseModifiers = _bUseModifiers;
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_StopTransitionSequence");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.BPF_TriggerTransitionFinishedEvent
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FRuntimeARTransition&      _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::BPF_TriggerTransitionFinishedEvent(const struct FRuntimeARTransition& _params)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_TriggerTransitionFinishedEvent");
+
+	Params::RuntimeStadiumAR_BPF_TriggerTransitionFinishedEvent Parms{};
+
+	Parms._params = std::move(_params);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.BPF_TriggerTransitionStartedEvent
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FRuntimeARTransition&      _params                                                (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::BPF_TriggerTransitionStartedEvent(const struct FRuntimeARTransition& _params)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_TriggerTransitionStartedEvent");
+
+	Params::RuntimeStadiumAR_BPF_TriggerTransitionStartedEvent Parms{};
+
+	Parms._params = std::move(_params);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.GetFieldARConfig
+// (Final, Native, Protected, BlueprintCallable)
+// Parameters:
+// class URTFieldARConfig*                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class URTFieldARConfig* URuntimeStadiumAR::GetFieldARConfig()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "GetFieldARConfig");
+
+	Params::RuntimeStadiumAR_GetFieldARConfig Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -21064,31 +22803,24 @@ float UShootHelpers::BPF_GetShootForceNormalized(const class AActor* _runtimeCha
 }
 
 
-// Function Runtime.ShootHelpers.BPF_GetShootForceRange
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// Function Runtime.RuntimeStadiumAR.GetStadiumARConfig
+// (Final, Native, Protected, BlueprintCallable)
 // Parameters:
-// const class AActor*                     _runtimeCharacter                                      (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FFloatRange                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class URTStadiumARConfig*               ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FFloatRange UShootHelpers::BPF_GetShootForceRange(const class AActor* _runtimeCharacter, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+class URTStadiumARConfig* URuntimeStadiumAR::GetStadiumARConfig()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootForceRange");
+		Func = Class->GetFunction("RuntimeStadiumAR", "GetStadiumARConfig");
 
-	Params::ShootHelpers_BPF_GetShootForceRange Parms{};
-
-	Parms._runtimeCharacter = _runtimeCharacter;
-	Parms._data = std::move(_data);
-	Parms._bUseModifiers = _bUseModifiers;
+	Params::RuntimeStadiumAR_GetStadiumARConfig Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -21096,31 +22828,143 @@ struct FFloatRange UShootHelpers::BPF_GetShootForceRange(const class AActor* _ru
 }
 
 
-// Function Runtime.ShootHelpers.BPF_GetShootInputTimeFromShootPrep
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// Function Runtime.RuntimeStadiumAR.OnFinishedTransitionSequence
+// (Final, Native, Protected)
 
-float UShootHelpers::BPF_GetShootInputTimeFromShootPrep(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+void URuntimeStadiumAR::OnFinishedTransitionSequence()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootInputTimeFromShootPrep");
-
-	Params::ShootHelpers_BPF_GetShootInputTimeFromShootPrep Parms{};
-
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-	Parms._bUseModifiers = _bUseModifiers;
+		Func = Class->GetFunction("RuntimeStadiumAR", "OnFinishedTransitionSequence");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.SetCapturedWorldByDataAsset
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class UCustomizationARDataAsset*        _pDataAsset                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::SetCapturedWorldByDataAsset(class UCustomizationARDataAsset* _pDataAsset)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "SetCapturedWorldByDataAsset");
+
+	Params::RuntimeStadiumAR_SetCapturedWorldByDataAsset Parms{};
+
+	Parms._pDataAsset = _pDataAsset;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.SetCapturedWorldByTag_Deprecated
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
+// Parameters:
+// const struct FGameplayTag&              _worldContentTag                                       (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::SetCapturedWorldByTag_Deprecated(const struct FGameplayTag& _worldContentTag)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "SetCapturedWorldByTag_Deprecated");
+
+	Params::RuntimeStadiumAR_SetCapturedWorldByTag_Deprecated Parms{};
+
+	Parms._worldContentTag = std::move(_worldContentTag);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.SetRenderScale
+// (Final, Native, Public)
+// Parameters:
+// float                                   _scale                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::SetRenderScale(float _scale)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "SetRenderScale");
+
+	Params::RuntimeStadiumAR_SetRenderScale Parms{};
+
+	Parms._scale = _scale;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.SetTransitionState
+// (Final, Native, Public)
+// Parameters:
+// ESCTransitionState                      _transitionState                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void URuntimeStadiumAR::SetTransitionState(ESCTransitionState _transitionState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "SetTransitionState");
+
+	Params::RuntimeStadiumAR_SetTransitionState Parms{};
+
+	Parms._transitionState = _transitionState;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function Runtime.RuntimeStadiumAR.BPF_GetCurrentWorldConfig
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FRTStadiumARWorldConfig          ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+
+struct FRTStadiumARWorldConfig URuntimeStadiumAR::BPF_GetCurrentWorldConfig() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetCurrentWorldConfig");
+
+	Params::RuntimeStadiumAR_BPF_GetCurrentWorldConfig Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -21128,31 +22972,27 @@ float UShootHelpers::BPF_GetShootInputTimeFromShootPrep(const class AActor* _act
 }
 
 
-// Function Runtime.ShootHelpers.BPF_GetShootRotationForce
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Function Runtime.RuntimeStadiumAR.BPF_GetTeamWorld
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    _bUseModifiers                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   _iTeamIdx                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UCustomizationARDataAsset*        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FVector UShootHelpers::BPF_GetShootRotationForce(const class AActor* _actor, const struct FShootPrepTargetData& _data, bool _bUseModifiers)
+class UCustomizationARDataAsset* URuntimeStadiumAR::BPF_GetTeamWorld(int32 _iTeamIdx) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootRotationForce");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetTeamWorld");
 
-	Params::ShootHelpers_BPF_GetShootRotationForce Parms{};
+	Params::RuntimeStadiumAR_BPF_GetTeamWorld Parms{};
 
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-	Parms._bUseModifiers = _bUseModifiers;
+	Parms._iTeamIdx = _iTeamIdx;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, &Parms);
 
 	Func->FunctionFlags = Flgs;
 
@@ -21160,698 +23000,22 @@ struct FVector UShootHelpers::BPF_GetShootRotationForce(const class AActor* _act
 }
 
 
-// Function Runtime.ShootHelpers.BPF_GetShootRotationForceInput
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
+// Function Runtime.RuntimeStadiumAR.BPF_GetTeamWorldTag
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// struct FVector2D                        ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector2D UShootHelpers::BPF_GetShootRotationForceInput(const class AActor* _actor, const struct FShootPrepTargetData& _data)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootRotationForceInput");
-
-	Params::ShootHelpers_BPF_GetShootRotationForceInput Parms{};
-
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_GetShootRotationForceRatio
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UShootHelpers::BPF_GetShootRotationForceRatio(const class AActor* _actor, const struct FShootPrepTargetData& _data)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootRotationForceRatio");
-
-	Params::ShootHelpers_BPF_GetShootRotationForceRatio Parms{};
-
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_GetShootStartLocationPoint
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _runtimeCharacter                                      (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const struct FGameplayAbilityTargetDataHandle&_context                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// const float                             _fCatchupTime                                          (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayAbilityTargetDataHandle&_montageContextFallback                                (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-// struct FShootLocationPointResult        ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-
-struct FShootLocationPointResult UShootHelpers::BPF_GetShootStartLocationPoint(const class AActor* _runtimeCharacter, const struct FShootPrepTargetData& _targetData, const struct FGameplayAbilityTargetDataHandle& _context, const float _fCatchupTime, const struct FGameplayAbilityTargetDataHandle& _montageContextFallback)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootStartLocationPoint");
-
-	Params::ShootHelpers_BPF_GetShootStartLocationPoint Parms{};
-
-	Parms._runtimeCharacter = _runtimeCharacter;
-	Parms._targetData = std::move(_targetData);
-	Parms._context = std::move(_context);
-	Parms._fCatchupTime = _fCatchupTime;
-	Parms._montageContextFallback = std::move(_montageContextFallback);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_GetShootTimeRange
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// struct FFloatRange                      ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FFloatRange UShootHelpers::BPF_GetShootTimeRange(const class AActor* _actor, const struct FShootPrepTargetData& _data)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootTimeRange");
-
-	Params::ShootHelpers_BPF_GetShootTimeRange Parms{};
-
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_GetShootTimeRatioToBuildUpDuration
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UShootHelpers::BPF_GetShootTimeRatioToBuildUpDuration(const class AActor* _actor, const struct FShootPrepTargetData& _data)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootTimeRatioToBuildUpDuration");
-
-	Params::ShootHelpers_BPF_GetShootTimeRatioToBuildUpDuration Parms{};
-
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_GetShootType
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const TMap<struct FGameplayTag, struct FFloatRange>&_gameplayTagMap                                        (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// int32                                   _iTeamIdx                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FGameplayTag                     ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FGameplayTag UShootHelpers::BPF_GetShootType(const class AActor* _actor, const struct FShootPrepTargetData& _data, const TMap<struct FGameplayTag, struct FFloatRange>& _gameplayTagMap)
+struct FGameplayTag URuntimeStadiumAR::BPF_GetTeamWorldTag(int32 _iTeamIdx) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetShootType");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetTeamWorldTag");
 
-	Params::ShootHelpers_BPF_GetShootType Parms{};
+	Params::RuntimeStadiumAR_BPF_GetTeamWorldTag Parms{};
 
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-	Parms._gameplayTagMap = std::move(_gameplayTagMap);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_GetSimulatedShootDataFromShootPrep
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// struct FSimulatedShootData*             _outSimulatedShootData                                 (Parm, OutParm, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UShootHelpers::BPF_GetSimulatedShootDataFromShootPrep(const struct FShootPrepTargetData& _data, struct FSimulatedShootData* _outSimulatedShootData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetSimulatedShootDataFromShootPrep");
-
-	Params::ShootHelpers_BPF_GetSimulatedShootDataFromShootPrep Parms{};
-
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outSimulatedShootData != nullptr)
-		*_outSimulatedShootData = std::move(Parms._outSimulatedShootData);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_GetTrajectoryClosestPointByLocation
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _runtimeCharacter                                      (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FBallTrajectoryResult&     _trajectory                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// struct FVector*                         _vResult                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool*                                   _bFoundResult                                          (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float*                                  _fDistance                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UShootHelpers::BPF_GetTrajectoryClosestPointByLocation(const class AActor* _runtimeCharacter, const struct FBallTrajectoryResult& _trajectory, struct FVector* _vResult, bool* _bFoundResult, float* _fDistance)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetTrajectoryClosestPointByLocation");
-
-	Params::ShootHelpers_BPF_GetTrajectoryClosestPointByLocation Parms{};
-
-	Parms._runtimeCharacter = _runtimeCharacter;
-	Parms._trajectory = std::move(_trajectory);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_vResult != nullptr)
-		*_vResult = std::move(Parms._vResult);
-
-	if (_bFoundResult != nullptr)
-		*_bFoundResult = Parms._bFoundResult;
-
-	if (_fDistance != nullptr)
-		*_fDistance = Parms._fDistance;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_GetTrajectoryFromSimulatedShootData
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FSimulatedShootData&       _simulatedShootData                                    (Parm, NativeAccessSpecifierPublic)
-// struct FShootParams*                    _outShootParams                                        (Parm, OutParm, NativeAccessSpecifierPublic)
-// class UShootAbilityData*                _shootAbilityData                                      (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class ABall*                            _ball                                                  (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   _fPredictionDuration                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bUseTime                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bApplyModifiers                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FBallTrajectoryResult            ReturnValue                                            (Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-struct FBallTrajectoryResult UShootHelpers::BPF_GetTrajectoryFromSimulatedShootData(const struct FSimulatedShootData& _simulatedShootData, struct FShootParams* _outShootParams, class UShootAbilityData* _shootAbilityData, const class AActor* _actor, class ABall* _ball, float _fPredictionDuration, bool _bUseTime, bool _bApplyModifiers)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_GetTrajectoryFromSimulatedShootData");
-
-	Params::ShootHelpers_BPF_GetTrajectoryFromSimulatedShootData Parms{};
-
-	Parms._simulatedShootData = std::move(_simulatedShootData);
-	Parms._shootAbilityData = _shootAbilityData;
-	Parms._actor = _actor;
-	Parms._ball = _ball;
-	Parms._fPredictionDuration = _fPredictionDuration;
-	Parms._bUseTime = _bUseTime;
-	Parms._bApplyModifiers = _bApplyModifiers;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_outShootParams != nullptr)
-		*_outShootParams = std::move(Parms._outShootParams);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_HasReleaseShootInput
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UShootHelpers::BPF_HasReleaseShootInput(const class AActor* _actor, const struct FShootPrepTargetData& _data)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_HasReleaseShootInput");
-
-	Params::ShootHelpers_BPF_HasReleaseShootInput Parms{};
-
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_MakeShootPrepTargetDataHandle
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// struct FGameplayAbilityTargetDataHandle ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-
-struct FGameplayAbilityTargetDataHandle UShootHelpers::BPF_MakeShootPrepTargetDataHandle(const struct FShootPrepTargetData& _data)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_MakeShootPrepTargetDataHandle");
-
-	Params::ShootHelpers_BPF_MakeShootPrepTargetDataHandle Parms{};
-
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_ShootPrep_IsValid
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FShootPrepTargetData&      _targetData                                            (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UShootHelpers::BPF_ShootPrep_IsValid(const struct FShootPrepTargetData& _targetData)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_ShootPrep_IsValid");
-
-	Params::ShootHelpers_BPF_ShootPrep_IsValid Parms{};
-
-	Parms._targetData = std::move(_targetData);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_TimeRemainingBeforeShoot
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UShootHelpers::BPF_TimeRemainingBeforeShoot(const class AActor* _actor, const struct FShootPrepTargetData& _data)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_TimeRemainingBeforeShoot");
-
-	Params::ShootHelpers_BPF_TimeRemainingBeforeShoot Parms{};
-
-	Parms._actor = _actor;
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_TryToGetImpactNormal
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool*                                   _bSuccess                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UShootHelpers::BPF_TryToGetImpactNormal(const struct FShootPrepTargetData& _data, bool* _bSuccess)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_TryToGetImpactNormal");
-
-	Params::ShootHelpers_BPF_TryToGetImpactNormal Parms{};
-
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_bSuccess != nullptr)
-		*_bSuccess = Parms._bSuccess;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_TryToGetImpactPoint
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool*                                   _bSuccess                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UShootHelpers::BPF_TryToGetImpactPoint(const struct FShootPrepTargetData& _data, bool* _bSuccess)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_TryToGetImpactPoint");
-
-	Params::ShootHelpers_BPF_TryToGetImpactPoint Parms{};
-
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_bSuccess != nullptr)
-		*_bSuccess = Parms._bSuccess;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootHelpers.BPF_TryToGetImpactPointOnCameraDirection
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FShootPrepTargetData&      _data                                                  (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool*                                   _bSuccess                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FVector UShootHelpers::BPF_TryToGetImpactPointOnCameraDirection(const struct FShootPrepTargetData& _data, bool* _bSuccess)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootHelpers", "BPF_TryToGetImpactPointOnCameraDirection");
-
-	Params::ShootHelpers_BPF_TryToGetImpactPointOnCameraDirection Parms{};
-
-	Parms._data = std::move(_data);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_bSuccess != nullptr)
-		*_bSuccess = Parms._bSuccess;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootModifierHelpers.BPF_GetMultiplierBySpeedState
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _ShootData                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const float                             _fBlendTime                                            (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FMultiplierSpeedStateData& m_Multipliers                                          (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UShootModifierHelpers::BPF_GetMultiplierBySpeedState(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, const float _fBlendTime, const struct FMultiplierSpeedStateData& m_Multipliers)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootModifierHelpers", "BPF_GetMultiplierBySpeedState");
-
-	Params::ShootModifierHelpers_BPF_GetMultiplierBySpeedState Parms{};
-
-	Parms._actor = _actor;
-	Parms._ShootData = std::move(_ShootData);
-	Parms._fBlendTime = _fBlendTime;
-	Parms.m_Multipliers = std::move(m_Multipliers);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootModifierHelpers.BPF_GetMultiplierFromShootModifierDataTable
-// (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _ShootData                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const class UDataTable*                 _table                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FVector&                   _vOutDirection                                         (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UShootModifierHelpers::BPF_GetMultiplierFromShootModifierDataTable(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, const class UDataTable* _table, const struct FVector& _vOutDirection)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootModifierHelpers", "BPF_GetMultiplierFromShootModifierDataTable");
-
-	Params::ShootModifierHelpers_BPF_GetMultiplierFromShootModifierDataTable Parms{};
-
-	Parms._actor = _actor;
-	Parms._ShootData = std::move(_ShootData);
-	Parms._table = _table;
-	Parms._vOutDirection = std::move(_vOutDirection);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootModifierHelpers.BPF_GetSourceRatioValue
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _ShootData                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// ESourceModifierType                     _eSourceType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FFloatInterval&            _intervalToComputeRatio                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UShootModifierHelpers::BPF_GetSourceRatioValue(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, ESourceModifierType _eSourceType, const struct FFloatInterval& _intervalToComputeRatio)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootModifierHelpers", "BPF_GetSourceRatioValue");
-
-	Params::ShootModifierHelpers_BPF_GetSourceRatioValue Parms{};
-
-	Parms._actor = _actor;
-	Parms._ShootData = std::move(_ShootData);
-	Parms._eSourceType = _eSourceType;
-	Parms._intervalToComputeRatio = std::move(_intervalToComputeRatio);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.ShootModifierHelpers.BPF_GetSourceValue
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FShootPrepTargetData&      _ShootData                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// ESourceModifierType                     _eSourceType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UShootModifierHelpers::BPF_GetSourceValue(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, ESourceModifierType _eSourceType)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("ShootModifierHelpers", "BPF_GetSourceValue");
-
-	Params::ShootModifierHelpers_BPF_GetSourceValue Parms{};
-
-	Parms._actor = _actor;
-	Parms._ShootData = std::move(_ShootData);
-	Parms._eSourceType = _eSourceType;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.StadiumWorldSettings.BPF_GetRuntimeWorldSettings
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const class UObject*                    _context                                               (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    _bForceMainWorld                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AStadiumWorldSettings*            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class AStadiumWorldSettings* AStadiumWorldSettings::BPF_GetRuntimeWorldSettings(const class UObject* _context, bool _bForceMainWorld)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("StadiumWorldSettings", "BPF_GetRuntimeWorldSettings");
-
-	Params::StadiumWorldSettings_BPF_GetRuntimeWorldSettings Parms{};
-
-	Parms._context = _context;
-	Parms._bForceMainWorld = _bForceMainWorld;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.StadiumWorldSettings.BPF_GetFieldBox
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FBox                             ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-
-struct FBox AStadiumWorldSettings::BPF_GetFieldBox() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("StadiumWorldSettings", "BPF_GetFieldBox");
-
-	Params::StadiumWorldSettings_BPF_GetFieldBox Parms{};
+	Parms._iTeamIdx = _iTeamIdx;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -21864,221 +23028,22 @@ struct FBox AStadiumWorldSettings::BPF_GetFieldBox() const
 }
 
 
-// Function Runtime.SweeperAttributeSet.OnRep_V1
-// (Final, Native, Public, HasOutParams)
+// Function Runtime.RuntimeStadiumAR.BPF_GetTransitionEffectAR
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const struct FGameplayAttributeData&    _oldV1                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const struct FGameplayTag&              _tag                                                   (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FRuntimeARTransitionEffect       ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
 
-void USweeperAttributeSet::OnRep_V1(const struct FGameplayAttributeData& _oldV1)
+struct FRuntimeARTransitionEffect URuntimeStadiumAR::BPF_GetTransitionEffectAR(const struct FGameplayTag& _tag) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("SweeperAttributeSet", "OnRep_V1");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetTransitionEffectAR");
 
-	Params::SweeperAttributeSet_OnRep_V1 Parms{};
+	Params::RuntimeStadiumAR_BPF_GetTransitionEffectAR Parms{};
 
-	Parms._oldV1 = std::move(_oldV1);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.SweeperAttributeSet.OnRep_V2
-// (Final, Native, Public, HasOutParams)
-// Parameters:
-// const struct FGameplayAttributeData&    _oldV2                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-void USweeperAttributeSet::OnRep_V2(const struct FGameplayAttributeData& _oldV2)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SweeperAttributeSet", "OnRep_V2");
-
-	Params::SweeperAttributeSet_OnRep_V2 Parms{};
-
-	Parms._oldV2 = std::move(_oldV2);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.SweeperAttributeSet.OnRep_V3
-// (Final, Native, Public, HasOutParams)
-// Parameters:
-// const struct FGameplayAttributeData&    _oldV3                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-
-void USweeperAttributeSet::OnRep_V3(const struct FGameplayAttributeData& _oldV3)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("SweeperAttributeSet", "OnRep_V3");
-
-	Params::SweeperAttributeSet_OnRep_V3 Parms{};
-
-	Parms._oldV3 = std::move(_oldV3);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ThumbnailCustomizationIds.BPF_GetThumbnailCustomizationId
-// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// const struct FSCCustomizationId&        _customizationID                                       (ConstParm, Parm, OutParm, ReferenceParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TSoftObjectPtr<class ULevelSequence>*   _viewSequence                                          (Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TSoftObjectPtr<class UAnimSequence>*    _animSequence                                          (Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float*                                  _fAnimTime                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TSoftObjectPtr<class UTexture2D>*       _defaultTexture                                        (Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UThumbnailCustomizationIds::BPF_GetThumbnailCustomizationId(const struct FSCCustomizationId& _customizationID, TSoftObjectPtr<class ULevelSequence>* _viewSequence, TSoftObjectPtr<class UAnimSequence>* _animSequence, float* _fAnimTime, TSoftObjectPtr<class UTexture2D>* _defaultTexture) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ThumbnailCustomizationIds", "BPF_GetThumbnailCustomizationId");
-
-	Params::ThumbnailCustomizationIds_BPF_GetThumbnailCustomizationId Parms{};
-
-	Parms._customizationID = std::move(_customizationID);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	if (_viewSequence != nullptr)
-		*_viewSequence = Parms._viewSequence;
-
-	if (_animSequence != nullptr)
-		*_animSequence = Parms._animSequence;
-
-	if (_fAnimTime != nullptr)
-		*_fAnimTime = Parms._fAnimTime;
-
-	if (_defaultTexture != nullptr)
-		*_defaultTexture = Parms._defaultTexture;
-}
-
-
-// Function Runtime.TrajectoryPartHelpers.BPF_GetPartPointAtRatioDistance
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FBallTrajectoryPart&       _trajPart                                              (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// float                                   _fRatio                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FPredictProjectilePathPointData  ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-
-struct FPredictProjectilePathPointData UTrajectoryPartHelpers::BPF_GetPartPointAtRatioDistance(const struct FBallTrajectoryPart& _trajPart, float _fRatio)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("TrajectoryPartHelpers", "BPF_GetPartPointAtRatioDistance");
-
-	Params::TrajectoryPartHelpers_BPF_GetPartPointAtRatioDistance Parms{};
-
-	Parms._trajPart = std::move(_trajPart);
-	Parms._fRatio = _fRatio;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TrajectoryPartHelpers.BPF_GetPartTime
-// (Final, Native, Static, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FBallTrajectoryPart&       _trajPart                                              (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-float UTrajectoryPartHelpers::BPF_GetPartTime(const struct FBallTrajectoryPart& _trajPart)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("TrajectoryPartHelpers", "BPF_GetPartTime");
-
-	Params::TrajectoryPartHelpers_BPF_GetPartTime Parms{};
-
-	Parms._trajPart = std::move(_trajPart);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TutorialLogicStep.OnEndLogicStep
-// (Event, Public, BlueprintEvent)
-
-void UTutorialLogicStep::OnEndLogicStep()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialLogicStep", "OnEndLogicStep");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialLogicStep.OnStartLogicStep
-// (Event, Public, BlueprintEvent)
-
-void UTutorialLogicStep::OnStartLogicStep()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialLogicStep", "OnStartLogicStep");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialLogicStep.GetManagerOwner
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class ATutorialManager*                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class ATutorialManager* UTutorialLogicStep::GetManagerOwner() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialLogicStep", "GetManagerOwner");
-
-	Params::TutorialLogicStep_GetManagerOwner Parms{};
+	Parms._tag = std::move(_tag);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -22091,65 +23056,24 @@ class ATutorialManager* UTutorialLogicStep::GetManagerOwner() const
 }
 
 
-// Function Runtime.TutorialObjectiveListenInput.OnInputActivation
-// (Final, Native, Public, HasOutParams)
+// Function Runtime.RuntimeStadiumAR.BPF_GetTransitionEffectStadium
+// (Final, Native, Protected, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// const class USCInputAction*             _uscInputAction                                        (ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FInputActionState&         _inputActionState                                      (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+// const struct FGameplayTag&              _tag                                                   (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool                                    GoalA                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FRuntimeARTransitionEffect       ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
 
-void UTutorialObjectiveListenInput::OnInputActivation(const class USCInputAction* _uscInputAction, const struct FInputActionState& _inputActionState)
+struct FRuntimeARTransitionEffect URuntimeStadiumAR::BPF_GetTransitionEffectStadium(const struct FGameplayTag& _tag, bool GoalA) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialObjectiveListenInput", "OnInputActivation");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_GetTransitionEffectStadium");
 
-	Params::TutorialObjectiveListenInput_OnInputActivation Parms{};
+	Params::RuntimeStadiumAR_BPF_GetTransitionEffectStadium Parms{};
 
-	Parms._uscInputAction = _uscInputAction;
-	Parms._inputActionState = std::move(_inputActionState);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialStep.EndStep
-// (Final, Native, Public, BlueprintCallable)
-
-void UTutorialStep::EndStep()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialStep", "EndStep");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialStep.GetObjectives
-// (Final, Native, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// TArray<class UTutorialObjective*>       ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-TArray<class UTutorialObjective*> UTutorialStep::GetObjectives()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialStep", "GetObjectives");
-
-	Params::TutorialStep_GetObjectives Parms{};
+	Parms._tag = std::move(_tag);
+	Parms.GoalA = GoalA;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -22162,790 +23086,27 @@ TArray<class UTutorialObjective*> UTutorialStep::GetObjectives()
 }
 
 
-// Function Runtime.TutorialStep.OnEndStep
-// (Event, Public, BlueprintEvent)
-
-void UTutorialStep::OnEndStep()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialStep", "OnEndStep");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialStep.OnObjectiveComplete
-// (Final, Native, Public)
+// Function Runtime.RuntimeStadiumAR.BPF_WorldTagUseOpaqueRendering
+// (Event, Protected, HasOutParams, BlueprintEvent, Const)
 // Parameters:
-// class UTutorialObjective*               _objective                                             (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayTag&              _worldTag                                              (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// bool*                                   _bResult                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UTutorialStep::OnObjectiveComplete(class UTutorialObjective* _objective)
+void URuntimeStadiumAR::BPF_WorldTagUseOpaqueRendering(const struct FGameplayTag& _worldTag, bool* _bResult) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialStep", "OnObjectiveComplete");
+		Func = Class->GetFunction("RuntimeStadiumAR", "BPF_WorldTagUseOpaqueRendering");
 
-	Params::TutorialStep_OnObjectiveComplete Parms{};
+	Params::RuntimeStadiumAR_BPF_WorldTagUseOpaqueRendering Parms{};
 
-	Parms._objective = _objective;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
+	Parms._worldTag = std::move(_worldTag);
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.TutorialStep.OnStartStep
-// (Event, Public, BlueprintEvent)
-
-void UTutorialStep::OnStartStep()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialStep", "OnStartStep");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.TutorialStep.BPF_GetObjectiveCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UTutorialStep::BPF_GetObjectiveCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialStep", "BPF_GetObjectiveCount");
-
-	Params::TutorialStep_BPF_GetObjectiveCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TutorialStep.BPF_GetObjectiveCountWithIteration
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UTutorialStep::BPF_GetObjectiveCountWithIteration() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialStep", "BPF_GetObjectiveCountWithIteration");
-
-	Params::TutorialStep_BPF_GetObjectiveCountWithIteration Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.TutorialStep.GetOwner
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// class ATutorialManager*                 ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class ATutorialManager* UTutorialStep::GetOwner() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TutorialStep", "GetOwner");
-
-	Params::TutorialStep_GetOwner Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.UtilityAIComponent.OnTaskFinished
-// (Final, Native, Protected)
-// Parameters:
-// class UUtilityAITask*                   _taskFinished                                          (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUtilityAIComponent::OnTaskFinished(class UUtilityAITask* _taskFinished)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UtilityAIComponent", "OnTaskFinished");
-
-	Params::UtilityAIComponent_OnTaskFinished Parms{};
-
-	Parms._taskFinished = _taskFinished;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.UtilityAIComponent.SetUtilityAiPreset
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class UUtilityAIPreset*                 _newPreset                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UUtilityAIComponent::SetUtilityAiPreset(class UUtilityAIPreset* _newPreset)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UtilityAIComponent", "SetUtilityAiPreset");
-
-	Params::UtilityAIComponent_SetUtilityAiPreset Parms{};
-
-	Parms._newPreset = _newPreset;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.UtilityAIComponent.StartBehavior
-// (Final, Native, Public, BlueprintCallable)
-
-void UUtilityAIComponent::StartBehavior()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UtilityAIComponent", "StartBehavior");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.UtilityAIComponent.StopBehavior
-// (Final, Native, Public, BlueprintCallable)
-
-void UUtilityAIComponent::StopBehavior()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UtilityAIComponent", "StopBehavior");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.UtilityAITask.BPE_OnTaskStart
-// (Event, Public, BlueprintEvent)
-
-void UUtilityAITask::BPE_OnTaskStart()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UtilityAITask", "BPE_OnTaskStart");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function Runtime.UtilityAITask.FinishTask
-// (Final, Native, Public, BlueprintCallable)
-
-void UUtilityAITask::FinishTask()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UtilityAITask", "FinishTask");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.UtilityAITask.BPE_ComputeAllConsiderationValue
-// (Event, Public, HasOutParams, BlueprintEvent, Const)
-// Parameters:
-// class AAIController*                    _inAIController                                        (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class AActor*                           _inTargetActor                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TMap<class UCurveFloat*, float>*        _outResult                                             (Parm, OutParm, NativeAccessSpecifierPublic)
-
-void UUtilityAITask::BPE_ComputeAllConsiderationValue(class AAIController* _inAIController, class AActor* _inTargetActor, TMap<class UCurveFloat*, float>* _outResult) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("UtilityAITask", "BPE_ComputeAllConsiderationValue");
-
-	Params::UtilityAITask_BPE_ComputeAllConsiderationValue Parms{};
-
-	Parms._inAIController = _inAIController;
-	Parms._inTargetActor = _inTargetActor;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (_outResult != nullptr)
-		*_outResult = std::move(Parms._outResult);
-}
-
-
-// Function Runtime.VoiceChatBlueprintHelperLibrary.GetActiveInputDevice
-// (Final, Native, Static, Private, BlueprintCallable)
-// Parameters:
-// class UObject*                          _worldContextObject                                    (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FSOSVoiceChatDeviceInfo          ReturnValue                                            (Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-
-struct FSOSVoiceChatDeviceInfo UVoiceChatBlueprintHelperLibrary::GetActiveInputDevice(class UObject* _worldContextObject)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("VoiceChatBlueprintHelperLibrary", "GetActiveInputDevice");
-
-	Params::VoiceChatBlueprintHelperLibrary_GetActiveInputDevice Parms{};
-
-	Parms._worldContextObject = _worldContextObject;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.VoiceChatBlueprintHelperLibrary.GetInputDevices
-// (Final, Native, Static, Private, BlueprintCallable)
-// Parameters:
-// class UObject*                          _worldContextObject                                    (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TArray<struct FSOSVoiceChatDeviceInfo>  ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-
-TArray<struct FSOSVoiceChatDeviceInfo> UVoiceChatBlueprintHelperLibrary::GetInputDevices(class UObject* _worldContextObject)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("VoiceChatBlueprintHelperLibrary", "GetInputDevices");
-
-	Params::VoiceChatBlueprintHelperLibrary_GetInputDevices Parms{};
-
-	Parms._worldContextObject = _worldContextObject;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.VoiceChatBlueprintHelperLibrary.SetInputDevice
-// (Final, Native, Static, Private, BlueprintCallable)
-// Parameters:
-// class UObject*                          _worldContextObject                                    (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const class FString&                    _inputDeviceId                                         (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UVoiceChatBlueprintHelperLibrary::SetInputDevice(class UObject* _worldContextObject, const class FString& _inputDeviceId)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("VoiceChatBlueprintHelperLibrary", "SetInputDevice");
-
-	Params::VoiceChatBlueprintHelperLibrary_SetInputDevice Parms{};
-
-	Parms._worldContextObject = _worldContextObject;
-	Parms._inputDeviceId = std::move(_inputDeviceId);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.WelcomeFlowViewModel.BPF_GetUnreadContentViewModelsByType
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// ERematchWelcomeFlowContentType          _type                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// TArray<class UWelcomeFlowContentViewModel*>ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-
-TArray<class UWelcomeFlowContentViewModel*> UWelcomeFlowViewModel::BPF_GetUnreadContentViewModelsByType(ERematchWelcomeFlowContentType _type) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WelcomeFlowViewModel", "BPF_GetUnreadContentViewModelsByType");
-
-	Params::WelcomeFlowViewModel_BPF_GetUnreadContentViewModelsByType Parms{};
-
-	Parms._type = _type;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.WelcomeFlowViewModel.BPF_HasUnreadContentOfType
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// ERematchWelcomeFlowContentType          _type                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWelcomeFlowViewModel::BPF_HasUnreadContentOfType(ERematchWelcomeFlowContentType _type) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WelcomeFlowViewModel", "BPF_HasUnreadContentOfType");
-
-	Params::WelcomeFlowViewModel_BPF_HasUnreadContentOfType Parms{};
-
-	Parms._type = _type;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.WelcomeFlowViewModel.HasActiveNews
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWelcomeFlowViewModel::HasActiveNews() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WelcomeFlowViewModel", "HasActiveNews");
-
-	Params::WelcomeFlowViewModel_HasActiveNews Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.WelcomeFlowViewModel.HasUnreadContent
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWelcomeFlowViewModel::HasUnreadContent() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WelcomeFlowViewModel", "HasUnreadContent");
-
-	Params::WelcomeFlowViewModel_HasUnreadContent Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.WorkshopViewModel.HasNotWorkshopStarted
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWorkshopViewModel::HasNotWorkshopStarted() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorkshopViewModel", "HasNotWorkshopStarted");
-
-	Params::WorkshopViewModel_HasNotWorkshopStarted Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.WorkshopViewModel.IsWorkshopBasedOnScore
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWorkshopViewModel::IsWorkshopBasedOnScore() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorkshopViewModel", "IsWorkshopBasedOnScore");
-
-	Params::WorkshopViewModel_IsWorkshopBasedOnScore Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.WorkshopViewModel.IsWorkshopBasedOnTime
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWorkshopViewModel::IsWorkshopBasedOnTime() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorkshopViewModel", "IsWorkshopBasedOnTime");
-
-	Params::WorkshopViewModel_IsWorkshopBasedOnTime Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.WorkshopViewModel.IsWorkshopFinished
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWorkshopViewModel::IsWorkshopFinished() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorkshopViewModel", "IsWorkshopFinished");
-
-	Params::WorkshopViewModel_IsWorkshopFinished Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.WorkshopViewModel.IsWorkshopInProgress
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UWorkshopViewModel::IsWorkshopInProgress() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WorkshopViewModel", "IsWorkshopInProgress");
-
-	Params::WorkshopViewModel_IsWorkshopInProgress Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeSequencerBindingLibrary.GetCharacterBodyPart
-// (Final, RequiredAPI, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
-// Parameters:
-// const struct FMovieSceneDynamicBindingResolveParams&Params_0                                               (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-// const struct FCharacterPartEnumHandler& BodyPart                                               (Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FMovieSceneDynamicBindingResolveResultReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-
-struct FMovieSceneDynamicBindingResolveResult URuntimeSequencerBindingLibrary::GetCharacterBodyPart(const struct FMovieSceneDynamicBindingResolveParams& Params_0, const struct FCharacterPartEnumHandler& BodyPart)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeSequencerBindingLibrary", "GetCharacterBodyPart");
-
-	Params::RuntimeSequencerBindingLibrary_GetCharacterBodyPart Parms{};
-
-	Parms.Params_0 = std::move(Params_0);
-	Parms.BodyPart = std::move(BodyPart);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RuntimeSequencerBindingLibrary.GoalScorer
-// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
-// Parameters:
-// class UObject*                          WorldContextObject                                     (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FMovieSceneDynamicBindingResolveResultReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-
-struct FMovieSceneDynamicBindingResolveResult URuntimeSequencerBindingLibrary::GoalScorer(class UObject* WorldContextObject)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("RuntimeSequencerBindingLibrary", "GoalScorer");
-
-	Params::RuntimeSequencerBindingLibrary_GoalScorer Parms{};
-
-	Parms.WorldContextObject = WorldContextObject;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function Runtime.RTStadiumARLevelStreaming.HandleLevelShown
-// (Final, Native, Public)
-
-void URTStadiumARLevelStreaming::HandleLevelShown()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("RTStadiumARLevelStreaming", "HandleLevelShown");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ItemThumbnailComponent.InvalidateCamera
-// (Native, Public, BlueprintCallable)
-
-void UItemThumbnailComponent::InvalidateCamera()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailComponent", "InvalidateCamera");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ItemThumbnailComponent.OnBeginLoading
-// (Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const TSoftObjectPtr<class UObject>&    AssetName                                              (ConstParm, Parm, OutParm, ReferenceParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// bool                                    bIsInitialLoad                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UItemThumbnailComponent::OnBeginLoading(const TSoftObjectPtr<class UObject>& AssetName, bool bIsInitialLoad)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailComponent", "OnBeginLoading");
-
-	Params::ItemThumbnailComponent_OnBeginLoading Parms{};
-
-	Parms.AssetName = AssetName;
-	Parms.bIsInitialLoad = bIsInitialLoad;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ItemThumbnailComponent.OnFinishLoading
-// (Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const TSoftObjectPtr<class UObject>&    AssetName                                              (ConstParm, Parm, OutParm, ReferenceParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UItemThumbnailComponent::OnFinishLoading(const TSoftObjectPtr<class UObject>& AssetName)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailComponent", "OnFinishLoading");
-
-	Params::ItemThumbnailComponent_OnFinishLoading Parms{};
-
-	Parms.AssetName = AssetName;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ItemThumbnailComponent.SetMaterial
-// (Native, Public, HasOutParams, BlueprintCallable)
-// Parameters:
-// const struct FThumbnailMaterial&        InMaterial                                             (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-
-void UItemThumbnailComponent::SetMaterial(const struct FThumbnailMaterial& InMaterial)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailComponent", "SetMaterial");
-
-	Params::ItemThumbnailComponent_SetMaterial Parms{};
-
-	Parms.InMaterial = std::move(InMaterial);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function Runtime.ItemThumbnailComponent.SetSceneClass
-// (Native, Public, BlueprintCallable)
-// Parameters:
-// TSubclassOf<class UItemThumbnailScene>  InSceneClass                                           (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UItemThumbnailComponent::SetSceneClass(TSubclassOf<class UItemThumbnailScene> InSceneClass)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ItemThumbnailComponent", "SetSceneClass");
-
-	Params::ItemThumbnailComponent_SetSceneClass Parms{};
-
-	Parms.InSceneClass = InSceneClass;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
+	if (_bResult != nullptr)
+		*_bResult = Parms._bResult;
 }
 
 }

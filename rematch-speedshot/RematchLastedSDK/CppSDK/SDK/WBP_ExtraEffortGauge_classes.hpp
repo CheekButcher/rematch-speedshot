@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "AkAudio_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "WBP_Abstract_Common_classes.hpp"
-#include "AkAudio_structs.hpp"
 
 
 namespace SDK

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "AkAudio_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params
@@ -40,6 +40,46 @@ public:
 	bool                                          CallFunc_BPF_GetIsEditor_ReturnValue;              // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_LDCameraActor_C_ManageDebugIconVisibility;
+
+// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_SwitchToGameplayCamera
+// 0x0030 (0x0030 - 0x0000)
+struct BP_LDCameraActor_C_BPE_SwitchToGameplayCamera final
+{
+public:
+	class UBlackboardComponent*                   LocalCameraBlackBoard;                             // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	class USCCameraComponent*                     CallFunc_BPF_GetPlayerCamera__outCameraComponentRef; // 0x0008(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	class UBlackboardComponent*                   CallFunc_BPF_GetPlayerCameraBlackBoard__outCameraBlackBoardRef; // 0x0010(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1A[0x2];                                       // 0x001A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   CallFunc_BPF_GetKeyNameFromCameraSlot_DynamicCameraDataBlackBoardKey; // 0x001C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   CallFunc_BPF_GetKeyNameFromCameraSlot_DynamicActorRefBlackBoardKey; // 0x0024(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_LDCameraActor_C_BPE_SwitchToGameplayCamera;
+
+// Function BP_LDCameraActor.BP_LDCameraActor_C.GetLookAtActorRefTransform
+// 0x00D0 (0x00D0 - 0x0000)
+struct BP_LDCameraActor_C_GetLookAtActorRefTransform final
+{
+public:
+	float                                         _fDt;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             ReturnValue;                                       // 0x0010(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0070(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_LDCameraActor_C_GetLookAtActorRefTransform;
+
+// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_GetActorRefTransform
+// 0x00D0 (0x00D0 - 0x0000)
+struct BP_LDCameraActor_C_BPE_GetActorRefTransform final
+{
+public:
+	float                                         _fDt;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             ReturnValue;                                       // 0x0010(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0070(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_LDCameraActor_C_BPE_GetActorRefTransform;
 
 // Function BP_LDCameraActor.BP_LDCameraActor_C.ExecuteUbergraph_BP_LDCameraActor
 // 0x0080 (0x0080 - 0x0000)
@@ -103,46 +143,6 @@ public:
 	bool                                          CallFunc_BooleanAND_ReturnValue_2;                 // 0x0092(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_LDCameraActor_C_BPE_SwitchToLDCamera;
-
-// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_SwitchToGameplayCamera
-// 0x0030 (0x0030 - 0x0000)
-struct BP_LDCameraActor_C_BPE_SwitchToGameplayCamera final
-{
-public:
-	class UBlackboardComponent*                   LocalCameraBlackBoard;                             // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	class USCCameraComponent*                     CallFunc_BPF_GetPlayerCamera__outCameraComponentRef; // 0x0008(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	class UBlackboardComponent*                   CallFunc_BPF_GetPlayerCameraBlackBoard__outCameraBlackBoardRef; // 0x0010(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1A[0x2];                                       // 0x001A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   CallFunc_BPF_GetKeyNameFromCameraSlot_DynamicCameraDataBlackBoardKey; // 0x001C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FName                                   CallFunc_BPF_GetKeyNameFromCameraSlot_DynamicActorRefBlackBoardKey; // 0x0024(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_LDCameraActor_C_BPE_SwitchToGameplayCamera;
-
-// Function BP_LDCameraActor.BP_LDCameraActor_C.GetLookAtActorRefTransform
-// 0x00D0 (0x00D0 - 0x0000)
-struct BP_LDCameraActor_C_GetLookAtActorRefTransform final
-{
-public:
-	float                                         _fDt;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             ReturnValue;                                       // 0x0010(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0070(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_LDCameraActor_C_GetLookAtActorRefTransform;
-
-// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_GetActorRefTransform
-// 0x00D0 (0x00D0 - 0x0000)
-struct BP_LDCameraActor_C_BPE_GetActorRefTransform final
-{
-public:
-	float                                         _fDt;                                              // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             ReturnValue;                                       // 0x0010(0x0060)(Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0070(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_LDCameraActor_C_BPE_GetActorRefTransform;
 
 }
 

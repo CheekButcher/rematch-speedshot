@@ -107,6 +107,20 @@ void UWBP_Popup_SP_PremiumPurchase_C::On_Options_ListView_Changed()
 }
 
 
+// Function WBP_Popup_SP_PremiumPurchase.WBP_Popup_SP_PremiumPurchase_C.On Transition in Finished
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWBP_Popup_SP_PremiumPurchase_C::On_Transition_in_Finished()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Popup_SP_PremiumPurchase_C", "On Transition in Finished");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function WBP_Popup_SP_PremiumPurchase.WBP_Popup_SP_PremiumPurchase_C.OnItemViewModelChanged
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -184,6 +198,26 @@ void UWBP_Popup_SP_PremiumPurchase_C::OnUserSPPremiumTokenBalanceUpdate(int32 Ba
 	Params::WBP_Popup_SP_PremiumPurchase_C_OnUserSPPremiumTokenBalanceUpdate Parms{};
 
 	Parms.Balance = Balance;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_Popup_SP_PremiumPurchase.WBP_Popup_SP_PremiumPurchase_C.PreConstruct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Parameters:
+// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_Popup_SP_PremiumPurchase_C::PreConstruct(bool IsDesignTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Popup_SP_PremiumPurchase_C", "PreConstruct");
+
+	Params::WBP_Popup_SP_PremiumPurchase_C_PreConstruct Parms{};
+
+	Parms.IsDesignTime = IsDesignTime;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

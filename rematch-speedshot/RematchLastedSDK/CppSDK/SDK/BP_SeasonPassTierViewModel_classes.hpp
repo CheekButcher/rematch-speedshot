@@ -10,6 +10,7 @@
 
 #include "Basic.hpp"
 
+#include "Enum_SP_TiersAnimation_structs.hpp"
 #include "SOSBindings_classes.hpp"
 
 
@@ -24,6 +25,8 @@ public:
 	int32                                         TierIDOnSlot;                                      // 0x00A0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         SlotTiersNbr;                                      // 0x00A4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         AnimationID;                                       // 0x00A8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	Enum_SP_TiersAnimation                        AnimationType;                                     // 0x00AC(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          bUnlockedPremiumRewards;                           // 0x00AD(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void CanUserPurchaseThisTier(int32 STBalance, bool* bCanPurchase) const;

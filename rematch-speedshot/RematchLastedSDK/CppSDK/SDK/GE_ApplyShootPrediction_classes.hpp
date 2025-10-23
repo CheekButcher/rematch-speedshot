@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass GE_ApplyShootPrediction.GE_ApplyShootPrediction_C
-// 0x0000 (0x0B40 - 0x0B40)
+// 0x0000 (0x0B48 - 0x0B48)
 class UGE_ApplyShootPrediction_C final : public USCGameplayEffect
 {
 public:

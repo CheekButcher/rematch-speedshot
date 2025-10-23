@@ -12,11 +12,11 @@
 
 #include "SlateCore_structs.hpp"
 #include "UMG_structs.hpp"
-#include "GameplayTags_structs.hpp"
-#include "SOS_structs.hpp"
-#include "Runtime_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "Runtime_structs.hpp"
 #include "UIBaseColors_structs.hpp"
+#include "SOS_structs.hpp"
+#include "GameplayTags_structs.hpp"
 #include "InputCore_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
 

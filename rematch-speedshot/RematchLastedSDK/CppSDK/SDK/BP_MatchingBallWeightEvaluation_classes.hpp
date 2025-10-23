@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_MatchingBallWeightEvaluation.BP_MatchingBallWeightEvaluation_C
-// 0x0000 (0x0180 - 0x0180)
+// 0x0000 (0x00C0 - 0x00C0)
 class UBP_MatchingBallWeightEvaluation_C final : public UMatchingBoneAnimWeightEvaluation
 {
 public:

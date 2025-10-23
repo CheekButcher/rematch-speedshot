@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "Runtime_classes.hpp"
 #include "Engine_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "Runtime_classes.hpp"
 #include "SCCore_structs.hpp"
 
 
@@ -48,6 +48,7 @@ public:
 	void OnInterrupted_BD482CC64C7E2134304CD29E0335227E();
 	void OnStateEnded_378C080F4228A8E27ED6D6A559763A8B();
 	void OnStateInterrupted_378C080F4228A8E27ED6D6A559763A8B();
+	void StartStateTasks_378C080F4228A8E27ED6D6A559763A8B();
 
 public:
 	static class UClass* StaticClass()

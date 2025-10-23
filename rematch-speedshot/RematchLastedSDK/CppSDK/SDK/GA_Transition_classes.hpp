@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "Runtime_classes.hpp"
 #include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "Runtime_classes.hpp"
 
 
 namespace SDK
@@ -38,9 +38,10 @@ public:
 	void MasterOnNewTransitionFound(class UClass* SCTransitionDB, const struct FSCTransition& TRANSITION, const struct FVector_NetQuantize10& StartVelocity, bool bWasOrientedToMovement, const struct FVector_NetQuantizeNormal& WantedDir, uint8 PendingMoveUID);
 	void OnFinished_659EBC8C40BDF2615034D5B3AC81509F(ETransitionStopReason _eStopReason);
 	void OnFinished_BF56079A44D5334656618DB96DA0887D(ETransitionStopReason _eStopReason);
-	void OnTagsChanged(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount);
+	void OnTagsChangedOnClient(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount);
 	void PlayTransition(class UClass* InTransitionDB, const struct FSCTransition& InTransition, const struct FVector& InStartVelocity, bool bWasOrientedToMovement, const struct FVector& InWantedDir);
 	void ServerOnNewTransitionFound(class UClass* SCTransitionDB, const struct FSCTransition& TRANSITION, const struct FVector_NetQuantize10& StartVelocity, bool bWasOrientedToMovement, const struct FVector_NetQuantizeNormal& WantedDir, uint8 PendingMoveUID);
+	void ServerStopTransition(const struct FSCTransition& InTransition, class UClass* InTransitionDB, ETransitionStopReason _eStopReason);
 
 public:
 	static class UClass* StaticClass()

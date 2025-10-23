@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "UMG_structs.hpp"
-#include "Engine_structs.hpp"
-#include "GameplayTags_structs.hpp"
-#include "SOS_structs.hpp"
-#include "SCCore_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "SOS_structs.hpp"
+#include "Engine_structs.hpp"
+#include "SCCore_structs.hpp"
+#include "GameplayTags_structs.hpp"
 
 
 namespace SDK::Params
@@ -40,6 +40,16 @@ public:
 	bool                                          _bWithMouse;                                       // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_WBP_MenuPage_Home_C_BndEvt__WBP_MenuPage_Home_Btn_News_K2Node_ComponentBoundEvent_0_ButtonUserWidgetClickDelegate__DelegateSignature;
+
+// Function WBP_MenuPage_Home.WBP_MenuPage_Home_C.BndEvt__WBP_MenuPage_Home_WBP_Store_Item_AssociateBundle_99_K2Node_ComponentBoundEvent_1_ButtonUserWidgetClickDelegate__DelegateSignature
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_MenuPage_Home_C_BndEvt__WBP_MenuPage_Home_WBP_Store_Item_AssociateBundle_99_K2Node_ComponentBoundEvent_1_ButtonUserWidgetClickDelegate__DelegateSignature final
+{
+public:
+	class USCButtonUserWidget*                    _button;                                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	bool                                          _bWithMouse;                                       // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_MenuPage_Home_C_BndEvt__WBP_MenuPage_Home_WBP_Store_Item_AssociateBundle_99_K2Node_ComponentBoundEvent_1_ButtonUserWidgetClickDelegate__DelegateSignature;
 
 // Function WBP_MenuPage_Home.WBP_MenuPage_Home_C.BPE_OnActionPressed
 // 0x00A0 (0x00A0 - 0x0000)
@@ -74,65 +84,75 @@ public:
 DUMPER7_ASSERTS_WBP_MenuPage_Home_C_BPE_OnMenuTransitionOut;
 
 // Function WBP_MenuPage_Home.WBP_MenuPage_Home_C.ExecuteUbergraph_WBP_MenuPage_Home
-// 0x0210 (0x0210 - 0x0000)
+// 0x0240 (0x0240 - 0x0000)
 struct WBP_MenuPage_Home_C_ExecuteUbergraph_WBP_MenuPage_Home final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x0004(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0015(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_16[0x2];                                       // 0x0016(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ASCBasePlayerController*                CallFunc_BPF_GetPlayerController_ReturnValue;      // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class URuntimeSOSBindingsSubsystem*           CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0018(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class URuntimeWelcomeFlowSubsystem*           CallFunc_GetGameInstanceSubsystem_ReturnValue_1;   // 0x0020(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UModelProxy*                            CallFunc_BPF_GetServicesViewModelProxy_ReturnValue; // 0x0028(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UModelProxy*                            CallFunc_BPF_GetServicesViewModelProxy_ReturnValue; // 0x0020(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class URuntimeWelcomeFlowSubsystem*           CallFunc_GetGameInstanceSubsystem_ReturnValue_1;   // 0x0028(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	class UStoreProxy*                            K2Node_DynamicCast_AsStore_Proxy;                  // 0x0030(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class URuntimeSOSBindingsSubsystem*           CallFunc_GetGameInstanceSubsystem_ReturnValue_2;   // 0x0040(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue_3;   // 0x0048(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	class UModelProxy*                            CallFunc_BPF_GetServicesViewModelProxy_ReturnValue_1; // 0x0050(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	const class USCInputAction*                   K2Node_Event__action;                              // 0x0058(0x0008)(ConstParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FInputActionState                      K2Node_Event__listenerState;                       // 0x0060(0x0098)(ConstParm)
-	class UStoreProxy*                            K2Node_DynamicCast_AsStore_Proxy_1;                // 0x00F8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0100(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x0101(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_102[0x6];                                      // 0x0102(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetOwningPlayer_ReturnValue;              // 0x0108(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class ASCBasePlayerController*                K2Node_DynamicCast_AsSCBase_Player_Controller;     // 0x0110(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0118(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsVisible_ReturnValue;                    // 0x0119(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_11A[0x6];                                      // 0x011A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	const class URuntimeGameSettings*             CallFunc_BPF_GetRuntimeMainSettings_ReturnValue;   // 0x0120(0x0008)(ConstParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0128(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_129[0x7];                                      // 0x0129(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, class USCViewModel*>        Temp_name_Variable;                                // 0x0130(0x0050)(ConstParm)
-	EMenuTransitions                              K2Node_Event__eTransition_1;                       // 0x0180(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_181[0x7];                                      // 0x0181(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class USCMenuWidget>              K2Node_Event__ePrevMenu;                           // 0x0188(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	EWelcomeFlowStep                              Temp_byte_Variable_2;                              // 0x0190(0x0001)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_191[0x7];                                      // 0x0191(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class USCButtonUserWidget*                    K2Node_ComponentBoundEvent__button;                // 0x0198(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_ComponentBoundEvent__bWithMouse;            // 0x01A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1A1[0x7];                                      // 0x01A1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class URuntimeWelcomeFlowSubsystem*           CallFunc_GetGameInstanceSubsystem_ReturnValue_3;   // 0x01A8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class ASCBasePlayerController*                CallFunc_BPF_GetPlayerController_ReturnValue;      // 0x01B0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTag                           CallFunc_Map_Find_Value;                           // 0x01B8(0x0008)(NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x01C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1C1[0x3];                                      // 0x01C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTag                           CallFunc_BPF_ShowPopupByTemplate__outSelectedOptionTag; // 0x01C4(0x0008)(NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1CC[0x4];                                      // 0x01CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class USCInputAction*                         CallFunc_BPF_ShowPopupByTemplate__outSelectedAction; // 0x01D0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class URuntimeSaveSubsystem*                  CallFunc_GetLocalPlayerSubsystem_ReturnValue;      // 0x01D8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BPF_GetFirstLaunchPassed_ReturnValue;     // 0x01E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1E1[0x7];                                      // 0x01E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue_4;   // 0x01E8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x01F0(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0200(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	EMenuTransitions                              K2Node_Event__eTransition;                         // 0x0201(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_202[0x6];                                      // 0x0202(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class USCMenuWidget>              K2Node_Event__eNewMenu;                            // 0x0208(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UStoreProxy*                            K2Node_DynamicCast_AsStore_Proxy_1;                // 0x0060(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_69[0x7];                                       // 0x0069(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	const class USCInputAction*                   K2Node_Event__action;                              // 0x0070(0x0008)(ConstParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FInputActionState                      K2Node_Event__listenerState;                       // 0x0078(0x0098)(ConstParm)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0110(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue;      // 0x0111(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ObjectObject_ReturnValue_1;    // 0x0112(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_113[0x5];                                      // 0x0113(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetOwningPlayer_ReturnValue;              // 0x0118(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class ASCBasePlayerController*                K2Node_DynamicCast_AsSCBase_Player_Controller;     // 0x0120(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_2;                     // 0x0128(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsVisible_ReturnValue;                    // 0x0129(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_12A[0x6];                                      // 0x012A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	const class URuntimeGameSettings*             CallFunc_BPF_GetRuntimeMainSettings_ReturnValue;   // 0x0130(0x0008)(ConstParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	EMenuTransitions                              K2Node_Event__eTransition_1;                       // 0x0138(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_139[0x7];                                      // 0x0139(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class USCMenuWidget>              K2Node_Event__ePrevMenu;                           // 0x0140(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0148(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_149[0x7];                                      // 0x0149(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class USCButtonUserWidget*                    K2Node_ComponentBoundEvent__button_1;              // 0x0150(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ComponentBoundEvent__bWithMouse_1;          // 0x0158(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0159(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_15A[0x6];                                      // 0x015A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, class USCViewModel*>        Temp_name_Variable;                                // 0x0160(0x0050)(ConstParm)
+	class ASCBasePlayerController*                CallFunc_BPF_GetPlayerController_ReturnValue_1;    // 0x01B0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	EWelcomeFlowStep                              Temp_byte_Variable_2;                              // 0x01B8(0x0001)(ConstParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1B9[0x3];                                      // 0x01B9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate;              // 0x01BC(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	EMenuTransitions                              K2Node_Event__eTransition;                         // 0x01CC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1CD[0x3];                                      // 0x01CD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class USCMenuWidget>              K2Node_Event__eNewMenu;                            // 0x01D0(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	class URuntimeWelcomeFlowSubsystem*           CallFunc_GetGameInstanceSubsystem_ReturnValue_4;   // 0x01D8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void()>                             K2Node_CreateDelegate_OutputDelegate_1;            // 0x01E0(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTag                           CallFunc_Map_Find_Value;                           // 0x01F0(0x0008)(NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Map_Find_ReturnValue;                     // 0x01F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1F9[0x7];                                      // 0x01F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class URuntimeSaveSubsystem*                  CallFunc_GetLocalPlayerSubsystem_ReturnValue;      // 0x0200(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTag                           CallFunc_BPF_ShowPopupByTemplate__outSelectedOptionTag; // 0x0208(0x0008)(NoDestructor, HasGetValueTypeHash)
+	class USCInputAction*                         CallFunc_BPF_ShowPopupByTemplate__outSelectedAction; // 0x0210(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BPF_GetFirstLaunchPassed_ReturnValue;     // 0x0218(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_219[0x7];                                      // 0x0219(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue_5;   // 0x0220(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue_1; // 0x0228(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0229(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetStoreFeatureEnabled_IsStoreEnabled;    // 0x022A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_22B[0x5];                                      // 0x022B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class USCButtonUserWidget*                    K2Node_ComponentBoundEvent__button;                // 0x0230(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ComponentBoundEvent__bWithMouse;            // 0x0238(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_WBP_MenuPage_Home_C_ExecuteUbergraph_WBP_MenuPage_Home;
 

@@ -10,15 +10,173 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
+#include "UIBaseColors_structs.hpp"
 #include "Runtime_structs.hpp"
 #include "SlateCore_structs.hpp"
 #include "UMG_structs.hpp"
-#include "UIBaseColors_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params
 {
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.UpdateVoiceChannelMember
+// 0x0020 (0x0020 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_UpdateVoiceChannelMember final
+{
+public:
+	class UVoiceChannelMemberViewModel*           VoiceMemberVM;                                     // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UVoiceChannelMemberViewModel*           CallFunc_GetVoiceChannelMemberViewModelByUniqueID_ReturnValue; // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_UpdateVoiceChannelMember;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetVoiceChannelMemberViewModel
+// 0x0028 (0x0028 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_SetVoiceChannelMemberViewModel final
+{
+public:
+	class UVoiceChannelMemberViewModel*           viewModel;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UMVVMView*                              CallFunc_GetExtension_ReturnValue;                 // 0x0008(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	TScriptInterface<class INotifyFieldValueChanged> CallFunc_SetViewModel_ViewModel_CastInput;      // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	bool                                          CallFunc_SetViewModel_ReturnValue;                 // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetVoiceChannelMemberViewModel;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetSelectedStyle
+// 0x0188 (0x0188 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_SetSelectedStyle final
+{
+public:
+	bool                                          Selected;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable_1;                              // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable_2;                              // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_2;                              // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_3;                              // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default_1;                           // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FUIBaseColors                          CallFunc_GetUIColors_UI_BaseColors;                // 0x0018(0x0154)(HasGetValueTypeHash)
+	uint8                                         Pad_16C[0x4];                                      // 0x016C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue_1;              // 0x0170(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FLinearColor                           K2Node_Select_Default_2;                           // 0x0178(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetSelectedStyle;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetEmptyState
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_SetEmptyState final
+{
+public:
+	bool                                          IsEmpty_0;                                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Temp_int_Variable;                                 // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Variable_1;                               // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         K2Node_Select_Default;                             // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetEmptyState;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetBP_VM_CustomPartyMember
+// 0x0028 (0x0028 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_SetBP_VM_CustomPartyMember final
+{
+public:
+	class UBP_VM_CustomPartyMember_C*             viewModel;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UMVVMView*                              CallFunc_GetExtension_ReturnValue;                 // 0x0008(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	TScriptInterface<class INotifyFieldValueChanged> CallFunc_SetViewModel_ViewModel_CastInput;      // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	bool                                          CallFunc_SetViewModel_ReturnValue;                 // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetBP_VM_CustomPartyMember;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetAvatarFromItemId
+// 0x00E8 (0x00E8 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_SetAvatarFromItemId final
+{
+public:
+	class FString                                 SOSID;                                             // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	struct FPlayerProfileCategoryEnumHandler      Enum;                                              // 0x0010(0x0050)(Edit, BlueprintVisible, HasGetValueTypeHash)
+	class UPlayerProfileSubsystem*                CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0060(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsEmpty_ReturnValue;                      // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_MakeLiteralByte_ReturnValue;              // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x006A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_6B[0x5];                                       // 0x006B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UTexture2D>              CallFunc_BPF_GetTextureFromSosId_ReturnValue;      // 0x0070(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	struct FPlayerProfileCategoryEnumHandler      K2Node_MakeStruct_PlayerProfileCategoryEnumHandler; // 0x0098(0x0050)(HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetAvatarFromItemId;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.PreConstruct
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_PreConstruct final
+{
+public:
+	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_PreConstruct;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnVoiceChannelMembersChanged
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_OnVoiceChannelMembersChanged final
+{
+public:
+	TArray<class UVoiceChannelMemberViewModel*>   VoiceChannelMemberVM;                              // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnVoiceChannelMembersChanged;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnVoiceChannelChanged
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_OnVoiceChannelChanged final
+{
+public:
+	class UVoiceChannelViewModel*                 VoiceChannelVM;                                    // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnVoiceChannelChanged;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnSquadPlayerChanged
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_OnSquadPlayerChanged final
+{
+public:
+	class UBP_VM_CustomPartyMember_C*             CustomPartyMemberVM;                               // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnSquadPlayerChanged;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnMouseLeave
+// 0x0078 (0x0078 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_OnMouseLeave final
+{
+public:
+	struct FPointerEvent                          MouseEvent;                                        // 0x0000(0x0078)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnMouseLeave;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnMouseEnter
+// 0x00B0 (0x00B0 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_OnMouseEnter final
+{
+public:
+	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0078)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnMouseEnter;
+
+// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.FocusButton
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_SocialPanel_PartyMemberButton_C_FocusButton final
+{
+public:
+	bool                                          ButtonFocused;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_FocusButton;
 
 // Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.ExecuteUbergraph_WBP_SocialPanel_PartyMemberButton
 // 0x01B0 (0x01B0 - 0x0000)
@@ -48,164 +206,6 @@ public:
 	struct FLinearColor                           K2Node_Select_Default_2;                           // 0x019C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_ExecuteUbergraph_WBP_SocialPanel_PartyMemberButton;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.FocusButton
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_FocusButton final
-{
-public:
-	bool                                          ButtonFocused;                                     // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_FocusButton;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnMouseEnter
-// 0x00B0 (0x00B0 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_OnMouseEnter final
-{
-public:
-	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0078)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnMouseEnter;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnMouseLeave
-// 0x0078 (0x0078 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_OnMouseLeave final
-{
-public:
-	struct FPointerEvent                          MouseEvent;                                        // 0x0000(0x0078)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnMouseLeave;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnSquadPlayerChanged
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_OnSquadPlayerChanged final
-{
-public:
-	class UBP_VM_CustomPartyMember_C*             CustomPartyMemberVM;                               // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnSquadPlayerChanged;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnVoiceChannelChanged
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_OnVoiceChannelChanged final
-{
-public:
-	class UVoiceChannelViewModel*                 VoiceChannelVM;                                    // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnVoiceChannelChanged;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.OnVoiceChannelMembersChanged
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_OnVoiceChannelMembersChanged final
-{
-public:
-	TArray<class UVoiceChannelMemberViewModel*>   VoiceChannelMemberVM;                              // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_OnVoiceChannelMembersChanged;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.PreConstruct
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_PreConstruct final
-{
-public:
-	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_PreConstruct;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetAvatarFromItemId
-// 0x00E8 (0x00E8 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_SetAvatarFromItemId final
-{
-public:
-	class FString                                 SOSID;                                             // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-	struct FPlayerProfileCategoryEnumHandler      Enum;                                              // 0x0010(0x0050)(Edit, BlueprintVisible, HasGetValueTypeHash)
-	class UPlayerProfileSubsystem*                CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0060(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsEmpty_ReturnValue;                      // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         CallFunc_MakeLiteralByte_ReturnValue;              // 0x0069(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x006A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_6B[0x5];                                       // 0x006B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UTexture2D>              CallFunc_BPF_GetTextureFromSosId_ReturnValue;      // 0x0070(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	struct FPlayerProfileCategoryEnumHandler      K2Node_MakeStruct_PlayerProfileCategoryEnumHandler; // 0x0098(0x0050)(HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetAvatarFromItemId;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetBP_VM_CustomPartyMember
-// 0x0028 (0x0028 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_SetBP_VM_CustomPartyMember final
-{
-public:
-	class UBP_VM_CustomPartyMember_C*             viewModel;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UMVVMView*                              CallFunc_GetExtension_ReturnValue;                 // 0x0008(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	TScriptInterface<class INotifyFieldValueChanged> CallFunc_SetViewModel_ViewModel_CastInput;      // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	bool                                          CallFunc_SetViewModel_ReturnValue;                 // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetBP_VM_CustomPartyMember;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetEmptyState
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_SetEmptyState final
-{
-public:
-	bool                                          IsEmpty_0;                                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         Temp_int_Variable;                                 // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         Temp_int_Variable_1;                               // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         K2Node_Select_Default;                             // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetEmptyState;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetSelectedStyle
-// 0x0188 (0x0188 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_SetSelectedStyle final
-{
-public:
-	bool                                          Selected;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable_1;                              // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable_2;                              // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_2;                              // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_3;                              // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default_1;                           // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue;                // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FUIBaseColors                          CallFunc_GetUIColors_UI_BaseColors;                // 0x0018(0x0154)(HasGetValueTypeHash)
-	uint8                                         Pad_16C[0x4];                                      // 0x016C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUMGSequencePlayer*                     CallFunc_PlayAnimation_ReturnValue_1;              // 0x0170(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FLinearColor                           K2Node_Select_Default_2;                           // 0x0178(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetSelectedStyle;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.SetVoiceChannelMemberViewModel
-// 0x0028 (0x0028 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_SetVoiceChannelMemberViewModel final
-{
-public:
-	class UVoiceChannelMemberViewModel*           viewModel;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UMVVMView*                              CallFunc_GetExtension_ReturnValue;                 // 0x0008(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	TScriptInterface<class INotifyFieldValueChanged> CallFunc_SetViewModel_ViewModel_CastInput;      // 0x0010(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	bool                                          CallFunc_SetViewModel_ReturnValue;                 // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_SetVoiceChannelMemberViewModel;
-
-// Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.UpdateVoiceChannelMember
-// 0x0020 (0x0020 - 0x0000)
-struct WBP_SocialPanel_PartyMemberButton_C_UpdateVoiceChannelMember final
-{
-public:
-	class UVoiceChannelMemberViewModel*           VoiceMemberVM;                                     // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class UVoiceChannelMemberViewModel*           CallFunc_GetVoiceChannelMemberViewModelByUniqueID_ReturnValue; // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_PartyMemberButton_C_UpdateVoiceChannelMember;
 
 // Function WBP_SocialPanel_PartyMemberButton.WBP_SocialPanel_PartyMemberButton_C.__49f0ca95-4783-e875-621a-68a9fb10336c_SourceToDest
 // 0x0004 (0x0004 - 0x0000)

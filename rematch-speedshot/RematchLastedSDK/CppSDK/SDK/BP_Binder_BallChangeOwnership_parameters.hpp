@@ -23,7 +23,8 @@ struct BP_Binder_BallChangeOwnership_C_PrepareData final
 public:
 	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          _bIsSamePreviousOwner;                             // 0x0009(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	class ARuntimePlayerState*                    Instigator;                                        // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, NoDestructor, HasGetValueTypeHash)
 	class ARuntimePlayerState*                    CallFunc_BPF_GetNewAndPreviousInteracters__outNewInteracter; // 0x0018(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	class ARuntimePlayerState*                    CallFunc_BPF_GetNewAndPreviousInteracters__outPreviousInteracter; // 0x0020(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)

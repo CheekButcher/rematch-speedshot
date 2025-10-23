@@ -17,6 +17,26 @@
 namespace SDK
 {
 
+// Function TrainingCenter_Menu_SFX.TrainingCenter_Menu_SFX_C.ReceiveEndPlay
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// EEndPlayReason                          EndPlayReason                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ATrainingCenter_Menu_SFX_C::ReceiveEndPlay(EEndPlayReason EndPlayReason)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("TrainingCenter_Menu_SFX_C", "ReceiveEndPlay");
+
+	Params::TrainingCenter_Menu_SFX_C_ReceiveEndPlay Parms{};
+
+	Parms.EndPlayReason = EndPlayReason;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function TrainingCenter_Menu_SFX.TrainingCenter_Menu_SFX_C.ReceiveBeginPlay
 // (Event, Protected, BlueprintEvent)
 
@@ -46,26 +66,6 @@ void ATrainingCenter_Menu_SFX_C::ExecuteUbergraph_TrainingCenter_Menu_SFX(int32 
 	Params::TrainingCenter_Menu_SFX_C_ExecuteUbergraph_TrainingCenter_Menu_SFX Parms{};
 
 	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function TrainingCenter_Menu_SFX.TrainingCenter_Menu_SFX_C.ReceiveEndPlay
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// EEndPlayReason                          EndPlayReason                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ATrainingCenter_Menu_SFX_C::ReceiveEndPlay(EEndPlayReason EndPlayReason)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("TrainingCenter_Menu_SFX_C", "ReceiveEndPlay");
-
-	Params::TrainingCenter_Menu_SFX_C_ReceiveEndPlay Parms{};
-
-	Parms.EndPlayReason = EndPlayReason;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

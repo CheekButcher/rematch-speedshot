@@ -583,6 +583,20 @@ void UGA_VolleyTap_C::OverrideAimingComputationForKeyBoard(int32 GameOption)
 }
 
 
+// Function GA_VolleyTap.GA_VolleyTap_C.StartStateTasks_61AB436342214D82C81BF4B35DABFA8F
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_VolleyTap_C::StartStateTasks_61AB436342214D82C81BF4B35DABFA8F()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_VolleyTap_C", "StartStateTasks_61AB436342214D82C81BF4B35DABFA8F");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function GA_VolleyTap.GA_VolleyTap_C.GetPlayerContext
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:

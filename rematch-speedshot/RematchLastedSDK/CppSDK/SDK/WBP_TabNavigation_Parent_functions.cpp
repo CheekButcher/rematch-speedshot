@@ -17,234 +17,37 @@
 namespace SDK
 {
 
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.BPE_OnMenuTransitionIn
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// EMenuTransitions                        _eTransition                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// TSubclassOf<class USCMenuWidget>        _ePrevMenu                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_Parent_C::BPE_OnMenuTransitionIn(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _ePrevMenu)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "BPE_OnMenuTransitionIn");
-
-	Params::WBP_TabNavigation_Parent_C_BPE_OnMenuTransitionIn Parms{};
-
-	Parms._eTransition = _eTransition;
-	Parms._ePrevMenu = _ePrevMenu;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.ExecuteUbergraph_WBP_TabNavigation_Parent
-// (Final, UbergraphFunction, HasDefaults)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_Parent_C::ExecuteUbergraph_WBP_TabNavigation_Parent(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "ExecuteUbergraph_WBP_TabNavigation_Parent");
-
-	Params::WBP_TabNavigation_Parent_C_ExecuteUbergraph_WBP_TabNavigation_Parent Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.GetCurrentTransitionName
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class FName*                            Output_Get                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_Parent_C::GetCurrentTransitionName(class FName* Output_Get)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "GetCurrentTransitionName");
-
-	Params::WBP_TabNavigation_Parent_C_GetCurrentTransitionName Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Output_Get != nullptr)
-		*Output_Get = Parms.Output_Get;
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.GetNextAvailableIndex
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-int32 UWBP_TabNavigation_Parent_C::GetNextAvailableIndex()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "GetNextAvailableIndex");
-
-	Params::WBP_TabNavigation_Parent_C_GetNextAvailableIndex Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.GetPreviousAvailableIndex
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-int32 UWBP_TabNavigation_Parent_C::GetPreviousAvailableIndex()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "GetPreviousAvailableIndex");
-
-	Params::WBP_TabNavigation_Parent_C_GetPreviousAvailableIndex Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.HighlightOnlyCurrentTab
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.UpdateTabStates
 // (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    HighlightCurrent                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_Parent_C::HighlightOnlyCurrentTab(bool HighlightCurrent)
+void UWBP_TabNavigation_Parent_C::UpdateTabStates()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "HighlightOnlyCurrentTab");
-
-	Params::WBP_TabNavigation_Parent_C_HighlightOnlyCurrentTab Parms{};
-
-	Parms.HighlightCurrent = HighlightCurrent;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.OnNext
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void UWBP_TabNavigation_Parent_C::OnNext()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "OnNext");
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "UpdateTabStates");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.OnPrevious
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void UWBP_TabNavigation_Parent_C::OnPrevious()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "OnPrevious");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.OnTabClicked
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.UpdateTabsAvailabilityWithCurrentFlowStep
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UWBP_TabNavigation_Tab_C*         TabWidget                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+// const struct FGameplayTag&              _previous                                              (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+// const struct FGameplayTag&              _current                                               (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_Parent_C::OnTabClicked(class UWBP_TabNavigation_Tab_C* TabWidget)
+void UWBP_TabNavigation_Parent_C::UpdateTabsAvailabilityWithCurrentFlowStep(const struct FGameplayTag& _previous, const struct FGameplayTag& _current)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "OnTabClicked");
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "UpdateTabsAvailabilityWithCurrentFlowStep");
 
-	Params::WBP_TabNavigation_Parent_C_OnTabClicked Parms{};
+	Params::WBP_TabNavigation_Parent_C_UpdateTabsAvailabilityWithCurrentFlowStep Parms{};
 
-	Parms.TabWidget = TabWidget;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.PreConstruct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-// Parameters:
-// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_Parent_C::PreConstruct(bool IsDesignTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "PreConstruct");
-
-	Params::WBP_TabNavigation_Parent_C_PreConstruct Parms{};
-
-	Parms.IsDesignTime = IsDesignTime;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.RecursiveCreateTabListFromNamedSlot
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UPanelWidget*                     WidgetPanel                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_Parent_C::RecursiveCreateTabListFromNamedSlot(class UPanelWidget* WidgetPanel)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "RecursiveCreateTabListFromNamedSlot");
-
-	Params::WBP_TabNavigation_Parent_C_RecursiveCreateTabListFromNamedSlot Parms{};
-
-	Parms.WidgetPanel = WidgetPanel;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.SetTabsAvailability
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    Available                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    HideHeader                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_Parent_C::SetTabsAvailability(bool Available, bool HideHeader)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "SetTabsAvailability");
-
-	Params::WBP_TabNavigation_Parent_C_SetTabsAvailability Parms{};
-
-	Parms.Available = Available;
-	Parms.HideHeader = HideHeader;
+	Parms._previous = std::move(_previous);
+	Parms._current = std::move(_current);
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -274,63 +77,260 @@ void UWBP_TabNavigation_Parent_C::UpdateCurrentTabFromTransitionName(const struc
 }
 
 
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.UpdateTabsAvailabilityWithCurrentFlowStep
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.SetTabsAvailability
+// (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// const struct FGameplayTag&              _previous                                              (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
-// const struct FGameplayTag&              _current                                               (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+// bool                                    Available                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    HideHeader                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_Parent_C::UpdateTabsAvailabilityWithCurrentFlowStep(const struct FGameplayTag& _previous, const struct FGameplayTag& _current)
+void UWBP_TabNavigation_Parent_C::SetTabsAvailability(bool Available, bool HideHeader)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "UpdateTabsAvailabilityWithCurrentFlowStep");
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "SetTabsAvailability");
 
-	Params::WBP_TabNavigation_Parent_C_UpdateTabsAvailabilityWithCurrentFlowStep Parms{};
+	Params::WBP_TabNavigation_Parent_C_SetTabsAvailability Parms{};
 
-	Parms._previous = std::move(_previous);
-	Parms._current = std::move(_current);
+	Parms.Available = Available;
+	Parms.HideHeader = HideHeader;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.UpdateTabStates
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.RecursiveCreateTabListFromNamedSlot
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UPanelWidget*                     WidgetPanel                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_Parent_C::UpdateTabStates()
+void UWBP_TabNavigation_Parent_C::RecursiveCreateTabListFromNamedSlot(class UPanelWidget* WidgetPanel)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "UpdateTabStates");
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "RecursiveCreateTabListFromNamedSlot");
+
+	Params::WBP_TabNavigation_Parent_C_RecursiveCreateTabListFromNamedSlot Parms{};
+
+	Parms.WidgetPanel = WidgetPanel;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.PreConstruct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Parameters:
+// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_Parent_C::PreConstruct(bool IsDesignTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "PreConstruct");
+
+	Params::WBP_TabNavigation_Parent_C_PreConstruct Parms{};
+
+	Parms.IsDesignTime = IsDesignTime;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.OnTabClicked
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UWBP_TabNavigation_Tab_C*         TabWidget                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_Parent_C::OnTabClicked(class UWBP_TabNavigation_Tab_C* TabWidget)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "OnTabClicked");
+
+	Params::WBP_TabNavigation_Parent_C_OnTabClicked Parms{};
+
+	Parms.TabWidget = TabWidget;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.OnPrevious
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UWBP_TabNavigation_Parent_C::OnPrevious()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "OnPrevious");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
 
 
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.GetTransitionNameAtIndex
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// int32                                   Index_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class FName*                            TRANSITION                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.OnNext
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void UWBP_TabNavigation_Parent_C::GetTransitionNameAtIndex(int32 Index_0, class FName* TRANSITION) const
+void UWBP_TabNavigation_Parent_C::OnNext()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "GetTransitionNameAtIndex");
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "OnNext");
 
-	Params::WBP_TabNavigation_Parent_C_GetTransitionNameAtIndex Parms{};
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.HighlightOnlyCurrentTab
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    HighlightCurrent                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_Parent_C::HighlightOnlyCurrentTab(bool HighlightCurrent)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "HighlightOnlyCurrentTab");
+
+	Params::WBP_TabNavigation_Parent_C_HighlightOnlyCurrentTab Parms{};
+
+	Parms.HighlightCurrent = HighlightCurrent;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.GetPreviousAvailableIndex
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+int32 UWBP_TabNavigation_Parent_C::GetPreviousAvailableIndex()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "GetPreviousAvailableIndex");
+
+	Params::WBP_TabNavigation_Parent_C_GetPreviousAvailableIndex Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.GetNextAvailableIndex
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+int32 UWBP_TabNavigation_Parent_C::GetNextAvailableIndex()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "GetNextAvailableIndex");
+
+	Params::WBP_TabNavigation_Parent_C_GetNextAvailableIndex Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.GetCurrentTransitionName
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// class FName*                            Output_Get                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_Parent_C::GetCurrentTransitionName(class FName* Output_Get)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "GetCurrentTransitionName");
+
+	Params::WBP_TabNavigation_Parent_C_GetCurrentTransitionName Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Output_Get != nullptr)
+		*Output_Get = Parms.Output_Get;
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.ExecuteUbergraph_WBP_TabNavigation_Parent
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_Parent_C::ExecuteUbergraph_WBP_TabNavigation_Parent(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "ExecuteUbergraph_WBP_TabNavigation_Parent");
+
+	Params::WBP_TabNavigation_Parent_C_ExecuteUbergraph_WBP_TabNavigation_Parent Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.BPE_OnMenuTransitionIn
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// EMenuTransitions                        _eTransition                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// TSubclassOf<class USCMenuWidget>        _ePrevMenu                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_Parent_C::BPE_OnMenuTransitionIn(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _ePrevMenu)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "BPE_OnMenuTransitionIn");
+
+	Params::WBP_TabNavigation_Parent_C_BPE_OnMenuTransitionIn Parms{};
+
+	Parms._eTransition = _eTransition;
+	Parms._ePrevMenu = _ePrevMenu;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.IsTabIndexValid
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// int32                                   Index_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool*                                   bValid                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_Parent_C::IsTabIndexValid(int32 Index_0, bool* bValid) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "IsTabIndexValid");
+
+	Params::WBP_TabNavigation_Parent_C_IsTabIndexValid Parms{};
 
 	Parms.Index_0 = Index_0;
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (TRANSITION != nullptr)
-		*TRANSITION = Parms.TRANSITION;
+	if (bValid != nullptr)
+		*bValid = Parms.bValid;
 }
 
 
@@ -358,27 +358,27 @@ void UWBP_TabNavigation_Parent_C::GetTransitionNameIndex(class FName TRANSITION,
 }
 
 
-// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.IsTabIndexValid
+// Function WBP_TabNavigation_Parent.WBP_TabNavigation_Parent_C.GetTransitionNameAtIndex
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:
 // int32                                   Index_0                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool*                                   bValid                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FName*                            TRANSITION                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_Parent_C::IsTabIndexValid(int32 Index_0, bool* bValid) const
+void UWBP_TabNavigation_Parent_C::GetTransitionNameAtIndex(int32 Index_0, class FName* TRANSITION) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "IsTabIndexValid");
+		Func = Class->GetFunction("WBP_TabNavigation_Parent_C", "GetTransitionNameAtIndex");
 
-	Params::WBP_TabNavigation_Parent_C_IsTabIndexValid Parms{};
+	Params::WBP_TabNavigation_Parent_C_GetTransitionNameAtIndex Parms{};
 
 	Parms.Index_0 = Index_0;
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (bValid != nullptr)
-		*bValid = Parms.bValid;
+	if (TRANSITION != nullptr)
+		*TRANSITION = Parms.TRANSITION;
 }
 
 }

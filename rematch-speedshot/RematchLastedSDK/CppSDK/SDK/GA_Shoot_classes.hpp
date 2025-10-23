@@ -11,57 +11,57 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "GameplayTags_structs.hpp"
-#include "GameplayAbilities_structs.hpp"
-#include "SCCore_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "GameplayAbilities_structs.hpp"
+#include "GameplayTags_structs.hpp"
 #include "GA_BaseShoot_classes.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass GA_Shoot.GA_Shoot_C
-// 0x0180 (0x0F30 - 0x0DB0)
+// 0x0170 (0x0F30 - 0x0DC0)
 class UGA_Shoot_C : public UGA_BaseShoot_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame_GA_Shoot_C;                         // 0x0DB0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	struct FGameplayTagContainer                  CameraShootGameplayTag;                            // 0x0DB8(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TArray<class UClass*>                         Status;                                            // 0x0DD8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class UClass*                                 CameraShake;                                       // 0x0DE8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class USCInputAction*                         IAMagnus;                                          // 0x0DF0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	TSubclassOf<class UAnimSequencePickerSlotContainer> HighPicker;                                  // 0x0DF8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	class FName                                   AnimSlot;                                          // 0x0E00(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
-	TSubclassOf<class UAnimSequencePickerSlotContainer> LowPicker;                                   // 0x0E08(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	struct FSCNetworkSyncData                     SCNetworkSyncData;                                 // 0x0E10(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class ABall*                                  Ball;                                              // 0x0E20(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FRTInputActionsForNetworkSyncShoot     Input_Actions_for_Network_Sync_Shoot;              // 0x0E28(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor)
-	TSubclassOf<class UAnimSequencePickerSlotContainer> BuildUpPicker;                               // 0x0E40(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	float                                         Min_Time_Before_Sync;                              // 0x0E48(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_E4C[0x4];                                      // 0x0E4C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAbilityTask_SCPlaySlotMontageAndWait*  BuildUpTask;                                       // 0x0E50(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayAbilityTargetDataHandle       TargetDatasToPickAnim;                             // 0x0E58(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TSubclassOf<class UAnimSequencePickerSlotContainer> VXFakePicker;                                // 0x0E80(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	struct FGameplayTagContainer                  FakeShootGameplayTag;                              // 0x0E88(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TSubclassOf<class UAnimSequencePickerSlotContainer> V0FakeShoot;                                 // 0x0EA8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	bool                                          IsNotMoving;                                       // 0x0EB0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_EB1[0x7];                                      // 0x0EB1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FRTOptionalInputToSyncEarlier>  FakeInputToSyncEarlier;                            // 0x0EB8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	double                                        MediumShootThreashold;                             // 0x0EC8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsInLockMove;                                      // 0x0ED0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_ED1[0x7];                                      // 0x0ED1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UBasicMontagePlayerConfiguration*       Override_BuildUp_Configuration;                    // 0x0ED8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class UBasicMontagePlayerConfiguration*       Override_Final_Configuration;                      // 0x0EE0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayAbilityTargetDataHandle       OverrideComputation;                               // 0x0EE8(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class UClass*                                 MKDirectionComputation;                            // 0x0F10(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 MKRotationForceComputation;                        // 0x0F18(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	bool                                          LockCameraShoot;                                   // 0x0F20(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_DB1[0x7];                                      // 0x0DB1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPointerToUberGraphFrame               UberGraphFrame_GA_Shoot_C;                         // 0x0DB8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	struct FGameplayTagContainer                  CameraShootGameplayTag;                            // 0x0DC0(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TArray<class UClass*>                         Status;                                            // 0x0DE0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	class UClass*                                 CameraShake;                                       // 0x0DF0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class USCInputAction*                         IAMagnus;                                          // 0x0DF8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	TSubclassOf<class UAnimSequencePickerSlotContainer> HighPicker;                                  // 0x0E00(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	class FName                                   AnimSlot;                                          // 0x0E08(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
+	TSubclassOf<class UAnimSequencePickerSlotContainer> LowPicker;                                   // 0x0E10(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	struct FSCNetworkSyncData                     SCNetworkSyncData;                                 // 0x0E18(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	class ABall*                                  Ball;                                              // 0x0E28(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FRTInputActionsForNetworkSyncShoot     Input_Actions_for_Network_Sync_Shoot;              // 0x0E30(0x0018)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor)
+	TSubclassOf<class UAnimSequencePickerSlotContainer> BuildUpPicker;                               // 0x0E48(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	float                                         Min_Time_Before_Sync;                              // 0x0E50(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_E54[0x4];                                      // 0x0E54(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAbilityTask_SCPlaySlotMontageAndWait*  BuildUpTask;                                       // 0x0E58(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayAbilityTargetDataHandle       TargetDatasToPickAnim;                             // 0x0E60(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TSubclassOf<class UAnimSequencePickerSlotContainer> VXFakePicker;                                // 0x0E88(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	struct FGameplayTagContainer                  FakeShootGameplayTag;                              // 0x0E90(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TSubclassOf<class UAnimSequencePickerSlotContainer> V0FakeShoot;                                 // 0x0EB0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	bool                                          IsNotMoving;                                       // 0x0EB8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_EB9[0x7];                                      // 0x0EB9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FRTOptionalInputToSyncEarlier>  FakeInputToSyncEarlier;                            // 0x0EC0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	double                                        MediumShootThreashold;                             // 0x0ED0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsInLockMove;                                      // 0x0ED8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_ED9[0x7];                                      // 0x0ED9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UBasicMontagePlayerConfiguration*       Override_BuildUp_Configuration;                    // 0x0EE0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class UBasicMontagePlayerConfiguration*       Override_Final_Configuration;                      // 0x0EE8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayAbilityTargetDataHandle       OverrideComputation;                               // 0x0EF0(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance)
+	class UClass*                                 MKDirectionComputation;                            // 0x0F18(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 MKRotationForceComputation;                        // 0x0F20(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void BPE_BuildPayload();
 	void ExecuteUbergraph_GA_Shoot(int32 EntryPoint);
-	void InitOverrideComputationForKeyBoard(bool IsKeyBoardController);
+	void InitOverrideComputationForKeyBoard(bool IsKeyBoardController, int32 LockGameOption);
 	void InitTargetDatasAndConfiguration();
 	void K2_ActivateAbilityFromEvent(const struct FGameplayEventData& EventData);
 	void K2_OnEndAbility(bool bWasCancelled);
@@ -95,7 +95,6 @@ public:
 	void OnInterrupted_B4A8C37944A1E2CAB7FA8494732484D3();
 	void OnSync_2AA78B3F4B3D61AEE19D01A27D33DB17(const struct FGameplayAbilityTargetDataHandle& Data);
 	void OnTimeOut_2AA78B3F4B3D61AEE19D01A27D33DB17(const struct FGameplayAbilityTargetDataHandle& Data);
-	void OverrideLockShoot(int32 GameOption, bool IsKeyboard);
 	void UpdateShootParamsTags(const struct FShootParams& in_ShootParams, struct FShootParams* out_ShootParams);
 	void UpdateShootPrep(const struct FGameplayAbilityTargetDataHandle& _context);
 

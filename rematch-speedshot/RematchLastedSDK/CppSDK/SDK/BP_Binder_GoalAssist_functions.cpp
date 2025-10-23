@@ -103,9 +103,10 @@ void UBP_Binder_GoalAssist_C::BPE_OnIsActiveChanged(bool _IsActive)
 // class UBallPlayersInteractionComponent* BallPlayersInteraction                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 // const struct FShootParams&              ShootParams                                            (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 // EBallInteractionType                    _eBallInteractionType                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    _bIsSamePreviousOwner                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-bool UBP_Binder_GoalAssist_C::Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType)
+bool UBP_Binder_GoalAssist_C::Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner)
 {
 	static class UFunction* Func = nullptr;
 
@@ -117,6 +118,7 @@ bool UBP_Binder_GoalAssist_C::Can_Trigger(class UBallPlayersInteractionComponent
 	Parms.BallPlayersInteraction = BallPlayersInteraction;
 	Parms.ShootParams = std::move(ShootParams);
 	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
 
 	UObject::ProcessEvent(Func, &Parms);
 

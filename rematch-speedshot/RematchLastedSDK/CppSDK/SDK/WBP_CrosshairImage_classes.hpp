@@ -19,7 +19,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WBP_CrosshairImage.WBP_CrosshairImage_C
-// 0x0058 (0x03E0 - 0x0388)
+// 0x0060 (0x03E8 - 0x0388)
 class UWBP_CrosshairImage_C final : public UUserWidget
 {
 public:
@@ -30,9 +30,10 @@ public:
 	class UWidgetAnimation*                       DefenseInOut;                                      // 0x03A8(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, RepSkip, NoDestructor, HasGetValueTypeHash)
 	class UImage*                                 CrosshairImage;                                    // 0x03B0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UMaterialInstanceDynamic*               CrosshairMaterial;                                 // 0x03B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	double                                        CurrentScale;                                      // 0x03C0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FLinearColor>                   AvailableColors;                                   // 0x03C8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	double                                        BlackColorIndex;                                   // 0x03D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	TArray<struct FLinearColor>                   AvailableColors;                                   // 0x03C0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	double                                        BlackColorIndex;                                   // 0x03D0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        MinimumValueCrosshairSize;                         // 0x03D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        MaximumValueCrosshairSize;                         // 0x03E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void Construct();

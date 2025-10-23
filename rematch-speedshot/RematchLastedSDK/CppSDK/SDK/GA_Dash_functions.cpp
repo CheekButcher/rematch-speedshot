@@ -348,5 +348,19 @@ void UGA_Dash_C::OnStateInterrupted_378C080F4228A8E27ED6D6A559763A8B()
 	UObject::ProcessEvent(Func, nullptr);
 }
 
+
+// Function GA_Dash.GA_Dash_C.StartStateTasks_378C080F4228A8E27ED6D6A559763A8B
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_Dash_C::StartStateTasks_378C080F4228A8E27ED6D6A559763A8B()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_Dash_C", "StartStateTasks_378C080F4228A8E27ED6D6A559763A8B");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
 }
 

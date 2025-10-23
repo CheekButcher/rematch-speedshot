@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "SCCore_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "SCCore_structs.hpp"
 #include "AIModule_structs.hpp"
 #include "AIModule_classes.hpp"
 #include "EAbilityShootType_structs.hpp"

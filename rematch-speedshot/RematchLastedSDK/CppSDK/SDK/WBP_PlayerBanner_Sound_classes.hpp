@@ -36,11 +36,11 @@ public:
 	class UBP_VM_CustomVoiceChat_C*               BP_VM_CustomVoiceChat;                             // 0x03D0(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void Construct();
-	void ExecuteUbergraph_WBP_PlayerBanner_Sound(int32 EntryPoint);
-	void SetIsDeafen(bool IsDeafen);
-	void SetIsMuted(bool IsMuted_0);
 	void SetIsTalking(bool isTalking_0);
+	void SetIsMuted(bool IsMuted_0);
+	void SetIsDeafen(bool IsDeafen);
+	void ExecuteUbergraph_WBP_PlayerBanner_Sound(int32 EntryPoint);
+	void Construct();
 
 	bool __29d241ff_429d_91fe_10a3_4785c2788624_SourceToDest() const;
 

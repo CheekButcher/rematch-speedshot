@@ -22,7 +22,7 @@ namespace SDK
 class UBP_WidgetFunctionLibrary_C final : public UBlueprintFunctionLibrary
 {
 public:
-	static void CreatePassZoneByTarget(class APlayerController* InPlayer, class ACharacter* inTarget, const struct FVector& InVCrosshairPosition, const struct FVector& InVCrosshairDirection, double InHeight, double InWidth, bool bShowDebug, class UObject* __WorldContext, struct FVector* OutVCenter, struct FVector* OutVUpAxis, struct FVector* OutVRightAxis);
+	static void CreatePassZoneByTarget(class APlayerController* InPlayer, class ACharacter* InTarget, const struct FVector& InVCrosshairPosition, const struct FVector& InVCrosshairDirection, double InHeight, double InWidth, bool bShowDebug, class UObject* __WorldContext, struct FVector* OutVCenter, struct FVector* OutVUpAxis, struct FVector* OutVRightAxis);
 	static void GetBundleDataAssetFromFriendlyName(class FName RowName, class UObject* __WorldContext, TSoftObjectPtr<class UBP_BundleDataAsset_C>* Out_Row);
 	static struct FStruct_QualityTier GetQualityTierDataFromEnum(ESOSQualityTier QualityTier, class UObject* __WorldContext);
 	static void Project_World_Location_in_Viewport(class APlayerController* PlayerController, const struct FVector& WorldLocation, double CircleSize, class UObject* __WorldContext, struct FUIProjectInViewportResult* OutProjectionResult);

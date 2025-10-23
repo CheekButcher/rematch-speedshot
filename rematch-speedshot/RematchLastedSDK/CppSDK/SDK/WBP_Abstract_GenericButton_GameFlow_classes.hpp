@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "SCCore_structs.hpp"
 #include "WBP_Abstract_GenericButton_classes.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK

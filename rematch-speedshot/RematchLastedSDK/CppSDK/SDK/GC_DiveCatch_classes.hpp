@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ECustoVFXType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ECustoExtraAssetTypes_structs.hpp"
-#include "SCCore_classes.hpp"
 #include "AkAudio_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ECustoVFXType_structs.hpp"
+#include "SCCore_classes.hpp"
 
 
 namespace SDK

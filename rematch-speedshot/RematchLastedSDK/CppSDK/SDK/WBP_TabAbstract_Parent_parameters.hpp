@@ -14,15 +14,14 @@
 namespace SDK::Params
 {
 
-// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.ExecuteUbergraph_WBP_TabAbstract_Parent
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_TabAbstract_Parent_C_ExecuteUbergraph_WBP_TabAbstract_Parent final
+// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.PreConstruct
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_TabAbstract_Parent_C_PreConstruct final
 {
 public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabAbstract_Parent_C_ExecuteUbergraph_WBP_TabAbstract_Parent;
+DUMPER7_ASSERTS_WBP_TabAbstract_Parent_C_PreConstruct;
 
 // Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.FocusButton
 // 0x0002 (0x0002 - 0x0000)
@@ -34,14 +33,15 @@ public:
 };
 DUMPER7_ASSERTS_WBP_TabAbstract_Parent_C_FocusButton;
 
-// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.PreConstruct
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_TabAbstract_Parent_C_PreConstruct final
+// Function WBP_TabAbstract_Parent.WBP_TabAbstract_Parent_C.ExecuteUbergraph_WBP_TabAbstract_Parent
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_TabAbstract_Parent_C_ExecuteUbergraph_WBP_TabAbstract_Parent final
 {
 public:
-	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabAbstract_Parent_C_PreConstruct;
+DUMPER7_ASSERTS_WBP_TabAbstract_Parent_C_ExecuteUbergraph_WBP_TabAbstract_Parent;
 
 }
 

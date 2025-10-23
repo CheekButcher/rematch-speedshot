@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "EVFXFootSide_structs.hpp"
 #include "Engine_structs.hpp"
+#include "EVFXFootSide_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 

@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "CoreUObject_structs.hpp"
 #include "Slate_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "InputCore_structs.hpp"
 #include "Engine_structs.hpp"
 
@@ -208,17 +208,17 @@ public:
 };
 DUMPER7_ASSERTS_FInputActionValue;
 
-// ScriptStruct EnhancedInput.PlayerMappableKeyOptions
-// 0x0030 (0x0030 - 0x0000)
-struct FPlayerMappableKeyOptions final
+// ScriptStruct EnhancedInput.MappingQueryIssue
+// 0x0018 (0x0018 - 0x0000)
+struct FMappingQueryIssue final
 {
 public:
-	class UObject*                                MetaData;                                          // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   Name;                                              // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FText                                   DisplayName;                                       // 0x0010(0x0010)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	class FText                                   DisplayCategory;                                   // 0x0020(0x0010)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	EMappingQueryIssue                            Issue;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UInputMappingContext*                   BlockingContext;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UInputAction*                           BlockingAction;                                    // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FPlayerMappableKeyOptions;
+DUMPER7_ASSERTS_FMappingQueryIssue;
 
 // ScriptStruct EnhancedInput.PlayerKeyMapping
 // 0x0080 (0x0080 - 0x0000)
@@ -238,19 +238,18 @@ public:
 };
 DUMPER7_ASSERTS_FPlayerKeyMapping;
 
-// ScriptStruct EnhancedInput.BlueprintInputDebugKeyDelegateBinding
+// ScriptStruct EnhancedInput.DefaultContextSetting
 // 0x0030 (0x0030 - 0x0000)
-struct FBlueprintInputDebugKeyDelegateBinding final
+struct FDefaultContextSetting final
 {
 public:
-	struct FInputChord                            InputChord;                                        // 0x0000(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EInputEvent                                   InputKeyEvent;                                     // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   FunctionNameToBind;                                // 0x0024(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bExecuteWhenPaused;                                // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2D[0x3];                                       // 0x002D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UInputMappingContext>    InputMappingContext;                               // 0x0000(0x0028)(Edit, Config, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Priority;                                          // 0x0028(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAddImmediately;                                   // 0x002C(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bRegisterWithUserSettings;                         // 0x002D(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2E[0x2];                                       // 0x002E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FBlueprintInputDebugKeyDelegateBinding;
+DUMPER7_ASSERTS_FDefaultContextSetting;
 
 // ScriptStruct EnhancedInput.InjectedInput
 // 0x0040 (0x0040 - 0x0000)
@@ -263,25 +262,14 @@ public:
 };
 DUMPER7_ASSERTS_FInjectedInput;
 
-// ScriptStruct EnhancedInput.KeyMappingRow
-// 0x0050 (0x0050 - 0x0000)
-struct FKeyMappingRow final
+// ScriptStruct EnhancedInput.PlayerMappableKeySlot
+// 0x0004 (0x0004 - 0x0000)
+struct FPlayerMappableKeySlot final
 {
 public:
-	TSet<struct FPlayerKeyMapping>                Mappings;                                          // 0x0000(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, EditConst, NativeAccessSpecifierPublic)
+	int32                                         SlotNumber;                                        // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FKeyMappingRow;
-
-// ScriptStruct EnhancedInput.ModifyContextOptions
-// 0x0001 (0x0001 - 0x0000)
-struct FModifyContextOptions final
-{
-public:
-	uint8                                         bIgnoreAllPressedKeysUntilRelease : 1;             // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bForceImmediately : 1;                             // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bNotifyUserSettings : 1;                           // 0x0000(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-};
-DUMPER7_ASSERTS_FModifyContextOptions;
+DUMPER7_ASSERTS_FPlayerMappableKeySlot;
 
 // ScriptStruct EnhancedInput.PlayerMappableKeyProfileCreationArgs
 // 0x0030 (0x0030 - 0x0000)
@@ -315,17 +303,14 @@ public:
 };
 DUMPER7_ASSERTS_FMapPlayerKeyArgs;
 
-// ScriptStruct EnhancedInput.MappingQueryIssue
-// 0x0018 (0x0018 - 0x0000)
-struct FMappingQueryIssue final
+// ScriptStruct EnhancedInput.KeyMappingRow
+// 0x0050 (0x0050 - 0x0000)
+struct FKeyMappingRow final
 {
 public:
-	EMappingQueryIssue                            Issue;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UInputMappingContext*                   BlockingContext;                                   // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UInputAction*                           BlockingAction;                                    // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSet<struct FPlayerKeyMapping>                Mappings;                                          // 0x0000(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, EditConst, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FMappingQueryIssue;
+DUMPER7_ASSERTS_FKeyMappingRow;
 
 // ScriptStruct EnhancedInput.PlayerMappableKeyQueryOptions
 // 0x0028 (0x0028 - 0x0000)
@@ -343,14 +328,17 @@ public:
 };
 DUMPER7_ASSERTS_FPlayerMappableKeyQueryOptions;
 
-// ScriptStruct EnhancedInput.PlayerMappableKeySlot
-// 0x0004 (0x0004 - 0x0000)
-struct FPlayerMappableKeySlot final
+// ScriptStruct EnhancedInput.PlayerMappableKeyOptions
+// 0x0030 (0x0030 - 0x0000)
+struct FPlayerMappableKeyOptions final
 {
 public:
-	int32                                         SlotNumber;                                        // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UObject*                                MetaData;                                          // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   Name;                                              // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FText                                   DisplayName;                                       // 0x0010(0x0010)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	class FText                                   DisplayCategory;                                   // 0x0020(0x0010)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FPlayerMappableKeySlot;
+DUMPER7_ASSERTS_FPlayerMappableKeyOptions;
 
 // ScriptStruct EnhancedInput.EnhancedActionKeyMapping
 // 0x0050 (0x0050 - 0x0000)
@@ -381,18 +369,16 @@ public:
 };
 DUMPER7_ASSERTS_FBlueprintEnhancedInputActionBinding;
 
-// ScriptStruct EnhancedInput.DefaultContextSetting
-// 0x0030 (0x0030 - 0x0000)
-struct FDefaultContextSetting final
+// ScriptStruct EnhancedInput.ModifyContextOptions
+// 0x0001 (0x0001 - 0x0000)
+struct FModifyContextOptions final
 {
 public:
-	TSoftObjectPtr<class UInputMappingContext>    InputMappingContext;                               // 0x0000(0x0028)(Edit, Config, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Priority;                                          // 0x0028(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAddImmediately;                                   // 0x002C(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bRegisterWithUserSettings;                         // 0x002D(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2E[0x2];                                       // 0x002E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         bIgnoreAllPressedKeysUntilRelease : 1;             // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bForceImmediately : 1;                             // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bNotifyUserSettings : 1;                           // 0x0000(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
 };
-DUMPER7_ASSERTS_FDefaultContextSetting;
+DUMPER7_ASSERTS_FModifyContextOptions;
 
 // ScriptStruct EnhancedInput.KeyConsumptionOptions
 // 0x0018 (0x0018 - 0x0000)
@@ -428,6 +414,20 @@ public:
 	float                                         ElapsedTriggeredTime;                              // 0x005C(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 };
 DUMPER7_ASSERTS_FInputActionInstance;
+
+// ScriptStruct EnhancedInput.BlueprintInputDebugKeyDelegateBinding
+// 0x0030 (0x0030 - 0x0000)
+struct FBlueprintInputDebugKeyDelegateBinding final
+{
+public:
+	struct FInputChord                            InputChord;                                        // 0x0000(0x0020)(HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EInputEvent                                   InputKeyEvent;                                     // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   FunctionNameToBind;                                // 0x0024(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bExecuteWhenPaused;                                // 0x002C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2D[0x3];                                       // 0x002D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FBlueprintInputDebugKeyDelegateBinding;
 
 // ScriptStruct EnhancedInput.InputComboStepData
 // 0x0010 (0x0010 - 0x0000)

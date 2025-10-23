@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
+#include "GameplayAbilities_structs.hpp"
 #include "FreezeFrameOverrideStruct_structs.hpp"
-#include "SCCore_structs.hpp"
-#include "GameplayTags_structs.hpp"
+#include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
 #include "Runtime_classes.hpp"
-#include "GameplayAbilities_structs.hpp"
+#include "SCCore_structs.hpp"
+#include "GameplayTags_structs.hpp"
 
 
 namespace SDK
@@ -93,10 +93,9 @@ public:
 	void BallInterceptionHandlingForBehavior(const struct FGameplayAbilityTargetDataHandle& Context);
 	void BallInterceptionHandlingForOuterboxPreAnimation(const struct FGameplayAbilityTargetDataHandle& Context, bool* Can_Handle);
 	void BPE_BuildPayload();
+	void ComputeBallControlPreAnimation(const struct FGameplayAbilityTargetDataHandle& InContext, class UAnimMontage** OutMontage, bool* bOutMirror, double* OutWorldSyncTime, double* OutAnimSyncTime, double* OutAnimBlendOutTime);
 	void EndToggleState();
 	void ExecuteUbergraph_GA_LockMove(int32 EntryPoint);
-	void GetAnimationPicker(class UClass** Picker);
-	void GetDefenseModePreAnimationParameters(const struct FGameplayAbilityTargetDataHandle& InContext, class UAnimMontage** OutMontage, bool* bOutMirror, double* OutWorldSyncTime, double* OutAnimSyncTime, double* OutAnimBlendOutTime);
 	float GetToggleDefenseModeValue();
 	void K2_ActivateAbilityFromEvent(const struct FGameplayEventData& EventData);
 	void K2_CommitExecute();
@@ -153,11 +152,15 @@ public:
 	void Removed_6DA04CB14C20913652FAD8B1E748B866();
 	void Removed_9AD10AAE4E8EF064AD12FB82CF335E1A();
 	void Removed_E82AA0DE43AF2D51A424E1A7882A83B6();
+	void StartStateTasks_8BD98EE64E207074DB6DC4ADC9585F1D();
+	void StartStateTasks_BC9CE18D488A0366A0CCE8A3D1E2B363();
+	void StartStateTasks_C28279794F787B168CD1A39A47ACA682();
 	void StopPreAnimation();
 	void StopState();
 	void ValidateHit(const struct FGameplayAbilityTargetDataHandle& _context, bool* _bReturnResult);
 
 	double ComputeFreezeFrame(const struct FPendingHit& InPendingHit) const;
+	void GetAnimationPicker(class UClass** Picker) const;
 	void MakeBallControlManifest(const struct FGameplayAbilityTargetDataHandle& Handle, struct FGameplayAbilityTargetDataHandle* Context) const;
 	void MakeDeflectManifest(const struct FGameplayAbilityTargetDataHandle& Handle, struct FGameplayAbilityTargetDataHandle* Context, struct FGameplayAbilityTargetDataHandle* Handle1) const;
 

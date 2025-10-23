@@ -183,21 +183,21 @@ void UGA_Transition_C::OnFinished_BF56079A44D5334656618DB96DA0887D(ETransitionSt
 }
 
 
-// Function GA_Transition.GA_Transition_C.OnTagsChanged
+// Function GA_Transition.GA_Transition_C.OnTagsChangedOnClient
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
 // const class USCAbilitySystemComponent*  _abilitySystem                                         (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 // const struct FGameplayTag&              _gameplayTag                                           (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor, HasGetValueTypeHash)
 // int32                                   _iCount                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UGA_Transition_C::OnTagsChanged(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount)
+void UGA_Transition_C::OnTagsChangedOnClient(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GA_Transition_C", "OnTagsChanged");
+		Func = Class->GetFunction("GA_Transition_C", "OnTagsChangedOnClient");
 
-	Params::GA_Transition_C_OnTagsChanged Parms{};
+	Params::GA_Transition_C_OnTagsChangedOnClient Parms{};
 
 	Parms._abilitySystem = _abilitySystem;
 	Parms._gameplayTag = std::move(_gameplayTag);
@@ -260,6 +260,30 @@ void UGA_Transition_C::ServerOnNewTransitionFound(class UClass* SCTransitionDB, 
 	Parms.bWasOrientedToMovement = bWasOrientedToMovement;
 	Parms.WantedDir = std::move(WantedDir);
 	Parms.PendingMoveUID = PendingMoveUID;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function GA_Transition.GA_Transition_C.ServerStopTransition
+// (Net, NetReliable, NetServer, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// const struct FSCTransition&             InTransition                                           (BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor, HasGetValueTypeHash)
+// class UClass*                           InTransitionDB                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// ETransitionStopReason                   _eStopReason                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UGA_Transition_C::ServerStopTransition(const struct FSCTransition& InTransition, class UClass* InTransitionDB, ETransitionStopReason _eStopReason)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_Transition_C", "ServerStopTransition");
+
+	Params::GA_Transition_C_ServerStopTransition Parms{};
+
+	Parms.InTransition = std::move(InTransition);
+	Parms.InTransitionDB = InTransitionDB;
+	Parms._eStopReason = _eStopReason;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "Engine_structs.hpp"
 #include "BP_Binder_BallAnyOwnerChanged_classes.hpp"
 
 
@@ -19,18 +19,18 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_Binder_BallInfluence.BP_Binder_BallInfluence_C
-// 0x0008 (0x03B0 - 0x03A8)
+// 0x0008 (0x0368 - 0x0360)
 class UBP_Binder_BallInfluence_C final : public UBP_Binder_BallAnyOwnerChanged_C
 {
 public:
-	uint8                                         Pad_3A2[0x6];                                      // 0x03A2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FPointerToUberGraphFrame               UberGraphFrame_BP_Binder_BallInfluence_C;          // 0x03A8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	uint8                                         Pad_35A[0x6];                                      // 0x035A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPointerToUberGraphFrame               UberGraphFrame_BP_Binder_BallInfluence_C;          // 0x0360(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 
 public:
 	void BPE_OnBallReset(class UBallPlayersInteractionComponent* _ballPlayersInteraction);
-	bool Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType);
+	bool Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
 	void ExecuteUbergraph_BP_Binder_BallInfluence(int32 EntryPoint);
-	void PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType);
+	void PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
 
 public:
 	static class UClass* StaticClass()

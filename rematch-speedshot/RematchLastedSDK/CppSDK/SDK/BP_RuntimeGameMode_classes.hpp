@@ -17,11 +17,11 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_RuntimeGameMode.BP_RuntimeGameMode_C
-// 0x0008 (0x0458 - 0x0450)
+// 0x0008 (0x0460 - 0x0458)
 class ABP_RuntimeGameMode_C final : public ARuntimeGameMode
 {
 public:
-	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0450(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0458(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
 
 public:
 	static class UClass* StaticClass()

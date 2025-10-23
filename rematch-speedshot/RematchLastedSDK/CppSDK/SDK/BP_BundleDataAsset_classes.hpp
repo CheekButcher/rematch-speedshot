@@ -17,12 +17,13 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_BundleDataAsset.BP_BundleDataAsset_C
-// 0x0050 (0x00D0 - 0x0080)
+// 0x0078 (0x00F8 - 0x0080)
 class UBP_BundleDataAsset_C final : public USCBaseCustomizationDataAsset
 {
 public:
 	TSoftObjectPtr<class UTexture2D>              ImageFeature;                                      // 0x0080(0x0028)(Edit, BlueprintVisible, HasGetValueTypeHash)
 	TSoftObjectPtr<class UTexture2D>              ImageBundlePage;                                   // 0x00A8(0x0028)(Edit, BlueprintVisible, HasGetValueTypeHash)
+	TSoftObjectPtr<class UTexture2D>              ImagePreviewCusto;                                 // 0x00D0(0x0028)(Edit, BlueprintVisible, HasGetValueTypeHash)
 
 public:
 	static class UClass* StaticClass()

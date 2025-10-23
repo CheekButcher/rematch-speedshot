@@ -38,17 +38,6 @@ public:
 };
 DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_RemoveInvuEffects;
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.OnTagChanged
-// 0x0018 (0x0018 - 0x0000)
-struct BP_GoalKeeperVolumeAttributor_C_OnTagChanged final
-{
-public:
-	const class USCAbilitySystemComponent*        _abilitySystem;                                    // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTag                           _gameplayTag;                                      // 0x0008(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor, HasGetValueTypeHash)
-	int32                                         _iCount;                                           // 0x0010(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_OnTagChanged;
-
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.OnShootAbilityTagChanged
 // 0x0018 (0x0018 - 0x0000)
 struct BP_GoalKeeperVolumeAttributor_C_OnShootAbilityTagChanged final
@@ -57,23 +46,9 @@ public:
 	const class USCAbilitySystemComponent*        _abilitySystem;                                    // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 	struct FGameplayTag                           _gameplayTag;                                      // 0x0008(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor, HasGetValueTypeHash)
 	int32                                         _iCount;                                           // 0x0010(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_IntInt_ReturnValue;            // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_LessEqual_IntInt_ReturnValue;             // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_OnShootAbilityTagChanged;
-
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_RemoveCurrentEffectOwner
-// 0x0040 (0x0040 - 0x0000)
-struct BP_GoalKeeperVolumeAttributor_C_BPE_RemoveCurrentEffectOwner final
-{
-public:
-	class AActor*                                 _actor;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class USCAbilitySystemComponent*              ASC;                                               // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	class USCAbilitySystemComponent*              CallFunc_Get_ReturnValue;                          // 0x0010(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount)> K2Node_CreateDelegate_OutputDelegate; // 0x0018(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount)> K2Node_CreateDelegate_OutputDelegate_1; // 0x0028(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_BPE_RemoveCurrentEffectOwner;
 
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ExecuteUbergraph_BP_GoalKeeperVolumeAttributor
 // 0x0028 (0x0028 - 0x0000)
@@ -88,18 +63,17 @@ public:
 };
 DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_ExecuteUbergraph_BP_GoalKeeperVolumeAttributor;
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_CantRemoveEffectFromTarget
-// 0x0038 (0x0038 - 0x0000)
-struct BP_GoalKeeperVolumeAttributor_C_BPE_CantRemoveEffectFromTarget final
+// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_RemoveCurrentEffectOwner
+// 0x0028 (0x0028 - 0x0000)
+struct BP_GoalKeeperVolumeAttributor_C_BPE_RemoveCurrentEffectOwner final
 {
 public:
 	class AActor*                                 _actor;                                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TArray<struct FActiveGameplayEffectHandle>    FoundEffectApplyingInvu;                           // 0x0008(0x0010)(Edit, BlueprintVisible)
-	class USCAbilitySystemComponent*              ASC;                                               // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	class USCAbilitySystemComponent*              CallFunc_Get_ReturnValue;                          // 0x0020(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	TDelegate<void(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount)> K2Node_CreateDelegate_OutputDelegate; // 0x0028(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class USCAbilitySystemComponent*              CallFunc_Get_ReturnValue;                          // 0x0008(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	TDelegate<void(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount)> K2Node_CreateDelegate_OutputDelegate; // 0x0010(0x0010)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_BPE_CantRemoveEffectFromTarget;
+DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_BPE_RemoveCurrentEffectOwner;
 
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_AssignCurrentEffectOwner
 // 0x0050 (0x0050 - 0x0000)
@@ -123,22 +97,8 @@ public:
 };
 DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_BPE_AssignCurrentEffectOwner;
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.IsKeeperAndBlockedByAbility
-// 0x0058 (0x0058 - 0x0000)
-struct BP_GoalKeeperVolumeAttributor_C_IsKeeperAndBlockedByAbility final
-{
-public:
-	class UAbilitySystemComponent*                ActorAsc;                                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagContainer                  OwnedTags;                                         // 0x0010(0x0020)(Edit, BlueprintVisible)
-	struct FGameplayTagContainer                  CallFunc_GetExplicitGameplayTags_ReturnValue;      // 0x0030(0x0020)(ConstParm)
-	bool                                          CallFunc_HasAnyTags_ReturnValue;                   // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_IsKeeperAndBlockedByAbility;
-
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_CanUseEffectAttributorVolume
-// 0x00D0 (0x00D0 - 0x0000)
+// 0x00E0 (0x00E0 - 0x0000)
 struct BP_GoalKeeperVolumeAttributor_C_BPE_CanUseEffectAttributorVolume final
 {
 public:
@@ -147,29 +107,11 @@ public:
 	class AGameModeBase*                          CallFunc_GetGameMode_ReturnValue;                  // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	class ARuntimeMatchGameMode*                  K2Node_DynamicCast_AsRuntime_Match_Game_Mode;      // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasAuthority_ReturnValue;                 // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1B[0x5];                                       // 0x001B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeMatchParameters                CallFunc_BPF_GetMatchParameters_ReturnValue;       // 0x0020(0x00B0)(ConstParm)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRuntimeMatchParameters                CallFunc_BPF_GetMatchParameters_ReturnValue;       // 0x0020(0x00B8)(ConstParm)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x00D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_BPE_CanUseEffectAttributorVolume;
-
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_CanRemoveEffectFromTarget
-// 0x0028 (0x0028 - 0x0000)
-struct BP_GoalKeeperVolumeAttributor_C_BPE_CanRemoveEffectFromTarget final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class USCAbilitySystemComponent*              ASC;                                               // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BPE_CanRemoveEffectFromTarget_ReturnValue; // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsKeeperAndBlockedByAbility_ReturnValue;  // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1B[0x5];                                       // 0x001B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class USCAbilitySystemComponent*              CallFunc_Get_ReturnValue;                          // 0x0020(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_GoalKeeperVolumeAttributor_C_BPE_CanRemoveEffectFromTarget;
 
 }
 

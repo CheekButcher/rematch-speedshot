@@ -830,6 +830,20 @@ void UGA_BallSteal_Base_C::OnSync_A2491CEA4F15DEF5C41FB4A60BC37716()
 }
 
 
+// Function GA_BallSteal_Base.GA_BallSteal_Base_C.StartStateTasks_8FEDA3454D8CA58A0F34EDB17243716D
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_BallSteal_Base_C::StartStateTasks_8FEDA3454D8CA58A0F34EDB17243716D()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_BallSteal_Base_C", "StartStateTasks_8FEDA3454D8CA58A0F34EDB17243716D");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function GA_BallSteal_Base.GA_BallSteal_Base_C.UpdatePickerAndConfiguration
 // (Private, BlueprintCallable, BlueprintEvent)
 // Parameters:

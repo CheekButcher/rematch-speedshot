@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "WBP_Abstract_Common_classes.hpp"
 #include "UMG_structs.hpp"
+#include "WBP_Abstract_Common_classes.hpp"
 
 
 namespace SDK

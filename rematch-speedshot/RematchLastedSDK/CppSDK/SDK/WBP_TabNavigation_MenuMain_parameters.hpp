@@ -12,44 +12,201 @@
 
 #include "SCCore_structs.hpp"
 #include "UMG_structs.hpp"
-#include "SOS_structs.hpp"
 #include "GameplayTags_structs.hpp"
+#include "SOS_structs.hpp"
 
 
 namespace SDK::Params
 {
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnActionPressed
-// 0x00A0 (0x00A0 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_BPE_OnActionPressed final
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.UpdateTabsAvailabilityWithCurrentFlowStep
+// 0x0024 (0x0024 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_UpdateTabsAvailabilityWithCurrentFlowStep final
 {
 public:
-	const class USCInputAction*                   _action;                                           // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FInputActionState                      _listenerState;                                    // 0x0008(0x0098)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	struct FGameplayTag                           _previous;                                         // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTag                           _current;                                          // 0x0008(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temp_real_Variable;                                // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Temp_real_Variable_1;                              // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         K2Node_Select_Default;                             // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasTag_ReturnValue;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_BPE_OnActionPressed;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_UpdateTabsAvailabilityWithCurrentFlowStep;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnMenuTransitionIn
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionIn final
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnFrontendConnnectionStateChanged
+// 0x0020 (0x0020 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_OnFrontendConnnectionStateChanged final
 {
 public:
-	EMenuTransitions                              _eTransition;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class USCMenuWidget>              _ePrevMenu;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	ESOSFrontendConnectionState                   InFrontendConnectionState;                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTag                           CallFunc_MakeLiteralGameplayTag_ReturnValue;       // 0x0004(0x0008)(NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class USCGameFlowSubsystem*                   CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTag                           CallFunc_BPF_GetCurrentState_ReturnValue;          // 0x0018(0x0008)(NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionIn;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_OnFrontendConnnectionStateChanged;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnMenuTransitionOut
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionOut final
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnCustomMatchStateChanged
+// 0x0048 (0x0048 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_OnCustomMatchStateChanged final
 {
 public:
-	EMenuTransitions                              _eTransition;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class USCMenuWidget>              _eNewMenu;                                         // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	ESOSClientCustomMatchState                    InNewState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_12[0x2];                                       // 0x0012(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTag                           CallFunc_BPF_GetCurrentState_ReturnValue;          // 0x0014(0x0008)(NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagContainer                  CallFunc_BPF_GameplayTagToGameplayTagContainer_ReturnValue; // 0x0020(0x0020)()
+	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasTag_ReturnValue;                       // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionOut;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_OnCustomMatchStateChanged;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnButtonOpenPanel
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_OnButtonOpenPanel final
+{
+public:
+	class USCButtonUserWidget*                    _button;                                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	bool                                          _bWithMouse;                                       // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_OnButtonOpenPanel;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnAuthenticationStateChanged
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_OnAuthenticationStateChanged final
+{
+public:
+	ESOSAuthenticationState                       InAuthenticationState;                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_OnAuthenticationStateChanged;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.IsInCustomMatch
+// 0x0040 (0x0040 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_IsInCustomMatch final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagContainer                  CallFunc_MakeLiteralGameplayTagContainer_ReturnValue; // 0x0008(0x0020)()
+	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0028(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTag                           CallFunc_BPF_GetCurrentState_ReturnValue;          // 0x0030(0x0008)(NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_HasTag_ReturnValue;                       // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_IsInCustomMatch;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideStoreTab
+// 0x0005 (0x0005 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_HideStoreTab final
+{
+public:
+	bool                                          IsHidden;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_HideStoreTab;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideSeasonPassTab
+// 0x0005 (0x0005 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_HideSeasonPassTab final
+{
+public:
+	bool                                          IsHidden;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_HideSeasonPassTab;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideProfileTab
+// 0x0005 (0x0005 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_HideProfileTab final
+{
+public:
+	bool                                          IsHidden;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_HideProfileTab;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideCustoTab
+// 0x0005 (0x0005 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_HideCustoTab final
+{
+public:
+	bool                                          IsHidden;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_HideCustoTab;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GoToOldCustomization
+// 0x0068 (0x0068 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_GoToOldCustomization final
+{
+public:
+	class FName                                   ActionName;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsInCustomMatch_ReturnValue;              // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagContainer                  CallFunc_MakeLiteralGameplayTagContainer_ReturnValue; // 0x0010(0x0020)()
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      CallFunc_GetOwningPlayer_ReturnValue;              // 0x0038(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class ASCBasePlayerController*                K2Node_DynamicCast_AsSCBase_Player_Controller;     // 0x0040(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0050(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTag                           CallFunc_BPF_GetCurrentState_ReturnValue;          // 0x0058(0x0008)(NoDestructor, HasGetValueTypeHash)
+	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_MatchesAnyTags_ReturnValue;               // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_GoToOldCustomization;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GotoFreeplay
+// 0x0020 (0x0020 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_GotoFreeplay final
+{
+public:
+	class APlayerController*                      CallFunc_GetOwningPlayer_ReturnValue;              // 0x0000(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class ASCBasePlayerController*                K2Node_DynamicCast_AsSCBase_Player_Controller;     // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_GotoFreeplay;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GoToDevPractice
+// 0x0030 (0x0030 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_GoToDevPractice final
+{
+public:
+	class FName                                   ActionName;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class APlayerController*                      CallFunc_GetOwningPlayer_ReturnValue;              // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ASCBasePlayerController*                K2Node_DynamicCast_AsSCBase_Player_Controller;     // 0x0020(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_GoToDevPractice;
 
 // Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.ExecuteUbergraph_WBP_TabNavigation_MenuMain
 // 0x0128 (0x0128 - 0x0000)
@@ -86,284 +243,79 @@ public:
 };
 DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_ExecuteUbergraph_WBP_TabNavigation_MenuMain;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GoToDevPractice
-// 0x0030 (0x0030 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_GoToDevPractice final
-{
-public:
-	class FName                                   ActionName;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class APlayerController*                      CallFunc_GetOwningPlayer_ReturnValue;              // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ASCBasePlayerController*                K2Node_DynamicCast_AsSCBase_Player_Controller;     // 0x0020(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_GoToDevPractice;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GotoFreeplay
-// 0x0020 (0x0020 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_GotoFreeplay final
-{
-public:
-	class APlayerController*                      CallFunc_GetOwningPlayer_ReturnValue;              // 0x0000(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class ASCBasePlayerController*                K2Node_DynamicCast_AsSCBase_Player_Controller;     // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_GotoFreeplay;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GoToOldCustomization
-// 0x0068 (0x0068 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_GoToOldCustomization final
-{
-public:
-	class FName                                   ActionName;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsInCustomMatch_ReturnValue;              // 0x0008(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0009(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x000A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagContainer                  CallFunc_MakeLiteralGameplayTagContainer_ReturnValue; // 0x0010(0x0020)()
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      CallFunc_GetOwningPlayer_ReturnValue;              // 0x0038(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class ASCBasePlayerController*                K2Node_DynamicCast_AsSCBase_Player_Controller;     // 0x0040(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0050(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTag                           CallFunc_BPF_GetCurrentState_ReturnValue;          // 0x0058(0x0008)(NoDestructor, HasGetValueTypeHash)
-	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_MatchesAnyTags_ReturnValue;               // 0x0061(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_GoToOldCustomization;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideCustoTab
-// 0x0005 (0x0005 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_HideCustoTab final
-{
-public:
-	bool                                          IsHidden;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_HideCustoTab;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideProfileTab
-// 0x0005 (0x0005 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_HideProfileTab final
-{
-public:
-	bool                                          IsHidden;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_HideProfileTab;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideSeasonPassTab
-// 0x0005 (0x0005 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_HideSeasonPassTab final
-{
-public:
-	bool                                          IsHidden;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_HideSeasonPassTab;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideStoreTab
-// 0x0005 (0x0005 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_HideStoreTab final
-{
-public:
-	bool                                          IsHidden;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_HideStoreTab;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.IsInCustomMatch
-// 0x0040 (0x0040 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_IsInCustomMatch final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagContainer                  CallFunc_MakeLiteralGameplayTagContainer_ReturnValue; // 0x0008(0x0020)()
-	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0028(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTag                           CallFunc_BPF_GetCurrentState_ReturnValue;          // 0x0030(0x0008)(NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasTag_ReturnValue;                       // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_IsInCustomMatch;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnAuthenticationStateChanged
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_OnAuthenticationStateChanged final
-{
-public:
-	ESOSAuthenticationState                       InAuthenticationState;                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_OnAuthenticationStateChanged;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnButtonOpenPanel
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnMenuTransitionOut
 // 0x0010 (0x0010 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_OnButtonOpenPanel final
+struct WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionOut final
 {
 public:
-	class USCButtonUserWidget*                    _button;                                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	bool                                          _bWithMouse;                                       // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EMenuTransitions                              _eTransition;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class USCMenuWidget>              _eNewMenu;                                         // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_OnButtonOpenPanel;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionOut;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnCustomMatchStateChanged
-// 0x0048 (0x0048 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_OnCustomMatchStateChanged final
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnMenuTransitionIn
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionIn final
 {
 public:
-	ESOSClientCustomMatchState                    InNewState;                                        // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class URuntimeGameFlowSubsystem*              CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESCFFlowGraphError                            CallFunc_BPF_GotoStateByTransitionName_ReturnValue; // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_12[0x2];                                       // 0x0012(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTag                           CallFunc_BPF_GetCurrentState_ReturnValue;          // 0x0014(0x0008)(NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagContainer                  CallFunc_BPF_GameplayTagToGameplayTagContainer_ReturnValue; // 0x0020(0x0020)()
-	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasTag_ReturnValue;                       // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0042(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EMenuTransitions                              _eTransition;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class USCMenuWidget>              _ePrevMenu;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_OnCustomMatchStateChanged;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionIn;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnFrontendConnnectionStateChanged
-// 0x0020 (0x0020 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_OnFrontendConnnectionStateChanged final
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnActionPressed
+// 0x00A0 (0x00A0 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_BPE_OnActionPressed final
 {
 public:
-	ESOSFrontendConnectionState                   InFrontendConnectionState;                         // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTag                           CallFunc_MakeLiteralGameplayTag_ReturnValue;       // 0x0004(0x0008)(NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class USCGameFlowSubsystem*                   CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTag                           CallFunc_BPF_GetCurrentState_ReturnValue;          // 0x0018(0x0008)(NoDestructor, HasGetValueTypeHash)
+	const class USCInputAction*                   _action;                                           // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FInputActionState                      _listenerState;                                    // 0x0008(0x0098)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_OnFrontendConnnectionStateChanged;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_BPE_OnActionPressed;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.UpdateTabsAvailabilityWithCurrentFlowStep
-// 0x0024 (0x0024 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_UpdateTabsAvailabilityWithCurrentFlowStep final
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.SetNavTabEnabled
+// 0x0007 (0x0007 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_SetNavTabEnabled final
 {
 public:
-	struct FGameplayTag                           _previous;                                         // 0x0000(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTag                           _current;                                          // 0x0008(0x0008)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Temp_real_Variable;                                // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         Temp_real_Variable_1;                              // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         K2Node_Select_Default;                             // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasTag_ReturnValue;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          isFeatureStateEnabled;                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsConnectedToFrontend;                             // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsHidden;                                          // 0x0002(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsEnabled;                                         // 0x0003(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_UpdateTabsAvailabilityWithCurrentFlowStep;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_SetNavTabEnabled;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__40023193-4dbe-a6f8-cdec-1a92f5f1896e_SourceToDest
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C___40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest final
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.SetFeaturesAvailabilityFeedbackVisibility
+// 0x0005 (0x0005 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C_SetFeaturesAvailabilityFeedbackVisibility final
 {
 public:
-	bool                                          IsEnabled;                                         // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetSeasonPassFeatureVisibility_IsSPVisible; // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetSeasonPassFeatureEnabled_IsSeasonPassEnabled; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetNavTabEnabled_isEnabled;               // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsConnectedToFrontend;                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          isFeatureStateEnabled;                             // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsVisible_0;                                       // 0x0002(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_SetFeaturesAvailabilityFeedbackVisibility;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__42ced048-4048-8143-4e09-3a83ef0e08f9_SourceToDest
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__d83a772e-4026-2f4a-1482-6dbc4ec95500_SourceToDest
 // 0x0006 (0x0006 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C___42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest final
+struct WBP_TabNavigation_MenuMain_C___d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest final
 {
 public:
 	bool                                          IsVisible_0;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetSeasonPassFeatureEnabled_IsSeasonPassEnabled; // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPlayerProfileFeatureEnabled_IsPlayerProfileEnabled; // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_SetFeaturesAvailabilityFeedbackVisibility_isVisible; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__51c25bab-42a2-14b8-3f21-8c86eee4b36c_SourceToDest
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C___51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest final
-{
-public:
-	bool                                          IsEnabled;                                         // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetCustomizationFeatureVisibility_IsCustoVisible; // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetCustomizationFeatureEnabled_IsCustomizationEnabled; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetNavTabEnabled_isEnabled;               // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__7fe5970c-46bd-7fbf-e646-2384beea5df6_SourceToDest
-// 0x0006 (0x0006 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C___7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest final
-{
-public:
-	bool                                          IsVisible_0;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetStoreFeatureEnabled_IsStoreEnabled;    // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetFeaturesAvailabilityFeedbackVisibility_isVisible; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__a7191fda-4457-8b27-3569-0c875c4aaf0d_SourceToDest
-// 0x0006 (0x0006 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C___a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest final
-{
-public:
-	bool                                          IsVisible_0;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetCustomizationFeatureEnabled_IsCustomizationEnabled; // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetFeaturesAvailabilityFeedbackVisibility_isVisible; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest;
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__b1f65d28-45c5-e081-8f4d-c08162c33909_SourceToDest
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C___b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest final
-{
-public:
-	bool                                          IsEnabled;                                         // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPlayerProfileFeatureEnabled_IsPlayerProfileEnabled; // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetCustomizationFeatureVisibility_IsCustoVisible; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetNavTabEnabled_isEnabled;               // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest;
 
 // Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__c6a80a45-4c08-5b99-4526-3883934ca922_SourceToDest
 // 0x0008 (0x0008 - 0x0000)
@@ -381,47 +333,95 @@ public:
 };
 DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___c6a80a45_4c08_5b99_4526_3883934ca922_SourceToDest;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__d83a772e-4026-2f4a-1482-6dbc4ec95500_SourceToDest
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__b1f65d28-45c5-e081-8f4d-c08162c33909_SourceToDest
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C___b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest final
+{
+public:
+	bool                                          IsEnabled;                                         // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetPlayerProfileFeatureEnabled_IsPlayerProfileEnabled; // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetCustomizationFeatureVisibility_IsCustoVisible; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetNavTabEnabled_isEnabled;               // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__a7191fda-4457-8b27-3569-0c875c4aaf0d_SourceToDest
 // 0x0006 (0x0006 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C___d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest final
+struct WBP_TabNavigation_MenuMain_C___a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest final
 {
 public:
 	bool                                          IsVisible_0;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetPlayerProfileFeatureEnabled_IsPlayerProfileEnabled; // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetCustomizationFeatureEnabled_IsCustomizationEnabled; // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_SetFeaturesAvailabilityFeedbackVisibility_isVisible; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.SetFeaturesAvailabilityFeedbackVisibility
-// 0x0005 (0x0005 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_SetFeaturesAvailabilityFeedbackVisibility final
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__7fe5970c-46bd-7fbf-e646-2384beea5df6_SourceToDest
+// 0x0006 (0x0006 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C___7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest final
 {
 public:
-	bool                                          IsConnectedToFrontend;                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          isFeatureStateEnabled;                             // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsVisible_0;                                       // 0x0002(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsVisible_0;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetStoreFeatureEnabled_IsStoreEnabled;    // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetFeaturesAvailabilityFeedbackVisibility_isVisible; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_SetFeaturesAvailabilityFeedbackVisibility;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest;
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.SetNavTabEnabled
-// 0x0007 (0x0007 - 0x0000)
-struct WBP_TabNavigation_MenuMain_C_SetNavTabEnabled final
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__51c25bab-42a2-14b8-3f21-8c86eee4b36c_SourceToDest
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C___51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest final
 {
 public:
-	bool                                          isFeatureStateEnabled;                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsConnectedToFrontend;                             // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsHidden;                                          // 0x0002(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsEnabled;                                         // 0x0003(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue_1;                 // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsEnabled;                                         // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetCustomizationFeatureVisibility_IsCustoVisible; // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetCustomizationFeatureEnabled_IsCustomizationEnabled; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetNavTabEnabled_isEnabled;               // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C_SetNavTabEnabled;
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__42ced048-4048-8143-4e09-3a83ef0e08f9_SourceToDest
+// 0x0006 (0x0006 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C___42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest final
+{
+public:
+	bool                                          IsVisible_0;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetSeasonPassFeatureEnabled_IsSeasonPassEnabled; // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetFeaturesAvailabilityFeedbackVisibility_isVisible; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__40023193-4dbe-a6f8-cdec-1a92f5f1896e_SourceToDest
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_TabNavigation_MenuMain_C___40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest final
+{
+public:
+	bool                                          IsEnabled;                                         // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetSeasonPassFeatureVisibility_IsSPVisible; // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsConnectedToFrontend_IsConnected;        // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetSeasonPassFeatureEnabled_IsSeasonPassEnabled; // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_2;                    // 0x0006(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetNavTabEnabled_isEnabled;               // 0x0007(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_MenuMain_C___40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest;
 
 }
 

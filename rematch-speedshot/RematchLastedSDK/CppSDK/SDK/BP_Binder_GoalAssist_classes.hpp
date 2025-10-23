@@ -10,32 +10,32 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "BP_Binder_Passes_classes.hpp"
-#include "GameplayTags_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "Engine_structs.hpp"
+#include "GameplayTags_structs.hpp"
+#include "BP_Binder_Passes_classes.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_Binder_GoalAssist.BP_Binder_GoalAssist_C
-// 0x0038 (0x03E8 - 0x03B0)
+// 0x0038 (0x03A0 - 0x0368)
 class UBP_Binder_GoalAssist_C final : public UBP_Binder_Passes_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame_BP_Binder_GoalAssist_C;             // 0x03B0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class ARuntimePlayerState*                    AssistPlayer;                                      // 0x03B8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	bool                                          bNeedReboundWall;                                  // 0x03C0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3C1[0x7];                                      // 0x03C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagContainer                  TriggerDependingOnPreviousShootType;               // 0x03C8(0x0020)(Edit, BlueprintVisible)
+	struct FPointerToUberGraphFrame               UberGraphFrame_BP_Binder_GoalAssist_C;             // 0x0368(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class ARuntimePlayerState*                    AssistPlayer;                                      // 0x0370(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	bool                                          bNeedReboundWall;                                  // 0x0378(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_379[0x7];                                      // 0x0379(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagContainer                  TriggerDependingOnPreviousShootType;               // 0x0380(0x0020)(Edit, BlueprintVisible)
 
 public:
 	void BPE_DisableFromGameState(class AGameStateBase* _gameState);
 	void BPE_OnBallReset(class UBallPlayersInteractionComponent* _ballPlayersInteraction);
 	void BPE_OnGameStateValid(class AGameStateBase* _gameState);
 	void BPE_OnIsActiveChanged(bool _IsActive);
-	bool Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType);
+	bool Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
 	void ExecuteUbergraph_BP_Binder_GoalAssist(int32 EntryPoint);
 	void OnGoalScored(const struct FGoalDescription& _goal);
 

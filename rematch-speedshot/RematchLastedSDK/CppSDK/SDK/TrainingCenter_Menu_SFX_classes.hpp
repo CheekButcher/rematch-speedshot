@@ -29,9 +29,9 @@ public:
 	class AAkAmbientSound*                        AkAmbientSound_2_ExecuteUbergraph_TrainingCenter_Menu_SFX_RefProperty; // 0x02D0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
 public:
+	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void ReceiveBeginPlay();
 	void ExecuteUbergraph_TrainingCenter_Menu_SFX(int32 EntryPoint);
-	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 
 public:
 	static class UClass* StaticClass()

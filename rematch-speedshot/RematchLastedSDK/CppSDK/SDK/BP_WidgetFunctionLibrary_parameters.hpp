@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "BillBoardSettings_structs.hpp"
-#include "Struct_QualityTier_structs.hpp"
 #include "BundleInventoryData_structs.hpp"
-#include "CoreUObject_structs.hpp"
+#include "BillBoardSettings_structs.hpp"
 #include "SOSBindings_structs.hpp"
+#include "Struct_QualityTier_structs.hpp"
 #include "UIProjectInViewportResult_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params
@@ -27,7 +27,7 @@ struct BP_WidgetFunctionLibrary_C_CreatePassZoneByTarget final
 {
 public:
 	class APlayerController*                      InPlayer;                                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class ACharacter*                             inTarget;                                          // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class ACharacter*                             InTarget;                                          // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                InVCrosshairPosition;                              // 0x0010(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                InVCrosshairDirection;                             // 0x0028(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	double                                        InHeight;                                          // 0x0040(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)

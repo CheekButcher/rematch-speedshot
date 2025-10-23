@@ -373,6 +373,20 @@ void UWBP_Crosshair_C::PlayDefense(EUMGSequencePlayMode PlayMode)
 }
 
 
+// Function WBP_Crosshair.WBP_Crosshair_C.SequenceEvent__ENTRYPOINTWBP_Crosshair
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWBP_Crosshair_C::SequenceEvent__ENTRYPOINTWBP_Crosshair()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Crosshair_C", "SequenceEvent__ENTRYPOINTWBP_Crosshair");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function WBP_Crosshair.WBP_Crosshair_C.Setup
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -455,43 +469,17 @@ void UWBP_Crosshair_C::UnregisterEvents(class APawn* Pawn)
 }
 
 
-// Function WBP_Crosshair.WBP_Crosshair_C.Update Crosshair Color
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// double                                  OptionValue                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function WBP_Crosshair.WBP_Crosshair_C.UpdateForceAndMagnus
+// (BlueprintCallable, BlueprintEvent)
 
-void UWBP_Crosshair_C::Update_Crosshair_Color(double OptionValue)
+void UWBP_Crosshair_C::UpdateForceAndMagnus()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Crosshair_C", "Update Crosshair Color");
+		Func = Class->GetFunction("WBP_Crosshair_C", "UpdateForceAndMagnus");
 
-	Params::WBP_Crosshair_C_Update_Crosshair_Color Parms{};
-
-	Parms.OptionValue = OptionValue;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_Crosshair.WBP_Crosshair_C.UpdateCrosshairSize
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// double                                  OptionValue                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_Crosshair_C::UpdateCrosshairSize(double OptionValue)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_Crosshair_C", "UpdateCrosshairSize");
-
-	Params::WBP_Crosshair_C_UpdateCrosshairSize Parms{};
-
-	Parms.OptionValue = OptionValue;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

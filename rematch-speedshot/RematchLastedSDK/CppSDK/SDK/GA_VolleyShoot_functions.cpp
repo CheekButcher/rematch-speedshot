@@ -448,8 +448,9 @@ void UGA_VolleyShoot_C::OnTimeOut_5DFB8AFA446967FB184509BC9E7DC572(const struct 
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // bool                                    IsKeyBoardController                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   LockGameOption                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UGA_VolleyShoot_C::OverrideComputationForKeyBoard(bool IsKeyBoardController)
+void UGA_VolleyShoot_C::OverrideComputationForKeyBoard(bool IsKeyBoardController, int32 LockGameOption)
 {
 	static class UFunction* Func = nullptr;
 
@@ -459,6 +460,7 @@ void UGA_VolleyShoot_C::OverrideComputationForKeyBoard(bool IsKeyBoardController
 	Params::GA_VolleyShoot_C_OverrideComputationForKeyBoard Parms{};
 
 	Parms.IsKeyBoardController = IsKeyBoardController;
+	Parms.LockGameOption = LockGameOption;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -467,10 +469,10 @@ void UGA_VolleyShoot_C::OverrideComputationForKeyBoard(bool IsKeyBoardController
 // Function GA_VolleyShoot.GA_VolleyShoot_C.OverrideLockShot
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    IsKeyboard                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    isKeyboard                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // int32                                   GameOption                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UGA_VolleyShoot_C::OverrideLockShot(bool IsKeyboard, int32 GameOption)
+void UGA_VolleyShoot_C::OverrideLockShot(bool isKeyboard, int32 GameOption)
 {
 	static class UFunction* Func = nullptr;
 
@@ -479,7 +481,7 @@ void UGA_VolleyShoot_C::OverrideLockShot(bool IsKeyboard, int32 GameOption)
 
 	Params::GA_VolleyShoot_C_OverrideLockShot Parms{};
 
-	Parms.IsKeyboard = IsKeyboard;
+	Parms.isKeyboard = isKeyboard;
 	Parms.GameOption = GameOption;
 
 	UObject::ProcessEvent(Func, &Parms);

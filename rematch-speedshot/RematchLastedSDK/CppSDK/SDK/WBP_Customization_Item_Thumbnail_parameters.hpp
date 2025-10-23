@@ -10,14 +10,18 @@
 
 #include "Basic.hpp"
 
-#include "Struct_QualityTier_structs.hpp"
+#include "StructUtilsEngine_structs.hpp"
+#include "StructUtils_structs.hpp"
+#include "ECustoExtraInfo_structs.hpp"
 #include "ThumbnailAssetMode_structs.hpp"
+#include "Runtime_structs.hpp"
 #include "SCCharacterCustomization_structs.hpp"
 #include "ThumbnailSceneMode_structs.hpp"
-#include "SlateCore_structs.hpp"
 #include "UMG_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "SOSBindings_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "Struct_QualityTier_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "Struct_ThumbnailSceneParams_structs.hpp"
 
 
@@ -166,63 +170,97 @@ public:
 };
 DUMPER7_ASSERTS_WBP_Customization_Item_Thumbnail_C_Get_DebugOverlay_Visibility;
 
+// Function WBP_Customization_Item_Thumbnail.WBP_Customization_Item_Thumbnail_C.GetCurrentPlayerCusto
+// 0x0370 (0x0370 - 0x0000)
+struct WBP_Customization_Item_Thumbnail_C_GetCurrentPlayerCusto final
+{
+public:
+	struct FSCCharacterCustomizationDescription   ReturnValue;                                       // 0x0000(0x00F0)(ConstParm, Parm, OutParm, ReturnParm, HasGetValueTypeHash)
+	struct FSCCharacterCustomizationDescription   OutCusto;                                          // 0x00F0(0x00F0)(Edit, BlueprintVisible, HasGetValueTypeHash)
+	TArray<struct FInstancedStruct>               ExtraInfos;                                        // 0x01E0(0x0010)(Edit, BlueprintVisible)
+	class UCustomizationSubsystem*                CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x01F0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	struct FSCCharacterCustomizationDescription   CallFunc_BPF_GetEditingDescription_ReturnValue;    // 0x01F8(0x00F0)(ConstParm, HasGetValueTypeHash)
+	uint8                                         CallFunc_MakeLiteralByte_ReturnValue;              // 0x02E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2E9[0x3];                                      // 0x02E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue;               // 0x02EC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APlayerState*                           CallFunc_GetPlayerState_ReturnValue;               // 0x02F0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class ABP_RuntimePlayerState_C*               K2Node_DynamicCast_AsBP_Runtime_Player_State;      // 0x02F8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0300(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Array_IsValidIndex_ReturnValue;           // 0x0301(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EStructUtilsResult                            CallFunc_GetInstancedStructValue_ExecResult;       // 0x0302(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_303[0x5];                                      // 0x0303(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSetCustomizationDescription           CallFunc_GetInstancedStructValue_Value;            // 0x0308(0x0040)(ConstParm, HasGetValueTypeHash)
+	bool                                          K2Node_SwitchEnum_CmpSuccess;                      // 0x0348(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_349[0x7];                                      // 0x0349(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                CallFunc_LoadAsset_Blocking_ReturnValue;           // 0x0350(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValidSoftObjectReference_ReturnValue;   // 0x0358(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_359[0x7];                                      // 0x0359(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class URematchSetDataAsset*                   K2Node_DynamicCast_AsRematch_Set_Data_Asset;       // 0x0360(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess_1;                     // 0x0368(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_Customization_Item_Thumbnail_C_GetCurrentPlayerCusto;
+
 // Function WBP_Customization_Item_Thumbnail.WBP_Customization_Item_Thumbnail_C.GetDebugText
-// 0x0288 (0x0288 - 0x0000)
+// 0x02C0 (0x02C0 - 0x0000)
 struct WBP_Customization_Item_Thumbnail_C_GetDebugText final
 {
 public:
 	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash)
-	class FString                                 Temp_string_Variable;                              // 0x0010(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	EThumbnailAssetMode                           Temp_byte_Variable;                                // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 Temp_string_Variable_1;                            // 0x0028(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Conv_SoftObjectReferenceToString_ReturnValue; // 0x0040(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 Temp_string_Variable;                              // 0x0018(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	EThumbnailAssetMode                           Temp_byte_Variable;                                // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 Temp_string_Variable_1;                            // 0x0030(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Conv_IntToString_ReturnValue;             // 0x0040(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 	class FString                                 Temp_string_Variable_2;                            // 0x0050(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_BPF_ObjectPathToObjectName_ReturnValue;   // 0x0060(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsEmpty_ReturnValue;                      // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable_1;                              // 0x0071(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_72[0x6];                                       // 0x0072(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Conv_SoftObjectReferenceToString_ReturnValue_1; // 0x0078(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 K2Node_Select_Default;                             // 0x0088(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_BPF_ObjectPathToObjectName_ReturnValue_1; // 0x0098(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x00A8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_1;              // 0x00B8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	TSoftObjectPtr<class ULevelSequence>          CallFunc_GetThumbnailSetup__viewSequence;          // 0x00C8(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	TSoftObjectPtr<class UAnimSequence>           CallFunc_GetThumbnailSetup__animSequence;          // 0x00F0(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	float                                         CallFunc_GetThumbnailSetup_Anim_Time;              // 0x0118(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_11C[0x4];                                      // 0x011C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UTexture>                CallFunc_GetThumbnailSetup_Image;                  // 0x0120(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	EThumbnailSceneMode                           CallFunc_GetThumbnailSetup__sceneMode;             // 0x0148(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_149[0x7];                                      // 0x0149(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetThumbnailSetup__errorMessage;          // 0x0150(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsEmpty_ReturnValue_1;                    // 0x0160(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BPF_GetCharacterPartValue__bOutIsValid;   // 0x0161(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         CallFunc_BPF_GetCharacterPartValue_ReturnValue;    // 0x0162(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         CallFunc_GetValidValue_ReturnValue;                // 0x0163(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_164[0x4];                                      // 0x0164(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_2;              // 0x0168(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 K2Node_Select_Default_1;                           // 0x0178(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetEnumeratorUserFriendlyName_ReturnValue; // 0x0188(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_GetEnumeratorUserFriendlyName_ReturnValue_1; // 0x0198(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_3;              // 0x01A8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x01B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1B9[0x7];                                      // 0x01B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 K2Node_Select_Default_2;                           // 0x01C0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Conv_SoftObjectReferenceToString_ReturnValue_2; // 0x01D0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_BPF_ObjectPathToObjectName_ReturnValue_2; // 0x01E0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x01F0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1F1[0x7];                                      // 0x01F1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetEnumeratorUserFriendlyName_ReturnValue_2; // 0x01F8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_4;              // 0x0208(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_5;              // 0x0218(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_6;              // 0x0228(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_7;              // 0x0238(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_8;              // 0x0248(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_9;              // 0x0258(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_10;             // 0x0268(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_11;             // 0x0278(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable_1;                              // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Conv_SoftObjectReferenceToString_ReturnValue; // 0x0068(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_BPF_ObjectPathToObjectName_ReturnValue;   // 0x0078(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Conv_SoftObjectReferenceToString_ReturnValue_1; // 0x0088(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsEmpty_ReturnValue;                      // 0x0098(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_BPF_ObjectPathToObjectName_ReturnValue_1; // 0x00A0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue;                // 0x00B0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 K2Node_Select_Default;                             // 0x00C0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_1;              // 0x00D0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	TSoftObjectPtr<class ULevelSequence>          CallFunc_GetThumbnailSetup__viewSequence;          // 0x00E0(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	TSoftObjectPtr<class UAnimSequence>           CallFunc_GetThumbnailSetup__animSequence;          // 0x0108(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	float                                         CallFunc_GetThumbnailSetup_Anim_Time;              // 0x0130(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_134[0x4];                                      // 0x0134(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UTexture>                CallFunc_GetThumbnailSetup_Image;                  // 0x0138(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	EThumbnailSceneMode                           CallFunc_GetThumbnailSetup__sceneMode;             // 0x0160(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_161[0x7];                                      // 0x0161(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetThumbnailSetup__errorMessage;          // 0x0168(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BPF_GetCharacterPartValue__bOutIsValid;   // 0x0178(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_BPF_GetCharacterPartValue_ReturnValue;    // 0x0179(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsEmpty_ReturnValue_1;                    // 0x017A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         CallFunc_GetValidValue_ReturnValue;                // 0x017B(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_17C[0x4];                                      // 0x017C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_2;              // 0x0180(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_GetEnumeratorUserFriendlyName_ReturnValue; // 0x0190(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 K2Node_Select_Default_1;                           // 0x01A0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_3;              // 0x01B0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_GetEnumeratorUserFriendlyName_ReturnValue_1; // 0x01C0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 K2Node_Select_Default_2;                           // 0x01D0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x01E0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1E1[0x7];                                      // 0x01E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Conv_SoftObjectReferenceToString_ReturnValue_2; // 0x01E8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_BPF_ObjectPathToObjectName_ReturnValue_2; // 0x01F8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_GetEnumeratorUserFriendlyName_ReturnValue_2; // 0x0208(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x0218(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_219[0x7];                                      // 0x0219(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_4;              // 0x0220(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_5;              // 0x0230(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_6;              // 0x0240(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_7;              // 0x0250(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_8;              // 0x0260(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_9;              // 0x0270(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_10;             // 0x0280(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_11;             // 0x0290(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_12;             // 0x02A0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_13;             // 0x02B0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_WBP_Customization_Item_Thumbnail_C_GetDebugText;
 
@@ -509,48 +547,58 @@ public:
 DUMPER7_ASSERTS_WBP_Customization_Item_Thumbnail_C_OnLoaded_D5E9B53F4321C2F289F3C9966EA53E30;
 
 // Function WBP_Customization_Item_Thumbnail.WBP_Customization_Item_Thumbnail_C.OnSetupView
-// 0x0468 (0x0468 - 0x0000)
+// 0x0448 (0x0448 - 0x0000)
 struct WBP_Customization_Item_Thumbnail_C_OnSetupView final
 {
 public:
 	class UItemThumbnailScene*                    Scene;                                             // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UBP_ThumbnailScene_C*                   K2Node_DynamicCast_AsBP_Thumbnail_Scene;           // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0018(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UWorld*                                 CallFunc_BPF_GetCurrentWorld_ReturnValue;          // 0x0020(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	TSoftObjectPtr<class ULevelSequence>          CallFunc_GetThumbnailSetup__viewSequence;          // 0x0028(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	TSoftObjectPtr<class UAnimSequence>           CallFunc_GetThumbnailSetup__animSequence;          // 0x0050(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	float                                         CallFunc_GetThumbnailSetup_Anim_Time;              // 0x0078(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_7C[0x4];                                       // 0x007C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UTexture>                CallFunc_GetThumbnailSetup_Image;                  // 0x0080(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	EThumbnailSceneMode                           CallFunc_GetThumbnailSetup__sceneMode;             // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_A9[0x7];                                       // 0x00A9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_GetThumbnailSetup__errorMessage;          // 0x00B0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x00C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x00C1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C2[0x6];                                       // 0x00C2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCustomizationSubsystem*                CallFunc_GetGameInstanceSubsystem_ReturnValue;     // 0x00C8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x00D0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_D1[0x7];                                       // 0x00D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSCCharacterCustomizationDescription   CallFunc_BPF_GetEditingDescription_ReturnValue;    // 0x00D8(0x00F0)(ConstParm, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x01C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1C9[0x7];                                      // 0x01C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UAnimSequence>           CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue; // 0x01D0(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_SoftObjectReference_ReturnValue; // 0x01F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1F9[0x7];                                      // 0x01F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSCCharacterCustomizationDescription   K2Node_Select_Default;                             // 0x0200(0x00F0)(HasGetValueTypeHash)
-	TSoftObjectPtr<class ULevelSequence>          CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_1; // 0x02F0(0x0028)(UObjectWrapper, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_SoftObjectReference_ReturnValue_1; // 0x0318(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_319[0x7];                                      // 0x0319(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FStruct_ThumbnailSceneParams           K2Node_MakeStruct_Struct_ThumbnailSceneParams;     // 0x0320(0x0138)(HasGetValueTypeHash)
-	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x0458(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_459[0x3];                                      // 0x0459(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_SetupView_SceneView;                      // 0x045C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        K2Node_MakeStruct_AnimTime_11_2ECD91FA4F513FB4076852BB8766AB0F_ImplicitCast; // 0x0460(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UWorld*                                 CallFunc_BPF_GetCurrentWorld_ReturnValue;          // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UBP_ThumbnailScene_C*                   K2Node_DynamicCast_AsBP_Thumbnail_Scene;           // 0x0018(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSCCharacterCustomizationDescription   CallFunc_GetCurrentPlayerCusto_ReturnValue;        // 0x0028(0x00F0)(HasGetValueTypeHash)
+	TSoftObjectPtr<class ULevelSequence>          CallFunc_GetThumbnailSetup__viewSequence;          // 0x0118(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	TSoftObjectPtr<class UAnimSequence>           CallFunc_GetThumbnailSetup__animSequence;          // 0x0140(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	float                                         CallFunc_GetThumbnailSetup_Anim_Time;              // 0x0168(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_16C[0x4];                                      // 0x016C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UTexture>                CallFunc_GetThumbnailSetup_Image;                  // 0x0170(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	EThumbnailSceneMode                           CallFunc_GetThumbnailSetup__sceneMode;             // 0x0198(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_199[0x7];                                      // 0x0199(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_GetThumbnailSetup__errorMessage;          // 0x01A0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x01B0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue_1;        // 0x01B1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x01B2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Not_PreBool_ReturnValue;                  // 0x01B3(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1B4[0x4];                                      // 0x01B4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSCCharacterCustomizationDescription   K2Node_Select_Default;                             // 0x01B8(0x00F0)(HasGetValueTypeHash)
+	TSoftObjectPtr<class UAnimSequence>           CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue; // 0x02A8(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	TSoftObjectPtr<class ULevelSequence>          CallFunc_Conv_ObjectToSoftObjectReference_ReturnValue_1; // 0x02D0(0x0028)(UObjectWrapper, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_SoftObjectReference_ReturnValue; // 0x02F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_SoftObjectReference_ReturnValue_1; // 0x02F9(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BooleanAND_ReturnValue;                   // 0x02FA(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_2FB[0x5];                                      // 0x02FB(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FStruct_ThumbnailSceneParams           K2Node_MakeStruct_Struct_ThumbnailSceneParams;     // 0x0300(0x0138)(HasGetValueTypeHash)
+	int32                                         CallFunc_SetupView_SceneView;                      // 0x0438(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_43C[0x4];                                      // 0x043C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        K2Node_MakeStruct_AnimTime_11_2ECD91FA4F513FB4076852BB8766AB0F_ImplicitCast; // 0x0440(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_WBP_Customization_Item_Thumbnail_C_OnSetupView;
+
+// Function WBP_Customization_Item_Thumbnail.WBP_Customization_Item_Thumbnail_C.OverrideExtraInfo
+// 0x0030 (0x0030 - 0x0000)
+struct WBP_Customization_Item_Thumbnail_C_OverrideExtraInfo final
+{
+public:
+	TArray<struct FInstancedStruct>               Target;                                            // 0x0000(0x0010)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	TArray<struct FInstancedStruct>               Source;                                            // 0x0010(0x0010)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	ECustoExtraInfo                               ExtraInfo;                                         // 0x0020(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Conv_ByteToInt_ReturnValue;               // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Array_IsValidIndex_ReturnValue;           // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_Customization_Item_Thumbnail_C_OverrideExtraInfo;
 
 // Function WBP_Customization_Item_Thumbnail.WBP_Customization_Item_Thumbnail_C.SetSoftImage
 // 0x0050 (0x0050 - 0x0000)

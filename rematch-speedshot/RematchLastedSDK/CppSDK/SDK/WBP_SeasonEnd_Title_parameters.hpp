@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "AkAudio_structs.hpp"
 #include "SOS_structs.hpp"
 #include "UIRankedLeagues_structs.hpp"
+#include "AkAudio_structs.hpp"
 
 
 namespace SDK::Params

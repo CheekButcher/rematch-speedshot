@@ -17,26 +17,27 @@
 namespace SDK::Params
 {
 
-// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.UpdateTimeAndSplineFollowActor
+// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.UpdateTimeAndSplineLookAtActor
 // 0x0178 (0x0178 - 0x0000)
-struct BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineFollowActor final
+struct BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineLookAtActor final
 {
 public:
 	double                                        DeltaTime;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         LocalFollowTargettedTime2;                         // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetCurrentTime_Current_Time;              // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetLocationAtTime_ReturnValue;            // 0x0010(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_K2_SetWorldLocation_SweepHitResult;       // 0x0028(0x00F8)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	struct FVector                                CallFunc_GetFollowTargetCharPos_TargetCharPos;     // 0x0120(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0138(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BPF_GetSplineRatioFromLocation_ReturnValue; // 0x0150(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_154[0x4];                                      // 0x0154(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        CallFunc_FInterpTo_ReturnValue;                    // 0x0158(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_SelectFloat_ReturnValue;                  // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        CallFunc_SelectFloat_A_ImplicitCast;               // 0x0168(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         LocalLookAtTargettedTime2;                         // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        CallFunc_GetCurrentFramingSystemTime_Current_Framing_System_Time; // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetLocationAtTime_ReturnValue;            // 0x0018(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_K2_SetWorldLocation_SweepHitResult;       // 0x0030(0x00F8)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	struct FVector                                CallFunc_GetLookAtTargetCharPos_LookAt_Target_Char_Pos; // 0x0128(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0140(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BPF_GetSplineRatioFromLocation_ReturnValue; // 0x0158(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_15C[0x4];                                      // 0x015C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        CallFunc_FInterpTo_ReturnValue;                    // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetLocationAtTime_Time_ImplicitCast;      // 0x0168(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_16C[0x4];                                      // 0x016C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	double                                        CallFunc_FInterpTo_Target_ImplicitCast;            // 0x0170(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineFollowActor;
+DUMPER7_ASSERTS_BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineLookAtActor;
 
 // Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.UpdateCameraPositionAndLookAt
 // 0x0250 (0x0250 - 0x0000)
@@ -106,6 +107,27 @@ public:
 };
 DUMPER7_ASSERTS_BP_Donut_2RailLDCameraActor_C_UpdateCameraPositionAndLookAt;
 
+// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.UpdateTimeAndSplineFollowActor
+// 0x0178 (0x0178 - 0x0000)
+struct BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineFollowActor final
+{
+public:
+	double                                        DeltaTime;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         LocalFollowTargettedTime2;                         // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetCurrentTime_Current_Time;              // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetLocationAtTime_ReturnValue;            // 0x0010(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FHitResult                             CallFunc_K2_SetWorldLocation_SweepHitResult;       // 0x0028(0x00F8)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
+	struct FVector                                CallFunc_GetFollowTargetCharPos_TargetCharPos;     // 0x0120(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0138(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_BPF_GetSplineRatioFromLocation_ReturnValue; // 0x0150(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_154[0x4];                                      // 0x0154(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        CallFunc_FInterpTo_ReturnValue;                    // 0x0158(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_SelectFloat_ReturnValue;                  // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_SelectFloat_A_ImplicitCast;               // 0x0168(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        CallFunc_FInterpTo_Target_ImplicitCast;            // 0x0170(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineFollowActor;
+
 // Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.ScrubDebugTime
 // 0x0160 (0x0160 - 0x0000)
 struct BP_Donut_2RailLDCameraActor_C_ScrubDebugTime final
@@ -133,28 +155,6 @@ public:
 	double                                        CallFunc_SelectFloat_ReturnValue;                  // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_Donut_2RailLDCameraActor_C_GetDebugTime2;
-
-// Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.UpdateTimeAndSplineLookAtActor
-// 0x0178 (0x0178 - 0x0000)
-struct BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineLookAtActor final
-{
-public:
-	double                                        DeltaTime;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         LocalLookAtTargettedTime2;                         // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        CallFunc_GetCurrentFramingSystemTime_Current_Framing_System_Time; // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetLocationAtTime_ReturnValue;            // 0x0018(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FHitResult                             CallFunc_K2_SetWorldLocation_SweepHitResult;       // 0x0030(0x00F8)(IsPlainOldData, NoDestructor, ContainsInstancedReference)
-	struct FVector                                CallFunc_GetLookAtTargetCharPos_LookAt_Target_Char_Pos; // 0x0128(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_Subtract_VectorVector_ReturnValue;        // 0x0140(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_BPF_GetSplineRatioFromLocation_ReturnValue; // 0x0158(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_15C[0x4];                                      // 0x015C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        CallFunc_FInterpTo_ReturnValue;                    // 0x0160(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetLocationAtTime_Time_ImplicitCast;      // 0x0168(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_16C[0x4];                                      // 0x016C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        CallFunc_FInterpTo_Target_ImplicitCast;            // 0x0170(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_Donut_2RailLDCameraActor_C_UpdateTimeAndSplineLookAtActor;
 
 // Function BP_Donut_2RailLDCameraActor.BP_Donut_2RailLDCameraActor_C.DrawDebug2
 // 0x04E8 (0x04E8 - 0x0000)

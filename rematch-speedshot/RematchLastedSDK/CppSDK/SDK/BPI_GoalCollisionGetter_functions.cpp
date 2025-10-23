@@ -18,11 +18,11 @@ namespace SDK
 {
 
 // Function BPI_GoalCollisionGetter.BPI_GoalCollisionGetter_C.GetGoalCollision
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, Const)
 // Parameters:
 // class UBoxComponent**                   GoalCollision                                          (Parm, OutParm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 
-void IBPI_GoalCollisionGetter_C::GetGoalCollision(class UBoxComponent** GoalCollision)
+void IBPI_GoalCollisionGetter_C::GetGoalCollision(class UBoxComponent** GoalCollision) const
 {
 	static class UFunction* Func = nullptr;
 

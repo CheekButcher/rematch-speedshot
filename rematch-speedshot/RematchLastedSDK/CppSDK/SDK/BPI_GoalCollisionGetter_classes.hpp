@@ -21,7 +21,7 @@ namespace SDK
 class IBPI_GoalCollisionGetter_C final
 {
 public:
-	void GetGoalCollision(class UBoxComponent** GoalCollision);
+	void GetGoalCollision(class UBoxComponent** GoalCollision) const;
 
 public:
 	static class UClass* StaticClass()

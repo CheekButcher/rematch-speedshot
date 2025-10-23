@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
-#include "SOSBindings_classes.hpp"
 #include "StructUtilsEngine_structs.hpp"
+#include "SOSBindings_classes.hpp"
 
 
 namespace SDK

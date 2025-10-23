@@ -21,11 +21,11 @@ namespace SDK
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:
 // class AActor*                           InOwner                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// class AActor*                           inTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           InTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 // bool                                    bInIsMarker                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // struct FPingDataContainer               ReturnValue                                            (Parm, OutParm, ReturnParm, HasGetValueTypeHash)
 
-struct FPingDataContainer UBP_AbstractPingDataGetter_C::Get_Data(class AActor* InOwner, class AActor* inTarget, bool bInIsMarker) const
+struct FPingDataContainer UBP_AbstractPingDataGetter_C::Get_Data(class AActor* InOwner, class AActor* InTarget, bool bInIsMarker) const
 {
 	static class UFunction* Func = nullptr;
 
@@ -35,7 +35,7 @@ struct FPingDataContainer UBP_AbstractPingDataGetter_C::Get_Data(class AActor* I
 	Params::BP_AbstractPingDataGetter_C_Get_Data Parms{};
 
 	Parms.InOwner = InOwner;
-	Parms.inTarget = inTarget;
+	Parms.InTarget = InTarget;
 	Parms.bInIsMarker = bInIsMarker;
 
 	UObject::ProcessEvent(Func, &Parms);

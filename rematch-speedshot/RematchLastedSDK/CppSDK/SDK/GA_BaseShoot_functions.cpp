@@ -57,33 +57,43 @@ void UGA_BaseShoot_C::ExecuteUbergraph_GA_BaseShoot(int32 EntryPoint)
 }
 
 
-// Function GA_BaseShoot.GA_BaseShoot_C.FindAimPoint
+// Function GA_BaseShoot.GA_BaseShoot_C.FindAimPointByCamera
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    UseTrajectoryFirstBounce                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// ELockDirectionOption                    LockDirectionOption                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // class ABall*                            Ball                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// struct FVector*                         ImpactPoint                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool*                                   AllowLookAt                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FVector*                         Aim_Point                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UGA_BaseShoot_C::FindAimPoint(bool UseTrajectoryFirstBounce, class ABall* Ball, struct FVector* ImpactPoint, bool* AllowLookAt)
+void UGA_BaseShoot_C::FindAimPointByCamera(ELockDirectionOption LockDirectionOption, class ABall* Ball, struct FVector* Aim_Point)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("GA_BaseShoot_C", "FindAimPoint");
+		Func = Class->GetFunction("GA_BaseShoot_C", "FindAimPointByCamera");
 
-	Params::GA_BaseShoot_C_FindAimPoint Parms{};
+	Params::GA_BaseShoot_C_FindAimPointByCamera Parms{};
 
-	Parms.UseTrajectoryFirstBounce = UseTrajectoryFirstBounce;
+	Parms.LockDirectionOption = LockDirectionOption;
 	Parms.Ball = Ball;
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (ImpactPoint != nullptr)
-		*ImpactPoint = std::move(Parms.ImpactPoint);
+	if (Aim_Point != nullptr)
+		*Aim_Point = std::move(Parms.Aim_Point);
+}
 
-	if (AllowLookAt != nullptr)
-		*AllowLookAt = Parms.AllowLookAt;
+
+// Function GA_BaseShoot.GA_BaseShoot_C.RemoveLookAt
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UGA_BaseShoot_C::RemoveLookAt()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_BaseShoot_C", "RemoveLookAt");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -114,10 +124,10 @@ void UGA_BaseShoot_C::TriggerFinalLookAt(class ABall* _ball, const struct FBounc
 // Function GA_BaseShoot.GA_BaseShoot_C.TriggerLookAtToAimPoint
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    IsFinalLookAt                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // class ABall*                            Ball                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// ELockDirectionOption                    LockDirectionOption                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UGA_BaseShoot_C::TriggerLookAtToAimPoint(bool IsFinalLookAt, class ABall* Ball)
+void UGA_BaseShoot_C::TriggerLookAtToAimPoint(class ABall* Ball, ELockDirectionOption LockDirectionOption)
 {
 	static class UFunction* Func = nullptr;
 
@@ -126,7 +136,29 @@ void UGA_BaseShoot_C::TriggerLookAtToAimPoint(bool IsFinalLookAt, class ABall* B
 
 	Params::GA_BaseShoot_C_TriggerLookAtToAimPoint Parms{};
 
-	Parms.IsFinalLookAt = IsFinalLookAt;
+	Parms.Ball = Ball;
+	Parms.LockDirectionOption = LockDirectionOption;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function GA_BaseShoot.GA_BaseShoot_C.TryToTriggerLookAt
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// ELockDirectionOption                    LockDirectionOption                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class ABall*                            Ball                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+
+void UGA_BaseShoot_C::TryToTriggerLookAt(ELockDirectionOption LockDirectionOption, class ABall* Ball)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_BaseShoot_C", "TryToTriggerLookAt");
+
+	Params::GA_BaseShoot_C_TryToTriggerLookAt Parms{};
+
+	Parms.LockDirectionOption = LockDirectionOption;
 	Parms.Ball = Ball;
 
 	UObject::ProcessEvent(Func, &Parms);

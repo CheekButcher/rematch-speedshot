@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "SOSBindings_structs.hpp"
 #include "EFrameType_structs.hpp"
-#include "WBP_Abstract_Common_classes.hpp"
 #include "UMG_structs.hpp"
+#include "WBP_Abstract_Common_classes.hpp"
+#include "SOSBindings_structs.hpp"
 
 
 namespace SDK

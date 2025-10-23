@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "AkAudio_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "SoundSurfaceStruct_structs.hpp"
 #include "Engine_structs.hpp"
-#include "AkAudio_structs.hpp"
 
 
 namespace SDK::Params

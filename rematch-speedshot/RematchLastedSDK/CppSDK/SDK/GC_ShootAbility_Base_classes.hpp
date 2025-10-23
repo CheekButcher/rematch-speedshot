@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "GameplayTags_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "GameplayTags_structs.hpp"
 #include "SCCore_classes.hpp"
 
 

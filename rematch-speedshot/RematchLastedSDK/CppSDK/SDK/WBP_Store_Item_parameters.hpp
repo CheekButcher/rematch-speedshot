@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
+#include "SOSBindings_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "EFrameType_structs.hpp"
 #include "Runtime_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "SOSBindings_structs.hpp"
-#include "Struct_QualityTier_structs.hpp"
 #include "UMG_structs.hpp"
+#include "Struct_QualityTier_structs.hpp"
 
 
 namespace SDK::Params

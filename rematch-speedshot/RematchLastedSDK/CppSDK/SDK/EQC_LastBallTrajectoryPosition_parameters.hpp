@@ -11,15 +11,15 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
-#include "Runtime_structs.hpp"
 #include "Engine_structs.hpp"
+#include "Runtime_structs.hpp"
 
 
 namespace SDK::Params
 {
 
 // Function EQC_LastBallTrajectoryPosition.EQC_LastBallTrajectoryPosition_C.ProvideSingleLocation
-// 0x0248 (0x0248 - 0x0000)
+// 0x0250 (0x0250 - 0x0000)
 struct EQC_LastBallTrajectoryPosition_C_ProvideSingleLocation final
 {
 public:
@@ -30,15 +30,15 @@ public:
 	bool                                          K2Node_DynamicCast_bSuccess;                       // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class ABall*                                  CallFunc_GetActorOfClass_ReturnValue;              // 0x0038(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	struct FBallTrajectoryResult                  CallFunc_BPF_GetTrajectory_ReturnValue;            // 0x0040(0x0068)(ContainsInstancedReference)
-	int32                                         CallFunc_Array_LastIndex_ReturnValue;              // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x00AC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_AD[0x3];                                       // 0x00AD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBallTrajectoryPart                    CallFunc_Array_Get_Item;                           // 0x00B0(0x0158)(ContainsInstancedReference)
-	bool                                          CallFunc_Array_IsNotEmpty_ReturnValue;             // 0x0208(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_209[0x3];                                      // 0x0209(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Array_LastIndex_ReturnValue_1;            // 0x020C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FPredictProjectilePathPointData        CallFunc_Array_Get_Item_1;                         // 0x0210(0x0038)(NoDestructor)
+	struct FBallTrajectoryResult                  CallFunc_BPF_GetTrajectory_ReturnValue;            // 0x0040(0x0070)(ContainsInstancedReference)
+	int32                                         CallFunc_Array_LastIndex_ReturnValue;              // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x00B4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B5[0x3];                                       // 0x00B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallTrajectoryPart                    CallFunc_Array_Get_Item;                           // 0x00B8(0x0158)(ContainsInstancedReference)
+	bool                                          CallFunc_Array_IsNotEmpty_ReturnValue;             // 0x0210(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_211[0x3];                                      // 0x0211(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Array_LastIndex_ReturnValue_1;            // 0x0214(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FPredictProjectilePathPointData        CallFunc_Array_Get_Item_1;                         // 0x0218(0x0038)(NoDestructor)
 };
 DUMPER7_ASSERTS_EQC_LastBallTrajectoryPosition_C_ProvideSingleLocation;
 

@@ -10,13 +10,15 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "ThumbnailSceneMode_structs.hpp"
 #include "SCCharacterCustomization_structs.hpp"
 #include "ThumbnailAssetMode_structs.hpp"
+#include "Engine_structs.hpp"
+#include "StructUtilsEngine_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "WBP_Abstract_Common_classes.hpp"
+#include "ECustoExtraInfo_structs.hpp"
+#include "ThumbnailSceneMode_structs.hpp"
 #include "UMG_structs.hpp"
 #include "SOSBindings_structs.hpp"
 
@@ -67,6 +69,8 @@ public:
 	TSoftObjectPtr<class UObject>                 ItemReference;                                     // 0x0FC0(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
 	TSoftObjectPtr<class UTexture>                Icon_Title;                                        // 0x0FE8(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, UObjectWrapper, HasGetValueTypeHash)
 	bool                                          RetryVideoWhenAssetLoaded;                         // 0x1010(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1011[0x3];                                     // 0x1011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         LastRenderedView;                                  // 0x1014(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void Construct();
@@ -74,6 +78,7 @@ public:
 	void ExecuteUbergraph_WBP_Customization_Item_Thumbnail(int32 EntryPoint);
 	class FText Get_DebugOverlay_Text();
 	ESlateVisibility Get_DebugOverlay_Visibility();
+	const struct FSCCharacterCustomizationDescription GetCurrentPlayerCusto();
 	class FString GetDebugText();
 	void GetQualityTierBackground(ESOSQualityTier _qualityTier, class UTexture2D** ThumbnailBackground_0, struct FLinearColor* Color);
 	void GetThumbnailSetup(TSoftObjectPtr<class ULevelSequence>* _viewSequence, TSoftObjectPtr<class UAnimSequence>* _animSequence, float* Anim_Time, TSoftObjectPtr<class UTexture>* Image, EThumbnailSceneMode* _sceneMode, class FString* _errorMessage);
@@ -91,6 +96,7 @@ public:
 	void OnLoaded_D5E9B53F4321C2F289F3C996596932F9(class UObject* Loaded);
 	void OnLoaded_D5E9B53F4321C2F289F3C9966EA53E30(class UObject* Loaded);
 	int32 OnSetupView(class UItemThumbnailScene* Scene);
+	void OverrideExtraInfo(const TArray<struct FInstancedStruct>& Target, const TArray<struct FInstancedStruct>& Source, ECustoExtraInfo ExtraInfo);
 	void RetryPlayVideo();
 	void SetSoftImage();
 	void TryPlayVideo();

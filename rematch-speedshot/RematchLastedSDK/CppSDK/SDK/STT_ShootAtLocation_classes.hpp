@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
-#include "CoreUObject_structs.hpp"
+#include "Engine_structs.hpp"
 #include "StateTreeModule_classes.hpp"
 #include "SCCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK

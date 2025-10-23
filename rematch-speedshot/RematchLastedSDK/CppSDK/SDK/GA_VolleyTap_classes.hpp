@@ -11,28 +11,28 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "SCCore_structs.hpp"
-#include "GameplayAbilities_structs.hpp"
 #include "Runtime_structs.hpp"
-#include "GameplayTags_structs.hpp"
+#include "GameplayAbilities_structs.hpp"
 #include "GA_BaseShoot_classes.hpp"
+#include "SCCore_structs.hpp"
+#include "GameplayTags_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass GA_VolleyTap.GA_VolleyTap_C
-// 0x0240 (0x0FF0 - 0x0DB0)
+// 0x0230 (0x0FF0 - 0x0DC0)
 class UGA_VolleyTap_C : public UGA_BaseShoot_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame_GA_VolleyTap_C;                     // 0x0DB0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class UClass*                                 ShootPicker;                                       // 0x0DB8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	TArray<class UClass*>                         Status;                                            // 0x0DC0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class USCInputAction*                         IADirection;                                       // 0x0DD0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayAbilityTargetDataHandle       TempDataFromSyncShoot;                             // 0x0DD8(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, AdvancedDisplay)
-	TSubclassOf<class UAnimSequencePicker>        BuildUpPicker;                                     // 0x0E00(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	uint8                                         Pad_E08[0x8];                                      // 0x0E08(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_DB1[0x7];                                      // 0x0DB1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPointerToUberGraphFrame               UberGraphFrame_GA_VolleyTap_C;                     // 0x0DB8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class UClass*                                 ShootPicker;                                       // 0x0DC0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	TArray<class UClass*>                         Status;                                            // 0x0DC8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	class USCInputAction*                         IADirection;                                       // 0x0DD8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayAbilityTargetDataHandle       TempDataFromSyncShoot;                             // 0x0DE0(0x0028)(Edit, BlueprintVisible, DisableEditOnInstance, AdvancedDisplay)
+	TSubclassOf<class UAnimSequencePicker>        BuildUpPicker;                                     // 0x0E08(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 	struct FBallInterceptionPointTargetData       BallTargetData;                                    // 0x0E10(0x0120)(Edit, BlueprintVisible, DisableEditOnInstance, AdvancedDisplay)
 	class UClass*                                 CameraShake;                                       // 0x0F30(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 	int32                                         IndexShootData;                                    // 0x0F38(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash)
@@ -91,6 +91,7 @@ public:
 	void OnTimedOutAndDestinationReached_61CC6DF6450479D2E0FDBDA1860C86C1();
 	void OnTimeOut_E7841AA048F400D304E4C2A9785D632C(const struct FGameplayAbilityTargetDataHandle& Data);
 	void OverrideAimingComputationForKeyBoard(int32 GameOption);
+	void StartStateTasks_61AB436342214D82C81BF4B35DABFA8F();
 
 	void GetPlayerContext(const struct FGameplayAbilityTargetDataHandle& Data, struct FGameplayAbilityTargetDataHandle* PlayerContext) const;
 	struct FShootPrepTargetData MakeShootPrep() const;

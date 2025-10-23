@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
+#include "SCCharacterCustomization_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "Engine_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
 #include "GameplayTags_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "SCCombatSystem_structs.hpp"
-#include "SCCharacterCustomization_structs.hpp"
 #include "StateTreeModule_structs.hpp"
 #include "SOS_structs.hpp"
 #include "SkeletalMerging_structs.hpp"
@@ -26,19 +26,6 @@
 
 namespace SDK::Params
 {
-
-// Function Runtime.ExperienceComponentBase.BPE_ComputeComponentData
-// 0x0028 (0x0028 - 0x0000)
-struct ExperienceComponentBase_BPE_ComputeComponentData final
-{
-public:
-	const class UObject*                          _worldContext;                                     // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         _iOldTotalExperience;                              // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   _playerId;                                         // 0x000C(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FExperienceComponentData>       _outComponentsData;                                // 0x0018(0x0010)(Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ExperienceComponentBase_BPE_ComputeComponentData;
 
 // Function Runtime.AbilityOwnerSelector.OnOverlapBegin
 // 0x0118 (0x0118 - 0x0000)
@@ -90,27 +77,6 @@ public:
 };
 DUMPER7_ASSERTS_AbilityTask_ApplyAbilityCostOverTime_BPF_SetCheckCommitAbilityCostConditionDelegate;
 
-// Function Runtime.Goal.BPE_GetCollision
-// 0x0008 (0x0008 - 0x0000)
-struct Goal_BPE_GetCollision final
-{
-public:
-	class USceneComponent*                        _outCollision;                                     // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_Goal_BPE_GetCollision;
-
-// Function Runtime.Goal.BPF_IsPointInGoal
-// 0x0020 (0x0020 - 0x0000)
-struct Goal_BPF_IsPointInGoal final
-{
-public:
-	struct FVector                                _vPoint;                                           // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bUseGoalExtraSize;                                // 0x0018(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0019(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_Goal_BPF_IsPointInGoal;
-
 // Function Runtime.AbilityTask_ApplyShoot.BPF_ApplyShootTask
 // 0x0128 (0x0128 - 0x0000)
 struct AbilityTask_ApplyShoot_BPF_ApplyShootTask final
@@ -160,15 +126,18 @@ public:
 };
 DUMPER7_ASSERTS_AbilityTask_ApplyVolleyShoot_BPF_ApplyVolleyShootTask;
 
-// Function Runtime.BallStealBinder.OnBallStolen
-// 0x0010 (0x0010 - 0x0000)
-struct BallStealBinder_OnBallStolen final
+// Function Runtime.ExperienceComponentBase.BPE_ComputeComponentData
+// 0x0028 (0x0028 - 0x0000)
+struct ExperienceComponentBase_BPE_ComputeComponentData final
 {
 public:
-	class ARuntimePlayerState*                    _playerStateThief;                                 // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ARuntimePlayerState*                    _playerStateStolen;                                // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	const class UObject*                          _worldContext;                                     // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         _iOldTotalExperience;                              // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   _playerId;                                         // 0x000C(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FExperienceComponentData>       _outComponentsData;                                // 0x0018(0x0010)(Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_BallStealBinder_OnBallStolen;
+DUMPER7_ASSERTS_ExperienceComponentBase_BPE_ComputeComponentData;
 
 // Function Runtime.AbilityTask_BallInteractionRequest.BPF_BallInteractionRequest
 // 0x0048 (0x0048 - 0x0000)
@@ -228,6 +197,15 @@ public:
 	class UAbilityTask_HandleHindering*           ReturnValue;                                       // 0x0040(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_AbilityTask_HandleHindering_BPF_HandleHindering;
+
+// Function Runtime.RuntimeGameFlowState.GetMatchStateArray
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeGameFlowState_GetMatchStateArray final
+{
+public:
+	TArray<class FName>                           ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeGameFlowState_GetMatchStateArray;
 
 // Function Runtime.AbilityTask_HandleSteeringLocomotion.BPF_HandleSteeringLocomotion
 // 0x0048 (0x0048 - 0x0000)
@@ -351,6 +329,27 @@ public:
 };
 DUMPER7_ASSERTS_AbilityTask_NetworkHitProjection_ServerReceiveTargetData;
 
+// Function Runtime.Goal.BPE_GetCollision
+// 0x0008 (0x0008 - 0x0000)
+struct Goal_BPE_GetCollision final
+{
+public:
+	class USceneComponent*                        _outCollision;                                     // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_Goal_BPE_GetCollision;
+
+// Function Runtime.Goal.BPF_IsPointInGoal
+// 0x0020 (0x0020 - 0x0000)
+struct Goal_BPF_IsPointInGoal final
+{
+public:
+	struct FVector                                _vPoint;                                           // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bUseGoalExtraSize;                                // 0x0018(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0019(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1A[0x6];                                       // 0x001A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_Goal_BPF_IsPointInGoal;
+
 // Function Runtime.AbilityTask_NetworkHitValidation.BPF_NetworkHitValidation
 // 0x0058 (0x0058 - 0x0000)
 struct AbilityTask_NetworkHitValidation_BPF_NetworkHitValidation final
@@ -403,25 +402,15 @@ public:
 };
 DUMPER7_ASSERTS_AbilityTask_NetworkSyncShootData_BPF_GetShootParams;
 
-// Function Runtime.GoalScopedBinder.OnGoalRegistered
-// 0x0008 (0x0008 - 0x0000)
-struct GoalScopedBinder_OnGoalRegistered final
-{
-public:
-	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_GoalScopedBinder_OnGoalRegistered;
-
-// Function Runtime.GoalCrossbarHitBinder.OnGoalCrossbarHit
+// Function Runtime.BallStealBinder.OnBallStolen
 // 0x0010 (0x0010 - 0x0000)
-struct GoalCrossbarHitBinder_OnGoalCrossbarHit final
+struct BallStealBinder_OnBallStolen final
 {
 public:
-	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         _uiTeam;                                           // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class ARuntimePlayerState*                    _playerStateThief;                                 // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ARuntimePlayerState*                    _playerStateStolen;                                // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_GoalCrossbarHitBinder_OnGoalCrossbarHit;
+DUMPER7_ASSERTS_BallStealBinder_OnBallStolen;
 
 // Function Runtime.AbilityTask_NetworkSyncTargetData.BPF_NetworkSyncTargetData
 // 0x0048 (0x0048 - 0x0000)
@@ -472,15 +461,6 @@ public:
 	struct FGameplayTag                           _activationTag;                                    // 0x0028(0x0008)(Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_AbilityTask_NetworkWaitTargetData_OnReplicatedCallback;
-
-// Function Runtime.RuntimeGameFlowState.GetMatchStateArray
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeGameFlowState_GetMatchStateArray final
-{
-public:
-	TArray<class FName>                           ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeGameFlowState_GetMatchStateArray;
 
 // Function Runtime.AbilityTask_PlayMontageFromAestheticMontage.BPF_PlayMontageFromAestheticMontage
 // 0x0078 (0x0078 - 0x0000)
@@ -571,6 +551,59 @@ public:
 };
 DUMPER7_ASSERTS_AbilityTask_PlaySimulatedAestheticMontage_GetMontageInstancePosition;
 
+// Function Runtime.ShopItemFilter.BPE_ShouldBeRemoved
+// 0x0070 (0x0070 - 0x0000)
+struct ShopItemFilter_BPE_ShouldBeRemoved final
+{
+public:
+	const class UCustomizationSubsystem*          _subsystem;                                        // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShopItem                              _item;                                             // 0x0008(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          _bIsActivated;                                     // 0x0068(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0069(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_6A[0x6];                                       // 0x006A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShopItemFilter_BPE_ShouldBeRemoved;
+
+// Function Runtime.HinderingGameplayAbility.OnPlayerStateRemoved
+// 0x0008 (0x0008 - 0x0000)
+struct HinderingGameplayAbility_OnPlayerStateRemoved final
+{
+public:
+	class APlayerState*                           _playerState;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_HinderingGameplayAbility_OnPlayerStateRemoved;
+
+// Function Runtime.HinderingGameplayAbility.ServerNotifyHindering
+// 0x0010 (0x0010 - 0x0000)
+struct HinderingGameplayAbility_ServerNotifyHindering final
+{
+public:
+	class APlayerState*                           _player;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fClientServerTime;                                // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fTimeSinceLastServerTime;                         // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_HinderingGameplayAbility_ServerNotifyHindering;
+
+// Function Runtime.HinderingGameplayAbility.ServerNotifyHinderingFast
+// 0x0010 (0x0010 - 0x0000)
+struct HinderingGameplayAbility_ServerNotifyHinderingFast final
+{
+public:
+	class APlayerState*                           _player;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fClientServerTime;                                // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_HinderingGameplayAbility_ServerNotifyHinderingFast;
+
+// Function Runtime.HinderingGameplayAbility.ServerNotifyHinderingStop
+// 0x0008 (0x0008 - 0x0000)
+struct HinderingGameplayAbility_ServerNotifyHinderingStop final
+{
+public:
+	class APlayerState*                           _player;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_HinderingGameplayAbility_ServerNotifyHinderingStop;
+
 // Function Runtime.AbilityTask_PlaySyncMontageBase.OnAnyMontageBlendingOut
 // 0x0010 (0x0010 - 0x0000)
 struct AbilityTask_PlaySyncMontageBase_OnAnyMontageBlendingOut final
@@ -632,27 +665,6 @@ public:
 };
 DUMPER7_ASSERTS_AbilityTask_PlaySyncAestheticMontage_BPF_PlaySyncAestheticMontage;
 
-// Function Runtime.ShopItemSorter.BPE_Compare
-// 0x00C8 (0x00C8 - 0x0000)
-struct ShopItemSorter_BPE_Compare final
-{
-public:
-	struct FShopItem                              _first;                                            // 0x0000(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FShopItem                              _second;                                           // 0x0060(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	ESortResult                                   ReturnValue;                                       // 0x00C0(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C4[0x4];                                       // 0x00C4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShopItemSorter_BPE_Compare;
-
-// Function Runtime.HUD_NameTagManagerWidget.BPF_SortNameTagArrayByDistanceFromTarget
-// 0x0008 (0x0008 - 0x0000)
-struct HUD_NameTagManagerWidget_BPF_SortNameTagArrayByDistanceFromTarget final
-{
-public:
-	class AActor*                                 _target;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_HUD_NameTagManagerWidget_BPF_SortNameTagArrayByDistanceFromTarget;
-
 // Function Runtime.BallCaptureCondition.BPF_PredictCapture
 // 0x0040 (0x0040 - 0x0000)
 struct BallCaptureCondition_BPF_PredictCapture final
@@ -677,6 +689,26 @@ public:
 	class UAbilityTask_PredictBallCapture*        ReturnValue;                                       // 0x0058(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_AbilityTask_PredictBallCapture_BPF_PredictBallCapture;
+
+// Function Runtime.GoalScopedBinder.OnGoalRegistered
+// 0x0008 (0x0008 - 0x0000)
+struct GoalScopedBinder_OnGoalRegistered final
+{
+public:
+	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_GoalScopedBinder_OnGoalRegistered;
+
+// Function Runtime.GoalCrossbarHitBinder.OnGoalCrossbarHit
+// 0x0010 (0x0010 - 0x0000)
+struct GoalCrossbarHitBinder_OnGoalCrossbarHit final
+{
+public:
+	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         _uiTeam;                                           // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_GoalCrossbarHitBinder_OnGoalCrossbarHit;
 
 // Function Runtime.AbilityTask_BallCapture.BPF_CaptureBall
 // 0x0018 (0x0018 - 0x0000)
@@ -751,6 +783,15 @@ public:
 };
 DUMPER7_ASSERTS_AbilityTask_WaitForComponentOverlap_OnHitCallback;
 
+// Function Runtime.LockerRoomPrematchStateViewModel.BPF_GetSelectedPalette
+// 0x0018 (0x0018 - 0x0000)
+struct LockerRoomPrematchStateViewModel_BPF_GetSelectedPalette final
+{
+public:
+	struct FColorPalette                          ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_LockerRoomPrematchStateViewModel_BPF_GetSelectedPalette;
+
 // Function Runtime.AbilityTask_WaitForCondition.BPF_WaitForCondition
 // 0x0028 (0x0028 - 0x0000)
 struct AbilityTask_WaitForCondition_BPF_WaitForCondition final
@@ -786,15 +827,6 @@ public:
 };
 DUMPER7_ASSERTS_AbilityTask_WaitTagContainerAdded_BPF_WaitGameplayTagContainerAdded;
 
-// Function Runtime.MatchCountdownStartBinder.OnMatchCountdownStart
-// 0x0008 (0x0008 - 0x0000)
-struct MatchCountdownStartBinder_OnMatchCountdownStart final
-{
-public:
-	class ARuntimeMatchGameState*                 _matchGameState;                                   // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_MatchCountdownStartBinder_OnMatchCountdownStart;
-
 // Function Runtime.ActionCommandsManager.BPE_GetMoveToAction
 // 0x0028 (0x0028 - 0x0000)
 struct ActionCommandsManager_BPE_GetMoveToAction final
@@ -806,6 +838,17 @@ public:
 	class UActionCommand*                         ReturnValue;                                       // 0x0020(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_ActionCommandsManager_BPE_GetMoveToAction;
+
+// Function Runtime.RuntimeLevelSequenceActor.OnLocalCharacterCustomizationChange
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeLevelSequenceActor_OnLocalCharacterCustomizationChange final
+{
+public:
+	class UCharacterCustomizationComponent*       _characterCustomizationComponent;                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bWasCharacterGenerated;                           // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_RuntimeLevelSequenceActor_OnLocalCharacterCustomizationChange;
 
 // Function Runtime.ActionDirectionComputation.BPE_OnPossessionChanged
 // 0x0028 (0x0028 - 0x0000)
@@ -843,34 +886,23 @@ public:
 };
 DUMPER7_ASSERTS_ActionDirectionComputation_BPF_GetValue;
 
-// Function Runtime.LockerRoomPrematchStateViewModel.BPF_GetSelectedPalette
-// 0x0018 (0x0018 - 0x0000)
-struct LockerRoomPrematchStateViewModel_BPF_GetSelectedPalette final
+// Function Runtime.MatchEffectEmitterComponent.BPF_GetTeam
+// 0x0004 (0x0004 - 0x0000)
+struct MatchEffectEmitterComponent_BPF_GetTeam final
 {
 public:
-	struct FColorPalette                          ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_LockerRoomPrematchStateViewModel_BPF_GetSelectedPalette;
+DUMPER7_ASSERTS_MatchEffectEmitterComponent_BPF_GetTeam;
 
-// Function Runtime.MatchingBoneDiveAnimWeightEvaluation.IsMatchingSectionNotifyState
-// 0x0010 (0x0010 - 0x0000)
-struct MatchingBoneDiveAnimWeightEvaluation_IsMatchingSectionNotifyState final
+// Function Runtime.MatchCountdownStartBinder.OnMatchCountdownStart
+// 0x0008 (0x0008 - 0x0000)
+struct MatchCountdownStartBinder_OnMatchCountdownStart final
 {
 public:
-	const class USection_NotifyState*             _notifyState;                                      // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class ARuntimeMatchGameState*                 _matchGameState;                                   // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_MatchingBoneDiveAnimWeightEvaluation_IsMatchingSectionNotifyState;
-
-// Function Runtime.MatchEffectAction.BPE_DoProcess
-// 0x0010 (0x0010 - 0x0000)
-struct MatchEffectAction_BPE_DoProcess final
-{
-public:
-	TArray<TSoftObjectPtr<class UMatchEffectEmitterComponent>> _emitters;                            // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, UObjectWrapper, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_MatchEffectAction_BPE_DoProcess;
+DUMPER7_ASSERTS_MatchCountdownStartBinder_OnMatchCountdownStart;
 
 // Function Runtime.Ball.BPF_ResetState
 // 0x0001 (0x0001 - 0x0000)
@@ -900,17 +932,6 @@ public:
 	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_Ball_BPF_GetBallRadius;
-
-// Function Runtime.RuntimeLevelSequenceActor.OnLocalCharacterCustomizationChange
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeLevelSequenceActor_OnLocalCharacterCustomizationChange final
-{
-public:
-	class UCharacterCustomizationComponent*       _characterCustomizationComponent;                  // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bWasCharacterGenerated;                           // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_RuntimeLevelSequenceActor_OnLocalCharacterCustomizationChange;
 
 // Function Runtime.BallAttributeSet.OnRep_DragForce
 // 0x0010 (0x0010 - 0x0000)
@@ -1003,202 +1024,6 @@ public:
 	class ABall*                                  ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_BallScopedBinder_BPF_GetBall;
-
-// Function Runtime.MatchEffectEmitterComponent.BPF_GetTeam
-// 0x0004 (0x0004 - 0x0000)
-struct MatchEffectEmitterComponent_BPF_GetTeam final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_MatchEffectEmitterComponent_BPF_GetTeam;
-
-// Function Runtime.BallEngagedBinder.OnBallEngaged
-// 0x0008 (0x0008 - 0x0000)
-struct BallEngagedBinder_OnBallEngaged final
-{
-public:
-	class ARuntimePlayerState*                    _playerState;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallEngagedBinder_OnBallEngaged;
-
-// Function Runtime.MoveAlongSplineComponent.BPF_SetLocationOnPath
-// 0x0004 (0x0004 - 0x0000)
-struct MoveAlongSplineComponent_BPF_SetLocationOnPath final
-{
-public:
-	float                                         _fDistanceOnPath;                                  // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_MoveAlongSplineComponent_BPF_SetLocationOnPath;
-
-// Function Runtime.MoveAlongSplineComponent.SetPath
-// 0x0008 (0x0008 - 0x0000)
-struct MoveAlongSplineComponent_SetPath final
-{
-public:
-	class ASplineActor*                           _newPath;                                          // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_MoveAlongSplineComponent_SetPath;
-
-// Function Runtime.BallShootHitReaction.BPF_GenerateShootPrepTargetData
-// 0x0450 (0x0450 - 0x0000)
-struct BallShootHitReaction_BPF_GenerateShootPrepTargetData final
-{
-public:
-	const class USCGameplayAbility*               _ability;                                          // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FPendingHit                            _hit;                                              // 0x0010(0x0350)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	class UBallPhysicComponent*                   _ballPhysicComponent;                              // 0x0360(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _result;                                           // 0x0368(0x00E0)(Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	uint8                                         Pad_448[0x8];                                      // 0x0448(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallShootHitReaction_BPF_GenerateShootPrepTargetData;
-
-// Function Runtime.BallInteractionBinder.BPE_OnBallInteraction
-// 0x0010 (0x0010 - 0x0000)
-struct BallInteractionBinder_BPE_OnBallInteraction final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallInteractionBinder_BPE_OnBallInteraction;
-
-// Function Runtime.BallInteractionBinder.BPE_OnBallReset
-// 0x0008 (0x0008 - 0x0000)
-struct BallInteractionBinder_BPE_OnBallReset final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallInteractionBinder_BPE_OnBallReset;
-
-// Function Runtime.BallInteractionBinder.OnBallReset
-// 0x0008 (0x0008 - 0x0000)
-struct BallInteractionBinder_OnBallReset final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayerInteraction;                            // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallInteractionBinder_OnBallReset;
-
-// Function Runtime.BallInteractionBinder.OnOwnershipChanged
-// 0x0008 (0x0008 - 0x0000)
-struct BallInteractionBinder_OnOwnershipChanged final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallInteractionBinder_OnOwnershipChanged;
-
-// Function Runtime.BallInteractionBinder.OnPreviousOwnerChanged
-// 0x0010 (0x0010 - 0x0000)
-struct BallInteractionBinder_OnPreviousOwnerChanged final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EBallInteractionType                          _eInteractionType;                                 // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallInteractionBinder_OnPreviousOwnerChanged;
-
-// Function Runtime.BallInteractionBinder.BPF_CanTrigger
-// 0x0350 (0x0350 - 0x0000)
-struct BallInteractionBinder_BPF_CanTrigger final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootParams                           _shootParams;                                      // 0x0008(0x0108)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	EBallInteractionType                          _eBallInteractionType;                             // 0x0110(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_111[0x7];                                      // 0x0111(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagQuery                      _newOwnerQuery;                                    // 0x0118(0x0048)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FGameplayTagQuery                      _shootTypeQuery;                                   // 0x0160(0x0048)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	bool                                          _bIngoreKickOffCpp;                                // 0x01A8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bOnlyOnTeamChanged;                               // 0x01A9(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1AA[0x6];                                      // 0x01AA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagQuery                      _PreviousOwnerQuery;                               // 0x01B0(0x0048)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FGameplayTagQuery                      _PreviousShootTypeQuery;                           // 0x01F8(0x0048)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FShootParams                           _PreviousShootParams;                              // 0x0240(0x0108)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0348(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_349[0x7];                                      // 0x0349(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallInteractionBinder_BPF_CanTrigger;
-
-// Function Runtime.BallInteractionBinder.BPF_GetNewAndPreviousInteracters
-// 0x0020 (0x0020 - 0x0000)
-struct BallInteractionBinder_BPF_GetNewAndPreviousInteracters final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ARuntimePlayerState*                    _outNewInteracter;                                 // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ARuntimePlayerState*                    _outPreviousInteracter;                            // 0x0018(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallInteractionBinder_BPF_GetNewAndPreviousInteracters;
-
-// Function Runtime.BallInteractionBinder.BPF_GetPreviousInteracter
-// 0x0018 (0x0018 - 0x0000)
-struct BallInteractionBinder_BPF_GetPreviousInteracter final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         _iIndexInteraction;                                // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ARuntimePlayerState*                    ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallInteractionBinder_BPF_GetPreviousInteracter;
-
-// Function Runtime.BallInteractionBinder.BPF_HasTeamChanged
-// 0x0010 (0x0010 - 0x0000)
-struct BallInteractionBinder_BPF_HasTeamChanged final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallInteractionBinder_BPF_HasTeamChanged;
-
-// Function Runtime.BallInterceptionPointTargetDatasource.BPF_FindSingleTarget
-// 0x0160 (0x0160 - 0x0000)
-struct BallInterceptionPointTargetDatasource_BPF_FindSingleTarget final
-{
-public:
-	struct FGameplayAbilityTargetDataHandle       _handle;                                           // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBallInterceptionPointTargetData       _outData;                                          // 0x0030(0x0120)(Parm, OutParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0150(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_151[0xF];                                      // 0x0151(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallInterceptionPointTargetDatasource_BPF_FindSingleTarget;
-
-// Function Runtime.BallInterceptionPointTargetDatasource.BPF_GetBall
-// 0x0130 (0x0130 - 0x0000)
-struct BallInterceptionPointTargetDatasource_BPF_GetBall final
-{
-public:
-	struct FBallInterceptionPointTargetData       _targetData;                                       // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	class ABall*                                  ReturnValue;                                       // 0x0120(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_128[0x8];                                      // 0x0128(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallInterceptionPointTargetDatasource_BPF_GetBall;
-
-// Function Runtime.GetOffsetedBallInterceptionPointDatasource.BPF_FindSingleTarget
-// 0x0160 (0x0160 - 0x0000)
-struct GetOffsetedBallInterceptionPointDatasource_BPF_FindSingleTarget final
-{
-public:
-	struct FGameplayAbilityTargetDataHandle       _handle;                                           // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBallInterceptionPointTargetData       _outData;                                          // 0x0030(0x0120)(Parm, OutParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0150(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_151[0xF];                                      // 0x0151(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_GetOffsetedBallInterceptionPointDatasource_BPF_FindSingleTarget;
 
 // Function Runtime.MatchViewModel.OnCaptainsSet
 // 0x0008 (0x0008 - 0x0000)
@@ -1388,273 +1213,186 @@ public:
 };
 DUMPER7_ASSERTS_MatchViewModel_BPF_IsSquadLeader;
 
-// Function Runtime.BallInterceptionPointHelpers.BPF_GetStatus
-// 0x0150 (0x0150 - 0x0000)
-struct BallInterceptionPointHelpers_BPF_GetStatus final
+// Function Runtime.BallEngagedBinder.OnBallEngaged
+// 0x0008 (0x0008 - 0x0000)
+struct BallEngagedBinder_OnBallEngaged final
 {
 public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBallInterceptionPointTargetData       _ballInterceptionPointTargetData;                  // 0x0010(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FGameplayTagContainer                  ReturnValue;                                       // 0x0130(0x0020)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+	class ARuntimePlayerState*                    _playerState;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_BallInterceptionPointHelpers_BPF_GetStatus;
+DUMPER7_ASSERTS_BallEngagedBinder_OnBallEngaged;
 
-// Function Runtime.BallInterceptionPointHelpers.BPF_IsEmpty
-// 0x0130 (0x0130 - 0x0000)
-struct BallInterceptionPointHelpers_BPF_IsEmpty final
-{
-public:
-	struct FBallInterceptionPointTargetData       _ballInterceptionPointTargetData;                  // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0120(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_121[0xF];                                      // 0x0121(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallInterceptionPointHelpers_BPF_IsEmpty;
-
-// Function Runtime.BallInterceptionPointHelpers.BPF_IsImmobile
-// 0x0130 (0x0130 - 0x0000)
-struct BallInterceptionPointHelpers_BPF_IsImmobile final
-{
-public:
-	struct FBallInterceptionPointTargetData       _ballInterceptionPointTargetData;                  // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0120(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_121[0xF];                                      // 0x0121(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallInterceptionPointHelpers_BPF_IsImmobile;
-
-// Function Runtime.BallInterceptionPointHelpers.BPF_IsValid
-// 0x0130 (0x0130 - 0x0000)
-struct BallInterceptionPointHelpers_BPF_IsValid final
-{
-public:
-	struct FBallInterceptionPointTargetData       _ballInterceptionPointTargetData;                  // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0120(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_121[0xF];                                      // 0x0121(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallInterceptionPointHelpers_BPF_IsValid;
-
-// Function Runtime.PlayerBallOwnership.BPF_GetBall
+// Function Runtime.MatchingBoneDiveAnimWeightEvaluation.IsMatchingSectionNotifyState
 // 0x0010 (0x0010 - 0x0000)
-struct PlayerBallOwnership_BPF_GetBall final
+struct MatchingBoneDiveAnimWeightEvaluation_IsMatchingSectionNotifyState final
 {
 public:
-	class ABall*                                  _outBallRef;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EExecSuccessEnum                              _OutExecBranches;                                  // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	const class USection_NotifyState*             _notifyState;                                      // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_PlayerBallOwnership_BPF_GetBall;
+DUMPER7_ASSERTS_MatchingBoneDiveAnimWeightEvaluation_IsMatchingSectionNotifyState;
 
-// Function Runtime.PlayerBallOwnership.BPF_SetBall
-// 0x0010 (0x0010 - 0x0000)
-struct PlayerBallOwnership_BPF_SetBall final
+// Function Runtime.BallShootHitReaction.BPF_GenerateShootPrepTargetData
+// 0x0450 (0x0450 - 0x0000)
+struct BallShootHitReaction_BPF_GenerateShootPrepTargetData final
 {
 public:
-	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bSteal;                                           // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	const class USCGameplayAbility*               _ability;                                          // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPendingHit                            _hit;                                              // 0x0010(0x0350)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	class UBallPhysicComponent*                   _ballPhysicComponent;                              // 0x0360(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _result;                                           // 0x0368(0x00E0)(Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	uint8                                         Pad_448[0x8];                                      // 0x0448(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallShootHitReaction_BPF_GenerateShootPrepTargetData;
+
+// Function Runtime.MatchEffectAction.BPE_DoProcess
+// 0x0010 (0x0010 - 0x0000)
+struct MatchEffectAction_BPE_DoProcess final
+{
+public:
+	TArray<TSoftObjectPtr<class UMatchEffectEmitterComponent>> _emitters;                            // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, UObjectWrapper, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_MatchEffectAction_BPE_DoProcess;
+
+// Function Runtime.BallInteractionBinder.BPE_OnBallInteraction
+// 0x0010 (0x0010 - 0x0000)
+struct BallInteractionBinder_BPE_OnBallInteraction final
+{
+public:
+	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bIsSamePreviousOwner;                             // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_PlayerBallOwnership_BPF_SetBall;
+DUMPER7_ASSERTS_BallInteractionBinder_BPE_OnBallInteraction;
 
-// Function Runtime.PlayerBallOwnership.BPF_GetBallPure
+// Function Runtime.BallInteractionBinder.BPE_OnBallReset
 // 0x0008 (0x0008 - 0x0000)
-struct PlayerBallOwnership_BPF_GetBallPure final
+struct BallInteractionBinder_BPE_OnBallReset final
 {
 public:
-	class ABall*                                  ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_PlayerBallOwnership_BPF_GetBallPure;
+DUMPER7_ASSERTS_BallInteractionBinder_BPE_OnBallReset;
 
-// Function Runtime.PlayerBallOwnership.BPF_GetPlayerState
+// Function Runtime.BallInteractionBinder.OnBallReset
 // 0x0008 (0x0008 - 0x0000)
-struct PlayerBallOwnership_BPF_GetPlayerState final
-{
-public:
-	class ARuntimePlayerState*                    ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_PlayerBallOwnership_BPF_GetPlayerState;
-
-// Function Runtime.BallPhysicComponent.BPF_ApplyShoot
-// 0x0118 (0x0118 - 0x0000)
-struct BallPhysicComponent_BPF_ApplyShoot final
-{
-public:
-	struct FShootParams                           _shootParams;                                      // 0x0000(0x0108)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	const class UGameplayAbility*                 _instigatorAbility;                                // 0x0108(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bAttachedToPlayer;                                // 0x0110(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_111[0x7];                                      // 0x0111(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_ApplyShoot;
-
-// Function Runtime.BallPhysicComponent.BPF_GetTimeToReachLocation
-// 0x0020 (0x0020 - 0x0000)
-struct BallPhysicComponent_BPF_GetTimeToReachLocation final
-{
-public:
-	struct FVector                                _vLocationToReach;                                 // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0018(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetTimeToReachLocation;
-
-// Function Runtime.BallPhysicComponent.BPF_IsLocationOnFutureTrajectory
-// 0x0028 (0x0028 - 0x0000)
-struct BallPhysicComponent_BPF_IsLocationOnFutureTrajectory final
-{
-public:
-	struct FVector                                _vLocation;                                        // 0x0000(0x0018)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fExcludePointBeforeTime;                          // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fDistanceTolerance;                               // 0x001C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_IsLocationOnFutureTrajectory;
-
-// Function Runtime.BallPhysicComponent.BPF_IsPointOnFutureTrajectory
-// 0x0040 (0x0040 - 0x0000)
-struct BallPhysicComponent_BPF_IsPointOnFutureTrajectory final
-{
-public:
-	struct FPredictProjectilePathPointData        keypoint;                                          // 0x0000(0x0038)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         _fDistanceTolerance;                               // 0x0038(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x003C(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_IsPointOnFutureTrajectory;
-
-// Function Runtime.BallPhysicComponent.BPF_TryToBroadcastRejectedShootEvent
-// 0x0108 (0x0108 - 0x0000)
-struct BallPhysicComponent_BPF_TryToBroadcastRejectedShootEvent final
-{
-public:
-	struct FShootParams                           _shootParamsOverride;                              // 0x0000(0x0108)(Parm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_TryToBroadcastRejectedShootEvent;
-
-// Function Runtime.BallPhysicComponent.OnBallOwnerChanged
-// 0x0008 (0x0008 - 0x0000)
-struct BallPhysicComponent_OnBallOwnerChanged final
+struct BallInteractionBinder_OnBallReset final
 {
 public:
 	class UBallPlayersInteractionComponent*       _ballPlayerInteraction;                            // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_BallPhysicComponent_OnBallOwnerChanged;
+DUMPER7_ASSERTS_BallInteractionBinder_OnBallReset;
 
-// Function Runtime.BallPhysicComponent.BPF_CurrentTrajectoryStartedFromSpecifiedBounce
+// Function Runtime.BallInteractionBinder.OnOwnershipChanged
 // 0x0008 (0x0008 - 0x0000)
-struct BallPhysicComponent_BPF_CurrentTrajectoryStartedFromSpecifiedBounce final
+struct BallInteractionBinder_OnOwnershipChanged final
 {
 public:
-	int32                                         _iSurfaces;                                        // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_CurrentTrajectoryStartedFromSpecifiedBounce;
+DUMPER7_ASSERTS_BallInteractionBinder_OnOwnershipChanged;
 
-// Function Runtime.BallPhysicComponent.BPF_GetAttachedBall
-// 0x0008 (0x0008 - 0x0000)
-struct BallPhysicComponent_BPF_GetAttachedBall final
-{
-public:
-	class ABall*                                  ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetAttachedBall;
-
-// Function Runtime.BallPhysicComponent.BPF_GetCurrentShootParams
-// 0x0108 (0x0108 - 0x0000)
-struct BallPhysicComponent_BPF_GetCurrentShootParams final
-{
-public:
-	struct FShootParams                           ReturnValue;                                       // 0x0000(0x0108)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetCurrentShootParams;
-
-// Function Runtime.BallPhysicComponent.BPF_GetLastShootParamsFromHistory
-// 0x0110 (0x0110 - 0x0000)
-struct BallPhysicComponent_BPF_GetLastShootParamsFromHistory final
-{
-public:
-	struct FShootParams                           _shootParams;                                      // 0x0000(0x0108)(Parm, OutParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0108(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_109[0x7];                                      // 0x0109(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetLastShootParamsFromHistory;
-
-// Function Runtime.BallPhysicComponent.BPF_GetStatusTimeLimit
+// Function Runtime.BallInteractionBinder.OnPreviousOwnerChanged
 // 0x0010 (0x0010 - 0x0000)
-struct BallPhysicComponent_BPF_GetStatusTimeLimit final
+struct BallInteractionBinder_OnPreviousOwnerChanged final
 {
 public:
-	struct FGameplayTag                           _tag;                                              // 0x0000(0x0008)(Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bSuccess;                                         // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bGetShootInstigatorTime;                          // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EBallInteractionType                          _eInteractionType;                                 // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bIsSamePreviousOwner;                             // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetStatusTimeLimit;
+DUMPER7_ASSERTS_BallInteractionBinder_OnPreviousOwnerChanged;
 
-// Function Runtime.BallPhysicComponent.BPF_GetTrajectory
-// 0x0068 (0x0068 - 0x0000)
-struct BallPhysicComponent_BPF_GetTrajectory final
+// Function Runtime.BallInteractionBinder.BPF_CanTrigger
+// 0x0350 (0x0350 - 0x0000)
+struct BallInteractionBinder_BPF_CanTrigger final
 {
 public:
-	struct FBallTrajectoryResult                  ReturnValue;                                       // 0x0000(0x0068)(Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootParams                           _shootParams;                                      // 0x0008(0x0108)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	EBallInteractionType                          _eBallInteractionType;                             // 0x0110(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_111[0x7];                                      // 0x0111(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagQuery                      _newOwnerQuery;                                    // 0x0118(0x0048)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FGameplayTagQuery                      _shootTypeQuery;                                   // 0x0160(0x0048)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          _bIngoreKickOffCpp;                                // 0x01A8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bOnlyOnTeamChanged;                               // 0x01A9(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1AA[0x6];                                      // 0x01AA(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagQuery                      _PreviousOwnerQuery;                               // 0x01B0(0x0048)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FGameplayTagQuery                      _PreviousShootTypeQuery;                           // 0x01F8(0x0048)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FShootParams                           _PreviousShootParams;                              // 0x0240(0x0108)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          _bIsSamePreviousOwner;                             // 0x0348(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0349(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_34A[0x6];                                      // 0x034A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetTrajectory;
+DUMPER7_ASSERTS_BallInteractionBinder_BPF_CanTrigger;
 
-// Function Runtime.BallPhysicComponent.BPF_GetVelocity
+// Function Runtime.BallInteractionBinder.BPF_GetNewAndPreviousInteracters
+// 0x0020 (0x0020 - 0x0000)
+struct BallInteractionBinder_BPF_GetNewAndPreviousInteracters final
+{
+public:
+	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bIsSamePreviousOwner;                             // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class ARuntimePlayerState*                    _outNewInteracter;                                 // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ARuntimePlayerState*                    _outPreviousInteracter;                            // 0x0018(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallInteractionBinder_BPF_GetNewAndPreviousInteracters;
+
+// Function Runtime.BallInteractionBinder.BPF_GetPreviousInteracter
 // 0x0018 (0x0018 - 0x0000)
-struct BallPhysicComponent_BPF_GetVelocity final
+struct BallInteractionBinder_BPF_GetPreviousInteracter final
 {
 public:
-	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         _iIndexInteraction;                                // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ARuntimePlayerState*                    ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetVelocity;
+DUMPER7_ASSERTS_BallInteractionBinder_BPF_GetPreviousInteracter;
 
-// Function Runtime.BallPhysicComponent.BPF_HasBallStatus
-// 0x000C (0x000C - 0x0000)
-struct BallPhysicComponent_BPF_HasBallStatus final
+// Function Runtime.BallInteractionBinder.BPF_HasTeamChanged
+// 0x0010 (0x0010 - 0x0000)
+struct BallInteractionBinder_BPF_HasTeamChanged final
 {
 public:
-	struct FGameplayTag                           _tag;                                              // 0x0000(0x0008)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bOnShootInstigator;                               // 0x0008(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bIsSamePreviousOwner;                             // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x000A(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_HasBallStatus;
+DUMPER7_ASSERTS_BallInteractionBinder_BPF_HasTeamChanged;
 
-// Function Runtime.BallPhysicComponent.BPF_MakeBallInterceptionPointTargetData
+// Function Runtime.BallInterceptionPointTargetDatasource.BPF_FindSingleTarget
+// 0x0160 (0x0160 - 0x0000)
+struct BallInterceptionPointTargetDatasource_BPF_FindSingleTarget final
+{
+public:
+	struct FGameplayAbilityTargetDataHandle       _handle;                                           // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallInterceptionPointTargetData       _outData;                                          // 0x0030(0x0120)(Parm, OutParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0150(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_151[0xF];                                      // 0x0151(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallInterceptionPointTargetDatasource_BPF_FindSingleTarget;
+
+// Function Runtime.BallInterceptionPointTargetDatasource.BPF_GetBall
 // 0x0130 (0x0130 - 0x0000)
-struct BallPhysicComponent_BPF_MakeBallInterceptionPointTargetData final
+struct BallInterceptionPointTargetDatasource_BPF_GetBall final
 {
 public:
-	float                                         _fTime;                                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBallInterceptionPointTargetData       _result;                                           // 0x0010(0x0120)(Parm, OutParm, NativeAccessSpecifierPublic)
+	struct FBallInterceptionPointTargetData       _targetData;                                       // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	class ABall*                                  ReturnValue;                                       // 0x0120(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_128[0x8];                                      // 0x0128(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_MakeBallInterceptionPointTargetData;
-
-// Function Runtime.BallPhysicComponent.BPF_MakeBallInterceptionPointTargetDataFromCurrentState
-// 0x0130 (0x0130 - 0x0000)
-struct BallPhysicComponent_BPF_MakeBallInterceptionPointTargetDataFromCurrentState final
-{
-public:
-	float                                         _fTime;                                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBallInterceptionPointTargetData       _result;                                           // 0x0010(0x0120)(Parm, OutParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_MakeBallInterceptionPointTargetDataFromCurrentState;
-
-// Function Runtime.BallPhysicComponent.BPF_MakeBallPathPointData
-// 0x0040 (0x0040 - 0x0000)
-struct BallPhysicComponent_BPF_MakeBallPathPointData final
-{
-public:
-	float                                         _fTime;                                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FPredictProjectilePathPointData        ReturnValue;                                       // 0x0008(0x0038)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BallPhysicComponent_BPF_MakeBallPathPointData;
+DUMPER7_ASSERTS_BallInterceptionPointTargetDatasource_BPF_GetBall;
 
 // Function Runtime.BallPlayersInteractionComponent.BPF_ClearBallOwnership
 // 0x0008 (0x0008 - 0x0000)
@@ -1802,6 +1540,273 @@ public:
 	TArray<struct FBallInteractionRequestData>    ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_BallPlayersInteractionComponent_GetBallInteractionRequests;
+
+// Function Runtime.GetOffsetedBallInterceptionPointDatasource.BPF_FindSingleTarget
+// 0x0160 (0x0160 - 0x0000)
+struct GetOffsetedBallInterceptionPointDatasource_BPF_FindSingleTarget final
+{
+public:
+	struct FGameplayAbilityTargetDataHandle       _handle;                                           // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallInterceptionPointTargetData       _outData;                                          // 0x0030(0x0120)(Parm, OutParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0150(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_151[0xF];                                      // 0x0151(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_GetOffsetedBallInterceptionPointDatasource_BPF_FindSingleTarget;
+
+// Function Runtime.BallInterceptionPointHelpers.BPF_GetStatus
+// 0x0150 (0x0150 - 0x0000)
+struct BallInterceptionPointHelpers_BPF_GetStatus final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallInterceptionPointTargetData       _ballInterceptionPointTargetData;                  // 0x0010(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FGameplayTagContainer                  ReturnValue;                                       // 0x0130(0x0020)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallInterceptionPointHelpers_BPF_GetStatus;
+
+// Function Runtime.BallInterceptionPointHelpers.BPF_IsEmpty
+// 0x0130 (0x0130 - 0x0000)
+struct BallInterceptionPointHelpers_BPF_IsEmpty final
+{
+public:
+	struct FBallInterceptionPointTargetData       _ballInterceptionPointTargetData;                  // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0120(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_121[0xF];                                      // 0x0121(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallInterceptionPointHelpers_BPF_IsEmpty;
+
+// Function Runtime.BallInterceptionPointHelpers.BPF_IsImmobile
+// 0x0130 (0x0130 - 0x0000)
+struct BallInterceptionPointHelpers_BPF_IsImmobile final
+{
+public:
+	struct FBallInterceptionPointTargetData       _ballInterceptionPointTargetData;                  // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0120(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_121[0xF];                                      // 0x0121(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallInterceptionPointHelpers_BPF_IsImmobile;
+
+// Function Runtime.BallInterceptionPointHelpers.BPF_IsValid
+// 0x0130 (0x0130 - 0x0000)
+struct BallInterceptionPointHelpers_BPF_IsValid final
+{
+public:
+	struct FBallInterceptionPointTargetData       _ballInterceptionPointTargetData;                  // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0120(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_121[0xF];                                      // 0x0121(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallInterceptionPointHelpers_BPF_IsValid;
+
+// Function Runtime.MoveAlongSplineComponent.BPF_SetLocationOnPath
+// 0x0004 (0x0004 - 0x0000)
+struct MoveAlongSplineComponent_BPF_SetLocationOnPath final
+{
+public:
+	float                                         _fDistanceOnPath;                                  // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_MoveAlongSplineComponent_BPF_SetLocationOnPath;
+
+// Function Runtime.MoveAlongSplineComponent.SetPath
+// 0x0008 (0x0008 - 0x0000)
+struct MoveAlongSplineComponent_SetPath final
+{
+public:
+	class ASplineActor*                           _newPath;                                          // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_MoveAlongSplineComponent_SetPath;
+
+// Function Runtime.BallPhysicComponent.BPF_ApplyShoot
+// 0x0118 (0x0118 - 0x0000)
+struct BallPhysicComponent_BPF_ApplyShoot final
+{
+public:
+	struct FShootParams                           _shootParams;                                      // 0x0000(0x0108)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	const class UGameplayAbility*                 _instigatorAbility;                                // 0x0108(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bAttachedToPlayer;                                // 0x0110(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_111[0x7];                                      // 0x0111(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_ApplyShoot;
+
+// Function Runtime.BallPhysicComponent.BPF_GetTimeToReachLocation
+// 0x0020 (0x0020 - 0x0000)
+struct BallPhysicComponent_BPF_GetTimeToReachLocation final
+{
+public:
+	struct FVector                                _vLocationToReach;                                 // 0x0000(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0018(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetTimeToReachLocation;
+
+// Function Runtime.BallPhysicComponent.BPF_IsLocationOnFutureTrajectory
+// 0x0028 (0x0028 - 0x0000)
+struct BallPhysicComponent_BPF_IsLocationOnFutureTrajectory final
+{
+public:
+	struct FVector                                _vLocation;                                        // 0x0000(0x0018)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fExcludePointBeforeTime;                          // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fDistanceTolerance;                               // 0x001C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_IsLocationOnFutureTrajectory;
+
+// Function Runtime.BallPhysicComponent.BPF_IsPointOnFutureTrajectory
+// 0x0040 (0x0040 - 0x0000)
+struct BallPhysicComponent_BPF_IsPointOnFutureTrajectory final
+{
+public:
+	struct FPredictProjectilePathPointData        keypoint;                                          // 0x0000(0x0038)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         _fDistanceTolerance;                               // 0x0038(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x003C(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_IsPointOnFutureTrajectory;
+
+// Function Runtime.BallPhysicComponent.BPF_TryToBroadcastRejectedShootEvent
+// 0x0108 (0x0108 - 0x0000)
+struct BallPhysicComponent_BPF_TryToBroadcastRejectedShootEvent final
+{
+public:
+	struct FShootParams                           _shootParamsOverride;                              // 0x0000(0x0108)(Parm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_TryToBroadcastRejectedShootEvent;
+
+// Function Runtime.BallPhysicComponent.OnBallOwnerChanged
+// 0x0008 (0x0008 - 0x0000)
+struct BallPhysicComponent_OnBallOwnerChanged final
+{
+public:
+	class UBallPlayersInteractionComponent*       _ballPlayerInteraction;                            // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_OnBallOwnerChanged;
+
+// Function Runtime.BallPhysicComponent.OnRep_ServerTrajectoryStartingPoint
+// 0x0138 (0x0138 - 0x0000)
+struct BallPhysicComponent_OnRep_ServerTrajectoryStartingPoint final
+{
+public:
+	struct FShootStartPoint                       _prevServerTrajectoryStartingPoint;                // 0x0000(0x0138)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_OnRep_ServerTrajectoryStartingPoint;
+
+// Function Runtime.BallPhysicComponent.BPF_CurrentTrajectoryStartedFromSpecifiedBounce
+// 0x0008 (0x0008 - 0x0000)
+struct BallPhysicComponent_BPF_CurrentTrajectoryStartedFromSpecifiedBounce final
+{
+public:
+	int32                                         _iSurfaces;                                        // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_CurrentTrajectoryStartedFromSpecifiedBounce;
+
+// Function Runtime.BallPhysicComponent.BPF_GetAttachedBall
+// 0x0008 (0x0008 - 0x0000)
+struct BallPhysicComponent_BPF_GetAttachedBall final
+{
+public:
+	class ABall*                                  ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetAttachedBall;
+
+// Function Runtime.BallPhysicComponent.BPF_GetCurrentShootParams
+// 0x0108 (0x0108 - 0x0000)
+struct BallPhysicComponent_BPF_GetCurrentShootParams final
+{
+public:
+	struct FShootParams                           ReturnValue;                                       // 0x0000(0x0108)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetCurrentShootParams;
+
+// Function Runtime.BallPhysicComponent.BPF_GetLastShootParamsFromHistory
+// 0x0110 (0x0110 - 0x0000)
+struct BallPhysicComponent_BPF_GetLastShootParamsFromHistory final
+{
+public:
+	struct FShootParams                           _shootParams;                                      // 0x0000(0x0108)(Parm, OutParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0108(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_109[0x7];                                      // 0x0109(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetLastShootParamsFromHistory;
+
+// Function Runtime.BallPhysicComponent.BPF_GetStatusTimeLimit
+// 0x0010 (0x0010 - 0x0000)
+struct BallPhysicComponent_BPF_GetStatusTimeLimit final
+{
+public:
+	struct FGameplayTag                           _tag;                                              // 0x0000(0x0008)(Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bSuccess;                                         // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bGetShootInstigatorTime;                          // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetStatusTimeLimit;
+
+// Function Runtime.BallPhysicComponent.BPF_GetTrajectory
+// 0x0070 (0x0070 - 0x0000)
+struct BallPhysicComponent_BPF_GetTrajectory final
+{
+public:
+	struct FBallTrajectoryResult                  ReturnValue;                                       // 0x0000(0x0070)(Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetTrajectory;
+
+// Function Runtime.BallPhysicComponent.BPF_GetVelocity
+// 0x0018 (0x0018 - 0x0000)
+struct BallPhysicComponent_BPF_GetVelocity final
+{
+public:
+	struct FVector                                ReturnValue;                                       // 0x0000(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_GetVelocity;
+
+// Function Runtime.BallPhysicComponent.BPF_HasBallStatus
+// 0x000C (0x000C - 0x0000)
+struct BallPhysicComponent_BPF_HasBallStatus final
+{
+public:
+	struct FGameplayTag                           _tag;                                              // 0x0000(0x0008)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bOnShootInstigator;                               // 0x0008(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_HasBallStatus;
+
+// Function Runtime.BallPhysicComponent.BPF_MakeBallInterceptionPointTargetData
+// 0x0130 (0x0130 - 0x0000)
+struct BallPhysicComponent_BPF_MakeBallInterceptionPointTargetData final
+{
+public:
+	float                                         _fTime;                                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallInterceptionPointTargetData       _result;                                           // 0x0010(0x0120)(Parm, OutParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_MakeBallInterceptionPointTargetData;
+
+// Function Runtime.BallPhysicComponent.BPF_MakeBallInterceptionPointTargetDataFromCurrentState
+// 0x0130 (0x0130 - 0x0000)
+struct BallPhysicComponent_BPF_MakeBallInterceptionPointTargetDataFromCurrentState final
+{
+public:
+	float                                         _fTime;                                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallInterceptionPointTargetData       _result;                                           // 0x0010(0x0120)(Parm, OutParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_MakeBallInterceptionPointTargetDataFromCurrentState;
+
+// Function Runtime.BallPhysicComponent.BPF_MakeBallPathPointData
+// 0x0040 (0x0040 - 0x0000)
+struct BallPhysicComponent_BPF_MakeBallPathPointData final
+{
+public:
+	float                                         _fTime;                                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPredictProjectilePathPointData        ReturnValue;                                       // 0x0008(0x0038)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_BallPhysicComponent_BPF_MakeBallPathPointData;
 
 // Function Runtime.CameraComponentThird.BPF_FreezeWithService
 // 0x000C (0x000C - 0x0000)
@@ -1969,80 +1974,6 @@ public:
 	struct FLinearColor                           _tertiaryColor;                                    // 0x0040(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_ColorPaletteHelpers_BPF_GetPaletteColors;
-
-// Function Runtime.TutorialManager.InitTutorial
-// 0x0008 (0x0008 - 0x0000)
-struct TutorialManager_InitTutorial final
-{
-public:
-	class UCommonActivatableWidget*               _widgetToUse;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialManager_InitTutorial;
-
-// Function Runtime.TutorialManager.OnPossessedPawnChanged
-// 0x0010 (0x0010 - 0x0000)
-struct TutorialManager_OnPossessedPawnChanged final
-{
-public:
-	class APawn*                                  _oldPawn;                                          // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class APawn*                                  _newPawn;                                          // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialManager_OnPossessedPawnChanged;
-
-// Function Runtime.TutorialManager.BPF_FindTutorialActor
-// 0x0010 (0x0010 - 0x0000)
-struct TutorialManager_BPF_FindTutorialActor final
-{
-public:
-	struct FGameplayTag                           _tag;                                              // 0x0000(0x0008)(Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ATutorialActor*                         ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialManager_BPF_FindTutorialActor;
-
-// Function Runtime.TutorialManager.BPF_GetCurrentStepNumber
-// 0x0004 (0x0004 - 0x0000)
-struct TutorialManager_BPF_GetCurrentStepNumber final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialManager_BPF_GetCurrentStepNumber;
-
-// Function Runtime.TutorialManager.BPF_GetObjectiveCountInCurrentStep
-// 0x0004 (0x0004 - 0x0000)
-struct TutorialManager_BPF_GetObjectiveCountInCurrentStep final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialManager_BPF_GetObjectiveCountInCurrentStep;
-
-// Function Runtime.TutorialManager.BPF_GetObjectiveCountInCurrentStepWithIteration
-// 0x0004 (0x0004 - 0x0000)
-struct TutorialManager_BPF_GetObjectiveCountInCurrentStepWithIteration final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialManager_BPF_GetObjectiveCountInCurrentStepWithIteration;
-
-// Function Runtime.TutorialManager.BPF_GetStepCount
-// 0x0004 (0x0004 - 0x0000)
-struct TutorialManager_BPF_GetStepCount final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialManager_BPF_GetStepCount;
-
-// Function Runtime.TutorialManager.CanStartTutorialFromInput
-// 0x0001 (0x0001 - 0x0000)
-struct TutorialManager_CanStartTutorialFromInput final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialManager_CanStartTutorialFromInput;
 
 // Function Runtime.CrowdSoundState.BPE_CanEnterState
 // 0x0008 (0x0008 - 0x0000)
@@ -2729,6 +2660,17 @@ public:
 };
 DUMPER7_ASSERTS_EffectAttributorVolume_BPF_IsMatchingCurrentMatchFlowAndStateRequirement;
 
+// Function Runtime.EffectAttributorVolume.BPF_IsRemovalBlockedByOngoingAbility
+// 0x0010 (0x0010 - 0x0000)
+struct EffectAttributorVolume_BPF_IsRemovalBlockedByOngoingAbility final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_EffectAttributorVolume_BPF_IsRemovalBlockedByOngoingAbility;
+
 // Function Runtime.EffectAttributorVolume.BPF_ShouldLogDetailedInfos
 // 0x0001 (0x0001 - 0x0000)
 struct EffectAttributorVolume_BPF_ShouldLogDetailedInfos final
@@ -2737,6 +2679,15 @@ public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_EffectAttributorVolume_BPF_ShouldLogDetailedInfos;
+
+// Function Runtime.EffectAttributorVolume.BPF_VLOGCategory
+// 0x0008 (0x0008 - 0x0000)
+struct EffectAttributorVolume_BPF_VLOGCategory final
+{
+public:
+	class FName                                   ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_EffectAttributorVolume_BPF_VLOGCategory;
 
 // Function Runtime.FinisherQuickTimeEventFlowState.OnFinisherInput
 // 0x0010 (0x0010 - 0x0000)
@@ -2757,19 +2708,6 @@ public:
 };
 DUMPER7_ASSERTS_GoalScoredBinder_OnGoaldScored;
 
-// Function Runtime.ShopItemFilter.BPE_ShouldBeRemoved
-// 0x0070 (0x0070 - 0x0000)
-struct ShopItemFilter_BPE_ShouldBeRemoved final
-{
-public:
-	const class UCustomizationSubsystem*          _subsystem;                                        // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShopItem                              _item;                                             // 0x0008(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	bool                                          _bIsActivated;                                     // 0x0068(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0069(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_6A[0x6];                                       // 0x006A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShopItemFilter_BPE_ShouldBeRemoved;
-
 // Function Runtime.CharacterHinderingConfig.BPF_GetHinderingConfig
 // 0x0018 (0x0018 - 0x0000)
 struct CharacterHinderingConfig_BPF_GetHinderingConfig final
@@ -2781,46 +2719,6 @@ public:
 };
 DUMPER7_ASSERTS_CharacterHinderingConfig_BPF_GetHinderingConfig;
 
-// Function Runtime.HinderingGameplayAbility.OnPlayerStateRemoved
-// 0x0008 (0x0008 - 0x0000)
-struct HinderingGameplayAbility_OnPlayerStateRemoved final
-{
-public:
-	class APlayerState*                           _playerState;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_HinderingGameplayAbility_OnPlayerStateRemoved;
-
-// Function Runtime.HinderingGameplayAbility.ServerNotifyHindering
-// 0x0010 (0x0010 - 0x0000)
-struct HinderingGameplayAbility_ServerNotifyHindering final
-{
-public:
-	class APlayerState*                           _player;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fClientServerTime;                                // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fTimeSinceLastServerTime;                         // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_HinderingGameplayAbility_ServerNotifyHindering;
-
-// Function Runtime.HinderingGameplayAbility.ServerNotifyHinderingFast
-// 0x0010 (0x0010 - 0x0000)
-struct HinderingGameplayAbility_ServerNotifyHinderingFast final
-{
-public:
-	class APlayerState*                           _player;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fClientServerTime;                                // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_HinderingGameplayAbility_ServerNotifyHinderingFast;
-
-// Function Runtime.HinderingGameplayAbility.ServerNotifyHinderingStop
-// 0x0008 (0x0008 - 0x0000)
-struct HinderingGameplayAbility_ServerNotifyHinderingStop final
-{
-public:
-	class APlayerState*                           _player;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_HinderingGameplayAbility_ServerNotifyHinderingStop;
-
 // Function Runtime.HUDRegisterableInterface.RegisterToHUD
 // 0x0008 (0x0008 - 0x0000)
 struct HUDRegisterableInterface_RegisterToHUD final
@@ -2829,6 +2727,15 @@ public:
 	class UHUD_Widget*                            _HUD;                                              // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_HUDRegisterableInterface_RegisterToHUD;
+
+// Function Runtime.HUD_NameTagManagerWidget.BPF_SortNameTagArrayByDistanceFromTarget
+// 0x0008 (0x0008 - 0x0000)
+struct HUD_NameTagManagerWidget_BPF_SortNameTagArrayByDistanceFromTarget final
+{
+public:
+	class AActor*                                 _target;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_HUD_NameTagManagerWidget_BPF_SortNameTagArrayByDistanceFromTarget;
 
 // Function Runtime.MatchCountdownOverBinder.OnMatchCountdownOver
 // 0x0008 (0x0008 - 0x0000)
@@ -3000,6 +2907,47 @@ public:
 };
 DUMPER7_ASSERTS_PingBinder_OnPingTriggered;
 
+// Function Runtime.PlayerBallOwnership.BPF_GetBall
+// 0x0010 (0x0010 - 0x0000)
+struct PlayerBallOwnership_BPF_GetBall final
+{
+public:
+	class ABall*                                  _outBallRef;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EExecSuccessEnum                              _OutExecBranches;                                  // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_PlayerBallOwnership_BPF_GetBall;
+
+// Function Runtime.PlayerBallOwnership.BPF_SetBall
+// 0x0010 (0x0010 - 0x0000)
+struct PlayerBallOwnership_BPF_SetBall final
+{
+public:
+	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bSteal;                                           // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_PlayerBallOwnership_BPF_SetBall;
+
+// Function Runtime.PlayerBallOwnership.BPF_GetBallPure
+// 0x0008 (0x0008 - 0x0000)
+struct PlayerBallOwnership_BPF_GetBallPure final
+{
+public:
+	class ABall*                                  ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_PlayerBallOwnership_BPF_GetBallPure;
+
+// Function Runtime.PlayerBallOwnership.BPF_GetPlayerState
+// 0x0008 (0x0008 - 0x0000)
+struct PlayerBallOwnership_BPF_GetPlayerState final
+{
+public:
+	class ARuntimePlayerState*                    ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_PlayerBallOwnership_BPF_GetPlayerState;
+
 // Function Runtime.PlayerJoinBinder.OnPlayerAdded
 // 0x0008 (0x0008 - 0x0000)
 struct PlayerJoinBinder_OnPlayerAdded final
@@ -3079,60 +3027,16 @@ public:
 };
 DUMPER7_ASSERTS_PlayerProfileHelpers_BPF_SetCategoryAsset;
 
-// Function Runtime.ThumbnailFunctionLibrary.BPF_ClearThumbnailSceneCache
-// 0x0001 (0x0001 - 0x0000)
-struct ThumbnailFunctionLibrary_BPF_ClearThumbnailSceneCache final
-{
-public:
-	bool                                          bCollectGarbage;                                   // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_ClearThumbnailSceneCache;
-
-// Function Runtime.ThumbnailFunctionLibrary.BPF_CreateLevelSequence
-// 0x00B0 (0x00B0 - 0x0000)
-struct ThumbnailFunctionLibrary_BPF_CreateLevelSequence final
-{
-public:
-	class UObject*                                WorldContextObject;                                // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ULevelSequence*                         InLevelSequence;                                   // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FMovieSceneSequencePlaybackSettings    Settings;                                          // 0x0010(0x0028)(Parm, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_38[0x8];                                       // 0x0038(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             Transform;                                         // 0x0040(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AThumbnailLevelSequenceActor*           OutActor;                                          // 0x00A0(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ULevelSequencePlayer*                   ReturnValue;                                       // 0x00A8(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_CreateLevelSequence;
-
-// Function Runtime.ThumbnailFunctionLibrary.BPF_GetSpawnables
+// Function Runtime.StringsHelper.BPF_HashString
 // 0x0018 (0x0018 - 0x0000)
-struct ThumbnailFunctionLibrary_BPF_GetSpawnables final
+struct StringsHelper_BPF_HashString final
 {
 public:
-	class AThumbnailLevelSequenceActor*           Actor;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<class UObject*>                        ReturnValue;                                       // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+	class FString                                 _str;                                              // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReturnValue;                                       // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_GetSpawnables;
-
-// Function Runtime.ThumbnailFunctionLibrary.BPF_ObjectPathToObjectName
-// 0x0020 (0x0020 - 0x0000)
-struct ThumbnailFunctionLibrary_BPF_ObjectPathToObjectName final
-{
-public:
-	class FString                                 _objectPath;                                       // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 ReturnValue;                                       // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_ObjectPathToObjectName;
-
-// Function Runtime.ThumbnailFunctionLibrary.BPF_SetForceMipStreaming
-// 0x0010 (0x0010 - 0x0000)
-struct ThumbnailFunctionLibrary_BPF_SetForceMipStreaming final
-{
-public:
-	class UPrimitiveComponent*                    Component;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bForceMipStreaming;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_SetForceMipStreaming;
+DUMPER7_ASSERTS_StringsHelper_BPF_HashString;
 
 // Function Runtime.PlayerProfileSubsystem.BPF_RequestSave
 // 0x0001 (0x0001 - 0x0000)
@@ -3252,6 +3156,24 @@ public:
 };
 DUMPER7_ASSERTS_PlayerProfileSubsystem_BPF_GetWorkshopData;
 
+// Function Runtime.TutorialObjective.IsObjectiveOver
+// 0x0001 (0x0001 - 0x0000)
+struct TutorialObjective_IsObjectiveOver final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialObjective_IsObjectiveOver;
+
+// Function Runtime.TutorialObjective.GetManagerOwner
+// 0x0008 (0x0008 - 0x0000)
+struct TutorialObjective_GetManagerOwner final
+{
+public:
+	class ATutorialManager*                       ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialObjective_GetManagerOwner;
+
 // Function Runtime.PreMatchFlowState.ClientGoToNextState
 // 0x0008 (0x0008 - 0x0000)
 struct PreMatchFlowState_ClientGoToNextState final
@@ -3312,15 +3234,6 @@ public:
 };
 DUMPER7_ASSERTS_RematchMapDataAsset_BPF_ContainsLevelPath;
 
-// Function Runtime.VictoryMoodHandlerFlowState.BPF_GetVictoryMoodBindingTag
-// 0x0008 (0x0008 - 0x0000)
-struct VictoryMoodHandlerFlowState_BPF_GetVictoryMoodBindingTag final
-{
-public:
-	class FName                                   ReturnValue;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_VictoryMoodHandlerFlowState_BPF_GetVictoryMoodBindingTag;
-
 // Function Runtime.RematchServerMapFlowState.BPF_GetMapDataAssetIndexFromLevelPath
 // 0x000C (0x000C - 0x0000)
 struct RematchServerMapFlowState_BPF_GetMapDataAssetIndexFromLevelPath final
@@ -3330,6 +3243,15 @@ public:
 	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_RematchServerMapFlowState_BPF_GetMapDataAssetIndexFromLevelPath;
+
+// Function Runtime.VictoryMoodHandlerFlowState.BPF_GetVictoryMoodBindingTag
+// 0x0008 (0x0008 - 0x0000)
+struct VictoryMoodHandlerFlowState_BPF_GetVictoryMoodBindingTag final
+{
+public:
+	class FName                                   ReturnValue;                                       // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_VictoryMoodHandlerFlowState_BPF_GetVictoryMoodBindingTag;
 
 // Function Runtime.RoleVolumeAttributor.BPF_FindTeamRoleAttributorVolume
 // 0x0018 (0x0018 - 0x0000)
@@ -3375,72 +3297,17 @@ public:
 };
 DUMPER7_ASSERTS_RootMotionModifier_RedirectToBallTrajectory_BPF_GenerateRequiredPayloadForRedirectToBallTrajectory;
 
-// Function Runtime.Workshop.AddScore
-// 0x0004 (0x0004 - 0x0000)
-struct Workshop_AddScore final
+// Function Runtime.ShopItemSorter.BPE_Compare
+// 0x00C8 (0x00C8 - 0x0000)
+struct ShopItemSorter_BPE_Compare final
 {
 public:
-	int32                                         _iScoreToAdd;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShopItem                              _first;                                            // 0x0000(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FShopItem                              _second;                                           // 0x0060(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	ESortResult                                   ReturnValue;                                       // 0x00C0(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C4[0x4];                                       // 0x00C4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_Workshop_AddScore;
-
-// Function Runtime.Workshop.BPF_ComputeMedalWithScore
-// 0x0008 (0x0008 - 0x0000)
-struct Workshop_BPF_ComputeMedalWithScore final
-{
-public:
-	int32                                         _iScore;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EWorkshopMedal                                ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_Workshop_BPF_ComputeMedalWithScore;
-
-// Function Runtime.Workshop.BPF_ComputeMedalWithTime
-// 0x0008 (0x0008 - 0x0000)
-struct Workshop_BPF_ComputeMedalWithTime final
-{
-public:
-	float                                         _fTime;                                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EWorkshopMedal                                ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_Workshop_BPF_ComputeMedalWithTime;
-
-// Function Runtime.Workshop.BPF_GetWorkshopTimer
-// 0x0004 (0x0004 - 0x0000)
-struct Workshop_BPF_GetWorkshopTimer final
-{
-public:
-	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_Workshop_BPF_GetWorkshopTimer;
-
-// Function Runtime.Workshop.CanStartWorkshopFromInput
-// 0x0001 (0x0001 - 0x0000)
-struct Workshop_CanStartWorkshopFromInput final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_Workshop_CanStartWorkshopFromInput;
-
-// Function Runtime.Workshop.GetWorkshopScore
-// 0x0004 (0x0004 - 0x0000)
-struct Workshop_GetWorkshopScore final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_Workshop_GetWorkshopScore;
-
-// Function Runtime.Workshop.GetWorkshopState
-// 0x0001 (0x0001 - 0x0000)
-struct Workshop_GetWorkshopState final
-{
-public:
-	EWorkshopState                                ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_Workshop_GetWorkshopState;
+DUMPER7_ASSERTS_ShopItemSorter_BPE_Compare;
 
 // Function Runtime.RTGauntletCoordinatorController.OnGauntletCoordinatorMessage
 // 0x0010 (0x0010 - 0x0000)
@@ -3617,84 +3484,6 @@ public:
 };
 DUMPER7_ASSERTS_RuntimeAbilitySystemComponent_BPF_GetActiveRuntimeGameplayEffectContext;
 
-// Function Runtime.ItemThumbnailScene.AddComponent
-// 0x0080 (0x0080 - 0x0000)
-struct ItemThumbnailScene_AddComponent final
-{
-public:
-	TSubclassOf<class UActorComponent>            Class_0;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             LocalToWorld;                                      // 0x0010(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAttachToRoot;                                     // 0x0070(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_71[0x7];                                       // 0x0071(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UActorComponent*                        ReturnValue;                                       // 0x0078(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailScene_AddComponent;
-
-// Function Runtime.ItemThumbnailScene.GetThumbnailWorld
-// 0x0008 (0x0008 - 0x0000)
-struct ItemThumbnailScene_GetThumbnailWorld final
-{
-public:
-	class UWorld*                                 ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailScene_GetThumbnailWorld;
-
-// Function Runtime.ItemThumbnailScene.SetBackgroundColor
-// 0x0010 (0x0010 - 0x0000)
-struct ItemThumbnailScene_SetBackgroundColor final
-{
-public:
-	struct FLinearColor                           InColor;                                           // 0x0000(0x0010)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailScene_SetBackgroundColor;
-
-// Function Runtime.ItemThumbnailScene.SpawnActor
-// 0x0010 (0x0010 - 0x0000)
-struct ItemThumbnailScene_SpawnActor final
-{
-public:
-	TSubclassOf<class AActor>                     Class_0;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailScene_SpawnActor;
-
-// Function Runtime.ItemThumbnailScene.SpawnActorForKey
-// 0x0020 (0x0020 - 0x0000)
-struct ItemThumbnailScene_SpawnActorForKey final
-{
-public:
-	struct FGenericStruct                         Key;                                               // 0x0000(0x0004)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class AActor>                     Class_0;                                           // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OutViewIndex;                                      // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 ReturnValue;                                       // 0x0018(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailScene_SpawnActorForKey;
-
-// Function Runtime.ItemThumbnailScene.GetActorForView
-// 0x0010 (0x0010 - 0x0000)
-struct ItemThumbnailScene_GetActorForView final
-{
-public:
-	int32                                         ViewIndex;                                         // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class AActor*                                 ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailScene_GetActorForView;
-
-// Function Runtime.ItemThumbnailScene.GetViewMatrixParameters
-// 0x0870 (0x0870 - 0x0000)
-struct ItemThumbnailScene_GetViewMatrixParameters final
-{
-public:
-	int32                                         SceneView;                                         // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FViewParameters                        OutParameters;                                     // 0x0010(0x0860)(Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailScene_GetViewMatrixParameters;
-
 // Function Runtime.RuntimeAIController.BPF_SetStateTreeRef
 // 0x0028 (0x0028 - 0x0000)
 struct RuntimeAIController_BPF_SetStateTreeRef final
@@ -3859,17 +3648,6 @@ public:
 	uint8                                         Pad_F8[0x8];                                       // 0x00F8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_RuntimeAISubsystem_BPF_SpawnAI;
-
-// Function Runtime.StringsHelper.BPF_HashString
-// 0x0018 (0x0018 - 0x0000)
-struct StringsHelper_BPF_HashString final
-{
-public:
-	class FString                                 _str;                                              // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReturnValue;                                       // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_StringsHelper_BPF_HashString;
 
 // Function Runtime.RuntimeAnimInstance.BPE_OnMenuFlowCameraChanged
 // 0x0001 (0x0001 - 0x0000)
@@ -4179,9 +3957,7 @@ struct RuntimeCharacter_ClientNotifyBallServerTrajectoryUpdate final
 public:
 	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class UPlayerBallOwnership*                   _owner;                                            // 0x0008(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootStartPoint                       _serverTrajectoryStartingPoint;                    // 0x0010(0x0130)(ConstParm, Parm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FRevisionID                            _revisionID;                                       // 0x0140(0x0002)(ConstParm, Parm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_142[0x6];                                      // 0x0142(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FShootStartPoint                       _serverTrajectoryStartingPoint;                    // 0x0010(0x0138)(ConstParm, Parm, ReferenceParm, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_RuntimeCharacter_ClientNotifyBallServerTrajectoryUpdate;
 
@@ -4365,6 +4141,70 @@ public:
 };
 DUMPER7_ASSERTS_RuntimeCheatManager_ServerSetScore;
 
+// Function Runtime.ThumbnailFunctionLibrary.BPF_ClearThumbnailSceneCache
+// 0x0001 (0x0001 - 0x0000)
+struct ThumbnailFunctionLibrary_BPF_ClearThumbnailSceneCache final
+{
+public:
+	bool                                          bCollectGarbage;                                   // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_ClearThumbnailSceneCache;
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_CreateLevelSequence
+// 0x00B0 (0x00B0 - 0x0000)
+struct ThumbnailFunctionLibrary_BPF_CreateLevelSequence final
+{
+public:
+	class UObject*                                WorldContextObject;                                // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ULevelSequence*                         InLevelSequence;                                   // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FMovieSceneSequencePlaybackSettings    Settings;                                          // 0x0010(0x0028)(Parm, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_38[0x8];                                       // 0x0038(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             Transform;                                         // 0x0040(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AThumbnailLevelSequenceActor*           OutActor;                                          // 0x00A0(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ULevelSequencePlayer*                   ReturnValue;                                       // 0x00A8(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_CreateLevelSequence;
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_GetRenderTargetCapacity
+// 0x0010 (0x0010 - 0x0000)
+struct ThumbnailFunctionLibrary_BPF_GetRenderTargetCapacity final
+{
+public:
+	struct FVector2D                              ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_GetRenderTargetCapacity;
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_GetSpawnables
+// 0x0018 (0x0018 - 0x0000)
+struct ThumbnailFunctionLibrary_BPF_GetSpawnables final
+{
+public:
+	class AThumbnailLevelSequenceActor*           Actor;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class UObject*>                        ReturnValue;                                       // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_GetSpawnables;
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_ObjectPathToObjectName
+// 0x0020 (0x0020 - 0x0000)
+struct ThumbnailFunctionLibrary_BPF_ObjectPathToObjectName final
+{
+public:
+	class FString                                 _objectPath;                                       // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 ReturnValue;                                       // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_ObjectPathToObjectName;
+
+// Function Runtime.ThumbnailFunctionLibrary.BPF_SetForceMipStreaming
+// 0x0010 (0x0010 - 0x0000)
+struct ThumbnailFunctionLibrary_BPF_SetForceMipStreaming final
+{
+public:
+	class UPrimitiveComponent*                    Component;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bForceMipStreaming;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ThumbnailFunctionLibrary_BPF_SetForceMipStreaming;
+
 // Function Runtime.RuntimeCustomizationHelpers.BPF_ApplyPaletteToParts
 // 0x0120 (0x0120 - 0x0000)
 struct RuntimeCustomizationHelpers_BPF_ApplyPaletteToParts final
@@ -4399,48 +4239,6 @@ public:
 	struct FSCCharacterCustomizationDescription   _inOutDescription;                                 // 0x0030(0x00F0)(Parm, OutParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_RuntimeCustomizationHelpers_BPF_RemovePaletteFromParts;
-
-// Function Runtime.TouchBallComponent.BPF_SetParalyzed
-// 0x0010 (0x0010 - 0x0000)
-struct TouchBallComponent_BPF_SetParalyzed final
-{
-public:
-	bool                                          _bParalized;                                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   _idName;                                           // 0x0004(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fBlendAttachDuration;                             // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TouchBallComponent_BPF_SetParalyzed;
-
-// Function Runtime.TouchBallComponent.OnBallOwnershipGained
-// 0x0008 (0x0008 - 0x0000)
-struct TouchBallComponent_OnBallOwnershipGained final
-{
-public:
-	class ABall*                                  _nextBall;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TouchBallComponent_OnBallOwnershipGained;
-
-// Function Runtime.TouchBallComponent.OnMontageStarted
-// 0x0008 (0x0008 - 0x0000)
-struct TouchBallComponent_OnMontageStarted final
-{
-public:
-	class UAnimMontage*                           _animMontage;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TouchBallComponent_OnMontageStarted;
-
-// Function Runtime.TouchBallComponent.OnMovementModeChanged
-// 0x0010 (0x0010 - 0x0000)
-struct TouchBallComponent_OnMovementModeChanged final
-{
-public:
-	class ACharacter*                             _character;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EMovementMode                                 _ePrevMovementMode;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         _uiPreviousCustomMode;                             // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_TouchBallComponent_OnMovementModeChanged;
 
 // Function Runtime.RuntimeDebug.BPF_MetricGrid
 // 0x0078 (0x0078 - 0x0000)
@@ -4543,6 +4341,36 @@ public:
 };
 DUMPER7_ASSERTS_RuntimeGameMode_BPE_GetBallPoints;
 
+// Function Runtime.SimulationStepHelper.BPF_IsCustomOrFreezingSimulationStep
+// 0x0002 (0x0002 - 0x0000)
+struct SimulationStepHelper_BPF_IsCustomOrFreezingSimulationStep final
+{
+public:
+	ESimulationStep                               _eSimulationStep;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_SimulationStepHelper_BPF_IsCustomOrFreezingSimulationStep;
+
+// Function Runtime.SimulationStepHelper.BPF_IsFlyingOrRollingSimulationStep
+// 0x0002 (0x0002 - 0x0000)
+struct SimulationStepHelper_BPF_IsFlyingOrRollingSimulationStep final
+{
+public:
+	ESimulationStep                               _eSimulationStep;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_SimulationStepHelper_BPF_IsFlyingOrRollingSimulationStep;
+
+// Function Runtime.SimulationStepHelper.BPF_IsSimulationStepValid
+// 0x0002 (0x0002 - 0x0000)
+struct SimulationStepHelper_BPF_IsSimulationStepValid final
+{
+public:
+	ESimulationStep                               _eSimulationStep;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_SimulationStepHelper_BPF_IsSimulationStepValid;
+
 // Function Runtime.RuntimeMatchGameMode.BPF_GetMatchStateName
 // 0x000C (0x000C - 0x0000)
 struct RuntimeMatchGameMode_BPF_GetMatchStateName final
@@ -4602,11 +4430,11 @@ public:
 DUMPER7_ASSERTS_RuntimeMatchGameMode_OnCountdownStart;
 
 // Function Runtime.RuntimeMatchGameMode.BPF_GetMatchParameters
-// 0x00B0 (0x00B0 - 0x0000)
+// 0x00B8 (0x00B8 - 0x0000)
 struct RuntimeMatchGameMode_BPF_GetMatchParameters final
 {
 public:
-	struct FRuntimeMatchParameters                ReturnValue;                                       // 0x0000(0x00B0)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FRuntimeMatchParameters                ReturnValue;                                       // 0x0000(0x00B8)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_RuntimeMatchGameMode_BPF_GetMatchParameters;
 
@@ -4688,6 +4516,44 @@ public:
 };
 DUMPER7_ASSERTS_RuntimeFakeCharacter_GetImitatedPlayerState;
 
+// Function Runtime.ItemThumbnailComponent.OnBeginLoading
+// 0x0030 (0x0030 - 0x0000)
+struct ItemThumbnailComponent_OnBeginLoading final
+{
+public:
+	TSoftObjectPtr<class UObject>                 AssetName;                                         // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsInitialLoad;                                    // 0x0028(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ItemThumbnailComponent_OnBeginLoading;
+
+// Function Runtime.ItemThumbnailComponent.OnFinishLoading
+// 0x0028 (0x0028 - 0x0000)
+struct ItemThumbnailComponent_OnFinishLoading final
+{
+public:
+	TSoftObjectPtr<class UObject>                 AssetName;                                         // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailComponent_OnFinishLoading;
+
+// Function Runtime.ItemThumbnailComponent.SetMaterial
+// 0x0010 (0x0010 - 0x0000)
+struct ItemThumbnailComponent_SetMaterial final
+{
+public:
+	struct FThumbnailMaterial                     InMaterial;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailComponent_SetMaterial;
+
+// Function Runtime.ItemThumbnailComponent.SetSceneClass
+// 0x0008 (0x0008 - 0x0000)
+struct ItemThumbnailComponent_SetSceneClass final
+{
+public:
+	TSubclassOf<class UItemThumbnailScene>        InSceneClass;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailComponent_SetSceneClass;
+
 // Function Runtime.DistanceTrajectoryStatusDeactivateCondition.BPE_SetDistance
 // 0x0110 (0x0110 - 0x0000)
 struct DistanceTrajectoryStatusDeactivateCondition_BPE_SetDistance final
@@ -4746,23 +4612,47 @@ public:
 };
 DUMPER7_ASSERTS_RuntimeGameSettings_BPF_GetRuntimeMainSettings;
 
-// Function Runtime.TutorialObjective.IsObjectiveOver
-// 0x0001 (0x0001 - 0x0000)
-struct TutorialObjective_IsObjectiveOver final
+// Function Runtime.TouchBallComponent.BPF_SetParalyzed
+// 0x0010 (0x0010 - 0x0000)
+struct TouchBallComponent_BPF_SetParalyzed final
 {
 public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bParalized;                                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   _idName;                                           // 0x0004(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fBlendAttachDuration;                             // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_TutorialObjective_IsObjectiveOver;
+DUMPER7_ASSERTS_TouchBallComponent_BPF_SetParalyzed;
 
-// Function Runtime.TutorialObjective.GetManagerOwner
+// Function Runtime.TouchBallComponent.OnBallOwnershipGained
 // 0x0008 (0x0008 - 0x0000)
-struct TutorialObjective_GetManagerOwner final
+struct TouchBallComponent_OnBallOwnershipGained final
 {
 public:
-	class ATutorialManager*                       ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ABall*                                  _nextBall;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_TutorialObjective_GetManagerOwner;
+DUMPER7_ASSERTS_TouchBallComponent_OnBallOwnershipGained;
+
+// Function Runtime.TouchBallComponent.OnMontageStarted
+// 0x0008 (0x0008 - 0x0000)
+struct TouchBallComponent_OnMontageStarted final
+{
+public:
+	class UAnimMontage*                           _animMontage;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TouchBallComponent_OnMontageStarted;
+
+// Function Runtime.TouchBallComponent.OnMovementModeChanged
+// 0x0010 (0x0010 - 0x0000)
+struct TouchBallComponent_OnMovementModeChanged final
+{
+public:
+	class ACharacter*                             _character;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EMovementMode                                 _ePrevMovementMode;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         _uiPreviousCustomMode;                             // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_TouchBallComponent_OnMovementModeChanged;
 
 // Function Runtime.RuntimeGameState.BPF_GetBall
 // 0x0008 (0x0008 - 0x0000)
@@ -4810,6 +4700,17 @@ public:
 	uint8                                         ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_RuntimeGameState_BPF_GetTeamCount;
+
+// Function Runtime.DurationTrajectoryStatusDeactivateCondition.BPE_SetDuration
+// 0x0110 (0x0110 - 0x0000)
+struct DurationTrajectoryStatusDeactivateCondition_BPE_SetDuration final
+{
+public:
+	struct FShootParams                           _shootParams;                                      // 0x0000(0x0108)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	float                                         _fDuration;                                        // 0x0108(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_10C[0x4];                                      // 0x010C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_DurationTrajectoryStatusDeactivateCondition_BPE_SetDuration;
 
 // Function Runtime.RuntimeMatchGameState.BPF_BallStolen
 // 0x0010 (0x0010 - 0x0000)
@@ -4887,7 +4788,8 @@ struct RuntimeMatchGameState_OnPreviousOwnerChanged final
 public:
 	class UBallPlayersInteractionComponent*       _ballPlayerInteraction;                            // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	EBallInteractionType                          _eInteractionType;                                 // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          _bIsSamePreviousOwner;                             // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_RuntimeMatchGameState_OnPreviousOwnerChanged;
 
@@ -5376,6 +5278,15 @@ public:
 };
 DUMPER7_ASSERTS_RuntimeMultiPositionAmbientSound_BPF_GetTeam;
 
+// Function Runtime.TutorialLogicStep.GetManagerOwner
+// 0x0008 (0x0008 - 0x0000)
+struct TutorialLogicStep_GetManagerOwner final
+{
+public:
+	class ATutorialManager*                       ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialLogicStep_GetManagerOwner;
+
 // Function Runtime.RuntimePerformanceTelemetry.OnMatchGameStateEndPlay
 // 0x0010 (0x0010 - 0x0000)
 struct RuntimePerformanceTelemetry_OnMatchGameStateEndPlay final
@@ -5386,15 +5297,6 @@ public:
 	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_RuntimePerformanceTelemetry_OnMatchGameStateEndPlay;
-
-// Function Runtime.TutorialObjectiveOperator.OnSubObjectiveComplete
-// 0x0008 (0x0008 - 0x0000)
-struct TutorialObjectiveOperator_OnSubObjectiveComplete final
-{
-public:
-	class UTutorialObjective*                     _objective;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialObjectiveOperator_OnSubObjectiveComplete;
 
 // Function Runtime.RuntimePlayerController.BPF_GetMappingsForAction
 // 0x0018 (0x0018 - 0x0000)
@@ -5437,15 +5339,15 @@ public:
 DUMPER7_ASSERTS_RuntimePlayerController_ClientNotifyBallServerOwnerChanged;
 
 // Function Runtime.RuntimePlayerController.ClientNotifyBallServerTrajectory
-// 0x0148 (0x0148 - 0x0000)
+// 0x0150 (0x0150 - 0x0000)
 struct RuntimePlayerController_ClientNotifyBallServerTrajectory final
 {
 public:
 	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class UPlayerBallOwnership*                   _owner;                                            // 0x0008(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootStartPoint                       _serverTrajectoryStartingPoint;                    // 0x0010(0x0130)(ConstParm, Parm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FRevisionID                            _revisionID;                                       // 0x0140(0x0002)(ConstParm, Parm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_142[0x6];                                      // 0x0142(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FShootStartPoint                       _serverTrajectoryStartingPoint;                    // 0x0010(0x0138)(ConstParm, Parm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FRevisionID                            _revisionID;                                       // 0x0148(0x0002)(ConstParm, Parm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14A[0x6];                                      // 0x014A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_RuntimePlayerController_ClientNotifyBallServerTrajectory;
 
@@ -5514,16 +5416,44 @@ public:
 };
 DUMPER7_ASSERTS_RuntimePlayerScoreViewModel_OnMVPSet;
 
-// Function Runtime.DurationTrajectoryStatusDeactivateCondition.BPE_SetDuration
-// 0x0110 (0x0110 - 0x0000)
-struct DurationTrajectoryStatusDeactivateCondition_BPE_SetDuration final
+// Function Runtime.WelcomeFlowViewModel.BPF_GetUnreadContentViewModelsByType
+// 0x0018 (0x0018 - 0x0000)
+struct WelcomeFlowViewModel_BPF_GetUnreadContentViewModelsByType final
 {
 public:
-	struct FShootParams                           _shootParams;                                      // 0x0000(0x0108)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	float                                         _fDuration;                                        // 0x0108(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_10C[0x4];                                      // 0x010C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	ERematchWelcomeFlowContentType                _type;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWelcomeFlowContentViewModel*>   ReturnValue;                                       // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_DurationTrajectoryStatusDeactivateCondition_BPE_SetDuration;
+DUMPER7_ASSERTS_WelcomeFlowViewModel_BPF_GetUnreadContentViewModelsByType;
+
+// Function Runtime.WelcomeFlowViewModel.BPF_HasUnreadContentOfType
+// 0x0002 (0x0002 - 0x0000)
+struct WelcomeFlowViewModel_BPF_HasUnreadContentOfType final
+{
+public:
+	ERematchWelcomeFlowContentType                _type;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_WelcomeFlowViewModel_BPF_HasUnreadContentOfType;
+
+// Function Runtime.WelcomeFlowViewModel.HasActiveNews
+// 0x0001 (0x0001 - 0x0000)
+struct WelcomeFlowViewModel_HasActiveNews final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_WelcomeFlowViewModel_HasActiveNews;
+
+// Function Runtime.WelcomeFlowViewModel.HasUnreadContent
+// 0x0001 (0x0001 - 0x0000)
+struct WelcomeFlowViewModel_HasUnreadContent final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_WelcomeFlowViewModel_HasUnreadContent;
 
 // Function Runtime.RuntimePlayersScoreSubsystem.OnLocalPlayerTotalExperienceDataSet
 // 0x0008 (0x0008 - 0x0000)
@@ -5607,6 +5537,1503 @@ public:
 };
 DUMPER7_ASSERTS_RuntimePlayersScoreSubsystem_GetScoreEventClasses;
 
+// Function Runtime.RuntimeReplaySubsystem.OnGoaldScored
+// 0x0038 (0x0038 - 0x0000)
+struct RuntimeReplaySubsystem_OnGoaldScored final
+{
+public:
+	struct FGoalDescription                       _goalDescription;                                  // 0x0000(0x0038)(Parm, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeReplaySubsystem_OnGoaldScored;
+
+// Function Runtime.RuntimeReplaySubsystem.OnReplayPhaseChanged
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeReplaySubsystem_OnReplayPhaseChanged final
+{
+public:
+	const class AActor*                           _actorToLookAt;                                    // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	const class AActor*                           _actorToFollow;                                    // 0x0008(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeReplaySubsystem_OnReplayPhaseChanged;
+
+// Function Runtime.RuntimeReplaySubsystem.BPF_GetFollowActorFromCurrentPhase
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimeReplaySubsystem_BPF_GetFollowActorFromCurrentPhase final
+{
+public:
+	class AActor*                                 ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetFollowActorFromCurrentPhase;
+
+// Function Runtime.RuntimeReplaySubsystem.BPF_GetReplayActor
+// 0x0020 (0x0020 - 0x0000)
+struct RuntimeReplaySubsystem_BPF_GetReplayActor final
+{
+public:
+	uint8                                         _uiTeam;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         _iNumberInTeam;                                    // 0x0004(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ARuntimeCharacter*                      _outCharacter;                                     // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ARuntimePlayerState*                    _outPlayerState;                                   // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0018(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetReplayActor;
+
+// Function Runtime.RuntimeReplaySubsystem.BPF_GetReplayScorerActor
+// 0x0018 (0x0018 - 0x0000)
+struct RuntimeReplaySubsystem_BPF_GetReplayScorerActor final
+{
+public:
+	class ARuntimeCharacter*                      _outCharacter;                                     // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ARuntimePlayerState*                    _outPlayerState;                                   // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetReplayScorerActor;
+
+// Function Runtime.RuntimeReplaySubsystem.BPF_GetScorer
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimeReplaySubsystem_BPF_GetScorer final
+{
+public:
+	class ARuntimePlayerState*                    ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetScorer;
+
+// Function Runtime.RuntimeReplaySubsystem.BPF_GetScorerName
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeReplaySubsystem_BPF_GetScorerName final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetScorerName;
+
+// Function Runtime.RuntimeReplaySubsystem.BPF_IsPlayingReplay
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimeReplaySubsystem_BPF_IsPlayingReplay final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_IsPlayingReplay;
+
+// Function Runtime.RuntimeReplaySubsystem.BPF_ScorerIsAnAlly
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimeReplaySubsystem_BPF_ScorerIsAnAlly final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_ScorerIsAnAlly;
+
+// Function Runtime.RuntimeSaveSubsystem.OnAuthenticated
+// 0x0038 (0x0038 - 0x0000)
+struct RuntimeSaveSubsystem_OnAuthenticated final
+{
+public:
+	bool                                          _bSuccess;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSOSErrorInfos                         _errorInfos;                                       // 0x0008(0x0030)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSaveSubsystem_OnAuthenticated;
+
+// Function Runtime.RuntimeShootCameraShake.BPE_GetShootCameraShakeParams
+// 0x0118 (0x0118 - 0x0000)
+struct RuntimeShootCameraShake_BPE_GetShootCameraShakeParams final
+{
+public:
+	class AActor*                                 _actor;                                            // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FRuntimeShootCameraShakeParams         ReturnValue;                                       // 0x00E8(0x0030)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeShootCameraShake_BPE_GetShootCameraShakeParams;
+
+// Function Runtime.ShootCameraShakeHelpers.BPF_GetShootCameraShakeParams
+// 0x0118 (0x0118 - 0x0000)
+struct ShootCameraShakeHelpers_BPF_GetShootCameraShakeParams final
+{
+public:
+	class AActor*                                 _actor;                                            // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FRuntimeShootCameraShakeParams         ReturnValue;                                       // 0x00E8(0x0030)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootCameraShakeHelpers_BPF_GetShootCameraShakeParams;
+
+// Function Runtime.MeshMergeFunctionLibrary.BPF_MergeMeshComponents
+// 0x0060 (0x0060 - 0x0000)
+struct MeshMergeFunctionLibrary_BPF_MergeMeshComponents final
+{
+public:
+	TArray<class USkeletalMeshComponent*>         _meshComponents;                                   // 0x0000(0x0010)(Parm, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FSkeletalMeshMergeParams               _params;                                           // 0x0010(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_MeshMergeFunctionLibrary_BPF_MergeMeshComponents;
+
+// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsAllowedToJoinSquads
+// 0x000C (0x000C - 0x0000)
+struct RuntimeSOSBindingsSubsystem_BPF_IsAllowedToJoinSquads final
+{
+public:
+	struct FGameplayTag                           _matchType;                                        // 0x0000(0x0008)(Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_RuntimeSOSBindingsSubsystem_BPF_IsAllowedToJoinSquads;
+
+// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsCustomMatchParamVisible
+// 0x0002 (0x0002 - 0x0000)
+struct RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchParamVisible final
+{
+public:
+	ERuntimeMatchParameterTypes                   _eParam;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchParamVisible;
+
+// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsCustomMatchUserParamVisible
+// 0x0002 (0x0002 - 0x0000)
+struct RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchUserParamVisible final
+{
+public:
+	uint8                                         _eParam;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchUserParamVisible;
+
+// Function Runtime.TutorialObjectiveOperator.OnSubObjectiveComplete
+// 0x0008 (0x0008 - 0x0000)
+struct TutorialObjectiveOperator_OnSubObjectiveComplete final
+{
+public:
+	class UTutorialObjective*                     _objective;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialObjectiveOperator_OnSubObjectiveComplete;
+
+// Function Runtime.RuntimeSOSComponent.OnAbilityActivated
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeSOSComponent_OnAbilityActivated final
+{
+public:
+	struct FGameplayAbilitySpecHandle             _abilityHanddle;                                   // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UGameplayAbility*                       _abilityActivated;                                 // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSOSComponent_OnAbilityActivated;
+
+// Function Runtime.RuntimeSOSComponent.OnCountdownOver
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimeSOSComponent_OnCountdownOver final
+{
+public:
+	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSOSComponent_OnCountdownOver;
+
+// Function Runtime.RuntimeSOSComponent.OnCountdownStart
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimeSOSComponent_OnCountdownStart final
+{
+public:
+	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSOSComponent_OnCountdownStart;
+
+// Function Runtime.RuntimeSOSComponent.OnPossessedPawnChanged
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeSOSComponent_OnPossessedPawnChanged final
+{
+public:
+	class APawn*                                  _oldPawn;                                          // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class APawn*                                  _newPawn;                                          // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSOSComponent_OnPossessedPawnChanged;
+
+// Function Runtime.RuntimeSoundSubsystem.BPE_OnLoadingScreenVisibilityChanged
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimeSoundSubsystem_BPE_OnLoadingScreenVisibilityChanged final
+{
+public:
+	bool                                          _bVisible;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSoundSubsystem_BPE_OnLoadingScreenVisibilityChanged;
+
+// Function Runtime.ItemThumbnailScene.AddComponent
+// 0x0080 (0x0080 - 0x0000)
+struct ItemThumbnailScene_AddComponent final
+{
+public:
+	TSubclassOf<class UActorComponent>            Class_0;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             LocalToWorld;                                      // 0x0010(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAttachToRoot;                                     // 0x0070(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_71[0x7];                                       // 0x0071(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UActorComponent*                        ReturnValue;                                       // 0x0078(0x0008)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailScene_AddComponent;
+
+// Function Runtime.ItemThumbnailScene.GetThumbnailWorld
+// 0x0008 (0x0008 - 0x0000)
+struct ItemThumbnailScene_GetThumbnailWorld final
+{
+public:
+	class UWorld*                                 ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailScene_GetThumbnailWorld;
+
+// Function Runtime.ItemThumbnailScene.SetBackgroundColor
+// 0x0010 (0x0010 - 0x0000)
+struct ItemThumbnailScene_SetBackgroundColor final
+{
+public:
+	struct FLinearColor                           InColor;                                           // 0x0000(0x0010)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailScene_SetBackgroundColor;
+
+// Function Runtime.ItemThumbnailScene.SpawnActor
+// 0x0010 (0x0010 - 0x0000)
+struct ItemThumbnailScene_SpawnActor final
+{
+public:
+	TSubclassOf<class AActor>                     Class_0;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailScene_SpawnActor;
+
+// Function Runtime.ItemThumbnailScene.SpawnActorForKey
+// 0x0020 (0x0020 - 0x0000)
+struct ItemThumbnailScene_SpawnActorForKey final
+{
+public:
+	struct FGenericStruct                         Key;                                               // 0x0000(0x0004)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class AActor>                     Class_0;                                           // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OutViewIndex;                                      // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class AActor*                                 ReturnValue;                                       // 0x0018(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailScene_SpawnActorForKey;
+
+// Function Runtime.ItemThumbnailScene.GetActorForView
+// 0x0010 (0x0010 - 0x0000)
+struct ItemThumbnailScene_GetActorForView final
+{
+public:
+	int32                                         ViewIndex;                                         // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class AActor*                                 ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailScene_GetActorForView;
+
+// Function Runtime.ItemThumbnailScene.GetViewMatrixParameters
+// 0x0870 (0x0870 - 0x0000)
+struct ItemThumbnailScene_GetViewMatrixParameters final
+{
+public:
+	int32                                         SceneView;                                         // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FViewParameters                        OutParameters;                                     // 0x0010(0x0860)(Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ItemThumbnailScene_GetViewMatrixParameters;
+
+// Function Runtime.RuntimeSprintGameplayAbility.CheckIfMoving
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimeSprintGameplayAbility_CheckIfMoving final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSprintGameplayAbility_CheckIfMoving;
+
+// Function Runtime.RuntimeSprintGameplayAbility.CheckIfStationnary
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimeSprintGameplayAbility_CheckIfStationnary final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSprintGameplayAbility_CheckIfStationnary;
+
+// Function Runtime.RuntimeSprintGameplayAbility.OnSprintInputRelease
+// 0x00A0 (0x00A0 - 0x0000)
+struct RuntimeSprintGameplayAbility_OnSprintInputRelease final
+{
+public:
+	struct FInputActionState                      _state;                                            // 0x0000(0x0098)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	bool                                          _bActivated;                                       // 0x0098(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_RuntimeSprintGameplayAbility_OnSprintInputRelease;
+
+// Function Runtime.RuntimeSequencerBindingLibrary.GetCharacterBodyPart
+// 0x0080 (0x0080 - 0x0000)
+struct RuntimeSequencerBindingLibrary_GetCharacterBodyPart final
+{
+public:
+	struct FMovieSceneDynamicBindingResolveParams Params_0;                                          // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	struct FCharacterPartEnumHandler              BodyPart;                                          // 0x0020(0x0050)(Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FMovieSceneDynamicBindingResolveResult ReturnValue;                                       // 0x0070(0x0010)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSequencerBindingLibrary_GetCharacterBodyPart;
+
+// Function Runtime.RuntimeSequencerBindingLibrary.GoalScorer
+// 0x0018 (0x0018 - 0x0000)
+struct RuntimeSequencerBindingLibrary_GoalScorer final
+{
+public:
+	class UObject*                                WorldContextObject;                                // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FMovieSceneDynamicBindingResolveResult ReturnValue;                                       // 0x0008(0x0010)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeSequencerBindingLibrary_GoalScorer;
+
+// Function Runtime.RuntimeStatBehaviourTimer.OnOvertimeStart
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimeStatBehaviourTimer_OnOvertimeStart final
+{
+public:
+	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeStatBehaviourTimer_OnOvertimeStart;
+
+// Function Runtime.RuntimeStatDataIsInRange.BPF_GetRangeTargetActor
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeStatDataIsInRange_BPF_GetRangeTargetActor final
+{
+public:
+	const class APawn*                            _instigatorPawn;                                   // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeStatDataIsInRange_BPF_GetRangeTargetActor;
+
+// Function Runtime.RuntimeStatsSubsystem.OnGoalScored
+// 0x0038 (0x0038 - 0x0000)
+struct RuntimeStatsSubsystem_OnGoalScored final
+{
+public:
+	struct FGoalDescription                       _goalDescription;                                  // 0x0000(0x0038)(Parm, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeStatsSubsystem_OnGoalScored;
+
+// Function Runtime.RuntimeStatsSubsystem.OnMatchCountdownFinished
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimeStatsSubsystem_OnMatchCountdownFinished final
+{
+public:
+	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeStatsSubsystem_OnMatchCountdownFinished;
+
+// Function Runtime.RuntimeStatsSubsystem.OnMatchFirstCountdownFinished
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimeStatsSubsystem_OnMatchFirstCountdownFinished final
+{
+public:
+	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeStatsSubsystem_OnMatchFirstCountdownFinished;
+
+// Function Runtime.RuntimeTools.BPF_ComputeSpeedState
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeTools_BPF_ComputeSpeedState final
+{
+public:
+	const class APawn*                            _pawn;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ESCCharacterSpeedState                        ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_ComputeSpeedState;
+
+// Function Runtime.RuntimeTools.BPF_GetAllPawns
+// 0x0020 (0x0020 - 0x0000)
+struct RuntimeTools_BPF_GetAllPawns final
+{
+public:
+	const class AActor*                           _inRefActor;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bShouldBeOnScreen;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bFilterByTeam;                                    // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bOnlyAllies;                                      // 0x000A(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class APawn*>                          ReturnValue;                                       // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_GetAllPawns;
+
+// Function Runtime.RuntimeTools.BPF_GetCurrentMenuGameFlowSubsystem
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeTools_BPF_GetCurrentMenuGameFlowSubsystem final
+{
+public:
+	const class UObject*                          _worldContext;                                     // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class USCGameFlowSubsystem*                   ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_GetCurrentMenuGameFlowSubsystem;
+
+// Function Runtime.RuntimeTools.BPF_GetLastPlayerScorer
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeTools_BPF_GetLastPlayerScorer final
+{
+public:
+	const class UWorld*                           _world;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class APlayerState*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_GetLastPlayerScorer;
+
+// Function Runtime.RuntimeTools.BPF_GetNearestBall
+// 0x0018 (0x0018 - 0x0000)
+struct RuntimeTools_BPF_GetNearestBall final
+{
+public:
+	const class AActor*                           _inRefActor;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bShouldBeOnScreen;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ABall*                                  ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_GetNearestBall;
+
+// Function Runtime.RuntimeTools.BPF_GetNearestGoal
+// 0x0018 (0x0018 - 0x0000)
+struct RuntimeTools_BPF_GetNearestGoal final
+{
+public:
+	const class AActor*                           _inRefActor;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bShouldBeOnScreen;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bFilterByTeam;                                    // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bOnlyOurGoal;                                     // 0x000A(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class AGoal*                                  ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_GetNearestGoal;
+
+// Function Runtime.RuntimeTools.BPF_GetNearestPawn
+// 0x0018 (0x0018 - 0x0000)
+struct RuntimeTools_BPF_GetNearestPawn final
+{
+public:
+	const class AActor*                           _inRefActor;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bShouldBeOnScreen;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bFilterByTeam;                                    // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bOnlyAllies;                                      // 0x000A(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_GetNearestPawn;
+
+// Function Runtime.RuntimeTools.BPF_GetPlayerCountInTeam
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeTools_BPF_GetPlayerCountInTeam final
+{
+public:
+	const class UWorld*                           _world;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         _uiTeam;                                           // 0x0008(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_GetPlayerCountInTeam;
+
+// Function Runtime.RuntimeTools.BPF_GetRequestedTargets
+// 0x00B8 (0x00B8 - 0x0000)
+struct RuntimeTools_BPF_GetRequestedTargets final
+{
+public:
+	class APawn*                                  _requester;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRuntimeTargetRequest                  _request;                                          // 0x0008(0x0088)(Parm, NativeAccessSpecifierPublic)
+	struct FGameplayAbilityTargetDataHandle       ReturnValue;                                       // 0x0090(0x0028)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_GetRequestedTargets;
+
+// Function Runtime.RuntimeTools.BPF_GetSessionId
+// 0x0018 (0x0018 - 0x0000)
+struct RuntimeTools_BPF_GetSessionId final
+{
+public:
+	class UWorld*                                 World;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 ReturnValue;                                       // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_GetSessionId;
+
+// Function Runtime.RuntimeTools.BPF_ShouldJumpForReception
+// 0x0002 (0x0002 - 0x0000)
+struct RuntimeTools_BPF_ShouldJumpForReception final
+{
+public:
+	EBallReceptionArea                            _eReceptionArea;                                   // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeTools_BPF_ShouldJumpForReception;
+
+// Function Runtime.RuntimeVideoSubsystem.BPF_SetupVideo
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeVideoSubsystem_BPF_SetupVideo final
+{
+public:
+	class UBinkMediaPlayer*                       Player;                                            // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bShouldPlay;                                       // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         fVideoTime;                                        // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeVideoSubsystem_BPF_SetupVideo;
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_GetContentTypeForWelcomeFlowStep
+// 0x0002 (0x0002 - 0x0000)
+struct RuntimeWelcomeFlowSubsystem_BPF_GetContentTypeForWelcomeFlowStep final
+{
+public:
+	EWelcomeFlowStep                              _step;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ERematchWelcomeFlowContentType                ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPF_GetContentTypeForWelcomeFlowStep;
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_EndWelcomeFlowStep
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimeWelcomeFlowSubsystem_BPE_EndWelcomeFlowStep final
+{
+public:
+	EWelcomeFlowStep                              _step;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPE_EndWelcomeFlowStep;
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_StartWelcomeFlowStep
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimeWelcomeFlowSubsystem_BPE_StartWelcomeFlowStep final
+{
+public:
+	EWelcomeFlowStep                              _step;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPE_StartWelcomeFlowStep;
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimeWelcomeFlowSubsystem_BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep final
+{
+public:
+	TArray<class UWelcomeFlowContentViewModel*>   ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep;
+
+// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_HasWelcomeFlowStarted
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimeWelcomeFlowSubsystem_BPF_HasWelcomeFlowStarted final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPF_HasWelcomeFlowStarted;
+
+// Function Runtime.ShootBinder.BPE_OnBallRegistered
+// 0x0008 (0x0008 - 0x0000)
+struct ShootBinder_BPE_OnBallRegistered final
+{
+public:
+	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_BPE_OnBallRegistered;
+
+// Function Runtime.ShootBinder.BPE_OnBallUnregistered
+// 0x0008 (0x0008 - 0x0000)
+struct ShootBinder_BPE_OnBallUnregistered final
+{
+public:
+	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_BPE_OnBallUnregistered;
+
+// Function Runtime.ShootBinder.BPE_OnGoalRegistered
+// 0x0008 (0x0008 - 0x0000)
+struct ShootBinder_BPE_OnGoalRegistered final
+{
+public:
+	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_BPE_OnGoalRegistered;
+
+// Function Runtime.ShootBinder.BPE_OnGoalUnregistered
+// 0x0008 (0x0008 - 0x0000)
+struct ShootBinder_BPE_OnGoalUnregistered final
+{
+public:
+	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_BPE_OnGoalUnregistered;
+
+// Function Runtime.ShootBinder.BPE_OnShoot
+// 0x0110 (0x0110 - 0x0000)
+struct ShootBinder_BPE_OnShoot final
+{
+public:
+	const class ABall*                            _ball;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootParams                           _shootParams;                                      // 0x0008(0x0108)(Parm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_BPE_OnShoot;
+
+// Function Runtime.ShootBinder.BPE_OnShootBinderTriggered
+// 0x0118 (0x0118 - 0x0000)
+struct ShootBinder_BPE_OnShootBinderTriggered final
+{
+public:
+	const class ABall*                            _ball;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootParams                           _shootParams;                                      // 0x0008(0x0108)(Parm, NativeAccessSpecifierPublic)
+	class AGoal*                                  _goalAimed;                                        // 0x0110(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_BPE_OnShootBinderTriggered;
+
+// Function Runtime.ShootBinder.OnBallRegistered
+// 0x0008 (0x0008 - 0x0000)
+struct ShootBinder_OnBallRegistered final
+{
+public:
+	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_OnBallRegistered;
+
+// Function Runtime.ShootBinder.OnBallUnregistered
+// 0x0008 (0x0008 - 0x0000)
+struct ShootBinder_OnBallUnregistered final
+{
+public:
+	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_OnBallUnregistered;
+
+// Function Runtime.ShootBinder.OnGoalRegistered
+// 0x0008 (0x0008 - 0x0000)
+struct ShootBinder_OnGoalRegistered final
+{
+public:
+	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_OnGoalRegistered;
+
+// Function Runtime.ShootBinder.OnGoalUnregistered
+// 0x0008 (0x0008 - 0x0000)
+struct ShootBinder_OnGoalUnregistered final
+{
+public:
+	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_OnGoalUnregistered;
+
+// Function Runtime.ShootBinder.OnShoot
+// 0x0110 (0x0110 - 0x0000)
+struct ShootBinder_OnShoot final
+{
+public:
+	const class ABall*                            _ball;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootParams                           _shootParams;                                      // 0x0008(0x0108)(Parm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootBinder_OnShoot;
+
+// Function Runtime.ShootAbilityData.BPF_MakePrepTargetDataFromClass
+// 0x0138 (0x0138 - 0x0000)
+struct ShootAbilityData_BPF_MakePrepTargetDataFromClass final
+{
+public:
+	TSubclassOf<class UShootAbilityData>          _shootDataClass;                                   // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	const class UGameplayAbility*                 _ability;                                          // 0x0008(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ABall*                                  _ball;                                             // 0x0010(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         _iPriority;                                        // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayAbilityTargetDataHandle       _context;                                          // 0x0020(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	EShootOrigin                                  _eShootOrigin;                                     // 0x0048(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class URuntimeShootCameraShake>   _cameraShake;                                      // 0x0050(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   ReturnValue;                                       // 0x0058(0x00E0)(Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootAbilityData_BPF_MakePrepTargetDataFromClass;
+
+// Function Runtime.WorkshopViewModel.HasNotWorkshopStarted
+// 0x0001 (0x0001 - 0x0000)
+struct WorkshopViewModel_HasNotWorkshopStarted final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_WorkshopViewModel_HasNotWorkshopStarted;
+
+// Function Runtime.WorkshopViewModel.IsWorkshopBasedOnScore
+// 0x0001 (0x0001 - 0x0000)
+struct WorkshopViewModel_IsWorkshopBasedOnScore final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_WorkshopViewModel_IsWorkshopBasedOnScore;
+
+// Function Runtime.WorkshopViewModel.IsWorkshopBasedOnTime
+// 0x0001 (0x0001 - 0x0000)
+struct WorkshopViewModel_IsWorkshopBasedOnTime final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_WorkshopViewModel_IsWorkshopBasedOnTime;
+
+// Function Runtime.WorkshopViewModel.IsWorkshopFinished
+// 0x0001 (0x0001 - 0x0000)
+struct WorkshopViewModel_IsWorkshopFinished final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_WorkshopViewModel_IsWorkshopFinished;
+
+// Function Runtime.WorkshopViewModel.IsWorkshopInProgress
+// 0x0001 (0x0001 - 0x0000)
+struct WorkshopViewModel_IsWorkshopInProgress final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_WorkshopViewModel_IsWorkshopInProgress;
+
+// Function Runtime.RTShootAbilityHelper.BPF_TryToGetLockDirectionOption
+// 0x00E8 (0x00E8 - 0x0000)
+struct RTShootAbilityHelper_BPF_TryToGetLockDirectionOption final
+{
+public:
+	struct FShootPrepTargetData                   _shootPrep;                                        // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	ELockDirectionOption                          ReturnValue;                                       // 0x00E0(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_RTShootAbilityHelper_BPF_TryToGetLockDirectionOption;
+
+// Function Runtime.JoystickOrientationHelper.BPF_ConvertJoystickOrientationInDegreeAngle
+// 0x0008 (0x0008 - 0x0000)
+struct JoystickOrientationHelper_BPF_ConvertJoystickOrientationInDegreeAngle final
+{
+public:
+	EJoystickOrientation                          _eJoystickOrient;                                  // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_JoystickOrientationHelper_BPF_ConvertJoystickOrientationInDegreeAngle;
+
+// Function Runtime.JoystickOrientationHelper.BPF_GetJoystickOrientationFromAngle
+// 0x0028 (0x0028 - 0x0000)
+struct JoystickOrientationHelper_BPF_GetJoystickOrientationFromAngle final
+{
+public:
+	struct FVector2D                              _v2DJoystickValues;                                // 0x0000(0x0010)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fAngle;                                           // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fDeadZone;                                        // 0x0014(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fEastWestTolerance;                               // 0x0018(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fHalfPiInDegree;                                  // 0x001C(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EJoystickOrientation                          ReturnValue;                                       // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_JoystickOrientationHelper_BPF_GetJoystickOrientationFromAngle;
+
+// Function Runtime.ShootHelpers.BPF_ComputeShootParams
+// 0x0220 (0x0220 - 0x0000)
+struct ShootHelpers_BPF_ComputeShootParams final
+{
+public:
+	struct FGameplayAbilityTargetDataHandle       _context;                                          // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	const class USCGameplayAbility*               _ability;                                          // 0x0028(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _targetData;                                       // 0x0030(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	float                                         _fCatchupTime;                                     // 0x0110(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fCatchupAnimTime;                                 // 0x0114(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootParams                           ReturnValue;                                       // 0x0118(0x0108)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_ComputeShootParams;
+
+// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromAbilityAtLocation
+// 0x0210 (0x0210 - 0x0000)
+struct ShootHelpers_BPF_ComputeShootParamsFromAbilityAtLocation final
+{
+public:
+	const class USCGameplayAbility*               _ability;                                          // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _targetData;                                       // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FShootParams                           _outResult;                                        // 0x00E8(0x0108)(Parm, OutParm, NativeAccessSpecifierPublic)
+	struct FVector                                _vLocation;                                        // 0x01F0(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fWantedCatchupTime;                               // 0x0208(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_20C[0x4];                                      // 0x020C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_ComputeShootParamsFromAbilityAtLocation;
+
+// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromActor
+// 0x01F0 (0x01F0 - 0x0000)
+struct ShootHelpers_BPF_ComputeShootParamsFromActor final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _targetData;                                       // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FShootParams                           _outResult;                                        // 0x00E8(0x0108)(Parm, OutParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_ComputeShootParamsFromActor;
+
+// Function Runtime.ShootHelpers.BPF_FindShootParamsTargetData
+// 0x0148 (0x0148 - 0x0000)
+struct ShootHelpers_BPF_FindShootParamsTargetData final
+{
+public:
+	struct FGameplayAbilityTargetDataHandle       _data;                                             // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FShootParamsTargetData                 _outData;                                          // 0x0028(0x0118)(Parm, OutParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0140(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_141[0x7];                                      // 0x0141(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_FindShootParamsTargetData;
+
+// Function Runtime.ShootHelpers.BPF_FindShootPrepTargetData
+// 0x0110 (0x0110 - 0x0000)
+struct ShootHelpers_BPF_FindShootPrepTargetData final
+{
+public:
+	struct FGameplayAbilityTargetDataHandle       _data;                                             // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _outData;                                          // 0x0028(0x00E0)(Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0108(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_109[0x7];                                      // 0x0109(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_FindShootPrepTargetData;
+
+// Function Runtime.ShootHelpers.BPF_GetAngleFromMagnusInput
+// 0x00F0 (0x00F0 - 0x0000)
+struct ShootHelpers_BPF_GetAngleFromMagnusInput final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bAbsoluteAngle;                                   // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetAngleFromMagnusInput;
+
+// Function Runtime.ShootHelpers.BPF_GetShootDirection
+// 0x0108 (0x0108 - 0x0000)
+struct ShootHelpers_BPF_GetShootDirection final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                ReturnValue;                                       // 0x00F0(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootDirection;
+
+// Function Runtime.ShootHelpers.BPF_GetShootForce
+// 0x00F0 (0x00F0 - 0x0000)
+struct ShootHelpers_BPF_GetShootForce final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootForce;
+
+// Function Runtime.ShootHelpers.BPF_GetShootForceMinMax
+// 0x0100 (0x0100 - 0x0000)
+struct ShootHelpers_BPF_GetShootForceMinMax final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFloatRange                            ReturnValue;                                       // 0x00EC(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_FC[0x4];                                       // 0x00FC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootForceMinMax;
+
+// Function Runtime.ShootHelpers.BPF_GetShootForceNormalized
+// 0x00F0 (0x00F0 - 0x0000)
+struct ShootHelpers_BPF_GetShootForceNormalized final
+{
+public:
+	const class AActor*                           _runtimeCharacter;                                 // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootForceNormalized;
+
+// Function Runtime.ShootHelpers.BPF_GetShootForceRange
+// 0x0100 (0x0100 - 0x0000)
+struct ShootHelpers_BPF_GetShootForceRange final
+{
+public:
+	const class AActor*                           _runtimeCharacter;                                 // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFloatRange                            ReturnValue;                                       // 0x00EC(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_FC[0x4];                                       // 0x00FC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootForceRange;
+
+// Function Runtime.ShootHelpers.BPF_GetShootInputTimeFromShootPrep
+// 0x00F0 (0x00F0 - 0x0000)
+struct ShootHelpers_BPF_GetShootInputTimeFromShootPrep final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootInputTimeFromShootPrep;
+
+// Function Runtime.ShootHelpers.BPF_GetShootRotationForce
+// 0x0108 (0x0108 - 0x0000)
+struct ShootHelpers_BPF_GetShootRotationForce final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                ReturnValue;                                       // 0x00F0(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootRotationForce;
+
+// Function Runtime.ShootHelpers.BPF_GetShootRotationForceInput
+// 0x00F8 (0x00F8 - 0x0000)
+struct ShootHelpers_BPF_GetShootRotationForceInput final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FVector2D                              ReturnValue;                                       // 0x00E8(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootRotationForceInput;
+
+// Function Runtime.ShootHelpers.BPF_GetShootRotationForceRatio
+// 0x0100 (0x0100 - 0x0000)
+struct ShootHelpers_BPF_GetShootRotationForceRatio final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FVector                                ReturnValue;                                       // 0x00E8(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootRotationForceRatio;
+
+// Function Runtime.ShootHelpers.BPF_GetShootStartLocationPoint
+// 0x01D0 (0x01D0 - 0x0000)
+struct ShootHelpers_BPF_GetShootStartLocationPoint final
+{
+public:
+	const class AActor*                           _runtimeCharacter;                                 // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _targetData;                                       // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FGameplayAbilityTargetDataHandle       _context;                                          // 0x00E8(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	float                                         _fCatchupTime;                                     // 0x0110(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_114[0x4];                                      // 0x0114(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayAbilityTargetDataHandle       _montageContextFallback;                           // 0x0118(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FShootLocationPointResult              ReturnValue;                                       // 0x0140(0x0090)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootStartLocationPoint;
+
+// Function Runtime.ShootHelpers.BPF_GetShootTimeRange
+// 0x00F8 (0x00F8 - 0x0000)
+struct ShootHelpers_BPF_GetShootTimeRange final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FFloatRange                            ReturnValue;                                       // 0x00E8(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootTimeRange;
+
+// Function Runtime.ShootHelpers.BPF_GetShootTimeRatioToBuildUpDuration
+// 0x00F0 (0x00F0 - 0x0000)
+struct ShootHelpers_BPF_GetShootTimeRatioToBuildUpDuration final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x00E8(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootTimeRatioToBuildUpDuration;
+
+// Function Runtime.ShootHelpers.BPF_GetShootType
+// 0x0140 (0x0140 - 0x0000)
+struct ShootHelpers_BPF_GetShootType final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	TMap<struct FGameplayTag, struct FFloatRange> _gameplayTagMap;                                   // 0x00E8(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+	struct FGameplayTag                           ReturnValue;                                       // 0x0138(0x0008)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootType;
+
+// Function Runtime.ShootHelpers.BPF_GetSimulatedShootDataFromShootPrep
+// 0x0158 (0x0158 - 0x0000)
+struct ShootHelpers_BPF_GetSimulatedShootDataFromShootPrep final
+{
+public:
+	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FSimulatedShootData                    _outSimulatedShootData;                            // 0x00E0(0x0070)(Parm, OutParm, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0150(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_151[0x7];                                      // 0x0151(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetSimulatedShootDataFromShootPrep;
+
+// Function Runtime.ShootHelpers.BPF_GetTrajectoryClosestPointByLocation
+// 0x0098 (0x0098 - 0x0000)
+struct ShootHelpers_BPF_GetTrajectoryClosestPointByLocation final
+{
+public:
+	const class AActor*                           _runtimeCharacter;                                 // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FBallTrajectoryResult                  _trajectory;                                       // 0x0008(0x0070)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FVector                                _vResult;                                          // 0x0078(0x0018)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bFoundResult;                                     // 0x0090(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_91[0x3];                                       // 0x0091(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         _fDistance;                                        // 0x0094(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetTrajectoryClosestPointByLocation;
+
+// Function Runtime.ShootHelpers.BPF_GetTrajectoryFromSimulatedShootData
+// 0x0208 (0x0208 - 0x0000)
+struct ShootHelpers_BPF_GetTrajectoryFromSimulatedShootData final
+{
+public:
+	struct FSimulatedShootData                    _simulatedShootData;                               // 0x0000(0x0070)(Parm, NativeAccessSpecifierPublic)
+	struct FShootParams                           _outShootParams;                                   // 0x0070(0x0108)(Parm, OutParm, NativeAccessSpecifierPublic)
+	class UShootAbilityData*                      _shootAbilityData;                                 // 0x0178(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	const class AActor*                           _actor;                                            // 0x0180(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ABall*                                  _ball;                                             // 0x0188(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fPredictionDuration;                              // 0x0190(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bUseTime;                                         // 0x0194(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bApplyModifiers;                                  // 0x0195(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_196[0x2];                                      // 0x0196(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallTrajectoryResult                  ReturnValue;                                       // 0x0198(0x0070)(Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_GetTrajectoryFromSimulatedShootData;
+
+// Function Runtime.ShootHelpers.BPF_HasReleaseShootInput
+// 0x00F0 (0x00F0 - 0x0000)
+struct ShootHelpers_BPF_HasReleaseShootInput final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x00E8(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_HasReleaseShootInput;
+
+// Function Runtime.ShootHelpers.BPF_MakeShootPrepTargetDataHandle
+// 0x0108 (0x0108 - 0x0000)
+struct ShootHelpers_BPF_MakeShootPrepTargetDataHandle final
+{
+public:
+	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FGameplayAbilityTargetDataHandle       ReturnValue;                                       // 0x00E0(0x0028)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_MakeShootPrepTargetDataHandle;
+
+// Function Runtime.ShootHelpers.BPF_ShootPrep_IsValid
+// 0x00E8 (0x00E8 - 0x0000)
+struct ShootHelpers_BPF_ShootPrep_IsValid final
+{
+public:
+	struct FShootPrepTargetData                   _targetData;                                       // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x00E0(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_ShootPrep_IsValid;
+
+// Function Runtime.ShootHelpers.BPF_TimeRemainingBeforeShoot
+// 0x00F0 (0x00F0 - 0x0000)
+struct ShootHelpers_BPF_TimeRemainingBeforeShoot final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x00E8(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_TimeRemainingBeforeShoot;
+
+// Function Runtime.ShootHelpers.BPF_TraceBall
+// 0x0098 (0x0098 - 0x0000)
+struct ShootHelpers_BPF_TraceBall final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ECollisionChannel                             _eCollisionChannel;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<ECollisionChannel>                     _collisionChannelToIgnore;                         // 0x0010(0x0010)(Parm, ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FVector                                _vStartPoint;                                      // 0x0020(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                _vDirection;                                       // 0x0038(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                _vOutImpactNormal;                                 // 0x0050(0x0018)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 _sOverrideDebugString;                             // 0x0068(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bUseMultiHitsInsteadOfSingle;                     // 0x0078(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_79[0x7];                                       // 0x0079(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                ReturnValue;                                       // 0x0080(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_TraceBall;
+
+// Function Runtime.ShootHelpers.BPF_TryToGetImpactNormal
+// 0x0100 (0x0100 - 0x0000)
+struct ShootHelpers_BPF_TryToGetImpactNormal final
+{
+public:
+	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bSuccess;                                         // 0x00E0(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                ReturnValue;                                       // 0x00E8(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_TryToGetImpactNormal;
+
+// Function Runtime.ShootHelpers.BPF_TryToGetImpactPointOnCameraDirection
+// 0x0100 (0x0100 - 0x0000)
+struct ShootHelpers_BPF_TryToGetImpactPointOnCameraDirection final
+{
+public:
+	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bSuccess;                                         // 0x00E0(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                ReturnValue;                                       // 0x00E8(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_TryToGetImpactPointOnCameraDirection;
+
+// Function Runtime.ShootHelpers.BPF_TryToGetTargetedPointBySight
+// 0x0100 (0x0100 - 0x0000)
+struct ShootHelpers_BPF_TryToGetTargetedPointBySight final
+{
+public:
+	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          _bSuccess;                                         // 0x00E0(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                ReturnValue;                                       // 0x00E8(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootHelpers_BPF_TryToGetTargetedPointBySight;
+
+// Function Runtime.ShootModifierHelpers.BPF_GetMultiplierBySpeedState
+// 0x0100 (0x0100 - 0x0000)
+struct ShootModifierHelpers_BPF_GetMultiplierBySpeedState final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _ShootData;                                        // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	float                                         _fBlendTime;                                       // 0x00E8(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FMultiplierSpeedStateData              m_Multipliers;                                     // 0x00EC(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x00FC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootModifierHelpers_BPF_GetMultiplierBySpeedState;
+
+// Function Runtime.ShootModifierHelpers.BPF_GetMultiplierFromShootModifierDataTable
+// 0x0110 (0x0110 - 0x0000)
+struct ShootModifierHelpers_BPF_GetMultiplierFromShootModifierDataTable final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _ShootData;                                        // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	const class UDataTable*                       _table;                                            // 0x00E8(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                _vOutDirection;                                    // 0x00F0(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0108(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_10C[0x4];                                      // 0x010C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_ShootModifierHelpers_BPF_GetMultiplierFromShootModifierDataTable;
+
+// Function Runtime.ShootModifierHelpers.BPF_GetSourceRatioValue
+// 0x00F8 (0x00F8 - 0x0000)
+struct ShootModifierHelpers_BPF_GetSourceRatioValue final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _ShootData;                                        // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	ESourceModifierType                           _eSourceType;                                      // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFloatInterval                         _intervalToComputeRatio;                           // 0x00EC(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x00F4(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootModifierHelpers_BPF_GetSourceRatioValue;
+
+// Function Runtime.ShootModifierHelpers.BPF_GetSourceValue
+// 0x00F0 (0x00F0 - 0x0000)
+struct ShootModifierHelpers_BPF_GetSourceValue final
+{
+public:
+	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FShootPrepTargetData                   _ShootData;                                        // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	ESourceModifierType                           _eSourceType;                                      // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ShootModifierHelpers_BPF_GetSourceValue;
+
+// Function Runtime.StadiumWorldSettings.BPF_GetRuntimeWorldSettings
+// 0x0018 (0x0018 - 0x0000)
+struct StadiumWorldSettings_BPF_GetRuntimeWorldSettings final
+{
+public:
+	const class UObject*                          _context;                                          // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          _bForceMainWorld;                                  // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class AStadiumWorldSettings*                  ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_StadiumWorldSettings_BPF_GetRuntimeWorldSettings;
+
+// Function Runtime.StadiumWorldSettings.BPF_GetFieldBox
+// 0x0038 (0x0038 - 0x0000)
+struct StadiumWorldSettings_BPF_GetFieldBox final
+{
+public:
+	struct FBox                                   ReturnValue;                                       // 0x0000(0x0038)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_StadiumWorldSettings_BPF_GetFieldBox;
+
+// Function Runtime.SweeperAttributeSet.OnRep_V1
+// 0x0010 (0x0010 - 0x0000)
+struct SweeperAttributeSet_OnRep_V1 final
+{
+public:
+	struct FGameplayAttributeData                 _oldV1;                                            // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_SweeperAttributeSet_OnRep_V1;
+
+// Function Runtime.SweeperAttributeSet.OnRep_V2
+// 0x0010 (0x0010 - 0x0000)
+struct SweeperAttributeSet_OnRep_V2 final
+{
+public:
+	struct FGameplayAttributeData                 _oldV2;                                            // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_SweeperAttributeSet_OnRep_V2;
+
+// Function Runtime.SweeperAttributeSet.OnRep_V3
+// 0x0010 (0x0010 - 0x0000)
+struct SweeperAttributeSet_OnRep_V3 final
+{
+public:
+	struct FGameplayAttributeData                 _oldV3;                                            // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_SweeperAttributeSet_OnRep_V3;
+
+// Function Runtime.ThumbnailCustomizationIds.BPF_GetThumbnailCustomizationId
+// 0x01A0 (0x01A0 - 0x0000)
+struct ThumbnailCustomizationIds_BPF_GetThumbnailCustomizationId final
+{
+public:
+	struct FSCCustomizationId                     _customizationID;                                  // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSoftObjectPtr<class ULevelSequence>          _viewSequence;                                     // 0x0120(0x0028)(Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSoftObjectPtr<class UAnimSequence>           _animSequence;                                     // 0x0148(0x0028)(Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         _fAnimTime;                                        // 0x0170(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_174[0x4];                                      // 0x0174(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class UTexture2D>              _defaultTexture;                                   // 0x0178(0x0028)(Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_ThumbnailCustomizationIds_BPF_GetThumbnailCustomizationId;
+
+// Function Runtime.TrajectoryPartHelpers.BPF_GetPartPointAtRatioDistance
+// 0x0198 (0x0198 - 0x0000)
+struct TrajectoryPartHelpers_BPF_GetPartPointAtRatioDistance final
+{
+public:
+	struct FBallTrajectoryPart                    _trajPart;                                         // 0x0000(0x0158)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	float                                         _fRatio;                                           // 0x0158(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_15C[0x4];                                      // 0x015C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPredictProjectilePathPointData        ReturnValue;                                       // 0x0160(0x0038)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TrajectoryPartHelpers_BPF_GetPartPointAtRatioDistance;
+
+// Function Runtime.TrajectoryPartHelpers.BPF_GetPartTime
+// 0x0160 (0x0160 - 0x0000)
+struct TrajectoryPartHelpers_BPF_GetPartTime final
+{
+public:
+	struct FBallTrajectoryPart                    _trajPart;                                         // 0x0000(0x0158)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0158(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_15C[0x4];                                      // 0x015C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_TrajectoryPartHelpers_BPF_GetPartTime;
+
+// Function Runtime.TutorialManager.InitTutorial
+// 0x0008 (0x0008 - 0x0000)
+struct TutorialManager_InitTutorial final
+{
+public:
+	class UCommonActivatableWidget*               _widgetToUse;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialManager_InitTutorial;
+
+// Function Runtime.TutorialManager.OnPossessedPawnChanged
+// 0x0010 (0x0010 - 0x0000)
+struct TutorialManager_OnPossessedPawnChanged final
+{
+public:
+	class APawn*                                  _oldPawn;                                          // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class APawn*                                  _newPawn;                                          // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialManager_OnPossessedPawnChanged;
+
+// Function Runtime.TutorialManager.BPF_FindTutorialActor
+// 0x0010 (0x0010 - 0x0000)
+struct TutorialManager_BPF_FindTutorialActor final
+{
+public:
+	struct FGameplayTag                           _tag;                                              // 0x0000(0x0008)(Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ATutorialActor*                         ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialManager_BPF_FindTutorialActor;
+
+// Function Runtime.TutorialManager.BPF_GetCurrentStepNumber
+// 0x0004 (0x0004 - 0x0000)
+struct TutorialManager_BPF_GetCurrentStepNumber final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialManager_BPF_GetCurrentStepNumber;
+
+// Function Runtime.TutorialManager.BPF_GetObjectiveCountInCurrentStep
+// 0x0004 (0x0004 - 0x0000)
+struct TutorialManager_BPF_GetObjectiveCountInCurrentStep final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialManager_BPF_GetObjectiveCountInCurrentStep;
+
+// Function Runtime.TutorialManager.BPF_GetObjectiveCountInCurrentStepWithIteration
+// 0x0004 (0x0004 - 0x0000)
+struct TutorialManager_BPF_GetObjectiveCountInCurrentStepWithIteration final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialManager_BPF_GetObjectiveCountInCurrentStepWithIteration;
+
+// Function Runtime.TutorialManager.BPF_GetStepCount
+// 0x0004 (0x0004 - 0x0000)
+struct TutorialManager_BPF_GetStepCount final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialManager_BPF_GetStepCount;
+
+// Function Runtime.TutorialManager.CanStartTutorialFromInput
+// 0x0001 (0x0001 - 0x0000)
+struct TutorialManager_CanStartTutorialFromInput final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialManager_CanStartTutorialFromInput;
+
+// Function Runtime.TutorialObjectiveListenInput.OnInputActivation
+// 0x00A0 (0x00A0 - 0x0000)
+struct TutorialObjectiveListenInput_OnInputActivation final
+{
+public:
+	const class USCInputAction*                   _uscInputAction;                                   // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FInputActionState                      _inputActionState;                                 // 0x0008(0x0098)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialObjectiveListenInput_OnInputActivation;
+
+// Function Runtime.TutorialStep.GetObjectives
+// 0x0010 (0x0010 - 0x0000)
+struct TutorialStep_GetObjectives final
+{
+public:
+	TArray<class UTutorialObjective*>             ReturnValue;                                       // 0x0000(0x0010)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialStep_GetObjectives;
+
+// Function Runtime.TutorialStep.OnObjectiveComplete
+// 0x0008 (0x0008 - 0x0000)
+struct TutorialStep_OnObjectiveComplete final
+{
+public:
+	class UTutorialObjective*                     _objective;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialStep_OnObjectiveComplete;
+
+// Function Runtime.TutorialStep.BPF_GetObjectiveCount
+// 0x0004 (0x0004 - 0x0000)
+struct TutorialStep_BPF_GetObjectiveCount final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialStep_BPF_GetObjectiveCount;
+
+// Function Runtime.TutorialStep.BPF_GetObjectiveCountWithIteration
+// 0x0004 (0x0004 - 0x0000)
+struct TutorialStep_BPF_GetObjectiveCountWithIteration final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialStep_BPF_GetObjectiveCountWithIteration;
+
+// Function Runtime.TutorialStep.GetOwner
+// 0x0008 (0x0008 - 0x0000)
+struct TutorialStep_GetOwner final
+{
+public:
+	class ATutorialManager*                       ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_TutorialStep_GetOwner;
+
+// Function Runtime.UtilityAIComponent.OnTaskFinished
+// 0x0008 (0x0008 - 0x0000)
+struct UtilityAIComponent_OnTaskFinished final
+{
+public:
+	class UUtilityAITask*                         _taskFinished;                                     // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_UtilityAIComponent_OnTaskFinished;
+
+// Function Runtime.UtilityAIComponent.SetUtilityAiPreset
+// 0x0008 (0x0008 - 0x0000)
+struct UtilityAIComponent_SetUtilityAiPreset final
+{
+public:
+	class UUtilityAIPreset*                       _newPreset;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_UtilityAIComponent_SetUtilityAiPreset;
+
+// Function Runtime.UtilityAITask.BPE_ComputeAllConsiderationValue
+// 0x0060 (0x0060 - 0x0000)
+struct UtilityAITask_BPE_ComputeAllConsiderationValue final
+{
+public:
+	class AAIController*                          _inAIController;                                   // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 _inTargetActor;                                    // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TMap<class UCurveFloat*, float>               _outResult;                                        // 0x0010(0x0050)(Parm, OutParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_UtilityAITask_BPE_ComputeAllConsiderationValue;
+
+// Function Runtime.VoiceChatBlueprintHelperLibrary.GetActiveInputDevice
+// 0x0028 (0x0028 - 0x0000)
+struct VoiceChatBlueprintHelperLibrary_GetActiveInputDevice final
+{
+public:
+	class UObject*                                _worldContextObject;                               // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FSOSVoiceChatDeviceInfo                ReturnValue;                                       // 0x0008(0x0020)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_VoiceChatBlueprintHelperLibrary_GetActiveInputDevice;
+
+// Function Runtime.VoiceChatBlueprintHelperLibrary.GetInputDevices
+// 0x0018 (0x0018 - 0x0000)
+struct VoiceChatBlueprintHelperLibrary_GetInputDevices final
+{
+public:
+	class UObject*                                _worldContextObject;                               // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FSOSVoiceChatDeviceInfo>        ReturnValue;                                       // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_VoiceChatBlueprintHelperLibrary_GetInputDevices;
+
+// Function Runtime.VoiceChatBlueprintHelperLibrary.SetInputDevice
+// 0x0018 (0x0018 - 0x0000)
+struct VoiceChatBlueprintHelperLibrary_SetInputDevice final
+{
+public:
+	class UObject*                                _worldContextObject;                               // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 _inputDeviceId;                                    // 0x0008(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_VoiceChatBlueprintHelperLibrary_SetInputDevice;
+
 // Function Runtime.WaitForPlayersArrivedFlowState.OnPawnSetInClient
 // 0x0018 (0x0018 - 0x0000)
 struct WaitForPlayersArrivedFlowState_OnPawnSetInClient final
@@ -5653,6 +7080,313 @@ public:
 	class APlayerState*                           _PlayerStateAdded;                                 // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_WaitForPlayersArrivedFlowState_TryToPlayPlayerColorChoiceSequence;
+
+// Function Runtime.Workshop.AddScore
+// 0x0004 (0x0004 - 0x0000)
+struct Workshop_AddScore final
+{
+public:
+	int32                                         _iScoreToAdd;                                      // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_Workshop_AddScore;
+
+// Function Runtime.Workshop.BPF_ComputeMedalWithScore
+// 0x0008 (0x0008 - 0x0000)
+struct Workshop_BPF_ComputeMedalWithScore final
+{
+public:
+	int32                                         _iScore;                                           // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EWorkshopMedal                                ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_Workshop_BPF_ComputeMedalWithScore;
+
+// Function Runtime.Workshop.BPF_ComputeMedalWithTime
+// 0x0008 (0x0008 - 0x0000)
+struct Workshop_BPF_ComputeMedalWithTime final
+{
+public:
+	float                                         _fTime;                                            // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EWorkshopMedal                                ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_Workshop_BPF_ComputeMedalWithTime;
+
+// Function Runtime.Workshop.BPF_GetWorkshopTimer
+// 0x0004 (0x0004 - 0x0000)
+struct Workshop_BPF_GetWorkshopTimer final
+{
+public:
+	float                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_Workshop_BPF_GetWorkshopTimer;
+
+// Function Runtime.Workshop.CanStartWorkshopFromInput
+// 0x0001 (0x0001 - 0x0000)
+struct Workshop_CanStartWorkshopFromInput final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_Workshop_CanStartWorkshopFromInput;
+
+// Function Runtime.Workshop.GetWorkshopScore
+// 0x0004 (0x0004 - 0x0000)
+struct Workshop_GetWorkshopScore final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_Workshop_GetWorkshopScore;
+
+// Function Runtime.Workshop.GetWorkshopState
+// 0x0001 (0x0001 - 0x0000)
+struct Workshop_GetWorkshopState final
+{
+public:
+	EWorkshopState                                ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_Workshop_GetWorkshopState;
+
+// Function Runtime.RuntimePlayerState.BPE_ClientInitialize
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimePlayerState_BPE_ClientInitialize final
+{
+public:
+	class AController*                            _controller;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPE_ClientInitialize;
+
+// Function Runtime.RuntimePlayerState.BPF_SetCaptain
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimePlayerState_BPF_SetCaptain final
+{
+public:
+	bool                                          _bIsCaptain;                                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_SetCaptain;
+
+// Function Runtime.RuntimePlayerState.BPF_SetFinisherInputActionPressed
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimePlayerState_BPF_SetFinisherInputActionPressed final
+{
+public:
+	class USCInputAction*                         _inputAction;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_SetFinisherInputActionPressed;
+
+// Function Runtime.RuntimePlayerState.BPF_SetPlayerName
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimePlayerState_BPF_SetPlayerName final
+{
+public:
+	class FString                                 _name;                                             // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_SetPlayerName;
+
+// Function Runtime.RuntimePlayerState.BPF_SetTeam
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimePlayerState_BPF_SetTeam final
+{
+public:
+	uint8                                         Team;                                              // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_SetTeam;
+
+// Function Runtime.RuntimePlayerState.OnCaptainSet
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimePlayerState_OnCaptainSet final
+{
+public:
+	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_OnCaptainSet;
+
+// Function Runtime.RuntimePlayerState.OnInitialReplication
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimePlayerState_OnInitialReplication final
+{
+public:
+	class ASCPlayerState*                         _playerState;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_OnInitialReplication;
+
+// Function Runtime.RuntimePlayerState.OnRep_ColorChoiceSequenceActor
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimePlayerState_OnRep_ColorChoiceSequenceActor final
+{
+public:
+	class ARuntimeLevelSequenceActor*             _oldAnimSequence;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_OnRep_ColorChoiceSequenceActor;
+
+// Function Runtime.RuntimePlayerState.OnSetIsMVP
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimePlayerState_OnSetIsMVP final
+{
+public:
+	class ARuntimePlayerState*                    _playerState;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_OnSetIsMVP;
+
+// Function Runtime.RuntimePlayerState.SetTeamColorKitUsed
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimePlayerState_SetTeamColorKitUsed final
+{
+public:
+	ETeamColorKitType                             _usedColorKit;                                     // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_SetTeamColorKitUsed;
+
+// Function Runtime.RuntimePlayerState.BPF_GetIsCaptain
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimePlayerState_BPF_GetIsCaptain final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetIsCaptain;
+
+// Function Runtime.RuntimePlayerState.BPF_GetNumberInTeam
+// 0x0004 (0x0004 - 0x0000)
+struct RuntimePlayerState_BPF_GetNumberInTeam final
+{
+public:
+	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetNumberInTeam;
+
+// Function Runtime.RuntimePlayerState.BPF_GetOpponentTeamColor
+// 0x0030 (0x0030 - 0x0000)
+struct RuntimePlayerState_BPF_GetOpponentTeamColor final
+{
+public:
+	struct FLinearColor                           _mainColor;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           _secondaryColor;                                   // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           _tertiaryColor;                                    // 0x0020(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetOpponentTeamColor;
+
+// Function Runtime.RuntimePlayerState.BPF_GetOtherTeam
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimePlayerState_BPF_GetOtherTeam final
+{
+public:
+	uint8                                         ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetOtherTeam;
+
+// Function Runtime.RuntimePlayerState.BPF_GetOwningController
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimePlayerState_BPF_GetOwningController final
+{
+public:
+	class AController*                            ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetOwningController;
+
+// Function Runtime.RuntimePlayerState.BPF_GetPlayerProfileAvatarItemId
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimePlayerState_BPF_GetPlayerProfileAvatarItemId final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetPlayerProfileAvatarItemId;
+
+// Function Runtime.RuntimePlayerState.BPF_GetPlayerProfileBannerItemId
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimePlayerState_BPF_GetPlayerProfileBannerItemId final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetPlayerProfileBannerItemId;
+
+// Function Runtime.RuntimePlayerState.BPF_GetPlayerProfileTitleItemId
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimePlayerState_BPF_GetPlayerProfileTitleItemId final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetPlayerProfileTitleItemId;
+
+// Function Runtime.RuntimePlayerState.BPF_GetSanitizedName
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimePlayerState_BPF_GetSanitizedName final
+{
+public:
+	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetSanitizedName;
+
+// Function Runtime.RuntimePlayerState.BPF_GetStageAR
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimePlayerState_BPF_GetStageAR final
+{
+public:
+	class UCustomizationARDataAsset*              ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetStageAR;
+
+// Function Runtime.RuntimePlayerState.BPF_GetStageARTag
+// 0x0008 (0x0008 - 0x0000)
+struct RuntimePlayerState_BPF_GetStageARTag final
+{
+public:
+	struct FGameplayTag                           ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetStageARTag;
+
+// Function Runtime.RuntimePlayerState.BPF_GetTeam
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimePlayerState_BPF_GetTeam final
+{
+public:
+	uint8                                         ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetTeam;
+
+// Function Runtime.RuntimePlayerState.BPF_GetTeamColor
+// 0x0030 (0x0030 - 0x0000)
+struct RuntimePlayerState_BPF_GetTeamColor final
+{
+public:
+	struct FLinearColor                           _mainColor;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           _secondaryColor;                                   // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           _tertiaryColor;                                    // 0x0020(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetTeamColor;
+
+// Function Runtime.RuntimePlayerState.BPF_GetValueOfStat
+// 0x0010 (0x0010 - 0x0000)
+struct RuntimePlayerState_BPF_GetValueOfStat final
+{
+public:
+	TSubclassOf<class USCStatControllerBase>      _statClass;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetValueOfStat;
+
+// Function Runtime.RuntimePlayerState.BPF_IsMvp
+// 0x0001 (0x0001 - 0x0000)
+struct RuntimePlayerState_BPF_IsMvp final
+{
+public:
+	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RuntimePlayerState_BPF_IsMvp;
+
+// Function Runtime.RTBlendableReflectionComponent.SetOpacity
+// 0x0004 (0x0004 - 0x0000)
+struct RTBlendableReflectionComponent_SetOpacity final
+{
+public:
+	float                                         _opacity;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_RTBlendableReflectionComponent_SetOpacity;
 
 // Function Runtime.RuntimeStadiumAR.BPF_EnumerateWorldConfigs
 // 0x0010 (0x0010 - 0x0000)
@@ -5913,1671 +7647,6 @@ public:
 	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_RuntimeStadiumAR_BPF_WorldTagUseOpaqueRendering;
-
-// Function Runtime.RuntimeReplaySubsystem.OnGoaldScored
-// 0x0038 (0x0038 - 0x0000)
-struct RuntimeReplaySubsystem_OnGoaldScored final
-{
-public:
-	struct FGoalDescription                       _goalDescription;                                  // 0x0000(0x0038)(Parm, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeReplaySubsystem_OnGoaldScored;
-
-// Function Runtime.RuntimeReplaySubsystem.OnReplayPhaseChanged
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeReplaySubsystem_OnReplayPhaseChanged final
-{
-public:
-	const class AActor*                           _actorToLookAt;                                    // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	const class AActor*                           _actorToFollow;                                    // 0x0008(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeReplaySubsystem_OnReplayPhaseChanged;
-
-// Function Runtime.RuntimeReplaySubsystem.BPF_GetFollowActorFromCurrentPhase
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimeReplaySubsystem_BPF_GetFollowActorFromCurrentPhase final
-{
-public:
-	class AActor*                                 ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetFollowActorFromCurrentPhase;
-
-// Function Runtime.RuntimeReplaySubsystem.BPF_GetReplayActor
-// 0x0020 (0x0020 - 0x0000)
-struct RuntimeReplaySubsystem_BPF_GetReplayActor final
-{
-public:
-	uint8                                         _uiTeam;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         _iNumberInTeam;                                    // 0x0004(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ARuntimeCharacter*                      _outCharacter;                                     // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ARuntimePlayerState*                    _outPlayerState;                                   // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0018(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetReplayActor;
-
-// Function Runtime.RuntimeReplaySubsystem.BPF_GetReplayScorerActor
-// 0x0018 (0x0018 - 0x0000)
-struct RuntimeReplaySubsystem_BPF_GetReplayScorerActor final
-{
-public:
-	class ARuntimeCharacter*                      _outCharacter;                                     // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ARuntimePlayerState*                    _outPlayerState;                                   // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetReplayScorerActor;
-
-// Function Runtime.RuntimeReplaySubsystem.BPF_GetScorer
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimeReplaySubsystem_BPF_GetScorer final
-{
-public:
-	class ARuntimePlayerState*                    ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetScorer;
-
-// Function Runtime.RuntimeReplaySubsystem.BPF_GetScorerName
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeReplaySubsystem_BPF_GetScorerName final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_GetScorerName;
-
-// Function Runtime.RuntimeReplaySubsystem.BPF_IsPlayingReplay
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimeReplaySubsystem_BPF_IsPlayingReplay final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_IsPlayingReplay;
-
-// Function Runtime.RuntimeReplaySubsystem.BPF_ScorerIsAnAlly
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimeReplaySubsystem_BPF_ScorerIsAnAlly final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeReplaySubsystem_BPF_ScorerIsAnAlly;
-
-// Function Runtime.RuntimeSaveSubsystem.OnAuthenticated
-// 0x0038 (0x0038 - 0x0000)
-struct RuntimeSaveSubsystem_OnAuthenticated final
-{
-public:
-	bool                                          _bSuccess;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSOSErrorInfos                         _errorInfos;                                       // 0x0008(0x0030)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSaveSubsystem_OnAuthenticated;
-
-// Function Runtime.RuntimeShootCameraShake.BPE_GetShootCameraShakeParams
-// 0x0118 (0x0118 - 0x0000)
-struct RuntimeShootCameraShake_BPE_GetShootCameraShakeParams final
-{
-public:
-	class AActor*                                 _actor;                                            // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FRuntimeShootCameraShakeParams         ReturnValue;                                       // 0x00E8(0x0030)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeShootCameraShake_BPE_GetShootCameraShakeParams;
-
-// Function Runtime.ShootCameraShakeHelpers.BPF_GetShootCameraShakeParams
-// 0x0118 (0x0118 - 0x0000)
-struct ShootCameraShakeHelpers_BPF_GetShootCameraShakeParams final
-{
-public:
-	class AActor*                                 _actor;                                            // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FRuntimeShootCameraShakeParams         ReturnValue;                                       // 0x00E8(0x0030)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootCameraShakeHelpers_BPF_GetShootCameraShakeParams;
-
-// Function Runtime.RuntimePlayerState.BPE_ClientInitialize
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimePlayerState_BPE_ClientInitialize final
-{
-public:
-	class AController*                            _controller;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPE_ClientInitialize;
-
-// Function Runtime.RuntimePlayerState.BPF_SetCaptain
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimePlayerState_BPF_SetCaptain final
-{
-public:
-	bool                                          _bIsCaptain;                                       // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_SetCaptain;
-
-// Function Runtime.RuntimePlayerState.BPF_SetFinisherInputActionPressed
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimePlayerState_BPF_SetFinisherInputActionPressed final
-{
-public:
-	class USCInputAction*                         _inputAction;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_SetFinisherInputActionPressed;
-
-// Function Runtime.RuntimePlayerState.BPF_SetPlayerName
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimePlayerState_BPF_SetPlayerName final
-{
-public:
-	class FString                                 _name;                                             // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_SetPlayerName;
-
-// Function Runtime.RuntimePlayerState.BPF_SetTeam
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimePlayerState_BPF_SetTeam final
-{
-public:
-	uint8                                         Team;                                              // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_SetTeam;
-
-// Function Runtime.RuntimePlayerState.OnCaptainSet
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimePlayerState_OnCaptainSet final
-{
-public:
-	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_OnCaptainSet;
-
-// Function Runtime.RuntimePlayerState.OnInitialReplication
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimePlayerState_OnInitialReplication final
-{
-public:
-	class ASCPlayerState*                         _playerState;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_OnInitialReplication;
-
-// Function Runtime.RuntimePlayerState.OnRep_ColorChoiceSequenceActor
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimePlayerState_OnRep_ColorChoiceSequenceActor final
-{
-public:
-	class ARuntimeLevelSequenceActor*             _oldAnimSequence;                                  // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_OnRep_ColorChoiceSequenceActor;
-
-// Function Runtime.RuntimePlayerState.OnSetIsMVP
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimePlayerState_OnSetIsMVP final
-{
-public:
-	class ARuntimePlayerState*                    _playerState;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_OnSetIsMVP;
-
-// Function Runtime.RuntimePlayerState.SetTeamColorKitUsed
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimePlayerState_SetTeamColorKitUsed final
-{
-public:
-	ETeamColorKitType                             _usedColorKit;                                     // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_SetTeamColorKitUsed;
-
-// Function Runtime.RuntimePlayerState.BPF_GetIsCaptain
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimePlayerState_BPF_GetIsCaptain final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetIsCaptain;
-
-// Function Runtime.RuntimePlayerState.BPF_GetNumberInTeam
-// 0x0004 (0x0004 - 0x0000)
-struct RuntimePlayerState_BPF_GetNumberInTeam final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetNumberInTeam;
-
-// Function Runtime.RuntimePlayerState.BPF_GetOpponentTeamColor
-// 0x0030 (0x0030 - 0x0000)
-struct RuntimePlayerState_BPF_GetOpponentTeamColor final
-{
-public:
-	struct FLinearColor                           _mainColor;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           _secondaryColor;                                   // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           _tertiaryColor;                                    // 0x0020(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetOpponentTeamColor;
-
-// Function Runtime.RuntimePlayerState.BPF_GetOtherTeam
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimePlayerState_BPF_GetOtherTeam final
-{
-public:
-	uint8                                         ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetOtherTeam;
-
-// Function Runtime.RuntimePlayerState.BPF_GetOwningController
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimePlayerState_BPF_GetOwningController final
-{
-public:
-	class AController*                            ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetOwningController;
-
-// Function Runtime.RuntimePlayerState.BPF_GetPlayerProfileAvatarItemId
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimePlayerState_BPF_GetPlayerProfileAvatarItemId final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetPlayerProfileAvatarItemId;
-
-// Function Runtime.RuntimePlayerState.BPF_GetPlayerProfileBannerItemId
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimePlayerState_BPF_GetPlayerProfileBannerItemId final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetPlayerProfileBannerItemId;
-
-// Function Runtime.RuntimePlayerState.BPF_GetPlayerProfileTitleItemId
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimePlayerState_BPF_GetPlayerProfileTitleItemId final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetPlayerProfileTitleItemId;
-
-// Function Runtime.RuntimePlayerState.BPF_GetSanitizedName
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimePlayerState_BPF_GetSanitizedName final
-{
-public:
-	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetSanitizedName;
-
-// Function Runtime.RuntimePlayerState.BPF_GetStageAR
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimePlayerState_BPF_GetStageAR final
-{
-public:
-	class UCustomizationARDataAsset*              ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetStageAR;
-
-// Function Runtime.RuntimePlayerState.BPF_GetStageARTag
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimePlayerState_BPF_GetStageARTag final
-{
-public:
-	struct FGameplayTag                           ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetStageARTag;
-
-// Function Runtime.RuntimePlayerState.BPF_GetTeam
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimePlayerState_BPF_GetTeam final
-{
-public:
-	uint8                                         ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetTeam;
-
-// Function Runtime.RuntimePlayerState.BPF_GetTeamColor
-// 0x0030 (0x0030 - 0x0000)
-struct RuntimePlayerState_BPF_GetTeamColor final
-{
-public:
-	struct FLinearColor                           _mainColor;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           _secondaryColor;                                   // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           _tertiaryColor;                                    // 0x0020(0x0010)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetTeamColor;
-
-// Function Runtime.RuntimePlayerState.BPF_GetValueOfStat
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimePlayerState_BPF_GetValueOfStat final
-{
-public:
-	TSubclassOf<class USCStatControllerBase>      _statClass;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_GetValueOfStat;
-
-// Function Runtime.RuntimePlayerState.BPF_IsMvp
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimePlayerState_BPF_IsMvp final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimePlayerState_BPF_IsMvp;
-
-// Function Runtime.MeshMergeFunctionLibrary.BPF_MergeMeshComponents
-// 0x0060 (0x0060 - 0x0000)
-struct MeshMergeFunctionLibrary_BPF_MergeMeshComponents final
-{
-public:
-	TArray<class USkeletalMeshComponent*>         _meshComponents;                                   // 0x0000(0x0010)(Parm, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FSkeletalMeshMergeParams               _params;                                           // 0x0010(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_MeshMergeFunctionLibrary_BPF_MergeMeshComponents;
-
-// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsAllowedToJoinSquads
-// 0x000C (0x000C - 0x0000)
-struct RuntimeSOSBindingsSubsystem_BPF_IsAllowedToJoinSquads final
-{
-public:
-	struct FGameplayTag                           _matchType;                                        // 0x0000(0x0008)(Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_RuntimeSOSBindingsSubsystem_BPF_IsAllowedToJoinSquads;
-
-// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsCustomMatchParamVisible
-// 0x0002 (0x0002 - 0x0000)
-struct RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchParamVisible final
-{
-public:
-	ERuntimeMatchParameterTypes                   _eParam;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchParamVisible;
-
-// Function Runtime.RuntimeSOSBindingsSubsystem.BPF_IsCustomMatchUserParamVisible
-// 0x0002 (0x0002 - 0x0000)
-struct RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchUserParamVisible final
-{
-public:
-	uint8                                         _eParam;                                           // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSOSBindingsSubsystem_BPF_IsCustomMatchUserParamVisible;
-
-// Function Runtime.RuntimeSOSComponent.OnAbilityActivated
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeSOSComponent_OnAbilityActivated final
-{
-public:
-	struct FGameplayAbilitySpecHandle             _abilityHanddle;                                   // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameplayAbility*                       _abilityActivated;                                 // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSOSComponent_OnAbilityActivated;
-
-// Function Runtime.RuntimeSOSComponent.OnCountdownOver
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimeSOSComponent_OnCountdownOver final
-{
-public:
-	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSOSComponent_OnCountdownOver;
-
-// Function Runtime.RuntimeSOSComponent.OnCountdownStart
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimeSOSComponent_OnCountdownStart final
-{
-public:
-	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSOSComponent_OnCountdownStart;
-
-// Function Runtime.RuntimeSOSComponent.OnPossessedPawnChanged
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeSOSComponent_OnPossessedPawnChanged final
-{
-public:
-	class APawn*                                  _oldPawn;                                          // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class APawn*                                  _newPawn;                                          // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSOSComponent_OnPossessedPawnChanged;
-
-// Function Runtime.RuntimeSoundSubsystem.BPE_OnLoadingScreenVisibilityChanged
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimeSoundSubsystem_BPE_OnLoadingScreenVisibilityChanged final
-{
-public:
-	bool                                          _bVisible;                                         // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSoundSubsystem_BPE_OnLoadingScreenVisibilityChanged;
-
-// Function Runtime.RuntimeSprintGameplayAbility.CheckIfMoving
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimeSprintGameplayAbility_CheckIfMoving final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSprintGameplayAbility_CheckIfMoving;
-
-// Function Runtime.RuntimeSprintGameplayAbility.CheckIfStationnary
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimeSprintGameplayAbility_CheckIfStationnary final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSprintGameplayAbility_CheckIfStationnary;
-
-// Function Runtime.RuntimeSprintGameplayAbility.OnSprintInputRelease
-// 0x00A0 (0x00A0 - 0x0000)
-struct RuntimeSprintGameplayAbility_OnSprintInputRelease final
-{
-public:
-	struct FInputActionState                      _state;                                            // 0x0000(0x0098)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	bool                                          _bActivated;                                       // 0x0098(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_RuntimeSprintGameplayAbility_OnSprintInputRelease;
-
-// Function Runtime.RuntimeStatBehaviourTimer.OnOvertimeStart
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimeStatBehaviourTimer_OnOvertimeStart final
-{
-public:
-	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeStatBehaviourTimer_OnOvertimeStart;
-
-// Function Runtime.RuntimeStatDataIsInRange.BPF_GetRangeTargetActor
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeStatDataIsInRange_BPF_GetRangeTargetActor final
-{
-public:
-	const class APawn*                            _instigatorPawn;                                   // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeStatDataIsInRange_BPF_GetRangeTargetActor;
-
-// Function Runtime.RuntimeStatsSubsystem.OnGoalScored
-// 0x0038 (0x0038 - 0x0000)
-struct RuntimeStatsSubsystem_OnGoalScored final
-{
-public:
-	struct FGoalDescription                       _goalDescription;                                  // 0x0000(0x0038)(Parm, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeStatsSubsystem_OnGoalScored;
-
-// Function Runtime.RuntimeStatsSubsystem.OnMatchCountdownFinished
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimeStatsSubsystem_OnMatchCountdownFinished final
-{
-public:
-	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeStatsSubsystem_OnMatchCountdownFinished;
-
-// Function Runtime.RuntimeStatsSubsystem.OnMatchFirstCountdownFinished
-// 0x0008 (0x0008 - 0x0000)
-struct RuntimeStatsSubsystem_OnMatchFirstCountdownFinished final
-{
-public:
-	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeStatsSubsystem_OnMatchFirstCountdownFinished;
-
-// Function Runtime.RuntimeTools.BPF_ComputeSpeedState
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeTools_BPF_ComputeSpeedState final
-{
-public:
-	const class APawn*                            _pawn;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESCCharacterSpeedState                        ReturnValue;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_ComputeSpeedState;
-
-// Function Runtime.RuntimeTools.BPF_GetAllPawns
-// 0x0020 (0x0020 - 0x0000)
-struct RuntimeTools_BPF_GetAllPawns final
-{
-public:
-	const class AActor*                           _inRefActor;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bShouldBeOnScreen;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bFilterByTeam;                                    // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bOnlyAllies;                                      // 0x000A(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class APawn*>                          ReturnValue;                                       // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_GetAllPawns;
-
-// Function Runtime.RuntimeTools.BPF_GetCurrentMenuGameFlowSubsystem
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeTools_BPF_GetCurrentMenuGameFlowSubsystem final
-{
-public:
-	const class UObject*                          _worldContext;                                     // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class USCGameFlowSubsystem*                   ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_GetCurrentMenuGameFlowSubsystem;
-
-// Function Runtime.RuntimeTools.BPF_GetLastPlayerScorer
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeTools_BPF_GetLastPlayerScorer final
-{
-public:
-	const class UWorld*                           _world;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class APlayerState*                           ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_GetLastPlayerScorer;
-
-// Function Runtime.RuntimeTools.BPF_GetNearestBall
-// 0x0018 (0x0018 - 0x0000)
-struct RuntimeTools_BPF_GetNearestBall final
-{
-public:
-	const class AActor*                           _inRefActor;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bShouldBeOnScreen;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ABall*                                  ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_GetNearestBall;
-
-// Function Runtime.RuntimeTools.BPF_GetNearestGoal
-// 0x0018 (0x0018 - 0x0000)
-struct RuntimeTools_BPF_GetNearestGoal final
-{
-public:
-	const class AActor*                           _inRefActor;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bShouldBeOnScreen;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bFilterByTeam;                                    // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bOnlyOurGoal;                                     // 0x000A(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class AGoal*                                  ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_GetNearestGoal;
-
-// Function Runtime.RuntimeTools.BPF_GetNearestPawn
-// 0x0018 (0x0018 - 0x0000)
-struct RuntimeTools_BPF_GetNearestPawn final
-{
-public:
-	const class AActor*                           _inRefActor;                                       // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bShouldBeOnScreen;                                // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bFilterByTeam;                                    // 0x0009(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bOnlyAllies;                                      // 0x000A(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class APawn*                                  ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_GetNearestPawn;
-
-// Function Runtime.RuntimeTools.BPF_GetPlayerCountInTeam
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeTools_BPF_GetPlayerCountInTeam final
-{
-public:
-	const class UWorld*                           _world;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         _uiTeam;                                           // 0x0008(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_GetPlayerCountInTeam;
-
-// Function Runtime.RuntimeTools.BPF_GetRequestedTargets
-// 0x00B8 (0x00B8 - 0x0000)
-struct RuntimeTools_BPF_GetRequestedTargets final
-{
-public:
-	class APawn*                                  _requester;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRuntimeTargetRequest                  _request;                                          // 0x0008(0x0088)(Parm, NativeAccessSpecifierPublic)
-	struct FGameplayAbilityTargetDataHandle       ReturnValue;                                       // 0x0090(0x0028)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_GetRequestedTargets;
-
-// Function Runtime.RuntimeTools.BPF_ShouldJumpForReception
-// 0x0002 (0x0002 - 0x0000)
-struct RuntimeTools_BPF_ShouldJumpForReception final
-{
-public:
-	EBallReceptionArea                            _eReceptionArea;                                   // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeTools_BPF_ShouldJumpForReception;
-
-// Function Runtime.RuntimeVideoSubsystem.BPF_SetupVideo
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeVideoSubsystem_BPF_SetupVideo final
-{
-public:
-	class UBinkMediaPlayer*                       Player;                                            // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bShouldPlay;                                       // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         fVideoTime;                                        // 0x000C(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeVideoSubsystem_BPF_SetupVideo;
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_GetContentTypeForWelcomeFlowStep
-// 0x0002 (0x0002 - 0x0000)
-struct RuntimeWelcomeFlowSubsystem_BPF_GetContentTypeForWelcomeFlowStep final
-{
-public:
-	EWelcomeFlowStep                              _step;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ERematchWelcomeFlowContentType                ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPF_GetContentTypeForWelcomeFlowStep;
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_EndWelcomeFlowStep
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimeWelcomeFlowSubsystem_BPE_EndWelcomeFlowStep final
-{
-public:
-	EWelcomeFlowStep                              _step;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPE_EndWelcomeFlowStep;
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPE_StartWelcomeFlowStep
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimeWelcomeFlowSubsystem_BPE_StartWelcomeFlowStep final
-{
-public:
-	EWelcomeFlowStep                              _step;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPE_StartWelcomeFlowStep;
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep
-// 0x0010 (0x0010 - 0x0000)
-struct RuntimeWelcomeFlowSubsystem_BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep final
-{
-public:
-	TArray<class UWelcomeFlowContentViewModel*>   ReturnValue;                                       // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPF_GetUnreadContentViewModelsForCurrentWelcomeFlowStep;
-
-// Function Runtime.RuntimeWelcomeFlowSubsystem.BPF_HasWelcomeFlowStarted
-// 0x0001 (0x0001 - 0x0000)
-struct RuntimeWelcomeFlowSubsystem_BPF_HasWelcomeFlowStarted final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeWelcomeFlowSubsystem_BPF_HasWelcomeFlowStarted;
-
-// Function Runtime.ShootBinder.BPE_OnBallRegistered
-// 0x0008 (0x0008 - 0x0000)
-struct ShootBinder_BPE_OnBallRegistered final
-{
-public:
-	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_BPE_OnBallRegistered;
-
-// Function Runtime.ShootBinder.BPE_OnBallUnregistered
-// 0x0008 (0x0008 - 0x0000)
-struct ShootBinder_BPE_OnBallUnregistered final
-{
-public:
-	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_BPE_OnBallUnregistered;
-
-// Function Runtime.ShootBinder.BPE_OnGoalRegistered
-// 0x0008 (0x0008 - 0x0000)
-struct ShootBinder_BPE_OnGoalRegistered final
-{
-public:
-	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_BPE_OnGoalRegistered;
-
-// Function Runtime.ShootBinder.BPE_OnGoalUnregistered
-// 0x0008 (0x0008 - 0x0000)
-struct ShootBinder_BPE_OnGoalUnregistered final
-{
-public:
-	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_BPE_OnGoalUnregistered;
-
-// Function Runtime.ShootBinder.BPE_OnShoot
-// 0x0110 (0x0110 - 0x0000)
-struct ShootBinder_BPE_OnShoot final
-{
-public:
-	const class ABall*                            _ball;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootParams                           _shootParams;                                      // 0x0008(0x0108)(Parm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_BPE_OnShoot;
-
-// Function Runtime.ShootBinder.BPE_OnShootBinderTriggered
-// 0x0118 (0x0118 - 0x0000)
-struct ShootBinder_BPE_OnShootBinderTriggered final
-{
-public:
-	const class ABall*                            _ball;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootParams                           _shootParams;                                      // 0x0008(0x0108)(Parm, NativeAccessSpecifierPublic)
-	class AGoal*                                  _goalAimed;                                        // 0x0110(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_BPE_OnShootBinderTriggered;
-
-// Function Runtime.ShootBinder.OnBallRegistered
-// 0x0008 (0x0008 - 0x0000)
-struct ShootBinder_OnBallRegistered final
-{
-public:
-	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_OnBallRegistered;
-
-// Function Runtime.ShootBinder.OnBallUnregistered
-// 0x0008 (0x0008 - 0x0000)
-struct ShootBinder_OnBallUnregistered final
-{
-public:
-	class ABall*                                  _ball;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_OnBallUnregistered;
-
-// Function Runtime.ShootBinder.OnGoalRegistered
-// 0x0008 (0x0008 - 0x0000)
-struct ShootBinder_OnGoalRegistered final
-{
-public:
-	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_OnGoalRegistered;
-
-// Function Runtime.ShootBinder.OnGoalUnregistered
-// 0x0008 (0x0008 - 0x0000)
-struct ShootBinder_OnGoalUnregistered final
-{
-public:
-	class AGoal*                                  _goal;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_OnGoalUnregistered;
-
-// Function Runtime.ShootBinder.OnShoot
-// 0x0110 (0x0110 - 0x0000)
-struct ShootBinder_OnShoot final
-{
-public:
-	const class ABall*                            _ball;                                             // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootParams                           _shootParams;                                      // 0x0008(0x0108)(Parm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootBinder_OnShoot;
-
-// Function Runtime.ShootAbilityData.BPF_MakePrepTargetDataFromClass
-// 0x0138 (0x0138 - 0x0000)
-struct ShootAbilityData_BPF_MakePrepTargetDataFromClass final
-{
-public:
-	TSubclassOf<class UShootAbilityData>          _shootDataClass;                                   // 0x0000(0x0008)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	const class UGameplayAbility*                 _ability;                                          // 0x0008(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ABall*                                  _ball;                                             // 0x0010(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         _iPriority;                                        // 0x0018(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayAbilityTargetDataHandle       _context;                                          // 0x0020(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	EShootOrigin                                  _eShootOrigin;                                     // 0x0048(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class URuntimeShootCameraShake>   _cameraShake;                                      // 0x0050(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   ReturnValue;                                       // 0x0058(0x00E0)(Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootAbilityData_BPF_MakePrepTargetDataFromClass;
-
-// Function Runtime.SimulationStepHelper.BPF_IsCustomOrFreezingSimulationStep
-// 0x0002 (0x0002 - 0x0000)
-struct SimulationStepHelper_BPF_IsCustomOrFreezingSimulationStep final
-{
-public:
-	ESimulationStep                               _eSimulationStep;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_SimulationStepHelper_BPF_IsCustomOrFreezingSimulationStep;
-
-// Function Runtime.SimulationStepHelper.BPF_IsFlyingOrRollingSimulationStep
-// 0x0002 (0x0002 - 0x0000)
-struct SimulationStepHelper_BPF_IsFlyingOrRollingSimulationStep final
-{
-public:
-	ESimulationStep                               _eSimulationStep;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_SimulationStepHelper_BPF_IsFlyingOrRollingSimulationStep;
-
-// Function Runtime.SimulationStepHelper.BPF_IsSimulationStepValid
-// 0x0002 (0x0002 - 0x0000)
-struct SimulationStepHelper_BPF_IsSimulationStepValid final
-{
-public:
-	ESimulationStep                               _eSimulationStep;                                  // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_SimulationStepHelper_BPF_IsSimulationStepValid;
-
-// Function Runtime.RTBlendableReflectionComponent.SetOpacity
-// 0x0004 (0x0004 - 0x0000)
-struct RTBlendableReflectionComponent_SetOpacity final
-{
-public:
-	float                                         _opacity;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RTBlendableReflectionComponent_SetOpacity;
-
-// Function Runtime.JoystickOrientationHelper.BPF_ConvertJoystickOrientationInDegreeAngle
-// 0x0008 (0x0008 - 0x0000)
-struct JoystickOrientationHelper_BPF_ConvertJoystickOrientationInDegreeAngle final
-{
-public:
-	EJoystickOrientation                          _eJoystickOrient;                                  // 0x0000(0x0001)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_JoystickOrientationHelper_BPF_ConvertJoystickOrientationInDegreeAngle;
-
-// Function Runtime.JoystickOrientationHelper.BPF_GetJoystickOrientationFromAngle
-// 0x0028 (0x0028 - 0x0000)
-struct JoystickOrientationHelper_BPF_GetJoystickOrientationFromAngle final
-{
-public:
-	struct FVector2D                              _v2DJoystickValues;                                // 0x0000(0x0010)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fAngle;                                           // 0x0010(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fDeadZone;                                        // 0x0014(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fEastWestTolerance;                               // 0x0018(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fHalfPiInDegree;                                  // 0x001C(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EJoystickOrientation                          ReturnValue;                                       // 0x0020(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_JoystickOrientationHelper_BPF_GetJoystickOrientationFromAngle;
-
-// Function Runtime.ShootHelpers.BPF_ComputeShootParams
-// 0x0220 (0x0220 - 0x0000)
-struct ShootHelpers_BPF_ComputeShootParams final
-{
-public:
-	struct FGameplayAbilityTargetDataHandle       _context;                                          // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	const class USCGameplayAbility*               _ability;                                          // 0x0028(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _targetData;                                       // 0x0030(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	float                                         _fCatchupTime;                                     // 0x0110(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fCatchupAnimTime;                                 // 0x0114(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootParams                           ReturnValue;                                       // 0x0118(0x0108)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_ComputeShootParams;
-
-// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromAbility
-// 0x01F8 (0x01F8 - 0x0000)
-struct ShootHelpers_BPF_ComputeShootParamsFromAbility final
-{
-public:
-	const class USCGameplayAbility*               _ability;                                          // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _targetData;                                       // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FShootParams                           _outResult;                                        // 0x00E8(0x0108)(Parm, OutParm, NativeAccessSpecifierPublic)
-	bool                                          _bUseNetSync;                                      // 0x01F0(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1F1[0x7];                                      // 0x01F1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_ComputeShootParamsFromAbility;
-
-// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromAbilityAtLocation
-// 0x0210 (0x0210 - 0x0000)
-struct ShootHelpers_BPF_ComputeShootParamsFromAbilityAtLocation final
-{
-public:
-	const class USCGameplayAbility*               _ability;                                          // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _targetData;                                       // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FShootParams                           _outResult;                                        // 0x00E8(0x0108)(Parm, OutParm, NativeAccessSpecifierPublic)
-	struct FVector                                _vLocation;                                        // 0x01F0(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fWantedCatchupTime;                               // 0x0208(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_20C[0x4];                                      // 0x020C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_ComputeShootParamsFromAbilityAtLocation;
-
-// Function Runtime.ShootHelpers.BPF_ComputeShootParamsFromActor
-// 0x01F0 (0x01F0 - 0x0000)
-struct ShootHelpers_BPF_ComputeShootParamsFromActor final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _targetData;                                       // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FShootParams                           _outResult;                                        // 0x00E8(0x0108)(Parm, OutParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_ComputeShootParamsFromActor;
-
-// Function Runtime.ShootHelpers.BPF_FindShootParamsTargetData
-// 0x0148 (0x0148 - 0x0000)
-struct ShootHelpers_BPF_FindShootParamsTargetData final
-{
-public:
-	struct FGameplayAbilityTargetDataHandle       _data;                                             // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FShootParamsTargetData                 _outData;                                          // 0x0028(0x0118)(Parm, OutParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0140(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_141[0x7];                                      // 0x0141(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_FindShootParamsTargetData;
-
-// Function Runtime.ShootHelpers.BPF_FindShootPrepTargetData
-// 0x0110 (0x0110 - 0x0000)
-struct ShootHelpers_BPF_FindShootPrepTargetData final
-{
-public:
-	struct FGameplayAbilityTargetDataHandle       _data;                                             // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _outData;                                          // 0x0028(0x00E0)(Parm, OutParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0108(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_109[0x7];                                      // 0x0109(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_FindShootPrepTargetData;
-
-// Function Runtime.ShootHelpers.BPF_GetAngleFromMagnusInput
-// 0x00F0 (0x00F0 - 0x0000)
-struct ShootHelpers_BPF_GetAngleFromMagnusInput final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bAbsoluteAngle;                                   // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetAngleFromMagnusInput;
-
-// Function Runtime.ShootHelpers.BPF_GetShootDirection
-// 0x0108 (0x0108 - 0x0000)
-struct ShootHelpers_BPF_GetShootDirection final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                ReturnValue;                                       // 0x00F0(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootDirection;
-
-// Function Runtime.ShootHelpers.BPF_GetShootForce
-// 0x00F0 (0x00F0 - 0x0000)
-struct ShootHelpers_BPF_GetShootForce final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootForce;
-
-// Function Runtime.ShootHelpers.BPF_GetShootForceMinMax
-// 0x0100 (0x0100 - 0x0000)
-struct ShootHelpers_BPF_GetShootForceMinMax final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFloatRange                            ReturnValue;                                       // 0x00EC(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_FC[0x4];                                       // 0x00FC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootForceMinMax;
-
-// Function Runtime.ShootHelpers.BPF_GetShootForceNormalized
-// 0x00F0 (0x00F0 - 0x0000)
-struct ShootHelpers_BPF_GetShootForceNormalized final
-{
-public:
-	const class AActor*                           _runtimeCharacter;                                 // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootForceNormalized;
-
-// Function Runtime.ShootHelpers.BPF_GetShootForceRange
-// 0x0100 (0x0100 - 0x0000)
-struct ShootHelpers_BPF_GetShootForceRange final
-{
-public:
-	const class AActor*                           _runtimeCharacter;                                 // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFloatRange                            ReturnValue;                                       // 0x00EC(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_FC[0x4];                                       // 0x00FC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootForceRange;
-
-// Function Runtime.ShootHelpers.BPF_GetShootInputTimeFromShootPrep
-// 0x00F0 (0x00F0 - 0x0000)
-struct ShootHelpers_BPF_GetShootInputTimeFromShootPrep final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootInputTimeFromShootPrep;
-
-// Function Runtime.ShootHelpers.BPF_GetShootRotationForce
-// 0x0108 (0x0108 - 0x0000)
-struct ShootHelpers_BPF_GetShootRotationForce final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bUseModifiers;                                    // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                ReturnValue;                                       // 0x00F0(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootRotationForce;
-
-// Function Runtime.ShootHelpers.BPF_GetShootRotationForceInput
-// 0x00F8 (0x00F8 - 0x0000)
-struct ShootHelpers_BPF_GetShootRotationForceInput final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FVector2D                              ReturnValue;                                       // 0x00E8(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootRotationForceInput;
-
-// Function Runtime.ShootHelpers.BPF_GetShootRotationForceRatio
-// 0x0100 (0x0100 - 0x0000)
-struct ShootHelpers_BPF_GetShootRotationForceRatio final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FVector                                ReturnValue;                                       // 0x00E8(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootRotationForceRatio;
-
-// Function Runtime.ShootHelpers.BPF_GetShootStartLocationPoint
-// 0x01D0 (0x01D0 - 0x0000)
-struct ShootHelpers_BPF_GetShootStartLocationPoint final
-{
-public:
-	const class AActor*                           _runtimeCharacter;                                 // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _targetData;                                       // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FGameplayAbilityTargetDataHandle       _context;                                          // 0x00E8(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	float                                         _fCatchupTime;                                     // 0x0110(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_114[0x4];                                      // 0x0114(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayAbilityTargetDataHandle       _montageContextFallback;                           // 0x0118(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FShootLocationPointResult              ReturnValue;                                       // 0x0140(0x0090)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootStartLocationPoint;
-
-// Function Runtime.ShootHelpers.BPF_GetShootTimeRange
-// 0x00F8 (0x00F8 - 0x0000)
-struct ShootHelpers_BPF_GetShootTimeRange final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FFloatRange                            ReturnValue;                                       // 0x00E8(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootTimeRange;
-
-// Function Runtime.ShootHelpers.BPF_GetShootTimeRatioToBuildUpDuration
-// 0x00F0 (0x00F0 - 0x0000)
-struct ShootHelpers_BPF_GetShootTimeRatioToBuildUpDuration final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x00E8(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootTimeRatioToBuildUpDuration;
-
-// Function Runtime.ShootHelpers.BPF_GetShootType
-// 0x0140 (0x0140 - 0x0000)
-struct ShootHelpers_BPF_GetShootType final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	TMap<struct FGameplayTag, struct FFloatRange> _gameplayTagMap;                                   // 0x00E8(0x0050)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FGameplayTag                           ReturnValue;                                       // 0x0138(0x0008)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetShootType;
-
-// Function Runtime.ShootHelpers.BPF_GetSimulatedShootDataFromShootPrep
-// 0x0158 (0x0158 - 0x0000)
-struct ShootHelpers_BPF_GetSimulatedShootDataFromShootPrep final
-{
-public:
-	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FSimulatedShootData                    _outSimulatedShootData;                            // 0x00E0(0x0070)(Parm, OutParm, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0150(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_151[0x7];                                      // 0x0151(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetSimulatedShootDataFromShootPrep;
-
-// Function Runtime.ShootHelpers.BPF_GetTrajectoryClosestPointByLocation
-// 0x0090 (0x0090 - 0x0000)
-struct ShootHelpers_BPF_GetTrajectoryClosestPointByLocation final
-{
-public:
-	const class AActor*                           _runtimeCharacter;                                 // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FBallTrajectoryResult                  _trajectory;                                       // 0x0008(0x0068)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FVector                                _vResult;                                          // 0x0070(0x0018)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bFoundResult;                                     // 0x0088(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_89[0x3];                                       // 0x0089(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         _fDistance;                                        // 0x008C(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetTrajectoryClosestPointByLocation;
-
-// Function Runtime.ShootHelpers.BPF_GetTrajectoryFromSimulatedShootData
-// 0x0200 (0x0200 - 0x0000)
-struct ShootHelpers_BPF_GetTrajectoryFromSimulatedShootData final
-{
-public:
-	struct FSimulatedShootData                    _simulatedShootData;                               // 0x0000(0x0070)(Parm, NativeAccessSpecifierPublic)
-	struct FShootParams                           _outShootParams;                                   // 0x0070(0x0108)(Parm, OutParm, NativeAccessSpecifierPublic)
-	class UShootAbilityData*                      _shootAbilityData;                                 // 0x0178(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	const class AActor*                           _actor;                                            // 0x0180(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class ABall*                                  _ball;                                             // 0x0188(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fPredictionDuration;                              // 0x0190(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bUseTime;                                         // 0x0194(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bApplyModifiers;                                  // 0x0195(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_196[0x2];                                      // 0x0196(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBallTrajectoryResult                  ReturnValue;                                       // 0x0198(0x0068)(Parm, OutParm, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_GetTrajectoryFromSimulatedShootData;
-
-// Function Runtime.ShootHelpers.BPF_HasReleaseShootInput
-// 0x00F0 (0x00F0 - 0x0000)
-struct ShootHelpers_BPF_HasReleaseShootInput final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x00E8(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_HasReleaseShootInput;
-
-// Function Runtime.ShootHelpers.BPF_MakeShootPrepTargetDataHandle
-// 0x0108 (0x0108 - 0x0000)
-struct ShootHelpers_BPF_MakeShootPrepTargetDataHandle final
-{
-public:
-	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FGameplayAbilityTargetDataHandle       ReturnValue;                                       // 0x00E0(0x0028)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_MakeShootPrepTargetDataHandle;
-
-// Function Runtime.ShootHelpers.BPF_ShootPrep_IsValid
-// 0x00E8 (0x00E8 - 0x0000)
-struct ShootHelpers_BPF_ShootPrep_IsValid final
-{
-public:
-	struct FShootPrepTargetData                   _targetData;                                       // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x00E0(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_ShootPrep_IsValid;
-
-// Function Runtime.ShootHelpers.BPF_TimeRemainingBeforeShoot
-// 0x00F0 (0x00F0 - 0x0000)
-struct ShootHelpers_BPF_TimeRemainingBeforeShoot final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _data;                                             // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x00E8(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_TimeRemainingBeforeShoot;
-
-// Function Runtime.ShootHelpers.BPF_TryToGetImpactNormal
-// 0x0100 (0x0100 - 0x0000)
-struct ShootHelpers_BPF_TryToGetImpactNormal final
-{
-public:
-	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bSuccess;                                         // 0x00E0(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                ReturnValue;                                       // 0x00E8(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_TryToGetImpactNormal;
-
-// Function Runtime.ShootHelpers.BPF_TryToGetImpactPoint
-// 0x0100 (0x0100 - 0x0000)
-struct ShootHelpers_BPF_TryToGetImpactPoint final
-{
-public:
-	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bSuccess;                                         // 0x00E0(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                ReturnValue;                                       // 0x00E8(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_TryToGetImpactPoint;
-
-// Function Runtime.ShootHelpers.BPF_TryToGetImpactPointOnCameraDirection
-// 0x0100 (0x0100 - 0x0000)
-struct ShootHelpers_BPF_TryToGetImpactPointOnCameraDirection final
-{
-public:
-	struct FShootPrepTargetData                   _data;                                             // 0x0000(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	bool                                          _bSuccess;                                         // 0x00E0(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                ReturnValue;                                       // 0x00E8(0x0018)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootHelpers_BPF_TryToGetImpactPointOnCameraDirection;
-
-// Function Runtime.ShootModifierHelpers.BPF_GetMultiplierBySpeedState
-// 0x0100 (0x0100 - 0x0000)
-struct ShootModifierHelpers_BPF_GetMultiplierBySpeedState final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _ShootData;                                        // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	float                                         _fBlendTime;                                       // 0x00E8(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FMultiplierSpeedStateData              m_Multipliers;                                     // 0x00EC(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x00FC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootModifierHelpers_BPF_GetMultiplierBySpeedState;
-
-// Function Runtime.ShootModifierHelpers.BPF_GetMultiplierFromShootModifierDataTable
-// 0x0110 (0x0110 - 0x0000)
-struct ShootModifierHelpers_BPF_GetMultiplierFromShootModifierDataTable final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _ShootData;                                        // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	const class UDataTable*                       _table;                                            // 0x00E8(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                _vOutDirection;                                    // 0x00F0(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0108(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_10C[0x4];                                      // 0x010C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ShootModifierHelpers_BPF_GetMultiplierFromShootModifierDataTable;
-
-// Function Runtime.ShootModifierHelpers.BPF_GetSourceRatioValue
-// 0x00F8 (0x00F8 - 0x0000)
-struct ShootModifierHelpers_BPF_GetSourceRatioValue final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _ShootData;                                        // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	ESourceModifierType                           _eSourceType;                                      // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFloatInterval                         _intervalToComputeRatio;                           // 0x00EC(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x00F4(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootModifierHelpers_BPF_GetSourceRatioValue;
-
-// Function Runtime.ShootModifierHelpers.BPF_GetSourceValue
-// 0x00F0 (0x00F0 - 0x0000)
-struct ShootModifierHelpers_BPF_GetSourceValue final
-{
-public:
-	const class AActor*                           _actor;                                            // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FShootPrepTargetData                   _ShootData;                                        // 0x0008(0x00E0)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	ESourceModifierType                           _eSourceType;                                      // 0x00E8(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ReturnValue;                                       // 0x00EC(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ShootModifierHelpers_BPF_GetSourceValue;
-
-// Function Runtime.StadiumWorldSettings.BPF_GetRuntimeWorldSettings
-// 0x0018 (0x0018 - 0x0000)
-struct StadiumWorldSettings_BPF_GetRuntimeWorldSettings final
-{
-public:
-	const class UObject*                          _context;                                          // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          _bForceMainWorld;                                  // 0x0008(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class AStadiumWorldSettings*                  ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_StadiumWorldSettings_BPF_GetRuntimeWorldSettings;
-
-// Function Runtime.StadiumWorldSettings.BPF_GetFieldBox
-// 0x0038 (0x0038 - 0x0000)
-struct StadiumWorldSettings_BPF_GetFieldBox final
-{
-public:
-	struct FBox                                   ReturnValue;                                       // 0x0000(0x0038)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_StadiumWorldSettings_BPF_GetFieldBox;
-
-// Function Runtime.SweeperAttributeSet.OnRep_V1
-// 0x0010 (0x0010 - 0x0000)
-struct SweeperAttributeSet_OnRep_V1 final
-{
-public:
-	struct FGameplayAttributeData                 _oldV1;                                            // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_SweeperAttributeSet_OnRep_V1;
-
-// Function Runtime.SweeperAttributeSet.OnRep_V2
-// 0x0010 (0x0010 - 0x0000)
-struct SweeperAttributeSet_OnRep_V2 final
-{
-public:
-	struct FGameplayAttributeData                 _oldV2;                                            // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_SweeperAttributeSet_OnRep_V2;
-
-// Function Runtime.SweeperAttributeSet.OnRep_V3
-// 0x0010 (0x0010 - 0x0000)
-struct SweeperAttributeSet_OnRep_V3 final
-{
-public:
-	struct FGameplayAttributeData                 _oldV3;                                            // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_SweeperAttributeSet_OnRep_V3;
-
-// Function Runtime.ThumbnailCustomizationIds.BPF_GetThumbnailCustomizationId
-// 0x01A0 (0x01A0 - 0x0000)
-struct ThumbnailCustomizationIds_BPF_GetThumbnailCustomizationId final
-{
-public:
-	struct FSCCustomizationId                     _customizationID;                                  // 0x0000(0x0120)(ConstParm, Parm, OutParm, ReferenceParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TSoftObjectPtr<class ULevelSequence>          _viewSequence;                                     // 0x0120(0x0028)(Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TSoftObjectPtr<class UAnimSequence>           _animSequence;                                     // 0x0148(0x0028)(Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         _fAnimTime;                                        // 0x0170(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_174[0x4];                                      // 0x0174(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UTexture2D>              _defaultTexture;                                   // 0x0178(0x0028)(Parm, OutParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ThumbnailCustomizationIds_BPF_GetThumbnailCustomizationId;
-
-// Function Runtime.TrajectoryPartHelpers.BPF_GetPartPointAtRatioDistance
-// 0x0198 (0x0198 - 0x0000)
-struct TrajectoryPartHelpers_BPF_GetPartPointAtRatioDistance final
-{
-public:
-	struct FBallTrajectoryPart                    _trajPart;                                         // 0x0000(0x0158)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	float                                         _fRatio;                                           // 0x0158(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15C[0x4];                                      // 0x015C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FPredictProjectilePathPointData        ReturnValue;                                       // 0x0160(0x0038)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TrajectoryPartHelpers_BPF_GetPartPointAtRatioDistance;
-
-// Function Runtime.TrajectoryPartHelpers.BPF_GetPartTime
-// 0x0160 (0x0160 - 0x0000)
-struct TrajectoryPartHelpers_BPF_GetPartTime final
-{
-public:
-	struct FBallTrajectoryPart                    _trajPart;                                         // 0x0000(0x0158)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	float                                         ReturnValue;                                       // 0x0158(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15C[0x4];                                      // 0x015C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_TrajectoryPartHelpers_BPF_GetPartTime;
-
-// Function Runtime.TutorialLogicStep.GetManagerOwner
-// 0x0008 (0x0008 - 0x0000)
-struct TutorialLogicStep_GetManagerOwner final
-{
-public:
-	class ATutorialManager*                       ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialLogicStep_GetManagerOwner;
-
-// Function Runtime.TutorialObjectiveListenInput.OnInputActivation
-// 0x00A0 (0x00A0 - 0x0000)
-struct TutorialObjectiveListenInput_OnInputActivation final
-{
-public:
-	const class USCInputAction*                   _uscInputAction;                                   // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FInputActionState                      _inputActionState;                                 // 0x0008(0x0098)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialObjectiveListenInput_OnInputActivation;
-
-// Function Runtime.TutorialStep.GetObjectives
-// 0x0010 (0x0010 - 0x0000)
-struct TutorialStep_GetObjectives final
-{
-public:
-	TArray<class UTutorialObjective*>             ReturnValue;                                       // 0x0000(0x0010)(ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialStep_GetObjectives;
-
-// Function Runtime.TutorialStep.OnObjectiveComplete
-// 0x0008 (0x0008 - 0x0000)
-struct TutorialStep_OnObjectiveComplete final
-{
-public:
-	class UTutorialObjective*                     _objective;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialStep_OnObjectiveComplete;
-
-// Function Runtime.TutorialStep.BPF_GetObjectiveCount
-// 0x0004 (0x0004 - 0x0000)
-struct TutorialStep_BPF_GetObjectiveCount final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialStep_BPF_GetObjectiveCount;
-
-// Function Runtime.TutorialStep.BPF_GetObjectiveCountWithIteration
-// 0x0004 (0x0004 - 0x0000)
-struct TutorialStep_BPF_GetObjectiveCountWithIteration final
-{
-public:
-	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialStep_BPF_GetObjectiveCountWithIteration;
-
-// Function Runtime.TutorialStep.GetOwner
-// 0x0008 (0x0008 - 0x0000)
-struct TutorialStep_GetOwner final
-{
-public:
-	class ATutorialManager*                       ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_TutorialStep_GetOwner;
-
-// Function Runtime.UtilityAIComponent.OnTaskFinished
-// 0x0008 (0x0008 - 0x0000)
-struct UtilityAIComponent_OnTaskFinished final
-{
-public:
-	class UUtilityAITask*                         _taskFinished;                                     // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_UtilityAIComponent_OnTaskFinished;
-
-// Function Runtime.UtilityAIComponent.SetUtilityAiPreset
-// 0x0008 (0x0008 - 0x0000)
-struct UtilityAIComponent_SetUtilityAiPreset final
-{
-public:
-	class UUtilityAIPreset*                       _newPreset;                                        // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_UtilityAIComponent_SetUtilityAiPreset;
-
-// Function Runtime.UtilityAITask.BPE_ComputeAllConsiderationValue
-// 0x0060 (0x0060 - 0x0000)
-struct UtilityAITask_BPE_ComputeAllConsiderationValue final
-{
-public:
-	class AAIController*                          _inAIController;                                   // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class AActor*                                 _inTargetActor;                                    // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TMap<class UCurveFloat*, float>               _outResult;                                        // 0x0010(0x0050)(Parm, OutParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_UtilityAITask_BPE_ComputeAllConsiderationValue;
-
-// Function Runtime.VoiceChatBlueprintHelperLibrary.GetActiveInputDevice
-// 0x0028 (0x0028 - 0x0000)
-struct VoiceChatBlueprintHelperLibrary_GetActiveInputDevice final
-{
-public:
-	class UObject*                                _worldContextObject;                               // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FSOSVoiceChatDeviceInfo                ReturnValue;                                       // 0x0008(0x0020)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_VoiceChatBlueprintHelperLibrary_GetActiveInputDevice;
-
-// Function Runtime.VoiceChatBlueprintHelperLibrary.GetInputDevices
-// 0x0018 (0x0018 - 0x0000)
-struct VoiceChatBlueprintHelperLibrary_GetInputDevices final
-{
-public:
-	class UObject*                                _worldContextObject;                               // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<struct FSOSVoiceChatDeviceInfo>        ReturnValue;                                       // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_VoiceChatBlueprintHelperLibrary_GetInputDevices;
-
-// Function Runtime.VoiceChatBlueprintHelperLibrary.SetInputDevice
-// 0x0018 (0x0018 - 0x0000)
-struct VoiceChatBlueprintHelperLibrary_SetInputDevice final
-{
-public:
-	class UObject*                                _worldContextObject;                               // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 _inputDeviceId;                                    // 0x0008(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_VoiceChatBlueprintHelperLibrary_SetInputDevice;
-
-// Function Runtime.WelcomeFlowViewModel.BPF_GetUnreadContentViewModelsByType
-// 0x0018 (0x0018 - 0x0000)
-struct WelcomeFlowViewModel_BPF_GetUnreadContentViewModelsByType final
-{
-public:
-	ERematchWelcomeFlowContentType                _type;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UWelcomeFlowContentViewModel*>   ReturnValue;                                       // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_WelcomeFlowViewModel_BPF_GetUnreadContentViewModelsByType;
-
-// Function Runtime.WelcomeFlowViewModel.BPF_HasUnreadContentOfType
-// 0x0002 (0x0002 - 0x0000)
-struct WelcomeFlowViewModel_BPF_HasUnreadContentOfType final
-{
-public:
-	ERematchWelcomeFlowContentType                _type;                                             // 0x0000(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_WelcomeFlowViewModel_BPF_HasUnreadContentOfType;
-
-// Function Runtime.WelcomeFlowViewModel.HasActiveNews
-// 0x0001 (0x0001 - 0x0000)
-struct WelcomeFlowViewModel_HasActiveNews final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_WelcomeFlowViewModel_HasActiveNews;
-
-// Function Runtime.WelcomeFlowViewModel.HasUnreadContent
-// 0x0001 (0x0001 - 0x0000)
-struct WelcomeFlowViewModel_HasUnreadContent final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_WelcomeFlowViewModel_HasUnreadContent;
-
-// Function Runtime.WorkshopViewModel.HasNotWorkshopStarted
-// 0x0001 (0x0001 - 0x0000)
-struct WorkshopViewModel_HasNotWorkshopStarted final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_WorkshopViewModel_HasNotWorkshopStarted;
-
-// Function Runtime.WorkshopViewModel.IsWorkshopBasedOnScore
-// 0x0001 (0x0001 - 0x0000)
-struct WorkshopViewModel_IsWorkshopBasedOnScore final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_WorkshopViewModel_IsWorkshopBasedOnScore;
-
-// Function Runtime.WorkshopViewModel.IsWorkshopBasedOnTime
-// 0x0001 (0x0001 - 0x0000)
-struct WorkshopViewModel_IsWorkshopBasedOnTime final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_WorkshopViewModel_IsWorkshopBasedOnTime;
-
-// Function Runtime.WorkshopViewModel.IsWorkshopFinished
-// 0x0001 (0x0001 - 0x0000)
-struct WorkshopViewModel_IsWorkshopFinished final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_WorkshopViewModel_IsWorkshopFinished;
-
-// Function Runtime.WorkshopViewModel.IsWorkshopInProgress
-// 0x0001 (0x0001 - 0x0000)
-struct WorkshopViewModel_IsWorkshopInProgress final
-{
-public:
-	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_WorkshopViewModel_IsWorkshopInProgress;
-
-// Function Runtime.RuntimeSequencerBindingLibrary.GetCharacterBodyPart
-// 0x0080 (0x0080 - 0x0000)
-struct RuntimeSequencerBindingLibrary_GetCharacterBodyPart final
-{
-public:
-	struct FMovieSceneDynamicBindingResolveParams Params_0;                                          // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	struct FCharacterPartEnumHandler              BodyPart;                                          // 0x0020(0x0050)(Parm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FMovieSceneDynamicBindingResolveResult ReturnValue;                                       // 0x0070(0x0010)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSequencerBindingLibrary_GetCharacterBodyPart;
-
-// Function Runtime.RuntimeSequencerBindingLibrary.GoalScorer
-// 0x0018 (0x0018 - 0x0000)
-struct RuntimeSequencerBindingLibrary_GoalScorer final
-{
-public:
-	class UObject*                                WorldContextObject;                                // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FMovieSceneDynamicBindingResolveResult ReturnValue;                                       // 0x0008(0x0010)(Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_RuntimeSequencerBindingLibrary_GoalScorer;
-
-// Function Runtime.ItemThumbnailComponent.OnBeginLoading
-// 0x0030 (0x0030 - 0x0000)
-struct ItemThumbnailComponent_OnBeginLoading final
-{
-public:
-	TSoftObjectPtr<class UObject>                 AssetName;                                         // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bIsInitialLoad;                                    // 0x0028(0x0001)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_ItemThumbnailComponent_OnBeginLoading;
-
-// Function Runtime.ItemThumbnailComponent.OnFinishLoading
-// 0x0028 (0x0028 - 0x0000)
-struct ItemThumbnailComponent_OnFinishLoading final
-{
-public:
-	TSoftObjectPtr<class UObject>                 AssetName;                                         // 0x0000(0x0028)(ConstParm, Parm, OutParm, ReferenceParm, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailComponent_OnFinishLoading;
-
-// Function Runtime.ItemThumbnailComponent.SetMaterial
-// 0x0010 (0x0010 - 0x0000)
-struct ItemThumbnailComponent_SetMaterial final
-{
-public:
-	struct FThumbnailMaterial                     InMaterial;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailComponent_SetMaterial;
-
-// Function Runtime.ItemThumbnailComponent.SetSceneClass
-// 0x0008 (0x0008 - 0x0000)
-struct ItemThumbnailComponent_SetSceneClass final
-{
-public:
-	TSubclassOf<class UItemThumbnailScene>        InSceneClass;                                      // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ItemThumbnailComponent_SetSceneClass;
 
 }
 

@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "WBP_Abstract_GenericButton_classes.hpp"
 #include "UMG_structs.hpp"
+#include "WBP_Abstract_GenericButton_classes.hpp"
 
 
 namespace SDK
@@ -43,20 +43,20 @@ public:
 	class UVoiceChannelMemberViewModel*           VoiceChannelMemberViewModel;                       // 0x0E38(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ExecuteUbergraph_WBP_SocialPanel_PartyMemberButton(int32 EntryPoint);
-	void FocusButton(bool ButtonFocused);
-	void OnMouseEnter(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
-	void OnMouseLeave(const struct FPointerEvent& MouseEvent);
-	void OnSquadPlayerChanged(class UBP_VM_CustomPartyMember_C* CustomPartyMemberVM);
-	void OnVoiceChannelChanged(class UVoiceChannelViewModel* VoiceChannelVM);
-	void OnVoiceChannelMembersChanged(TArray<class UVoiceChannelMemberViewModel*>& VoiceChannelMemberVM);
-	void PreConstruct(bool IsDesignTime);
-	void SetAvatarFromItemId(const class FString& SOSID);
-	void SetBP_VM_CustomPartyMember(class UBP_VM_CustomPartyMember_C* viewModel);
-	void SetEmptyState(bool IsEmpty_0);
-	void SetSelectedStyle(bool Selected);
-	void SetVoiceChannelMemberViewModel(class UVoiceChannelMemberViewModel* viewModel);
 	void UpdateVoiceChannelMember();
+	void SetVoiceChannelMemberViewModel(class UVoiceChannelMemberViewModel* viewModel);
+	void SetSelectedStyle(bool Selected);
+	void SetEmptyState(bool IsEmpty_0);
+	void SetBP_VM_CustomPartyMember(class UBP_VM_CustomPartyMember_C* viewModel);
+	void SetAvatarFromItemId(const class FString& SOSID);
+	void PreConstruct(bool IsDesignTime);
+	void OnVoiceChannelMembersChanged(TArray<class UVoiceChannelMemberViewModel*>& VoiceChannelMemberVM);
+	void OnVoiceChannelChanged(class UVoiceChannelViewModel* VoiceChannelVM);
+	void OnSquadPlayerChanged(class UBP_VM_CustomPartyMember_C* CustomPartyMemberVM);
+	void OnMouseLeave(const struct FPointerEvent& MouseEvent);
+	void OnMouseEnter(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
+	void FocusButton(bool ButtonFocused);
+	void ExecuteUbergraph_WBP_SocialPanel_PartyMemberButton(int32 EntryPoint);
 
 	void __49f0ca95_4783_e875_621a_68a9fb10336c_SourceToDest(bool* _isLocalPlayerDeafen) const;
 

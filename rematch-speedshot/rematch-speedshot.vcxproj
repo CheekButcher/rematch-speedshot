@@ -520,7 +520,6 @@
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\MRMesh_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\NavigationSystem_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\NiagaraAnimNotifies_functions.cpp" />
-    <ClCompile Include="RematchLastedSDK\CppSDK\SDK\NiagaraUIRenderer_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\Niagara_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\OnlineSubsystemUtils_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\OnlineSubsystem_functions.cpp" />
@@ -613,7 +612,6 @@
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\WBP_GenericButton_InfoWarning_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\WBP_GenericMenusFooter_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\WBP_Generic_CheckboxEntry_functions.cpp" />
-    <ClCompile Include="RematchLastedSDK\CppSDK\SDK\WBP_GoalClosingStatus_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\WBP_GoalKeeper_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\WBP_HardCurrency_functions.cpp" />
     <ClCompile Include="RematchLastedSDK\CppSDK\SDK\WBP_HUD_functions.cpp" />

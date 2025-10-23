@@ -10,25 +10,25 @@
 
 #include "Basic.hpp"
 
-#include "BP_Binder_BallAnyOwnerChanged_classes.hpp"
 #include "Runtime_structs.hpp"
+#include "BP_Binder_BallAnyOwnerChanged_classes.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_Binder_Passes.BP_Binder_Passes_C
-// 0x0008 (0x03B0 - 0x03A8)
+// 0x0008 (0x0368 - 0x0360)
 class UBP_Binder_Passes_C : public UBP_Binder_BallAnyOwnerChanged_C
 {
 public:
-	ERelationshipType                             m_eRelation_Type;                                  // 0x03A2(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3A3[0x5];                                      // 0x03A3(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        m_fMinDurationBetweenInteractions;                 // 0x03A8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ERelationshipType                             m_eRelation_Type;                                  // 0x035A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_35B[0x5];                                      // 0x035B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        m_fMinDurationBetweenInteractions;                 // 0x0360(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	bool Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType);
-	void PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType);
+	bool Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
+	void PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
 
 	bool IsCorrectPass() const;
 

@@ -10,28 +10,42 @@
 
 #include "Basic.hpp"
 
+#include "UIBaseColors_structs.hpp"
 #include "SlateCore_structs.hpp"
 #include "UMG_structs.hpp"
-#include "UIBaseColors_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 
 namespace SDK::Params
 {
 
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.ExecuteUbergraph_WBP_TabNavigation_Tab
-// 0x0130 (0x0130 - 0x0000)
-struct WBP_TabNavigation_Tab_C_ExecuteUbergraph_WBP_TabNavigation_Tab final
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.PreConstruct
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_TabNavigation_Tab_C_PreConstruct final
 {
 public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x0008(0x0038)(IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          K2Node_Event_MouseEvent_1;                         // 0x0040(0x0078)(ConstParm)
-	struct FPointerEvent                          K2Node_Event_MouseEvent;                           // 0x00B8(0x0078)(ConstParm)
+	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_Tab_C_ExecuteUbergraph_WBP_TabNavigation_Tab;
+DUMPER7_ASSERTS_WBP_TabNavigation_Tab_C_PreConstruct;
+
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.OnMouseLeave
+// 0x0078 (0x0078 - 0x0000)
+struct WBP_TabNavigation_Tab_C_OnMouseLeave final
+{
+public:
+	struct FPointerEvent                          MouseEvent;                                        // 0x0000(0x0078)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_Tab_C_OnMouseLeave;
+
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.OnMouseEnter
+// 0x00B0 (0x00B0 - 0x0000)
+struct WBP_TabNavigation_Tab_C_OnMouseEnter final
+{
+public:
+	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0078)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+};
+DUMPER7_ASSERTS_WBP_TabNavigation_Tab_C_OnMouseEnter;
 
 // Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.FocusButton
 // 0x01A0 (0x01A0 - 0x0000)
@@ -54,33 +68,19 @@ public:
 };
 DUMPER7_ASSERTS_WBP_TabNavigation_Tab_C_FocusButton;
 
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.OnMouseEnter
-// 0x00B0 (0x00B0 - 0x0000)
-struct WBP_TabNavigation_Tab_C_OnMouseEnter final
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.ExecuteUbergraph_WBP_TabNavigation_Tab
+// 0x0130 (0x0130 - 0x0000)
+struct WBP_TabNavigation_Tab_C_ExecuteUbergraph_WBP_TabNavigation_Tab final
 {
 public:
-	struct FGeometry                              MyGeometry;                                        // 0x0000(0x0038)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
-	struct FPointerEvent                          MouseEvent;                                        // 0x0038(0x0078)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_Event_IsDesignTime;                         // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGeometry                              K2Node_Event_MyGeometry;                           // 0x0008(0x0038)(IsPlainOldData, NoDestructor)
+	struct FPointerEvent                          K2Node_Event_MouseEvent_1;                         // 0x0040(0x0078)(ConstParm)
+	struct FPointerEvent                          K2Node_Event_MouseEvent;                           // 0x00B8(0x0078)(ConstParm)
 };
-DUMPER7_ASSERTS_WBP_TabNavigation_Tab_C_OnMouseEnter;
-
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.OnMouseLeave
-// 0x0078 (0x0078 - 0x0000)
-struct WBP_TabNavigation_Tab_C_OnMouseLeave final
-{
-public:
-	struct FPointerEvent                          MouseEvent;                                        // 0x0000(0x0078)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_Tab_C_OnMouseLeave;
-
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.PreConstruct
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_TabNavigation_Tab_C_PreConstruct final
-{
-public:
-	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_TabNavigation_Tab_C_PreConstruct;
+DUMPER7_ASSERTS_WBP_TabNavigation_Tab_C_ExecuteUbergraph_WBP_TabNavigation_Tab;
 
 }
 

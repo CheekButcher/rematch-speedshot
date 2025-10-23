@@ -10,41 +10,32 @@
 
 #include "Basic.hpp"
 
-#include "GameplayTags_structs.hpp"
 #include "Engine_structs.hpp"
-#include "GameplayAbilities_structs.hpp"
-#include "Runtime_classes.hpp"
+#include "GameplayTags_structs.hpp"
+#include "BP_BaseVolumeAttributor_classes.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C
-// 0x00C8 (0x0408 - 0x0340)
-class ABP_GoalKeeperVolumeAttributor_C final : public ARoleVolumeAttributor
+// 0x0038 (0x03A8 - 0x0370)
+class ABP_GoalKeeperVolumeAttributor_C final : public ABP_BaseVolumeAttributor_C
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0340(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	TSoftObjectPtr<class ABP_SweeperVolumeAttributor_C> SweeperAttributor;                           // 0x0348(0x0028)(Edit, BlueprintVisible, HasGetValueTypeHash)
-	struct FGameplayTagQuery                      WaitBlockingEndQuery;                              // 0x0370(0x0048)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance)
-	struct FGameplayTagContainer                  OwnedTagsWhichKeepInvu;                            // 0x03B8(0x0020)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance)
-	struct FGameplayTagContainer                  OwnedTagsWhichRemoveInvu;                          // 0x03D8(0x0020)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance)
-	struct FActiveGameplayEffectHandle            WaitingForAbilitiesEffectHandle;                   // 0x03F8(0x0008)(Edit, BlueprintVisible, Transient, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTag                           ShootAbilityTag;                                   // 0x0400(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0370(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	TSoftObjectPtr<class ABP_SweeperVolumeAttributor_C> SweeperAttributor;                           // 0x0378(0x0028)(Edit, BlueprintVisible, HasGetValueTypeHash)
+	struct FGameplayTag                           ShootAbilityTag;                                   // 0x03A0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ReceiveBeginPlay();
 	void RemoveInvuEffects(class UAbilitySystemComponent* InAsc);
-	void OnTagChanged(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount);
+	void ReceiveBeginPlay();
 	void OnShootAbilityTagChanged(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount);
-	void BPE_RemoveCurrentEffectOwner(class AActor* _actor);
 	void ExecuteUbergraph_BP_GoalKeeperVolumeAttributor(int32 EntryPoint);
-	void BPE_CantRemoveEffectFromTarget(class AActor* _actor);
+	void BPE_RemoveCurrentEffectOwner(class AActor* _actor);
 	void BPE_AssignCurrentEffectOwner(class AActor* _actor);
 
-	bool IsKeeperAndBlockedByAbility(class UAbilitySystemComponent* ActorAsc) const;
 	bool BPE_CanUseEffectAttributorVolume() const;
-	bool BPE_CanRemoveEffectFromTarget(const class AActor* _actor) const;
 
 public:
 	static class UClass* StaticClass()

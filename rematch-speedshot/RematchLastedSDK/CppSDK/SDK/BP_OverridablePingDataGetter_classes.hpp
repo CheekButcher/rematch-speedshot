@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "PingOverrideStruct_structs.hpp"
 #include "PingDataContainer_structs.hpp"
+#include "PingOverrideStruct_structs.hpp"
 #include "BP_AbstractPingDataGetter_classes.hpp"
 
 
@@ -28,7 +28,7 @@ public:
 	TArray<struct FPingOverrideStruct>            PingOverrideArray;                                 // 0x0140(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ContainsInstancedReference)
 
 public:
-	struct FPingDataContainer Get_Data(class AActor* InOwner, class AActor* inTarget, bool bInIsMarker) const;
+	struct FPingDataContainer Get_Data(class AActor* InOwner, class AActor* InTarget, bool bInIsMarker) const;
 	TArray<class UTexture2D*> GetReferencedTextures() const;
 
 public:

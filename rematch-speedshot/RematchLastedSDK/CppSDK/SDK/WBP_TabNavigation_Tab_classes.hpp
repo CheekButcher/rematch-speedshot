@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "UMG_structs.hpp"
-#include "WBP_TabAbstract_Parent_classes.hpp"
-#include "SlateCore_structs.hpp"
 #include "Engine_structs.hpp"
+#include "UMG_structs.hpp"
+#include "SlateCore_structs.hpp"
+#include "WBP_TabAbstract_Parent_classes.hpp"
 
 
 namespace SDK
@@ -35,14 +35,14 @@ public:
 	TMulticastInlineDelegate<void(class UWBP_TabNavigation_Tab_C* TabWidget)> OnTabClicked;          // 0x0E88(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 
 public:
-	void BPE_OnClicked();
-	void Construct();
-	void ExecuteUbergraph_WBP_TabNavigation_Tab(int32 EntryPoint);
-	void FocusButton(bool ButtonFocused);
-	void GotoStateTransitionFlow();
-	void OnMouseEnter(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
-	void OnMouseLeave(const struct FPointerEvent& MouseEvent);
 	void PreConstruct(bool IsDesignTime);
+	void OnMouseLeave(const struct FPointerEvent& MouseEvent);
+	void OnMouseEnter(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent);
+	void GotoStateTransitionFlow();
+	void FocusButton(bool ButtonFocused);
+	void ExecuteUbergraph_WBP_TabNavigation_Tab(int32 EntryPoint);
+	void Construct();
+	void BPE_OnClicked();
 
 public:
 	static class UClass* StaticClass()

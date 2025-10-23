@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "GameplayTags_structs.hpp"
 #include "SOS_structs.hpp"
 #include "Engine_structs.hpp"
+#include "GameplayTags_structs.hpp"
 #include "WBP_TabNavigation_Parent_classes.hpp"
 #include "SCCore_structs.hpp"
 #include "UMG_structs.hpp"
@@ -61,35 +61,35 @@ public:
 	class UBP_StoreViewModel_C*                   BP_StoreViewModel;                                 // 0x0E60(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void BP_OnActivated();
-	void BPE_OnActionPressed(const class USCInputAction* _action, const struct FInputActionState& _listenerState);
-	void BPE_OnMenuTransitionIn(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _ePrevMenu);
-	void BPE_OnMenuTransitionOut(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _eNewMenu);
-	void ExecuteUbergraph_WBP_TabNavigation_MenuMain(int32 EntryPoint);
-	void GoToDevPractice(class FName ActionName);
-	void GotoFreeplay();
-	void GoToOldCustomization(class FName ActionName);
-	void HideCustoTab(bool IsHidden);
-	void HideProfileTab(bool IsHidden);
-	void HideSeasonPassTab(bool IsHidden);
-	void HideStoreTab(bool IsHidden);
-	bool IsInCustomMatch();
-	void OnAuthenticationStateChanged(ESOSAuthenticationState InAuthenticationState);
-	void OnButtonOpenPanel(class USCButtonUserWidget* _button, bool _bWithMouse);
-	void OnCustomMatchStateChanged(ESOSClientCustomMatchState InNewState);
-	void OnFrontendConnnectionStateChanged(ESOSFrontendConnectionState InFrontendConnectionState);
 	void UpdateTabsAvailabilityWithCurrentFlowStep(const struct FGameplayTag& _previous, const struct FGameplayTag& _current);
+	void OnFrontendConnnectionStateChanged(ESOSFrontendConnectionState InFrontendConnectionState);
+	void OnCustomMatchStateChanged(ESOSClientCustomMatchState InNewState);
+	void OnButtonOpenPanel(class USCButtonUserWidget* _button, bool _bWithMouse);
+	void OnAuthenticationStateChanged(ESOSAuthenticationState InAuthenticationState);
+	bool IsInCustomMatch();
+	void HideStoreTab(bool IsHidden);
+	void HideSeasonPassTab(bool IsHidden);
+	void HideProfileTab(bool IsHidden);
+	void HideCustoTab(bool IsHidden);
+	void GoToOldCustomization(class FName ActionName);
+	void GotoFreeplay();
+	void GoToDevPractice(class FName ActionName);
+	void ExecuteUbergraph_WBP_TabNavigation_MenuMain(int32 EntryPoint);
+	void BPE_OnMenuTransitionOut(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _eNewMenu);
+	void BPE_OnMenuTransitionIn(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _ePrevMenu);
+	void BPE_OnActionPressed(const class USCInputAction* _action, const struct FInputActionState& _listenerState);
+	void BP_OnActivated();
 
-	void __40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest(bool* IsEnabled) const;
-	void __42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest(bool* IsVisible_0) const;
-	void __51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest(bool* IsEnabled) const;
-	void __7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest(bool* IsVisible_0) const;
-	void __a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest(bool* IsVisible_0) const;
-	void __b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest(bool* IsEnabled) const;
-	void __c6a80a45_4c08_5b99_4526_3883934ca922_SourceToDest(bool* IsEnabled) const;
-	void __d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest(bool* IsVisible_0) const;
-	void SetFeaturesAvailabilityFeedbackVisibility(bool IsConnectedToFrontend, bool isFeatureStateEnabled, bool* IsVisible_0) const;
 	void SetNavTabEnabled(bool isFeatureStateEnabled, bool IsConnectedToFrontend, bool IsHidden, bool* IsEnabled) const;
+	void SetFeaturesAvailabilityFeedbackVisibility(bool IsConnectedToFrontend, bool isFeatureStateEnabled, bool* IsVisible_0) const;
+	void __d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest(bool* IsVisible_0) const;
+	void __c6a80a45_4c08_5b99_4526_3883934ca922_SourceToDest(bool* IsEnabled) const;
+	void __b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest(bool* IsEnabled) const;
+	void __a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest(bool* IsVisible_0) const;
+	void __7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest(bool* IsVisible_0) const;
+	void __51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest(bool* IsEnabled) const;
+	void __42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest(bool* IsVisible_0) const;
+	void __40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest(bool* IsEnabled) const;
 
 public:
 	static class UClass* StaticClass()

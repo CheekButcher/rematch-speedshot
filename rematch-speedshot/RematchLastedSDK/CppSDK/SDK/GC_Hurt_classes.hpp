@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "EnumPredictionMarkerType_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "SCCore_classes.hpp"
-#include "EnumPredictionMarkerType_structs.hpp"
 #include "AkAudio_structs.hpp"
 
 

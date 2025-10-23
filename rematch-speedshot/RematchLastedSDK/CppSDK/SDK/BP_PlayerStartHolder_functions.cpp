@@ -62,10 +62,10 @@ void ABP_PlayerStartHolder_C::ShowPlayerStarts()
 // Function BP_PlayerStartHolder.BP_PlayerStartHolder_C.GetPlayerStartParents
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
-// class ABP_PlayerStartHolder_C*          inTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class ABP_PlayerStartHolder_C*          InTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 // TArray<class USceneComponent*>          ReturnValue                                            (Parm, OutParm, ReturnParm, ContainsInstancedReference)
 
-TArray<class USceneComponent*> ABP_PlayerStartHolder_C::GetPlayerStartParents(class ABP_PlayerStartHolder_C* inTarget)
+TArray<class USceneComponent*> ABP_PlayerStartHolder_C::GetPlayerStartParents(class ABP_PlayerStartHolder_C* InTarget)
 {
 	static class UFunction* Func = nullptr;
 
@@ -74,7 +74,7 @@ TArray<class USceneComponent*> ABP_PlayerStartHolder_C::GetPlayerStartParents(cl
 
 	Params::BP_PlayerStartHolder_C_GetPlayerStartParents Parms{};
 
-	Parms.inTarget = inTarget;
+	Parms.InTarget = InTarget;
 
 	UObject::ProcessEvent(Func, &Parms);
 

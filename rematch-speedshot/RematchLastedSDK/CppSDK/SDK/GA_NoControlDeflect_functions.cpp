@@ -324,5 +324,19 @@ void UGA_NoControlDeflect_C::OnStateInterrupted_ECFD459C417AF23340E39897D6E26252
 	UObject::ProcessEvent(Func, nullptr);
 }
 
+
+// Function GA_NoControlDeflect.GA_NoControlDeflect_C.StartStateTasks_ECFD459C417AF23340E39897D6E26252
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_NoControlDeflect_C::StartStateTasks_ECFD459C417AF23340E39897D6E26252()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_NoControlDeflect_C", "StartStateTasks_ECFD459C417AF23340E39897D6E26252");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
 }
 

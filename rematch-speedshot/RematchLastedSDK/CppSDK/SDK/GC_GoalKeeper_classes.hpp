@@ -49,6 +49,7 @@ public:
 	void OnFinishedGlovesDissolution();
 	bool OnRemove(class AActor* MyTarget, const struct FGameplayCueParameters& Parameters);
 	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
+	void ReceiveTick(float DeltaSeconds);
 	void Reset_Gameplay_Cue();
 	void SwapColor();
 	void ToggleVisibilityFX(bool bNewHidden);

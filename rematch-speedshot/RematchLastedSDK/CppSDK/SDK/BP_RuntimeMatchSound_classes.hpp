@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "EMatchTimerEventType_structs.hpp"
-#include "SCCore_classes.hpp"
 #include "Runtime_structs.hpp"
+#include "EMatchTimerEventType_structs.hpp"
+#include "Engine_structs.hpp"
+#include "SCCore_classes.hpp"
 #include "AkAudio_structs.hpp"
 
 
@@ -41,39 +41,40 @@ public:
 	uint8                                         Pad_1C1[0x3];                                      // 0x01C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         GKForcedMatchIntensityForMusic;                    // 0x01C4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          PreviousShotWasKickoff;                            // 0x01C8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsInClutchTime;                                    // 0x01C9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void UnbindAllEvents();
 	void TimerLeftEvent(const struct FGameplayTag& MatchTimerEvent);
 	void StateChangeDyn(class FName _newMatchState);
-	void SetAttackingDefending();
-	void SetARHomeTeamForMusic(class ARuntimeMatchGameState* _gameState);
 	void ScoreChanged();
+	void SetAttackingDefending();
 	void Post_Music_Trigger(class UAkTrigger* MusicTrigger);
 	void OvertimeStarted(class ARuntimeMatchGameState* _gameState);
-	void OnMatchStart(class ASCGameState* _gameState);
+	void SetARHomeTeamForMusic(class ARuntimeMatchGameState* _gameState);
+	void OnReplayStarted();
 	void OnMatchOver(class ASCGameState* InGameState);
 	void OnGameFlowStateChanged(const struct FGameplayTag& _previous, const struct FGameplayTag& _current);
-	void OnReplayStarted();
+	void OnReplayFinished();
 	void OnCountdownReach_GO(class ARuntimeMatchGameState* _gameState);
 	void MusicInit();
 	void IsLastGoalToWin(uint8 IndexTeam, bool* IsLastGoal);
-	void OnReplayFinished();
-	void Interface_ResetMatchNarrativeBonus();
+	void OnMatchStart(class ASCGameState* _gameState);
 	void Interface_Reset_Narrative_Malus();
 	void Interface_AddNarrativeMalus(double NarrativeIntensityMalustoAdd);
+	void Interface_AddNarrativeBonus(double NarrativeIntensityBonusToAdd);
 	bool IsLastGoalTiebreak();
+	void InitReplay();
 	void HasWonByMercyOrScore(uint8 IndexTeam, bool* HasWon);
 	void GoalScored(const struct FGoalDescription& _goal);
-	void GetScoreDiff(int32* GoalDiff);
-	void Interface_AddNarrativeBonus(double NarrativeIntensityBonusToAdd);
+	void Interface_ResetMatchNarrativeBonus();
 	uint8 GetControlledPlayerTeamID();
 	void ExecuteUbergraph_BP_RuntimeMatchSound(int32 EntryPoint);
 	void ClutchStateChanged(EClutchTimeState _clutchTimeState, int32 _iballInfluencingTeam);
-	void InitReplay();
+	void GetScoreDiff(int32* GoalDiff);
+	void BPE_OnGameStateHandleBeginPlay(class ASCGameState* _gameState);
 	void BPE_Deinitialize();
 	void AttackDefenseCompute();
-	void BPE_OnGameStateHandleBeginPlay(class ASCGameState* _gameState);
 
 	void ShouldPlayNeutralStateMusic(class ABall* Ball, bool* PlayNeutral) const;
 

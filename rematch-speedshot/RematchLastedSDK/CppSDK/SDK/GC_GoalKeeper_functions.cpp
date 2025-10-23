@@ -32,7 +32,7 @@ void AGC_GoalKeeper_C::Attach_Gloves_to_Owner_Skeletal_Mesh()
 
 
 // Function GC_GoalKeeper.GC_GoalKeeper_C.ExecuteUbergraph_GC_GoalKeeper
-// (Final, UbergraphFunction)
+// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
 // int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
@@ -170,6 +170,26 @@ void AGC_GoalKeeper_C::ReceiveEndPlay(EEndPlayReason EndPlayReason)
 	Params::GC_GoalKeeper_C_ReceiveEndPlay Parms{};
 
 	Parms.EndPlayReason = EndPlayReason;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function GC_GoalKeeper.GC_GoalKeeper_C.ReceiveTick
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void AGC_GoalKeeper_C::ReceiveTick(float DeltaSeconds)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GC_GoalKeeper_C", "ReceiveTick");
+
+	Params::GC_GoalKeeper_C_ReceiveTick Parms{};
+
+	Parms.DeltaSeconds = DeltaSeconds;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

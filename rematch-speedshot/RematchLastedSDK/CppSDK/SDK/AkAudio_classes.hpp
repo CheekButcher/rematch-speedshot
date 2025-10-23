@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
+#include "CoreUObject_structs.hpp"
+#include "CoreUObject_classes.hpp"
 #include "AkAudio_structs.hpp"
 #include "WwiseResourceLoader_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "CoreUObject_structs.hpp"
-#include "CoreUObject_classes.hpp"
 #include "UMG_classes.hpp"
 #include "SlateCore_structs.hpp"
 #include "MovieScene_structs.hpp"
@@ -411,7 +411,7 @@ public:
 DUMPER7_ASSERTS_UAkGameObject;
 
 // Class AkAudio.AkComponent
-// 0x0190 (0x0400 - 0x0270)
+// 0x0180 (0x03F0 - 0x0270)
 class UAkComponent : public UAkGameObject
 {
 public:
@@ -441,7 +441,7 @@ public:
 	float                                         OcclusionRefreshInterval;                          // 0x02BC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bUseReverbVolumes;                                 // 0x02C0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bUpdateReverbVolumesLocation;                      // 0x02C1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C2[0x13E];                                    // 0x02C2(0x013E)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_2C2[0x12E];                                    // 0x02C2(0x012E)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	ECollisionChannel GetOcclusionCollisionChannel();
@@ -482,12 +482,11 @@ public:
 DUMPER7_ASSERTS_UAkComponent;
 
 // Class AkAudio.AkAudioInputComponent
-// 0x0030 (0x0430 - 0x0400)
-#pragma pack(push, 0x1)
-class alignas(0x10) UAkAudioInputComponent : public UAkComponent
+// 0x0030 (0x0420 - 0x03F0)
+class UAkAudioInputComponent : public UAkComponent
 {
 public:
-	uint8                                         Pad_400[0x28];                                     // 0x0400(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_3F0[0x30];                                     // 0x03F0(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	int32 PostAssociatedAudioInputEvent();
@@ -506,7 +505,6 @@ public:
 		return GetDefaultObjImpl<UAkAudioInputComponent>();
 	}
 };
-#pragma pack(pop)
 DUMPER7_ASSERTS_UAkAudioInputComponent;
 
 // Class AkAudio.AkAuxBus
@@ -2020,12 +2018,12 @@ public:
 DUMPER7_ASSERTS_UAkStateValue;
 
 // Class AkAudio.AkSubmixInputComponent
-// 0x0020 (0x0450 - 0x0430)
+// 0x0020 (0x0440 - 0x0420)
 class UAkSubmixInputComponent final : public UAkAudioInputComponent
 {
 public:
-	class USoundSubmix*                           SubmixToRecord;                                    // 0x0428(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_430[0x20];                                     // 0x0430(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class USoundSubmix*                           SubmixToRecord;                                    // 0x0420(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_428[0x18];                                     // 0x0428(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()

@@ -46,25 +46,25 @@ public:
 	bool                                          IsSubHeader;                                       // 0x0D11(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void BPE_OnMenuTransitionIn(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _ePrevMenu);
-	void ExecuteUbergraph_WBP_TabNavigation_Parent(int32 EntryPoint);
-	void GetCurrentTransitionName(class FName* Output_Get);
-	int32 GetNextAvailableIndex();
-	int32 GetPreviousAvailableIndex();
-	void HighlightOnlyCurrentTab(bool HighlightCurrent);
-	void OnNext();
-	void OnPrevious();
-	void OnTabClicked(class UWBP_TabNavigation_Tab_C* TabWidget);
-	void PreConstruct(bool IsDesignTime);
-	void RecursiveCreateTabListFromNamedSlot(class UPanelWidget* WidgetPanel);
-	void SetTabsAvailability(bool Available, bool HideHeader);
-	void UpdateCurrentTabFromTransitionName(const struct FGameplayTag& _previous, const struct FGameplayTag& _current, const class FName& _transition);
-	void UpdateTabsAvailabilityWithCurrentFlowStep(const struct FGameplayTag& _previous, const struct FGameplayTag& _current);
 	void UpdateTabStates();
+	void UpdateTabsAvailabilityWithCurrentFlowStep(const struct FGameplayTag& _previous, const struct FGameplayTag& _current);
+	void UpdateCurrentTabFromTransitionName(const struct FGameplayTag& _previous, const struct FGameplayTag& _current, const class FName& _transition);
+	void SetTabsAvailability(bool Available, bool HideHeader);
+	void RecursiveCreateTabListFromNamedSlot(class UPanelWidget* WidgetPanel);
+	void PreConstruct(bool IsDesignTime);
+	void OnTabClicked(class UWBP_TabNavigation_Tab_C* TabWidget);
+	void OnPrevious();
+	void OnNext();
+	void HighlightOnlyCurrentTab(bool HighlightCurrent);
+	int32 GetPreviousAvailableIndex();
+	int32 GetNextAvailableIndex();
+	void GetCurrentTransitionName(class FName* Output_Get);
+	void ExecuteUbergraph_WBP_TabNavigation_Parent(int32 EntryPoint);
+	void BPE_OnMenuTransitionIn(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _ePrevMenu);
 
-	void GetTransitionNameAtIndex(int32 Index_0, class FName* TRANSITION) const;
-	void GetTransitionNameIndex(class FName TRANSITION, int32* Index_0) const;
 	void IsTabIndexValid(int32 Index_0, bool* bValid) const;
+	void GetTransitionNameIndex(class FName TRANSITION, int32* Index_0) const;
+	void GetTransitionNameAtIndex(int32 Index_0, class FName* TRANSITION) const;
 
 public:
 	static class UClass* StaticClass()

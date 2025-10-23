@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "GameplayTags_structs.hpp"
-#include "Engine_structs.hpp"
 #include "SCCharacterCustomization_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK::Params

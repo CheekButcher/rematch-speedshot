@@ -59,6 +59,23 @@ public:
 };
 DUMPER7_ASSERTS_BP_StoreViewModel_C_GetCatalogBundleAtIndex;
 
+// Function BP_StoreViewModel.BP_StoreViewModel_C.GetCatalogBundleFromID
+// 0x0038 (0x0038 - 0x0000)
+struct BP_StoreViewModel_C_GetCatalogBundleFromID final
+{
+public:
+	class FString                                 BundleID;                                          // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+	class USOSBindingsStoreBundleViewModel*       BundleVM;                                          // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Array_Index_Variable;                     // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Temp_int_Loop_Counter_Variable;                    // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class USOSBindingsStoreBundleViewModel*       CallFunc_Array_Get_Item;                           // 0x0028(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Less_IntInt_ReturnValue;                  // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_StrStr_ReturnValue;            // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_BP_StoreViewModel_C_GetCatalogBundleFromID;
+
 // Function BP_StoreViewModel.BP_StoreViewModel_C.GetCatalogBundlesFromIndex
 // 0x0050 (0x0050 - 0x0000)
 struct BP_StoreViewModel_C_GetCatalogBundlesFromIndex final

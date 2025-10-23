@@ -17,6 +17,36 @@
 namespace SDK
 {
 
+// Function BPL_ArtTools.BPL_ArtTools_C.CalculateImageScaleForParallelogramExpansion
+// (Static, Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// double                                  Scale                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const struct FVector2D&                 RectangleSize                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// double                                  ShearAngle                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UObject*                          __WorldContext                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// struct FVector2D*                       OutScale                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UBPL_ArtTools_C::CalculateImageScaleForParallelogramExpansion(double Scale, const struct FVector2D& RectangleSize, double ShearAngle, class UObject* __WorldContext, struct FVector2D* OutScale)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("BPL_ArtTools_C", "CalculateImageScaleForParallelogramExpansion");
+
+	Params::BPL_ArtTools_C_CalculateImageScaleForParallelogramExpansion Parms{};
+
+	Parms.Scale = Scale;
+	Parms.RectangleSize = std::move(RectangleSize);
+	Parms.ShearAngle = ShearAngle;
+	Parms.__WorldContext = __WorldContext;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	if (OutScale != nullptr)
+		*OutScale = std::move(Parms.OutScale);
+}
+
+
 // Function BPL_ArtTools.BPL_ArtTools_C.GetPrefix
 // (Static, Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
@@ -66,6 +96,66 @@ void UBPL_ArtTools_C::GetSuffix(const class FString& In, class UObject* __WorldC
 
 	if (OutValue != nullptr)
 		*OutValue = std::move(Parms.OutValue);
+}
+
+
+// Function BPL_ArtTools.BPL_ArtTools_C.InverseLerp
+// (Static, Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// double                                  A                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// double                                  B                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// double                                  Alpha                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UObject*                          __WorldContext                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// double*                                 OutValue                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UBPL_ArtTools_C::InverseLerp(double A, double B, double Alpha, class UObject* __WorldContext, double* OutValue)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("BPL_ArtTools_C", "InverseLerp");
+
+	Params::BPL_ArtTools_C_InverseLerp Parms{};
+
+	Parms.A = A;
+	Parms.B = B;
+	Parms.Alpha = Alpha;
+	Parms.__WorldContext = __WorldContext;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	if (OutValue != nullptr)
+		*OutValue = Parms.OutValue;
+}
+
+
+// Function BPL_ArtTools.BPL_ArtTools_C.Convert2D PositionToParallelogram
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// const struct FVector2D&                 Position                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const struct FVector2D&                 RectangleSize                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// double                                  ShearAngle                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UObject*                          __WorldContext                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// struct FVector2D*                       OutPosition                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UBPL_ArtTools_C::Convert2D_PositionToParallelogram(const struct FVector2D& Position, const struct FVector2D& RectangleSize, double ShearAngle, class UObject* __WorldContext, struct FVector2D* OutPosition)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BPL_ArtTools_C", "Convert2D PositionToParallelogram");
+
+	Params::BPL_ArtTools_C_Convert2D_PositionToParallelogram Parms{};
+
+	Parms.Position = std::move(Position);
+	Parms.RectangleSize = std::move(RectangleSize);
+	Parms.ShearAngle = ShearAngle;
+	Parms.__WorldContext = __WorldContext;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (OutPosition != nullptr)
+		*OutPosition = std::move(Parms.OutPosition);
 }
 
 

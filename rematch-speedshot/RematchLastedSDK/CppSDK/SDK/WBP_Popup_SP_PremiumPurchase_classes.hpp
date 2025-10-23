@@ -66,10 +66,12 @@ public:
 	void ExecuteUbergraph_WBP_Popup_SP_PremiumPurchase(int32 EntryPoint);
 	void initOptionsArray();
 	void On_Options_ListView_Changed();
+	void On_Transition_in_Finished();
 	void OnItemViewModelChanged(class USOSBindingsStoreItemViewModel* viewModel);
 	void OnOptionSelected(class USCButtonUserWidget* _button, bool _bWithMouse);
 	void OnUserHCBalanceUpdate(int32 UserHCBalance);
 	void OnUserSPPremiumTokenBalanceUpdate(int32 Balance);
+	void PreConstruct(bool IsDesignTime);
 	void SetActionInProgressContainerHeight();
 	void SetBP_SeasonPassViewModel(class UBP_SeasonPassViewModel_C* viewModel);
 	void SetBPSeasonPassVM(class UBP_SeasonPassViewModel_C* BPSeasonPassVM);

@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass GA_LobbedPushBall.GA_LobbedPushBall_C
-// 0x0000 (0x0E10 - 0x0E10)
+// 0x0000 (0x0E20 - 0x0E20)
 class UGA_LobbedPushBall_C final : public UGA_PushBall_C
 {
 public:

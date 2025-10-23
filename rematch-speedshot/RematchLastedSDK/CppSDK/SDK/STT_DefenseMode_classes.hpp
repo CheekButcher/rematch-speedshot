@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "GameplayAbilities_structs.hpp"
 #include "Engine_structs.hpp"
 #include "StateTreeModule_classes.hpp"
 #include "SCCore_structs.hpp"
-#include "GameplayAbilities_structs.hpp"
 
 
 namespace SDK

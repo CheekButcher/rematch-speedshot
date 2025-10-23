@@ -17,55 +17,21 @@
 namespace SDK
 {
 
-// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.Construct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UWBP_PlayerBanner_Sound_C::Construct()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_PlayerBanner_Sound_C", "Construct");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.ExecuteUbergraph_WBP_PlayerBanner_Sound
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_PlayerBanner_Sound_C::ExecuteUbergraph_WBP_PlayerBanner_Sound(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_PlayerBanner_Sound_C", "ExecuteUbergraph_WBP_PlayerBanner_Sound");
-
-	Params::WBP_PlayerBanner_Sound_C_ExecuteUbergraph_WBP_PlayerBanner_Sound Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.SetIsDeafen
+// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.SetIsTalking
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    IsDeafen                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    isTalking_0                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_PlayerBanner_Sound_C::SetIsDeafen(bool IsDeafen)
+void UWBP_PlayerBanner_Sound_C::SetIsTalking(bool isTalking_0)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_PlayerBanner_Sound_C", "SetIsDeafen");
+		Func = Class->GetFunction("WBP_PlayerBanner_Sound_C", "SetIsTalking");
 
-	Params::WBP_PlayerBanner_Sound_C_SetIsDeafen Parms{};
+	Params::WBP_PlayerBanner_Sound_C_SetIsTalking Parms{};
 
-	Parms.IsDeafen = IsDeafen;
+	Parms.isTalking_0 = isTalking_0;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -91,23 +57,57 @@ void UWBP_PlayerBanner_Sound_C::SetIsMuted(bool IsMuted_0)
 }
 
 
-// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.SetIsTalking
+// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.SetIsDeafen
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    isTalking_0                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    IsDeafen                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_PlayerBanner_Sound_C::SetIsTalking(bool isTalking_0)
+void UWBP_PlayerBanner_Sound_C::SetIsDeafen(bool IsDeafen)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_PlayerBanner_Sound_C", "SetIsTalking");
+		Func = Class->GetFunction("WBP_PlayerBanner_Sound_C", "SetIsDeafen");
 
-	Params::WBP_PlayerBanner_Sound_C_SetIsTalking Parms{};
+	Params::WBP_PlayerBanner_Sound_C_SetIsDeafen Parms{};
 
-	Parms.isTalking_0 = isTalking_0;
+	Parms.IsDeafen = IsDeafen;
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.ExecuteUbergraph_WBP_PlayerBanner_Sound
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_PlayerBanner_Sound_C::ExecuteUbergraph_WBP_PlayerBanner_Sound(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_PlayerBanner_Sound_C", "ExecuteUbergraph_WBP_PlayerBanner_Sound");
+
+	Params::WBP_PlayerBanner_Sound_C_ExecuteUbergraph_WBP_PlayerBanner_Sound Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_PlayerBanner_Sound.WBP_PlayerBanner_Sound_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void UWBP_PlayerBanner_Sound_C::Construct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_PlayerBanner_Sound_C", "Construct");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 

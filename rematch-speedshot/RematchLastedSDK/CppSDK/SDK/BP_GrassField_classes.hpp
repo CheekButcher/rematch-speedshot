@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_GrassField.BP_GrassField_C
-// 0x0028 (0x02D8 - 0x02B0)
+// 0x0050 (0x0300 - 0x02B0)
 class ABP_GrassField_C : public AActor
 {
 public:
@@ -26,6 +26,14 @@ public:
 	class UStaticMeshComponent*                   MainField;                                         // 0x02C0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UHierarchicalInstancedStaticMeshComponent* BladesHISM;                                     // 0x02C8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USceneComponent*                        DefaultSceneRoot;                                  // 0x02D0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UTexture2D*                             LinesTexture;                                      // 0x02D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class UMaterialInterface*                     BoxsMaterial;                                      // 0x02E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	TArray<class UMaterialInterface*>             GrassBladesMaterials;                              // 0x02E8(0x0010)(Edit, BlueprintVisible, EditFixedSize, DisableEditOnInstance)
+	bool                                          bApplyFieldLinesTexture;                           // 0x02F8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+public:
+	void ApplyFieldLinesTexture();
+	void UserConstructionScript();
 
 public:
 	static class UClass* StaticClass()

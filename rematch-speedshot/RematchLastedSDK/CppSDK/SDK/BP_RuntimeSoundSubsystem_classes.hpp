@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "Runtime_classes.hpp"
+#include "Engine_structs.hpp"
 #include "AkAudio_structs.hpp"
 
 
@@ -73,6 +73,7 @@ public:
 	void Set_To_French(bool Succeeded);
 	void Set_To_Polish(bool Succeeded);
 	void Set_to_Turkish(bool Succeeded);
+	void SetAudioMixPresetFromOption(int32 OptionValue);
 	void SetMixPresetHeadphones(class FName ActionName);
 	void SetMixPresetSpeakers(class FName ActionName);
 	void SetPresetNightMode(class FName ActionName);

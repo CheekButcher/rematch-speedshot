@@ -105,6 +105,26 @@ ESlateVisibility UWBP_Customization_Item_Thumbnail_C::Get_DebugOverlay_Visibilit
 }
 
 
+// Function WBP_Customization_Item_Thumbnail.WBP_Customization_Item_Thumbnail_C.GetCurrentPlayerCusto
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// const struct FSCCharacterCustomizationDescriptionReturnValue                                            (ConstParm, Parm, OutParm, ReturnParm, HasGetValueTypeHash)
+
+const struct FSCCharacterCustomizationDescription UWBP_Customization_Item_Thumbnail_C::GetCurrentPlayerCusto()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Customization_Item_Thumbnail_C", "GetCurrentPlayerCusto");
+
+	Params::WBP_Customization_Item_Thumbnail_C_GetCurrentPlayerCusto Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
 // Function WBP_Customization_Item_Thumbnail.WBP_Customization_Item_Thumbnail_C.GetDebugText
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
@@ -472,6 +492,30 @@ int32 UWBP_Customization_Item_Thumbnail_C::OnSetupView(class UItemThumbnailScene
 	UObject::ProcessEvent(Func, &Parms);
 
 	return Parms.ReturnValue;
+}
+
+
+// Function WBP_Customization_Item_Thumbnail.WBP_Customization_Item_Thumbnail_C.OverrideExtraInfo
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// const TArray<struct FInstancedStruct>&  Target                                                 (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// const TArray<struct FInstancedStruct>&  Source                                                 (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// ECustoExtraInfo                         ExtraInfo                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_Customization_Item_Thumbnail_C::OverrideExtraInfo(const TArray<struct FInstancedStruct>& Target, const TArray<struct FInstancedStruct>& Source, ECustoExtraInfo ExtraInfo)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_Customization_Item_Thumbnail_C", "OverrideExtraInfo");
+
+	Params::WBP_Customization_Item_Thumbnail_C_OverrideExtraInfo Parms{};
+
+	Parms.Target = std::move(Target);
+	Parms.Source = std::move(Source);
+	Parms.ExtraInfo = ExtraInfo;
+
+	UObject::ProcessEvent(Func, &Parms);
 }
 
 

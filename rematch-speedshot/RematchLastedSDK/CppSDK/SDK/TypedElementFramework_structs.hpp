@@ -45,14 +45,23 @@ struct alignas(0x01) FTypedElementDataStorageColumn
 #pragma pack(pop)
 DUMPER7_ASSERTS_FTypedElementDataStorageColumn;
 
-// ScriptStruct TypedElementFramework.TypedElementClassTypeInfoColumn
+// ScriptStruct TypedElementFramework.TypedElementUObjectColumn
 // 0x0008 (0x0008 - 0x0000)
-struct alignas(0x04) FTypedElementClassTypeInfoColumn final : public FTypedElementDataStorageColumn
+struct alignas(0x04) FTypedElementUObjectColumn final : public FTypedElementDataStorageColumn
 {
 public:
 	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FTypedElementClassTypeInfoColumn;
+DUMPER7_ASSERTS_FTypedElementUObjectColumn;
+
+// ScriptStruct TypedElementFramework.ScriptTypedElementListProxy
+// 0x0010 (0x0010 - 0x0000)
+struct alignas(0x08) FScriptTypedElementListProxy final
+{
+public:
+	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FScriptTypedElementListProxy;
 
 // ScriptStruct TypedElementFramework.ScriptTypedElementHandle
 // 0x0008 (0x0008 - 0x0000)
@@ -83,15 +92,6 @@ public:
 	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FTypedElementChildAlertColumn;
-
-// ScriptStruct TypedElementFramework.TypedElementUObjectColumn
-// 0x0008 (0x0008 - 0x0000)
-struct alignas(0x04) FTypedElementUObjectColumn final : public FTypedElementDataStorageColumn
-{
-public:
-	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FTypedElementUObjectColumn;
 
 // ScriptStruct TypedElementFramework.TypedElementExternalObjectColumn
 // 0x0008 (0x0008 - 0x0000)
@@ -155,15 +155,6 @@ public:
 	uint64                                        LabelHash;                                         // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FTypedElementLabelHashColumn;
-
-// ScriptStruct TypedElementFramework.ScriptTypedElementListProxy
-// 0x0010 (0x0010 - 0x0000)
-struct alignas(0x08) FScriptTypedElementListProxy final
-{
-public:
-	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FScriptTypedElementListProxy;
 
 // ScriptStruct TypedElementFramework.TypedElementSyncBackToWorldTag
 // 0x0000 (0x0001 - 0x0001)
@@ -462,6 +453,15 @@ public:
 	struct FTransform                             Transform;                                         // 0x0000(0x0060)(IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FTypedElementLocalTransformColumn;
+
+// ScriptStruct TypedElementFramework.TypedElementClassTypeInfoColumn
+// 0x0008 (0x0008 - 0x0000)
+struct alignas(0x04) FTypedElementClassTypeInfoColumn final : public FTypedElementDataStorageColumn
+{
+public:
+	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FTypedElementClassTypeInfoColumn;
 
 // ScriptStruct TypedElementFramework.TypedElementScriptStructTypeInfoColumn
 // 0x0008 (0x0008 - 0x0000)

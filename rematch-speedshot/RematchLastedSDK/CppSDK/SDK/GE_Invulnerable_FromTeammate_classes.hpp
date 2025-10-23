@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass GE_Invulnerable_FromTeammate.GE_Invulnerable_FromTeammate_C
-// 0x0000 (0x0B40 - 0x0B40)
+// 0x0000 (0x0B48 - 0x0B48)
 class UGE_Invulnerable_FromTeammate_C final : public USCGameplayEffect
 {
 public:

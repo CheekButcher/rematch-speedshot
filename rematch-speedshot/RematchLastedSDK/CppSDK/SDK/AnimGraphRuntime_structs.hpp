@@ -426,6 +426,13 @@ public:
 };
 DUMPER7_ASSERTS_FAnimNode_Sync;
 
+// ScriptStruct AnimGraphRuntime.SkeletalControlReference
+// 0x0000 (0x0010 - 0x0010)
+struct FSkeletalControlReference final : public FAnimNodeReference
+{
+};
+DUMPER7_ASSERTS_FSkeletalControlReference;
+
 // ScriptStruct AnimGraphRuntime.AnimNode_BlendSpaceGraph
 // 0x0000 (0x0068 - 0x0068)
 struct FAnimNode_BlendSpaceGraph final : public FAnimNode_BlendSpaceGraphBase
@@ -685,6 +692,16 @@ public:
 };
 DUMPER7_ASSERTS_FPositionHistory;
 
+// ScriptStruct AnimGraphRuntime.SplineIKCachedBoneData
+// 0x0014 (0x0014 - 0x0000)
+struct FSplineIKCachedBoneData final
+{
+public:
+	struct FBoneReference                         bone;                                              // 0x0000(0x0010)(NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         RefSkeletonIndex;                                  // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FSplineIKCachedBoneData;
+
 // ScriptStruct AnimGraphRuntime.AnimationStateResultReference
 // 0x0000 (0x0010 - 0x0010)
 struct FAnimationStateResultReference final : public FAnimNodeReference
@@ -917,13 +934,6 @@ public:
 	class UBlendSpace*                            BlendSpace;                                        // 0x00B0(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 };
 DUMPER7_ASSERTS_FAnimNode_BlendSpacePlayer_Standalone;
-
-// ScriptStruct AnimGraphRuntime.SequenceEvaluatorReference
-// 0x0000 (0x0010 - 0x0010)
-struct FSequenceEvaluatorReference final : public FAnimNodeReference
-{
-};
-DUMPER7_ASSERTS_FSequenceEvaluatorReference;
 
 // ScriptStruct AnimGraphRuntime.AnimNode_CallFunction
 // 0x0028 (0x0038 - 0x0010)
@@ -1723,16 +1733,6 @@ public:
 };
 DUMPER7_ASSERTS_FAnimNode_ScaleChainLength;
 
-// ScriptStruct AnimGraphRuntime.SplineIKCachedBoneData
-// 0x0014 (0x0014 - 0x0000)
-struct FSplineIKCachedBoneData final
-{
-public:
-	struct FBoneReference                         bone;                                              // 0x0000(0x0010)(NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         RefSkeletonIndex;                                  // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSplineIKCachedBoneData;
-
 // ScriptStruct AnimGraphRuntime.AnimNode_SplineIK
 // 0x01A8 (0x0270 - 0x00C8)
 struct FAnimNode_SplineIK final : public FAnimNode_SkeletalControlBase
@@ -1885,19 +1885,19 @@ public:
 };
 DUMPER7_ASSERTS_FRBFTarget;
 
+// ScriptStruct AnimGraphRuntime.SequenceEvaluatorReference
+// 0x0000 (0x0010 - 0x0010)
+struct FSequenceEvaluatorReference final : public FAnimNodeReference
+{
+};
+DUMPER7_ASSERTS_FSequenceEvaluatorReference;
+
 // ScriptStruct AnimGraphRuntime.SequencePlayerReference
 // 0x0000 (0x0010 - 0x0010)
 struct FSequencePlayerReference final : public FAnimNodeReference
 {
 };
 DUMPER7_ASSERTS_FSequencePlayerReference;
-
-// ScriptStruct AnimGraphRuntime.SkeletalControlReference
-// 0x0000 (0x0010 - 0x0010)
-struct FSkeletalControlReference final : public FAnimNodeReference
-{
-};
-DUMPER7_ASSERTS_FSkeletalControlReference;
 
 }
 

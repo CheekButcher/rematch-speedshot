@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "SOS_structs.hpp"
+#include "Engine_structs.hpp"
 #include "WBP_MenuPage_Parent_classes.hpp"
 #include "UMG_structs.hpp"
-#include "SOS_structs.hpp"
 #include "SCCore_structs.hpp"
 
 
@@ -22,7 +22,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WBP_MenuPage_Home.WBP_MenuPage_Home_C
-// 0x00D0 (0x0D50 - 0x0C80)
+// 0x00E0 (0x0D60 - 0x0C80)
 class UWBP_MenuPage_Home_C final : public UWBP_MenuPage_Parent_C
 {
 public:
@@ -42,22 +42,25 @@ public:
 	class UWBP_Challenges_Daily_C*                WBP_Challenges_Daily_66;                           // 0x0CE0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UWBP_Menu_Home_LiveFeed_C*              WBP_Menu_Home_LiveFeed;                            // 0x0CE8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UWBP_Menus_LigibilityBackground_C*      WBP_Menus_LigibilityBackground;                    // 0x0CF0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWBP_UU_QrCode_C*                       WBP_UU_QrCode;                                     // 0x0CF8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UBP_VM_CustomPartySystem_C*             BP_VM_CustomPartySystem;                           // 0x0D00(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
-	class UBP_VM_CustomAuthentification_C*        BP_VM_CustomAuthentification;                      // 0x0D08(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
-	class UBP_MatchmakingViewModel_C*             BP_MatchmakingViewModel;                           // 0x0D10(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
-	class UBP_CustomMatchSystemViewModel_C*       BP_CustomMatchSystemViewModel;                     // 0x0D18(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
-	int32                                         CurrentPlayerLevel;                                // 0x0D20(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_D24[0x4];                                      // 0x0D24(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UBP_PlayerPrivateProfileViewModel_C*    BP_PlayerPrivateProfileViewModel;                  // 0x0D28(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
-	class UBP_AvailableFeaturesViewmodel_C*       BP_AvailableFeaturesViewmodel;                     // 0x0D30(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
-	class USizeBox*                               SizeBox_PlayerProgression;                         // 0x0D38(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, InstancedReference, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
-	class UGlobalMenuContextViewModel*            GlobalMenuContextViewModel;                        // 0x0D40(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
-	class UWelcomeFlowViewModel*                  WelcomeFlowViewModel;                              // 0x0D48(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	class UWBP_Store_Item_AssociateBundle_C*      WBP_Store_Item_AssociateBundle_99;                 // 0x0CF8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UWBP_UU_QrCode_C*                       WBP_UU_QrCode;                                     // 0x0D00(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UBP_VM_CustomPartySystem_C*             BP_VM_CustomPartySystem;                           // 0x0D08(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	class UBP_VM_CustomAuthentification_C*        BP_VM_CustomAuthentification;                      // 0x0D10(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	class UBP_MatchmakingViewModel_C*             BP_MatchmakingViewModel;                           // 0x0D18(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	class UBP_CustomMatchSystemViewModel_C*       BP_CustomMatchSystemViewModel;                     // 0x0D20(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	int32                                         CurrentPlayerLevel;                                // 0x0D28(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_D2C[0x4];                                      // 0x0D2C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UBP_PlayerPrivateProfileViewModel_C*    BP_PlayerPrivateProfileViewModel;                  // 0x0D30(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	class UBP_AvailableFeaturesViewmodel_C*       BP_AvailableFeaturesViewmodel;                     // 0x0D38(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	class USizeBox*                               SizeBox_PlayerProgression;                         // 0x0D40(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, InstancedReference, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	class UGlobalMenuContextViewModel*            GlobalMenuContextViewModel;                        // 0x0D48(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	class UWelcomeFlowViewModel*                  WelcomeFlowViewModel;                              // 0x0D50(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
+	class UBP_StoreViewModel_C*                   BP_StoreViewModel;                                 // 0x0D58(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, DisableEditOnInstance, DuplicateTransient, RepSkip, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void __Setter_CurrentPlayerLevel(int32 NewValue);
 	void BndEvt__WBP_MenuPage_Home_Btn_News_K2Node_ComponentBoundEvent_0_ButtonUserWidgetClickDelegate__DelegateSignature(class USCButtonUserWidget* _button, bool _bWithMouse);
+	void BndEvt__WBP_MenuPage_Home_WBP_Store_Item_AssociateBundle_99_K2Node_ComponentBoundEvent_1_ButtonUserWidgetClickDelegate__DelegateSignature(class USCButtonUserWidget* _button, bool _bWithMouse);
 	void BPE_OnActionPressed(const class USCInputAction* _action, const struct FInputActionState& _listenerState);
 	void BPE_OnMenuTransitionIn(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _ePrevMenu);
 	void BPE_OnMenuTransitionOut(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _eNewMenu);

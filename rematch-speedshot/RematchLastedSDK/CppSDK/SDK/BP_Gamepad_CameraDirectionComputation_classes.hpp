@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_Gamepad_CameraDirectionComputation.BP_Gamepad_CameraDirectionComputation_C
-// 0x0000 (0x0110 - 0x0110)
+// 0x0000 (0x0108 - 0x0108)
 class UBP_Gamepad_CameraDirectionComputation_C final : public UCameraShootDirectionComputation
 {
 public:

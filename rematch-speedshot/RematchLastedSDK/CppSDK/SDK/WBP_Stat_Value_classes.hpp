@@ -18,18 +18,19 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WBP_Stat_Value.WBP_Stat_Value_C
-// 0x0040 (0x0C40 - 0x0C00)
+// 0x0050 (0x0C50 - 0x0C00)
 class UWBP_Stat_Value_C final : public UWBP_Abstract_Common_C
 {
 public:
 	struct FPointerToUberGraphFrame               UberGraphFrame_WBP_Stat_Value_C;                   // 0x0C00(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	class UImage*                                 Icon;                                              // 0x0C08(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UTextBlock*                             TXT_Title;                                         // 0x0C10(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UTextBlock*                             Txt_Value;                                         // 0x0C18(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UCommonTextBlock*                       TXT_Title;                                         // 0x0C10(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UCommonTextBlock*                       Txt_Value;                                         // 0x0C18(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class FText                                   TitleText;                                         // 0x0C20(0x0010)(Edit, BlueprintVisible)
 	float                                         ValueFontSize;                                     // 0x0C30(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_C34[0x4];                                      // 0x0C34(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UTexture2D*                             IconTexture;                                       // 0x0C38(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          Title_on_two_lines;                                // 0x0C40(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void ExecuteUbergraph_WBP_Stat_Value(int32 EntryPoint);

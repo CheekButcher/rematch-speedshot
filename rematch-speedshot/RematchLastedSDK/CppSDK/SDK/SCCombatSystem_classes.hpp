@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "SCCombatSystem_structs.hpp"
-#include "SCCore_structs.hpp"
-#include "SCCore_classes.hpp"
 #include "GameplayAbilities_structs.hpp"
 #include "GameplayAbilities_classes.hpp"
+#include "SCCore_structs.hpp"
+#include "SCCore_classes.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
 #include "StructUtils_structs.hpp"
@@ -377,6 +377,26 @@ public:
 	}
 };
 DUMPER7_ASSERTS_URedirectAnimWithTarget;
+
+// Class SCCombatSystem.RedirectAnimDisplacementToInput
+// 0x0000 (0x0028 - 0x0028)
+class URedirectAnimDisplacementToInput final : public UMontagePlayerRedirection
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("RedirectAnimDisplacementToInput")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"RedirectAnimDisplacementToInput")
+	}
+	static class URedirectAnimDisplacementToInput* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<URedirectAnimDisplacementToInput>();
+	}
+};
+DUMPER7_ASSERTS_URedirectAnimDisplacementToInput;
 
 // Class SCCombatSystem.RedirectToMakeSideFacingTarget
 // 0x0000 (0x0028 - 0x0028)

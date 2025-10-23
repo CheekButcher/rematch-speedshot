@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_Binder_BallInterception.BP_Binder_BallInterception_C
-// 0x0000 (0x03A8 - 0x03A8)
+// 0x0000 (0x0360 - 0x0360)
 class UBP_Binder_BallInterception_C final : public UBP_Binder_BallChangeOwnership_C
 {
 public:

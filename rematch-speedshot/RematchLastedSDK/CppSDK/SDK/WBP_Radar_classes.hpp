@@ -10,20 +10,19 @@
 
 #include "Basic.hpp"
 
+#include "Runtime_structs.hpp"
+#include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "PredictionMarkerData_structs.hpp"
 #include "UMG_structs.hpp"
 #include "UMG_classes.hpp"
-#include "PredictionMarkerData_structs.hpp"
-#include "Engine_structs.hpp"
-#include "Runtime_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "SCCore_structs.hpp"
 
 
 namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WBP_Radar.WBP_Radar_C
-// 0x01F8 (0x0580 - 0x0388)
+// 0x0190 (0x0518 - 0x0388)
 class UWBP_Radar_C final : public UUserWidget
 {
 public:
@@ -61,14 +60,10 @@ public:
 	TArray<class UWBP_RadarBounce_C*>             BounceWidgets;                                     // 0x0488(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
 	TArray<struct FPredictionMarkerData>          PredictionMarkerData;                              // 0x0498(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
 	TMap<class ABall*, class UWBP_RadarBall_C*>   BallToWidget;                                      // 0x04A8(0x0050)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance, ContainsInstancedReference)
-	class UWBP_RadarBall_C*                       BallWidget;                                        // 0x04F8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	int32                                         MaxPlayers;                                        // 0x0500(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_504[0x4];                                      // 0x0504(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<struct FVector2D, TSoftObjectPtr<class UTexture>> LinesTextures;                            // 0x0508(0x0050)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TArray<class UWBP_RadarBallCallLine_C*>       AvailableBallCallWidgets;                          // 0x0558(0x0010)(Edit, BlueprintVisible, Transient, DisableEditOnInstance, ContainsInstancedReference)
-	bool                                          RadarHasBeenInitialized;                           // 0x0568(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_569[0x7];                                      // 0x0569(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBaseActorTargetConditionInstance      ShowBallCallLineCondition;                         // 0x0570(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, NoDestructor, ContainsInstancedReference)
+	int32                                         MaxPlayers;                                        // 0x04F8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4FC[0x4];                                      // 0x04FC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWBP_RadarBallCallLine_C*>       AvailableBallCallWidgets;                          // 0x0500(0x0010)(Edit, BlueprintVisible, Transient, DisableEditOnInstance, ContainsInstancedReference)
+	bool                                          RadarHasBeenInitialized;                           // 0x0510(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void AddAllPlayers(class APlayerState* _PlayerStateRemoved);
@@ -87,17 +82,14 @@ public:
 	bool IsBounceWidgetAvailable(class UWBP_RadarBounce_C* Target);
 	void OnBallUnregistered(class ABall* _ball);
 	void OnInitialized();
-	void OnLoaded_B6B0786E4ED71AF25BDB26B035322340(class UObject* Loaded);
 	void OnOwnershipChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction);
 	void OnShoot(const class ABall* _ball, const struct FShootParams& _shootParams);
 	void OnTeamChanged(class ARuntimePlayerState* _playerState, uint8 _uiNewTeam, int32 _iNumberInTeam);
 	void OnTeamColorChanged();
 	void PlayBallCallOnRadar(class APawn* PingingPawn, bool PlayBallCallLines);
-	void PreConstruct(bool IsDesignTime);
 	void ReleaseBallCallLineWidget(class UWBP_RadarPlayer_C* InputPin);
 	void SetAllowRadarRotation(bool AllowRadarRotation_0);
 	void SetAllyAndEnemyColors();
-	void SetBackgroundTexture(TSoftObjectPtr<class UTexture> Texture);
 	void SetFieldOrientation();
 	void SetFieldTexture();
 	void SetGoalsColor();

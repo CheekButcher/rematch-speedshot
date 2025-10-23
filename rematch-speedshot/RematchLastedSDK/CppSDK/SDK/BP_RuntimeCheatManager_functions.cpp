@@ -587,9 +587,9 @@ void UBP_RuntimeCheatManager_C::ResetSteamAchievements(class FName ActionName)
 // Function BP_RuntimeCheatManager.BP_RuntimeCheatManager_C.ServerRefillFullStamina
 // (Net, NetReliable, NetServer, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class AActor*                           inTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           InTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void UBP_RuntimeCheatManager_C::ServerRefillFullStamina(class AActor* inTarget)
+void UBP_RuntimeCheatManager_C::ServerRefillFullStamina(class AActor* InTarget)
 {
 	static class UFunction* Func = nullptr;
 
@@ -598,7 +598,7 @@ void UBP_RuntimeCheatManager_C::ServerRefillFullStamina(class AActor* inTarget)
 
 	Params::BP_RuntimeCheatManager_C_ServerRefillFullStamina Parms{};
 
-	Parms.inTarget = inTarget;
+	Parms.InTarget = InTarget;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

@@ -24,6 +24,7 @@ struct BP_Binder_BallAnyOwnerChanged_C_BPE_OnBallInteraction final
 public:
 	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          _bIsSamePreviousOwner;                             // 0x0009(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_Binder_BallAnyOwnerChanged_C_BPE_OnBallInteraction;
 
@@ -35,8 +36,9 @@ public:
 	class UBallPlayersInteractionComponent*       BallPlayersInteraction;                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 	struct FShootParams                           ShootParams;                                       // 0x0008(0x0108)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 	EBallInteractionType                          _eBallInteractionType;                             // 0x0110(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          ReturnValue;                                       // 0x0111(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_112[0x6];                                      // 0x0112(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          _bIsSamePreviousOwner;                             // 0x0111(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          ReturnValue;                                       // 0x0112(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_113[0x5];                                      // 0x0113(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
 	class ARuntimePlayerState*                    LocalOwner;                                        // 0x0118(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_BPF_CanTrigger_ReturnValue;               // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
@@ -51,6 +53,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UBallPlayersInteractionComponent*       K2Node_Event__ballPlayersInteraction;              // 0x0008(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 	EBallInteractionType                          K2Node_Event__eBallInteractionType;                // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_Event__bIsSamePreviousOwner;                // 0x0011(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_Binder_BallAnyOwnerChanged_C_ExecuteUbergraph_BP_Binder_BallAnyOwnerChanged;
 
@@ -61,7 +64,8 @@ struct BP_Binder_BallAnyOwnerChanged_C_OnAnyOwnersChanged final
 public:
 	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          _bIsSamePreviousOwner;                             // 0x0009(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	class ABall*                                  CallFunc_BPF_GetBall_ReturnValue;                  // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	struct FShootParams                           CallFunc_BPF_GetCurrentShootParams_ReturnValue;    // 0x0018(0x0108)(ConstParm)
 	bool                                          CallFunc_Can_Trigger_ReturnValue;                  // 0x0120(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -75,7 +79,8 @@ struct BP_Binder_BallAnyOwnerChanged_C_PrepareData final
 public:
 	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          _bIsSamePreviousOwner;                             // 0x0009(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	class ARuntimePlayerState*                    Instigator;                                        // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_Binder_BallAnyOwnerChanged_C_PrepareData;
@@ -152,25 +157,6 @@ public:
 };
 DUMPER7_ASSERTS_BP_Binder_BallAnyOwnerChanged_C_GetPreviousInteracter;
 
-// Function BP_Binder_BallAnyOwnerChanged.BP_Binder_BallAnyOwnerChanged_C.HasTeamInfluenceChanged
-// 0x0028 (0x0028 - 0x0000)
-struct BP_Binder_BallAnyOwnerChanged_C_HasTeamInfluenceChanged final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          ReturnValue;                                       // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class ARuntimePlayerState*                    CallFunc_BPF_GetNewAndPreviousInteracters__outNewInteracter; // 0x0010(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class ARuntimePlayerState*                    CallFunc_BPF_GetNewAndPreviousInteracters__outPreviousInteracter; // 0x0018(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	uint8                                         CallFunc_BPF_GetTeam_ReturnValue;                  // 0x0020(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0021(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         CallFunc_BPF_GetTeam_ReturnValue_1;                // 0x0022(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_NotEqual_ByteByte_ReturnValue;            // 0x0023(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0024(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_Binder_BallAnyOwnerChanged_C_HasTeamInfluenceChanged;
-
 // Function BP_Binder_BallAnyOwnerChanged.BP_Binder_BallAnyOwnerChanged_C.IsCorrectPass
 // 0x0018 (0x0018 - 0x0000)
 struct BP_Binder_BallAnyOwnerChanged_C_IsCorrectPass final
@@ -182,24 +168,6 @@ public:
 	bool                                          CallFunc_LessEqual_DoubleDouble_ReturnValue;       // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_Binder_BallAnyOwnerChanged_C_IsCorrectPass;
-
-// Function BP_Binder_BallAnyOwnerChanged.BP_Binder_BallAnyOwnerChanged_C.IsKickOff
-// 0x0040 (0x0040 - 0x0000)
-struct BP_Binder_BallAnyOwnerChanged_C_IsKickOff final
-{
-public:
-	class UBallPlayersInteractionComponent*       _ballPlayersInteraction;                           // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	EBallInteractionType                          _eBallInteractionType;                             // 0x0008(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          ReturnValue;                                       // 0x0009(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_A[0x6];                                        // 0x000A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class ARuntimePlayerState*                    PreviousOwnerPS;                                   // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, NoDestructor, HasGetValueTypeHash)
-	class ARuntimePlayerState*                    OwnerPS;                                           // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, NoDestructor, HasGetValueTypeHash)
-	class ARuntimePlayerState*                    InteracterPS;                                      // 0x0020(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, NoDestructor, HasGetValueTypeHash)
-	TArray<class UPlayerBallOwnership*>           CallFunc_BPF_GetInteracters__outInteracters;       // 0x0028(0x0010)(ReferenceParm, ContainsInstancedReference)
-	int32                                         CallFunc_Array_Length_ReturnValue;                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_LessEqual_IntInt_ReturnValue;             // 0x003C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_BP_Binder_BallAnyOwnerChanged_C_IsKickOff;
 
 }
 

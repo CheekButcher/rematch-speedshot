@@ -17,275 +17,63 @@
 namespace SDK
 {
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BP_OnActivated
-// (Event, Protected, BlueprintEvent)
-
-void UWBP_TabNavigation_MenuMain_C::BP_OnActivated()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "BP_OnActivated");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnActionPressed
-// (Event, Protected, HasOutParams, BlueprintEvent)
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.UpdateTabsAvailabilityWithCurrentFlowStep
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// const class USCInputAction*             _action                                                (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// const struct FInputActionState&         _listenerState                                         (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// const struct FGameplayTag&              _previous                                              (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+// const struct FGameplayTag&              _current                                               (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_MenuMain_C::BPE_OnActionPressed(const class USCInputAction* _action, const struct FInputActionState& _listenerState)
+void UWBP_TabNavigation_MenuMain_C::UpdateTabsAvailabilityWithCurrentFlowStep(const struct FGameplayTag& _previous, const struct FGameplayTag& _current)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "BPE_OnActionPressed");
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "UpdateTabsAvailabilityWithCurrentFlowStep");
 
-	Params::WBP_TabNavigation_MenuMain_C_BPE_OnActionPressed Parms{};
+	Params::WBP_TabNavigation_MenuMain_C_UpdateTabsAvailabilityWithCurrentFlowStep Parms{};
 
-	Parms._action = _action;
-	Parms._listenerState = std::move(_listenerState);
+	Parms._previous = std::move(_previous);
+	Parms._current = std::move(_current);
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnMenuTransitionIn
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// EMenuTransitions                        _eTransition                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// TSubclassOf<class USCMenuWidget>        _ePrevMenu                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::BPE_OnMenuTransitionIn(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _ePrevMenu)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "BPE_OnMenuTransitionIn");
-
-	Params::WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionIn Parms{};
-
-	Parms._eTransition = _eTransition;
-	Parms._ePrevMenu = _ePrevMenu;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnMenuTransitionOut
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// EMenuTransitions                        _eTransition                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// TSubclassOf<class USCMenuWidget>        _eNewMenu                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::BPE_OnMenuTransitionOut(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _eNewMenu)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "BPE_OnMenuTransitionOut");
-
-	Params::WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionOut Parms{};
-
-	Parms._eTransition = _eTransition;
-	Parms._eNewMenu = _eNewMenu;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.ExecuteUbergraph_WBP_TabNavigation_MenuMain
-// (Final, UbergraphFunction, HasDefaults)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::ExecuteUbergraph_WBP_TabNavigation_MenuMain(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "ExecuteUbergraph_WBP_TabNavigation_MenuMain");
-
-	Params::WBP_TabNavigation_MenuMain_C_ExecuteUbergraph_WBP_TabNavigation_MenuMain Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GoToDevPractice
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class FName                             ActionName                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::GoToDevPractice(class FName ActionName)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "GoToDevPractice");
-
-	Params::WBP_TabNavigation_MenuMain_C_GoToDevPractice Parms{};
-
-	Parms.ActionName = ActionName;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GotoFreeplay
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UWBP_TabNavigation_MenuMain_C::GotoFreeplay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "GotoFreeplay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GoToOldCustomization
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnFrontendConnnectionStateChanged
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class FName                             ActionName                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// ESOSFrontendConnectionState             InFrontendConnectionState                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_MenuMain_C::GoToOldCustomization(class FName ActionName)
+void UWBP_TabNavigation_MenuMain_C::OnFrontendConnnectionStateChanged(ESOSFrontendConnectionState InFrontendConnectionState)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "GoToOldCustomization");
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "OnFrontendConnnectionStateChanged");
 
-	Params::WBP_TabNavigation_MenuMain_C_GoToOldCustomization Parms{};
+	Params::WBP_TabNavigation_MenuMain_C_OnFrontendConnnectionStateChanged Parms{};
 
-	Parms.ActionName = ActionName;
+	Parms.InFrontendConnectionState = InFrontendConnectionState;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideCustoTab
-// (Public, BlueprintCallable, BlueprintEvent)
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnCustomMatchStateChanged
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// ESOSClientCustomMatchState              InNewState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_MenuMain_C::HideCustoTab(bool IsHidden)
+void UWBP_TabNavigation_MenuMain_C::OnCustomMatchStateChanged(ESOSClientCustomMatchState InNewState)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "HideCustoTab");
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "OnCustomMatchStateChanged");
 
-	Params::WBP_TabNavigation_MenuMain_C_HideCustoTab Parms{};
+	Params::WBP_TabNavigation_MenuMain_C_OnCustomMatchStateChanged Parms{};
 
-	Parms.IsHidden = IsHidden;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideProfileTab
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::HideProfileTab(bool IsHidden)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "HideProfileTab");
-
-	Params::WBP_TabNavigation_MenuMain_C_HideProfileTab Parms{};
-
-	Parms.IsHidden = IsHidden;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideSeasonPassTab
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::HideSeasonPassTab(bool IsHidden)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "HideSeasonPassTab");
-
-	Params::WBP_TabNavigation_MenuMain_C_HideSeasonPassTab Parms{};
-
-	Parms.IsHidden = IsHidden;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideStoreTab
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::HideStoreTab(bool IsHidden)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "HideStoreTab");
-
-	Params::WBP_TabNavigation_MenuMain_C_HideStoreTab Parms{};
-
-	Parms.IsHidden = IsHidden;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.IsInCustomMatch
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-bool UWBP_TabNavigation_MenuMain_C::IsInCustomMatch()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "IsInCustomMatch");
-
-	Params::WBP_TabNavigation_MenuMain_C_IsInCustomMatch Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnAuthenticationStateChanged
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// ESOSAuthenticationState                 InAuthenticationState                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::OnAuthenticationStateChanged(ESOSAuthenticationState InAuthenticationState)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "OnAuthenticationStateChanged");
-
-	Params::WBP_TabNavigation_MenuMain_C_OnAuthenticationStateChanged Parms{};
-
-	Parms.InAuthenticationState = InAuthenticationState;
+	Parms.InNewState = InNewState;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -313,233 +101,305 @@ void UWBP_TabNavigation_MenuMain_C::OnButtonOpenPanel(class USCButtonUserWidget*
 }
 
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnCustomMatchStateChanged
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnAuthenticationStateChanged
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// ESOSAuthenticationState                 InAuthenticationState                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::OnAuthenticationStateChanged(ESOSAuthenticationState InAuthenticationState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "OnAuthenticationStateChanged");
+
+	Params::WBP_TabNavigation_MenuMain_C_OnAuthenticationStateChanged Parms{};
+
+	Parms.InAuthenticationState = InAuthenticationState;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.IsInCustomMatch
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+bool UWBP_TabNavigation_MenuMain_C::IsInCustomMatch()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "IsInCustomMatch");
+
+	Params::WBP_TabNavigation_MenuMain_C_IsInCustomMatch Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideStoreTab
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::HideStoreTab(bool IsHidden)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "HideStoreTab");
+
+	Params::WBP_TabNavigation_MenuMain_C_HideStoreTab Parms{};
+
+	Parms.IsHidden = IsHidden;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideSeasonPassTab
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::HideSeasonPassTab(bool IsHidden)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "HideSeasonPassTab");
+
+	Params::WBP_TabNavigation_MenuMain_C_HideSeasonPassTab Parms{};
+
+	Parms.IsHidden = IsHidden;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideProfileTab
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::HideProfileTab(bool IsHidden)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "HideProfileTab");
+
+	Params::WBP_TabNavigation_MenuMain_C_HideProfileTab Parms{};
+
+	Parms.IsHidden = IsHidden;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.HideCustoTab
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::HideCustoTab(bool IsHidden)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "HideCustoTab");
+
+	Params::WBP_TabNavigation_MenuMain_C_HideCustoTab Parms{};
+
+	Parms.IsHidden = IsHidden;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GoToOldCustomization
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// ESOSClientCustomMatchState              InNewState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FName                             ActionName                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_MenuMain_C::OnCustomMatchStateChanged(ESOSClientCustomMatchState InNewState)
+void UWBP_TabNavigation_MenuMain_C::GoToOldCustomization(class FName ActionName)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "OnCustomMatchStateChanged");
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "GoToOldCustomization");
 
-	Params::WBP_TabNavigation_MenuMain_C_OnCustomMatchStateChanged Parms{};
+	Params::WBP_TabNavigation_MenuMain_C_GoToOldCustomization Parms{};
 
-	Parms.InNewState = InNewState;
+	Parms.ActionName = ActionName;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.OnFrontendConnnectionStateChanged
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// ESOSFrontendConnectionState             InFrontendConnectionState                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GotoFreeplay
+// (Public, BlueprintCallable, BlueprintEvent)
 
-void UWBP_TabNavigation_MenuMain_C::OnFrontendConnnectionStateChanged(ESOSFrontendConnectionState InFrontendConnectionState)
+void UWBP_TabNavigation_MenuMain_C::GotoFreeplay()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "OnFrontendConnnectionStateChanged");
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "GotoFreeplay");
 
-	Params::WBP_TabNavigation_MenuMain_C_OnFrontendConnnectionStateChanged Parms{};
+	UObject::ProcessEvent(Func, nullptr);
+}
 
-	Parms.InFrontendConnectionState = InFrontendConnectionState;
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.GoToDevPractice
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class FName                             ActionName                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::GoToDevPractice(class FName ActionName)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "GoToDevPractice");
+
+	Params::WBP_TabNavigation_MenuMain_C_GoToDevPractice Parms{};
+
+	Parms.ActionName = ActionName;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.UpdateTabsAvailabilityWithCurrentFlowStep
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.ExecuteUbergraph_WBP_TabNavigation_MenuMain
+// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
-// const struct FGameplayTag&              _previous                                              (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
-// const struct FGameplayTag&              _current                                               (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor, HasGetValueTypeHash)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_MenuMain_C::UpdateTabsAvailabilityWithCurrentFlowStep(const struct FGameplayTag& _previous, const struct FGameplayTag& _current)
+void UWBP_TabNavigation_MenuMain_C::ExecuteUbergraph_WBP_TabNavigation_MenuMain(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "UpdateTabsAvailabilityWithCurrentFlowStep");
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "ExecuteUbergraph_WBP_TabNavigation_MenuMain");
 
-	Params::WBP_TabNavigation_MenuMain_C_UpdateTabsAvailabilityWithCurrentFlowStep Parms{};
+	Params::WBP_TabNavigation_MenuMain_C_ExecuteUbergraph_WBP_TabNavigation_MenuMain Parms{};
 
-	Parms._previous = std::move(_previous);
-	Parms._current = std::move(_current);
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
 
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__40023193-4dbe-a6f8-cdec-1a92f5f1896e_SourceToDest
-// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnMenuTransitionOut
+// (Event, Protected, BlueprintEvent)
 // Parameters:
+// EMenuTransitions                        _eTransition                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// TSubclassOf<class USCMenuWidget>        _eNewMenu                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::BPE_OnMenuTransitionOut(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _eNewMenu)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "BPE_OnMenuTransitionOut");
+
+	Params::WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionOut Parms{};
+
+	Parms._eTransition = _eTransition;
+	Parms._eNewMenu = _eNewMenu;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnMenuTransitionIn
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// EMenuTransitions                        _eTransition                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// TSubclassOf<class USCMenuWidget>        _ePrevMenu                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::BPE_OnMenuTransitionIn(EMenuTransitions _eTransition, TSubclassOf<class USCMenuWidget> _ePrevMenu)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "BPE_OnMenuTransitionIn");
+
+	Params::WBP_TabNavigation_MenuMain_C_BPE_OnMenuTransitionIn Parms{};
+
+	Parms._eTransition = _eTransition;
+	Parms._ePrevMenu = _ePrevMenu;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BPE_OnActionPressed
+// (Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// const class USCInputAction*             _action                                                (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// const struct FInputActionState&         _listenerState                                         (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+
+void UWBP_TabNavigation_MenuMain_C::BPE_OnActionPressed(const class USCInputAction* _action, const struct FInputActionState& _listenerState)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "BPE_OnActionPressed");
+
+	Params::WBP_TabNavigation_MenuMain_C_BPE_OnActionPressed Parms{};
+
+	Parms._action = _action;
+	Parms._listenerState = std::move(_listenerState);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.BP_OnActivated
+// (Event, Protected, BlueprintEvent)
+
+void UWBP_TabNavigation_MenuMain_C::BP_OnActivated()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "BP_OnActivated");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.SetNavTabEnabled
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// bool                                    isFeatureStateEnabled                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    IsConnectedToFrontend                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool*                                   IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_MenuMain_C::__40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest(bool* IsEnabled) const
+void UWBP_TabNavigation_MenuMain_C::SetNavTabEnabled(bool isFeatureStateEnabled, bool IsConnectedToFrontend, bool IsHidden, bool* IsEnabled) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__40023193-4dbe-a6f8-cdec-1a92f5f1896e_SourceToDest");
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "SetNavTabEnabled");
 
-	Params::WBP_TabNavigation_MenuMain_C___40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest Parms{};
+	Params::WBP_TabNavigation_MenuMain_C_SetNavTabEnabled Parms{};
+
+	Parms.isFeatureStateEnabled = isFeatureStateEnabled;
+	Parms.IsConnectedToFrontend = IsConnectedToFrontend;
+	Parms.IsHidden = IsHidden;
 
 	UObject::ProcessEvent(Func, &Parms);
 
 	if (IsEnabled != nullptr)
 		*IsEnabled = Parms.IsEnabled;
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__42ced048-4048-8143-4e09-3a83ef0e08f9_SourceToDest
-// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// bool*                                   IsVisible_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::__42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest(bool* IsVisible_0) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__42ced048-4048-8143-4e09-3a83ef0e08f9_SourceToDest");
-
-	Params::WBP_TabNavigation_MenuMain_C___42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (IsVisible_0 != nullptr)
-		*IsVisible_0 = Parms.IsVisible_0;
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__51c25bab-42a2-14b8-3f21-8c86eee4b36c_SourceToDest
-// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// bool*                                   IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::__51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest(bool* IsEnabled) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__51c25bab-42a2-14b8-3f21-8c86eee4b36c_SourceToDest");
-
-	Params::WBP_TabNavigation_MenuMain_C___51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (IsEnabled != nullptr)
-		*IsEnabled = Parms.IsEnabled;
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__7fe5970c-46bd-7fbf-e646-2384beea5df6_SourceToDest
-// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// bool*                                   IsVisible_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::__7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest(bool* IsVisible_0) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__7fe5970c-46bd-7fbf-e646-2384beea5df6_SourceToDest");
-
-	Params::WBP_TabNavigation_MenuMain_C___7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (IsVisible_0 != nullptr)
-		*IsVisible_0 = Parms.IsVisible_0;
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__a7191fda-4457-8b27-3569-0c875c4aaf0d_SourceToDest
-// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// bool*                                   IsVisible_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::__a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest(bool* IsVisible_0) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__a7191fda-4457-8b27-3569-0c875c4aaf0d_SourceToDest");
-
-	Params::WBP_TabNavigation_MenuMain_C___a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (IsVisible_0 != nullptr)
-		*IsVisible_0 = Parms.IsVisible_0;
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__b1f65d28-45c5-e081-8f4d-c08162c33909_SourceToDest
-// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// bool*                                   IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::__b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest(bool* IsEnabled) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__b1f65d28-45c5-e081-8f4d-c08162c33909_SourceToDest");
-
-	Params::WBP_TabNavigation_MenuMain_C___b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (IsEnabled != nullptr)
-		*IsEnabled = Parms.IsEnabled;
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__c6a80a45-4c08-5b99-4526-3883934ca922_SourceToDest
-// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// bool*                                   IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::__c6a80a45_4c08_5b99_4526_3883934ca922_SourceToDest(bool* IsEnabled) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__c6a80a45-4c08-5b99-4526-3883934ca922_SourceToDest");
-
-	Params::WBP_TabNavigation_MenuMain_C___c6a80a45_4c08_5b99_4526_3883934ca922_SourceToDest Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (IsEnabled != nullptr)
-		*IsEnabled = Parms.IsEnabled;
-}
-
-
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__d83a772e-4026-2f4a-1482-6dbc4ec95500_SourceToDest
-// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// bool*                                   IsVisible_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_MenuMain_C::__d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest(bool* IsVisible_0) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__d83a772e-4026-2f4a-1482-6dbc4ec95500_SourceToDest");
-
-	Params::WBP_TabNavigation_MenuMain_C___d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (IsVisible_0 != nullptr)
-		*IsVisible_0 = Parms.IsVisible_0;
 }
 
 
@@ -569,26 +429,166 @@ void UWBP_TabNavigation_MenuMain_C::SetFeaturesAvailabilityFeedbackVisibility(bo
 }
 
 
-// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.SetNavTabEnabled
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__d83a772e-4026-2f4a-1482-6dbc4ec95500_SourceToDest
+// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:
-// bool                                    isFeatureStateEnabled                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsConnectedToFrontend                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsHidden                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool*                                   IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool*                                   IsVisible_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_MenuMain_C::SetNavTabEnabled(bool isFeatureStateEnabled, bool IsConnectedToFrontend, bool IsHidden, bool* IsEnabled) const
+void UWBP_TabNavigation_MenuMain_C::__d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest(bool* IsVisible_0) const
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "SetNavTabEnabled");
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__d83a772e-4026-2f4a-1482-6dbc4ec95500_SourceToDest");
 
-	Params::WBP_TabNavigation_MenuMain_C_SetNavTabEnabled Parms{};
+	Params::WBP_TabNavigation_MenuMain_C___d83a772e_4026_2f4a_1482_6dbc4ec95500_SourceToDest Parms{};
 
-	Parms.isFeatureStateEnabled = isFeatureStateEnabled;
-	Parms.IsConnectedToFrontend = IsConnectedToFrontend;
-	Parms.IsHidden = IsHidden;
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsVisible_0 != nullptr)
+		*IsVisible_0 = Parms.IsVisible_0;
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__c6a80a45-4c08-5b99-4526-3883934ca922_SourceToDest
+// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// bool*                                   IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::__c6a80a45_4c08_5b99_4526_3883934ca922_SourceToDest(bool* IsEnabled) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__c6a80a45-4c08-5b99-4526-3883934ca922_SourceToDest");
+
+	Params::WBP_TabNavigation_MenuMain_C___c6a80a45_4c08_5b99_4526_3883934ca922_SourceToDest Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsEnabled != nullptr)
+		*IsEnabled = Parms.IsEnabled;
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__b1f65d28-45c5-e081-8f4d-c08162c33909_SourceToDest
+// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// bool*                                   IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::__b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest(bool* IsEnabled) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__b1f65d28-45c5-e081-8f4d-c08162c33909_SourceToDest");
+
+	Params::WBP_TabNavigation_MenuMain_C___b1f65d28_45c5_e081_8f4d_c08162c33909_SourceToDest Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsEnabled != nullptr)
+		*IsEnabled = Parms.IsEnabled;
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__a7191fda-4457-8b27-3569-0c875c4aaf0d_SourceToDest
+// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// bool*                                   IsVisible_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::__a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest(bool* IsVisible_0) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__a7191fda-4457-8b27-3569-0c875c4aaf0d_SourceToDest");
+
+	Params::WBP_TabNavigation_MenuMain_C___a7191fda_4457_8b27_3569_0c875c4aaf0d_SourceToDest Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsVisible_0 != nullptr)
+		*IsVisible_0 = Parms.IsVisible_0;
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__7fe5970c-46bd-7fbf-e646-2384beea5df6_SourceToDest
+// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// bool*                                   IsVisible_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::__7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest(bool* IsVisible_0) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__7fe5970c-46bd-7fbf-e646-2384beea5df6_SourceToDest");
+
+	Params::WBP_TabNavigation_MenuMain_C___7fe5970c_46bd_7fbf_e646_2384beea5df6_SourceToDest Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsVisible_0 != nullptr)
+		*IsVisible_0 = Parms.IsVisible_0;
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__51c25bab-42a2-14b8-3f21-8c86eee4b36c_SourceToDest
+// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// bool*                                   IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::__51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest(bool* IsEnabled) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__51c25bab-42a2-14b8-3f21-8c86eee4b36c_SourceToDest");
+
+	Params::WBP_TabNavigation_MenuMain_C___51c25bab_42a2_14b8_3f21_8c86eee4b36c_SourceToDest Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsEnabled != nullptr)
+		*IsEnabled = Parms.IsEnabled;
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__42ced048-4048-8143-4e09-3a83ef0e08f9_SourceToDest
+// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// bool*                                   IsVisible_0                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::__42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest(bool* IsVisible_0) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__42ced048-4048-8143-4e09-3a83ef0e08f9_SourceToDest");
+
+	Params::WBP_TabNavigation_MenuMain_C___42ced048_4048_8143_4e09_3a83ef0e08f9_SourceToDest Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (IsVisible_0 != nullptr)
+		*IsVisible_0 = Parms.IsVisible_0;
+}
+
+
+// Function WBP_TabNavigation_MenuMain.WBP_TabNavigation_MenuMain_C.__40023193-4dbe-a6f8-cdec-1a92f5f1896e_SourceToDest
+// (Final, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// bool*                                   IsEnabled                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_MenuMain_C::__40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest(bool* IsEnabled) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_MenuMain_C", "__40023193-4dbe-a6f8-cdec-1a92f5f1896e_SourceToDest");
+
+	Params::WBP_TabNavigation_MenuMain_C___40023193_4dbe_a6f8_cdec_1a92f5f1896e_SourceToDest Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
 

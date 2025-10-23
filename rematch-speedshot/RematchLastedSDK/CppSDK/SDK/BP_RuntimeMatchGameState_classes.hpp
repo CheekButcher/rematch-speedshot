@@ -10,26 +10,26 @@
 
 #include "Basic.hpp"
 
+#include "Runtime_classes.hpp"
 #include "Engine_structs.hpp"
 #include "GameplayTags_structs.hpp"
-#include "Runtime_classes.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_RuntimeMatchGameState.BP_RuntimeMatchGameState_C
-// 0x0040 (0x0B10 - 0x0AD0)
+// 0x0040 (0x0B18 - 0x0AD8)
 class ABP_RuntimeMatchGameState_C final : public ARuntimeMatchGameState
 {
 public:
-	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0AD0(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
-	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0AD8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTag                           InvalidAR;                                         // 0x0AE0(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	bool                                          bFilterPingPerTeam;                                // 0x0AE8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_AE9[0x7];                                      // 0x0AE9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<int32>                                 AlreadyTriggeredPerScore;                          // 0x0AF0(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TMulticastInlineDelegate<void()>              OnOutlineColorsChanged;                            // 0x0B00(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
+	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0AD8(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class USceneComponent*                        DefaultSceneRoot;                                  // 0x0AE0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTag                           InvalidAR;                                         // 0x0AE8(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	bool                                          bFilterPingPerTeam;                                // 0x0AF0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_AF1[0x7];                                      // 0x0AF1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<int32>                                 AlreadyTriggeredPerScore;                          // 0x0AF8(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TMulticastInlineDelegate<void()>              OnOutlineColorsChanged;                            // 0x0B08(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 
 public:
 	void CheckScoreEvents();

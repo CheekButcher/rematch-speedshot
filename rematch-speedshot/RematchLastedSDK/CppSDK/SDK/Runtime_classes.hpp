@@ -10,21 +10,19 @@
 
 #include "Basic.hpp"
 
+#include "Runtime_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "GameplayAbilities_structs.hpp"
 #include "GameplayAbilities_classes.hpp"
-#include "CoreUObject_structs.hpp"
-#include "CoreUObject_classes.hpp"
-#include "Runtime_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "SCCore_classes.hpp"
+#include "CoreUObject_structs.hpp"
+#include "CoreUObject_classes.hpp"
 #include "MotionWarping_classes.hpp"
 #include "GameplayTags_structs.hpp"
 #include "SCCombatSystem_structs.hpp"
 #include "SCCombatSystem_classes.hpp"
-#include "AkAudio_structs.hpp"
-#include "AkAudio_classes.hpp"
 #include "DeveloperSettings_classes.hpp"
 #include "UMG_classes.hpp"
 #include "AIModule_structs.hpp"
@@ -34,6 +32,8 @@
 #include "StructUtils_structs.hpp"
 #include "SOS_structs.hpp"
 #include "SOS_classes.hpp"
+#include "AkAudio_structs.hpp"
+#include "AkAudio_classes.hpp"
 #include "SlateCore_structs.hpp"
 #include "Gauntlet_classes.hpp"
 #include "GameplayCameras_classes.hpp"
@@ -46,76 +46,29 @@
 namespace SDK
 {
 
-// Class Runtime.BallShootTypeActorCondition
-// 0x0048 (0x0070 - 0x0028)
-class UBallShootTypeActorCondition final : public UBaseActorCondition
+// Class Runtime.ForceTouchBallNotifyState
+// 0x0008 (0x0040 - 0x0038)
+class UForceTouchBallNotifyState final : public USCAbilityMontageNotifyState
 {
 public:
-	struct FGameplayTagQuery                      m_Query;                                           // 0x0028(0x0048)(Edit, BlueprintReadOnly, NativeAccessSpecifierPrivate)
+	float                                         m_fBlendInDuration;                                // 0x0038(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("BallShootTypeActorCondition")
+		STATIC_CLASS_IMPL("ForceTouchBallNotifyState")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"BallShootTypeActorCondition")
+		STATIC_NAME_IMPL(L"ForceTouchBallNotifyState")
 	}
-	static class UBallShootTypeActorCondition* GetDefaultObj()
+	static class UForceTouchBallNotifyState* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UBallShootTypeActorCondition>();
+		return GetDefaultObjImpl<UForceTouchBallNotifyState>();
 	}
 };
-DUMPER7_ASSERTS_UBallShootTypeActorCondition;
-
-// Class Runtime.ExperienceComponentBase
-// 0x0018 (0x0040 - 0x0028)
-class UExperienceComponentBase : public UObject
-{
-public:
-	class FText                                   m_Title;                                           // 0x0028(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	EExperienceElementType                        m_eType;                                           // 0x0038(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BPE_ComputeComponentData(const class UObject* _worldContext, int32 _iOldTotalExperience, const class FName& _playerId, TArray<struct FExperienceComponentData>& _outComponentsData) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ExperienceComponentBase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ExperienceComponentBase")
-	}
-	static class UExperienceComponentBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UExperienceComponentBase>();
-	}
-};
-DUMPER7_ASSERTS_UExperienceComponentBase;
-
-// Class Runtime.MatchDurationExperienceComponent
-// 0x0000 (0x0040 - 0x0040)
-class UMatchDurationExperienceComponent final : public UExperienceComponentBase
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MatchDurationExperienceComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MatchDurationExperienceComponent")
-	}
-	static class UMatchDurationExperienceComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMatchDurationExperienceComponent>();
-	}
-};
-DUMPER7_ASSERTS_UMatchDurationExperienceComponent;
+DUMPER7_ASSERTS_UForceTouchBallNotifyState;
 
 // Class Runtime.AbilityOwnerSelector
 // 0x0050 (0x0290 - 0x0240)
@@ -180,41 +133,49 @@ public:
 };
 DUMPER7_ASSERTS_UAbilityTask_ApplyAbilityCostOverTime;
 
-// Class Runtime.Goal
-// 0x0068 (0x0318 - 0x02B0)
-class AGoal : public AActor
+// Class Runtime.BallStateActorCondition
+// 0x0008 (0x0030 - 0x0028)
+class UBallStateActorCondition final : public UBaseActorCondition
 {
 public:
-	uint8                                         m_uiTeam;                                          // 0x02B0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2B1[0x7];                                      // 0x02B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(class AGoal* _goal, uint8 _uiTeam)> BPE_OnCrossbarHit;             // 0x02B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
-	bool                                          m_bToggleRestartMatch;                             // 0x02C8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bToggleVFX;                                      // 0x02C9(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bToggleSFX;                                      // 0x02CA(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bToggleUIText;                                   // 0x02CB(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2CC[0x4];                                      // 0x02CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                m_vGoalExtraSize;                                  // 0x02D0(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2E8[0x30];                                     // 0x02E8(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BPE_GetCollision(class USceneComponent** _outCollision) const;
-	bool BPF_IsPointInGoal(const struct FVector& _vPoint, bool _bUseGoalExtraSize) const;
+	ESimulationStep                               m_eBallState;                                      // 0x0028(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("Goal")
+		STATIC_CLASS_IMPL("BallStateActorCondition")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"Goal")
+		STATIC_NAME_IMPL(L"BallStateActorCondition")
 	}
-	static class AGoal* GetDefaultObj()
+	static class UBallStateActorCondition* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<AGoal>();
+		return GetDefaultObjImpl<UBallStateActorCondition>();
 	}
 };
-DUMPER7_ASSERTS_AGoal;
+DUMPER7_ASSERTS_UBallStateActorCondition;
+
+// Class Runtime.ExtraEffortRegenCalculation
+// 0x0000 (0x0040 - 0x0040)
+class UExtraEffortRegenCalculation final : public UGameplayEffectExecutionCalculation
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ExtraEffortRegenCalculation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ExtraEffortRegenCalculation")
+	}
+	static class UExtraEffortRegenCalculation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UExtraEffortRegenCalculation>();
+	}
+};
+DUMPER7_ASSERTS_UExtraEffortRegenCalculation;
 
 // Class Runtime.AbilityTask_ApplyShoot
 // 0x0028 (0x00C0 - 0x0098)
@@ -275,78 +236,89 @@ public:
 };
 DUMPER7_ASSERTS_UAbilityTask_ApplyVolleyShoot;
 
-// Class Runtime.BallStealBinder
-// 0x0098 (0x0190 - 0x00F8)
-class UBallStealBinder final : public UGameStateScopedEventBinder
+// Class Runtime.BallPhysicSettings
+// 0x0028 (0x0060 - 0x0038)
+class UBallPhysicSettings final : public UDeveloperSettings
 {
 public:
-	struct FGameplayTag                           m_FeedLogPlayerStealTag;                           // 0x00F8(0x0008)(NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FGameplayTagQuery                      m_ThiefRequiredTags;                               // 0x0100(0x0048)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FGameplayTagQuery                      m_StolenRequiredTags;                              // 0x0148(0x0048)(Edit, Protected, NativeAccessSpecifierProtected)
-
-public:
-	void OnBallStolen(class ARuntimePlayerState* _playerStateThief, class ARuntimePlayerState* _playerStateStolen);
+	float                                         m_fSpeedStopMoving;                                // 0x0038(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fPredictionDuration;                             // 0x003C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fPredictionSimFrequency;                         // 0x0040(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<float>                                 m_fAimPointAngleInDegreesSteps;                    // 0x0048(0x0010)(Edit, ZeroConstructor, Config, NativeAccessSpecifierPublic)
+	int32                                         m_iMaxAimPointComputationCount;                    // 0x0058(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bHasNoBounceCollisionChannel;                    // 0x005C(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ECollisionChannel                             m_eNoBounceCollisionChannel;                       // 0x005D(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_5E[0x2];                                       // 0x005E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("BallStealBinder")
+		STATIC_CLASS_IMPL("BallPhysicSettings")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"BallStealBinder")
+		STATIC_NAME_IMPL(L"BallPhysicSettings")
 	}
-	static class UBallStealBinder* GetDefaultObj()
+	static class UBallPhysicSettings* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UBallStealBinder>();
+		return GetDefaultObjImpl<UBallPhysicSettings>();
 	}
 };
-DUMPER7_ASSERTS_UBallStealBinder;
+DUMPER7_ASSERTS_UBallPhysicSettings;
 
-// Class Runtime.RTCustomizationLevelSequenceDataAsset
-// 0x0000 (0x0150 - 0x0150)
-class URTCustomizationLevelSequenceDataAsset : public USCCustomizationLevelSequenceDataAsset
+// Class Runtime.ExperienceComponentBase
+// 0x0018 (0x0040 - 0x0028)
+class UExperienceComponentBase : public UObject
 {
 public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("RTCustomizationLevelSequenceDataAsset")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"RTCustomizationLevelSequenceDataAsset")
-	}
-	static class URTCustomizationLevelSequenceDataAsset* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<URTCustomizationLevelSequenceDataAsset>();
-	}
-};
-DUMPER7_ASSERTS_URTCustomizationLevelSequenceDataAsset;
+	class FText                                   m_Title;                                           // 0x0028(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	EExperienceElementType                        m_eType;                                           // 0x0038(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_39[0x7];                                       // 0x0039(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
-// Class Runtime.FinisherCustomizationDataAsset
-// 0x0008 (0x0158 - 0x0150)
-class UFinisherCustomizationDataAsset final : public URTCustomizationLevelSequenceDataAsset
-{
 public:
-	bool                                          m_bHideBallDuringSequence;                         // 0x0150(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_151[0x3];                                      // 0x0151(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         m_iMinimumPlayersNumberRequired;                   // 0x0154(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	void BPE_ComputeComponentData(const class UObject* _worldContext, int32 _iOldTotalExperience, const class FName& _playerId, TArray<struct FExperienceComponentData>& _outComponentsData) const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("FinisherCustomizationDataAsset")
+		STATIC_CLASS_IMPL("ExperienceComponentBase")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"FinisherCustomizationDataAsset")
+		STATIC_NAME_IMPL(L"ExperienceComponentBase")
 	}
-	static class UFinisherCustomizationDataAsset* GetDefaultObj()
+	static class UExperienceComponentBase* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UFinisherCustomizationDataAsset>();
+		return GetDefaultObjImpl<UExperienceComponentBase>();
 	}
 };
-DUMPER7_ASSERTS_UFinisherCustomizationDataAsset;
+DUMPER7_ASSERTS_UExperienceComponentBase;
+
+// Class Runtime.GroupExperienceComponent
+// 0x0018 (0x0058 - 0x0040)
+class UGroupExperienceComponent final : public UExperienceComponentBase
+{
+public:
+	TArray<struct FExperienceComponentInstance>   m_Components;                                      // 0x0040(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	bool                                          m_bShouldBeConsideredAsOneComponent;               // 0x0050(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("GroupExperienceComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"GroupExperienceComponent")
+	}
+	static class UGroupExperienceComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGroupExperienceComponent>();
+	}
+};
+DUMPER7_ASSERTS_UGroupExperienceComponent;
 
 // Class Runtime.AbilityTask_BallInteractionRequest
 // 0x0060 (0x00F8 - 0x0098)
@@ -410,428 +382,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UAbilityTask_HandleHindering;
-
-// Class Runtime.BallReachableOnTimeTargetDatasource
-// 0x0010 (0x0178 - 0x0168)
-class UBallReachableOnTimeTargetDatasource final : public UReachableOnTimeTargetDatasource
-{
-public:
-	bool                                          m_bApplyScoreToContext;                            // 0x0168(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_169[0x3];                                      // 0x0169(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fDelayScoreMalus;                                // 0x016C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         m_fVelocityScoreMalus;                             // 0x0170(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_174[0x4];                                      // 0x0174(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallReachableOnTimeTargetDatasource")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallReachableOnTimeTargetDatasource")
-	}
-	static class UBallReachableOnTimeTargetDatasource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallReachableOnTimeTargetDatasource>();
-	}
-};
-DUMPER7_ASSERTS_UBallReachableOnTimeTargetDatasource;
-
-// Class Runtime.ScoreToExpMultiplierExperienceComponent
-// 0x0000 (0x0040 - 0x0040)
-class UScoreToExpMultiplierExperienceComponent final : public UExperienceComponentBase
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ScoreToExpMultiplierExperienceComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ScoreToExpMultiplierExperienceComponent")
-	}
-	static class UScoreToExpMultiplierExperienceComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UScoreToExpMultiplierExperienceComponent>();
-	}
-};
-DUMPER7_ASSERTS_UScoreToExpMultiplierExperienceComponent;
-
-// Class Runtime.AbilityTask_HandleSteeringLocomotion
-// 0x0058 (0x0140 - 0x00E8)
-class UAbilityTask_HandleSteeringLocomotion final : public UAbilityTask_ApplyRootMotion_Base
-{
-public:
-	class UCurveFloat*                            m_SpeedCurve;                                      // 0x00E8(0x0008)(Net, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         m_fSpeed;                                          // 0x00F0(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_F4[0x4];                                       // 0x00F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCurveFloat*                            m_TrackingCurve;                                   // 0x00F8(0x0008)(Net, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         m_fTrackingSpeed;                                  // 0x0100(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_104[0x4];                                      // 0x0104(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class USCInputAction*                         m_action;                                          // 0x0108(0x0008)(Net, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int16                                         m_iActivationPredictionKey;                        // 0x0110(0x0002)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_112[0x2];                                      // 0x0112(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fServerStartTime;                                // 0x0114(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_118[0x28];                                     // 0x0118(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_HandleSteeringLocomotion* BPF_HandleSteeringLocomotion(class UGameplayAbility* _owningAbility, class FName _taskInstanceName, class USCInputAction* _action, float _fSpeed, class UCurveFloat* _speedCurve, float _fTrackingSpeed, class UCurveFloat* _trackingCurve, float _fInputDelay, float _fUpdateInputFrequency);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_HandleSteeringLocomotion")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_HandleSteeringLocomotion")
-	}
-	static class UAbilityTask_HandleSteeringLocomotion* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_HandleSteeringLocomotion>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_HandleSteeringLocomotion;
-
-// Class Runtime.AbilityTask_MoveToCollision
-// 0x0038 (0x00D0 - 0x0098)
-class UAbilityTask_MoveToCollision final : public UAbilityTask
-{
-public:
-	TMulticastInlineDelegate<void()>              OnTimedOut;                                        // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void()>              OnTimedOutAndDestinationReached;                   // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B8[0x18];                                      // 0x00B8(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_MoveToCollision* BPF_MoveToCollision(class UGameplayAbility* _owningAbility, float _fMaxDuration, float _fMinDistanceToRun, ECollisionChannel _eCollisionChannel);
-
-	void OnTimedOutAndDestinationReachedCallBack();
-	void OnTimedOutCallBack();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_MoveToCollision")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_MoveToCollision")
-	}
-	static class UAbilityTask_MoveToCollision* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_MoveToCollision>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_MoveToCollision;
-
-// Class Runtime.ForceTouchBallNotifyState
-// 0x0008 (0x0040 - 0x0038)
-class UForceTouchBallNotifyState final : public USCAbilityMontageNotifyState
-{
-public:
-	float                                         m_fBlendInDuration;                                // 0x0038(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ForceTouchBallNotifyState")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ForceTouchBallNotifyState")
-	}
-	static class UForceTouchBallNotifyState* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UForceTouchBallNotifyState>();
-	}
-};
-DUMPER7_ASSERTS_UForceTouchBallNotifyState;
-
-// Class Runtime.AbilityTask_NetworkFindBallTarget
-// 0x0100 (0x0198 - 0x0098)
-class UAbilityTask_NetworkFindBallTarget final : public UAbilityTask
-{
-public:
-	TMulticastInlineDelegate<void(const struct FBallInterceptionPointTargetData& _found, const struct FTargetingContext& _targetContext)> OnFound; // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
-	TMulticastInlineDelegate<void(const struct FBallInterceptionPointTargetData& _found, const struct FTargetingContext& _targetContext)> OnUnfound; // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
-	TMulticastInlineDelegate<void(const struct FBallInterceptionPointTargetData& _found, const struct FTargetingContext& _targetContext)> OnTargetRejected; // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
-	TMulticastInlineDelegate<void(const struct FBallInterceptionPointTargetData& _found, const struct FTargetingContext& _targetContext)> OnCancel; // 0x00C8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_D8[0xC0];                                      // 0x00D8(0x00C0)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_NetworkFindBallTarget* BPF_NetworkFindBallTarget(class UGameplayAbility* _owningAbility, const struct FOnDemandTargetProvider& _targetProvider, const struct FOnDemandTargetProvider& _targetValidationProvider, const struct FGameplayTag& _gameplayTag, bool _bDoOnce);
-	static class UAbilityTask_NetworkFindBallTarget* BPF_NetworkFindBallTargetWithCancelInput(class UGameplayAbility* _owningAbility, const struct FOnDemandTargetProvider& _targetProvider, const struct FOnDemandTargetProvider& _targetValidationProvider, const struct FGameplayTag& _gameplayTag, class USCInputAction* _inAction, EInputWatchTrigger _eWatchTrigger, bool _bDoOnce);
-
-	void InitCancel(class USCInputAction* _inAction, EInputWatchTrigger _eWatchTrigger);
-	void OnAbilityTaskCancel();
-	void OnCancelInput(const class USCInputAction* _action, const struct FInputActionState& _listenerState);
-	void OnServerReady();
-	void SearchTarget();
-	void ServerReceiveTargetData(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_NetworkFindBallTarget")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_NetworkFindBallTarget")
-	}
-	static class UAbilityTask_NetworkFindBallTarget* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_NetworkFindBallTarget>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_NetworkFindBallTarget;
-
-// Class Runtime.AbilityTask_NetworkHitProjection
-// 0x0090 (0x0128 - 0x0098)
-class UAbilityTask_NetworkHitProjection final : public UAbilityTask
-{
-public:
-	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnHitPredicted; // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
-	TMulticastInlineDelegate<void()>              OnHitProjectionFailed;                             // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
-	class UAbilityTask_HandleHitboxBase*          m_HandleHitboxBaseTaskPtr;                         // 0x00B8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_C0[0x68];                                      // 0x00C0(0x0068)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_NetworkHitProjection* BPF_NetworkHitProjection(class UGameplayAbility* _owningAbility, const struct FGameplayAbilityTargetDataHandle& _context, TSubclassOf<class UTargetDatasource> _datasource, TSubclassOf<class UTargetPicker> _picker, const struct FGameplayTag& _gameplayTag, class UAbilityTask_HandleHitboxBase* _handleHitboxTaskPtr);
-
-	void ServerReceiveTargetData(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_NetworkHitProjection")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_NetworkHitProjection")
-	}
-	static class UAbilityTask_NetworkHitProjection* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_NetworkHitProjection>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_NetworkHitProjection;
-
-// Class Runtime.TrajectoryModifierTargetDatasource
-// 0x0000 (0x00A8 - 0x00A8)
-class UTrajectoryModifierTargetDatasource final : public UGenericTargetDatasource
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("TrajectoryModifierTargetDatasource")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"TrajectoryModifierTargetDatasource")
-	}
-	static class UTrajectoryModifierTargetDatasource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UTrajectoryModifierTargetDatasource>();
-	}
-};
-DUMPER7_ASSERTS_UTrajectoryModifierTargetDatasource;
-
-// Class Runtime.RuntimeAnimationMetadata
-// 0x0028 (0x03E0 - 0x03B8)
-class URuntimeAnimationMetadata : public UPlayMontageAnimationMetadata
-{
-public:
-	TSoftClassPtr<class UClass>                   m_BaseCharacter;                                   // 0x03B8(0x0028)(Edit, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("RuntimeAnimationMetadata")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"RuntimeAnimationMetadata")
-	}
-	static class URuntimeAnimationMetadata* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<URuntimeAnimationMetadata>();
-	}
-};
-DUMPER7_ASSERTS_URuntimeAnimationMetadata;
-
-// Class Runtime.AbilityTask_NetworkHitValidation
-// 0x0068 (0x0100 - 0x0098)
-class UAbilityTask_NetworkHitValidation final : public UAbilityTask
-{
-public:
-	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnHitPredicted; // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
-	TMulticastInlineDelegate<void()>              OnHitProjectionFailed;                             // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
-	class UAbilityTask_HandleHitboxBase*          m_HandleHitboxBaseTaskPtr;                         // 0x00B8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_C0[0x40];                                      // 0x00C0(0x0040)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_NetworkHitValidation* BPF_NetworkHitValidation(class UGameplayAbility* _owningAbility, const struct FGameplayAbilityTargetDataHandle& _context, TSubclassOf<class UTargetDatasource> _datasource, TSubclassOf<class UTargetPicker> _picker, const struct FGameplayTag& _gameplayTag, class UAbilityTask_HandleHitboxBase* _handleHitboxTaskPtr);
-
-	void ServerReceiveTargetData(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_NetworkHitValidation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_NetworkHitValidation")
-	}
-	static class UAbilityTask_NetworkHitValidation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_NetworkHitValidation>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_NetworkHitValidation;
-
-// Class Runtime.AbilityTask_NetworkSyncShootData
-// 0x0118 (0x02B8 - 0x01A0)
-class UAbilityTask_NetworkSyncShootData final : public UAbilityTask_NetworkSyncWithDelay
-{
-public:
-	uint8                                         Pad_1A0[0x118];                                    // 0x01A0(0x0118)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_NetworkSyncShootData* BPF_NetworkSyncShootDataWithInputs(class USCGameplayAbility* _owningAbility, const struct FRTInputActionsForNetworkSyncShoot& _inputAction, struct FShootPrepTargetData& _inOutShootPrep, const struct FGameplayAbilityTargetDataHandle& _context, const TArray<TSubclassOf<class UTrajectoryStatus>>& _trajectoryStatus, const struct FSCConditionsToSyncEarly& _conditionsToSyncEarly, const struct FRTNetworkSyncShootTimeArg& _networkSyncTimeArg, const struct FSCNetworkSyncData& _syncData, const struct FGameplayTag& _shootTypeTag);
-
-	void BPF_GetShootParams(struct FShootParams* _outShootParams) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_NetworkSyncShootData")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_NetworkSyncShootData")
-	}
-	static class UAbilityTask_NetworkSyncShootData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_NetworkSyncShootData>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_NetworkSyncShootData;
-
-// Class Runtime.GoalScopedBinder
-// 0x0000 (0x00F8 - 0x00F8)
-class UGoalScopedBinder : public UGameStateScopedEventBinder
-{
-public:
-	void OnGoalRegistered(class AGoal* _goal);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("GoalScopedBinder")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"GoalScopedBinder")
-	}
-	static class UGoalScopedBinder* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGoalScopedBinder>();
-	}
-};
-DUMPER7_ASSERTS_UGoalScopedBinder;
-
-// Class Runtime.GoalCrossbarHitBinder
-// 0x0000 (0x00F8 - 0x00F8)
-class UGoalCrossbarHitBinder final : public UGoalScopedBinder
-{
-public:
-	void OnGoalCrossbarHit(class AGoal* _goal, uint8 _uiTeam);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("GoalCrossbarHitBinder")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"GoalCrossbarHitBinder")
-	}
-	static class UGoalCrossbarHitBinder* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGoalCrossbarHitBinder>();
-	}
-};
-DUMPER7_ASSERTS_UGoalCrossbarHitBinder;
-
-// Class Runtime.AbilityTask_NetworkSyncTargetData
-// 0x0088 (0x0120 - 0x0098)
-class UAbilityTask_NetworkSyncTargetData final : public UAbilityTask
-{
-public:
-	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnSync;      // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnTimeOut;   // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnCancel;    // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C8[0x58];                                      // 0x00C8(0x0058)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_NetworkSyncTargetData* BPF_NetworkSyncTargetData(class UGameplayAbility* _owningAbility, const struct FGameplayAbilityTargetDataHandle& _targetData, float _fSleepDuration, float _fListenDuration, float _fLagCompensation);
-
-	void OnCancelledCallback();
-	void OnReplicatedCallback(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
-	void OnSignalCallback();
-	void SendSignalFromServer();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_NetworkSyncTargetData")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_NetworkSyncTargetData")
-	}
-	static class UAbilityTask_NetworkSyncTargetData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_NetworkSyncTargetData>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_NetworkSyncTargetData;
-
-// Class Runtime.AbilityTask_NetworkWaitTargetData
-// 0x0070 (0x0108 - 0x0098)
-class UAbilityTask_NetworkWaitTargetData final : public UAbilityTask
-{
-public:
-	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnReceived;  // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnTimeOut;   // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnCancel;    // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C8[0x40];                                      // 0x00C8(0x0040)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_NetworkWaitTargetData* BPF_NetworkWaitTargetData(class UGameplayAbility* _owningAbility, EAbilityTaskNetWaitType _eType, const struct FGameplayAbilityTargetDataHandle& _targetData, float _fSleepDuration, float _fListenDuration);
-
-	void OnCancelledCallback();
-	void OnReplicatedCallback(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
-	void OnSignalCallback();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_NetworkWaitTargetData")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_NetworkWaitTargetData")
-	}
-	static class UAbilityTask_NetworkWaitTargetData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_NetworkWaitTargetData>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_NetworkWaitTargetData;
 
 // Class Runtime.CharacterCustomizationParser
 // 0x0000 (0x0028 - 0x0028)
@@ -959,440 +509,72 @@ public:
 };
 DUMPER7_ASSERTS_UFinisherHandlerFlowState;
 
-// Class Runtime.AbilityTask_PlayMontageFromAestheticMontage
-// 0x0000 (0x0228 - 0x0228)
-class UAbilityTask_PlayMontageFromAestheticMontage final : public UAbilityTask_SCPlayMontageAndWait
+// Class Runtime.AbilityTask_HandleSteeringLocomotion
+// 0x0058 (0x0140 - 0x00E8)
+class UAbilityTask_HandleSteeringLocomotion final : public UAbilityTask_ApplyRootMotion_Base
 {
 public:
-	static class UAbilityTask_PlayMontageFromAestheticMontage* BPF_PlayMontageFromAestheticMontage(class USCGameplayAbility* _owningAbility, class UAbilityTask_PlaySimulatedAestheticMontage* _aestheticMontageTask, EAbilityExecOrigin _eIn, EAbilityExecOutputWithValidation* _eOut, class FName _taskInstanceName, float _fFallbackStartTime, TSubclassOf<class UAnimSequencePicker> _fallbackPicker, class FName _fallbackSlotName, class UBasicMontagePlayerConfiguration* _overrideConfiguration, bool _bLog, bool _bStopWhenAbilityEnds, const struct FGameplayAbilityTargetDataHandle& _playerContext, class FName _StartSection);
+	class UCurveFloat*                            m_SpeedCurve;                                      // 0x00E8(0x0008)(Net, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         m_fSpeed;                                          // 0x00F0(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_F4[0x4];                                       // 0x00F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCurveFloat*                            m_TrackingCurve;                                   // 0x00F8(0x0008)(Net, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         m_fTrackingSpeed;                                  // 0x0100(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_104[0x4];                                      // 0x0104(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class USCInputAction*                         m_action;                                          // 0x0108(0x0008)(Net, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int16                                         m_iActivationPredictionKey;                        // 0x0110(0x0002)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_112[0x2];                                      // 0x0112(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fServerStartTime;                                // 0x0114(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_118[0x28];                                     // 0x0118(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_HandleSteeringLocomotion* BPF_HandleSteeringLocomotion(class UGameplayAbility* _owningAbility, class FName _taskInstanceName, class USCInputAction* _action, float _fSpeed, class UCurveFloat* _speedCurve, float _fTrackingSpeed, class UCurveFloat* _trackingCurve, float _fInputDelay, float _fUpdateInputFrequency);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("AbilityTask_PlayMontageFromAestheticMontage")
+		STATIC_CLASS_IMPL("AbilityTask_HandleSteeringLocomotion")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"AbilityTask_PlayMontageFromAestheticMontage")
+		STATIC_NAME_IMPL(L"AbilityTask_HandleSteeringLocomotion")
 	}
-	static class UAbilityTask_PlayMontageFromAestheticMontage* GetDefaultObj()
+	static class UAbilityTask_HandleSteeringLocomotion* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UAbilityTask_PlayMontageFromAestheticMontage>();
+		return GetDefaultObjImpl<UAbilityTask_HandleSteeringLocomotion>();
 	}
 };
-DUMPER7_ASSERTS_UAbilityTask_PlayMontageFromAestheticMontage;
+DUMPER7_ASSERTS_UAbilityTask_HandleSteeringLocomotion;
 
-// Class Runtime.ShootSnapComputation
-// 0x0018 (0x0090 - 0x0078)
-class UShootSnapComputation final : public USnapAnimationComputation
+// Class Runtime.AbilityTask_MoveToCollision
+// 0x0038 (0x00D0 - 0x0098)
+class UAbilityTask_MoveToCollision final : public UAbilityTask
 {
 public:
-	bool                                          m_bUseShootDirectionToPlaceSnapLocation;           // 0x0078(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_79[0x3];                                       // 0x0079(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTag                           m_DirectionTargetDataName;                         // 0x007C(0x0008)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bUseBallDirectionToPlaceSnapLocation;            // 0x0084(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bKeepActorForwardToPlaceSnapLocation;            // 0x0085(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_86[0x2];                                       // 0x0086(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class USnapAnimationComputation*              m_NextStep;                                        // 0x0088(0x0008)(Edit, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TMulticastInlineDelegate<void()>              OnTimedOut;                                        // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void()>              OnTimedOutAndDestinationReached;                   // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B8[0x18];                                      // 0x00B8(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_MoveToCollision* BPF_MoveToCollision(class UGameplayAbility* _owningAbility, float _fMaxDuration, float _fMinDistanceToRun, ECollisionChannel _eCollisionChannel);
+
+	void OnTimedOutAndDestinationReachedCallBack();
+	void OnTimedOutCallBack();
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("ShootSnapComputation")
+		STATIC_CLASS_IMPL("AbilityTask_MoveToCollision")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"ShootSnapComputation")
+		STATIC_NAME_IMPL(L"AbilityTask_MoveToCollision")
 	}
-	static class UShootSnapComputation* GetDefaultObj()
+	static class UAbilityTask_MoveToCollision* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UShootSnapComputation>();
+		return GetDefaultObjImpl<UAbilityTask_MoveToCollision>();
 	}
 };
-DUMPER7_ASSERTS_UShootSnapComputation;
-
-// Class Runtime.AbilityTask_PlaySimulatedAestheticMontage
-// 0x0058 (0x00F0 - 0x0098)
-class UAbilityTask_PlaySimulatedAestheticMontage final : public UAbilityTask
-{
-public:
-	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void()>              OnBlendOut;                                        // 0x00A0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void()>              OnEnded;                                           // 0x00B0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UAnimMontage*                           m_AestheticMontage;                                // 0x00C0(0x0008)(ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UAnimMontage*                           m_BaseMontage;                                     // 0x00C8(0x0008)(Net, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bMirror;                                         // 0x00D0(0x0001)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_D1[0x3];                                       // 0x00D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fPlayRate;                                       // 0x00D4(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fBlendOutAnimTime;                               // 0x00D8(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FName                                   m_NewSlotTrack;                                    // 0x00DC(0x0008)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_E4[0xC];                                       // 0x00E4(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_PlaySimulatedAestheticMontage* BPF_PlaySimulatedAstheticMontage(class UGameplayAbility* _owningAbility, class UAnimMontage* _montage, bool _bMirror, class FName _newSlotTrack, float _fPlayRate, float _fBlendOutAnimTime);
-	static class UAbilityTask_PlaySimulatedAestheticMontage* BPF_PlaySimulatedTimedAstheticMontage(class UGameplayAbility* _owningAbility, class UAnimMontage* _montage, bool _bMirror, class FName _newSlotTrack, float _fWorldSyncTime, float _fAnimSyncTime, float _fBlendOutAnimTime);
-
-	void OnAnyMontageBlendingOut(class UAnimMontage* _montage, bool bInterrupted);
-	void OnAnyMontageEnded(class UAnimMontage* _montage, bool _bInterrupted);
-
-	float GetMontageInstancePosition() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_PlaySimulatedAestheticMontage")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_PlaySimulatedAestheticMontage")
-	}
-	static class UAbilityTask_PlaySimulatedAestheticMontage* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_PlaySimulatedAestheticMontage>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_PlaySimulatedAestheticMontage;
-
-// Class Runtime.GoalInvolvedTargetDataHelpers
-// 0x0000 (0x0028 - 0x0028)
-class UGoalInvolvedTargetDataHelpers final : public UBlueprintFunctionLibrary
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("GoalInvolvedTargetDataHelpers")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"GoalInvolvedTargetDataHelpers")
-	}
-	static class UGoalInvolvedTargetDataHelpers* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGoalInvolvedTargetDataHelpers>();
-	}
-};
-DUMPER7_ASSERTS_UGoalInvolvedTargetDataHelpers;
-
-// Class Runtime.AbilityTask_PlaySyncMontageBase
-// 0x0048 (0x00E0 - 0x0098)
-class UAbilityTask_PlaySyncMontageBase : public UAbilityTask
-{
-public:
-	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAnimMontage*                           m_MasterMontage;                                   // 0x00A0(0x0008)(Net, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bMasterMirror;                                   // 0x00A8(0x0001)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_A9[0x3];                                       // 0x00A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fBlendInDuration;                                // 0x00AC(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fLongBlendOutDuration;                           // 0x00B0(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fPlayMontageAtWorldTime;                         // 0x00B4(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fEndMontageAtWorldTime;                          // 0x00B8(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_BC[0x24];                                      // 0x00BC(0x0024)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BPF_CancelBlendOutDuration();
-	void OnAnyMontageBlendingOut(class UAnimMontage* _montage, bool bInterrupted);
-	void OnAnyMontageStarting(class UAnimMontage* _montage);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_PlaySyncMontageBase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_PlaySyncMontageBase")
-	}
-	static class UAbilityTask_PlaySyncMontageBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_PlaySyncMontageBase>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_PlaySyncMontageBase;
-
-// Class Runtime.AbilityTask_PlaySyncAestheticMontage
-// 0x0018 (0x00F8 - 0x00E0)
-class UAbilityTask_PlaySyncAestheticMontage final : public UAbilityTask_PlaySyncMontageBase
-{
-public:
-	class UAnimMontage*                           m_FollowerMontage;                                 // 0x00E0(0x0008)(Net, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bFollowerMirror;                                 // 0x00E8(0x0001)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   m_NewSlotTrack;                                    // 0x00EC(0x0008)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_F4[0x4];                                       // 0x00F4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_PlaySyncAestheticMontage* BPF_PlayAbilitySyncAestheticMontage(class UGameplayAbility* _owningAbility, class UAnimMontage* _followerMontage, bool _bFollowerMirror, float _fPlayMontageAtWorldTime, float _fEndMontageAtWorldTime, class FName _newSlotTrack, float _fBlendInDuration, float _fLongBlendOutDuration);
-	static class UAbilityTask_PlaySyncAestheticMontage* BPF_PlaySyncAestheticMontage(class UGameplayAbility* _owningAbility, class UAnimMontage* _masterMontage, bool _bMasterMirror, class UAnimMontage* _followerMontage, bool _bFollowerMirror, float _fPlayMontageAtWorldTime, float _fEndMontageAtWorldTime, class FName _newSlotTrack, float _fBlendInDuration, float _fLongBlendOutDuration);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_PlaySyncAestheticMontage")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_PlaySyncAestheticMontage")
-	}
-	static class UAbilityTask_PlaySyncAestheticMontage* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_PlaySyncAestheticMontage>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_PlaySyncAestheticMontage;
-
-// Class Runtime.ShopItemSorter
-// 0x0008 (0x0030 - 0x0028)
-class UShopItemSorter : public UObject
-{
-public:
-	bool                                          m_bIsDescending;                                   // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	ESortResult BPE_Compare(const struct FShopItem& _first, const struct FShopItem& _second) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ShopItemSorter")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ShopItemSorter")
-	}
-	static class UShopItemSorter* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UShopItemSorter>();
-	}
-};
-DUMPER7_ASSERTS_UShopItemSorter;
-
-// Class Runtime.ShopItemByRaritySorter
-// 0x0000 (0x0030 - 0x0030)
-class UShopItemByRaritySorter final : public UShopItemSorter
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ShopItemByRaritySorter")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ShopItemByRaritySorter")
-	}
-	static class UShopItemByRaritySorter* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UShopItemByRaritySorter>();
-	}
-};
-DUMPER7_ASSERTS_UShopItemByRaritySorter;
-
-// Class Runtime.HUD_NameTagManagerWidget
-// 0x0010 (0x0C00 - 0x0BF0)
-class UHUD_NameTagManagerWidget final : public USCUserWidget
-{
-public:
-	TArray<class UBaseTargetWidget*>              m_VisibleNameTagArray;                             // 0x0BF0(0x0010)(BlueprintVisible, ExportObject, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-
-public:
-	void BPF_SortNameTagArrayByDistanceFromTarget(class AActor* _target);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("HUD_NameTagManagerWidget")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"HUD_NameTagManagerWidget")
-	}
-	static class UHUD_NameTagManagerWidget* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UHUD_NameTagManagerWidget>();
-	}
-};
-DUMPER7_ASSERTS_UHUD_NameTagManagerWidget;
-
-// Class Runtime.BallCaptureCondition
-// 0x0038 (0x0060 - 0x0028)
-class UBallCaptureCondition final : public UObject
-{
-public:
-	struct FAnimSequencePickerInstance            m_MontagePicker;                                   // 0x0028(0x0038)(Edit, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-public:
-	bool BPF_PredictCapture(const class ARuntimeCharacter* _character, class ABall* _ball, struct FGameplayAbilityTargetDataHandle* _outResult) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallCaptureCondition")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallCaptureCondition")
-	}
-	static class UBallCaptureCondition* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallCaptureCondition>();
-	}
-};
-DUMPER7_ASSERTS_UBallCaptureCondition;
-
-// Class Runtime.RawVector2DTargetDatasource
-// 0x0028 (0x00D0 - 0x00A8)
-class URawVector2DTargetDatasource final : public UGenericTargetDatasource
-{
-public:
-	struct FRawVector2DDataPickerInfos            m_Vector2DInfos;                                   // 0x00A8(0x0020)(Deprecated, Protected, NativeAccessSpecifierProtected)
-	bool                                          m_bAreDataDeprecated;                              // 0x00C8(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("RawVector2DTargetDatasource")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"RawVector2DTargetDatasource")
-	}
-	static class URawVector2DTargetDatasource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<URawVector2DTargetDatasource>();
-	}
-};
-DUMPER7_ASSERTS_URawVector2DTargetDatasource;
-
-// Class Runtime.AbilityTask_PredictBallCapture
-// 0x0060 (0x00F8 - 0x0098)
-class UAbilityTask_PredictBallCapture final : public UAbilityTask
-{
-public:
-	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& _result)> OnCapturePredicted; // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_A8[0x50];                                      // 0x00A8(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_PredictBallCapture* BPF_PredictBallCapture(class UGameplayAbility* _owningAbility, const struct FGameplayTagQuery& _tagCondition, TSubclassOf<class UBallCaptureCondition> _condition);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_PredictBallCapture")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_PredictBallCapture")
-	}
-	static class UAbilityTask_PredictBallCapture* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_PredictBallCapture>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_PredictBallCapture;
-
-// Class Runtime.ShootAnimationMetadata
-// 0x00A8 (0x0488 - 0x03E0)
-class UShootAnimationMetadata : public URuntimeAnimationMetadata
-{
-public:
-	struct FIntDataBinding                        m_iBuildUpFrameCount;                              // 0x03E0(0x0048)(Edit, Protected, NativeAccessSpecifierProtected)
-	bool                                          m_bSkipStretchTimeByBuildUp;                       // 0x0428(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bSnapBallOnBallBoneDuringFreezeFrame;            // 0x0429(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_42A[0x6];                                      // 0x042A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UTimeStretchNotify>         m_NotifyStretchBuildUp;                            // 0x0430(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_438[0x50];                                     // 0x0438(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ShootAnimationMetadata")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ShootAnimationMetadata")
-	}
-	static class UShootAnimationMetadata* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UShootAnimationMetadata>();
-	}
-};
-DUMPER7_ASSERTS_UShootAnimationMetadata;
-
-// Class Runtime.HighPowerShootAnimationMetadata
-// 0x0000 (0x0488 - 0x0488)
-class UHighPowerShootAnimationMetadata : public UShootAnimationMetadata
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("HighPowerShootAnimationMetadata")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"HighPowerShootAnimationMetadata")
-	}
-	static class UHighPowerShootAnimationMetadata* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UHighPowerShootAnimationMetadata>();
-	}
-};
-DUMPER7_ASSERTS_UHighPowerShootAnimationMetadata;
-
-// Class Runtime.AbilityTask_BallCapture
-// 0x0050 (0x00E8 - 0x0098)
-class UAbilityTask_BallCapture final : public UAbilityTask
-{
-public:
-	uint8                                         Pad_98[0x50];                                      // 0x0098(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UAbilityTask_BallCapture* BPF_CaptureBall(class UGameplayAbility* _owningAbility, TSubclassOf<class UBallCaptureCondition> _condition);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_BallCapture")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_BallCapture")
-	}
-	static class UAbilityTask_BallCapture* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_BallCapture>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_BallCapture;
-
-// Class Runtime.AbilityTask_TagsPerMovementMode
-// 0x0060 (0x00F8 - 0x0098)
-class UAbilityTask_TagsPerMovementMode final : public UAbilityTask
-{
-public:
-	uint8                                         Pad_98[0x10];                                      // 0x0098(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<EMovementMode, TSubclassOf<class UTagAvailabilityLayerContainer>> m_TagsPerMovementMode;    // 0x00A8(0x0050)(Transient, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
-
-public:
-	static class UAbilityTask_TagsPerMovementMode* BPF_TagsPerMovementMode(class UGameplayAbility* _owningAbility, const TMap<EMovementMode, TSubclassOf<class UTagAvailabilityLayerContainer>>& _tagsPerMovementMode);
-
-	void OnMovementModeChanged(class ACharacter* _inCharacter, EMovementMode _ePrevMovementMode, uint8 _uiPreviousCustomMode);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AbilityTask_TagsPerMovementMode")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AbilityTask_TagsPerMovementMode")
-	}
-	static class UAbilityTask_TagsPerMovementMode* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAbilityTask_TagsPerMovementMode>();
-	}
-};
-DUMPER7_ASSERTS_UAbilityTask_TagsPerMovementMode;
+DUMPER7_ASSERTS_UAbilityTask_MoveToCollision;
 
 // Class Runtime.BaseShootRotationForceComputation
 // 0x0000 (0x0028 - 0x0028)
@@ -1473,6 +655,355 @@ public:
 };
 DUMPER7_ASSERTS_UInputShootRotationForceComputation;
 
+// Class Runtime.GoalInvolvedTargetDataHelpers
+// 0x0000 (0x0028 - 0x0028)
+class UGoalInvolvedTargetDataHelpers final : public UBlueprintFunctionLibrary
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("GoalInvolvedTargetDataHelpers")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"GoalInvolvedTargetDataHelpers")
+	}
+	static class UGoalInvolvedTargetDataHelpers* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGoalInvolvedTargetDataHelpers>();
+	}
+};
+DUMPER7_ASSERTS_UGoalInvolvedTargetDataHelpers;
+
+// Class Runtime.AbilityTask_NetworkFindBallTarget
+// 0x0100 (0x0198 - 0x0098)
+class UAbilityTask_NetworkFindBallTarget final : public UAbilityTask
+{
+public:
+	TMulticastInlineDelegate<void(const struct FBallInterceptionPointTargetData& _found, const struct FTargetingContext& _targetContext)> OnFound; // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	TMulticastInlineDelegate<void(const struct FBallInterceptionPointTargetData& _found, const struct FTargetingContext& _targetContext)> OnUnfound; // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	TMulticastInlineDelegate<void(const struct FBallInterceptionPointTargetData& _found, const struct FTargetingContext& _targetContext)> OnTargetRejected; // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	TMulticastInlineDelegate<void(const struct FBallInterceptionPointTargetData& _found, const struct FTargetingContext& _targetContext)> OnCancel; // 0x00C8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_D8[0xC0];                                      // 0x00D8(0x00C0)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_NetworkFindBallTarget* BPF_NetworkFindBallTarget(class UGameplayAbility* _owningAbility, const struct FOnDemandTargetProvider& _targetProvider, const struct FOnDemandTargetProvider& _targetValidationProvider, const struct FGameplayTag& _gameplayTag, bool _bDoOnce);
+	static class UAbilityTask_NetworkFindBallTarget* BPF_NetworkFindBallTargetWithCancelInput(class UGameplayAbility* _owningAbility, const struct FOnDemandTargetProvider& _targetProvider, const struct FOnDemandTargetProvider& _targetValidationProvider, const struct FGameplayTag& _gameplayTag, class USCInputAction* _inAction, EInputWatchTrigger _eWatchTrigger, bool _bDoOnce);
+
+	void InitCancel(class USCInputAction* _inAction, EInputWatchTrigger _eWatchTrigger);
+	void OnAbilityTaskCancel();
+	void OnCancelInput(const class USCInputAction* _action, const struct FInputActionState& _listenerState);
+	void OnServerReady();
+	void SearchTarget();
+	void ServerReceiveTargetData(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_NetworkFindBallTarget")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_NetworkFindBallTarget")
+	}
+	static class UAbilityTask_NetworkFindBallTarget* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_NetworkFindBallTarget>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_NetworkFindBallTarget;
+
+// Class Runtime.AbilityTask_NetworkHitProjection
+// 0x0090 (0x0128 - 0x0098)
+class UAbilityTask_NetworkHitProjection final : public UAbilityTask
+{
+public:
+	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnHitPredicted; // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	TMulticastInlineDelegate<void()>              OnHitProjectionFailed;                             // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	class UAbilityTask_HandleHitboxBase*          m_HandleHitboxBaseTaskPtr;                         // 0x00B8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_C0[0x68];                                      // 0x00C0(0x0068)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_NetworkHitProjection* BPF_NetworkHitProjection(class UGameplayAbility* _owningAbility, const struct FGameplayAbilityTargetDataHandle& _context, TSubclassOf<class UTargetDatasource> _datasource, TSubclassOf<class UTargetPicker> _picker, const struct FGameplayTag& _gameplayTag, class UAbilityTask_HandleHitboxBase* _handleHitboxTaskPtr);
+
+	void ServerReceiveTargetData(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_NetworkHitProjection")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_NetworkHitProjection")
+	}
+	static class UAbilityTask_NetworkHitProjection* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_NetworkHitProjection>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_NetworkHitProjection;
+
+// Class Runtime.Goal
+// 0x0068 (0x0318 - 0x02B0)
+class AGoal : public AActor
+{
+public:
+	uint8                                         m_uiTeam;                                          // 0x02B0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2B1[0x7];                                      // 0x02B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(class AGoal* _goal, uint8 _uiTeam)> BPE_OnCrossbarHit;             // 0x02B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
+	bool                                          m_bToggleRestartMatch;                             // 0x02C8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bToggleVFX;                                      // 0x02C9(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bToggleSFX;                                      // 0x02CA(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bToggleUIText;                                   // 0x02CB(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2CC[0x4];                                      // 0x02CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                m_vGoalExtraSize;                                  // 0x02D0(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2E8[0x30];                                     // 0x02E8(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void BPE_GetCollision(class USceneComponent** _outCollision) const;
+	bool BPF_IsPointInGoal(const struct FVector& _vPoint, bool _bUseGoalExtraSize) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("Goal")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"Goal")
+	}
+	static class AGoal* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AGoal>();
+	}
+};
+DUMPER7_ASSERTS_AGoal;
+
+// Class Runtime.AbilityTask_NetworkHitValidation
+// 0x0068 (0x0100 - 0x0098)
+class UAbilityTask_NetworkHitValidation final : public UAbilityTask
+{
+public:
+	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnHitPredicted; // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	TMulticastInlineDelegate<void()>              OnHitProjectionFailed;                             // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	class UAbilityTask_HandleHitboxBase*          m_HandleHitboxBaseTaskPtr;                         // 0x00B8(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_C0[0x40];                                      // 0x00C0(0x0040)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_NetworkHitValidation* BPF_NetworkHitValidation(class UGameplayAbility* _owningAbility, const struct FGameplayAbilityTargetDataHandle& _context, TSubclassOf<class UTargetDatasource> _datasource, TSubclassOf<class UTargetPicker> _picker, const struct FGameplayTag& _gameplayTag, class UAbilityTask_HandleHitboxBase* _handleHitboxTaskPtr);
+
+	void ServerReceiveTargetData(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_NetworkHitValidation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_NetworkHitValidation")
+	}
+	static class UAbilityTask_NetworkHitValidation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_NetworkHitValidation>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_NetworkHitValidation;
+
+// Class Runtime.AbilityTask_NetworkSyncShootData
+// 0x0118 (0x02B8 - 0x01A0)
+class UAbilityTask_NetworkSyncShootData final : public UAbilityTask_NetworkSyncWithDelay
+{
+public:
+	uint8                                         Pad_1A0[0x118];                                    // 0x01A0(0x0118)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_NetworkSyncShootData* BPF_NetworkSyncShootDataWithInputs(class USCGameplayAbility* _owningAbility, const struct FRTInputActionsForNetworkSyncShoot& _inputAction, struct FShootPrepTargetData& _inOutShootPrep, const struct FGameplayAbilityTargetDataHandle& _context, const TArray<TSubclassOf<class UTrajectoryStatus>>& _trajectoryStatus, const struct FSCConditionsToSyncEarly& _conditionsToSyncEarly, const struct FRTNetworkSyncShootTimeArg& _networkSyncTimeArg, const struct FSCNetworkSyncData& _syncData, const struct FGameplayTag& _shootTypeTag);
+
+	void BPF_GetShootParams(struct FShootParams* _outShootParams) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_NetworkSyncShootData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_NetworkSyncShootData")
+	}
+	static class UAbilityTask_NetworkSyncShootData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_NetworkSyncShootData>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_NetworkSyncShootData;
+
+// Class Runtime.BallStealBinder
+// 0x0098 (0x0190 - 0x00F8)
+class UBallStealBinder final : public UGameStateScopedEventBinder
+{
+public:
+	struct FGameplayTag                           m_FeedLogPlayerStealTag;                           // 0x00F8(0x0008)(NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FGameplayTagQuery                      m_ThiefRequiredTags;                               // 0x0100(0x0048)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FGameplayTagQuery                      m_StolenRequiredTags;                              // 0x0148(0x0048)(Edit, Protected, NativeAccessSpecifierProtected)
+
+public:
+	void OnBallStolen(class ARuntimePlayerState* _playerStateThief, class ARuntimePlayerState* _playerStateStolen);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallStealBinder")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallStealBinder")
+	}
+	static class UBallStealBinder* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallStealBinder>();
+	}
+};
+DUMPER7_ASSERTS_UBallStealBinder;
+
+// Class Runtime.RTCustomizationLevelSequenceDataAsset
+// 0x0000 (0x0150 - 0x0150)
+class URTCustomizationLevelSequenceDataAsset : public USCCustomizationLevelSequenceDataAsset
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("RTCustomizationLevelSequenceDataAsset")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"RTCustomizationLevelSequenceDataAsset")
+	}
+	static class URTCustomizationLevelSequenceDataAsset* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<URTCustomizationLevelSequenceDataAsset>();
+	}
+};
+DUMPER7_ASSERTS_URTCustomizationLevelSequenceDataAsset;
+
+// Class Runtime.FinisherCustomizationDataAsset
+// 0x0008 (0x0158 - 0x0150)
+class UFinisherCustomizationDataAsset final : public URTCustomizationLevelSequenceDataAsset
+{
+public:
+	bool                                          m_bHideBallDuringSequence;                         // 0x0150(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_151[0x3];                                      // 0x0151(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         m_iMinimumPlayersNumberRequired;                   // 0x0154(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("FinisherCustomizationDataAsset")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"FinisherCustomizationDataAsset")
+	}
+	static class UFinisherCustomizationDataAsset* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UFinisherCustomizationDataAsset>();
+	}
+};
+DUMPER7_ASSERTS_UFinisherCustomizationDataAsset;
+
+// Class Runtime.AbilityTask_NetworkSyncTargetData
+// 0x0088 (0x0120 - 0x0098)
+class UAbilityTask_NetworkSyncTargetData final : public UAbilityTask
+{
+public:
+	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnSync;      // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnTimeOut;   // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnCancel;    // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C8[0x58];                                      // 0x00C8(0x0058)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_NetworkSyncTargetData* BPF_NetworkSyncTargetData(class UGameplayAbility* _owningAbility, const struct FGameplayAbilityTargetDataHandle& _targetData, float _fSleepDuration, float _fListenDuration, float _fLagCompensation);
+
+	void OnCancelledCallback();
+	void OnReplicatedCallback(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
+	void OnSignalCallback();
+	void SendSignalFromServer();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_NetworkSyncTargetData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_NetworkSyncTargetData")
+	}
+	static class UAbilityTask_NetworkSyncTargetData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_NetworkSyncTargetData>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_NetworkSyncTargetData;
+
+// Class Runtime.ShootForceShootPrepCondition
+// 0x0028 (0x00A0 - 0x0078)
+class UShootForceShootPrepCondition final : public UTargetDataCondition
+{
+public:
+	struct FSCMathExpressionFloat                 m_MathExpression;                                  // 0x0078(0x0020)(Edit, NativeAccessSpecifierPrivate)
+	bool                                          m_bConvertToPercent;                               // 0x0098(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ShootForceShootPrepCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShootForceShootPrepCondition")
+	}
+	static class UShootForceShootPrepCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShootForceShootPrepCondition>();
+	}
+};
+DUMPER7_ASSERTS_UShootForceShootPrepCondition;
+
+// Class Runtime.AbilityTask_NetworkWaitTargetData
+// 0x0070 (0x0108 - 0x0098)
+class UAbilityTask_NetworkWaitTargetData final : public UAbilityTask
+{
+public:
+	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnReceived;  // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnTimeOut;   // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& Data)> OnCancel;    // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C8[0x40];                                      // 0x00C8(0x0040)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_NetworkWaitTargetData* BPF_NetworkWaitTargetData(class UGameplayAbility* _owningAbility, EAbilityTaskNetWaitType _eType, const struct FGameplayAbilityTargetDataHandle& _targetData, float _fSleepDuration, float _fListenDuration);
+
+	void OnCancelledCallback();
+	void OnReplicatedCallback(const struct FGameplayAbilityTargetDataHandle& _data, const struct FGameplayTag& _activationTag);
+	void OnSignalCallback();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_NetworkWaitTargetData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_NetworkWaitTargetData")
+	}
+	static class UAbilityTask_NetworkWaitTargetData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_NetworkWaitTargetData>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_NetworkWaitTargetData;
+
 // Class Runtime.GoalKeeperDashInputToBallTargetAngleCondition
 // 0x0008 (0x0080 - 0x0078)
 class UGoalKeeperDashInputToBallTargetAngleCondition final : public UTargetDataCondition
@@ -1496,6 +1027,509 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UGoalKeeperDashInputToBallTargetAngleCondition;
+
+// Class Runtime.AbilityTask_PlayMontageFromAestheticMontage
+// 0x0000 (0x0228 - 0x0228)
+class UAbilityTask_PlayMontageFromAestheticMontage final : public UAbilityTask_SCPlayMontageAndWait
+{
+public:
+	static class UAbilityTask_PlayMontageFromAestheticMontage* BPF_PlayMontageFromAestheticMontage(class USCGameplayAbility* _owningAbility, class UAbilityTask_PlaySimulatedAestheticMontage* _aestheticMontageTask, EAbilityExecOrigin _eIn, EAbilityExecOutputWithValidation* _eOut, class FName _taskInstanceName, float _fFallbackStartTime, TSubclassOf<class UAnimSequencePicker> _fallbackPicker, class FName _fallbackSlotName, class UBasicMontagePlayerConfiguration* _overrideConfiguration, bool _bLog, bool _bStopWhenAbilityEnds, const struct FGameplayAbilityTargetDataHandle& _playerContext, class FName _StartSection);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_PlayMontageFromAestheticMontage")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_PlayMontageFromAestheticMontage")
+	}
+	static class UAbilityTask_PlayMontageFromAestheticMontage* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_PlayMontageFromAestheticMontage>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_PlayMontageFromAestheticMontage;
+
+// Class Runtime.AbilityTask_PlaySimulatedAestheticMontage
+// 0x0060 (0x00F8 - 0x0098)
+class UAbilityTask_PlaySimulatedAestheticMontage final : public UAbilityTask
+{
+public:
+	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void()>              OnBlendOut;                                        // 0x00A0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void()>              OnEnded;                                           // 0x00B0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UAnimMontage*                           m_AestheticMontage;                                // 0x00C0(0x0008)(ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UAnimMontage*                           m_BaseMontage;                                     // 0x00C8(0x0008)(Net, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bMirror;                                         // 0x00D0(0x0001)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_D1[0x3];                                       // 0x00D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fPlayRate;                                       // 0x00D4(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fBlendOutAnimTime;                               // 0x00D8(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FName                                   m_NewSlotTrack;                                    // 0x00DC(0x0008)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E4[0x14];                                      // 0x00E4(0x0014)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_PlaySimulatedAestheticMontage* BPF_PlaySimulatedAstheticMontage(class UGameplayAbility* _owningAbility, class UAnimMontage* _montage, bool _bMirror, class FName _newSlotTrack, float _fPlayRate, float _fBlendOutAnimTime);
+	static class UAbilityTask_PlaySimulatedAestheticMontage* BPF_PlaySimulatedTimedAstheticMontage(class UGameplayAbility* _owningAbility, class UAnimMontage* _montage, bool _bMirror, class FName _newSlotTrack, float _fWorldSyncTime, float _fAnimSyncTime, float _fBlendOutAnimTime);
+
+	void OnAnyMontageBlendingOut(class UAnimMontage* _montage, bool bInterrupted);
+	void OnAnyMontageEnded(class UAnimMontage* _montage, bool _bInterrupted);
+
+	float GetMontageInstancePosition() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_PlaySimulatedAestheticMontage")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_PlaySimulatedAestheticMontage")
+	}
+	static class UAbilityTask_PlaySimulatedAestheticMontage* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_PlaySimulatedAestheticMontage>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_PlaySimulatedAestheticMontage;
+
+// Class Runtime.ShopItemFilter
+// 0x0000 (0x0028 - 0x0028)
+class UShopItemFilter : public UObject
+{
+public:
+	bool BPE_ShouldBeRemoved(const class UCustomizationSubsystem* _subsystem, const struct FShopItem& _item, bool _bIsActivated) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ShopItemFilter")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShopItemFilter")
+	}
+	static class UShopItemFilter* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShopItemFilter>();
+	}
+};
+DUMPER7_ASSERTS_UShopItemFilter;
+
+// Class Runtime.ShopItemBuyableFilter
+// 0x0000 (0x0028 - 0x0028)
+class UShopItemBuyableFilter final : public UShopItemFilter
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ShopItemBuyableFilter")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShopItemBuyableFilter")
+	}
+	static class UShopItemBuyableFilter* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShopItemBuyableFilter>();
+	}
+};
+DUMPER7_ASSERTS_UShopItemBuyableFilter;
+
+// Class Runtime.HinderingGameplayAbility
+// 0x00B0 (0x06F8 - 0x0648)
+class UHinderingGameplayAbility : public USCGameplayAbility
+{
+public:
+	struct FGameplayTagContainer                  m_HinderedTags;                                    // 0x0648(0x0020)(Edit, NativeAccessSpecifierPublic)
+	struct FBaseActorConditionInstance            m_IsImpactedByHinderingCondition;                  // 0x0668(0x0010)(Edit, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FBaseActorConditionInstance            m_ActivateCollisionWithPawnsCondition;             // 0x0678(0x0010)(Edit, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	ECollisionChannel                             m_eBlockPawnsChannel;                              // 0x0688(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_689[0x7];                                      // 0x0689(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCharacterHinderingConfig*              m_AlliesHinderingConfig;                           // 0x0690(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UCharacterHinderingConfig*              m_EnnemiesHinderingConfig;                         // 0x0698(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TMap<TWeakObjectPtr<class APlayerState>, TWeakObjectPtr<class UAbilityTask_HandleHindering>> m_HinderingCauserToTask; // 0x06A0(0x0050)(Transient, UObjectWrapper, NativeAccessSpecifierPublic)
+	class USCDynamicSpeedMovementComponent*       m_MovementComponent;                               // 0x06F0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	void OnPlayerStateRemoved(class APlayerState* _playerState);
+	void ServerNotifyHindering(class APlayerState* _player, float _fClientServerTime, float _fTimeSinceLastServerTime);
+	void ServerNotifyHinderingFast(class APlayerState* _player, float _fClientServerTime);
+	void ServerNotifyHinderingStop(class APlayerState* _player);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("HinderingGameplayAbility")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"HinderingGameplayAbility")
+	}
+	static class UHinderingGameplayAbility* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UHinderingGameplayAbility>();
+	}
+};
+DUMPER7_ASSERTS_UHinderingGameplayAbility;
+
+// Class Runtime.AbilityTask_PlaySyncMontageBase
+// 0x0048 (0x00E0 - 0x0098)
+class UAbilityTask_PlaySyncMontageBase : public UAbilityTask
+{
+public:
+	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimMontage*                           m_MasterMontage;                                   // 0x00A0(0x0008)(Net, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bMasterMirror;                                   // 0x00A8(0x0001)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_A9[0x3];                                       // 0x00A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fBlendInDuration;                                // 0x00AC(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fLongBlendOutDuration;                           // 0x00B0(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fPlayMontageAtWorldTime;                         // 0x00B4(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fEndMontageAtWorldTime;                          // 0x00B8(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_BC[0x24];                                      // 0x00BC(0x0024)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void BPF_CancelBlendOutDuration();
+	void OnAnyMontageBlendingOut(class UAnimMontage* _montage, bool bInterrupted);
+	void OnAnyMontageStarting(class UAnimMontage* _montage);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_PlaySyncMontageBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_PlaySyncMontageBase")
+	}
+	static class UAbilityTask_PlaySyncMontageBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_PlaySyncMontageBase>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_PlaySyncMontageBase;
+
+// Class Runtime.ShootSnapComputation
+// 0x0018 (0x0090 - 0x0078)
+class UShootSnapComputation final : public USnapAnimationComputation
+{
+public:
+	bool                                          m_bUseShootDirectionToPlaceSnapLocation;           // 0x0078(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_79[0x3];                                       // 0x0079(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTag                           m_DirectionTargetDataName;                         // 0x007C(0x0008)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bUseBallDirectionToPlaceSnapLocation;            // 0x0084(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bKeepActorForwardToPlaceSnapLocation;            // 0x0085(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_86[0x2];                                       // 0x0086(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class USnapAnimationComputation*              m_NextStep;                                        // 0x0088(0x0008)(Edit, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ShootSnapComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShootSnapComputation")
+	}
+	static class UShootSnapComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShootSnapComputation>();
+	}
+};
+DUMPER7_ASSERTS_UShootSnapComputation;
+
+// Class Runtime.AbilityTask_PlaySyncAestheticMontage
+// 0x0018 (0x00F8 - 0x00E0)
+class UAbilityTask_PlaySyncAestheticMontage final : public UAbilityTask_PlaySyncMontageBase
+{
+public:
+	class UAnimMontage*                           m_FollowerMontage;                                 // 0x00E0(0x0008)(Net, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bFollowerMirror;                                 // 0x00E8(0x0001)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E9[0x3];                                       // 0x00E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   m_NewSlotTrack;                                    // 0x00EC(0x0008)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F4[0x4];                                       // 0x00F4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_PlaySyncAestheticMontage* BPF_PlayAbilitySyncAestheticMontage(class UGameplayAbility* _owningAbility, class UAnimMontage* _followerMontage, bool _bFollowerMirror, float _fPlayMontageAtWorldTime, float _fEndMontageAtWorldTime, class FName _newSlotTrack, float _fBlendInDuration, float _fLongBlendOutDuration);
+	static class UAbilityTask_PlaySyncAestheticMontage* BPF_PlaySyncAestheticMontage(class UGameplayAbility* _owningAbility, class UAnimMontage* _masterMontage, bool _bMasterMirror, class UAnimMontage* _followerMontage, bool _bFollowerMirror, float _fPlayMontageAtWorldTime, float _fEndMontageAtWorldTime, class FName _newSlotTrack, float _fBlendInDuration, float _fLongBlendOutDuration);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_PlaySyncAestheticMontage")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_PlaySyncAestheticMontage")
+	}
+	static class UAbilityTask_PlaySyncAestheticMontage* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_PlaySyncAestheticMontage>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_PlaySyncAestheticMontage;
+
+// Class Runtime.RuntimeAnimationMetadata
+// 0x0028 (0x03E0 - 0x03B8)
+class URuntimeAnimationMetadata : public UPlayMontageAnimationMetadata
+{
+public:
+	TSoftClassPtr<class UClass>                   m_BaseCharacter;                                   // 0x03B8(0x0028)(Edit, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("RuntimeAnimationMetadata")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"RuntimeAnimationMetadata")
+	}
+	static class URuntimeAnimationMetadata* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<URuntimeAnimationMetadata>();
+	}
+};
+DUMPER7_ASSERTS_URuntimeAnimationMetadata;
+
+// Class Runtime.BallCaptureCondition
+// 0x0038 (0x0060 - 0x0028)
+class UBallCaptureCondition final : public UObject
+{
+public:
+	struct FAnimSequencePickerInstance            m_MontagePicker;                                   // 0x0028(0x0038)(Edit, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+public:
+	bool BPF_PredictCapture(const class ARuntimeCharacter* _character, class ABall* _ball, struct FGameplayAbilityTargetDataHandle* _outResult) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallCaptureCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallCaptureCondition")
+	}
+	static class UBallCaptureCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallCaptureCondition>();
+	}
+};
+DUMPER7_ASSERTS_UBallCaptureCondition;
+
+// Class Runtime.AbilityTask_PredictBallCapture
+// 0x0060 (0x00F8 - 0x0098)
+class UAbilityTask_PredictBallCapture final : public UAbilityTask
+{
+public:
+	TMulticastInlineDelegate<void(const struct FGameplayAbilityTargetDataHandle& _result)> OnCapturePredicted; // 0x0098(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_A8[0x50];                                      // 0x00A8(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_PredictBallCapture* BPF_PredictBallCapture(class UGameplayAbility* _owningAbility, const struct FGameplayTagQuery& _tagCondition, TSubclassOf<class UBallCaptureCondition> _condition);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_PredictBallCapture")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_PredictBallCapture")
+	}
+	static class UAbilityTask_PredictBallCapture* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_PredictBallCapture>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_PredictBallCapture;
+
+// Class Runtime.ShootOrientationShootPrepCondition
+// 0x0008 (0x0080 - 0x0078)
+class UShootOrientationShootPrepCondition final : public UTargetDataCondition
+{
+public:
+	ESCCardinalPoints                             m_eCardinalPoint;                                  // 0x0078(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bUseVelocityAsRefDir;                            // 0x0079(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_7A[0x6];                                       // 0x007A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ShootOrientationShootPrepCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShootOrientationShootPrepCondition")
+	}
+	static class UShootOrientationShootPrepCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShootOrientationShootPrepCondition>();
+	}
+};
+DUMPER7_ASSERTS_UShootOrientationShootPrepCondition;
+
+// Class Runtime.GoalScopedBinder
+// 0x0000 (0x00F8 - 0x00F8)
+class UGoalScopedBinder : public UGameStateScopedEventBinder
+{
+public:
+	void OnGoalRegistered(class AGoal* _goal);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("GoalScopedBinder")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"GoalScopedBinder")
+	}
+	static class UGoalScopedBinder* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGoalScopedBinder>();
+	}
+};
+DUMPER7_ASSERTS_UGoalScopedBinder;
+
+// Class Runtime.GoalCrossbarHitBinder
+// 0x0000 (0x00F8 - 0x00F8)
+class UGoalCrossbarHitBinder final : public UGoalScopedBinder
+{
+public:
+	void OnGoalCrossbarHit(class AGoal* _goal, uint8 _uiTeam);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("GoalCrossbarHitBinder")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"GoalCrossbarHitBinder")
+	}
+	static class UGoalCrossbarHitBinder* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGoalCrossbarHitBinder>();
+	}
+};
+DUMPER7_ASSERTS_UGoalCrossbarHitBinder;
+
+// Class Runtime.AbilityTask_BallCapture
+// 0x0050 (0x00E8 - 0x0098)
+class UAbilityTask_BallCapture final : public UAbilityTask
+{
+public:
+	uint8                                         Pad_98[0x50];                                      // 0x0098(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UAbilityTask_BallCapture* BPF_CaptureBall(class UGameplayAbility* _owningAbility, TSubclassOf<class UBallCaptureCondition> _condition);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_BallCapture")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_BallCapture")
+	}
+	static class UAbilityTask_BallCapture* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_BallCapture>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_BallCapture;
+
+// Class Runtime.AbilityTask_TagsPerMovementMode
+// 0x0060 (0x00F8 - 0x0098)
+class UAbilityTask_TagsPerMovementMode final : public UAbilityTask
+{
+public:
+	uint8                                         Pad_98[0x10];                                      // 0x0098(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<EMovementMode, TSubclassOf<class UTagAvailabilityLayerContainer>> m_TagsPerMovementMode;    // 0x00A8(0x0050)(Transient, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
+
+public:
+	static class UAbilityTask_TagsPerMovementMode* BPF_TagsPerMovementMode(class UGameplayAbility* _owningAbility, const TMap<EMovementMode, TSubclassOf<class UTagAvailabilityLayerContainer>>& _tagsPerMovementMode);
+
+	void OnMovementModeChanged(class ACharacter* _inCharacter, EMovementMode _ePrevMovementMode, uint8 _uiPreviousCustomMode);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("AbilityTask_TagsPerMovementMode")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AbilityTask_TagsPerMovementMode")
+	}
+	static class UAbilityTask_TagsPerMovementMode* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UAbilityTask_TagsPerMovementMode>();
+	}
+};
+DUMPER7_ASSERTS_UAbilityTask_TagsPerMovementMode;
+
+// Class Runtime.CustomizationPartParser
+// 0x0000 (0x0028 - 0x0028)
+class UCustomizationPartParser : public UCharacterCustomizationParser
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("CustomizationPartParser")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"CustomizationPartParser")
+	}
+	static class UCustomizationPartParser* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCustomizationPartParser>();
+	}
+};
+DUMPER7_ASSERTS_UCustomizationPartParser;
+
+// Class Runtime.CustomizationParameterParser
+// 0x0000 (0x0028 - 0x0028)
+class UCustomizationParameterParser : public UCustomizationPartParser
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("CustomizationParameterParser")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"CustomizationParameterParser")
+	}
+	static class UCustomizationParameterParser* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCustomizationParameterParser>();
+	}
+};
+DUMPER7_ASSERTS_UCustomizationParameterParser;
+
+// Class Runtime.CustomizationTextureParser
+// 0x0000 (0x0028 - 0x0028)
+class UCustomizationTextureParser final : public UCustomizationParameterParser
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("CustomizationTextureParser")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"CustomizationTextureParser")
+	}
+	static class UCustomizationTextureParser* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCustomizationTextureParser>();
+	}
+};
+DUMPER7_ASSERTS_UCustomizationTextureParser;
 
 // Class Runtime.AbilityTask_WaitForBoolean
 // 0x0020 (0x00B8 - 0x0098)
@@ -1553,65 +1587,46 @@ public:
 };
 DUMPER7_ASSERTS_UAbilityTask_WaitForComponentOverlap;
 
-// Class Runtime.CustomizationPartParser
-// 0x0000 (0x0028 - 0x0028)
-class UCustomizationPartParser : public UCharacterCustomizationParser
+// Class Runtime.LockerRoomPrematchStateViewModel
+// 0x0138 (0x01A8 - 0x0070)
+class ULockerRoomPrematchStateViewModel final : public USCViewModel
 {
 public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("CustomizationPartParser")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"CustomizationPartParser")
-	}
-	static class UCustomizationPartParser* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCustomizationPartParser>();
-	}
-};
-DUMPER7_ASSERTS_UCustomizationPartParser;
+	struct FColorPalette                          m_LocalPlayerHomePalette;                          // 0x0070(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColorPalette                          m_LocalPlayerAwayPalette;                          // 0x0088(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColorPalette                          m_LocalPlayerTeamCaptainPalette;                   // 0x00A0(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColorPalette                          m_SquadCaptainPalette;                             // 0x00B8(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ETeamColorKitType                             m_eTeamColorSelectedKit;                           // 0x00D0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_D1[0x7];                                       // 0x00D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColorPalette                          m_OpponentColorPalette;                            // 0x00D8(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColorPalette                          m_MatchHomeColorPalette;                           // 0x00F0(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColorPalette                          m_MatchAwayColorPalette;                           // 0x0108(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSoftObjectPtr<class UCustomizationARDataAsset> m_TeamAr;                                        // 0x0120(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSoftObjectPtr<class UCustomizationARDataAsset> m_OpponentAr;                                    // 0x0148(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSoftObjectPtr<class USCMapCustomizationDataAsset> m_Stadium;                                    // 0x0170(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_ConnectedPlayers;                                // 0x0198(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_ExpectedPlayers;                                 // 0x019C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bShowPrematchTeamDisplay;                        // 0x01A0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1A1[0x7];                                      // 0x01A1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
-// Class Runtime.CustomizationParameterParser
-// 0x0000 (0x0028 - 0x0028)
-class UCustomizationParameterParser : public UCustomizationPartParser
-{
 public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("CustomizationParameterParser")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"CustomizationParameterParser")
-	}
-	static class UCustomizationParameterParser* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCustomizationParameterParser>();
-	}
-};
-DUMPER7_ASSERTS_UCustomizationParameterParser;
+	struct FColorPalette BPF_GetSelectedPalette() const;
 
-// Class Runtime.CustomizationFloatParser
-// 0x0000 (0x0028 - 0x0028)
-class UCustomizationFloatParser final : public UCustomizationParameterParser
-{
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("CustomizationFloatParser")
+		STATIC_CLASS_IMPL("LockerRoomPrematchStateViewModel")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"CustomizationFloatParser")
+		STATIC_NAME_IMPL(L"LockerRoomPrematchStateViewModel")
 	}
-	static class UCustomizationFloatParser* GetDefaultObj()
+	static class ULockerRoomPrematchStateViewModel* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UCustomizationFloatParser>();
+		return GetDefaultObjImpl<ULockerRoomPrematchStateViewModel>();
 	}
 };
-DUMPER7_ASSERTS_UCustomizationFloatParser;
+DUMPER7_ASSERTS_ULockerRoomPrematchStateViewModel;
 
 // Class Runtime.AbilityTask_WaitForCondition
 // 0x0028 (0x00C0 - 0x0098)
@@ -1668,28 +1683,25 @@ public:
 };
 DUMPER7_ASSERTS_UAbilityTask_WaitTagContainerAdded;
 
-// Class Runtime.MatchCountdownStartBinder
-// 0x0000 (0x00F8 - 0x00F8)
-class UMatchCountdownStartBinder final : public UGameStateScopedEventBinder
+// Class Runtime.CustomizationGlobalFilterParser
+// 0x0000 (0x0028 - 0x0028)
+class UCustomizationGlobalFilterParser final : public UCharacterCustomizationParser
 {
-public:
-	void OnMatchCountdownStart(class ARuntimeMatchGameState* _matchGameState);
-
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MatchCountdownStartBinder")
+		STATIC_CLASS_IMPL("CustomizationGlobalFilterParser")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MatchCountdownStartBinder")
+		STATIC_NAME_IMPL(L"CustomizationGlobalFilterParser")
 	}
-	static class UMatchCountdownStartBinder* GetDefaultObj()
+	static class UCustomizationGlobalFilterParser* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMatchCountdownStartBinder>();
+		return GetDefaultObjImpl<UCustomizationGlobalFilterParser>();
 	}
 };
-DUMPER7_ASSERTS_UMatchCountdownStartBinder;
+DUMPER7_ASSERTS_UCustomizationGlobalFilterParser;
 
 // Class Runtime.ActionCommand
 // 0x0000 (0x0028 - 0x0028)
@@ -1736,45 +1748,25 @@ public:
 };
 DUMPER7_ASSERTS_UActionCommandsComponent;
 
-// Class Runtime.CustomizationExtraInfoParser
+// Class Runtime.CustomizationMeshParser
 // 0x0000 (0x0028 - 0x0028)
-class UCustomizationExtraInfoParser : public UCharacterCustomizationParser
+class UCustomizationMeshParser final : public UCustomizationPartParser
 {
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("CustomizationExtraInfoParser")
+		STATIC_CLASS_IMPL("CustomizationMeshParser")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"CustomizationExtraInfoParser")
+		STATIC_NAME_IMPL(L"CustomizationMeshParser")
 	}
-	static class UCustomizationExtraInfoParser* GetDefaultObj()
+	static class UCustomizationMeshParser* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UCustomizationExtraInfoParser>();
+		return GetDefaultObjImpl<UCustomizationMeshParser>();
 	}
 };
-DUMPER7_ASSERTS_UCustomizationExtraInfoParser;
-
-// Class Runtime.CustomizationTeamPaletteParser
-// 0x0000 (0x0028 - 0x0028)
-class UCustomizationTeamPaletteParser final : public UCustomizationExtraInfoParser
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("CustomizationTeamPaletteParser")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"CustomizationTeamPaletteParser")
-	}
-	static class UCustomizationTeamPaletteParser* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCustomizationTeamPaletteParser>();
-	}
-};
-DUMPER7_ASSERTS_UCustomizationTeamPaletteParser;
+DUMPER7_ASSERTS_UCustomizationMeshParser;
 
 // Class Runtime.ActionCommandsManager
 // 0x0038 (0x02E8 - 0x02B0)
@@ -1841,25 +1833,67 @@ public:
 };
 DUMPER7_ASSERTS_AActionCommandsStep;
 
-// Class Runtime.CustomizationTextureParser
-// 0x0000 (0x0028 - 0x0028)
-class UCustomizationTextureParser final : public UCustomizationParameterParser
+// Class Runtime.RuntimeLevelSequenceActor
+// 0x0070 (0x05D0 - 0x0560)
+class ARuntimeLevelSequenceActor : public ASCLevelSequenceActor
 {
+public:
+	bool                                          m_bReleaseBalls;                                   // 0x0558(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, ExposeOnSpawn, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_559[0x3];                                      // 0x0559(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSCMovieSceneObjectBindingName         m_ShooterBinding;                                  // 0x055C(0x0008)(Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_564[0x4];                                      // 0x0564(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagContainer                  m_ShootTypeTagContainer;                           // 0x0568(0x0020)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FShootForceComputationInstance         m_OnActorUnboundForceComputation;                  // 0x0588(0x0010)(Edit, BlueprintVisible, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FShootDirectionComputationInstance     m_OnActorUnboundDirectionComputation;              // 0x0598(0x0010)(Edit, BlueprintVisible, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5A8[0x8];                                      // 0x05A8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAkStateValue*                          m_AkStateValueOnStarting;                          // 0x05B0(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UAkStateValue*                          m_AkStateValueOnFinished;                          // 0x05B8(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UCurveFloat*                            m_PlayRateCurveFloat;                              // 0x05C0(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bEnableNameTag;                                  // 0x05C8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_5C9[0x7];                                      // 0x05C9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void OnLocalCharacterCustomizationChange(class UCharacterCustomizationComponent* _characterCustomizationComponent, bool _bWasCharacterGenerated);
+
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("CustomizationTextureParser")
+		STATIC_CLASS_IMPL("RuntimeLevelSequenceActor")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"CustomizationTextureParser")
+		STATIC_NAME_IMPL(L"RuntimeLevelSequenceActor")
 	}
-	static class UCustomizationTextureParser* GetDefaultObj()
+	static class ARuntimeLevelSequenceActor* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UCustomizationTextureParser>();
+		return GetDefaultObjImpl<ARuntimeLevelSequenceActor>();
 	}
 };
-DUMPER7_ASSERTS_UCustomizationTextureParser;
+DUMPER7_ASSERTS_ARuntimeLevelSequenceActor;
+
+// Class Runtime.LockerPrematchLevelSequenceActor
+// 0x0010 (0x05E0 - 0x05D0)
+class ALockerPrematchLevelSequenceActor final : public ARuntimeLevelSequenceActor
+{
+public:
+	uint8                                         m_uiTeam;                                          // 0x05D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5D1[0xF];                                      // 0x05D1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LockerPrematchLevelSequenceActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LockerPrematchLevelSequenceActor")
+	}
+	static class ALockerPrematchLevelSequenceActor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ALockerPrematchLevelSequenceActor>();
+	}
+};
+DUMPER7_ASSERTS_ALockerPrematchLevelSequenceActor;
 
 // Class Runtime.ActionDirectionComputation
 // 0x0098 (0x00C0 - 0x0028)
@@ -1922,46 +1956,55 @@ public:
 };
 DUMPER7_ASSERTS_UFActiveGameplayEffectHandleWrapper;
 
-// Class Runtime.LockerRoomPrematchStateViewModel
-// 0x0138 (0x01A8 - 0x0070)
-class ULockerRoomPrematchStateViewModel final : public USCViewModel
+// Class Runtime.MatchEffectEmitterComponent
+// 0x0008 (0x00C0 - 0x00B8)
+class UMatchEffectEmitterComponent : public UActorComponent
 {
 public:
-	struct FColorPalette                          m_LocalPlayerHomePalette;                          // 0x0070(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColorPalette                          m_LocalPlayerAwayPalette;                          // 0x0088(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColorPalette                          m_LocalPlayerTeamCaptainPalette;                   // 0x00A0(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColorPalette                          m_SquadCaptainPalette;                             // 0x00B8(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ETeamColorKitType                             m_eTeamColorSelectedKit;                           // 0x00D0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_D1[0x7];                                       // 0x00D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FColorPalette                          m_OpponentColorPalette;                            // 0x00D8(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColorPalette                          m_MatchHomeColorPalette;                           // 0x00F0(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColorPalette                          m_MatchAwayColorPalette;                           // 0x0108(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TSoftObjectPtr<class UCustomizationARDataAsset> m_TeamAr;                                        // 0x0120(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TSoftObjectPtr<class UCustomizationARDataAsset> m_OpponentAr;                                    // 0x0148(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TSoftObjectPtr<class USCMapCustomizationDataAsset> m_Stadium;                                    // 0x0170(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_ConnectedPlayers;                                // 0x0198(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_ExpectedPlayers;                                 // 0x019C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bShowPrematchTeamDisplay;                        // 0x01A0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1A1[0x7];                                      // 0x01A1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         m_iTeam;                                           // 0x00B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_BC[0x4];                                       // 0x00BC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	struct FColorPalette BPF_GetSelectedPalette() const;
+	int32 BPF_GetTeam() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("LockerRoomPrematchStateViewModel")
+		STATIC_CLASS_IMPL("MatchEffectEmitterComponent")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"LockerRoomPrematchStateViewModel")
+		STATIC_NAME_IMPL(L"MatchEffectEmitterComponent")
 	}
-	static class ULockerRoomPrematchStateViewModel* GetDefaultObj()
+	static class UMatchEffectEmitterComponent* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<ULockerRoomPrematchStateViewModel>();
+		return GetDefaultObjImpl<UMatchEffectEmitterComponent>();
 	}
 };
-DUMPER7_ASSERTS_ULockerRoomPrematchStateViewModel;
+DUMPER7_ASSERTS_UMatchEffectEmitterComponent;
+
+// Class Runtime.MatchEffectSFXEmitterComponent
+// 0x0008 (0x00C8 - 0x00C0)
+class UMatchEffectSFXEmitterComponent final : public UMatchEffectEmitterComponent
+{
+public:
+	TWeakObjectPtr<class UAkComponent>            m_AkComponent;                                     // 0x00C0(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MatchEffectSFXEmitterComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MatchEffectSFXEmitterComponent")
+	}
+	static class UMatchEffectSFXEmitterComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMatchEffectSFXEmitterComponent>();
+	}
+};
+DUMPER7_ASSERTS_UMatchEffectSFXEmitterComponent;
 
 // Class Runtime.AnimNotifyState_ScaleGravity
 // 0x0008 (0x0038 - 0x0030)
@@ -2010,48 +2053,28 @@ public:
 };
 DUMPER7_ASSERTS_UAnimNotifyState_ShootMotionWarping;
 
-// Class Runtime.MatchingBoneDiveAnimWeightEvaluation
-// 0x00B0 (0x00E0 - 0x0030)
-class UMatchingBoneDiveAnimWeightEvaluation : public UTargetWeightEvaluation
+// Class Runtime.MatchCountdownStartBinder
+// 0x0000 (0x00F8 - 0x00F8)
+class UMatchCountdownStartBinder final : public UGameStateScopedEventBinder
 {
 public:
-	bool                                          m_bVeryVerboseVlog;                                // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fDebugDisplayDuration;                           // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FName                                   m_BoneName;                                        // 0x0038(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fDefaultAnimRatio;                               // 0x0040(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fTimeOffset;                                     // 0x0044(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ETimingEvaluationMethod                       m_eTimingEvaluationMethod;                         // 0x0048(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fDefaultPredictionDuration;                      // 0x004C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fPredictionInterval;                             // 0x0050(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bIgnoreInstigatorYawInComputations;              // 0x0054(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_55[0xB];                                       // 0x0055(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             m_InstigatorRefTransformOffset;                    // 0x0060(0x0060)(Edit, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EWeightOperator                               m_eBitMaskScoreOperator;                           // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EWeightOperator                               m_eRowScoreOperator;                               // 0x00C1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bResultAsRatio;                                  // 0x00C2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C3[0x5];                                       // 0x00C3(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FMatchingBoneEvaluationParams>  m_ScoresParams;                                    // 0x00C8(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_D8[0x8];                                       // 0x00D8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static bool IsMatchingSectionNotifyState(const class USection_NotifyState* _notifyState);
+	void OnMatchCountdownStart(class ARuntimeMatchGameState* _matchGameState);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MatchingBoneDiveAnimWeightEvaluation")
+		STATIC_CLASS_IMPL("MatchCountdownStartBinder")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MatchingBoneDiveAnimWeightEvaluation")
+		STATIC_NAME_IMPL(L"MatchCountdownStartBinder")
 	}
-	static class UMatchingBoneDiveAnimWeightEvaluation* GetDefaultObj()
+	static class UMatchCountdownStartBinder* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMatchingBoneDiveAnimWeightEvaluation>();
+		return GetDefaultObjImpl<UMatchCountdownStartBinder>();
 	}
 };
-DUMPER7_ASSERTS_UMatchingBoneDiveAnimWeightEvaluation;
+DUMPER7_ASSERTS_UMatchCountdownStartBinder;
 
 // Class Runtime.FreezeNotify_Shoot
 // 0x0000 (0x0040 - 0x0040)
@@ -2093,59 +2116,29 @@ public:
 };
 DUMPER7_ASSERTS_UAnimNotify_Shoot;
 
-// Class Runtime.MatchEffectAction
-// 0x0018 (0x0040 - 0x0028)
-class UMatchEffectAction : public UObject
+// Class Runtime.IsBallOwnerActorCondition
+// 0x0008 (0x0030 - 0x0028)
+class UIsBallOwnerActorCondition final : public UBaseActorTargetCondition
 {
 public:
-	EEmitterSelectionType                         m_eEmitterSelectionType;                           // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ERelationshipType                             m_eRelationEmitterTeamAndLocalPlayerTeam;          // 0x0029(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2A[0x6];                                       // 0x002A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<TSoftObjectPtr<class AActor>>          m_PickedEmitters;                                  // 0x0030(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
-
-public:
-	void BPE_DoProcess(const TArray<TSoftObjectPtr<class UMatchEffectEmitterComponent>>& _emitters) const;
+	bool                                          m_bHandleNoOwnership;                              // 0x0028(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MatchEffectAction")
+		STATIC_CLASS_IMPL("IsBallOwnerActorCondition")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MatchEffectAction")
+		STATIC_NAME_IMPL(L"IsBallOwnerActorCondition")
 	}
-	static class UMatchEffectAction* GetDefaultObj()
+	static class UIsBallOwnerActorCondition* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMatchEffectAction>();
+		return GetDefaultObjImpl<UIsBallOwnerActorCondition>();
 	}
 };
-DUMPER7_ASSERTS_UMatchEffectAction;
-
-// Class Runtime.MatchEffectCrowdIntensityAction
-// 0x0008 (0x0048 - 0x0040)
-class UMatchEffectCrowdIntensityAction final : public UMatchEffectAction
-{
-public:
-	ECrowdIntensityActionType                     m_eActionType;                                     // 0x0040(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fIntensityValue;                                 // 0x0044(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MatchEffectCrowdIntensityAction")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MatchEffectCrowdIntensityAction")
-	}
-	static class UMatchEffectCrowdIntensityAction* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMatchEffectCrowdIntensityAction>();
-	}
-};
-DUMPER7_ASSERTS_UMatchEffectCrowdIntensityAction;
+DUMPER7_ASSERTS_UIsBallOwnerActorCondition;
 
 // Class Runtime.Ball
 // 0x0110 (0x03C0 - 0x02B0)
@@ -2190,7 +2183,7 @@ public:
 DUMPER7_ASSERTS_ABall;
 
 // Class Runtime.BallAbilitySystemComponent
-// 0x0000 (0x19F0 - 0x19F0)
+// 0x0000 (0x1A40 - 0x1A40)
 class UBallAbilitySystemComponent final : public USCAbilitySystemComponent
 {
 public:
@@ -2209,67 +2202,35 @@ public:
 };
 DUMPER7_ASSERTS_UBallAbilitySystemComponent;
 
-// Class Runtime.RuntimeLevelSequenceActor
-// 0x0070 (0x05D0 - 0x0560)
-class ARuntimeLevelSequenceActor : public ASCLevelSequenceActor
+// Class Runtime.MatchEffectReaction
+// 0x0088 (0x00B0 - 0x0028)
+class UMatchEffectReaction final : public UObject
 {
 public:
-	bool                                          m_bReleaseBalls;                                   // 0x0558(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, ExposeOnSpawn, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_559[0x3];                                      // 0x0559(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSCMovieSceneObjectBindingName         m_ShooterBinding;                                  // 0x055C(0x0008)(Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_564[0x4];                                      // 0x0564(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagContainer                  m_ShootTypeTagContainer;                           // 0x0568(0x0020)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FShootForceComputationInstance         m_OnActorUnboundForceComputation;                  // 0x0588(0x0010)(Edit, BlueprintVisible, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FShootDirectionComputationInstance     m_OnActorUnboundDirectionComputation;              // 0x0598(0x0010)(Edit, BlueprintVisible, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5A8[0x8];                                      // 0x05A8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAkStateValue*                          m_AkStateValueOnStarting;                          // 0x05B0(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UAkStateValue*                          m_AkStateValueOnFinished;                          // 0x05B8(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UCurveFloat*                            m_PlayRateCurveFloat;                              // 0x05C0(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bEnableNameTag;                                  // 0x05C8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_5C9[0x7];                                      // 0x05C9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void OnLocalCharacterCustomizationChange(class UCharacterCustomizationComponent* _characterCustomizationComponent, bool _bWasCharacterGenerated);
+	float                                         m_fCooldownDuration;                               // 0x0028(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FEventBinderInstance>           m_Binders;                                         // 0x0030(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	TArray<struct FMatchEffectActionInstance>     m_ActionInstances;                                 // 0x0040(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	uint8                                         Pad_50[0x30];                                      // 0x0050(0x0030)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UEventBinder*>                   m_BinderInstances;                                 // 0x0080(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
+	TArray<class UMatchEffectAction*>             m_Actions;                                         // 0x0090(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_A0[0x10];                                      // 0x00A0(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("RuntimeLevelSequenceActor")
+		STATIC_CLASS_IMPL("MatchEffectReaction")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"RuntimeLevelSequenceActor")
+		STATIC_NAME_IMPL(L"MatchEffectReaction")
 	}
-	static class ARuntimeLevelSequenceActor* GetDefaultObj()
+	static class UMatchEffectReaction* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<ARuntimeLevelSequenceActor>();
+		return GetDefaultObjImpl<UMatchEffectReaction>();
 	}
 };
-DUMPER7_ASSERTS_ARuntimeLevelSequenceActor;
-
-// Class Runtime.LockerPrematchLevelSequenceActor
-// 0x0010 (0x05E0 - 0x05D0)
-class ALockerPrematchLevelSequenceActor final : public ARuntimeLevelSequenceActor
-{
-public:
-	uint8                                         m_uiTeam;                                          // 0x05D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5D1[0xF];                                      // 0x05D1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LockerPrematchLevelSequenceActor")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LockerPrematchLevelSequenceActor")
-	}
-	static class ALockerPrematchLevelSequenceActor* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ALockerPrematchLevelSequenceActor>();
-	}
-};
-DUMPER7_ASSERTS_ALockerPrematchLevelSequenceActor;
+DUMPER7_ASSERTS_UMatchEffectReaction;
 
 // Class Runtime.BallAttributeSet
 // 0x0078 (0x0100 - 0x0088)
@@ -2339,55 +2300,61 @@ public:
 };
 DUMPER7_ASSERTS_UBallScopedBinder;
 
-// Class Runtime.MatchEffectEmitterComponent
-// 0x0008 (0x00C0 - 0x00B8)
-class UMatchEffectEmitterComponent : public UActorComponent
+// Class Runtime.MatchViewModel
+// 0x0088 (0x00F8 - 0x0070)
+class UMatchViewModel : public USCViewModel
 {
 public:
-	int32                                         m_iTeam;                                           // 0x00B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_BC[0x4];                                       // 0x00BC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          m_bWarnAfk;                                        // 0x0070(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_71[0x3];                                       // 0x0071(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         m_iLocalPlayerIndex;                               // 0x0074(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iLocalPlayerTeam;                                // 0x0078(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iSquadCaptainIndex;                              // 0x007C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TMap<class USCInputAction*, class FText>      m_FinisherPerInput;                                // 0x0080(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, NativeAccessSpecifierProtected)
+	int32                                         m_iHomeCaptainIndex;                               // 0x00D0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iAwayCaptainIndex;                               // 0x00D4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<class UMatchPlayerViewModel*>          m_Players;                                         // 0x00D8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, Protected, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class ARuntimeMatchGameState>  m_GameState;                                       // 0x00E8(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F0[0x8];                                       // 0x00F0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	int32 BPF_GetTeam() const;
+	void OnCaptainsSet(class ARuntimeMatchGameState* _gameState);
+	void OnLocalCharacterGenerated(class UCharacterCustomizationComponent* _characterCustomizationComponent, bool _bWasCharacterGenerated);
+	void OnMVPSet(class ARuntimePlayerState* _playerState);
+	void OnPlayerAdded(class APlayerState* _player);
+	void OnPlayerInitialReplication(class ASCPlayerState* _playerState);
+	void OnPlayerPawnSet(class APlayerState* _player, class APawn* _newPawn, class APawn* _oldPawn);
+	void OnPlayerProfileCustoSet(class ARuntimePlayerState* _playerState);
+	void OnPlayerRemoved(class APlayerState* _player);
+	void OnPlayerSanitizedNameChanged(class ARuntimePlayerState* _playerState);
+	void OnPlayerTeamChanged(class ARuntimePlayerState* _playerState, uint8 _uiNewTeam, int32 _iNumberInTeam);
+	void OnPlayerUniqueIdReplicated(class ASCPlayerState* _playerState);
+
+	TArray<class UMatchPlayerViewModel*> BPF_GetAwayTeam() const;
+	TArray<class UMatchPlayerViewModel*> BPF_GetHomeTeam() const;
+	TArray<class UMatchPlayerViewModel*> BPF_GetLocalTeam() const;
+	TArray<class UMatchPlayerViewModel*> BPF_GetOpponentTeam() const;
+	const class UMatchPlayerViewModel* BPF_GetPlayerViewModelFromPlayerState(const class ARuntimePlayerState* _runtimePlayerState) const;
+	bool BPF_IsCaptain() const;
+	bool BPF_IsInSquad() const;
+	bool BPF_IsLocalPlayerInHomeTeam() const;
+	bool BPF_IsSquadLeader() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MatchEffectEmitterComponent")
+		STATIC_CLASS_IMPL("MatchViewModel")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MatchEffectEmitterComponent")
+		STATIC_NAME_IMPL(L"MatchViewModel")
 	}
-	static class UMatchEffectEmitterComponent* GetDefaultObj()
+	static class UMatchViewModel* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMatchEffectEmitterComponent>();
+		return GetDefaultObjImpl<UMatchViewModel>();
 	}
 };
-DUMPER7_ASSERTS_UMatchEffectEmitterComponent;
-
-// Class Runtime.MatchEffectSFXEmitterComponent
-// 0x0008 (0x00C8 - 0x00C0)
-class UMatchEffectSFXEmitterComponent final : public UMatchEffectEmitterComponent
-{
-public:
-	TWeakObjectPtr<class UAkComponent>            m_AkComponent;                                     // 0x00C0(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MatchEffectSFXEmitterComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MatchEffectSFXEmitterComponent")
-	}
-	static class UMatchEffectSFXEmitterComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMatchEffectSFXEmitterComponent>();
-	}
-};
-DUMPER7_ASSERTS_UMatchEffectSFXEmitterComponent;
+DUMPER7_ASSERTS_UMatchViewModel;
 
 // Class Runtime.BallEngagedBinder
 // 0x0008 (0x0110 - 0x0108)
@@ -2435,36 +2402,48 @@ public:
 };
 DUMPER7_ASSERTS_UBallShootInstigatorReactionTarget;
 
-// Class Runtime.MoveAlongSplineComponent
-// 0x0018 (0x00D0 - 0x00B8)
-class UMoveAlongSplineComponent final : public UActorComponent
+// Class Runtime.MatchingBoneDiveAnimWeightEvaluation
+// 0x00B0 (0x00E0 - 0x0030)
+class UMatchingBoneDiveAnimWeightEvaluation : public UTargetWeightEvaluation
 {
 public:
-	float                                         m_fSpeed;                                          // 0x00B8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_BC[0x4];                                       // 0x00BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class ASplineActor*                           m_Path;                                            // 0x00C0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bLoopBack;                                       // 0x00C8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          m_bVeryVerboseVlog;                                // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fDebugDisplayDuration;                           // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FName                                   m_BoneName;                                        // 0x0038(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fDefaultAnimRatio;                               // 0x0040(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fTimeOffset;                                     // 0x0044(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ETimingEvaluationMethod                       m_eTimingEvaluationMethod;                         // 0x0048(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fDefaultPredictionDuration;                      // 0x004C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fPredictionInterval;                             // 0x0050(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bIgnoreInstigatorYawInComputations;              // 0x0054(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_55[0xB];                                       // 0x0055(0x000B)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             m_InstigatorRefTransformOffset;                    // 0x0060(0x0060)(Edit, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EWeightOperator                               m_eBitMaskScoreOperator;                           // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EWeightOperator                               m_eRowScoreOperator;                               // 0x00C1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bResultAsRatio;                                  // 0x00C2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_C3[0x5];                                       // 0x00C3(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FMatchingBoneEvaluationParams>  m_ScoresParams;                                    // 0x00C8(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_D8[0x8];                                       // 0x00D8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void BPF_SetLocationOnPath(float _fDistanceOnPath);
-	void SetPath(class ASplineActor* _newPath);
+	static bool IsMatchingSectionNotifyState(const class USection_NotifyState* _notifyState);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MoveAlongSplineComponent")
+		STATIC_CLASS_IMPL("MatchingBoneDiveAnimWeightEvaluation")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MoveAlongSplineComponent")
+		STATIC_NAME_IMPL(L"MatchingBoneDiveAnimWeightEvaluation")
 	}
-	static class UMoveAlongSplineComponent* GetDefaultObj()
+	static class UMatchingBoneDiveAnimWeightEvaluation* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMoveAlongSplineComponent>();
+		return GetDefaultObjImpl<UMatchingBoneDiveAnimWeightEvaluation>();
 	}
 };
-DUMPER7_ASSERTS_UMoveAlongSplineComponent;
+DUMPER7_ASSERTS_UMatchingBoneDiveAnimWeightEvaluation;
 
 // Class Runtime.HurtBallOwnerHitReactionTarget
 // 0x0008 (0x0030 - 0x0028)
@@ -2527,25 +2506,59 @@ public:
 };
 DUMPER7_ASSERTS_UBallShootHitReaction;
 
-// Class Runtime.MatchPartTransitionFlowState
-// 0x0000 (0x0590 - 0x0590)
-class UMatchPartTransitionFlowState : public URuntimeGameFlowState
+// Class Runtime.MatchEffectAction
+// 0x0018 (0x0040 - 0x0028)
+class UMatchEffectAction : public UObject
 {
+public:
+	EEmitterSelectionType                         m_eEmitterSelectionType;                           // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ERelationshipType                             m_eRelationEmitterTeamAndLocalPlayerTeam;          // 0x0029(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2A[0x6];                                       // 0x002A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<TSoftObjectPtr<class AActor>>          m_PickedEmitters;                                  // 0x0030(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
+
+public:
+	void BPE_DoProcess(const TArray<TSoftObjectPtr<class UMatchEffectEmitterComponent>>& _emitters) const;
+
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MatchPartTransitionFlowState")
+		STATIC_CLASS_IMPL("MatchEffectAction")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MatchPartTransitionFlowState")
+		STATIC_NAME_IMPL(L"MatchEffectAction")
 	}
-	static class UMatchPartTransitionFlowState* GetDefaultObj()
+	static class UMatchEffectAction* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMatchPartTransitionFlowState>();
+		return GetDefaultObjImpl<UMatchEffectAction>();
 	}
 };
-DUMPER7_ASSERTS_UMatchPartTransitionFlowState;
+DUMPER7_ASSERTS_UMatchEffectAction;
+
+// Class Runtime.MatchEffectCrowdIntensityAction
+// 0x0008 (0x0048 - 0x0040)
+class UMatchEffectCrowdIntensityAction final : public UMatchEffectAction
+{
+public:
+	ECrowdIntensityActionType                     m_eActionType;                                     // 0x0040(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_41[0x3];                                       // 0x0041(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fIntensityValue;                                 // 0x0044(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MatchEffectCrowdIntensityAction")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MatchEffectCrowdIntensityAction")
+	}
+	static class UMatchEffectCrowdIntensityAction* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMatchEffectCrowdIntensityAction>();
+	}
+};
+DUMPER7_ASSERTS_UMatchEffectCrowdIntensityAction;
 
 // Class Runtime.BallCaptureHitReaction
 // 0x0000 (0x0028 - 0x0028)
@@ -2567,6 +2580,29 @@ public:
 };
 DUMPER7_ASSERTS_UBallCaptureHitReaction;
 
+// Class Runtime.BallStatusTargetDataCondition
+// 0x0048 (0x00C0 - 0x0078)
+class UBallStatusTargetDataCondition final : public UTargetDataCondition
+{
+public:
+	struct FGameplayTagQuery                      m_Query;                                           // 0x0078(0x0048)(Edit, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallStatusTargetDataCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallStatusTargetDataCondition")
+	}
+	static class UBallStatusTargetDataCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallStatusTargetDataCondition>();
+	}
+};
+DUMPER7_ASSERTS_UBallStatusTargetDataCondition;
+
 // Class Runtime.BallInteractionBinder
 // 0x0008 (0x0110 - 0x0108)
 class UBallInteractionBinder : public UBallScopedBinder
@@ -2577,16 +2613,16 @@ public:
 	uint8                                         Pad_10D[0x3];                                      // 0x010D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void BPE_OnBallInteraction(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType);
+	void BPE_OnBallInteraction(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
 	void BPE_OnBallReset(class UBallPlayersInteractionComponent* _ballPlayersInteraction);
 	void OnBallReset(class UBallPlayersInteractionComponent* _ballPlayerInteraction);
 	void OnOwnershipChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction);
-	void OnPreviousOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eInteractionType);
+	void OnPreviousOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eInteractionType, bool _bIsSamePreviousOwner);
 
-	bool BPF_CanTrigger(class UBallPlayersInteractionComponent* _ballPlayersInteraction, const struct FShootParams& _shootParams, EBallInteractionType _eBallInteractionType, const struct FGameplayTagQuery& _newOwnerQuery, const struct FGameplayTagQuery& _shootTypeQuery, bool _bIngoreKickOffCpp, bool _bOnlyOnTeamChanged, const struct FGameplayTagQuery& _PreviousOwnerQuery, const struct FGameplayTagQuery& _PreviousShootTypeQuery, const struct FShootParams& _PreviousShootParams) const;
-	void BPF_GetNewAndPreviousInteracters(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, class ARuntimePlayerState** _outNewInteracter, class ARuntimePlayerState** _outPreviousInteracter) const;
+	bool BPF_CanTrigger(class UBallPlayersInteractionComponent* _ballPlayersInteraction, const struct FShootParams& _shootParams, EBallInteractionType _eBallInteractionType, const struct FGameplayTagQuery& _newOwnerQuery, const struct FGameplayTagQuery& _shootTypeQuery, bool _bIngoreKickOffCpp, bool _bOnlyOnTeamChanged, const struct FGameplayTagQuery& _PreviousOwnerQuery, const struct FGameplayTagQuery& _PreviousShootTypeQuery, const struct FShootParams& _PreviousShootParams, bool _bIsSamePreviousOwner) const;
+	void BPF_GetNewAndPreviousInteracters(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner, class ARuntimePlayerState** _outNewInteracter, class ARuntimePlayerState** _outPreviousInteracter) const;
 	class ARuntimePlayerState* BPF_GetPreviousInteracter(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, int32 _iIndexInteraction) const;
-	bool BPF_HasTeamChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType) const;
+	bool BPF_HasTeamChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner) const;
 
 public:
 	static class UClass* StaticClass()
@@ -2604,35 +2640,29 @@ public:
 };
 DUMPER7_ASSERTS_UBallInteractionBinder;
 
-// Class Runtime.MatchEffectReaction
-// 0x0088 (0x00B0 - 0x0028)
-class UMatchEffectReaction final : public UObject
+// Class Runtime.MatchTimerStatBehaviour
+// 0x0010 (0x0068 - 0x0058)
+class UMatchTimerStatBehaviour final : public USCStatBehaviourTimer
 {
 public:
-	float                                         m_fCooldownDuration;                               // 0x0028(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FEventBinderInstance>           m_Binders;                                         // 0x0030(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	TArray<struct FMatchEffectActionInstance>     m_ActionInstances;                                 // 0x0040(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	uint8                                         Pad_50[0x30];                                      // 0x0050(0x0030)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UEventBinder*>                   m_BinderInstances;                                 // 0x0080(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
-	TArray<class UMatchEffectAction*>             m_Actions;                                         // 0x0090(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_A0[0x10];                                      // 0x00A0(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	ETimeConversionUnit                           m_eUnits;                                          // 0x0058(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_59[0xF];                                       // 0x0059(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MatchEffectReaction")
+		STATIC_CLASS_IMPL("MatchTimerStatBehaviour")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MatchEffectReaction")
+		STATIC_NAME_IMPL(L"MatchTimerStatBehaviour")
 	}
-	static class UMatchEffectReaction* GetDefaultObj()
+	static class UMatchTimerStatBehaviour* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMatchEffectReaction>();
+		return GetDefaultObjImpl<UMatchTimerStatBehaviour>();
 	}
 };
-DUMPER7_ASSERTS_UMatchEffectReaction;
+DUMPER7_ASSERTS_UMatchTimerStatBehaviour;
 
 // Class Runtime.BallInterceptionPointTargetDatasource
 // 0x0010 (0x0090 - 0x0080)
@@ -2666,448 +2696,6 @@ public:
 };
 DUMPER7_ASSERTS_UBallInterceptionPointTargetDatasource;
 
-// Class Runtime.BaseTargetWidget
-// 0x0010 (0x0C00 - 0x0BF0)
-class UBaseTargetWidget : public USCUserWidget
-{
-public:
-	class AActor*                                 m_Target;                                          // 0x0BF0(0x0008)(BlueprintVisible, ZeroConstructor, Transient, NoDestructor, ExposeOnSpawn, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_BF8[0x8];                                      // 0x0BF8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BaseTargetWidget")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BaseTargetWidget")
-	}
-	static class UBaseTargetWidget* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBaseTargetWidget>();
-	}
-};
-DUMPER7_ASSERTS_UBaseTargetWidget;
-
-// Class Runtime.GetOffsetedBallInterceptionPointDatasource
-// 0x0008 (0x0088 - 0x0080)
-class UGetOffsetedBallInterceptionPointDatasource final : public UTargetDatasource
-{
-public:
-	float                                         m_fTimeOffset;                                     // 0x0080(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_84[0x4];                                       // 0x0084(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static bool BPF_FindSingleTarget(const struct FGameplayAbilityTargetDataHandle& _handle, struct FBallInterceptionPointTargetData* _outData);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("GetOffsetedBallInterceptionPointDatasource")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"GetOffsetedBallInterceptionPointDatasource")
-	}
-	static class UGetOffsetedBallInterceptionPointDatasource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGetOffsetedBallInterceptionPointDatasource>();
-	}
-};
-DUMPER7_ASSERTS_UGetOffsetedBallInterceptionPointDatasource;
-
-// Class Runtime.MatchViewModel
-// 0x0088 (0x00F8 - 0x0070)
-class UMatchViewModel : public USCViewModel
-{
-public:
-	bool                                          m_bWarnAfk;                                        // 0x0070(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_71[0x3];                                       // 0x0071(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         m_iLocalPlayerIndex;                               // 0x0074(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iLocalPlayerTeam;                                // 0x0078(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iSquadCaptainIndex;                              // 0x007C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TMap<class USCInputAction*, class FText>      m_FinisherPerInput;                                // 0x0080(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, NativeAccessSpecifierProtected)
-	int32                                         m_iHomeCaptainIndex;                               // 0x00D0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iAwayCaptainIndex;                               // 0x00D4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<class UMatchPlayerViewModel*>          m_Players;                                         // 0x00D8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, Protected, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class ARuntimeMatchGameState>  m_GameState;                                       // 0x00E8(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_F0[0x8];                                       // 0x00F0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void OnCaptainsSet(class ARuntimeMatchGameState* _gameState);
-	void OnLocalCharacterGenerated(class UCharacterCustomizationComponent* _characterCustomizationComponent, bool _bWasCharacterGenerated);
-	void OnMVPSet(class ARuntimePlayerState* _playerState);
-	void OnPlayerAdded(class APlayerState* _player);
-	void OnPlayerInitialReplication(class ASCPlayerState* _playerState);
-	void OnPlayerPawnSet(class APlayerState* _player, class APawn* _newPawn, class APawn* _oldPawn);
-	void OnPlayerProfileCustoSet(class ARuntimePlayerState* _playerState);
-	void OnPlayerRemoved(class APlayerState* _player);
-	void OnPlayerSanitizedNameChanged(class ARuntimePlayerState* _playerState);
-	void OnPlayerTeamChanged(class ARuntimePlayerState* _playerState, uint8 _uiNewTeam, int32 _iNumberInTeam);
-	void OnPlayerUniqueIdReplicated(class ASCPlayerState* _playerState);
-
-	TArray<class UMatchPlayerViewModel*> BPF_GetAwayTeam() const;
-	TArray<class UMatchPlayerViewModel*> BPF_GetHomeTeam() const;
-	TArray<class UMatchPlayerViewModel*> BPF_GetLocalTeam() const;
-	TArray<class UMatchPlayerViewModel*> BPF_GetOpponentTeam() const;
-	const class UMatchPlayerViewModel* BPF_GetPlayerViewModelFromPlayerState(const class ARuntimePlayerState* _runtimePlayerState) const;
-	bool BPF_IsCaptain() const;
-	bool BPF_IsInSquad() const;
-	bool BPF_IsLocalPlayerInHomeTeam() const;
-	bool BPF_IsSquadLeader() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MatchViewModel")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MatchViewModel")
-	}
-	static class UMatchViewModel* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMatchViewModel>();
-	}
-};
-DUMPER7_ASSERTS_UMatchViewModel;
-
-// Class Runtime.BallInterceptionPointHelpers
-// 0x0000 (0x0028 - 0x0028)
-class UBallInterceptionPointHelpers final : public UBlueprintFunctionLibrary
-{
-public:
-	static struct FGameplayTagContainer BPF_GetStatus(const class AActor* _actor, const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData);
-	static bool BPF_IsEmpty(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData);
-	static bool BPF_IsImmobile(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData);
-	static bool BPF_IsValid(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallInterceptionPointHelpers")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallInterceptionPointHelpers")
-	}
-	static class UBallInterceptionPointHelpers* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallInterceptionPointHelpers>();
-	}
-};
-DUMPER7_ASSERTS_UBallInterceptionPointHelpers;
-
-// Class Runtime.BallRollbackComponent
-// 0x0000 (0x01E8 - 0x01E8)
-class UBallRollbackComponent final : public UActorRollbackComponent
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallRollbackComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallRollbackComponent")
-	}
-	static class UBallRollbackComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallRollbackComponent>();
-	}
-};
-DUMPER7_ASSERTS_UBallRollbackComponent;
-
-// Class Runtime.BallInterceptionPointTimeSinceShootCondition
-// 0x0008 (0x0080 - 0x0078)
-class UBallInterceptionPointTimeSinceShootCondition final : public UTargetDataCondition
-{
-public:
-	EOperationType                                m_eOperator;                                       // 0x0078(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bAcceptPointWithoutTime;                         // 0x0079(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_7A[0x2];                                       // 0x007A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fValue;                                          // 0x007C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallInterceptionPointTimeSinceShootCondition")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallInterceptionPointTimeSinceShootCondition")
-	}
-	static class UBallInterceptionPointTimeSinceShootCondition* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallInterceptionPointTimeSinceShootCondition>();
-	}
-};
-DUMPER7_ASSERTS_UBallInterceptionPointTimeSinceShootCondition;
-
-// Class Runtime.PlayerBallOwnership
-// 0x0118 (0x01D0 - 0x00B8)
-class UPlayerBallOwnership final : public UActorComponent
-{
-public:
-	uint8                                         Pad_B8[0x8];                                       // 0x00B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	FMulticastSparseDelegateProperty_             BPE_OnBallAutoCapturable;                          // 0x00C0(0x0001)(InstancedReference, BlueprintAssignable, NoDestructor, NativeAccessSpecifierPublic)
-	FMulticastSparseDelegateProperty_             BPE_OnBallOwnershipGained;                         // 0x00C1(0x0001)(InstancedReference, BlueprintAssignable, NoDestructor, NativeAccessSpecifierPublic)
-	FMulticastSparseDelegateProperty_             BPE_OnBallOwnershipLost;                           // 0x00C2(0x0001)(InstancedReference, BlueprintAssignable, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          m_bMustFaceBallToAutoCapture;                      // 0x00C3(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGameplayTag                           m_HasBallTagPred;                                  // 0x00C4(0x0008)(Edit, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGameplayTag                           m_HasBallTag;                                      // 0x00CC(0x0008)(Edit, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGameplayTag                           m_LoseBallEventTag;                                // 0x00D4(0x0008)(Edit, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_DC[0x4];                                       // 0x00DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBallCaptureDescription                m_MainAutoCaptureDescription;                      // 0x00E0(0x0040)(Edit, DisableEditOnInstance, NativeAccessSpecifierPublic)
-	struct FBallCaptureDescription                m_AutoCaptureDescriptions[0x2];                    // 0x0120(0x0040)(Edit, DisableEditOnInstance, NativeAccessSpecifierPublic)
-	TSubclassOf<class UGameplayEffect>            m_SetBallEffect;                                   // 0x01A0(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TSubclassOf<class UGameplayEffect>            m_RemoveBallEffect;                                // 0x01A8(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1B0[0x20];                                     // 0x01B0(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BPF_GetBall(class ABall** _outBallRef, EExecSuccessEnum* _OutExecBranches);
-	bool BPF_SetBall(class ABall* _ball, bool _bSteal);
-
-	class ABall* BPF_GetBallPure() const;
-	class ARuntimePlayerState* BPF_GetPlayerState() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("PlayerBallOwnership")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"PlayerBallOwnership")
-	}
-	static class UPlayerBallOwnership* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UPlayerBallOwnership>();
-	}
-};
-DUMPER7_ASSERTS_UPlayerBallOwnership;
-
-// Class Runtime.BallMaterialUserData
-// 0x0000 (0x0028 - 0x0028)
-class UBallMaterialUserData final : public UAssetUserData
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallMaterialUserData")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallMaterialUserData")
-	}
-	static class UBallMaterialUserData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallMaterialUserData>();
-	}
-};
-DUMPER7_ASSERTS_UBallMaterialUserData;
-
-// Class Runtime.BallOwnedWithIntensityDiffBinder
-// 0x0028 (0x0138 - 0x0110)
-class UBallOwnedWithIntensityDiffBinder final : public UBallInteractionBinder
-{
-public:
-	struct FSCMathExpressionFloat                 m_IntensityMathExpression;                         // 0x0110(0x0020)(Edit, Protected, NativeAccessSpecifierProtected)
-	EValueSignType                                m_eValueSignType;                                  // 0x0130(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_131[0x7];                                      // 0x0131(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallOwnedWithIntensityDiffBinder")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallOwnedWithIntensityDiffBinder")
-	}
-	static class UBallOwnedWithIntensityDiffBinder* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallOwnedWithIntensityDiffBinder>();
-	}
-};
-DUMPER7_ASSERTS_UBallOwnedWithIntensityDiffBinder;
-
-// Class Runtime.OnlineGameOption
-// 0x0000 (0x0030 - 0x0030)
-class UOnlineGameOption : public UGameOption
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineGameOption")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineGameOption")
-	}
-	static class UOnlineGameOption* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineGameOption>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineGameOption;
-
-// Class Runtime.BallPhysicComponent
-// 0x07A8 (0x0860 - 0x00B8)
-class UBallPhysicComponent final : public UActorComponent
-{
-public:
-	uint8                                         Pad_B8[0x28];                                      // 0x00B8(0x0028)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class ABall* _ball, const struct FShootParams& _shootParams)> OnTrajectoryUpdated; // 0x00E0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FQuat& _rotation)> OnBallRotation;                    // 0x00F0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class ABall* _ball, const struct FBounceData& _bounceData, float _fSpeedAtBounce)> OnFreezeOrCustomPartOver; // 0x0100(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class ABall* _ball, const struct FBounceData& _bounceData, float _fSpeedAtBounce)> OnBounced; // 0x0110(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const class ABall* _ball, const struct FShootParams& _shootParams)> OnShoot; // 0x0120(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_130[0x18];                                     // 0x0130(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const struct FShootParams& _shootParams)> OnRejectedShoot;         // 0x0148(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void()>              OnTrajectoryCleared;                               // 0x0158(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	struct FCollisionProfileName                  m_CharacterDetectionCollisionProfile;              // 0x0168(0x0008)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         m_fAngularSpeedDecreaseOverTime;                   // 0x0170(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_174[0x4];                                      // 0x0174(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagQuery                      m_AttachedToPlayerShootTagQuery;                   // 0x0178(0x0048)(Edit, NativeAccessSpecifierPublic)
-	struct FGameplayTag                           m_InsideGoalTag;                                   // 0x01C0(0x0008)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fDynamicCollisionPredictTime;                    // 0x01C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fCriticalSpeedThreshold;                         // 0x01CC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fSpeedCompensation;                              // 0x01D0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bDetectBallCollision;                            // 0x01D4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1D5[0x3];                                      // 0x01D5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FBallPhysicComponentPostPhysicsTickFunction m_PostPhysicsTickFunction;                    // 0x01D8(0x0030)(NativeAccessSpecifierPublic)
-	TArray<TSubclassOf<class UTrajectoryStatus>>  m_DefaultTrajectoryStatus;                         // 0x0208(0x0010)(Edit, ZeroConstructor, DisableEditOnInstance, UObjectWrapper, NativeAccessSpecifierPublic)
-	struct FShootStartPoint                       m_ServerTrajectoryStartingPoint;                   // 0x0218(0x0130)(Net, Transient, RepNotify, NativeAccessSpecifierPublic)
-	struct FFloatInterval                         m_AcceptableBallSampleDistance;                    // 0x0348(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UCurveFloat*                            m_ToRollBounceMaxAngleBySpeedCurve;                // 0x0350(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UDataTable*                             m_InteractPhysicalMaterialDataTable;               // 0x0358(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bStartSimulating;                                // 0x0360(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_361[0x7];                                      // 0x0361(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FWeightedTrajectoryModifier>    m_TrajectoryModifiers;                             // 0x0368(0x0010)(Edit, ZeroConstructor, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	ESimulationStep                               m_eLastSimulationStep;                             // 0x0378(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_379[0x7];                                      // 0x0379(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UGameplayEffect>            m_ApplyShootPredictionEffect;                      // 0x0380(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TMap<class UPhysicalMaterial*, EBounceHit>    m_AssignMaterialToSurface;                         // 0x0388(0x0050)(Edit, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3D8[0x488];                                    // 0x03D8(0x0488)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BPF_ApplyShoot(const struct FShootParams& _shootParams, const class UGameplayAbility* _instigatorAbility, bool _bAttachedToPlayer);
-	float BPF_GetTimeToReachLocation(const struct FVector& _vLocationToReach);
-	bool BPF_IsLocationOnFutureTrajectory(const struct FVector& _vLocation, float _fExcludePointBeforeTime, float _fDistanceTolerance);
-	bool BPF_IsPointOnFutureTrajectory(const struct FPredictProjectilePathPointData& keypoint, float _fDistanceTolerance);
-	void BPF_TryToBroadcastRejectedShootEvent(const struct FShootParams& _shootParamsOverride);
-	void OnBallInteractionPrioUpdated();
-	void OnBallOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction);
-	void OnRep_ServerTrajectoryStartingPoint();
-
-	bool BPF_CurrentTrajectoryStartedFromSpecifiedBounce(int32 _iSurfaces) const;
-	class ABall* BPF_GetAttachedBall() const;
-	const struct FShootParams BPF_GetCurrentShootParams() const;
-	bool BPF_GetLastShootParamsFromHistory(struct FShootParams* _shootParams) const;
-	float BPF_GetStatusTimeLimit(const struct FGameplayTag& _tag, bool* _bSuccess, bool _bGetShootInstigatorTime) const;
-	struct FBallTrajectoryResult BPF_GetTrajectory() const;
-	struct FVector BPF_GetVelocity() const;
-	bool BPF_HasBallStatus(const struct FGameplayTag& _tag, const bool _bOnShootInstigator) const;
-	void BPF_MakeBallInterceptionPointTargetData(float _fTime, struct FBallInterceptionPointTargetData* _result) const;
-	void BPF_MakeBallInterceptionPointTargetDataFromCurrentState(float _fTime, struct FBallInterceptionPointTargetData* _result) const;
-	struct FPredictProjectilePathPointData BPF_MakeBallPathPointData(float _fTime) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallPhysicComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallPhysicComponent")
-	}
-	static class UBallPhysicComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallPhysicComponent>();
-	}
-};
-DUMPER7_ASSERTS_UBallPhysicComponent;
-
-// Class Runtime.BallStatusTargetDataCondition
-// 0x0048 (0x00C0 - 0x0078)
-class UBallStatusTargetDataCondition final : public UTargetDataCondition
-{
-public:
-	struct FGameplayTagQuery                      m_Query;                                           // 0x0078(0x0048)(Edit, NativeAccessSpecifierPrivate)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallStatusTargetDataCondition")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallStatusTargetDataCondition")
-	}
-	static class UBallStatusTargetDataCondition* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallStatusTargetDataCondition>();
-	}
-};
-DUMPER7_ASSERTS_UBallStatusTargetDataCondition;
-
-// Class Runtime.BallPhysicSettings
-// 0x0028 (0x0060 - 0x0038)
-class UBallPhysicSettings final : public UDeveloperSettings
-{
-public:
-	float                                         m_fSpeedStopMoving;                                // 0x0038(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fPredictionDuration;                             // 0x003C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fPredictionSimFrequency;                         // 0x0040(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<float>                                 m_fAimPointAngleInDegreesSteps;                    // 0x0048(0x0010)(Edit, ZeroConstructor, Config, NativeAccessSpecifierPublic)
-	int32                                         m_iMaxAimPointComputationCount;                    // 0x0058(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bHasNoBounceCollisionChannel;                    // 0x005C(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ECollisionChannel                             m_eNoBounceCollisionChannel;                       // 0x005D(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_5E[0x2];                                       // 0x005E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BallPhysicSettings")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BallPhysicSettings")
-	}
-	static class UBallPhysicSettings* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBallPhysicSettings>();
-	}
-};
-DUMPER7_ASSERTS_UBallPhysicSettings;
-
-// Class Runtime.MatchTimerStatBehaviour
-// 0x0010 (0x0068 - 0x0058)
-class UMatchTimerStatBehaviour final : public USCStatBehaviourTimer
-{
-public:
-	ETimeConversionUnit                           m_eUnits;                                          // 0x0058(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_59[0xF];                                       // 0x0059(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MatchTimerStatBehaviour")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MatchTimerStatBehaviour")
-	}
-	static class UMatchTimerStatBehaviour* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMatchTimerStatBehaviour>();
-	}
-};
-DUMPER7_ASSERTS_UMatchTimerStatBehaviour;
-
 // Class Runtime.BallPlayersInteractionComponent
 // 0x01C0 (0x0278 - 0x00B8)
 class UBallPlayersInteractionComponent final : public UActorComponent
@@ -3117,7 +2705,7 @@ public:
 	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState)> BPE_OnBallEngaged;       // 0x00C0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
 	TMulticastInlineDelegate<void(class UBallPlayersInteractionComponent* _ballPlayerInteraction)> OnBallReset; // 0x00D0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
 	TMulticastInlineDelegate<void(class UBallPlayersInteractionComponent* _ballPlayerInteraction)> OnOwnershipChangedDelegate; // 0x00E0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class UBallPlayersInteractionComponent* _ballPlayerInteraction, EBallInteractionType _eInteractionType)> OnPreviousOwnersChangedDelegate; // 0x00F0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class UBallPlayersInteractionComponent* _ballPlayerInteraction, EBallInteractionType _eInteractionType, bool _bIsSamePreviousOwner)> OnPreviousOwnersChangedDelegate; // 0x00F0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
 	TMulticastInlineDelegate<void(class UBallPlayersInteractionComponent* _ballPlayerInteraction)> OnNoOwnershipInteractionDelegate; // 0x0100(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
 	TMulticastInlineDelegate<void(class UBallPlayersInteractionComponent* _ballPlayerInteraction)> OnNewBallInteractionRequest; // 0x0110(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
 	struct FGameplayTag                           m_BallOwnershipTag;                                // 0x0120(0x0008)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -3168,6 +2756,156 @@ public:
 };
 DUMPER7_ASSERTS_UBallPlayersInteractionComponent;
 
+// Class Runtime.GetOffsetedBallInterceptionPointDatasource
+// 0x0008 (0x0088 - 0x0080)
+class UGetOffsetedBallInterceptionPointDatasource final : public UTargetDatasource
+{
+public:
+	float                                         m_fTimeOffset;                                     // 0x0080(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_84[0x4];                                       // 0x0084(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static bool BPF_FindSingleTarget(const struct FGameplayAbilityTargetDataHandle& _handle, struct FBallInterceptionPointTargetData* _outData);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("GetOffsetedBallInterceptionPointDatasource")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"GetOffsetedBallInterceptionPointDatasource")
+	}
+	static class UGetOffsetedBallInterceptionPointDatasource* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGetOffsetedBallInterceptionPointDatasource>();
+	}
+};
+DUMPER7_ASSERTS_UGetOffsetedBallInterceptionPointDatasource;
+
+// Class Runtime.PingBehavior
+// 0x0000 (0x0028 - 0x0028)
+class UPingBehavior : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("PingBehavior")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PingBehavior")
+	}
+	static class UPingBehavior* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UPingBehavior>();
+	}
+};
+DUMPER7_ASSERTS_UPingBehavior;
+
+// Class Runtime.BallInterceptionPointHelpers
+// 0x0000 (0x0028 - 0x0028)
+class UBallInterceptionPointHelpers final : public UBlueprintFunctionLibrary
+{
+public:
+	static struct FGameplayTagContainer BPF_GetStatus(const class AActor* _actor, const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData);
+	static bool BPF_IsEmpty(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData);
+	static bool BPF_IsImmobile(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData);
+	static bool BPF_IsValid(const struct FBallInterceptionPointTargetData& _ballInterceptionPointTargetData);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallInterceptionPointHelpers")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallInterceptionPointHelpers")
+	}
+	static class UBallInterceptionPointHelpers* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallInterceptionPointHelpers>();
+	}
+};
+DUMPER7_ASSERTS_UBallInterceptionPointHelpers;
+
+// Class Runtime.BallInterceptionPointTimeSinceShootCondition
+// 0x0008 (0x0080 - 0x0078)
+class UBallInterceptionPointTimeSinceShootCondition final : public UTargetDataCondition
+{
+public:
+	EOperationType                                m_eOperator;                                       // 0x0078(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bAcceptPointWithoutTime;                         // 0x0079(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_7A[0x2];                                       // 0x007A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fValue;                                          // 0x007C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallInterceptionPointTimeSinceShootCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallInterceptionPointTimeSinceShootCondition")
+	}
+	static class UBallInterceptionPointTimeSinceShootCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallInterceptionPointTimeSinceShootCondition>();
+	}
+};
+DUMPER7_ASSERTS_UBallInterceptionPointTimeSinceShootCondition;
+
+// Class Runtime.MoveAlongSplineComponent
+// 0x0018 (0x00D0 - 0x00B8)
+class UMoveAlongSplineComponent final : public UActorComponent
+{
+public:
+	float                                         m_fSpeed;                                          // 0x00B8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_BC[0x4];                                       // 0x00BC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ASplineActor*                           m_Path;                                            // 0x00C0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bLoopBack;                                       // 0x00C8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void BPF_SetLocationOnPath(float _fDistanceOnPath);
+	void SetPath(class ASplineActor* _newPath);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MoveAlongSplineComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MoveAlongSplineComponent")
+	}
+	static class UMoveAlongSplineComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMoveAlongSplineComponent>();
+	}
+};
+DUMPER7_ASSERTS_UMoveAlongSplineComponent;
+
+// Class Runtime.BallMaterialUserData
+// 0x0000 (0x0028 - 0x0028)
+class UBallMaterialUserData final : public UAssetUserData
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallMaterialUserData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallMaterialUserData")
+	}
+	static class UBallMaterialUserData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallMaterialUserData>();
+	}
+};
+DUMPER7_ASSERTS_UBallMaterialUserData;
+
 // Class Runtime.BallSpawnMarker
 // 0x0010 (0x02C0 - 0x02B0)
 class ABallSpawnMarker final : public AActor
@@ -3195,29 +2933,220 @@ public:
 };
 DUMPER7_ASSERTS_ABallSpawnMarker;
 
-// Class Runtime.BallStateActorCondition
-// 0x0008 (0x0030 - 0x0028)
-class UBallStateActorCondition final : public UBaseActorCondition
+// Class Runtime.BallOwnedWithIntensityDiffBinder
+// 0x0028 (0x0138 - 0x0110)
+class UBallOwnedWithIntensityDiffBinder final : public UBallInteractionBinder
 {
 public:
-	ESimulationStep                               m_eBallState;                                      // 0x0028(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FSCMathExpressionFloat                 m_IntensityMathExpression;                         // 0x0110(0x0020)(Edit, Protected, NativeAccessSpecifierProtected)
+	EValueSignType                                m_eValueSignType;                                  // 0x0130(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_131[0x7];                                      // 0x0131(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("BallStateActorCondition")
+		STATIC_CLASS_IMPL("BallOwnedWithIntensityDiffBinder")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"BallStateActorCondition")
+		STATIC_NAME_IMPL(L"BallOwnedWithIntensityDiffBinder")
 	}
-	static class UBallStateActorCondition* GetDefaultObj()
+	static class UBallOwnedWithIntensityDiffBinder* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UBallStateActorCondition>();
+		return GetDefaultObjImpl<UBallOwnedWithIntensityDiffBinder>();
 	}
 };
-DUMPER7_ASSERTS_UBallStateActorCondition;
+DUMPER7_ASSERTS_UBallOwnedWithIntensityDiffBinder;
+
+// Class Runtime.MatchPartTransitionFlowState
+// 0x0000 (0x0590 - 0x0590)
+class UMatchPartTransitionFlowState : public URuntimeGameFlowState
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MatchPartTransitionFlowState")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MatchPartTransitionFlowState")
+	}
+	static class UMatchPartTransitionFlowState* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMatchPartTransitionFlowState>();
+	}
+};
+DUMPER7_ASSERTS_UMatchPartTransitionFlowState;
+
+// Class Runtime.BallPhysicComponent
+// 0x07F0 (0x08A8 - 0x00B8)
+class UBallPhysicComponent final : public UActorComponent
+{
+public:
+	uint8                                         Pad_B8[0x28];                                      // 0x00B8(0x0028)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class ABall* _ball, const struct FShootParams& _shootParams)> OnTrajectoryUpdated; // 0x00E0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FQuat& _rotation)> OnBallRotation;                    // 0x00F0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class ABall* _ball, const struct FBounceData& _bounceData, float _fSpeedAtBounce)> OnFreezeOrCustomPartOver; // 0x0100(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class ABall* _ball, const struct FBounceData& _bounceData, float _fSpeedAtBounce)> OnBounced; // 0x0110(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const class ABall* _ball, const struct FShootParams& _shootParams)> OnShoot; // 0x0120(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_130[0x18];                                     // 0x0130(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const struct FShootParams& _shootParams)> OnRejectedShoot;         // 0x0148(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void()>              OnTrajectoryCleared;                               // 0x0158(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	struct FCollisionProfileName                  m_CharacterDetectionCollisionProfile;              // 0x0168(0x0008)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         m_fAngularSpeedDecreaseOverTime;                   // 0x0170(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_174[0x4];                                      // 0x0174(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagQuery                      m_AttachedToPlayerShootTagQuery;                   // 0x0178(0x0048)(Edit, NativeAccessSpecifierPublic)
+	struct FGameplayTag                           m_InsideGoalTag;                                   // 0x01C0(0x0008)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fDynamicCollisionPredictTime;                    // 0x01C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fCriticalSpeedThreshold;                         // 0x01CC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fSpeedCompensation;                              // 0x01D0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1D4[0x4];                                      // 0x01D4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallPhysicComponentPostPhysicsTickFunction m_PostPhysicsTickFunction;                    // 0x01D8(0x0030)(NativeAccessSpecifierPublic)
+	TArray<TSubclassOf<class UTrajectoryStatus>>  m_DefaultTrajectoryStatus;                         // 0x0208(0x0010)(Edit, ZeroConstructor, DisableEditOnInstance, UObjectWrapper, NativeAccessSpecifierPublic)
+	struct FShootStartPoint                       m_ServerTrajectoryStartingPoint;                   // 0x0218(0x0138)(Net, Transient, RepNotify, NativeAccessSpecifierPublic)
+	struct FFloatInterval                         m_AcceptableBallSampleDistance;                    // 0x0350(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UCurveFloat*                            m_ToRollBounceMaxAngleBySpeedCurve;                // 0x0358(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UDataTable*                             m_InteractPhysicalMaterialDataTable;               // 0x0360(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bStartSimulating;                                // 0x0368(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_369[0x7];                                      // 0x0369(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FWeightedTrajectoryModifier>    m_TrajectoryModifiers;                             // 0x0370(0x0010)(Edit, ZeroConstructor, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	ESimulationStep                               m_eLastSimulationStep;                             // 0x0380(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_381[0x7];                                      // 0x0381(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UGameplayEffect>            m_ApplyShootPredictionEffect;                      // 0x0388(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TMap<class UPhysicalMaterial*, EBounceHit>    m_AssignMaterialToSurface;                         // 0x0390(0x0050)(Edit, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3E0[0x4C8];                                    // 0x03E0(0x04C8)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void BPF_ApplyShoot(const struct FShootParams& _shootParams, const class UGameplayAbility* _instigatorAbility, bool _bAttachedToPlayer);
+	float BPF_GetTimeToReachLocation(const struct FVector& _vLocationToReach);
+	bool BPF_IsLocationOnFutureTrajectory(const struct FVector& _vLocation, float _fExcludePointBeforeTime, float _fDistanceTolerance);
+	bool BPF_IsPointOnFutureTrajectory(const struct FPredictProjectilePathPointData& keypoint, float _fDistanceTolerance);
+	void BPF_TryToBroadcastRejectedShootEvent(const struct FShootParams& _shootParamsOverride);
+	void OnBallInteractionPrioUpdated();
+	void OnBallOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction);
+	void OnRep_ServerTrajectoryStartingPoint(const struct FShootStartPoint& _prevServerTrajectoryStartingPoint);
+
+	bool BPF_CurrentTrajectoryStartedFromSpecifiedBounce(int32 _iSurfaces) const;
+	class ABall* BPF_GetAttachedBall() const;
+	const struct FShootParams BPF_GetCurrentShootParams() const;
+	bool BPF_GetLastShootParamsFromHistory(struct FShootParams* _shootParams) const;
+	float BPF_GetStatusTimeLimit(const struct FGameplayTag& _tag, bool* _bSuccess, bool _bGetShootInstigatorTime) const;
+	struct FBallTrajectoryResult BPF_GetTrajectory() const;
+	struct FVector BPF_GetVelocity() const;
+	bool BPF_HasBallStatus(const struct FGameplayTag& _tag, const bool _bOnShootInstigator) const;
+	void BPF_MakeBallInterceptionPointTargetData(float _fTime, struct FBallInterceptionPointTargetData* _result) const;
+	void BPF_MakeBallInterceptionPointTargetDataFromCurrentState(float _fTime, struct FBallInterceptionPointTargetData* _result) const;
+	struct FPredictProjectilePathPointData BPF_MakeBallPathPointData(float _fTime) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallPhysicComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallPhysicComponent")
+	}
+	static class UBallPhysicComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallPhysicComponent>();
+	}
+};
+DUMPER7_ASSERTS_UBallPhysicComponent;
+
+// Class Runtime.BallReachableOnTimeTargetDatasource
+// 0x0010 (0x0178 - 0x0168)
+class UBallReachableOnTimeTargetDatasource final : public UReachableOnTimeTargetDatasource
+{
+public:
+	bool                                          m_bApplyScoreToContext;                            // 0x0168(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_169[0x3];                                      // 0x0169(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fDelayScoreMalus;                                // 0x016C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         m_fVelocityScoreMalus;                             // 0x0170(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_174[0x4];                                      // 0x0174(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallReachableOnTimeTargetDatasource")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallReachableOnTimeTargetDatasource")
+	}
+	static class UBallReachableOnTimeTargetDatasource* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallReachableOnTimeTargetDatasource>();
+	}
+};
+DUMPER7_ASSERTS_UBallReachableOnTimeTargetDatasource;
+
+// Class Runtime.BallRollbackComponent
+// 0x0000 (0x01E8 - 0x01E8)
+class UBallRollbackComponent final : public UActorRollbackComponent
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallRollbackComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallRollbackComponent")
+	}
+	static class UBallRollbackComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallRollbackComponent>();
+	}
+};
+DUMPER7_ASSERTS_UBallRollbackComponent;
+
+// Class Runtime.BallShootTypeActorCondition
+// 0x0048 (0x0070 - 0x0028)
+class UBallShootTypeActorCondition final : public UBaseActorCondition
+{
+public:
+	struct FGameplayTagQuery                      m_Query;                                           // 0x0028(0x0048)(Edit, BlueprintReadOnly, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BallShootTypeActorCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BallShootTypeActorCondition")
+	}
+	static class UBallShootTypeActorCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBallShootTypeActorCondition>();
+	}
+};
+DUMPER7_ASSERTS_UBallShootTypeActorCondition;
+
+// Class Runtime.BaseTargetWidget
+// 0x0010 (0x0C00 - 0x0BF0)
+class UBaseTargetWidget : public USCUserWidget
+{
+public:
+	class AActor*                                 m_Target;                                          // 0x0BF0(0x0008)(BlueprintVisible, ZeroConstructor, Transient, NoDestructor, ExposeOnSpawn, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_BF8[0x8];                                      // 0x0BF8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BaseTargetWidget")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseTargetWidget")
+	}
+	static class UBaseTargetWidget* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBaseTargetWidget>();
+	}
+};
+DUMPER7_ASSERTS_UBaseTargetWidget;
 
 // Class Runtime.BodyTypeParser
 // 0x0000 (0x0028 - 0x0028)
@@ -3497,26 +3426,6 @@ public:
 };
 DUMPER7_ASSERTS_UNoneParser;
 
-// Class Runtime.CustomizationMeshParser
-// 0x0000 (0x0028 - 0x0028)
-class UCustomizationMeshParser final : public UCustomizationPartParser
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("CustomizationMeshParser")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"CustomizationMeshParser")
-	}
-	static class UCustomizationMeshParser* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCustomizationMeshParser>();
-	}
-};
-DUMPER7_ASSERTS_UCustomizationMeshParser;
-
 // Class Runtime.CustomizationCurveIndexParser
 // 0x0000 (0x0028 - 0x0028)
 class UCustomizationCurveIndexParser final : public UCustomizationParameterParser
@@ -3536,6 +3445,26 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UCustomizationCurveIndexParser;
+
+// Class Runtime.CustomizationFloatParser
+// 0x0000 (0x0028 - 0x0028)
+class UCustomizationFloatParser final : public UCustomizationParameterParser
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("CustomizationFloatParser")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"CustomizationFloatParser")
+	}
+	static class UCustomizationFloatParser* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCustomizationFloatParser>();
+	}
+};
+DUMPER7_ASSERTS_UCustomizationFloatParser;
 
 // Class Runtime.CustomizationColorParser
 // 0x0000 (0x0028 - 0x0028)
@@ -3557,25 +3486,98 @@ public:
 };
 DUMPER7_ASSERTS_UCustomizationColorParser;
 
-// Class Runtime.CustomizationGlobalFilterParser
+// Class Runtime.CustomizationExtraInfoParser
 // 0x0000 (0x0028 - 0x0028)
-class UCustomizationGlobalFilterParser final : public UCharacterCustomizationParser
+class UCustomizationExtraInfoParser : public UCharacterCustomizationParser
 {
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("CustomizationGlobalFilterParser")
+		STATIC_CLASS_IMPL("CustomizationExtraInfoParser")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"CustomizationGlobalFilterParser")
+		STATIC_NAME_IMPL(L"CustomizationExtraInfoParser")
 	}
-	static class UCustomizationGlobalFilterParser* GetDefaultObj()
+	static class UCustomizationExtraInfoParser* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UCustomizationGlobalFilterParser>();
+		return GetDefaultObjImpl<UCustomizationExtraInfoParser>();
 	}
 };
-DUMPER7_ASSERTS_UCustomizationGlobalFilterParser;
+DUMPER7_ASSERTS_UCustomizationExtraInfoParser;
+
+// Class Runtime.CustomizationTeamPaletteParser
+// 0x0000 (0x0028 - 0x0028)
+class UCustomizationTeamPaletteParser final : public UCustomizationExtraInfoParser
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("CustomizationTeamPaletteParser")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"CustomizationTeamPaletteParser")
+	}
+	static class UCustomizationTeamPaletteParser* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCustomizationTeamPaletteParser>();
+	}
+};
+DUMPER7_ASSERTS_UCustomizationTeamPaletteParser;
+
+// Class Runtime.TrajectoryModifier
+// 0x0008 (0x0030 - 0x0028)
+class UTrajectoryModifier : public UObject
+{
+public:
+	uint8                                         m_uiTrajectoryStep;                                // 0x0028(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("TrajectoryModifier")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TrajectoryModifier")
+	}
+	static class UTrajectoryModifier* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UTrajectoryModifier>();
+	}
+};
+DUMPER7_ASSERTS_UTrajectoryModifier;
+
+// Class Runtime.LocationFollowerTrajectoryModifier
+// 0x0018 (0x0048 - 0x0030)
+class ULocationFollowerTrajectoryModifier final : public UTrajectoryModifier
+{
+public:
+	class UCurveVector*                           m_LocationCurve;                                   // 0x0030(0x0008)(Edit, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bFlatShootDirection;                             // 0x0038(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ELocationFollowerStretchType                  m_eStretchType;                                    // 0x0039(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3A[0x2];                                       // 0x003A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fCurveTimeToCalculateSpeed;                      // 0x003C(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fDeltaTimeToCalculateSpeed;                      // 0x0040(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fBakedCurveStartSpeed;                           // 0x0044(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LocationFollowerTrajectoryModifier")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LocationFollowerTrajectoryModifier")
+	}
+	static class ULocationFollowerTrajectoryModifier* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULocationFollowerTrajectoryModifier>();
+	}
+};
+DUMPER7_ASSERTS_ULocationFollowerTrajectoryModifier;
 
 // Class Runtime.CustomizationARParser
 // 0x0000 (0x0028 - 0x0028)
@@ -3617,26 +3619,6 @@ public:
 };
 DUMPER7_ASSERTS_UCustomizationStadiumParser;
 
-// Class Runtime.TrajectoryStatusTimedCondition
-// 0x0000 (0x0028 - 0x0028)
-class UTrajectoryStatusTimedCondition : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("TrajectoryStatusTimedCondition")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"TrajectoryStatusTimedCondition")
-	}
-	static class UTrajectoryStatusTimedCondition* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UTrajectoryStatusTimedCondition>();
-	}
-};
-DUMPER7_ASSERTS_UTrajectoryStatusTimedCondition;
-
 // Class Runtime.CustomizationCreatedPaletteParser
 // 0x0000 (0x0028 - 0x0028)
 class UCustomizationCreatedPaletteParser final : public UCustomizationExtraInfoParser
@@ -3677,6 +3659,26 @@ public:
 };
 DUMPER7_ASSERTS_UCustomizationVoiceTypeParser;
 
+// Class Runtime.TrajectoryStatusTimedCondition
+// 0x0000 (0x0028 - 0x0028)
+class UTrajectoryStatusTimedCondition : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("TrajectoryStatusTimedCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TrajectoryStatusTimedCondition")
+	}
+	static class UTrajectoryStatusTimedCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UTrajectoryStatusTimedCondition>();
+	}
+};
+DUMPER7_ASSERTS_UTrajectoryStatusTimedCondition;
+
 // Class Runtime.CustomizationVoicePitchParser
 // 0x0000 (0x0028 - 0x0028)
 class UCustomizationVoicePitchParser final : public UCustomizationExtraInfoParser
@@ -3716,6 +3718,46 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UCustomizationSwapColorsParser;
+
+// Class Runtime.CustomizationSetParser
+// 0x0000 (0x0028 - 0x0028)
+class UCustomizationSetParser final : public UCustomizationExtraInfoParser
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("CustomizationSetParser")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"CustomizationSetParser")
+	}
+	static class UCustomizationSetParser* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCustomizationSetParser>();
+	}
+};
+DUMPER7_ASSERTS_UCustomizationSetParser;
+
+// Class Runtime.CustomizationAccessoriesUsingPaletteParser
+// 0x0000 (0x0028 - 0x0028)
+class UCustomizationAccessoriesUsingPaletteParser final : public UCustomizationExtraInfoParser
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("CustomizationAccessoriesUsingPaletteParser")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"CustomizationAccessoriesUsingPaletteParser")
+	}
+	static class UCustomizationAccessoriesUsingPaletteParser* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UCustomizationAccessoriesUsingPaletteParser>();
+	}
+};
+DUMPER7_ASSERTS_UCustomizationAccessoriesUsingPaletteParser;
 
 // Class Runtime.TrajectoryStatusDeactivateCondition
 // 0x0008 (0x0030 - 0x0028)
@@ -3770,46 +3812,6 @@ public:
 };
 DUMPER7_ASSERTS_UBounceTrajectoryStatusDeactivateCondition;
 
-// Class Runtime.CustomizationSetParser
-// 0x0000 (0x0028 - 0x0028)
-class UCustomizationSetParser final : public UCustomizationExtraInfoParser
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("CustomizationSetParser")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"CustomizationSetParser")
-	}
-	static class UCustomizationSetParser* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCustomizationSetParser>();
-	}
-};
-DUMPER7_ASSERTS_UCustomizationSetParser;
-
-// Class Runtime.CustomizationAccessoriesUsingPaletteParser
-// 0x0000 (0x0028 - 0x0028)
-class UCustomizationAccessoriesUsingPaletteParser final : public UCustomizationExtraInfoParser
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("CustomizationAccessoriesUsingPaletteParser")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"CustomizationAccessoriesUsingPaletteParser")
-	}
-	static class UCustomizationAccessoriesUsingPaletteParser* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCustomizationAccessoriesUsingPaletteParser>();
-	}
-};
-DUMPER7_ASSERTS_UCustomizationAccessoriesUsingPaletteParser;
-
 // Class Runtime.CustomizationExtraAssetParser
 // 0x0000 (0x0028 - 0x0028)
 class UCustomizationExtraAssetParser final : public UCharacterCustomizationParser
@@ -3853,31 +3855,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UCharacterFXComponent;
-
-// Class Runtime.TrajectoryStatus
-// 0x0028 (0x0050 - 0x0028)
-class UTrajectoryStatus : public UObject
-{
-public:
-	struct FGameplayTag                           m_Status;                                          // 0x0028(0x0008)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<struct FTrajectoryStatusDeactivateConditionInstance> m_DeactivationConditions;            // 0x0030(0x0010)(ZeroConstructor, Deprecated, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	TArray<struct FTrajectoryStatusTimedConditionInstance> m_TimedConditions;                        // 0x0040(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("TrajectoryStatus")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"TrajectoryStatus")
-	}
-	static class UTrajectoryStatus* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UTrajectoryStatus>();
-	}
-};
-DUMPER7_ASSERTS_UTrajectoryStatus;
 
 // Class Runtime.CharacterGameplayTagWithEffectContextBinder
 // 0x0048 (0x01F8 - 0x01B0)
@@ -3925,6 +3902,31 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UColorListIndexMapDataAsset;
+
+// Class Runtime.TrajectoryStatus
+// 0x0028 (0x0050 - 0x0028)
+class UTrajectoryStatus : public UObject
+{
+public:
+	struct FGameplayTag                           m_Status;                                          // 0x0028(0x0008)(Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FTrajectoryStatusDeactivateConditionInstance> m_DeactivationConditions;            // 0x0030(0x0010)(ZeroConstructor, Deprecated, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	TArray<struct FTrajectoryStatusTimedConditionInstance> m_TimedConditions;                        // 0x0040(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("TrajectoryStatus")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TrajectoryStatus")
+	}
+	static class UTrajectoryStatus* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UTrajectoryStatus>();
+	}
+};
+DUMPER7_ASSERTS_UTrajectoryStatus;
 
 // Class Runtime.ColorPaletteDataAsset
 // 0x0018 (0x0098 - 0x0080)
@@ -3974,89 +3976,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UColorPaletteHelpers;
-
-// Class Runtime.TutorialManager
-// 0x0168 (0x0418 - 0x02B0)
-class ATutorialManager final : public AActor
-{
-public:
-	struct FGameplayTag                           m_TutorialManagerTag;                              // 0x02B0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bAutoMoveToNextLevelAtEnd;                       // 0x02B8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2B9[0x7];                                      // 0x02B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FTutorialLogicStepDatasourceInstance> m_TutorialLogicBeforeStartData;              // 0x02C0(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	TArray<struct FTutorialLogicStepDatasourceInstance> m_TutorialLogicOnEndData;                    // 0x02D0(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void()>              m_OnTutorialCompleteDelegate;                      // 0x02E0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	struct FGameplayTag                           m_InTutorialMenuTag;                               // 0x02F0(0x0008)(Edit, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FGameplayTag                           m_NextTutorialManagerToPlayTag;                    // 0x02F8(0x0008)(Edit, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<class UTutorialLogicStep*>             m_TutorialLogicBeforeStart;                        // 0x0300(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TArray<class UTutorialLogicStep*>             m_TutorialLogicOnEnd;                              // 0x0310(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TWeakObjectPtr<class ARuntimeCharacter>       m_TutorialPlayer;                                  // 0x0320(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bInitOnBeginPlay;                                // 0x0328(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_329[0x7];                                      // 0x0329(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   m_TutorialTitle;                                   // 0x0330(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	class FText                                   m_TutorialInstruction;                             // 0x0340(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	bool                                          m_bRequestInputToStartTutorial;                    // 0x0350(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_351[0x7];                                      // 0x0351(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class USCInputContext*                        m_PracticeContext;                                 // 0x0358(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_360[0x1];                                      // 0x0360(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          m_bHideTutorialProgressionUI;                      // 0x0361(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_362[0x6];                                      // 0x0362(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UCommonActivatableWidget>   m_TutorialWidgetClass;                             // 0x0368(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FGameplayTag                           m_TutorialUILayer;                                 // 0x0370(0x0008)(Edit, Config, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UCommonActivatableWidget*               m_TutorialWidget;                                  // 0x0378(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_380[0x8];                                      // 0x0380(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAkAudioEvent*                          m_TutorialCompleteSound;                           // 0x0388(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_390[0x18];                                     // 0x0390(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FTutorialStepDatasourceInstance> m_TutorialStepsData;                              // 0x03A8(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	TArray<class UTutorialStep*>                  m_TutorialSteps;                                   // 0x03B8(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	class UTutorialStep*                          m_CurrentStep;                                     // 0x03C8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3D0[0x4];                                      // 0x03D0(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          m_bWantToPlayLevelSequenceAtTheBeginning;          // 0x03D4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3D5[0x3];                                      // 0x03D5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTag                           m_LevelSequenceToPlayAtTheBeginning;               // 0x03D8(0x0008)(Edit, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class ASCLevelSequenceActor*                  m_SequenceActorToPlayAtTheBeginning;               // 0x03E0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bWantToPlayLevelSequenceAtTheEnd;                // 0x03E8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3E9[0x3];                                      // 0x03E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTag                           m_LevelSequenceToPlayAtTheEnd;                     // 0x03EC(0x0008)(Edit, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3F4[0x4];                                      // 0x03F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class ASCLevelSequenceActor*                  m_SequenceActorToPlayAtTheEnd;                     // 0x03F8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_400[0x18];                                     // 0x0400(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BPE_OnStartCurrentStep();
-	void BPE_OnStartTutorial();
-	void BPE_OnTutorialComplete();
-	void BPE_OnWaitingPlayerInputToStart();
-	void InitTutorial(class UCommonActivatableWidget* _widgetToUse);
-	void OnLevelSequencePlayedAtTheBeginningFinished();
-	void OnLevelSequencePlayedAtTheEndFinished();
-	void OnPossessedPawnChanged(class APawn* _oldPawn, class APawn* _newPawn);
-	void OnSkipIntroductionInputPressed();
-	void OnStepSucceeded();
-
-	class ATutorialActor* BPF_FindTutorialActor(const struct FGameplayTag& _tag) const;
-	int32 BPF_GetCurrentStepNumber() const;
-	int32 BPF_GetObjectiveCountInCurrentStep() const;
-	int32 BPF_GetObjectiveCountInCurrentStepWithIteration() const;
-	int32 BPF_GetStepCount() const;
-	void BPF_MoveToNextLevel() const;
-	bool CanStartTutorialFromInput() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("TutorialManager")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"TutorialManager")
-	}
-	static class ATutorialManager* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ATutorialManager>();
-	}
-};
-DUMPER7_ASSERTS_ATutorialManager;
 
 // Class Runtime.CorridorFlowState
 // 0x0000 (0x0590 - 0x0590)
@@ -4161,7 +4080,8 @@ public:
 	TSoftObjectPtr<class ULevelSequence>          m_TransitionSequence;                              // 0x0098(0x0028)(Edit, BlueprintVisible, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	TSoftObjectPtr<class UTextureCube>            m_ReflectionCubemap;                               // 0x00C0(0x0028)(Edit, BlueprintVisible, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          m_bDynamicShadows;                                 // 0x00E8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          m_bSeparateTranslucency;                           // 0x00E9(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_EA[0x6];                                       // 0x00EA(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
@@ -4579,7 +4499,7 @@ public:
 DUMPER7_ASSERTS_UDistanceWithBallEdgeCondition;
 
 // Class Runtime.EffectAttributorVolume
-// 0x0088 (0x0338 - 0x02B0)
+// 0x00B8 (0x0368 - 0x02B0)
 class AEffectAttributorVolume : public AActor
 {
 public:
@@ -4591,9 +4511,12 @@ public:
 	class UBoxComponent*                          m_AreaExit;                                        // 0x02C0(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class USceneComponent*                        m_SelectionPoint;                                  // 0x02C8(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	TSubclassOf<class URuntimeGameplayEffect>     m_AbilityGameplayEffect;                           // 0x02D0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGameplayTagQuery                      m_GameflowConditionGameplayTagQuery;               // 0x02D8(0x0048)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	TArray<ERuntimeMatchState>                    m_eInMatchStateRequirement;                        // 0x0320(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NativeAccessSpecifierPublic)
-	class AActor*                                 m_CurrentAffectedActor;                            // 0x0330(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSubclassOf<class URuntimeGameplayEffect>     m_AbilityGameplayEffectPendingRemove;              // 0x02D8(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGameplayTagQuery                      m_GameflowConditionGameplayTagQuery;               // 0x02E0(0x0048)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	TArray<ERuntimeMatchState>                    m_eInMatchStateRequirement;                        // 0x0328(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FGameplayTag                           m_OngoingAbilityBlockingRemoval;                   // 0x0338(0x0008)(BlueprintVisible, Transient, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FGameplayTagContainer                  m_AbilitiesThatCanBlockRemoval;                    // 0x0340(0x0020)(Edit, BlueprintVisible, Transient, Protected, NativeAccessSpecifierProtected)
+	class AActor*                                 m_CurrentAffectedActor;                            // 0x0360(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
 public:
 	void BPE_AssignCurrentEffectOwner(class AActor* _actor);
@@ -4615,7 +4538,9 @@ public:
 	bool BPF_CanRemoveEffectFromTarget(const class AActor* _actor) const;
 	bool BPF_CanUseEffectAttributorVolume() const;
 	bool BPF_IsMatchingCurrentMatchFlowAndStateRequirement() const;
+	bool BPF_IsRemovalBlockedByOngoingAbility(const class AActor* _actor) const;
 	bool BPF_ShouldLogDetailedInfos() const;
+	class FName BPF_VLOGCategory() const;
 
 public:
 	static class UClass* StaticClass()
@@ -4632,31 +4557,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_AEffectAttributorVolume;
-
-// Class Runtime.GroupExperienceComponent
-// 0x0018 (0x0058 - 0x0040)
-class UGroupExperienceComponent final : public UExperienceComponentBase
-{
-public:
-	TArray<struct FExperienceComponentInstance>   m_Components;                                      // 0x0040(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	bool                                          m_bShouldBeConsideredAsOneComponent;               // 0x0050(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_51[0x7];                                       // 0x0051(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("GroupExperienceComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"GroupExperienceComponent")
-	}
-	static class UGroupExperienceComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGroupExperienceComponent>();
-	}
-};
-DUMPER7_ASSERTS_UGroupExperienceComponent;
 
 // Class Runtime.ScoreExperienceComponent
 // 0x0000 (0x0040 - 0x0040)
@@ -4678,6 +4578,26 @@ public:
 };
 DUMPER7_ASSERTS_UScoreExperienceComponent;
 
+// Class Runtime.ScoreToExpMultiplierExperienceComponent
+// 0x0000 (0x0040 - 0x0040)
+class UScoreToExpMultiplierExperienceComponent final : public UExperienceComponentBase
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ScoreToExpMultiplierExperienceComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ScoreToExpMultiplierExperienceComponent")
+	}
+	static class UScoreToExpMultiplierExperienceComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UScoreToExpMultiplierExperienceComponent>();
+	}
+};
+DUMPER7_ASSERTS_UScoreToExpMultiplierExperienceComponent;
+
 // Class Runtime.MatchResultExperienceComponent
 // 0x0000 (0x0040 - 0x0040)
 class UMatchResultExperienceComponent final : public UExperienceComponentBase
@@ -4698,6 +4618,26 @@ public:
 };
 DUMPER7_ASSERTS_UMatchResultExperienceComponent;
 
+// Class Runtime.MatchDurationExperienceComponent
+// 0x0000 (0x0040 - 0x0040)
+class UMatchDurationExperienceComponent final : public UExperienceComponentBase
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MatchDurationExperienceComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MatchDurationExperienceComponent")
+	}
+	static class UMatchDurationExperienceComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMatchDurationExperienceComponent>();
+	}
+};
+DUMPER7_ASSERTS_UMatchDurationExperienceComponent;
+
 // Class Runtime.OvertimeDurationExperienceComponent
 // 0x0000 (0x0040 - 0x0040)
 class UOvertimeDurationExperienceComponent final : public UExperienceComponentBase
@@ -4717,26 +4657,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOvertimeDurationExperienceComponent;
-
-// Class Runtime.ExtraEffortRegenCalculation
-// 0x0000 (0x0040 - 0x0040)
-class UExtraEffortRegenCalculation final : public UGameplayEffectExecutionCalculation
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ExtraEffortRegenCalculation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ExtraEffortRegenCalculation")
-	}
-	static class UExtraEffortRegenCalculation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UExtraEffortRegenCalculation>();
-	}
-};
-DUMPER7_ASSERTS_UExtraEffortRegenCalculation;
 
 // Class Runtime.FinisherQuickTimeEventFlowState
 // 0x0020 (0x05B0 - 0x0590)
@@ -4865,6 +4785,74 @@ public:
 };
 DUMPER7_ASSERTS_UGoalScoredBinder;
 
+// Class Runtime.ShootAnimationMetadata
+// 0x00A8 (0x0488 - 0x03E0)
+class UShootAnimationMetadata : public URuntimeAnimationMetadata
+{
+public:
+	struct FIntDataBinding                        m_iBuildUpFrameCount;                              // 0x03E0(0x0048)(Edit, Protected, NativeAccessSpecifierProtected)
+	bool                                          m_bSkipStretchTimeByBuildUp;                       // 0x0428(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bSnapBallOnBallBoneDuringFreezeFrame;            // 0x0429(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_42A[0x6];                                      // 0x042A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UTimeStretchNotify>         m_NotifyStretchBuildUp;                            // 0x0430(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_438[0x50];                                     // 0x0438(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ShootAnimationMetadata")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShootAnimationMetadata")
+	}
+	static class UShootAnimationMetadata* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShootAnimationMetadata>();
+	}
+};
+DUMPER7_ASSERTS_UShootAnimationMetadata;
+
+// Class Runtime.TrajectoryModifierTargetDatasource
+// 0x0000 (0x00A8 - 0x00A8)
+class UTrajectoryModifierTargetDatasource final : public UGenericTargetDatasource
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("TrajectoryModifierTargetDatasource")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TrajectoryModifierTargetDatasource")
+	}
+	static class UTrajectoryModifierTargetDatasource* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UTrajectoryModifierTargetDatasource>();
+	}
+};
+DUMPER7_ASSERTS_UTrajectoryModifierTargetDatasource;
+
+// Class Runtime.HighPowerShootAnimationMetadata
+// 0x0000 (0x0488 - 0x0488)
+class UHighPowerShootAnimationMetadata : public UShootAnimationMetadata
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("HighPowerShootAnimationMetadata")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"HighPowerShootAnimationMetadata")
+	}
+	static class UHighPowerShootAnimationMetadata* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UHighPowerShootAnimationMetadata>();
+	}
+};
+DUMPER7_ASSERTS_UHighPowerShootAnimationMetadata;
+
 // Class Runtime.HinderingComponent
 // 0x0050 (0x0108 - 0x00B8)
 class UHinderingComponent : public UActorComponent
@@ -4898,49 +4886,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UHinderingComponent;
-
-// Class Runtime.ShopItemFilter
-// 0x0000 (0x0028 - 0x0028)
-class UShopItemFilter : public UObject
-{
-public:
-	bool BPE_ShouldBeRemoved(const class UCustomizationSubsystem* _subsystem, const struct FShopItem& _item, bool _bIsActivated) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ShopItemFilter")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ShopItemFilter")
-	}
-	static class UShopItemFilter* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UShopItemFilter>();
-	}
-};
-DUMPER7_ASSERTS_UShopItemFilter;
-
-// Class Runtime.ShopItemBuyableFilter
-// 0x0000 (0x0028 - 0x0028)
-class UShopItemBuyableFilter final : public UShopItemFilter
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ShopItemBuyableFilter")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ShopItemBuyableFilter")
-	}
-	static class UShopItemBuyableFilter* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UShopItemBuyableFilter>();
-	}
-};
-DUMPER7_ASSERTS_UShopItemBuyableFilter;
 
 // Class Runtime.HinderingConfig
 // 0x0448 (0x0478 - 0x0030)
@@ -5018,43 +4963,6 @@ public:
 };
 DUMPER7_ASSERTS_UCharacterHinderingConfig;
 
-// Class Runtime.HinderingGameplayAbility
-// 0x00B0 (0x06F8 - 0x0648)
-class UHinderingGameplayAbility : public USCGameplayAbility
-{
-public:
-	struct FGameplayTagContainer                  m_HinderedTags;                                    // 0x0648(0x0020)(Edit, NativeAccessSpecifierPublic)
-	struct FBaseActorConditionInstance            m_IsImpactedByHinderingCondition;                  // 0x0668(0x0010)(Edit, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FBaseActorConditionInstance            m_ActivateCollisionWithPawnsCondition;             // 0x0678(0x0010)(Edit, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	ECollisionChannel                             m_eBlockPawnsChannel;                              // 0x0688(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_689[0x7];                                      // 0x0689(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCharacterHinderingConfig*              m_AlliesHinderingConfig;                           // 0x0690(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UCharacterHinderingConfig*              m_EnnemiesHinderingConfig;                         // 0x0698(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TMap<TWeakObjectPtr<class APlayerState>, TWeakObjectPtr<class UAbilityTask_HandleHindering>> m_HinderingCauserToTask; // 0x06A0(0x0050)(Transient, UObjectWrapper, NativeAccessSpecifierPublic)
-	class USCDynamicSpeedMovementComponent*       m_MovementComponent;                               // 0x06F0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	void OnPlayerStateRemoved(class APlayerState* _playerState);
-	void ServerNotifyHindering(class APlayerState* _player, float _fClientServerTime, float _fTimeSinceLastServerTime);
-	void ServerNotifyHinderingFast(class APlayerState* _player, float _fClientServerTime);
-	void ServerNotifyHinderingStop(class APlayerState* _player);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("HinderingGameplayAbility")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"HinderingGameplayAbility")
-	}
-	static class UHinderingGameplayAbility* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UHinderingGameplayAbility>();
-	}
-};
-DUMPER7_ASSERTS_UHinderingGameplayAbility;
-
 // Class Runtime.HUDRegisterableInterface
 // 0x0000 (0x0000 - 0x0000)
 class IHUDRegisterableInterface final
@@ -5087,6 +4995,32 @@ public:
 };
 DUMPER7_ASSERTS_IHUDRegisterableInterface;
 
+// Class Runtime.HUD_NameTagManagerWidget
+// 0x0010 (0x0C00 - 0x0BF0)
+class UHUD_NameTagManagerWidget final : public USCUserWidget
+{
+public:
+	TArray<class UBaseTargetWidget*>              m_VisibleNameTagArray;                             // 0x0BF0(0x0010)(BlueprintVisible, ExportObject, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+
+public:
+	void BPF_SortNameTagArrayByDistanceFromTarget(class AActor* _target);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("HUD_NameTagManagerWidget")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"HUD_NameTagManagerWidget")
+	}
+	static class UHUD_NameTagManagerWidget* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UHUD_NameTagManagerWidget>();
+	}
+};
+DUMPER7_ASSERTS_UHUD_NameTagManagerWidget;
+
 // Class Runtime.HUD_Widget
 // 0x0000 (0x0BF0 - 0x0BF0)
 class UHUD_Widget : public USCUserWidget
@@ -5106,30 +5040,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UHUD_Widget;
-
-// Class Runtime.IsBallOwnerActorCondition
-// 0x0008 (0x0030 - 0x0028)
-class UIsBallOwnerActorCondition final : public UBaseActorTargetCondition
-{
-public:
-	bool                                          m_bHandleNoOwnership;                              // 0x0028(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("IsBallOwnerActorCondition")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"IsBallOwnerActorCondition")
-	}
-	static class UIsBallOwnerActorCondition* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UIsBallOwnerActorCondition>();
-	}
-};
-DUMPER7_ASSERTS_UIsBallOwnerActorCondition;
 
 // Class Runtime.LockerRoomFlowState
 // 0x0048 (0x05D8 - 0x0590)
@@ -5390,6 +5300,26 @@ public:
 };
 DUMPER7_ASSERTS_AMultiPositionAmbientSound;
 
+// Class Runtime.OnlineGameOption
+// 0x0000 (0x0030 - 0x0030)
+class UOnlineGameOption : public UGameOption
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlineGameOption")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlineGameOption")
+	}
+	static class UOnlineGameOption* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlineGameOption>();
+	}
+};
+DUMPER7_ASSERTS_UOnlineGameOption;
+
 // Class Runtime.VoiceChatGameOption
 // 0x0000 (0x0030 - 0x0030)
 class UVoiceChatGameOption final : public UOnlineGameOption
@@ -5465,26 +5395,6 @@ public:
 };
 DUMPER7_ASSERTS_UPingBinder;
 
-// Class Runtime.PingBehavior
-// 0x0000 (0x0028 - 0x0028)
-class UPingBehavior : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("PingBehavior")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"PingBehavior")
-	}
-	static class UPingBehavior* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UPingBehavior>();
-	}
-};
-DUMPER7_ASSERTS_UPingBehavior;
-
 // Class Runtime.PingDataAsset
 // 0x01A0 (0x01D0 - 0x0030)
 class UPingDataAsset final : public UPrimaryDataAsset
@@ -5519,6 +5429,49 @@ public:
 };
 DUMPER7_ASSERTS_UPingDataAsset;
 
+// Class Runtime.PlayerBallOwnership
+// 0x0118 (0x01D0 - 0x00B8)
+class UPlayerBallOwnership final : public UActorComponent
+{
+public:
+	uint8                                         Pad_B8[0x8];                                       // 0x00B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	FMulticastSparseDelegateProperty_             BPE_OnBallAutoCapturable;                          // 0x00C0(0x0001)(InstancedReference, BlueprintAssignable, NoDestructor, NativeAccessSpecifierPublic)
+	FMulticastSparseDelegateProperty_             BPE_OnBallOwnershipGained;                         // 0x00C1(0x0001)(InstancedReference, BlueprintAssignable, NoDestructor, NativeAccessSpecifierPublic)
+	FMulticastSparseDelegateProperty_             BPE_OnBallOwnershipLost;                           // 0x00C2(0x0001)(InstancedReference, BlueprintAssignable, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          m_bMustFaceBallToAutoCapture;                      // 0x00C3(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGameplayTag                           m_HasBallTagPred;                                  // 0x00C4(0x0008)(Edit, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGameplayTag                           m_HasBallTag;                                      // 0x00CC(0x0008)(Edit, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGameplayTag                           m_LoseBallEventTag;                                // 0x00D4(0x0008)(Edit, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_DC[0x4];                                       // 0x00DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FBallCaptureDescription                m_MainAutoCaptureDescription;                      // 0x00E0(0x0040)(Edit, DisableEditOnInstance, NativeAccessSpecifierPublic)
+	struct FBallCaptureDescription                m_AutoCaptureDescriptions[0x2];                    // 0x0120(0x0040)(Edit, DisableEditOnInstance, NativeAccessSpecifierPublic)
+	TSubclassOf<class UGameplayEffect>            m_SetBallEffect;                                   // 0x01A0(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSubclassOf<class UGameplayEffect>            m_RemoveBallEffect;                                // 0x01A8(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1B0[0x20];                                     // 0x01B0(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void BPF_GetBall(class ABall** _outBallRef, EExecSuccessEnum* _OutExecBranches);
+	bool BPF_SetBall(class ABall* _ball, bool _bSteal);
+
+	class ABall* BPF_GetBallPure() const;
+	class ARuntimePlayerState* BPF_GetPlayerState() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("PlayerBallOwnership")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PlayerBallOwnership")
+	}
+	static class UPlayerBallOwnership* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UPlayerBallOwnership>();
+	}
+};
+DUMPER7_ASSERTS_UPlayerBallOwnership;
+
 // Class Runtime.PlayerColorChoiceSequenceActor
 // 0x0010 (0x05E0 - 0x05D0)
 class APlayerColorChoiceSequenceActor final : public ARuntimeLevelSequenceActor
@@ -5543,6 +5496,70 @@ public:
 	}
 };
 DUMPER7_ASSERTS_APlayerColorChoiceSequenceActor;
+
+// Class Runtime.BaseShootForceComputation
+// 0x0000 (0x0028 - 0x0028)
+class UBaseShootForceComputation : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BaseShootForceComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseShootForceComputation")
+	}
+	static class UBaseShootForceComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBaseShootForceComputation>();
+	}
+};
+DUMPER7_ASSERTS_UBaseShootForceComputation;
+
+// Class Runtime.ModifierShootForceComputation
+// 0x0000 (0x0028 - 0x0028)
+class UModifierShootForceComputation : public UBaseShootForceComputation
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ModifierShootForceComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ModifierShootForceComputation")
+	}
+	static class UModifierShootForceComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UModifierShootForceComputation>();
+	}
+};
+DUMPER7_ASSERTS_UModifierShootForceComputation;
+
+// Class Runtime.StaticShootForceComputation
+// 0x0008 (0x0030 - 0x0028)
+class UStaticShootForceComputation final : public UModifierShootForceComputation
+{
+public:
+	float                                         m_fForce;                                          // 0x0028(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("StaticShootForceComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"StaticShootForceComputation")
+	}
+	static class UStaticShootForceComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UStaticShootForceComputation>();
+	}
+};
+DUMPER7_ASSERTS_UStaticShootForceComputation;
 
 // Class Runtime.PlayerJoinBinder
 // 0x0058 (0x0150 - 0x00F8)
@@ -5598,35 +5615,51 @@ public:
 };
 DUMPER7_ASSERTS_UPlayerLeftBinder;
 
-// Class Runtime.ShootModifier
-// 0x0008 (0x0030 - 0x0028)
-class UShootModifier : public UObject
+// Class Runtime.BaseShootDirectionComputation
+// 0x0018 (0x0040 - 0x0028)
+class UBaseShootDirectionComputation : public UObject
 {
 public:
-	ETargetForceType                              m_eTargetForceType;                                // 0x0028(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EMagnusType                                   m_eMagnusAxisToApplyModifier;                      // 0x0029(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2A[0x6];                                       // 0x002A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BPE_ApplyAngle(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, float* _fPitch, EApplyMode* _PitchApplyMode, float* _fYaw, EApplyMode* _YawApplyMode) const;
-	float BPE_ApplyMultiplierForce(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData) const;
-	float BPE_ApplyMultiplierRotationForce(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, EMagnusType* _MagnusToApply) const;
+	uint8                                         Pad_28[0x18];                                      // 0x0028(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("ShootModifier")
+		STATIC_CLASS_IMPL("BaseShootDirectionComputation")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"ShootModifier")
+		STATIC_NAME_IMPL(L"BaseShootDirectionComputation")
 	}
-	static class UShootModifier* GetDefaultObj()
+	static class UBaseShootDirectionComputation* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UShootModifier>();
+		return GetDefaultObjImpl<UBaseShootDirectionComputation>();
 	}
 };
-DUMPER7_ASSERTS_UShootModifier;
+DUMPER7_ASSERTS_UBaseShootDirectionComputation;
+
+// Class Runtime.LockedDirShootDirectionComputation
+// 0x0018 (0x0058 - 0x0040)
+class ULockedDirShootDirectionComputation : public UBaseShootDirectionComputation
+{
+public:
+	struct FVector_NetQuantizeNormal              m_vLockedDir;                                      // 0x0040(0x0018)(Edit, BlueprintVisible, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LockedDirShootDirectionComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LockedDirShootDirectionComputation")
+	}
+	static class ULockedDirShootDirectionComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULockedDirShootDirectionComputation>();
+	}
+};
+DUMPER7_ASSERTS_ULockedDirShootDirectionComputation;
 
 // Class Runtime.PlayerProfileCategoryViewModel
 // 0x0080 (0x00F0 - 0x0070)
@@ -5681,54 +5714,35 @@ public:
 };
 DUMPER7_ASSERTS_UGlobalPlayerProfileCustomizationViewModel;
 
-// Class Runtime.BaseShootDirectionComputation
-// 0x0018 (0x0040 - 0x0028)
-class UBaseShootDirectionComputation : public UObject
+// Class Runtime.ShootModifier
+// 0x0008 (0x0030 - 0x0028)
+class UShootModifier : public UObject
 {
 public:
-	uint8                                         Pad_28[0x18];                                      // 0x0028(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	ETargetForceType                              m_eTargetForceType;                                // 0x0028(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EMagnusType                                   m_eMagnusAxisToApplyModifier;                      // 0x0029(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2A[0x6];                                       // 0x002A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void BPE_ApplyAngle(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, float* _fPitch, EApplyMode* _PitchApplyMode, float* _fYaw, EApplyMode* _YawApplyMode) const;
+	float BPE_ApplyMultiplierForce(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData) const;
+	float BPE_ApplyMultiplierRotationForce(const class AActor* _actor, const struct FShootPrepTargetData& _ShootData, EMagnusType* _MagnusToApply) const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("BaseShootDirectionComputation")
+		STATIC_CLASS_IMPL("ShootModifier")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"BaseShootDirectionComputation")
+		STATIC_NAME_IMPL(L"ShootModifier")
 	}
-	static class UBaseShootDirectionComputation* GetDefaultObj()
+	static class UShootModifier* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UBaseShootDirectionComputation>();
+		return GetDefaultObjImpl<UShootModifier>();
 	}
 };
-DUMPER7_ASSERTS_UBaseShootDirectionComputation;
-
-// Class Runtime.HitDeflectShootDirectionComputation
-// 0x0098 (0x00D8 - 0x0040)
-class UHitDeflectShootDirectionComputation final : public UBaseShootDirectionComputation
-{
-public:
-	struct FFloatDataBinding                      m_fForwardAngleOffset;                             // 0x0040(0x0048)(Edit, NativeAccessSpecifierPrivate)
-	struct FFloatDataBinding                      m_fVerticalAngleOffset;                            // 0x0088(0x0048)(Edit, NativeAccessSpecifierPrivate)
-	bool                                          m_bAlwaysUp;                                       // 0x00D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_D1[0x7];                                       // 0x00D1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("HitDeflectShootDirectionComputation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"HitDeflectShootDirectionComputation")
-	}
-	static class UHitDeflectShootDirectionComputation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UHitDeflectShootDirectionComputation>();
-	}
-};
-DUMPER7_ASSERTS_UHitDeflectShootDirectionComputation;
+DUMPER7_ASSERTS_UShootModifier;
 
 // Class Runtime.PlayerProfileDescriptionViewModel
 // 0x0010 (0x0080 - 0x0070)
@@ -5776,52 +5790,28 @@ public:
 };
 DUMPER7_ASSERTS_UPlayerProfileHelpers;
 
-// Class Runtime.ShootModifierComputationData
+// Class Runtime.StringsHelper
 // 0x0000 (0x0028 - 0x0028)
-class UShootModifierComputationData : public UObject
+class UStringsHelper final : public UObject
 {
 public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ShootModifierComputationData")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ShootModifierComputationData")
-	}
-	static class UShootModifierComputationData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UShootModifierComputationData>();
-	}
-};
-DUMPER7_ASSERTS_UShootModifierComputationData;
-
-// Class Runtime.ComputedShootModifierComputationData
-// 0x0010 (0x0038 - 0x0028)
-class UComputedShootModifierComputationData : public UShootModifierComputationData
-{
-public:
-	ESourceModifierType                           m_eSource;                                         // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bUseRatio;                                       // 0x0029(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2A[0x2];                                       // 0x002A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFloatInterval                         m_RangeToComputeRatio;                             // 0x002C(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         m_iVersion;                                        // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	static int32 BPF_HashString(const class FString& _str);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("ComputedShootModifierComputationData")
+		STATIC_CLASS_IMPL("StringsHelper")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"ComputedShootModifierComputationData")
+		STATIC_NAME_IMPL(L"StringsHelper")
 	}
-	static class UComputedShootModifierComputationData* GetDefaultObj()
+	static class UStringsHelper* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UComputedShootModifierComputationData>();
+		return GetDefaultObjImpl<UStringsHelper>();
 	}
 };
-DUMPER7_ASSERTS_UComputedShootModifierComputationData;
+DUMPER7_ASSERTS_UStringsHelper;
 
 // Class Runtime.PlayerProfileParser
 // 0x0000 (0x0028 - 0x0028)
@@ -5868,33 +5858,52 @@ public:
 };
 DUMPER7_ASSERTS_UPlayerProfileBaseAsset;
 
-// Class Runtime.ThumbnailFunctionLibrary
+// Class Runtime.ShootModifierComputationData
 // 0x0000 (0x0028 - 0x0028)
-class UThumbnailFunctionLibrary final : public UBlueprintFunctionLibrary
+class UShootModifierComputationData : public UObject
 {
 public:
-	static void BPF_ClearThumbnailSceneCache(bool bCollectGarbage);
-	static class ULevelSequencePlayer* BPF_CreateLevelSequence(class UObject* WorldContextObject, class ULevelSequence* InLevelSequence, const struct FMovieSceneSequencePlaybackSettings& Settings, const struct FTransform& Transform, class AThumbnailLevelSequenceActor** OutActor);
-	static TArray<class UObject*> BPF_GetSpawnables(class AThumbnailLevelSequenceActor* Actor);
-	static class FString BPF_ObjectPathToObjectName(const class FString& _objectPath);
-	static void BPF_ReleaseRenderTargets();
-	static void BPF_SetForceMipStreaming(class UPrimitiveComponent* Component, bool bForceMipStreaming);
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ShootModifierComputationData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShootModifierComputationData")
+	}
+	static class UShootModifierComputationData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShootModifierComputationData>();
+	}
+};
+DUMPER7_ASSERTS_UShootModifierComputationData;
+
+// Class Runtime.ComputedShootModifierComputationData
+// 0x0010 (0x0038 - 0x0028)
+class UComputedShootModifierComputationData : public UShootModifierComputationData
+{
+public:
+	ESourceModifierType                           m_eSource;                                         // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bUseRatio;                                       // 0x0029(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2A[0x2];                                       // 0x002A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFloatInterval                         m_RangeToComputeRatio;                             // 0x002C(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         m_iVersion;                                        // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("ThumbnailFunctionLibrary")
+		STATIC_CLASS_IMPL("ComputedShootModifierComputationData")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"ThumbnailFunctionLibrary")
+		STATIC_NAME_IMPL(L"ComputedShootModifierComputationData")
 	}
-	static class UThumbnailFunctionLibrary* GetDefaultObj()
+	static class UComputedShootModifierComputationData* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UThumbnailFunctionLibrary>();
+		return GetDefaultObjImpl<UComputedShootModifierComputationData>();
 	}
 };
-DUMPER7_ASSERTS_UThumbnailFunctionLibrary;
+DUMPER7_ASSERTS_UComputedShootModifierComputationData;
 
 // Class Runtime.PlayerProfileTextureAsset
 // 0x0028 (0x0080 - 0x0058)
@@ -5946,31 +5955,129 @@ public:
 };
 DUMPER7_ASSERTS_UPlayerProfilePoseAsset;
 
-// Class Runtime.SpeedStateShootModifier
-// 0x0028 (0x0058 - 0x0030)
-class USpeedStateShootModifier final : public UShootModifier
+// Class Runtime.ModifierShootDirectionComputation
+// 0x0000 (0x0040 - 0x0040)
+class UModifierShootDirectionComputation : public UBaseShootDirectionComputation
 {
 public:
-	struct FMultiplierSpeedStateData              m_MultiplierBySpeedState;                          // 0x0030(0x0010)(Edit, BlueprintReadOnly, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         m_Multipliers[0x4];                                // 0x0040(0x0004)(BlueprintReadOnly, ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fBlendTime;                                      // 0x0050(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         m_iDataVersion;                                    // 0x0054(0x0004)(BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ModifierShootDirectionComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ModifierShootDirectionComputation")
+	}
+	static class UModifierShootDirectionComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UModifierShootDirectionComputation>();
+	}
+};
+DUMPER7_ASSERTS_UModifierShootDirectionComputation;
+
+// Class Runtime.ControllerShootDirectionComputation
+// 0x00C8 (0x0108 - 0x0040)
+class UControllerShootDirectionComputation : public UModifierShootDirectionComputation
+{
+public:
+	TArray<ECollisionChannel>                     m_CollisionChannelToIgnore;                        // 0x0040(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	ELockDirectionOption                          m_eLockDirectionOption;                            // 0x0050(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFloatRange                            m_PitchRange;                                      // 0x0054(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCurveFloat*                            m_TrajectoryPitchByCameraPitch;                    // 0x0068(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UCurveFloat*                            m_TrajectoryYawByXAxis;                            // 0x0070(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UCurveVector*                           m_ShootPitchCorrectionByYAxis;                     // 0x0078(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FRuntimeFloatCurve                     m_VerticalMagnusMultiplier;                        // 0x0080(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("SpeedStateShootModifier")
+		STATIC_CLASS_IMPL("ControllerShootDirectionComputation")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"SpeedStateShootModifier")
+		STATIC_NAME_IMPL(L"ControllerShootDirectionComputation")
 	}
-	static class USpeedStateShootModifier* GetDefaultObj()
+	static class UControllerShootDirectionComputation* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<USpeedStateShootModifier>();
+		return GetDefaultObjImpl<UControllerShootDirectionComputation>();
 	}
 };
-DUMPER7_ASSERTS_USpeedStateShootModifier;
+DUMPER7_ASSERTS_UControllerShootDirectionComputation;
+
+// Class Runtime.InputForwardShootDirectionComputation
+// 0x00B8 (0x01C0 - 0x0108)
+class UInputForwardShootDirectionComputation : public UControllerShootDirectionComputation
+{
+public:
+	bool                                          m_bUseAccumulatorSystemCalculation;                // 0x0108(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_109[0x3];                                      // 0x0109(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fAccumulatorSensibility;                         // 0x010C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bUseInputFromContext;                            // 0x0110(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_111[0x3];                                      // 0x0111(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fVerticalAngle;                                  // 0x0114(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EShootDirectionSpace                          m_eDefaultShootDirectionSpace;                     // 0x0118(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bUseClampWithActorForward;                       // 0x0119(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_11A[0x2];                                      // 0x011A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fClampWithActorForward;                          // 0x011C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bUseVerticalAngleAfterClamp;                     // 0x0120(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bKeepLastDirectionAtNeutralPos;                  // 0x0121(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_122[0x6];                                      // 0x0122(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRuntimeFloatCurve                     m_JoystickDeadZone;                                // 0x0128(0x0088)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	bool                                          m_bUseDataTableSpace;                              // 0x01B0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1B1[0x7];                                      // 0x01B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UDataTable*                             m_ShootDatatable;                                  // 0x01B8(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("InputForwardShootDirectionComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"InputForwardShootDirectionComputation")
+	}
+	static class UInputForwardShootDirectionComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UInputForwardShootDirectionComputation>();
+	}
+};
+DUMPER7_ASSERTS_UInputForwardShootDirectionComputation;
+
+// Class Runtime.FilteredForwardInputShootDirectionComputation
+// 0x0048 (0x0208 - 0x01C0)
+class UFilteredForwardInputShootDirectionComputation : public UInputForwardShootDirectionComputation
+{
+public:
+	bool                                          m_bUseLerpSystem;                                  // 0x01C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1C1[0x3];                                      // 0x01C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fLerpActivationDelay;                            // 0x01C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fLerpSmoothDynamic;                              // 0x01C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bDeactivateDependingOnAngleDiff;                 // 0x01CC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1CD[0x3];                                      // 0x01CD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fAngle;                                          // 0x01D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FFloatRange                            m_AccelerationRange;                               // 0x01D4(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FFloatRange                            m_AccelerationMultiplier;                          // 0x01E4(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1F4[0x4];                                      // 0x01F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UGameOption>                m_AccelerationRangeOption;                         // 0x01F8(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSubclassOf<class UGameOption>                m_AccelerationMultiplierOption;                    // 0x0200(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("FilteredForwardInputShootDirectionComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"FilteredForwardInputShootDirectionComputation")
+	}
+	static class UFilteredForwardInputShootDirectionComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UFilteredForwardInputShootDirectionComputation>();
+	}
+};
+DUMPER7_ASSERTS_UFilteredForwardInputShootDirectionComputation;
 
 // Class Runtime.PlayerProfileBaseAssetContainer
 // 0x0010 (0x0040 - 0x0030)
@@ -6021,70 +6128,31 @@ public:
 };
 DUMPER7_ASSERTS_UPlayerProfileSettings;
 
-// Class Runtime.BaseShootForceComputation
-// 0x0000 (0x0028 - 0x0028)
-class UBaseShootForceComputation : public UObject
+// Class Runtime.SpeedStateShootModifier
+// 0x0028 (0x0058 - 0x0030)
+class USpeedStateShootModifier final : public UShootModifier
 {
 public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BaseShootForceComputation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BaseShootForceComputation")
-	}
-	static class UBaseShootForceComputation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBaseShootForceComputation>();
-	}
-};
-DUMPER7_ASSERTS_UBaseShootForceComputation;
-
-// Class Runtime.ModifierShootForceComputation
-// 0x0000 (0x0028 - 0x0028)
-class UModifierShootForceComputation : public UBaseShootForceComputation
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ModifierShootForceComputation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ModifierShootForceComputation")
-	}
-	static class UModifierShootForceComputation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UModifierShootForceComputation>();
-	}
-};
-DUMPER7_ASSERTS_UModifierShootForceComputation;
-
-// Class Runtime.InputShootForceComputation
-// 0x0018 (0x0040 - 0x0028)
-class UInputShootForceComputation final : public UModifierShootForceComputation
-{
-public:
-	bool                                          m_bUseTimeSpentOnInputStack;                       // 0x0028(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FInstancedStruct                       m_SourceForce;                                     // 0x0030(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	struct FMultiplierSpeedStateData              m_MultiplierBySpeedState;                          // 0x0030(0x0010)(Edit, BlueprintReadOnly, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         m_Multipliers[0x4];                                // 0x0040(0x0004)(BlueprintReadOnly, ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fBlendTime;                                      // 0x0050(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         m_iDataVersion;                                    // 0x0054(0x0004)(BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("InputShootForceComputation")
+		STATIC_CLASS_IMPL("SpeedStateShootModifier")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"InputShootForceComputation")
+		STATIC_NAME_IMPL(L"SpeedStateShootModifier")
 	}
-	static class UInputShootForceComputation* GetDefaultObj()
+	static class USpeedStateShootModifier* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UInputShootForceComputation>();
+		return GetDefaultObjImpl<USpeedStateShootModifier>();
 	}
 };
-DUMPER7_ASSERTS_UInputShootForceComputation;
+DUMPER7_ASSERTS_USpeedStateShootModifier;
 
 // Class Runtime.PlayerProfileSubsystem
 // 0x02D8 (0x0428 - 0x0150)
@@ -6159,31 +6227,6 @@ public:
 };
 DUMPER7_ASSERTS_UPlayerProfileUIInfosAsset;
 
-// Class Runtime.ShootOrientationShootPrepCondition
-// 0x0008 (0x0080 - 0x0078)
-class UShootOrientationShootPrepCondition final : public UTargetDataCondition
-{
-public:
-	ESCCardinalPoints                             m_eCardinalPoint;                                  // 0x0078(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bUseVelocityAsRefDir;                            // 0x0079(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_7A[0x6];                                       // 0x007A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ShootOrientationShootPrepCondition")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ShootOrientationShootPrepCondition")
-	}
-	static class UShootOrientationShootPrepCondition* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UShootOrientationShootPrepCondition>();
-	}
-};
-DUMPER7_ASSERTS_UShootOrientationShootPrepCondition;
-
 // Class Runtime.PlayerStartHolder
 // 0x0008 (0x02B8 - 0x02B0)
 class APlayerStartHolder : public AActor
@@ -6235,80 +6278,44 @@ public:
 };
 DUMPER7_ASSERTS_UPredictProjectileCollisionWithActor;
 
-// Class Runtime.ModifierShootDirectionComputation
-// 0x0000 (0x0040 - 0x0040)
-class UModifierShootDirectionComputation : public UBaseShootDirectionComputation
+// Class Runtime.TutorialObjective
+// 0x0048 (0x0070 - 0x0028)
+class UTutorialObjective : public UObject
 {
 public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ModifierShootDirectionComputation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ModifierShootDirectionComputation")
-	}
-	static class UModifierShootDirectionComputation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UModifierShootDirectionComputation>();
-	}
-};
-DUMPER7_ASSERTS_UModifierShootDirectionComputation;
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(class UTutorialObjective* _objective)> ObjectiveCompleteDelegate;  // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
+	class FText                                   m_ObjectiveName;                                   // 0x0040(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	int32                                         m_iIterationCountRequired;                         // 0x0050(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iIterationCountRealized;                         // 0x0054(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class ARuntimeCharacter>       m_TutorialPlayer;                                  // 0x0058(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UAkAudioEvent*                          m_ObjectiveIterationSucceedSound;                  // 0x0060(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UAkAudioEvent*                          m_ObjectiveSucceedSound;                           // 0x0068(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
-// Class Runtime.BaseImpactPointShootDirectionComputation
-// 0x00D0 (0x0110 - 0x0040)
-class UBaseImpactPointShootDirectionComputation : public UModifierShootDirectionComputation
-{
 public:
-	TArray<ECollisionChannel>                     m_CollisionChannelToIgnore;                        // 0x0040(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	EVerticaleAngleComputation                    m_eTrajectoryPitchComputation;                     // 0x0050(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ELockDirectionOption                          m_eLockDirectionOption;                            // 0x0051(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_52[0x2];                                       // 0x0052(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFloatRange                            m_PitchRange;                                      // 0x0054(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCurveFloat*                            m_TrajectoryPitchByCameraPitch;                    // 0x0068(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UCurveFloat*                            m_TrajectoryYawByXAxis;                            // 0x0070(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UCurveVector*                           m_ShootPitchCorrectionByYAxis;                     // 0x0078(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FRuntimeFloatCurve                     m_VerticalMagnusMultiplier;                        // 0x0080(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	bool                                          m_bUseAccumulatorSystemCalculation;                // 0x0108(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_109[0x3];                                      // 0x0109(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fAccumulatorSensibility;                         // 0x010C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool IsObjectiveOver();
+	void ObjectiveAchievedOnce();
+	void ObjectiveCompleted();
+	void OnEndObjective();
+	void OnInitObjective();
+
+	class ATutorialManager* GetManagerOwner() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("BaseImpactPointShootDirectionComputation")
+		STATIC_CLASS_IMPL("TutorialObjective")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"BaseImpactPointShootDirectionComputation")
+		STATIC_NAME_IMPL(L"TutorialObjective")
 	}
-	static class UBaseImpactPointShootDirectionComputation* GetDefaultObj()
+	static class UTutorialObjective* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UBaseImpactPointShootDirectionComputation>();
+		return GetDefaultObjImpl<UTutorialObjective>();
 	}
 };
-DUMPER7_ASSERTS_UBaseImpactPointShootDirectionComputation;
-
-// Class Runtime.CameraShootDirectionComputation
-// 0x0000 (0x0110 - 0x0110)
-class UCameraShootDirectionComputation : public UBaseImpactPointShootDirectionComputation
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("CameraShootDirectionComputation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"CameraShootDirectionComputation")
-	}
-	static class UCameraShootDirectionComputation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UCameraShootDirectionComputation>();
-	}
-};
-DUMPER7_ASSERTS_UCameraShootDirectionComputation;
+DUMPER7_ASSERTS_UTutorialObjective;
 
 // Class Runtime.PreMatchFlowState
 // 0x0000 (0x0590 - 0x0590)
@@ -6357,32 +6364,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_URedirectShootInterceptionPoint;
-
-// Class Runtime.UsedColorChannelsAssetUserData
-// 0x0010 (0x0038 - 0x0028)
-class UUsedColorChannelsAssetUserData final : public UAssetUserData
-{
-public:
-	TArray<ESCColorChannel>                       m_eColorChannels;                                  // 0x0028(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, Protected, NativeAccessSpecifierProtected)
-
-public:
-	void BPF_ComputeUsedColorChannels();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UsedColorChannelsAssetUserData")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UsedColorChannelsAssetUserData")
-	}
-	static class UUsedColorChannelsAssetUserData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUsedColorChannelsAssetUserData>();
-	}
-};
-DUMPER7_ASSERTS_UUsedColorChannelsAssetUserData;
 
 // Class Runtime.RematchCharacterCustomizationComponent
 // 0x0030 (0x0678 - 0x0648)
@@ -6437,32 +6418,31 @@ public:
 };
 DUMPER7_ASSERTS_UBrandDataAsset;
 
-// Class Runtime.RangeShootModifierComputationData
-// 0x0020 (0x0058 - 0x0038)
-class URangeShootModifierComputationData final : public UComputedShootModifierComputationData
+// Class Runtime.UsedColorChannelsAssetUserData
+// 0x0010 (0x0038 - 0x0028)
+class UUsedColorChannelsAssetUserData final : public UAssetUserData
 {
 public:
-	struct FVector2D                              m_vRange;                                          // 0x0038(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESourceModifierType                           m_eSourceType;                                     // 0x0048(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFloatInterval                         m_IntervalToComputeRatio;                          // 0x004C(0x0008)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TArray<ESCColorChannel>                       m_eColorChannels;                                  // 0x0028(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, EditConst, Protected, NativeAccessSpecifierProtected)
+
+public:
+	void BPF_ComputeUsedColorChannels();
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("RangeShootModifierComputationData")
+		STATIC_CLASS_IMPL("UsedColorChannelsAssetUserData")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"RangeShootModifierComputationData")
+		STATIC_NAME_IMPL(L"UsedColorChannelsAssetUserData")
 	}
-	static class URangeShootModifierComputationData* GetDefaultObj()
+	static class UUsedColorChannelsAssetUserData* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<URangeShootModifierComputationData>();
+		return GetDefaultObjImpl<UUsedColorChannelsAssetUserData>();
 	}
 };
-DUMPER7_ASSERTS_URangeShootModifierComputationData;
+DUMPER7_ASSERTS_UUsedColorChannelsAssetUserData;
 
 // Class Runtime.RematchGameModeDataAsset
 // 0x0038 (0x0068 - 0x0030)
@@ -6516,45 +6496,30 @@ public:
 };
 DUMPER7_ASSERTS_URematchMapDataAsset;
 
-// Class Runtime.VictoryMoodHandlerFlowState
-// 0x0120 (0x06B0 - 0x0590)
-class UVictoryMoodHandlerFlowState : public URuntimeGameFlowState
+// Class Runtime.LocalDirShootDirectionComputation
+// 0x0020 (0x0060 - 0x0040)
+class ULocalDirShootDirectionComputation : public UModifierShootDirectionComputation
 {
 public:
-	bool                                          m_bSkipIfNoUniqueWinner;                           // 0x0590(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bDestroySequenceActorOnExit;                     // 0x0591(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_592[0x6];                                      // 0x0592(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULevelSequence*                         m_MainLevelSequenceAsset;                          // 0x0598(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TSoftClassPtr<class UClass>                   m_LevelSequenceActorClass;                         // 0x05A0(0x0028)(Edit, DisableEditOnInstance, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TMap<EVictoryMoodRole, struct FTransform>     m_VictoryMoodTransformEvenNumberPlayer;            // 0x05C8(0x0050)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	TMap<EVictoryMoodRole, struct FTransform>     m_VictoryMoodTransformOddNumberPlayer;             // 0x0618(0x0050)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	TArray<EVictoryMoodRole>                      m_VictoryMoodPriority;                             // 0x0668(0x0010)(Edit, ZeroConstructor, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	class FName                                   m_VictoryMoodBindingTag;                           // 0x0678(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bHideBallAndLosers;                              // 0x0680(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_681[0x7];                                      // 0x0681(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class ACharacter>                 m_FakeCharacterToSpawnClass;                       // 0x0688(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class ASCLevelSequenceActor*                  m_MainLevelSequenceActor;                          // 0x0690(0x0008)(ZeroConstructor, Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	TArray<class ASCLevelSequenceActor*>          m_VictoryMoodLevelSequenceActors;                  // 0x0698(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-	TSubclassOf<class ARuntimeLevelSequenceActor> m_LoadedLevelSequenceActorClass;                   // 0x06A8(0x0008)(ZeroConstructor, Transient, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	const class FName BPF_GetVictoryMoodBindingTag() const;
+	struct FVector_NetQuantizeNormal              m_vLocalDir;                                       // 0x0040(0x0018)(Edit, BlueprintVisible, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bUseExecutionContext;                            // 0x0058(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("VictoryMoodHandlerFlowState")
+		STATIC_CLASS_IMPL("LocalDirShootDirectionComputation")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"VictoryMoodHandlerFlowState")
+		STATIC_NAME_IMPL(L"LocalDirShootDirectionComputation")
 	}
-	static class UVictoryMoodHandlerFlowState* GetDefaultObj()
+	static class ULocalDirShootDirectionComputation* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UVictoryMoodHandlerFlowState>();
+		return GetDefaultObjImpl<ULocalDirShootDirectionComputation>();
 	}
 };
-DUMPER7_ASSERTS_UVictoryMoodHandlerFlowState;
+DUMPER7_ASSERTS_ULocalDirShootDirectionComputation;
 
 // Class Runtime.RematchServerMapFlowState
 // 0x0010 (0x05A0 - 0x0590)
@@ -6606,75 +6571,45 @@ public:
 };
 DUMPER7_ASSERTS_URematchSetDataAsset;
 
-// Class Runtime.InputForwardShootDirectionComputation
-// 0x00B0 (0x01C0 - 0x0110)
-class UInputForwardShootDirectionComputation : public UBaseImpactPointShootDirectionComputation
+// Class Runtime.VictoryMoodHandlerFlowState
+// 0x0120 (0x06B0 - 0x0590)
+class UVictoryMoodHandlerFlowState : public URuntimeGameFlowState
 {
 public:
-	bool                                          m_bUseInputFromContext;                            // 0x0110(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_111[0x3];                                      // 0x0111(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fVerticalAngle;                                  // 0x0114(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EShootDirectionSpace                          m_eDefaultShootDirectionSpace;                     // 0x0118(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bUseClampWithActorForward;                       // 0x0119(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_11A[0x2];                                      // 0x011A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fClampWithActorForward;                          // 0x011C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bUseVerticalAngleAfterClamp;                     // 0x0120(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bKeepLastDirectionAtNeutralPos;                  // 0x0121(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_122[0x6];                                      // 0x0122(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeFloatCurve                     m_JoystickDeadZone;                                // 0x0128(0x0088)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	bool                                          m_bUseDataTableSpace;                              // 0x01B0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1B1[0x7];                                      // 0x01B1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UDataTable*                             m_ShootDatatable;                                  // 0x01B8(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bSkipIfNoUniqueWinner;                           // 0x0590(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bDestroySequenceActorOnExit;                     // 0x0591(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_592[0x6];                                      // 0x0592(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULevelSequence*                         m_MainLevelSequenceAsset;                          // 0x0598(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSoftClassPtr<class UClass>                   m_LevelSequenceActorClass;                         // 0x05A0(0x0028)(Edit, DisableEditOnInstance, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TMap<EVictoryMoodRole, struct FTransform>     m_VictoryMoodTransformEvenNumberPlayer;            // 0x05C8(0x0050)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	TMap<EVictoryMoodRole, struct FTransform>     m_VictoryMoodTransformOddNumberPlayer;             // 0x0618(0x0050)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	TArray<EVictoryMoodRole>                      m_VictoryMoodPriority;                             // 0x0668(0x0010)(Edit, ZeroConstructor, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	class FName                                   m_VictoryMoodBindingTag;                           // 0x0678(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bHideBallAndLosers;                              // 0x0680(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_681[0x7];                                      // 0x0681(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class ACharacter>                 m_FakeCharacterToSpawnClass;                       // 0x0688(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class ASCLevelSequenceActor*                  m_MainLevelSequenceActor;                          // 0x0690(0x0008)(ZeroConstructor, Transient, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TArray<class ASCLevelSequenceActor*>          m_VictoryMoodLevelSequenceActors;                  // 0x0698(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	TSubclassOf<class ARuntimeLevelSequenceActor> m_LoadedLevelSequenceActorClass;                   // 0x06A8(0x0008)(ZeroConstructor, Transient, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	const class FName BPF_GetVictoryMoodBindingTag() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("InputForwardShootDirectionComputation")
+		STATIC_CLASS_IMPL("VictoryMoodHandlerFlowState")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"InputForwardShootDirectionComputation")
+		STATIC_NAME_IMPL(L"VictoryMoodHandlerFlowState")
 	}
-	static class UInputForwardShootDirectionComputation* GetDefaultObj()
+	static class UVictoryMoodHandlerFlowState* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UInputForwardShootDirectionComputation>();
+		return GetDefaultObjImpl<UVictoryMoodHandlerFlowState>();
 	}
 };
-DUMPER7_ASSERTS_UInputForwardShootDirectionComputation;
-
-// Class Runtime.FilteredForwardInputShootDirectionComputation
-// 0x0048 (0x0208 - 0x01C0)
-class UFilteredForwardInputShootDirectionComputation : public UInputForwardShootDirectionComputation
-{
-public:
-	bool                                          m_bUseLerpSystem;                                  // 0x01C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1C1[0x3];                                      // 0x01C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fLerpActivationDelay;                            // 0x01C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fLerpSmoothDynamic;                              // 0x01C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bDeactivateDependingOnAngleDiff;                 // 0x01CC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1CD[0x3];                                      // 0x01CD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fAngle;                                          // 0x01D0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FFloatRange                            m_AccelerationRange;                               // 0x01D4(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FFloatRange                            m_AccelerationMultiplier;                          // 0x01E4(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1F4[0x4];                                      // 0x01F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UGameOption>                m_AccelerationRangeOption;                         // 0x01F8(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TSubclassOf<class UGameOption>                m_AccelerationMultiplierOption;                    // 0x0200(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("FilteredForwardInputShootDirectionComputation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"FilteredForwardInputShootDirectionComputation")
-	}
-	static class UFilteredForwardInputShootDirectionComputation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UFilteredForwardInputShootDirectionComputation>();
-	}
-};
-DUMPER7_ASSERTS_UFilteredForwardInputShootDirectionComputation;
+DUMPER7_ASSERTS_UVictoryMoodHandlerFlowState;
 
 // Class Runtime.RematchVersionedDataAsset
 // 0x0008 (0x0038 - 0x0030)
@@ -6732,37 +6667,38 @@ public:
 };
 DUMPER7_ASSERTS_URematchWelcomeFlowDataAsset;
 
-// Class Runtime.WallRunThresholdTargetDatasource
-// 0x0038 (0x00B8 - 0x0080)
-class UWallRunThresholdTargetDatasource final : public UTargetDatasource
+// Class Runtime.AngleShootModifier
+// 0x0010 (0x0040 - 0x0030)
+class UAngleShootModifier : public UShootModifier
 {
 public:
-	struct FFloatInterval                         m_ApexHeightInterval;                              // 0x0080(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FWallRunStateData                      m_ClimbState;                                      // 0x0088(0x0018)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	struct FWallRunStateData                      m_FallState;                                       // 0x00A0(0x0018)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	EApplyMode                                    m_eApplyMode;                                      // 0x0030(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAxisRotation                                 m_eAxis;                                           // 0x0031(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_32[0x6];                                       // 0x0032(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class UShootModifierComputationData*          m_Modifier;                                        // 0x0038(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("WallRunThresholdTargetDatasource")
+		STATIC_CLASS_IMPL("AngleShootModifier")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"WallRunThresholdTargetDatasource")
+		STATIC_NAME_IMPL(L"AngleShootModifier")
 	}
-	static class UWallRunThresholdTargetDatasource* GetDefaultObj()
+	static class UAngleShootModifier* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UWallRunThresholdTargetDatasource>();
+		return GetDefaultObjImpl<UAngleShootModifier>();
 	}
 };
-DUMPER7_ASSERTS_UWallRunThresholdTargetDatasource;
+DUMPER7_ASSERTS_UAngleShootModifier;
 
 // Class Runtime.RoleVolumeAttributor
-// 0x0008 (0x0340 - 0x0338)
+// 0x0008 (0x0370 - 0x0368)
 class ARoleVolumeAttributor : public AEffectAttributorVolume
 {
 public:
-	uint8                                         Pad_338[0x8];                                      // 0x0338(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_368[0x8];                                      // 0x0368(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class ARoleVolumeAttributor* BPF_FindTeamRoleAttributorVolume(const class ACharacter* _character, TSubclassOf<class ARoleVolumeAttributor> _roleVolumeAttributorClass);
@@ -6815,32 +6751,30 @@ public:
 };
 DUMPER7_ASSERTS_URootMotionModifier_BlendFromSequences;
 
-// Class Runtime.AnimPosShootPrepCondition
-// 0x0028 (0x00A0 - 0x0078)
-class UAnimPosShootPrepCondition final : public UTargetDataCondition
+// Class Runtime.WallRunSnapComputation
+// 0x0018 (0x0090 - 0x0078)
+class UWallRunSnapComputation final : public USnapAnimationComputation
 {
 public:
-	struct FSCMathExpressionFloat                 m_MathExpression;                                  // 0x0078(0x0020)(Edit, NativeAccessSpecifierPrivate)
-	bool                                          m_bUseGameplayValue;                               // 0x0098(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bConvertToPercent;                               // 0x0099(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bUseShootNotifyInsteadOfAnimEnd;                 // 0x009A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_9B[0x5];                                       // 0x009B(0x0005)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TArray<EObjectTypeQuery>                      m_RaycastObjectTypes;                              // 0x0078(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	float                                         m_fSnapAngle;                                      // 0x0088(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fMaxSnapDistanceFromPreSnapLocation;             // 0x008C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("AnimPosShootPrepCondition")
+		STATIC_CLASS_IMPL("WallRunSnapComputation")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"AnimPosShootPrepCondition")
+		STATIC_NAME_IMPL(L"WallRunSnapComputation")
 	}
-	static class UAnimPosShootPrepCondition* GetDefaultObj()
+	static class UWallRunSnapComputation* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UAnimPosShootPrepCondition>();
+		return GetDefaultObjImpl<UWallRunSnapComputation>();
 	}
 };
-DUMPER7_ASSERTS_UAnimPosShootPrepCondition;
+DUMPER7_ASSERTS_UWallRunSnapComputation;
 
 // Class Runtime.RootMotionModifier_Dive
 // 0x01F0 (0x0310 - 0x0120)
@@ -6903,90 +6837,30 @@ public:
 };
 DUMPER7_ASSERTS_URootMotionModifier_RedirectToBallTrajectory;
 
-// Class Runtime.Workshop
-// 0x0150 (0x0400 - 0x02B0)
-class AWorkshop final : public AActor
+// Class Runtime.InputShootForceComputation
+// 0x0018 (0x0040 - 0x0028)
+class UInputShootForceComputation final : public UModifierShootForceComputation
 {
 public:
-	struct FGameplayTag                           m_WorkshopTag;                                     // 0x02B0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FText                                   m_WorkshopTitle;                                   // 0x02B8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	class FText                                   m_WorkshopInstruction;                             // 0x02C8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2D8[0x78];                                     // 0x02D8(0x0078)(Fixing Size After Last Property [ Dumper-7 ])
-	EWorkshopWinReason                            m_WinReason;                                       // 0x0350(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bStartOnBeginPlay;                               // 0x0351(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bSaveEnabled;                                    // 0x0352(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EWorkshopStartType                            m_WorkshopStartType;                               // 0x0353(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iBeginningCountDownValue;                        // 0x0354(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TSubclassOf<class UTagAvailabilityLayerContainer> m_LayerContainerInstanceToPushDuringCountDownClass; // 0x0358(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_360[0x8];                                      // 0x0360(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class USCInputContext*                        m_PracticeContext;                                 // 0x0368(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_370[0x10];                                     // 0x0370(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          m_bHasTimer;                                       // 0x0380(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bIsTimerCountDown;                               // 0x0381(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_382[0x2];                                      // 0x0382(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fCountDownValue;                                 // 0x0384(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fBronzeTime;                                     // 0x0388(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fSilverTime;                                     // 0x038C(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fGoldTime;                                       // 0x0390(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_394[0xC];                                      // 0x0394(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(int32 _iNewScore)> m_OnScoreChanged;                               // 0x03A0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3B0[0x4];                                      // 0x03B0(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          m_bHasScore;                                       // 0x03B4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3B5[0x3];                                      // 0x03B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         m_iMaxScore;                                       // 0x03B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bEndWhenMaxScoreIsReached;                         // 0x03BC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3BD[0x3];                                      // 0x03BD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         m_iBronzeScore;                                    // 0x03C0(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iSilverScore;                                    // 0x03C4(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iGoldScore;                                      // 0x03C8(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3CC[0x4];                                      // 0x03CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UTagAvailabilityLayerContainer> m_LayerContainerInstanceToPushClass;           // 0x03D0(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3D8[0x4];                                      // 0x03D8(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          m_bHideWorkshopWidget;                             // 0x03DC(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3DD[0x3];                                      // 0x03DD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UCommonActivatableWidget>   m_WorkshopWidgetClass;                             // 0x03E0(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FGameplayTag                           m_WorkshopUILayer;                                 // 0x03E8(0x0008)(Edit, Config, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UCommonActivatableWidget*               m_WorkshopWidget;                                  // 0x03F0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UWorkshopViewModel*                     m_WorkshopViewModel;                               // 0x03F8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	void AddScore(int32 _iScoreToAdd);
-	void BPE_FinishWorkshop();
-	void BPE_PauseWorkshop();
-	void BPE_RestartWorkshop();
-	void BPE_StartWorkshop();
-	void BPE_UnpauseWorkshop();
-	void BPF_SnapBallToWorkshopUser();
-	void CheckAchievements();
-	void FinishWorkshop();
-	void OnSkipIntroductionInputPressed();
-	void PauseWorkshop();
-	void RequestStartWorkshop();
-	void RestartWorkshop();
-	void UnpauseWorkshop();
-
-	EWorkshopMedal BPF_ComputeMedalWithScore(int32 _iScore) const;
-	EWorkshopMedal BPF_ComputeMedalWithTime(float _fTime) const;
-	float BPF_GetWorkshopTimer() const;
-	bool CanStartWorkshopFromInput() const;
-	int32 GetWorkshopScore() const;
-	EWorkshopState GetWorkshopState() const;
+	bool                                          m_bUseTimeSpentOnInputStack;                       // 0x0028(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FInstancedStruct                       m_SourceForce;                                     // 0x0030(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("Workshop")
+		STATIC_CLASS_IMPL("InputShootForceComputation")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"Workshop")
+		STATIC_NAME_IMPL(L"InputShootForceComputation")
 	}
-	static class AWorkshop* GetDefaultObj()
+	static class UInputShootForceComputation* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<AWorkshop>();
+		return GetDefaultObjImpl<UInputShootForceComputation>();
 	}
 };
-DUMPER7_ASSERTS_AWorkshop;
+DUMPER7_ASSERTS_UInputShootForceComputation;
 
 // Class Runtime.RootMotionModifier_RedirectToHitLocation
 // 0x0000 (0x01D0 - 0x01D0)
@@ -7032,6 +6906,53 @@ public:
 	}
 };
 DUMPER7_ASSERTS_URootMotionModifier_ScaleFalling;
+
+// Class Runtime.ShopItemSorter
+// 0x0008 (0x0030 - 0x0028)
+class UShopItemSorter : public UObject
+{
+public:
+	bool                                          m_bIsDescending;                                   // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	ESortResult BPE_Compare(const struct FShopItem& _first, const struct FShopItem& _second) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ShopItemSorter")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShopItemSorter")
+	}
+	static class UShopItemSorter* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShopItemSorter>();
+	}
+};
+DUMPER7_ASSERTS_UShopItemSorter;
+
+// Class Runtime.ShopItemByRaritySorter
+// 0x0000 (0x0030 - 0x0030)
+class UShopItemByRaritySorter final : public UShopItemSorter
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ShopItemByRaritySorter")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShopItemByRaritySorter")
+	}
+	static class UShopItemByRaritySorter* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UShopItemByRaritySorter>();
+	}
+};
+DUMPER7_ASSERTS_UShopItemByRaritySorter;
 
 // Class Runtime.RTBinderRecorder
 // 0x00D0 (0x00F8 - 0x0028)
@@ -7091,28 +7012,29 @@ public:
 };
 DUMPER7_ASSERTS_URTCharacterRollbackComponent;
 
-// Class Runtime.SoundWidgetComponent
-// 0x0050 (0x0078 - 0x0028)
-class USoundWidgetComponent final : public USCWidgetComponent
+// Class Runtime.AngleTargetDatasource
+// 0x0058 (0x00D8 - 0x0080)
+class UAngleTargetDatasource final : public UTargetDatasource
 {
 public:
-	TMap<struct FGameplayTag, class UAkAudioEvent*> m_AkEventByWidgetEvent;                          // 0x0028(0x0050)(Edit, NativeAccessSpecifierPublic)
+	TArray<struct FAngleTargetDatasourceData>     m_Datasources;                                     // 0x0080(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FTargetDatasourceInstance              m_Fallback;                                        // 0x0090(0x0048)(Edit, ContainsInstancedReference, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("SoundWidgetComponent")
+		STATIC_CLASS_IMPL("AngleTargetDatasource")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"SoundWidgetComponent")
+		STATIC_NAME_IMPL(L"AngleTargetDatasource")
 	}
-	static class USoundWidgetComponent* GetDefaultObj()
+	static class UAngleTargetDatasource* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<USoundWidgetComponent>();
+		return GetDefaultObjImpl<UAngleTargetDatasource>();
 	}
 };
-DUMPER7_ASSERTS_USoundWidgetComponent;
+DUMPER7_ASSERTS_UAngleTargetDatasource;
 
 // Class Runtime.RTGauntletCoordinatorController
 // 0x00E8 (0x0118 - 0x0030)
@@ -7166,6 +7088,29 @@ public:
 	}
 };
 DUMPER7_ASSERTS_URTControllerOnlineTest;
+
+// Class Runtime.SoundWidgetComponent
+// 0x0050 (0x0078 - 0x0028)
+class USoundWidgetComponent final : public USCWidgetComponent
+{
+public:
+	TMap<struct FGameplayTag, class UAkAudioEvent*> m_AkEventByWidgetEvent;                          // 0x0028(0x0050)(Edit, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("SoundWidgetComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"SoundWidgetComponent")
+	}
+	static class USoundWidgetComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<USoundWidgetComponent>();
+	}
+};
+DUMPER7_ASSERTS_USoundWidgetComponent;
 
 // Class Runtime.RTFieldARConfig
 // 0x0018 (0x0048 - 0x0030)
@@ -7238,26 +7183,6 @@ public:
 };
 DUMPER7_ASSERTS_URTGameplayPhaseSubsystem;
 
-// Class Runtime.StaminaLossCalculation
-// 0x0000 (0x0040 - 0x0040)
-class UStaminaLossCalculation final : public UGameplayEffectExecutionCalculation
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("StaminaLossCalculation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"StaminaLossCalculation")
-	}
-	static class UStaminaLossCalculation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UStaminaLossCalculation>();
-	}
-};
-DUMPER7_ASSERTS_UStaminaLossCalculation;
-
 // Class Runtime.RTGauntletCinematicBaseController
 // 0x0018 (0x0048 - 0x0030)
 class URTGauntletCinematicBaseController : public UGauntletTestController
@@ -7309,6 +7234,26 @@ public:
 };
 DUMPER7_ASSERTS_URTGauntletCinematicProfilerController;
 
+// Class Runtime.StaminaLossCalculation
+// 0x0000 (0x0040 - 0x0040)
+class UStaminaLossCalculation final : public UGameplayEffectExecutionCalculation
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("StaminaLossCalculation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"StaminaLossCalculation")
+	}
+	static class UStaminaLossCalculation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UStaminaLossCalculation>();
+	}
+};
+DUMPER7_ASSERTS_UStaminaLossCalculation;
+
 // Class Runtime.RTGauntletCinematicScreenshotController
 // 0x0010 (0x0058 - 0x0048)
 class URTGauntletCinematicScreenshotController final : public URTGauntletCinematicBaseController
@@ -7359,31 +7304,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ARTScenePortal;
-
-// Class Runtime.TargetTeamCondition
-// 0x0008 (0x0030 - 0x0028)
-class UTargetTeamCondition final : public UBaseActorTargetCondition
-{
-public:
-	bool                                          m_bPlayerFromDifferentTeam;                        // 0x0028(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bHandleNoOwnership;                              // 0x0029(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_2A[0x6];                                       // 0x002A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("TargetTeamCondition")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"TargetTeamCondition")
-	}
-	static class UTargetTeamCondition* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UTargetTeamCondition>();
-	}
-};
-DUMPER7_ASSERTS_UTargetTeamCondition;
 
 // Class Runtime.RTScenePortalReflection
 // 0x0070 (0x0320 - 0x02B0)
@@ -7446,25 +7366,30 @@ public:
 };
 DUMPER7_ASSERTS_URTStadiumARConfig;
 
-// Class Runtime.ShopItemByIsNoneSorter
-// 0x0000 (0x0030 - 0x0030)
-class UShopItemByIsNoneSorter final : public UShopItemSorter
+// Class Runtime.TargetTeamCondition
+// 0x0008 (0x0030 - 0x0028)
+class UTargetTeamCondition final : public UBaseActorTargetCondition
 {
+public:
+	bool                                          m_bPlayerFromDifferentTeam;                        // 0x0028(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bHandleNoOwnership;                              // 0x0029(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_2A[0x6];                                       // 0x002A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("ShopItemByIsNoneSorter")
+		STATIC_CLASS_IMPL("TargetTeamCondition")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"ShopItemByIsNoneSorter")
+		STATIC_NAME_IMPL(L"TargetTeamCondition")
 	}
-	static class UShopItemByIsNoneSorter* GetDefaultObj()
+	static class UTargetTeamCondition* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UShopItemByIsNoneSorter>();
+		return GetDefaultObjImpl<UTargetTeamCondition>();
 	}
 };
-DUMPER7_ASSERTS_UShopItemByIsNoneSorter;
+DUMPER7_ASSERTS_UTargetTeamCondition;
 
 // Class Runtime.BallInterceptionCacheTargetDatasource
 // 0x0018 (0x00F8 - 0x00E0)
@@ -7492,14 +7417,14 @@ public:
 DUMPER7_ASSERTS_UBallInterceptionCacheTargetDatasource;
 
 // Class Runtime.RuntimeAbilitySystemComponent
-// 0x00D0 (0x1DF0 - 0x1D20)
+// 0x00D0 (0x1E40 - 0x1D70)
 class URuntimeAbilitySystemComponent final : public USCCharacterAbilitySystemComponent
 {
 public:
-	uint8                                         Pad_1D20[0x18];                                    // 0x1D20(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<TSubclassOf<class UGameplayAbility>>   m_AutoActivatingAbilities;                         // 0x1D38(0x0010)(Edit, ZeroConstructor, DisableEditOnInstance, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
-	struct FGameplayTag                           m_EnableHinderingFeatureTag;                       // 0x1D48(0x0008)(Edit, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1D50[0xA0];                                    // 0x1D50(0x00A0)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_1D70[0x18];                                    // 0x1D70(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<TSubclassOf<class UGameplayAbility>>   m_AutoActivatingAbilities;                         // 0x1D88(0x0010)(Edit, ZeroConstructor, DisableEditOnInstance, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
+	struct FGameplayTag                           m_EnableHinderingFeatureTag;                       // 0x1D98(0x0008)(Edit, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1DA0[0xA0];                                    // 0x1DA0(0x00A0)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	bool BPF_FindRuntimeEffectContextFromGrantedTag(struct FRuntimeGameplayEffectContext* _outContext, struct FActiveGameplayEffectHandle* _outHandle, const struct FGameplayTagContainer& _grantedTags);
@@ -7524,47 +7449,32 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeAbilitySystemComponent;
 
-// Class Runtime.ItemThumbnailScene
-// 0x00C8 (0x00F0 - 0x0028)
-class UItemThumbnailScene : public UObject
+// Class Runtime.AnimPosShootPrepCondition
+// 0x0028 (0x00A0 - 0x0078)
+class UAnimPosShootPrepCondition final : public UTargetDataCondition
 {
 public:
-	bool                                          bPostProcessPropagateAlpha;                        // 0x0028(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bEnableDynamicShadows;                             // 0x0029(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bEnableAmbientOcclusion;                           // 0x002A(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bEnablePostProcessMaterial;                        // 0x002B(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2C[0xC];                                       // 0x002C(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<struct FViewKey, int32>                  ViewKeys;                                          // 0x0038(0x0050)(NativeAccessSpecifierPrivate)
-	TArray<struct FViewPoolEntry>                 ViewPool;                                          // 0x0088(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_98[0x58];                                      // 0x0098(0x0058)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	class UActorComponent* AddComponent(TSubclassOf<class UActorComponent> Class_0, const struct FTransform& LocalToWorld, bool bAttachToRoot);
-	class UWorld* GetThumbnailWorld();
-	void PrepareScene();
-	void SetBackgroundColor(const struct FLinearColor& InColor);
-	class AActor* SpawnActor(TSubclassOf<class AActor> Class_0);
-	class AActor* SpawnActorForKey(const struct FGenericStruct& Key, TSubclassOf<class AActor> Class_0, int32* OutViewIndex);
-
-	class AActor* GetActorForView(int32 ViewIndex) const;
-	void GetViewMatrixParameters(int32 SceneView, struct FViewParameters* OutParameters) const;
-	void OnBuildActor() const;
+	struct FSCMathExpressionFloat                 m_MathExpression;                                  // 0x0078(0x0020)(Edit, NativeAccessSpecifierPrivate)
+	bool                                          m_bUseGameplayValue;                               // 0x0098(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bConvertToPercent;                               // 0x0099(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bUseShootNotifyInsteadOfAnimEnd;                 // 0x009A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_9B[0x5];                                       // 0x009B(0x0005)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("ItemThumbnailScene")
+		STATIC_CLASS_IMPL("AnimPosShootPrepCondition")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"ItemThumbnailScene")
+		STATIC_NAME_IMPL(L"AnimPosShootPrepCondition")
 	}
-	static class UItemThumbnailScene* GetDefaultObj()
+	static class UAnimPosShootPrepCondition* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UItemThumbnailScene>();
+		return GetDefaultObjImpl<UAnimPosShootPrepCondition>();
 	}
 };
-DUMPER7_ASSERTS_UItemThumbnailScene;
+DUMPER7_ASSERTS_UAnimPosShootPrepCondition;
 
 // Class Runtime.RuntimeAbilitySystemGlobals
 // 0x0000 (0x02F8 - 0x02F8)
@@ -7614,30 +7524,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ARuntimeAIController;
-
-// Class Runtime.AngleTargetDatasource
-// 0x0058 (0x00D8 - 0x0080)
-class UAngleTargetDatasource final : public UTargetDatasource
-{
-public:
-	TArray<struct FAngleTargetDatasourceData>     m_Datasources;                                     // 0x0080(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FTargetDatasourceInstance              m_Fallback;                                        // 0x0090(0x0048)(Edit, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AngleTargetDatasource")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AngleTargetDatasource")
-	}
-	static class UAngleTargetDatasource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAngleTargetDatasource>();
-	}
-};
-DUMPER7_ASSERTS_UAngleTargetDatasource;
 
 // Class Runtime.RuntimeAISubsystem
 // 0x0120 (0x0280 - 0x0160)
@@ -7725,6 +7611,29 @@ public:
 };
 DUMPER7_ASSERTS_UShootForceAnimationPicker;
 
+// Class Runtime.SplineActor
+// 0x0008 (0x02B8 - 0x02B0)
+class ASplineActor final : public AActor
+{
+public:
+	class USplineComponent*                       m_SplineComponent;                                 // 0x02B0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("SplineActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"SplineActor")
+	}
+	static class ASplineActor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ASplineActor>();
+	}
+};
+DUMPER7_ASSERTS_ASplineActor;
+
 // Class Runtime.TouchBallAnimInfosMetaData
 // 0x0040 (0x0068 - 0x0028)
 class UTouchBallAnimInfosMetaData final : public UAnimMetaData
@@ -7775,28 +7684,49 @@ public:
 };
 DUMPER7_ASSERTS_UMirrorableLocomotionAnimMetaData;
 
-// Class Runtime.StringsHelper
-// 0x0000 (0x0028 - 0x0028)
-class UStringsHelper final : public UObject
+// Class Runtime.BaseImpactPointShootDirectionComputation
+// 0x0000 (0x0040 - 0x0040)
+class UBaseImpactPointShootDirectionComputation : public UModifierShootDirectionComputation
 {
 public:
-	static int32 BPF_HashString(const class FString& _str);
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("BaseImpactPointShootDirectionComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseImpactPointShootDirectionComputation")
+	}
+	static class UBaseImpactPointShootDirectionComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UBaseImpactPointShootDirectionComputation>();
+	}
+};
+DUMPER7_ASSERTS_UBaseImpactPointShootDirectionComputation;
+
+// Class Runtime.ImpactPointShootDirectionComputation
+// 0x0008 (0x0048 - 0x0040)
+class UImpactPointShootDirectionComputation final : public UBaseImpactPointShootDirectionComputation
+{
+public:
+	ESimulationStep                               m_eSimulationStep;                                 // 0x0040(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("StringsHelper")
+		STATIC_CLASS_IMPL("ImpactPointShootDirectionComputation")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"StringsHelper")
+		STATIC_NAME_IMPL(L"ImpactPointShootDirectionComputation")
 	}
-	static class UStringsHelper* GetDefaultObj()
+	static class UImpactPointShootDirectionComputation* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UStringsHelper>();
+		return GetDefaultObjImpl<UImpactPointShootDirectionComputation>();
 	}
 };
-DUMPER7_ASSERTS_UStringsHelper;
+DUMPER7_ASSERTS_UImpactPointShootDirectionComputation;
 
 // Class Runtime.TouchBallPushPhaseNotify
 // 0x0020 (0x0050 - 0x0030)
@@ -7900,29 +7830,6 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeAnimInstance;
 
-// Class Runtime.LockedDirShootDirectionComputation
-// 0x0018 (0x0058 - 0x0040)
-class ULockedDirShootDirectionComputation : public UBaseShootDirectionComputation
-{
-public:
-	struct FVector_NetQuantizeNormal              m_vLockedDir;                                      // 0x0040(0x0018)(Edit, BlueprintVisible, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LockedDirShootDirectionComputation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LockedDirShootDirectionComputation")
-	}
-	static class ULockedDirShootDirectionComputation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULockedDirShootDirectionComputation>();
-	}
-};
-DUMPER7_ASSERTS_ULockedDirShootDirectionComputation;
-
 // Class Runtime.RuntimeAttributeSet
 // 0x0100 (0x0188 - 0x0088)
 class URuntimeAttributeSet final : public USCAttributeSet
@@ -8006,6 +7913,32 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeCameraData;
 
+// Class Runtime.HitDeflectShootDirectionComputation
+// 0x0098 (0x00D8 - 0x0040)
+class UHitDeflectShootDirectionComputation final : public UBaseShootDirectionComputation
+{
+public:
+	struct FFloatDataBinding                      m_fForwardAngleOffset;                             // 0x0040(0x0048)(Edit, NativeAccessSpecifierPrivate)
+	struct FFloatDataBinding                      m_fVerticalAngleOffset;                            // 0x0088(0x0048)(Edit, NativeAccessSpecifierPrivate)
+	bool                                          m_bAlwaysUp;                                       // 0x00D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_D1[0x7];                                       // 0x00D1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("HitDeflectShootDirectionComputation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"HitDeflectShootDirectionComputation")
+	}
+	static class UHitDeflectShootDirectionComputation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UHitDeflectShootDirectionComputation>();
+	}
+};
+DUMPER7_ASSERTS_UHitDeflectShootDirectionComputation;
+
 // Class Runtime.RuntimeCharacter
 // 0x01E0 (0x0A80 - 0x08A0)
 class ARuntimeCharacter : public ASCCharacter
@@ -8047,7 +7980,7 @@ public:
 	void BPE_GetExtraEffects(TArray<TSubclassOf<class UGameplayEffect>>& _effects);
 	void BPF_GenerateSeed();
 	void ClientNotifyBallServerOwnerUpdate(class ABall* _ball, class UPlayerBallOwnership* _owner, const struct FRevisionID& _revisionID);
-	void ClientNotifyBallServerTrajectoryUpdate(class ABall* _ball, class UPlayerBallOwnership* _owner, const struct FShootStartPoint& _serverTrajectoryStartingPoint, const struct FRevisionID& _revisionID);
+	void ClientNotifyBallServerTrajectoryUpdate(class ABall* _ball, class UPlayerBallOwnership* _owner, const struct FShootStartPoint& _serverTrajectoryStartingPoint);
 	void OnRep_ReplicatedSeed();
 
 	class UCameraComponentThird* BPF_GetCameraThird() const;
@@ -8124,30 +8057,34 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeCheatManager;
 
-// Class Runtime.LocalDirShootDirectionComputation
-// 0x0020 (0x0060 - 0x0040)
-class ULocalDirShootDirectionComputation : public UModifierShootDirectionComputation
+// Class Runtime.ThumbnailFunctionLibrary
+// 0x0000 (0x0028 - 0x0028)
+class UThumbnailFunctionLibrary final : public UBlueprintFunctionLibrary
 {
 public:
-	struct FVector_NetQuantizeNormal              m_vLocalDir;                                       // 0x0040(0x0018)(Edit, BlueprintVisible, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bUseExecutionContext;                            // 0x0058(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	static void BPF_ClearThumbnailSceneCache(bool bCollectGarbage);
+	static class ULevelSequencePlayer* BPF_CreateLevelSequence(class UObject* WorldContextObject, class ULevelSequence* InLevelSequence, const struct FMovieSceneSequencePlaybackSettings& Settings, const struct FTransform& Transform, class AThumbnailLevelSequenceActor** OutActor);
+	static struct FVector2D BPF_GetRenderTargetCapacity();
+	static TArray<class UObject*> BPF_GetSpawnables(class AThumbnailLevelSequenceActor* Actor);
+	static class FString BPF_ObjectPathToObjectName(const class FString& _objectPath);
+	static void BPF_ReleaseRenderTargets();
+	static void BPF_SetForceMipStreaming(class UPrimitiveComponent* Component, bool bForceMipStreaming);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("LocalDirShootDirectionComputation")
+		STATIC_CLASS_IMPL("ThumbnailFunctionLibrary")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"LocalDirShootDirectionComputation")
+		STATIC_NAME_IMPL(L"ThumbnailFunctionLibrary")
 	}
-	static class ULocalDirShootDirectionComputation* GetDefaultObj()
+	static class UThumbnailFunctionLibrary* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<ULocalDirShootDirectionComputation>();
+		return GetDefaultObjImpl<UThumbnailFunctionLibrary>();
 	}
 };
-DUMPER7_ASSERTS_ULocalDirShootDirectionComputation;
+DUMPER7_ASSERTS_UThumbnailFunctionLibrary;
 
 // Class Runtime.RuntimeCollisionSettings
 // 0x0008 (0x0040 - 0x0038)
@@ -8198,71 +8135,25 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeCustomizationHelpers;
 
-// Class Runtime.TouchBallComponent
-// 0x0768 (0x0820 - 0x00B8)
-class alignas(0x10) UTouchBallComponent : public UActorComponent
+// Class Runtime.CameraShootDirectionComputation
+// 0x0000 (0x0108 - 0x0108)
+class UCameraShootDirectionComputation : public UControllerShootDirectionComputation
 {
-public:
-	TMulticastInlineDelegate<void(class ABall* _ball)> m_OnBallTouched;                              // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	float                                         m_fDefaultBlendToAttachDuration;                   // 0x00C8(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fInstantSnapDistanceAllowance;                   // 0x00CC(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint32                                        m_uiSnapDuringTransitionTypesBitmask;              // 0x00D0(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fBlendToAttachTransitionDurationRatio;           // 0x00D4(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fBlendToAttachForcedRatio;                       // 0x00D8(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FBoneReference                         m_BoneToAttachBallTo;                              // 0x00DC(0x0010)(Edit, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	class FName                                   m_TouchEnabledCurveName;                           // 0x00EC(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_F4[0x4];                                       // 0x00F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                m_vNormalizedBoneRelativeLocation;                 // 0x00F8(0x0018)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ETouchBallMontageHandling                     m_MontageHandlingMethod;                           // 0x0110(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ESCBlendType                                  m_eFromPredictedToBoneBlendType;                   // 0x0111(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bTouchBallEnabled;                               // 0x0112(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_113[0x5];                                      // 0x0113(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMirrorDataTable*                       m_MirrorDataTable;                                 // 0x0118(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FFloatInterval                         m_fTouchFrameRateOffsetInterval;                   // 0x0120(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         m_uiTouchFrameRateFallback;                        // 0x0128(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_129[0x7];                                      // 0x0129(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeFloatCurve                     m_fTouchFrameRateMultiplierPerVelocityTurnRate;    // 0x0130(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	float                                         m_fTouchDistanceFromRootFallback;                  // 0x01B8(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iSimulatedFrameRate;                             // 0x01BC(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FRuntimeFloatCurve                     m_BallDynamic;                                     // 0x01C0(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	struct FRuntimeFloatCurve                     m_fTargetSpringFactorByAlpha;                      // 0x0248(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	struct FRuntimeFloatCurve                     m_fMaxProjectedYDistance;                          // 0x02D0(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	bool                                          m_bVelocityPredictionEnabled;                      // 0x0358(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_359[0x3];                                      // 0x0359(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fDefaultVelocityRotationRateMultiplier;          // 0x035C(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fOnAngularVelocityRotationRateMultiplier;        // 0x0360(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fBlendToAttachTimeElapsed;                       // 0x0364(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fBlendToAttachDuration;                          // 0x0368(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bIsFallingBlend;                                 // 0x036C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_36D[0x3D3];                                    // 0x036D(0x03D3)(Fixing Size After Last Property [ Dumper-7 ])
-	TSet<class FName>                             m_ParalyzedStack;                                  // 0x0740(0x0050)(NativeAccessSpecifierPrivate)
-	TMap<int32, TWeakObjectPtr<class ABall>>      m_ForcedBallMap;                                   // 0x0790(0x0050)(UObjectWrapper, NativeAccessSpecifierPrivate)
-	TWeakObjectPtr<class ABall>                   m_ForcedBall;                                      // 0x07E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	TWeakObjectPtr<class ABall>                   m_OwnedBall;                                       // 0x07E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_7F0[0x30];                                     // 0x07F0(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BPF_SetParalyzed(bool _bParalized, class FName _idName, float _fBlendAttachDuration);
-	void OnBallOwnershipGained(class ABall* _nextBall);
-	void OnBallOwnershipLost();
-	void OnMontageStarted(class UAnimMontage* _animMontage);
-	void OnMovementModeChanged(class ACharacter* _character, EMovementMode _ePrevMovementMode, uint8 _uiPreviousCustomMode);
-
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("TouchBallComponent")
+		STATIC_CLASS_IMPL("CameraShootDirectionComputation")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"TouchBallComponent")
+		STATIC_NAME_IMPL(L"CameraShootDirectionComputation")
 	}
-	static class UTouchBallComponent* GetDefaultObj()
+	static class UCameraShootDirectionComputation* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UTouchBallComponent>();
+		return GetDefaultObjImpl<UCameraShootDirectionComputation>();
 	}
 };
-DUMPER7_ASSERTS_UTouchBallComponent;
+DUMPER7_ASSERTS_UCameraShootDirectionComputation;
 
 // Class Runtime.RuntimeCustomizationUIInfosAsset
 // 0x0070 (0x01B8 - 0x0148)
@@ -8319,29 +8210,25 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeDebug;
 
-// Class Runtime.StaticShootForceComputation
-// 0x0008 (0x0030 - 0x0028)
-class UStaticShootForceComputation final : public UModifierShootForceComputation
+// Class Runtime.ShopItemByIsNoneSorter
+// 0x0000 (0x0030 - 0x0030)
+class UShopItemByIsNoneSorter final : public UShopItemSorter
 {
-public:
-	float                                         m_fForce;                                          // 0x0028(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("StaticShootForceComputation")
+		STATIC_CLASS_IMPL("ShopItemByIsNoneSorter")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"StaticShootForceComputation")
+		STATIC_NAME_IMPL(L"ShopItemByIsNoneSorter")
 	}
-	static class UStaticShootForceComputation* GetDefaultObj()
+	static class UShopItemByIsNoneSorter* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UStaticShootForceComputation>();
+		return GetDefaultObjImpl<UShopItemByIsNoneSorter>();
 	}
 };
-DUMPER7_ASSERTS_UStaticShootForceComputation;
+DUMPER7_ASSERTS_UShopItemByIsNoneSorter;
 
 // Class Runtime.RuntimeDebugDisplaySubsystem
 // 0x0000 (0x0890 - 0x0890)
@@ -8364,15 +8251,15 @@ public:
 DUMPER7_ASSERTS_URuntimeDebugDisplaySubsystem;
 
 // Class Runtime.RuntimeGameMode
-// 0x0028 (0x0450 - 0x0428)
+// 0x0028 (0x0458 - 0x0430)
 class ARuntimeGameMode : public ASCGameMode
 {
 public:
-	TSubclassOf<class ABall>                      m_BallClass;                                       // 0x0428(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         m_uiTeamCount;                                     // 0x0430(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_431[0x7];                                      // 0x0431(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UObject*>                        m_LoadedObjects;                                   // 0x0438(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPublic)
-	uint8                                         Pad_448[0x8];                                      // 0x0448(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class ABall>                      m_BallClass;                                       // 0x0430(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         m_uiTeamCount;                                     // 0x0438(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_439[0x7];                                      // 0x0439(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UObject*>                        m_LoadedObjects;                                   // 0x0440(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPublic)
+	uint8                                         Pad_450[0x8];                                      // 0x0450(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	bool BPF_ResetAllBallsAtLocation(const struct FVector& _vLocation, bool _bTriggerGameState, bool _bApplyPhysics);
@@ -8398,52 +8285,54 @@ public:
 };
 DUMPER7_ASSERTS_ARuntimeGameMode;
 
-// Class Runtime.SplineActor
-// 0x0008 (0x02B8 - 0x02B0)
-class ASplineActor final : public AActor
+// Class Runtime.SimulationStepHelper
+// 0x0000 (0x0028 - 0x0028)
+class USimulationStepHelper final : public UBlueprintFunctionLibrary
 {
 public:
-	class USplineComponent*                       m_SplineComponent;                                 // 0x02B0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	static bool BPF_IsCustomOrFreezingSimulationStep(ESimulationStep _eSimulationStep);
+	static bool BPF_IsFlyingOrRollingSimulationStep(ESimulationStep _eSimulationStep);
+	static bool BPF_IsSimulationStepValid(ESimulationStep _eSimulationStep);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("SplineActor")
+		STATIC_CLASS_IMPL("SimulationStepHelper")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"SplineActor")
+		STATIC_NAME_IMPL(L"SimulationStepHelper")
 	}
-	static class ASplineActor* GetDefaultObj()
+	static class USimulationStepHelper* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<ASplineActor>();
+		return GetDefaultObjImpl<USimulationStepHelper>();
 	}
 };
-DUMPER7_ASSERTS_ASplineActor;
+DUMPER7_ASSERTS_USimulationStepHelper;
 
 // Class Runtime.RuntimeMatchGameMode
-// 0x02A0 (0x06F0 - 0x0450)
+// 0x02A8 (0x0700 - 0x0458)
 class ARuntimeMatchGameMode : public ARuntimeGameMode
 {
 public:
-	TMulticastInlineDelegate<void()>              OnRematch;                                         // 0x0450(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_460[0x8];                                      // 0x0460(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UGameplayEffect>            m_CountdownGE;                                     // 0x0468(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         m_fBackfillEnabledMinRemainingTime;                // 0x0470(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         m_uiBackfillEnabledMaxScoreDiff;                   // 0x0474(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bComputeBackfillEnabledMinPlayerCountFromTeamSize; // 0x0475(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         m_uiBackfillEnabledMinPlayerCount;                 // 0x0476(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         m_uiBackfillEnabledMinPlayerTeamSizeOffset;        // 0x0477(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_478[0x8];                                      // 0x0478(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void()>              OnRematch;                                         // 0x0458(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_468[0x8];                                      // 0x0468(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UGameplayEffect>            m_CountdownGE;                                     // 0x0470(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         m_fBackfillEnabledMinRemainingTime;                // 0x0478(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         m_uiBackfillEnabledMaxScoreDiff;                   // 0x047C(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bComputeBackfillEnabledMinPlayerCountFromTeamSize; // 0x047D(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         m_uiBackfillEnabledMinPlayerCount;                 // 0x047E(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         m_uiBackfillEnabledMinPlayerTeamSizeOffset;        // 0x047F(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	struct FAISpawnParameters                     m_SpawnAIParameters;                               // 0x0480(0x00F0)(Edit, DisableEditOnInstance, NativeAccessSpecifierPrivate)
 	ECageType                                     m_eCageType;                                       // 0x0570(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, AssetRegistrySearchable, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	uint8                                         Pad_571[0x3];                                      // 0x0571(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	uint32                                        m_uiForceParamsBitmask;                            // 0x0574(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FRuntimeMatchParameters                m_MatchParams;                                     // 0x0578(0x00B0)(Edit, DisableEditOnInstance, NativeAccessSpecifierPrivate)
-	bool                                          m_bForceModifyMatchParams;                         // 0x0628(0x0001)(Edit, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_629[0x67];                                     // 0x0629(0x0067)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<TSubclassOf<class UGameplayEffect>>    m_AppliedGEs;                                      // 0x0690(0x0010)(Edit, ZeroConstructor, Transient, EditConst, UObjectWrapper, NativeAccessSpecifierPrivate)
-	TSet<TWeakObjectPtr<class APlayerController>> m_PlayerServerReports;                             // 0x06A0(0x0050)(Transient, UObjectWrapper, NativeAccessSpecifierPrivate)
+	struct FRuntimeMatchParameters                m_MatchParams;                                     // 0x0578(0x00B8)(Edit, DisableEditOnInstance, NativeAccessSpecifierPrivate)
+	bool                                          m_bForceModifyMatchParams;                         // 0x0630(0x0001)(Edit, ZeroConstructor, Transient, DisableEditOnInstance, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_631[0x67];                                     // 0x0631(0x0067)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<TSubclassOf<class UGameplayEffect>>    m_AppliedGEs;                                      // 0x0698(0x0010)(Edit, ZeroConstructor, Transient, EditConst, UObjectWrapper, NativeAccessSpecifierPrivate)
+	TSet<TWeakObjectPtr<class APlayerController>> m_PlayerServerReports;                             // 0x06A8(0x0050)(Transient, UObjectWrapper, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_6F8[0x8];                                      // 0x06F8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class FName BPF_GetMatchStateName(ERuntimeMatchState _eState);
@@ -8475,7 +8364,7 @@ public:
 DUMPER7_ASSERTS_ARuntimeMatchGameMode;
 
 // Class Runtime.RuntimeDebugGameMode
-// 0x0000 (0x06F0 - 0x06F0)
+// 0x0000 (0x0700 - 0x0700)
 class ARuntimeDebugGameMode final : public ARuntimeMatchGameMode
 {
 public:
@@ -8494,25 +8383,33 @@ public:
 };
 DUMPER7_ASSERTS_ARuntimeDebugGameMode;
 
-// Class Runtime.TrajectoryStatusActivateCondition
-// 0x0000 (0x0028 - 0x0028)
-class UTrajectoryStatusActivateCondition : public UTrajectoryStatusTimedCondition
+// Class Runtime.OverridableConstantTrajectoryModifier
+// 0x0040 (0x0070 - 0x0030)
+class UOverridableConstantTrajectoryModifier : public UTrajectoryModifier
 {
+public:
+	bool                                          m_bOverrideConstant;                               // 0x0030(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bUseGameplayAttribute;                           // 0x0031(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bUseAttributeFromShooter;                        // 0x0032(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_33[0x1];                                       // 0x0033(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fConstantOverride;                               // 0x0034(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGameplayAttribute                     m_Attribute;                                       // 0x0038(0x0038)(Edit, BlueprintReadOnly, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("TrajectoryStatusActivateCondition")
+		STATIC_CLASS_IMPL("OverridableConstantTrajectoryModifier")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"TrajectoryStatusActivateCondition")
+		STATIC_NAME_IMPL(L"OverridableConstantTrajectoryModifier")
 	}
-	static class UTrajectoryStatusActivateCondition* GetDefaultObj()
+	static class UOverridableConstantTrajectoryModifier* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UTrajectoryStatusActivateCondition>();
+		return GetDefaultObjImpl<UOverridableConstantTrajectoryModifier>();
 	}
 };
-DUMPER7_ASSERTS_UTrajectoryStatusActivateCondition;
+DUMPER7_ASSERTS_UOverridableConstantTrajectoryModifier;
 
 // Class Runtime.RuntimeGameplayAbility
 // 0x0010 (0x0658 - 0x0648)
@@ -8606,81 +8503,25 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeDiveGameplayAbility;
 
-// Class Runtime.TrajectoryModifier
-// 0x0008 (0x0030 - 0x0028)
-class UTrajectoryModifier : public UObject
+// Class Runtime.TrajectoryStatusActivateCondition
+// 0x0000 (0x0028 - 0x0028)
+class UTrajectoryStatusActivateCondition : public UTrajectoryStatusTimedCondition
 {
-public:
-	uint8                                         m_uiTrajectoryStep;                                // 0x0028(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("TrajectoryModifier")
+		STATIC_CLASS_IMPL("TrajectoryStatusActivateCondition")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"TrajectoryModifier")
+		STATIC_NAME_IMPL(L"TrajectoryStatusActivateCondition")
 	}
-	static class UTrajectoryModifier* GetDefaultObj()
+	static class UTrajectoryStatusActivateCondition* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UTrajectoryModifier>();
+		return GetDefaultObjImpl<UTrajectoryStatusActivateCondition>();
 	}
 };
-DUMPER7_ASSERTS_UTrajectoryModifier;
-
-// Class Runtime.OverridableConstantTrajectoryModifier
-// 0x0040 (0x0070 - 0x0030)
-class UOverridableConstantTrajectoryModifier : public UTrajectoryModifier
-{
-public:
-	bool                                          m_bOverrideConstant;                               // 0x0030(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bUseGameplayAttribute;                           // 0x0031(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bUseAttributeFromShooter;                        // 0x0032(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_33[0x1];                                       // 0x0033(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fConstantOverride;                               // 0x0034(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGameplayAttribute                     m_Attribute;                                       // 0x0038(0x0038)(Edit, BlueprintReadOnly, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OverridableConstantTrajectoryModifier")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OverridableConstantTrajectoryModifier")
-	}
-	static class UOverridableConstantTrajectoryModifier* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOverridableConstantTrajectoryModifier>();
-	}
-};
-DUMPER7_ASSERTS_UOverridableConstantTrajectoryModifier;
-
-// Class Runtime.DragTrajectoryModifier
-// 0x0008 (0x0078 - 0x0070)
-class UDragTrajectoryModifier : public UOverridableConstantTrajectoryModifier
-{
-public:
-	float                                         m_fDefaultDragForce;                               // 0x0070(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("DragTrajectoryModifier")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"DragTrajectoryModifier")
-	}
-	static class UDragTrajectoryModifier* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UDragTrajectoryModifier>();
-	}
-};
-DUMPER7_ASSERTS_UDragTrajectoryModifier;
+DUMPER7_ASSERTS_UTrajectoryStatusActivateCondition;
 
 // Class Runtime.RuntimeFakeCharacter
 // 0x0010 (0x06A0 - 0x0690)
@@ -8735,33 +8576,41 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeGameFlow;
 
-// Class Runtime.DistanceTrajectoryStatusDeactivateCondition
-// 0x0008 (0x0038 - 0x0030)
-class UDistanceTrajectoryStatusDeactivateCondition final : public UTrajectoryStatusDeactivateCondition
+// Class Runtime.ItemThumbnailComponent
+// 0x00F8 (0x0480 - 0x0388)
+class UItemThumbnailComponent final : public UUserWidget
 {
 public:
-	bool                                          m_bCheckOnlyDistance2D;                            // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fDefaultDistance;                                // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TDelegate<void()>                             SceneClassDelegate;                                // 0x0388(0x0010)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TDelegate<void()>                             MaterialDelegate;                                  // 0x0398(0x0010)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TDelegate<void(class UItemThumbnailScene* Scene)> OnSetupView;                                   // 0x03A8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3B8[0x10];                                     // 0x03B8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UItemThumbnailScene>        SceneClass;                                        // 0x03C8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FThumbnailMaterial                     Material;                                          // 0x03D0(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_3E0[0xA0];                                     // 0x03E0(0x00A0)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void BPE_SetDistance(const struct FShootParams& _shootParams, float* _fDistance) const;
+	void InvalidateCamera();
+	void OnBeginLoading(const TSoftObjectPtr<class UObject>& AssetName, bool bIsInitialLoad);
+	void OnFinishLoading(const TSoftObjectPtr<class UObject>& AssetName);
+	void SetMaterial(const struct FThumbnailMaterial& InMaterial);
+	void SetSceneClass(TSubclassOf<class UItemThumbnailScene> InSceneClass);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("DistanceTrajectoryStatusDeactivateCondition")
+		STATIC_CLASS_IMPL("ItemThumbnailComponent")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"DistanceTrajectoryStatusDeactivateCondition")
+		STATIC_NAME_IMPL(L"ItemThumbnailComponent")
 	}
-	static class UDistanceTrajectoryStatusDeactivateCondition* GetDefaultObj()
+	static class UItemThumbnailComponent* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UDistanceTrajectoryStatusDeactivateCondition>();
+		return GetDefaultObjImpl<UItemThumbnailComponent>();
 	}
 };
-DUMPER7_ASSERTS_UDistanceTrajectoryStatusDeactivateCondition;
+DUMPER7_ASSERTS_UItemThumbnailComponent;
 
 // Class Runtime.MatchGameFlowState
 // 0x0000 (0x0590 - 0x0590)
@@ -8806,6 +8655,34 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UReplayGameFlowState;
+
+// Class Runtime.DistanceTrajectoryStatusDeactivateCondition
+// 0x0008 (0x0038 - 0x0030)
+class UDistanceTrajectoryStatusDeactivateCondition final : public UTrajectoryStatusDeactivateCondition
+{
+public:
+	bool                                          m_bCheckOnlyDistance2D;                            // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fDefaultDistance;                                // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	void BPE_SetDistance(const struct FShootParams& _shootParams, float* _fDistance) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("DistanceTrajectoryStatusDeactivateCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DistanceTrajectoryStatusDeactivateCondition")
+	}
+	static class UDistanceTrajectoryStatusDeactivateCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDistanceTrajectoryStatusDeactivateCondition>();
+	}
+};
+DUMPER7_ASSERTS_UDistanceTrajectoryStatusDeactivateCondition;
 
 // Class Runtime.RuntimeGameFlowSubsystem
 // 0x0020 (0x0510 - 0x04F0)
@@ -8862,28 +8739,30 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeGameInstance;
 
-// Class Runtime.TravelledDistanceStatDataCompute
-// 0x0018 (0x0040 - 0x0028)
-class UTravelledDistanceStatDataCompute final : public USCStatDataCompute
+// Class Runtime.HeightFollowerTrajectoryModifier
+// 0x0198 (0x01C8 - 0x0030)
+class UHeightFollowerTrajectoryModifier final : public UTrajectoryModifier
 {
 public:
-	uint8                                         Pad_28[0x18];                                      // 0x0028(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FRuntimeFloatCurve                     m_Height;                                          // 0x0030(0x0088)(Edit, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	struct FRuntimeFloatCurve                     m_HeightStretchByInitialBounceSpeed;               // 0x00B8(0x0088)(Edit, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	struct FRuntimeFloatCurve                     m_TimeStretchByInitialBounceSpeed;                 // 0x0140(0x0088)(Edit, BlueprintReadOnly, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("TravelledDistanceStatDataCompute")
+		STATIC_CLASS_IMPL("HeightFollowerTrajectoryModifier")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"TravelledDistanceStatDataCompute")
+		STATIC_NAME_IMPL(L"HeightFollowerTrajectoryModifier")
 	}
-	static class UTravelledDistanceStatDataCompute* GetDefaultObj()
+	static class UHeightFollowerTrajectoryModifier* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UTravelledDistanceStatDataCompute>();
+		return GetDefaultObjImpl<UHeightFollowerTrajectoryModifier>();
 	}
 };
-DUMPER7_ASSERTS_UTravelledDistanceStatDataCompute;
+DUMPER7_ASSERTS_UHeightFollowerTrajectoryModifier;
 
 // Class Runtime.RuntimeGameplayEffect
 // 0x0000 (0x0B00 - 0x0B00)
@@ -8929,25 +8808,28 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeGameplayEffectContextHelpers;
 
-// Class Runtime.TrajectoryStatics
-// 0x0000 (0x0028 - 0x0028)
-class UTrajectoryStatics final : public UBlueprintFunctionLibrary
+// Class Runtime.TravelledDistanceStatDataCompute
+// 0x0018 (0x0040 - 0x0028)
+class UTravelledDistanceStatDataCompute final : public USCStatDataCompute
 {
+public:
+	uint8                                         Pad_28[0x18];                                      // 0x0028(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("TrajectoryStatics")
+		STATIC_CLASS_IMPL("TravelledDistanceStatDataCompute")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"TrajectoryStatics")
+		STATIC_NAME_IMPL(L"TravelledDistanceStatDataCompute")
 	}
-	static class UTrajectoryStatics* GetDefaultObj()
+	static class UTravelledDistanceStatDataCompute* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UTrajectoryStatics>();
+		return GetDefaultObjImpl<UTravelledDistanceStatDataCompute>();
 	}
 };
-DUMPER7_ASSERTS_UTrajectoryStatics;
+DUMPER7_ASSERTS_UTravelledDistanceStatDataCompute;
 
 // Class Runtime.RuntimeGameplayTagBinder
 // 0x0008 (0x01B8 - 0x01B0)
@@ -9008,44 +8890,71 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeGameSettings;
 
-// Class Runtime.TutorialObjective
-// 0x0048 (0x0070 - 0x0028)
-class UTutorialObjective : public UObject
+// Class Runtime.TouchBallComponent
+// 0x0768 (0x0820 - 0x00B8)
+class alignas(0x10) UTouchBallComponent : public UActorComponent
 {
 public:
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(class UTutorialObjective* _objective)> ObjectiveCompleteDelegate;  // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
-	class FText                                   m_ObjectiveName;                                   // 0x0040(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	int32                                         m_iIterationCountRequired;                         // 0x0050(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iIterationCountRealized;                         // 0x0054(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class ARuntimeCharacter>       m_TutorialPlayer;                                  // 0x0058(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UAkAudioEvent*                          m_ObjectiveIterationSucceedSound;                  // 0x0060(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UAkAudioEvent*                          m_ObjectiveSucceedSound;                           // 0x0068(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TMulticastInlineDelegate<void(class ABall* _ball)> m_OnBallTouched;                              // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	float                                         m_fDefaultBlendToAttachDuration;                   // 0x00C8(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fInstantSnapDistanceAllowance;                   // 0x00CC(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint32                                        m_uiSnapDuringTransitionTypesBitmask;              // 0x00D0(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fBlendToAttachTransitionDurationRatio;           // 0x00D4(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fBlendToAttachForcedRatio;                       // 0x00D8(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FBoneReference                         m_BoneToAttachBallTo;                              // 0x00DC(0x0010)(Edit, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	class FName                                   m_TouchEnabledCurveName;                           // 0x00EC(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F4[0x4];                                       // 0x00F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                m_vNormalizedBoneRelativeLocation;                 // 0x00F8(0x0018)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ETouchBallMontageHandling                     m_MontageHandlingMethod;                           // 0x0110(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ESCBlendType                                  m_eFromPredictedToBoneBlendType;                   // 0x0111(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bTouchBallEnabled;                               // 0x0112(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_113[0x5];                                      // 0x0113(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMirrorDataTable*                       m_MirrorDataTable;                                 // 0x0118(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FFloatInterval                         m_fTouchFrameRateOffsetInterval;                   // 0x0120(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         m_uiTouchFrameRateFallback;                        // 0x0128(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_129[0x7];                                      // 0x0129(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRuntimeFloatCurve                     m_fTouchFrameRateMultiplierPerVelocityTurnRate;    // 0x0130(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	float                                         m_fTouchDistanceFromRootFallback;                  // 0x01B8(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iSimulatedFrameRate;                             // 0x01BC(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FRuntimeFloatCurve                     m_BallDynamic;                                     // 0x01C0(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	struct FRuntimeFloatCurve                     m_fTargetSpringFactorByAlpha;                      // 0x0248(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	struct FRuntimeFloatCurve                     m_fMaxProjectedYDistance;                          // 0x02D0(0x0088)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	bool                                          m_bVelocityPredictionEnabled;                      // 0x0358(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_359[0x3];                                      // 0x0359(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fDefaultVelocityRotationRateMultiplier;          // 0x035C(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fOnAngularVelocityRotationRateMultiplier;        // 0x0360(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fBlendToAttachTimeElapsed;                       // 0x0364(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fBlendToAttachDuration;                          // 0x0368(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bIsFallingBlend;                                 // 0x036C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_36D[0x3D3];                                    // 0x036D(0x03D3)(Fixing Size After Last Property [ Dumper-7 ])
+	TSet<class FName>                             m_ParalyzedStack;                                  // 0x0740(0x0050)(NativeAccessSpecifierPrivate)
+	TMap<int32, TWeakObjectPtr<class ABall>>      m_ForcedBallMap;                                   // 0x0790(0x0050)(UObjectWrapper, NativeAccessSpecifierPrivate)
+	TWeakObjectPtr<class ABall>                   m_ForcedBall;                                      // 0x07E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TWeakObjectPtr<class ABall>                   m_OwnedBall;                                       // 0x07E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_7F0[0x30];                                     // 0x07F0(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	bool IsObjectiveOver();
-	void ObjectiveAchievedOnce();
-	void ObjectiveCompleted();
-	void OnEndObjective();
-	void OnInitObjective();
-
-	class ATutorialManager* GetManagerOwner() const;
+	void BPF_SetParalyzed(bool _bParalized, class FName _idName, float _fBlendAttachDuration);
+	void OnBallOwnershipGained(class ABall* _nextBall);
+	void OnBallOwnershipLost();
+	void OnMontageStarted(class UAnimMontage* _animMontage);
+	void OnMovementModeChanged(class ACharacter* _character, EMovementMode _ePrevMovementMode, uint8 _uiPreviousCustomMode);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("TutorialObjective")
+		STATIC_CLASS_IMPL("TouchBallComponent")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"TutorialObjective")
+		STATIC_NAME_IMPL(L"TouchBallComponent")
 	}
-	static class UTutorialObjective* GetDefaultObj()
+	static class UTouchBallComponent* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UTutorialObjective>();
+		return GetDefaultObjImpl<UTouchBallComponent>();
 	}
 };
-DUMPER7_ASSERTS_UTutorialObjective;
+DUMPER7_ASSERTS_UTouchBallComponent;
 
 // Class Runtime.RuntimeGameState
 // 0x0098 (0x0610 - 0x0578)
@@ -9162,13 +9071,41 @@ public:
 };
 DUMPER7_ASSERTS_ARuntimeLockerPreMatchPlayerStart;
 
+// Class Runtime.DurationTrajectoryStatusDeactivateCondition
+// 0x0008 (0x0038 - 0x0030)
+class UDurationTrajectoryStatusDeactivateCondition final : public UTrajectoryStatusDeactivateCondition
+{
+public:
+	float                                         m_fDefaultDuration;                                // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bTakeInAccountFreezeFrameTime;                   // 0x0034(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_35[0x3];                                       // 0x0035(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void BPE_SetDuration(const struct FShootParams& _shootParams, float* _fDuration) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("DurationTrajectoryStatusDeactivateCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DurationTrajectoryStatusDeactivateCondition")
+	}
+	static class UDurationTrajectoryStatusDeactivateCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDurationTrajectoryStatusDeactivateCondition>();
+	}
+};
+DUMPER7_ASSERTS_UDurationTrajectoryStatusDeactivateCondition;
+
 // Class Runtime.CageAsLevelStreamingDynamic
 // 0x0008 (0x0030 - 0x0028)
 class UCageAsLevelStreamingDynamic final : public ULevelStreamingDynamicOverrider
 {
 public:
-	ECageType                                     m_eCageType;                                       // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint32                                        m_uiCageTypeBitmask;                               // 0x0028(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
@@ -9187,7 +9124,7 @@ public:
 DUMPER7_ASSERTS_UCageAsLevelStreamingDynamic;
 
 // Class Runtime.RuntimeMatchGameState
-// 0x04C0 (0x0AD0 - 0x0610)
+// 0x04C8 (0x0AD8 - 0x0610)
 class ARuntimeMatchGameState : public ARuntimeGameState
 {
 public:
@@ -9207,45 +9144,45 @@ public:
 	float                                         m_fStartTime;                                      // 0x07EC(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	float                                         m_fAccumulatedTime;                                // 0x07F0(0x0004)(Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	uint8                                         Pad_7F4[0x4];                                      // 0x07F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeMatchParameters                m_MatchParams;                                     // 0x07F8(0x00B0)(BlueprintVisible, BlueprintReadOnly, Net, Protected, NativeAccessSpecifierProtected)
-	bool                                          m_bIsInOvertime;                                   // 0x08A8(0x0001)(BlueprintVisible, BlueprintReadOnly, Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_8A9[0x3];                                      // 0x08A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FInt32Point                            m_vPlayerExpectedNum;                              // 0x08AC(0x0008)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bOverrideTeamStages;                             // 0x08B4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_8B5[0x3];                                      // 0x08B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UCustomizationARDataAsset*>      m_TeamStageOverrides;                              // 0x08B8(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	struct FGameplayTag                           m_MatchType;                                       // 0x08C8(0x0008)(Edit, Net, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bOverrideFlowInterrupt;                          // 0x08D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_8D1[0x3];                                      // 0x08D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSCGameFlowInterrupt                   m_FlowInterruptOverride;                           // 0x08D4(0x0018)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_8EC[0x4];                                      // 0x08EC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FScoreNameToValue>              m_ScoreKeyToValueArray;                            // 0x08F0(0x0010)(Net, ZeroConstructor, Transient, RepNotify, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_900[0x50];                                     // 0x0900(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FGameplayTag>                   m_MatchTimerEventTagArray;                         // 0x0950(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_960[0x8];                                      // 0x0960(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(class ARuntimeMatchGameState* _gameState)> m_OnArPerTeamReplicated; // 0x0968(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TArray<class UCustomizationARDataAsset*>      m_ArPerTeam;                                       // 0x0978(0x0010)(BlueprintVisible, BlueprintReadOnly, Net, ZeroConstructor, RepNotify, Protected, NativeAccessSpecifierProtected)
-	TMulticastInlineDelegate<void(class ARuntimeMatchGameState* _gameState)> BPE_OnCaptainsSet;      // 0x0988(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
-	bool                                          m_bAreCaptainAssigned;                             // 0x0998(0x0001)(BlueprintVisible, BlueprintReadOnly, Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_999[0x7];                                      // 0x0999(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void()>              BPE_OnTeamColorChanged;                            // 0x09A0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
-	class ULockerRoomPrematchStateViewModel*      m_LockerRoomPrematchStateViewModel;                // 0x09B0(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, NoDestructor, Protected, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UMatchViewModel*                        m_MatchViewModel;                                  // 0x09B8(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, NoDestructor, Protected, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TMulticastInlineDelegate<void(EClutchTimeState _clutchTimeState, int32 _iballInfluencingTeam)> m_OnClutchTimeStateChanged; // 0x09C0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	EClutchTimeState                              m_eClutchTimeState;                                // 0x09D0(0x0001)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_9D1[0x3];                                      // 0x09D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         m_iLosingTeamGoaldDiffForLastShot;                 // 0x09D4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_9D8[0x8];                                      // 0x09D8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<EClutchTimeState, struct FClutchTimeStateData> m_DataPerClutchTimeType;                     // 0x09E0(0x0050)(Edit, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	TMap<EClutchTimeState, struct FEventBinderInstanceArray> m_ClutchTimeEndBinderInstancesPerState; // 0x0A30(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_A80[0x20];                                     // 0x0A80(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(int32 _iNewMatchPart, int32 _iNumberMatchBreak)> m_OnMatchPartChanged; // 0x0AA0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(int32 _iNewMatchPart, int32 _iNumberMatchBreak)> m_OnStartMatchPartTransition; // 0x0AB0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	int32                                         m_iNumberOfMatchBreak;                             // 0x0AC0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iCurrentMatchPart;                               // 0x0AC4(0x0004)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bIsInMatchPartTransition;                        // 0x0AC8(0x0001)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EMatchPartKickOffType                         m_eMatchPartKickOffType;                           // 0x0AC9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_ACA[0x6];                                      // 0x0ACA(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FRuntimeMatchParameters                m_MatchParams;                                     // 0x07F8(0x00B8)(BlueprintVisible, BlueprintReadOnly, Net, Protected, NativeAccessSpecifierProtected)
+	bool                                          m_bIsInOvertime;                                   // 0x08B0(0x0001)(BlueprintVisible, BlueprintReadOnly, Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8B1[0x3];                                      // 0x08B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FInt32Point                            m_vPlayerExpectedNum;                              // 0x08B4(0x0008)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bOverrideTeamStages;                             // 0x08BC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8BD[0x3];                                      // 0x08BD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UCustomizationARDataAsset*>      m_TeamStageOverrides;                              // 0x08C0(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	struct FGameplayTag                           m_MatchType;                                       // 0x08D0(0x0008)(Edit, Net, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bOverrideFlowInterrupt;                          // 0x08D8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8D9[0x3];                                      // 0x08D9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSCGameFlowInterrupt                   m_FlowInterruptOverride;                           // 0x08DC(0x0018)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8F4[0x4];                                      // 0x08F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FScoreNameToValue>              m_ScoreKeyToValueArray;                            // 0x08F8(0x0010)(Net, ZeroConstructor, Transient, RepNotify, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_908[0x50];                                     // 0x0908(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FGameplayTag>                   m_MatchTimerEventTagArray;                         // 0x0958(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_968[0x8];                                      // 0x0968(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(class ARuntimeMatchGameState* _gameState)> m_OnArPerTeamReplicated; // 0x0970(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TArray<class UCustomizationARDataAsset*>      m_ArPerTeam;                                       // 0x0980(0x0010)(BlueprintVisible, BlueprintReadOnly, Net, ZeroConstructor, RepNotify, Protected, NativeAccessSpecifierProtected)
+	TMulticastInlineDelegate<void(class ARuntimeMatchGameState* _gameState)> BPE_OnCaptainsSet;      // 0x0990(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
+	bool                                          m_bAreCaptainAssigned;                             // 0x09A0(0x0001)(BlueprintVisible, BlueprintReadOnly, Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_9A1[0x7];                                      // 0x09A1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void()>              BPE_OnTeamColorChanged;                            // 0x09A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, BlueprintCallable, NativeAccessSpecifierPublic)
+	class ULockerRoomPrematchStateViewModel*      m_LockerRoomPrematchStateViewModel;                // 0x09B8(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, NoDestructor, Protected, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UMatchViewModel*                        m_MatchViewModel;                                  // 0x09C0(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, NoDestructor, Protected, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TMulticastInlineDelegate<void(EClutchTimeState _clutchTimeState, int32 _iballInfluencingTeam)> m_OnClutchTimeStateChanged; // 0x09C8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	EClutchTimeState                              m_eClutchTimeState;                                // 0x09D8(0x0001)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_9D9[0x3];                                      // 0x09D9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         m_iLosingTeamGoaldDiffForLastShot;                 // 0x09DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_9E0[0x8];                                      // 0x09E0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<EClutchTimeState, struct FClutchTimeStateData> m_DataPerClutchTimeType;                     // 0x09E8(0x0050)(Edit, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	TMap<EClutchTimeState, struct FEventBinderInstanceArray> m_ClutchTimeEndBinderInstancesPerState; // 0x0A38(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_A88[0x20];                                     // 0x0A88(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(int32 _iNewMatchPart, int32 _iNumberMatchBreak)> m_OnMatchPartChanged; // 0x0AA8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(int32 _iNewMatchPart, int32 _iNumberMatchBreak)> m_OnStartMatchPartTransition; // 0x0AB8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	int32                                         m_iNumberOfMatchBreak;                             // 0x0AC8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iCurrentMatchPart;                               // 0x0ACC(0x0004)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bIsInMatchPartTransition;                        // 0x0AD0(0x0001)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EMatchPartKickOffType                         m_eMatchPartKickOffType;                           // 0x0AD1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_AD2[0x6];                                      // 0x0AD2(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void BPF_BallStolen(class ARuntimePlayerState* _playerStateThief, class ARuntimePlayerState* _playerStateStolen);
@@ -9256,7 +9193,7 @@ public:
 	void OnOwnershipChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction);
 	void OnPlayerRemoved(const class ARuntimePlayerState* _playerState);
 	void OnPlayerStateReplicatedInController(class APlayerState* _playerState);
-	void OnPreviousOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction, EBallInteractionType _eInteractionType);
+	void OnPreviousOwnerChanged(class UBallPlayersInteractionComponent* _ballPlayerInteraction, EBallInteractionType _eInteractionType, bool _bIsSamePreviousOwner);
 	void OnRep_AreCaptainAssigned();
 	void OnRep_ArPerTeam();
 	void OnRep_ClutchTimeState();
@@ -9312,26 +9249,6 @@ public:
 };
 DUMPER7_ASSERTS_ARuntimeMatchGameState;
 
-// Class Runtime.VolleyTrajectoryStatusActivateCondition
-// 0x0000 (0x0028 - 0x0028)
-class UVolleyTrajectoryStatusActivateCondition final : public UTrajectoryStatusActivateCondition
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("VolleyTrajectoryStatusActivateCondition")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"VolleyTrajectoryStatusActivateCondition")
-	}
-	static class UVolleyTrajectoryStatusActivateCondition* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UVolleyTrajectoryStatusActivateCondition>();
-	}
-};
-DUMPER7_ASSERTS_UVolleyTrajectoryStatusActivateCondition;
-
 // Class Runtime.RuntimeMatchSubsystem
 // 0x0050 (0x01A0 - 0x0150)
 class URuntimeMatchSubsystem final : public USCSubsystem
@@ -9377,6 +9294,30 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ARuntimeMenuCameraActor;
+
+// Class Runtime.DragTrajectoryModifier
+// 0x0008 (0x0078 - 0x0070)
+class UDragTrajectoryModifier : public UOverridableConstantTrajectoryModifier
+{
+public:
+	float                                         m_fDefaultDragForce;                               // 0x0070(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("DragTrajectoryModifier")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DragTrajectoryModifier")
+	}
+	static class UDragTrajectoryModifier* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDragTrajectoryModifier>();
+	}
+};
+DUMPER7_ASSERTS_UDragTrajectoryModifier;
 
 // Class Runtime.RuntimeMenuFlowSubsystem
 // 0x00F0 (0x0250 - 0x0160)
@@ -9480,39 +9421,14 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeMovementAttributeSet;
 
-// Class Runtime.HeightFollowerTrajectoryModifier
-// 0x0198 (0x01C8 - 0x0030)
-class UHeightFollowerTrajectoryModifier final : public UTrajectoryModifier
-{
-public:
-	struct FRuntimeFloatCurve                     m_Height;                                          // 0x0030(0x0088)(Edit, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	struct FRuntimeFloatCurve                     m_HeightStretchByInitialBounceSpeed;               // 0x00B8(0x0088)(Edit, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	struct FRuntimeFloatCurve                     m_TimeStretchByInitialBounceSpeed;                 // 0x0140(0x0088)(Edit, BlueprintReadOnly, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("HeightFollowerTrajectoryModifier")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"HeightFollowerTrajectoryModifier")
-	}
-	static class UHeightFollowerTrajectoryModifier* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UHeightFollowerTrajectoryModifier>();
-	}
-};
-DUMPER7_ASSERTS_UHeightFollowerTrajectoryModifier;
-
 // Class Runtime.RuntimeMovementComponent
-// 0x00D0 (0x1B10 - 0x1A40)
+// 0x00D0 (0x1B20 - 0x1A50)
 class URuntimeMovementComponent final : public USCTransitionMovementComponent
 {
 public:
-	uint8                                         Pad_1A40[0x34];                                    // 0x1A40(0x0034)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fNotifyTeleportMinDist;                          // 0x1A74(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1A78[0x98];                                    // 0x1A78(0x0098)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_1A50[0x34];                                    // 0x1A50(0x0034)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fNotifyTeleportMinDist;                          // 0x1A84(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1A88[0x98];                                    // 0x1A88(0x0098)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void BPF_FreezeSpeedState();
@@ -9563,6 +9479,40 @@ public:
 };
 DUMPER7_ASSERTS_ARuntimeMultiPositionAmbientSound;
 
+// Class Runtime.TutorialLogicStep
+// 0x0020 (0x0048 - 0x0028)
+class UTutorialLogicStep final : public UObject
+{
+public:
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class ARuntimeCharacter>       m_TutorialPlayer;                                  // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bHasStartDelay;                                  // 0x0038(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_39[0x3];                                       // 0x0039(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fStartDelay;                                     // 0x003C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_40[0x8];                                       // 0x0040(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void OnEndLogicStep();
+	void OnStartLogicStep();
+
+	class ATutorialManager* GetManagerOwner() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("TutorialLogicStep")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TutorialLogicStep")
+	}
+	static class UTutorialLogicStep* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UTutorialLogicStep>();
+	}
+};
+DUMPER7_ASSERTS_UTutorialLogicStep;
+
 // Class Runtime.RuntimePerformanceTelemetry
 // 0x4710 (0x49C8 - 0x02B8)
 class URuntimePerformanceTelemetry final : public USCPerformanceTelemetry
@@ -9610,35 +9560,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ARuntimePlayerCameraManager;
-
-// Class Runtime.TutorialObjectiveOperator
-// 0x0028 (0x0098 - 0x0070)
-class UTutorialObjectiveOperator final : public UTutorialObjective
-{
-public:
-	EConditionGroupOperators                      m_eOperator;                                       // 0x0070(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_71[0x7];                                       // 0x0071(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FTutorialObjectiveDatasourceInstance> m_TutorialSubObjectivesData;                 // 0x0078(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	TArray<class UTutorialObjective*>             m_TutorialSubObjectives;                           // 0x0088(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-
-public:
-	void OnSubObjectiveComplete(class UTutorialObjective* _objective);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("TutorialObjectiveOperator")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"TutorialObjectiveOperator")
-	}
-	static class UTutorialObjectiveOperator* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UTutorialObjectiveOperator>();
-	}
-};
-DUMPER7_ASSERTS_UTutorialObjectiveOperator;
 
 // Class Runtime.RuntimePlayerController
 // 0x0030 (0x1370 - 0x1340)
@@ -9708,6 +9629,26 @@ public:
 };
 DUMPER7_ASSERTS_UTotalScoreViewModel;
 
+// Class Runtime.TrajectoryStatics
+// 0x0000 (0x0028 - 0x0028)
+class UTrajectoryStatics final : public UBlueprintFunctionLibrary
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("TrajectoryStatics")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TrajectoryStatics")
+	}
+	static class UTrajectoryStatics* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UTrajectoryStatics>();
+	}
+};
+DUMPER7_ASSERTS_UTrajectoryStatics;
+
 // Class Runtime.TeamTotalScoresViewModel
 // 0x0018 (0x0088 - 0x0070)
 class UTeamTotalScoresViewModel final : public USCViewModel
@@ -9733,12 +9674,12 @@ public:
 DUMPER7_ASSERTS_UTeamTotalScoresViewModel;
 
 // Class Runtime.RuntimePlayerScoreViewModel
-// 0x0008 (0x00A8 - 0x00A0)
+// 0x0008 (0x00A0 - 0x0098)
 class URuntimePlayerScoreViewModel : public UPlayerScoreViewModel
 {
 public:
-	bool                                          m_bIsMVP;                                          // 0x00A0(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A1[0x7];                                       // 0x00A1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          m_bIsMVP;                                          // 0x0098(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void OnMVPSet(class ARuntimePlayerState* _runtimePlayerState);
@@ -9759,33 +9700,39 @@ public:
 };
 DUMPER7_ASSERTS_URuntimePlayerScoreViewModel;
 
-// Class Runtime.DurationTrajectoryStatusDeactivateCondition
-// 0x0008 (0x0038 - 0x0030)
-class UDurationTrajectoryStatusDeactivateCondition final : public UTrajectoryStatusDeactivateCondition
+// Class Runtime.WelcomeFlowViewModel
+// 0x0028 (0x0098 - 0x0070)
+class UWelcomeFlowViewModel final : public USCViewModel
 {
 public:
-	float                                         m_fDefaultDuration;                                // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bTakeInAccountFreezeFrameTime;                   // 0x0034(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_35[0x3];                                       // 0x0035(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	EWelcomeFlowStep                              m_CurrentWelcomeFlowStep;                          // 0x0070(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bShouldDisplayEULA;                              // 0x0071(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bShouldDisplayRemappingResetWarning;             // 0x0072(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_73[0x5];                                       // 0x0073(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UWelcomeFlowContentViewModel*>   m_UnreadContentViewModels;                         // 0x0078(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	TArray<class UWelcomeFlowContentViewModel*>   m_ActiveNewsViewModels;                            // 0x0088(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
 
 public:
-	void BPE_SetDuration(const struct FShootParams& _shootParams, float* _fDuration) const;
+	TArray<class UWelcomeFlowContentViewModel*> BPF_GetUnreadContentViewModelsByType(ERematchWelcomeFlowContentType _type) const;
+	bool BPF_HasUnreadContentOfType(ERematchWelcomeFlowContentType _type) const;
+	bool HasActiveNews() const;
+	bool HasUnreadContent() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("DurationTrajectoryStatusDeactivateCondition")
+		STATIC_CLASS_IMPL("WelcomeFlowViewModel")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"DurationTrajectoryStatusDeactivateCondition")
+		STATIC_NAME_IMPL(L"WelcomeFlowViewModel")
 	}
-	static class UDurationTrajectoryStatusDeactivateCondition* GetDefaultObj()
+	static class UWelcomeFlowViewModel* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UDurationTrajectoryStatusDeactivateCondition>();
+		return GetDefaultObjImpl<UWelcomeFlowViewModel>();
 	}
 };
-DUMPER7_ASSERTS_UDurationTrajectoryStatusDeactivateCondition;
+DUMPER7_ASSERTS_UWelcomeFlowViewModel;
 
 // Class Runtime.RuntimePlayerScoreGlobalContainerViewModel
 // 0x0128 (0x01B0 - 0x0088)
@@ -9841,28 +9788,28 @@ public:
 };
 DUMPER7_ASSERTS_URuntimePlayerScoreEventHistory;
 
-// Class Runtime.MovieSceneTransitionTrack
-// 0x0008 (0x00D0 - 0x00C8)
-class UMovieSceneTransitionTrack final : public UMovieScenePropertyTrack
+// Class Runtime.UtilityAIPreset
+// 0x0010 (0x0040 - 0x0030)
+class UUtilityAIPreset final : public UPrimaryDataAsset
 {
 public:
-	uint8                                         Pad_C8[0x8];                                       // 0x00C8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TArray<struct FUtilityAITaskDatasourceInstance> m_Tasks;                                         // 0x0030(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MovieSceneTransitionTrack")
+		STATIC_CLASS_IMPL("UtilityAIPreset")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MovieSceneTransitionTrack")
+		STATIC_NAME_IMPL(L"UtilityAIPreset")
 	}
-	static class UMovieSceneTransitionTrack* GetDefaultObj()
+	static class UUtilityAIPreset* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMovieSceneTransitionTrack>();
+		return GetDefaultObjImpl<UUtilityAIPreset>();
 	}
 };
-DUMPER7_ASSERTS_UMovieSceneTransitionTrack;
+DUMPER7_ASSERTS_UUtilityAIPreset;
 
 // Class Runtime.RuntimePlayersScoreSubsystem
 // 0x0110 (0x0380 - 0x0270)
@@ -9940,40 +9887,28 @@ public:
 };
 DUMPER7_ASSERTS_ARuntimePlayerStart;
 
-// Class Runtime.WaitForPlayersArrivedFlowState
-// 0x0118 (0x06A8 - 0x0590)
-class UWaitForPlayersArrivedFlowState : public URuntimeGameFlowState
+// Class Runtime.MovieSceneTransitionSection
+// 0x0108 (0x01F8 - 0x00F0)
+class UMovieSceneTransitionSection final : public UMovieSceneSection
 {
 public:
-	uint8                                         Pad_590[0x10];                                     // 0x0590(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayTagQuery                      m_UseMissingPlayerTransitionQuery;                 // 0x05A0(0x0048)(Edit, Protected, NativeAccessSpecifierProtected)
-	class FName                                   m_TransitionOnMissingPlayer;                       // 0x05E8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FName                                   m_PlayerBindingTag;                                // 0x05F0(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TSubclassOf<class ACharacter>                 m_FakeCharacterToSpawnClass;                       // 0x05F8(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_600[0xA8];                                     // 0x0600(0x00A8)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void OnPawnSetInClient(class APlayerState* _player, class APawn* _newPawn, class APawn* _oldPawn);
-	void OnPlayerStateAddedInClient(class APlayerState* _PlayerStateAdded);
-	void OnPlayerStateReplicatedInController(class APlayerState* _playerState);
-	void TryToPlayColorChoiceSequences(class AController* _PlayerController);
-	void TryToPlayPlayerColorChoiceSequence(class APlayerState* _PlayerStateAdded);
+	struct FMovieSceneTransitionChannel           m_TransitionCurve;                                 // 0x00F0(0x0108)(Protected, NativeAccessSpecifierProtected)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("WaitForPlayersArrivedFlowState")
+		STATIC_CLASS_IMPL("MovieSceneTransitionSection")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"WaitForPlayersArrivedFlowState")
+		STATIC_NAME_IMPL(L"MovieSceneTransitionSection")
 	}
-	static class UWaitForPlayersArrivedFlowState* GetDefaultObj()
+	static class UMovieSceneTransitionSection* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UWaitForPlayersArrivedFlowState>();
+		return GetDefaultObjImpl<UMovieSceneTransitionSection>();
 	}
 };
-DUMPER7_ASSERTS_UWaitForPlayersArrivedFlowState;
+DUMPER7_ASSERTS_UMovieSceneTransitionSection;
 
 // Class Runtime.RuntimePlayerStatsViewModel
 // 0x0000 (0x00F8 - 0x00F8)
@@ -10015,95 +9950,32 @@ public:
 };
 DUMPER7_ASSERTS_URuntimePreMatchData;
 
-// Class Runtime.RuntimeStadiumAR
-// 0x0308 (0x0468 - 0x0160)
-class URuntimeStadiumAR : public USCWorldSubsystem
+// Class Runtime.RangeShootModifierComputationData
+// 0x0020 (0x0058 - 0x0038)
+class URangeShootModifierComputationData final : public UComputedShootModifierComputationData
 {
 public:
-	TMulticastInlineDelegate<void(const struct FRuntimeARTransition& _params)> m_OnTransitionStarted; // 0x0160(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FRuntimeARTransition& _params)> m_OnTransitionFinished; // 0x0170(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FGameplayTag& _previousTag, const struct FGameplayTag& _newTag)> m_OnCurrentWorldTagChanged; // 0x0180(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TSoftClassPtr<class UClass>                   m_ActorClassToSpawn;                               // 0x0190(0x0028)(Edit, DisableEditOnInstance, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TMap<struct FGameplayTag, struct FRTStadiumARWorldContent> m_WorldInstances;                     // 0x01B8(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_208[0x20];                                     // 0x0208(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCustomizationARDataAsset*              m_CapturedWorldDataAsset;                          // 0x0228(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FGameplayTag                           m_CapturedWorldTag;                                // 0x0230(0x0008)(BlueprintVisible, Transient, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class ARTScenePortal*                         m_PortalActor;                                     // 0x0238(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ESCTransitionState                            m_CurrentTransitionState;                          // 0x0240(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, Interp, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_241[0x7];                                      // 0x0241(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class URTStadiumARConfig>      m_StadiumARConfig;                                 // 0x0248(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TSoftObjectPtr<class URTFieldARConfig>        m_FieldARConfig;                                   // 0x0270(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FRuntimeARTransitionEffect             m_DefaultTransitionEffectAR;                       // 0x0298(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	struct FRuntimeARTransitionEffect             m_DefaultTransitionEffectStadium;                  // 0x02A8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	struct FRuntimeARTransitionEffect             m_DefaultTranslucentTransitionEffectAR;            // 0x02B8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	struct FRuntimeARTransitionEffect             m_DefaultTranslucentTransitionEffectStadium;       // 0x02C8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	TMap<struct FGameplayTag, struct FRuntimeARTransitionEffect> m_TransitionEffectsAR;              // 0x02D8(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	TMap<struct FGameplayTag, struct FRuntimeARTransitionEffectStadium> m_TransitionEffectsStadium;  // 0x0328(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	class ALevelSequenceActor*                    m_StadiumTransitionSequenceActor;                  // 0x0378(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TSoftObjectPtr<class ARTScenePortalReflection> m_ReflectionActor;                                // 0x0380(0x0028)(BlueprintVisible, BlueprintReadOnly, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UMaterialParameterCollection*           m_TransitionMPC;                                   // 0x03A8(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FName                                   m_ScreenDisplayProperty;                           // 0x03B0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FName                                   m_TransitionDirectionProperty;                     // 0x03B8(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FName                                   m_WorldDisplayProperty;                            // 0x03C0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_3C8[0x18];                                     // 0x03C8(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	class URTStadiumARConfig*                     m_pStadiumARConfig;                                // 0x03E0(0x0008)(ZeroConstructor, Transient, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_3E8[0x10];                                     // 0x03E8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	class URTFieldARConfig*                       m_pFieldARConfig;                                  // 0x03F8(0x0008)(ZeroConstructor, Transient, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_400[0x68];                                     // 0x0400(0x0068)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static TArray<class UCustomizationARDataAsset*> BPF_EnumerateWorldConfigs();
-
-	void BPE_OnConfigChanged();
-	void BPE_OnCurrentWorldTagChanged();
-	void BPE_OnEditorMapOpened();
-	void BPE_OnGameStateValid();
-	void BPE_OnPlayTransition(const struct FRuntimeARTransition& _params);
-	void BPE_OnTransitionStateChanged(ESCTransitionState _state);
-	void BPE_OnTransitionValueChanged(float _weight, float _direction);
-	void BPF_AddProjectionMeshes();
-	class AActor* BPF_FindActorInCurrentWorld(TSoftObjectPtr<class AActor> _reference);
-	TArray<class AActor*> BPF_FindActorsInCurrentWorld(const struct FGameplayTagQuery& _query);
-	ESubworldStreamingState BPF_GetWorldStreamingState(const struct FGameplayTag& _tag);
-	void BPF_LoadWorld(const struct FGameplayTag& _tag);
-	void BPF_PlayTransitionSequence(const struct FRuntimeARTransition& _params);
-	void BPF_SetCapturedWorldFromTeamIndex(int32 _iTeamIdx);
-	void BPF_SetRenderScale(float _scale);
-	void BPF_SetTransitionState(class UObject* _worldContext, ESCTransitionState _transitionState);
-	class AActor* BPF_SpawnActorInCurrentWorld(TSubclassOf<class AActor> Class_0);
-	void BPF_StopTransitionSequence();
-	void BPF_TriggerTransitionFinishedEvent(const struct FRuntimeARTransition& _params);
-	void BPF_TriggerTransitionStartedEvent(const struct FRuntimeARTransition& _params);
-	class URTFieldARConfig* GetFieldARConfig();
-	class URTStadiumARConfig* GetStadiumARConfig();
-	void OnFinishedTransitionSequence();
-	void SetCapturedWorldByDataAsset(class UCustomizationARDataAsset* _pDataAsset);
-	void SetCapturedWorldByTag_Deprecated(const struct FGameplayTag& _worldContentTag);
-	void SetRenderScale(float _scale);
-	void SetTransitionState(ESCTransitionState _transitionState);
-
-	struct FRTStadiumARWorldConfig BPF_GetCurrentWorldConfig() const;
-	class UCustomizationARDataAsset* BPF_GetTeamWorld(int32 _iTeamIdx) const;
-	struct FGameplayTag BPF_GetTeamWorldTag(int32 _iTeamIdx) const;
-	struct FRuntimeARTransitionEffect BPF_GetTransitionEffectAR(const struct FGameplayTag& _tag) const;
-	struct FRuntimeARTransitionEffect BPF_GetTransitionEffectStadium(const struct FGameplayTag& _tag, bool GoalA) const;
-	void BPF_WorldTagUseOpaqueRendering(const struct FGameplayTag& _worldTag, bool* _bResult) const;
+	struct FVector2D                              m_vRange;                                          // 0x0038(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ESourceModifierType                           m_eSourceType;                                     // 0x0048(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFloatInterval                         m_IntervalToComputeRatio;                          // 0x004C(0x0008)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("RuntimeStadiumAR")
+		STATIC_CLASS_IMPL("RangeShootModifierComputationData")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"RuntimeStadiumAR")
+		STATIC_NAME_IMPL(L"RangeShootModifierComputationData")
 	}
-	static class URuntimeStadiumAR* GetDefaultObj()
+	static class URangeShootModifierComputationData* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<URuntimeStadiumAR>();
+		return GetDefaultObjImpl<URangeShootModifierComputationData>();
 	}
 };
-DUMPER7_ASSERTS_URuntimeStadiumAR;
+DUMPER7_ASSERTS_URangeShootModifierComputationData;
 
 // Class Runtime.RuntimeReplaySubsystem
 // 0x01E0 (0x0330 - 0x0150)
@@ -10179,31 +10051,31 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeSaveObjectGameData;
 
-// Class Runtime.AngleShootModifier
-// 0x0010 (0x0040 - 0x0030)
-class UAngleShootModifier : public UShootModifier
+// Class Runtime.RTStadiumARLevelStreaming
+// 0x0010 (0x01D0 - 0x01C0)
+class URTStadiumARLevelStreaming final : public ULevelStreamingDynamic
 {
 public:
-	EApplyMode                                    m_eApplyMode;                                      // 0x0030(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAxisRotation                                 m_eAxis;                                           // 0x0031(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_32[0x6];                                       // 0x0032(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UShootModifierComputationData*          m_Modifier;                                        // 0x0038(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C0[0x10];                                     // 0x01C0(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void HandleLevelShown();
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("AngleShootModifier")
+		STATIC_CLASS_IMPL("RTStadiumARLevelStreaming")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"AngleShootModifier")
+		STATIC_NAME_IMPL(L"RTStadiumARLevelStreaming")
 	}
-	static class UAngleShootModifier* GetDefaultObj()
+	static class URTStadiumARLevelStreaming* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UAngleShootModifier>();
+		return GetDefaultObjImpl<URTStadiumARLevelStreaming>();
 	}
 };
-DUMPER7_ASSERTS_UAngleShootModifier;
+DUMPER7_ASSERTS_URTStadiumARLevelStreaming;
 
 // Class Runtime.RuntimeSaveSubsystem
 // 0x0000 (0x0670 - 0x0670)
@@ -10254,6 +10126,37 @@ public:
 	}
 };
 DUMPER7_ASSERTS_URuntimeShootCameraShake;
+
+// Class Runtime.WeightedAnimSelectTargetPicker
+// 0x0028 (0x0050 - 0x0028)
+class UWeightedAnimSelectTargetPicker final : public UTargetPicker
+{
+public:
+	struct FWeightedAnimSelectTargetPickerFilterOptions m_FilterOptionsWhenNoFullyMatchingTargetFound; // 0x0028(0x0008)(Edit, NoDestructor, NativeAccessSpecifierPrivate)
+	struct FWeightedAnimSelectTargetPickerFilterOptions m_FilterOptionsWhenFullyMatchingTargetsFound; // 0x0030(0x0008)(Edit, NoDestructor, NativeAccessSpecifierPrivate)
+	float                                         m_fScoreThresholdForFullyMatchingTargets;          // 0x0038(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bEarlyReturnFirstFullyMatchingTarget;            // 0x003C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bReturnAtLeastOneTarget;                         // 0x003D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_3E[0x2];                                       // 0x003E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UAnimSequencePicker>        m_AnimationPicker;                                 // 0x0040(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bVeryVerboseVlog;                                // 0x0048(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("WeightedAnimSelectTargetPicker")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"WeightedAnimSelectTargetPicker")
+	}
+	static class UWeightedAnimSelectTargetPicker* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UWeightedAnimSelectTargetPicker>();
+	}
+};
+DUMPER7_ASSERTS_UWeightedAnimSelectTargetPicker;
 
 // Class Runtime.ShootCameraShakeHelpers
 // 0x0000 (0x0028 - 0x0028)
@@ -10306,102 +10209,6 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeShootGameplayAbility;
 
-// Class Runtime.RuntimePlayerState
-// 0x0358 (0x09D0 - 0x0678)
-class ARuntimePlayerState : public ASCPlayerState
-{
-public:
-	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState, uint8 _uiNewTeam, int32 _iNumberInTeam)> BPE_OnTeamChanged; // 0x0678(0x0010)(ZeroConstructor, Transient, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState)> m_OnSanitizedNameChanged; // 0x0688(0x0010)(ZeroConstructor, Transient, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	bool                                          m_bIsCaptain;                                      // 0x0698(0x0001)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         m_uiTeam;                                          // 0x0699(0x0001)(Edit, Net, ZeroConstructor, Transient, EditConst, IsPlainOldData, RepNotify, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         m_uiNumberInTeam;                                  // 0x069A(0x0001)(Edit, Net, ZeroConstructor, Transient, EditConst, IsPlainOldData, RepNotify, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bIsBallKicker;                                   // 0x069B(0x0001)(BlueprintVisible, BlueprintReadOnly, Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_69C[0x4];                                      // 0x069C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 m_SanitizedName;                                   // 0x06A0(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FDisconnectedPlayerData                m_DisconnectedPlayerData;                          // 0x06B0(0x0060)(NoDestructor, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_710[0x10];                                     // 0x0710(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState)> m_OnMvpSet;              // 0x0720(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	struct FTotalExperienceData                   m_TotalExperienceData;                             // 0x0730(0x0018)(Edit, Net, Transient, EditConst, RepNotify, Protected, NativeAccessSpecifierProtected)
-	bool                                          m_bIsMVP;                                          // 0x0748(0x0001)(Edit, Net, ZeroConstructor, Transient, EditConst, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_749[0x27];                                     // 0x0749(0x0027)(Fixing Size After Last Property [ Dumper-7 ])
-	class ARuntimeLevelSequenceActor*             m_ColorChoiceLevelSequenceActor;                   // 0x0770(0x0008)(Net, ZeroConstructor, Transient, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_778[0x8];                                      // 0x0778(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(class APlayerState* _playerState, class USCInputAction* _inputAction)> m_OnFinisherInputSet; // 0x0780(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMap<class USCInputAction*, struct FExtraAssetEnumHandler> m_FinisherExtraAssetsDependingInput;  // 0x0790(0x0050)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
-	class USCInputAction*                         m_FinisherInputActionPressed;                      // 0x07E0(0x0008)(Net, ZeroConstructor, Transient, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class USCInputAction*                         m_DefaultFinisherInputAction;                      // 0x07E8(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class USCCustomizationLevelSequenceDataAsset* m_DefaultFinisherToPlay;                           // 0x07F0(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bForceUseDefaultFinisher;                        // 0x07F8(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7F9[0x7];                                      // 0x07F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FExtraAssetEnumHandler                 m_VictoryMoodExtraAssetEnumHandler;                // 0x0800(0x0060)(Edit, DisableEditOnInstance, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class ULevelSequence*                         m_DefaultVictoryMoodToPlay;                        // 0x0860(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bForceUseDefaultVictoryMood;                     // 0x0868(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_869[0x7];                                      // 0x0869(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState)> BPE_OnCustoChanged;      // 0x0870(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TSubclassOf<class USCCharacterCustomizationContainer> m_DefaultPlayerCustoClass;                 // 0x0880(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_888[0x20];                                     // 0x0888(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSCCharacterCustomizationDescription   m_CurrentCustomizationPreset;                      // 0x08A8(0x00F0)(Edit, BlueprintVisible, BlueprintReadOnly, Net, Transient, EditConst, RepNotify, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bIsCustoValid;                                   // 0x0998(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_999[0x7];                                      // 0x0999(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState)> m_OnPlayerProfileCustoReplicated; // 0x09A0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	struct FPlayerProfileDescription              m_CurrentPlayerProfileCustomization;               // 0x09B0(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Net, Transient, EditConst, RepNotify, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bIsPlayerProfileCustoValid;                      // 0x09C0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_9C1[0xF];                                      // 0x09C1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BPE_ClientInitialize(class AController* _controller);
-	void BPF_ResetShowPrematchTeamDisplay();
-	void BPF_SetCaptain(bool _bIsCaptain);
-	void BPF_SetFinisherInputActionPressed(class USCInputAction* _inputAction);
-	void BPF_SetPlayerName(const class FString& _name);
-	void BPF_SetTeam(uint8 Team);
-	void BPF_ToggleShowPrematchTeamDisplay();
-	void OnCaptainSet(class ARuntimeMatchGameState* _gameState);
-	void OnInitialReplication(class ASCPlayerState* _playerState);
-	void OnRep_ColorChoiceSequenceActor(class ARuntimeLevelSequenceActor* _oldAnimSequence);
-	void OnRep_CurrentCusto();
-	void OnRep_CurrentPlayerProfileCusto();
-	void OnRep_IsCaptain();
-	void OnRep_IsMvp();
-	void OnRep_NumberInTeam();
-	void OnRep_Team();
-	void OnRep_TotalExperienceData();
-	void OnSetIsMVP(class ARuntimePlayerState* _playerState);
-	void SetTeamColorKitUsed(ETeamColorKitType _usedColorKit);
-
-	bool BPF_GetIsCaptain() const;
-	int32 BPF_GetNumberInTeam() const;
-	void BPF_GetOpponentTeamColor(struct FLinearColor* _mainColor, struct FLinearColor* _secondaryColor, struct FLinearColor* _tertiaryColor) const;
-	uint8 BPF_GetOtherTeam() const;
-	class AController* BPF_GetOwningController() const;
-	class FString BPF_GetPlayerProfileAvatarItemId() const;
-	class FString BPF_GetPlayerProfileBannerItemId() const;
-	class FString BPF_GetPlayerProfileTitleItemId() const;
-	class FString BPF_GetSanitizedName() const;
-	class UCustomizationARDataAsset* BPF_GetStageAR() const;
-	struct FGameplayTag BPF_GetStageARTag() const;
-	uint8 BPF_GetTeam() const;
-	void BPF_GetTeamColor(struct FLinearColor* _mainColor, struct FLinearColor* _secondaryColor, struct FLinearColor* _tertiaryColor) const;
-	float BPF_GetValueOfStat(TSubclassOf<class USCStatControllerBase> _statClass) const;
-	bool BPF_IsMvp() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("RuntimePlayerState")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"RuntimePlayerState")
-	}
-	static class ARuntimePlayerState* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ARuntimePlayerState>();
-	}
-};
-DUMPER7_ASSERTS_ARuntimePlayerState;
-
 // Class Runtime.MeshMergeFunctionLibrary
 // 0x0000 (0x0028 - 0x0028)
 class UMeshMergeFunctionLibrary final : public UBlueprintFunctionLibrary
@@ -10426,7 +10233,7 @@ public:
 DUMPER7_ASSERTS_UMeshMergeFunctionLibrary;
 
 // Class Runtime.RuntimeSOSBindingsSubsystem
-// 0x02D0 (0x05C8 - 0x02F8)
+// 0x02E0 (0x05D8 - 0x02F8)
 class URuntimeSOSBindingsSubsystem final : public USOSBindingsSubsystem
 {
 public:
@@ -10435,13 +10242,13 @@ public:
 	float                                         m_fMinAwayFromKeyboardDuration;                    // 0x034C(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         m_fAfkDurationFromMatchDurationRatio;              // 0x0350(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         m_fGoalkeeperAfkMaxDist;                           // 0x0354(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRuntimeMatchParameters                m_CustomMatchDefaultParams;                        // 0x0358(0x00B0)(Edit, Config, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_408[0xB8];                                     // 0x0408(0x00B8)(Fixing Size After Last Property [ Dumper-7 ])
-	TSet<ERuntimeMatchParameterTypes>             m_VisibleCustomMatchParams;                        // 0x04C0(0x0050)(Edit, Config, Protected, NativeAccessSpecifierProtected)
-	TSet<struct FUserCustomMatchParamEnumHandler> m_VisibleCustomMatchUserParams;                    // 0x0510(0x0050)(Edit, Config, Protected, NativeAccessSpecifierProtected)
-	struct FGameplayTagQuery                      m_MatchAllowJoinSquadsQuery;                       // 0x0560(0x0048)(Edit, Config, Protected, NativeAccessSpecifierProtected)
-	TArray<TSubclassOf<class UGameplayAbility>>   m_LoadedAbilitiesResettingAfk;                     // 0x05A8(0x0010)(ZeroConstructor, Transient, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
-	TArray<TSoftClassPtr<class UClass>>           m_AbilitiesResettingAfk;                           // 0x05B8(0x0010)(Edit, ZeroConstructor, Config, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
+	struct FRuntimeMatchParameters                m_CustomMatchDefaultParams;                        // 0x0358(0x00B8)(Edit, Config, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_410[0xC0];                                     // 0x0410(0x00C0)(Fixing Size After Last Property [ Dumper-7 ])
+	TSet<ERuntimeMatchParameterTypes>             m_VisibleCustomMatchParams;                        // 0x04D0(0x0050)(Edit, Config, Protected, NativeAccessSpecifierProtected)
+	TSet<struct FUserCustomMatchParamEnumHandler> m_VisibleCustomMatchUserParams;                    // 0x0520(0x0050)(Edit, Config, Protected, NativeAccessSpecifierProtected)
+	struct FGameplayTagQuery                      m_MatchAllowJoinSquadsQuery;                       // 0x0570(0x0048)(Edit, Config, Protected, NativeAccessSpecifierProtected)
+	TArray<TSubclassOf<class UGameplayAbility>>   m_LoadedAbilitiesResettingAfk;                     // 0x05B8(0x0010)(ZeroConstructor, Transient, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
+	TArray<TSoftClassPtr<class UClass>>           m_AbilitiesResettingAfk;                           // 0x05C8(0x0010)(Edit, ZeroConstructor, Config, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
 
 public:
 	void BPF_ResetCustomMatchParams();
@@ -10466,6 +10273,35 @@ public:
 	}
 };
 DUMPER7_ASSERTS_URuntimeSOSBindingsSubsystem;
+
+// Class Runtime.TutorialObjectiveOperator
+// 0x0028 (0x0098 - 0x0070)
+class UTutorialObjectiveOperator final : public UTutorialObjective
+{
+public:
+	EConditionGroupOperators                      m_eOperator;                                       // 0x0070(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_71[0x7];                                       // 0x0071(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FTutorialObjectiveDatasourceInstance> m_TutorialSubObjectivesData;                 // 0x0078(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	TArray<class UTutorialObjective*>             m_TutorialSubObjectives;                           // 0x0088(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+
+public:
+	void OnSubObjectiveComplete(class UTutorialObjective* _objective);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("TutorialObjectiveOperator")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TutorialObjectiveOperator")
+	}
+	static class UTutorialObjectiveOperator* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UTutorialObjectiveOperator>();
+	}
+};
+DUMPER7_ASSERTS_UTutorialObjectiveOperator;
 
 // Class Runtime.RuntimeSOSComponent
 // 0x0078 (0x0258 - 0x01E0)
@@ -10522,28 +10358,47 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeSoundSubsystem;
 
-// Class Runtime.UtilityAIPreset
-// 0x0010 (0x0040 - 0x0030)
-class UUtilityAIPreset final : public UPrimaryDataAsset
+// Class Runtime.ItemThumbnailScene
+// 0x00C8 (0x00F0 - 0x0028)
+class UItemThumbnailScene : public UObject
 {
 public:
-	TArray<struct FUtilityAITaskDatasourceInstance> m_Tasks;                                         // 0x0030(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	bool                                          bPostProcessPropagateAlpha;                        // 0x0028(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bEnableDynamicShadows;                             // 0x0029(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bEnableAmbientOcclusion;                           // 0x002A(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bEnablePostProcessMaterial;                        // 0x002B(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2C[0xC];                                       // 0x002C(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<struct FViewKey, int32>                  ViewKeys;                                          // 0x0038(0x0050)(NativeAccessSpecifierPrivate)
+	TArray<struct FViewPoolEntry>                 ViewPool;                                          // 0x0088(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_98[0x58];                                      // 0x0098(0x0058)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	class UActorComponent* AddComponent(TSubclassOf<class UActorComponent> Class_0, const struct FTransform& LocalToWorld, bool bAttachToRoot);
+	class UWorld* GetThumbnailWorld();
+	void PrepareScene();
+	void SetBackgroundColor(const struct FLinearColor& InColor);
+	class AActor* SpawnActor(TSubclassOf<class AActor> Class_0);
+	class AActor* SpawnActorForKey(const struct FGenericStruct& Key, TSubclassOf<class AActor> Class_0, int32* OutViewIndex);
+
+	class AActor* GetActorForView(int32 ViewIndex) const;
+	void GetViewMatrixParameters(int32 SceneView, struct FViewParameters* OutParameters) const;
+	void OnBuildActor() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UtilityAIPreset")
+		STATIC_CLASS_IMPL("ItemThumbnailScene")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UtilityAIPreset")
+		STATIC_NAME_IMPL(L"ItemThumbnailScene")
 	}
-	static class UUtilityAIPreset* GetDefaultObj()
+	static class UItemThumbnailScene* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUtilityAIPreset>();
+		return GetDefaultObjImpl<UItemThumbnailScene>();
 	}
 };
-DUMPER7_ASSERTS_UUtilityAIPreset;
+DUMPER7_ASSERTS_UItemThumbnailScene;
 
 // Class Runtime.RuntimeSpectatorPawn
 // 0x0008 (0x0490 - 0x0488)
@@ -10603,6 +10458,30 @@ public:
 	}
 };
 DUMPER7_ASSERTS_URuntimeSprintGameplayAbility;
+
+// Class Runtime.RuntimeSequencerBindingLibrary
+// 0x0000 (0x0028 - 0x0028)
+class URuntimeSequencerBindingLibrary final : public UBlueprintFunctionLibrary
+{
+public:
+	static struct FMovieSceneDynamicBindingResolveResult GetCharacterBodyPart(const struct FMovieSceneDynamicBindingResolveParams& Params_0, const struct FCharacterPartEnumHandler& BodyPart);
+	static struct FMovieSceneDynamicBindingResolveResult GoalScorer(class UObject* WorldContextObject);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("RuntimeSequencerBindingLibrary")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"RuntimeSequencerBindingLibrary")
+	}
+	static class URuntimeSequencerBindingLibrary* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<URuntimeSequencerBindingLibrary>();
+	}
+};
+DUMPER7_ASSERTS_URuntimeSequencerBindingLibrary;
 
 // Class Runtime.RuntimeStadiumEditorSystem
 // 0x0040 (0x0190 - 0x0150)
@@ -10716,25 +10595,29 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeStatsSubsystem;
 
-// Class Runtime.SpeedKeeperTrajectoryModifier
-// 0x0000 (0x0030 - 0x0030)
-class USpeedKeeperTrajectoryModifier final : public UTrajectoryModifier
+// Class Runtime.VolleyPrioTargetDataCondition
+// 0x0008 (0x0080 - 0x0078)
+class UVolleyPrioTargetDataCondition final : public UTargetDataCondition
 {
+public:
+	bool                                          m_bCheckPlayerHasPriority;                         // 0x0078(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_79[0x7];                                       // 0x0079(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("SpeedKeeperTrajectoryModifier")
+		STATIC_CLASS_IMPL("VolleyPrioTargetDataCondition")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"SpeedKeeperTrajectoryModifier")
+		STATIC_NAME_IMPL(L"VolleyPrioTargetDataCondition")
 	}
-	static class USpeedKeeperTrajectoryModifier* GetDefaultObj()
+	static class UVolleyPrioTargetDataCondition* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<USpeedKeeperTrajectoryModifier>();
+		return GetDefaultObjImpl<UVolleyPrioTargetDataCondition>();
 	}
 };
-DUMPER7_ASSERTS_USpeedKeeperTrajectoryModifier;
+DUMPER7_ASSERTS_UVolleyPrioTargetDataCondition;
 
 // Class Runtime.RuntimeTeamPreMatchData
 // 0x0000 (0x0028 - 0x0028)
@@ -10770,6 +10653,7 @@ public:
 	static class APawn* BPF_GetNearestPawn(const class AActor* _inRefActor, bool _bShouldBeOnScreen, bool _bFilterByTeam, bool _bOnlyAllies);
 	static int32 BPF_GetPlayerCountInTeam(const class UWorld* _world, const uint8 _uiTeam);
 	static struct FGameplayAbilityTargetDataHandle BPF_GetRequestedTargets(class APawn* _requester, const struct FRuntimeTargetRequest& _request);
+	static class FString BPF_GetSessionId(class UWorld* World);
 	static bool BPF_ShouldJumpForReception(EBallReceptionArea _eReceptionArea);
 
 public:
@@ -10788,33 +10672,25 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeTools;
 
-// Class Runtime.WelcomeFlowContentViewModel
-// 0x0060 (0x00D0 - 0x0070)
-class UWelcomeFlowContentViewModel final : public USCViewModel
+// Class Runtime.SpeedKeeperTrajectoryModifier
+// 0x0000 (0x0030 - 0x0030)
+class USpeedKeeperTrajectoryModifier final : public UTrajectoryModifier
 {
-public:
-	class FString                                 m_Id;                                              // 0x0070(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ERematchWelcomeFlowContentType                m_Type;                                            // 0x0080(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   m_Title;                                           // 0x0088(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	class FText                                   m_Description;                                     // 0x0098(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	TSoftObjectPtr<class UTexture2D>              m_Texture;                                         // 0x00A8(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("WelcomeFlowContentViewModel")
+		STATIC_CLASS_IMPL("SpeedKeeperTrajectoryModifier")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"WelcomeFlowContentViewModel")
+		STATIC_NAME_IMPL(L"SpeedKeeperTrajectoryModifier")
 	}
-	static class UWelcomeFlowContentViewModel* GetDefaultObj()
+	static class USpeedKeeperTrajectoryModifier* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UWelcomeFlowContentViewModel>();
+		return GetDefaultObjImpl<USpeedKeeperTrajectoryModifier>();
 	}
 };
-DUMPER7_ASSERTS_UWelcomeFlowContentViewModel;
+DUMPER7_ASSERTS_USpeedKeeperTrajectoryModifier;
 
 // Class Runtime.RuntimeVideoSubsystem
 // 0x0010 (0x0040 - 0x0030)
@@ -10883,37 +10759,6 @@ public:
 };
 DUMPER7_ASSERTS_URuntimeWelcomeFlowSubsystem;
 
-// Class Runtime.MagnusTrajectoryModifier
-// 0x0030 (0x00A0 - 0x0070)
-class UMagnusTrajectoryModifier : public UOverridableConstantTrajectoryModifier
-{
-public:
-	struct FMagnusTrajectoryParams                m_FlyingMagnus;                                    // 0x0070(0x0008)(Edit, BlueprintReadOnly, NoDestructor, NativeAccessSpecifierPublic)
-	struct FMagnusTrajectoryParams                m_RollingMagnus;                                   // 0x0078(0x0008)(Edit, BlueprintReadOnly, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         m_fDefaultMagnusForce;                             // 0x0080(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bApplyForcedMagnus;                              // 0x0084(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_85[0x3];                                       // 0x0085(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              m_v2DForcedMagnusAxis;                             // 0x0088(0x0010)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fDelayBeforeApplyMagnus;                         // 0x0098(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         m_uiReboundsAlreadyAchievedToApplyForcedMagnus;    // 0x009C(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9D[0x3];                                       // 0x009D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MagnusTrajectoryModifier")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MagnusTrajectoryModifier")
-	}
-	static class UMagnusTrajectoryModifier* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMagnusTrajectoryModifier>();
-	}
-};
-DUMPER7_ASSERTS_UMagnusTrajectoryModifier;
-
 // Class Runtime.SessionTimeManager
 // 0x0000 (0x0110 - 0x0110)
 class USessionTimeManager final : public USCSessionTimeManager
@@ -10960,6 +10805,37 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UShootAngleTargetDataCondition;
+
+// Class Runtime.MagnusTrajectoryModifier
+// 0x0030 (0x00A0 - 0x0070)
+class UMagnusTrajectoryModifier : public UOverridableConstantTrajectoryModifier
+{
+public:
+	struct FMagnusTrajectoryParams                m_FlyingMagnus;                                    // 0x0070(0x0008)(Edit, BlueprintReadOnly, NoDestructor, NativeAccessSpecifierPublic)
+	struct FMagnusTrajectoryParams                m_RollingMagnus;                                   // 0x0078(0x0008)(Edit, BlueprintReadOnly, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         m_fDefaultMagnusForce;                             // 0x0080(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bApplyForcedMagnus;                              // 0x0084(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_85[0x3];                                       // 0x0085(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              m_v2DForcedMagnusAxis;                             // 0x0088(0x0010)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fDelayBeforeApplyMagnus;                         // 0x0098(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         m_uiReboundsAlreadyAchievedToApplyForcedMagnus;    // 0x009C(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9D[0x3];                                       // 0x009D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MagnusTrajectoryModifier")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MagnusTrajectoryModifier")
+	}
+	static class UMagnusTrajectoryModifier* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMagnusTrajectoryModifier>();
+	}
+};
+DUMPER7_ASSERTS_UMagnusTrajectoryModifier;
 
 // Class Runtime.ShootBinder
 // 0x0070 (0x0168 - 0x00F8)
@@ -11036,61 +10912,75 @@ public:
 };
 DUMPER7_ASSERTS_UShootAbilityData;
 
-// Class Runtime.SimulationStepHelper
+// Class Runtime.WorkshopViewModel
+// 0x0058 (0x00C8 - 0x0070)
+class UWorkshopViewModel final : public USCViewModel
+{
+public:
+	EWorkshopState                                m_WorkshopState;                                   // 0x0070(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EWorkshopWinReason                            m_WinReason;                                       // 0x0071(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_72[0x6];                                       // 0x0072(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   m_WorkshopTitle;                                   // 0x0078(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, NativeAccessSpecifierProtected)
+	class FText                                   m_WorkshopInstruction;                             // 0x0088(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, NativeAccessSpecifierProtected)
+	int32                                         m_iScore;                                          // 0x0098(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iScoreMax;                                       // 0x009C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iBronzeScore;                                    // 0x00A0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iSilverScore;                                    // 0x00A4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iGoldScore;                                      // 0x00A8(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fStartTime;                                      // 0x00AC(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bIsTimerCountDown;                               // 0x00B0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_B1[0x3];                                       // 0x00B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fCountDownValue;                                 // 0x00B4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fTimeSaved;                                      // 0x00B8(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fBronzeTime;                                     // 0x00BC(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fSilverTime;                                     // 0x00C0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fGoldTime;                                       // 0x00C4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	bool HasNotWorkshopStarted() const;
+	bool IsWorkshopBasedOnScore() const;
+	bool IsWorkshopBasedOnTime() const;
+	bool IsWorkshopFinished() const;
+	bool IsWorkshopInProgress() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("WorkshopViewModel")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"WorkshopViewModel")
+	}
+	static class UWorkshopViewModel* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UWorkshopViewModel>();
+	}
+};
+DUMPER7_ASSERTS_UWorkshopViewModel;
+
+// Class Runtime.RTShootAbilityHelper
 // 0x0000 (0x0028 - 0x0028)
-class USimulationStepHelper final : public UBlueprintFunctionLibrary
+class URTShootAbilityHelper final : public UBlueprintFunctionLibrary
 {
 public:
-	static bool BPF_IsCustomOrFreezingSimulationStep(ESimulationStep _eSimulationStep);
-	static bool BPF_IsFlyingOrRollingSimulationStep(ESimulationStep _eSimulationStep);
-	static bool BPF_IsSimulationStepValid(ESimulationStep _eSimulationStep);
+	static ELockDirectionOption BPF_TryToGetLockDirectionOption(const struct FShootPrepTargetData& _shootPrep);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("SimulationStepHelper")
+		STATIC_CLASS_IMPL("RTShootAbilityHelper")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"SimulationStepHelper")
+		STATIC_NAME_IMPL(L"RTShootAbilityHelper")
 	}
-	static class USimulationStepHelper* GetDefaultObj()
+	static class URTShootAbilityHelper* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<USimulationStepHelper>();
+		return GetDefaultObjImpl<URTShootAbilityHelper>();
 	}
 };
-DUMPER7_ASSERTS_USimulationStepHelper;
-
-// Class Runtime.RTBlendableReflectionComponent
-// 0x0010 (0x02E0 - 0x02D0)
-class URTBlendableReflectionComponent final : public UBoxReflectionCaptureComponent
-{
-public:
-	float                                         m_fOpacity;                                        // 0x02C8(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fLightingIntensity;                              // 0x02CC(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fLightingFalloff;                                // 0x02D0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fLightingExtinction;                             // 0x02D4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fLightingWrap;                                   // 0x02D8(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2DC[0x4];                                      // 0x02DC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetOpacity(float _opacity);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("RTBlendableReflectionComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"RTBlendableReflectionComponent")
-	}
-	static class URTBlendableReflectionComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<URTBlendableReflectionComponent>();
-	}
-};
-DUMPER7_ASSERTS_URTBlendableReflectionComponent;
+DUMPER7_ASSERTS_URTShootAbilityHelper;
 
 // Class Runtime.JoystickOrientationHelper
 // 0x0000 (0x0028 - 0x0028)
@@ -11116,36 +11006,12 @@ public:
 };
 DUMPER7_ASSERTS_UJoystickOrientationHelper;
 
-// Class Runtime.ImpactPointShootDirectionComputation
-// 0x0008 (0x0118 - 0x0110)
-class UImpactPointShootDirectionComputation final : public UBaseImpactPointShootDirectionComputation
-{
-public:
-	ESimulationStep                               m_eSimulationStep;                                 // 0x0110(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_111[0x7];                                      // 0x0111(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ImpactPointShootDirectionComputation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ImpactPointShootDirectionComputation")
-	}
-	static class UImpactPointShootDirectionComputation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UImpactPointShootDirectionComputation>();
-	}
-};
-DUMPER7_ASSERTS_UImpactPointShootDirectionComputation;
-
 // Class Runtime.TargetActorShootDirectionComputation
-// 0x0008 (0x0118 - 0x0110)
+// 0x0008 (0x0048 - 0x0040)
 class UTargetActorShootDirectionComputation final : public UBaseImpactPointShootDirectionComputation
 {
 public:
-	TWeakObjectPtr<class AActor>                  m_Target;                                          // 0x0110(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class AActor>                  m_Target;                                          // 0x0040(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
 public:
 	static class UClass* StaticClass()
@@ -11247,7 +11113,6 @@ public:
 
 public:
 	static struct FShootParams BPF_ComputeShootParams(const struct FGameplayAbilityTargetDataHandle& _context, const class USCGameplayAbility* _ability, const struct FShootPrepTargetData& _targetData, float _fCatchupTime, float _fCatchupAnimTime);
-	static void BPF_ComputeShootParamsFromAbility(const class USCGameplayAbility* _ability, const struct FShootPrepTargetData& _targetData, struct FShootParams* _outResult, bool _bUseNetSync);
 	static void BPF_ComputeShootParamsFromAbilityAtLocation(const class USCGameplayAbility* _ability, const struct FShootPrepTargetData& _targetData, struct FShootParams* _outResult, const struct FVector& _vLocation, float _fWantedCatchupTime);
 	static void BPF_ComputeShootParamsFromActor(const class AActor* _actor, const struct FShootPrepTargetData& _targetData, struct FShootParams* _outResult);
 	static bool BPF_FindShootParamsTargetData(const struct FGameplayAbilityTargetDataHandle& _data, struct FShootParamsTargetData* _outData);
@@ -11273,9 +11138,10 @@ public:
 	static struct FGameplayAbilityTargetDataHandle BPF_MakeShootPrepTargetDataHandle(const struct FShootPrepTargetData& _data);
 	static bool BPF_ShootPrep_IsValid(const struct FShootPrepTargetData& _targetData);
 	static float BPF_TimeRemainingBeforeShoot(const class AActor* _actor, const struct FShootPrepTargetData& _data);
+	static struct FVector BPF_TraceBall(const class AActor* _actor, ECollisionChannel _eCollisionChannel, const TArray<ECollisionChannel>& _collisionChannelToIgnore, const struct FVector& _vStartPoint, const struct FVector& _vDirection, struct FVector* _vOutImpactNormal, const class FString& _sOverrideDebugString, bool _bUseMultiHitsInsteadOfSingle);
 	static struct FVector BPF_TryToGetImpactNormal(const struct FShootPrepTargetData& _data, bool* _bSuccess);
-	static struct FVector BPF_TryToGetImpactPoint(const struct FShootPrepTargetData& _data, bool* _bSuccess);
 	static struct FVector BPF_TryToGetImpactPointOnCameraDirection(const struct FShootPrepTargetData& _data, bool* _bSuccess);
+	static struct FVector BPF_TryToGetTargetedPointBySight(const struct FShootPrepTargetData& _data, bool* _bSuccess);
 
 public:
 	static class UClass* StaticClass()
@@ -11441,31 +11307,6 @@ public:
 };
 DUMPER7_ASSERTS_UJoystickShootModifier;
 
-// Class Runtime.ShootForceShootPrepCondition
-// 0x0028 (0x00A0 - 0x0078)
-class UShootForceShootPrepCondition final : public UTargetDataCondition
-{
-public:
-	struct FSCMathExpressionFloat                 m_MathExpression;                                  // 0x0078(0x0020)(Edit, NativeAccessSpecifierPrivate)
-	bool                                          m_bConvertToPercent;                               // 0x0098(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ShootForceShootPrepCondition")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ShootForceShootPrepCondition")
-	}
-	static class UShootForceShootPrepCondition* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UShootForceShootPrepCondition>();
-	}
-};
-DUMPER7_ASSERTS_UShootForceShootPrepCondition;
-
 // Class Runtime.ForceModifierTargetDatasource
 // 0x0010 (0x0090 - 0x0080)
 class UForceModifierTargetDatasource final : public UTargetDatasource
@@ -11488,6 +11329,31 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UForceModifierTargetDatasource;
+
+// Class Runtime.RawVector2DTargetDatasource
+// 0x0028 (0x00D0 - 0x00A8)
+class URawVector2DTargetDatasource final : public UGenericTargetDatasource
+{
+public:
+	struct FRawVector2DDataPickerInfos            m_Vector2DInfos;                                   // 0x00A8(0x0020)(Deprecated, Protected, NativeAccessSpecifierProtected)
+	bool                                          m_bAreDataDeprecated;                              // 0x00C8(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("RawVector2DTargetDatasource")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"RawVector2DTargetDatasource")
+	}
+	static class URawVector2DTargetDatasource* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<URawVector2DTargetDatasource>();
+	}
+};
+DUMPER7_ASSERTS_URawVector2DTargetDatasource;
 
 // Class Runtime.ShopItemOwnedFilter
 // 0x0000 (0x0028 - 0x0028)
@@ -11929,35 +11795,6 @@ public:
 };
 DUMPER7_ASSERTS_UCurrentForceBonusTrajectoryModifier;
 
-// Class Runtime.LocationFollowerTrajectoryModifier
-// 0x0018 (0x0048 - 0x0030)
-class ULocationFollowerTrajectoryModifier final : public UTrajectoryModifier
-{
-public:
-	class UCurveVector*                           m_LocationCurve;                                   // 0x0030(0x0008)(Edit, BlueprintReadOnly, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bFlatShootDirection;                             // 0x0038(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ELocationFollowerStretchType                  m_eStretchType;                                    // 0x0039(0x0001)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3A[0x2];                                       // 0x003A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fCurveTimeToCalculateSpeed;                      // 0x003C(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fDeltaTimeToCalculateSpeed;                      // 0x0040(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fBakedCurveStartSpeed;                           // 0x0044(0x0004)(Edit, BlueprintReadOnly, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LocationFollowerTrajectoryModifier")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LocationFollowerTrajectoryModifier")
-	}
-	static class ULocationFollowerTrajectoryModifier* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULocationFollowerTrajectoryModifier>();
-	}
-};
-DUMPER7_ASSERTS_ULocationFollowerTrajectoryModifier;
-
 // Class Runtime.TrajectoryPartHelpers
 // 0x0000 (0x0028 - 0x0028)
 class UTrajectoryPartHelpers final : public UBlueprintFunctionLibrary
@@ -12002,6 +11839,26 @@ public:
 };
 DUMPER7_ASSERTS_UInsideGoalTrajectoryStatusActivateCondition;
 
+// Class Runtime.VolleyTrajectoryStatusActivateCondition
+// 0x0000 (0x0028 - 0x0028)
+class UVolleyTrajectoryStatusActivateCondition final : public UTrajectoryStatusActivateCondition
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("VolleyTrajectoryStatusActivateCondition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"VolleyTrajectoryStatusActivateCondition")
+	}
+	static class UVolleyTrajectoryStatusActivateCondition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UVolleyTrajectoryStatusActivateCondition>();
+	}
+};
+DUMPER7_ASSERTS_UVolleyTrajectoryStatusActivateCondition;
+
 // Class Runtime.TutorialActor
 // 0x0008 (0x02B8 - 0x02B0)
 class ATutorialActor final : public AActor
@@ -12025,39 +11882,88 @@ public:
 };
 DUMPER7_ASSERTS_ATutorialActor;
 
-// Class Runtime.TutorialLogicStep
-// 0x0020 (0x0048 - 0x0028)
-class UTutorialLogicStep final : public UObject
+// Class Runtime.TutorialManager
+// 0x0168 (0x0418 - 0x02B0)
+class ATutorialManager final : public AActor
 {
 public:
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class ARuntimeCharacter>       m_TutorialPlayer;                                  // 0x0030(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bHasStartDelay;                                  // 0x0038(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_39[0x3];                                       // 0x0039(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fStartDelay;                                     // 0x003C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_40[0x8];                                       // 0x0040(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FGameplayTag                           m_TutorialManagerTag;                              // 0x02B0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bAutoMoveToNextLevelAtEnd;                       // 0x02B8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2B9[0x7];                                      // 0x02B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FTutorialLogicStepDatasourceInstance> m_TutorialLogicBeforeStartData;              // 0x02C0(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	TArray<struct FTutorialLogicStepDatasourceInstance> m_TutorialLogicOnEndData;                    // 0x02D0(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void()>              m_OnTutorialCompleteDelegate;                      // 0x02E0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	struct FGameplayTag                           m_InTutorialMenuTag;                               // 0x02F0(0x0008)(Edit, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FGameplayTag                           m_NextTutorialManagerToPlayTag;                    // 0x02F8(0x0008)(Edit, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<class UTutorialLogicStep*>             m_TutorialLogicBeforeStart;                        // 0x0300(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TArray<class UTutorialLogicStep*>             m_TutorialLogicOnEnd;                              // 0x0310(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TWeakObjectPtr<class ARuntimeCharacter>       m_TutorialPlayer;                                  // 0x0320(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bInitOnBeginPlay;                                // 0x0328(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_329[0x7];                                      // 0x0329(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   m_TutorialTitle;                                   // 0x0330(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	class FText                                   m_TutorialInstruction;                             // 0x0340(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	bool                                          m_bRequestInputToStartTutorial;                    // 0x0350(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_351[0x7];                                      // 0x0351(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class USCInputContext*                        m_PracticeContext;                                 // 0x0358(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_360[0x1];                                      // 0x0360(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          m_bHideTutorialProgressionUI;                      // 0x0361(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_362[0x6];                                      // 0x0362(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UCommonActivatableWidget>   m_TutorialWidgetClass;                             // 0x0368(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FGameplayTag                           m_TutorialUILayer;                                 // 0x0370(0x0008)(Edit, Config, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UCommonActivatableWidget*               m_TutorialWidget;                                  // 0x0378(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_380[0x8];                                      // 0x0380(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAkAudioEvent*                          m_TutorialCompleteSound;                           // 0x0388(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_390[0x18];                                     // 0x0390(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FTutorialStepDatasourceInstance> m_TutorialStepsData;                              // 0x03A8(0x0010)(Edit, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	TArray<class UTutorialStep*>                  m_TutorialSteps;                                   // 0x03B8(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	class UTutorialStep*                          m_CurrentStep;                                     // 0x03C8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3D0[0x4];                                      // 0x03D0(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          m_bWantToPlayLevelSequenceAtTheBeginning;          // 0x03D4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3D5[0x3];                                      // 0x03D5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTag                           m_LevelSequenceToPlayAtTheBeginning;               // 0x03D8(0x0008)(Edit, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class ASCLevelSequenceActor*                  m_SequenceActorToPlayAtTheBeginning;               // 0x03E0(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bWantToPlayLevelSequenceAtTheEnd;                // 0x03E8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3E9[0x3];                                      // 0x03E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTag                           m_LevelSequenceToPlayAtTheEnd;                     // 0x03EC(0x0008)(Edit, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3F4[0x4];                                      // 0x03F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ASCLevelSequenceActor*                  m_SequenceActorToPlayAtTheEnd;                     // 0x03F8(0x0008)(ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_400[0x18];                                     // 0x0400(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void OnEndLogicStep();
-	void OnStartLogicStep();
+	void BPE_OnStartCurrentStep();
+	void BPE_OnStartTutorial();
+	void BPE_OnTutorialComplete();
+	void BPE_OnWaitingPlayerInputToStart();
+	void InitTutorial(class UCommonActivatableWidget* _widgetToUse);
+	void OnLevelSequencePlayedAtTheBeginningFinished();
+	void OnLevelSequencePlayedAtTheEndFinished();
+	void OnPossessedPawnChanged(class APawn* _oldPawn, class APawn* _newPawn);
+	void OnSkipIntroductionInputPressed();
+	void OnStepSucceeded();
 
-	class ATutorialManager* GetManagerOwner() const;
+	class ATutorialActor* BPF_FindTutorialActor(const struct FGameplayTag& _tag) const;
+	int32 BPF_GetCurrentStepNumber() const;
+	int32 BPF_GetObjectiveCountInCurrentStep() const;
+	int32 BPF_GetObjectiveCountInCurrentStepWithIteration() const;
+	int32 BPF_GetStepCount() const;
+	void BPF_MoveToNextLevel() const;
+	bool CanStartTutorialFromInput() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("TutorialLogicStep")
+		STATIC_CLASS_IMPL("TutorialManager")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"TutorialLogicStep")
+		STATIC_NAME_IMPL(L"TutorialManager")
 	}
-	static class UTutorialLogicStep* GetDefaultObj()
+	static class ATutorialManager* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UTutorialLogicStep>();
+		return GetDefaultObjImpl<ATutorialManager>();
 	}
 };
-DUMPER7_ASSERTS_UTutorialLogicStep;
+DUMPER7_ASSERTS_ATutorialManager;
 
 // Class Runtime.TutorialObjectiveListenInput
 // 0x0018 (0x0088 - 0x0070)
@@ -12225,251 +12131,418 @@ public:
 };
 DUMPER7_ASSERTS_UVoiceChatBlueprintHelperLibrary;
 
-// Class Runtime.WallRunSnapComputation
-// 0x0018 (0x0090 - 0x0078)
-class UWallRunSnapComputation final : public USnapAnimationComputation
+// Class Runtime.WaitForPlayersArrivedFlowState
+// 0x0118 (0x06A8 - 0x0590)
+class UWaitForPlayersArrivedFlowState : public URuntimeGameFlowState
 {
 public:
-	TArray<EObjectTypeQuery>                      m_RaycastObjectTypes;                              // 0x0078(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	float                                         m_fSnapAngle;                                      // 0x0088(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         m_fMaxSnapDistanceFromPreSnapLocation;             // 0x008C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_590[0x10];                                     // 0x0590(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagQuery                      m_UseMissingPlayerTransitionQuery;                 // 0x05A0(0x0048)(Edit, Protected, NativeAccessSpecifierProtected)
+	class FName                                   m_TransitionOnMissingPlayer;                       // 0x05E8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FName                                   m_PlayerBindingTag;                                // 0x05F0(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSubclassOf<class ACharacter>                 m_FakeCharacterToSpawnClass;                       // 0x05F8(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_600[0xA8];                                     // 0x0600(0x00A8)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void OnPawnSetInClient(class APlayerState* _player, class APawn* _newPawn, class APawn* _oldPawn);
+	void OnPlayerStateAddedInClient(class APlayerState* _PlayerStateAdded);
+	void OnPlayerStateReplicatedInController(class APlayerState* _playerState);
+	void TryToPlayColorChoiceSequences(class AController* _PlayerController);
+	void TryToPlayPlayerColorChoiceSequence(class APlayerState* _PlayerStateAdded);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("WallRunSnapComputation")
+		STATIC_CLASS_IMPL("WaitForPlayersArrivedFlowState")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"WallRunSnapComputation")
+		STATIC_NAME_IMPL(L"WaitForPlayersArrivedFlowState")
 	}
-	static class UWallRunSnapComputation* GetDefaultObj()
+	static class UWaitForPlayersArrivedFlowState* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UWallRunSnapComputation>();
+		return GetDefaultObjImpl<UWaitForPlayersArrivedFlowState>();
 	}
 };
-DUMPER7_ASSERTS_UWallRunSnapComputation;
+DUMPER7_ASSERTS_UWaitForPlayersArrivedFlowState;
 
-// Class Runtime.WeightedAnimSelectTargetPicker
-// 0x0028 (0x0050 - 0x0028)
-class UWeightedAnimSelectTargetPicker final : public UTargetPicker
+// Class Runtime.WallRunThresholdTargetDatasource
+// 0x0038 (0x00B8 - 0x0080)
+class UWallRunThresholdTargetDatasource final : public UTargetDatasource
 {
 public:
-	struct FWeightedAnimSelectTargetPickerFilterOptions m_FilterOptionsWhenNoFullyMatchingTargetFound; // 0x0028(0x0008)(Edit, NoDestructor, NativeAccessSpecifierPrivate)
-	struct FWeightedAnimSelectTargetPickerFilterOptions m_FilterOptionsWhenFullyMatchingTargetsFound; // 0x0030(0x0008)(Edit, NoDestructor, NativeAccessSpecifierPrivate)
-	float                                         m_fScoreThresholdForFullyMatchingTargets;          // 0x0038(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bEarlyReturnFirstFullyMatchingTarget;            // 0x003C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bReturnAtLeastOneTarget;                         // 0x003D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_3E[0x2];                                       // 0x003E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UAnimSequencePicker>        m_AnimationPicker;                                 // 0x0040(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          m_bVeryVerboseVlog;                                // 0x0048(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FFloatInterval                         m_ApexHeightInterval;                              // 0x0080(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FWallRunStateData                      m_ClimbState;                                      // 0x0088(0x0018)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	struct FWallRunStateData                      m_FallState;                                       // 0x00A0(0x0018)(Edit, NoDestructor, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("WeightedAnimSelectTargetPicker")
+		STATIC_CLASS_IMPL("WallRunThresholdTargetDatasource")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"WeightedAnimSelectTargetPicker")
+		STATIC_NAME_IMPL(L"WallRunThresholdTargetDatasource")
 	}
-	static class UWeightedAnimSelectTargetPicker* GetDefaultObj()
+	static class UWallRunThresholdTargetDatasource* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UWeightedAnimSelectTargetPicker>();
+		return GetDefaultObjImpl<UWallRunThresholdTargetDatasource>();
 	}
 };
-DUMPER7_ASSERTS_UWeightedAnimSelectTargetPicker;
+DUMPER7_ASSERTS_UWallRunThresholdTargetDatasource;
 
-// Class Runtime.WelcomeFlowViewModel
-// 0x0028 (0x0098 - 0x0070)
-class UWelcomeFlowViewModel final : public USCViewModel
+// Class Runtime.WelcomeFlowContentViewModel
+// 0x0060 (0x00D0 - 0x0070)
+class UWelcomeFlowContentViewModel final : public USCViewModel
 {
 public:
-	EWelcomeFlowStep                              m_CurrentWelcomeFlowStep;                          // 0x0070(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bShouldDisplayEULA;                              // 0x0071(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bShouldDisplayRemappingResetWarning;             // 0x0072(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_73[0x5];                                       // 0x0073(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UWelcomeFlowContentViewModel*>   m_UnreadContentViewModels;                         // 0x0078(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	TArray<class UWelcomeFlowContentViewModel*>   m_ActiveNewsViewModels;                            // 0x0088(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-
-public:
-	TArray<class UWelcomeFlowContentViewModel*> BPF_GetUnreadContentViewModelsByType(ERematchWelcomeFlowContentType _type) const;
-	bool BPF_HasUnreadContentOfType(ERematchWelcomeFlowContentType _type) const;
-	bool HasActiveNews() const;
-	bool HasUnreadContent() const;
+	class FString                                 m_Id;                                              // 0x0070(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ERematchWelcomeFlowContentType                m_Type;                                            // 0x0080(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   m_Title;                                           // 0x0088(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	class FText                                   m_Description;                                     // 0x0098(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	TSoftObjectPtr<class UTexture2D>              m_Texture;                                         // 0x00A8(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("WelcomeFlowViewModel")
+		STATIC_CLASS_IMPL("WelcomeFlowContentViewModel")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"WelcomeFlowViewModel")
+		STATIC_NAME_IMPL(L"WelcomeFlowContentViewModel")
 	}
-	static class UWelcomeFlowViewModel* GetDefaultObj()
+	static class UWelcomeFlowContentViewModel* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UWelcomeFlowViewModel>();
+		return GetDefaultObjImpl<UWelcomeFlowContentViewModel>();
 	}
 };
-DUMPER7_ASSERTS_UWelcomeFlowViewModel;
+DUMPER7_ASSERTS_UWelcomeFlowContentViewModel;
 
-// Class Runtime.WorkshopViewModel
-// 0x0058 (0x00C8 - 0x0070)
-class UWorkshopViewModel final : public USCViewModel
+// Class Runtime.Workshop
+// 0x0150 (0x0400 - 0x02B0)
+class AWorkshop final : public AActor
 {
 public:
-	EWorkshopState                                m_WorkshopState;                                   // 0x0070(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EWorkshopWinReason                            m_WinReason;                                       // 0x0071(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_72[0x6];                                       // 0x0072(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   m_WorkshopTitle;                                   // 0x0078(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, NativeAccessSpecifierProtected)
-	class FText                                   m_WorkshopInstruction;                             // 0x0088(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, Protected, NativeAccessSpecifierProtected)
-	int32                                         m_iScore;                                          // 0x0098(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iScoreMax;                                       // 0x009C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iBronzeScore;                                    // 0x00A0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iSilverScore;                                    // 0x00A4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         m_iGoldScore;                                      // 0x00A8(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fStartTime;                                      // 0x00AC(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          m_bIsTimerCountDown;                               // 0x00B0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_B1[0x3];                                       // 0x00B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         m_fCountDownValue;                                 // 0x00B4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fTimeSaved;                                      // 0x00B8(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fBronzeTime;                                     // 0x00BC(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fSilverTime;                                     // 0x00C0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         m_fGoldTime;                                       // 0x00C4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FGameplayTag                           m_WorkshopTag;                                     // 0x02B0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FText                                   m_WorkshopTitle;                                   // 0x02B8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	class FText                                   m_WorkshopInstruction;                             // 0x02C8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2D8[0x78];                                     // 0x02D8(0x0078)(Fixing Size After Last Property [ Dumper-7 ])
+	EWorkshopWinReason                            m_WinReason;                                       // 0x0350(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bStartOnBeginPlay;                               // 0x0351(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bSaveEnabled;                                    // 0x0352(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EWorkshopStartType                            m_WorkshopStartType;                               // 0x0353(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iBeginningCountDownValue;                        // 0x0354(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSubclassOf<class UTagAvailabilityLayerContainer> m_LayerContainerInstanceToPushDuringCountDownClass; // 0x0358(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_360[0x8];                                      // 0x0360(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class USCInputContext*                        m_PracticeContext;                                 // 0x0368(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_370[0x10];                                     // 0x0370(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          m_bHasTimer;                                       // 0x0380(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bIsTimerCountDown;                               // 0x0381(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_382[0x2];                                      // 0x0382(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         m_fCountDownValue;                                 // 0x0384(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fBronzeTime;                                     // 0x0388(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fSilverTime;                                     // 0x038C(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         m_fGoldTime;                                       // 0x0390(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_394[0xC];                                      // 0x0394(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(int32 _iNewScore)> m_OnScoreChanged;                               // 0x03A0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3B0[0x4];                                      // 0x03B0(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          m_bHasScore;                                       // 0x03B4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3B5[0x3];                                      // 0x03B5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         m_iMaxScore;                                       // 0x03B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bEndWhenMaxScoreIsReached;                         // 0x03BC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3BD[0x3];                                      // 0x03BD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         m_iBronzeScore;                                    // 0x03C0(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iSilverScore;                                    // 0x03C4(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         m_iGoldScore;                                      // 0x03C8(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3CC[0x4];                                      // 0x03CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UTagAvailabilityLayerContainer> m_LayerContainerInstanceToPushClass;           // 0x03D0(0x0008)(Edit, ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3D8[0x4];                                      // 0x03D8(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          m_bHideWorkshopWidget;                             // 0x03DC(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3DD[0x3];                                      // 0x03DD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UCommonActivatableWidget>   m_WorkshopWidgetClass;                             // 0x03E0(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FGameplayTag                           m_WorkshopUILayer;                                 // 0x03E8(0x0008)(Edit, Config, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UCommonActivatableWidget*               m_WorkshopWidget;                                  // 0x03F0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UWorkshopViewModel*                     m_WorkshopViewModel;                               // 0x03F8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
 public:
-	bool HasNotWorkshopStarted() const;
-	bool IsWorkshopBasedOnScore() const;
-	bool IsWorkshopBasedOnTime() const;
-	bool IsWorkshopFinished() const;
-	bool IsWorkshopInProgress() const;
+	void AddScore(int32 _iScoreToAdd);
+	void BPE_FinishWorkshop();
+	void BPE_PauseWorkshop();
+	void BPE_RestartWorkshop();
+	void BPE_StartWorkshop();
+	void BPE_UnpauseWorkshop();
+	void BPF_SnapBallToWorkshopUser();
+	void CheckAchievements();
+	void FinishWorkshop();
+	void OnSkipIntroductionInputPressed();
+	void PauseWorkshop();
+	void RequestStartWorkshop();
+	void RestartWorkshop();
+	void UnpauseWorkshop();
+
+	EWorkshopMedal BPF_ComputeMedalWithScore(int32 _iScore) const;
+	EWorkshopMedal BPF_ComputeMedalWithTime(float _fTime) const;
+	float BPF_GetWorkshopTimer() const;
+	bool CanStartWorkshopFromInput() const;
+	int32 GetWorkshopScore() const;
+	EWorkshopState GetWorkshopState() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("WorkshopViewModel")
+		STATIC_CLASS_IMPL("Workshop")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"WorkshopViewModel")
+		STATIC_NAME_IMPL(L"Workshop")
 	}
-	static class UWorkshopViewModel* GetDefaultObj()
+	static class AWorkshop* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UWorkshopViewModel>();
+		return GetDefaultObjImpl<AWorkshop>();
 	}
 };
-DUMPER7_ASSERTS_UWorkshopViewModel;
+DUMPER7_ASSERTS_AWorkshop;
 
-// Class Runtime.MovieSceneTransitionSection
-// 0x0108 (0x01F8 - 0x00F0)
-class UMovieSceneTransitionSection final : public UMovieSceneSection
+// Class Runtime.RuntimePlayerState
+// 0x0358 (0x09D0 - 0x0678)
+class ARuntimePlayerState : public ASCPlayerState
 {
 public:
-	struct FMovieSceneTransitionChannel           m_TransitionCurve;                                 // 0x00F0(0x0108)(Protected, NativeAccessSpecifierProtected)
+	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState, uint8 _uiNewTeam, int32 _iNumberInTeam)> BPE_OnTeamChanged; // 0x0678(0x0010)(ZeroConstructor, Transient, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState)> m_OnSanitizedNameChanged; // 0x0688(0x0010)(ZeroConstructor, Transient, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	bool                                          m_bIsCaptain;                                      // 0x0698(0x0001)(Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         m_uiTeam;                                          // 0x0699(0x0001)(Edit, Net, ZeroConstructor, Transient, EditConst, IsPlainOldData, RepNotify, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         m_uiNumberInTeam;                                  // 0x069A(0x0001)(Edit, Net, ZeroConstructor, Transient, EditConst, IsPlainOldData, RepNotify, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bIsBallKicker;                                   // 0x069B(0x0001)(BlueprintVisible, BlueprintReadOnly, Net, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_69C[0x4];                                      // 0x069C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 m_SanitizedName;                                   // 0x06A0(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FDisconnectedPlayerData                m_DisconnectedPlayerData;                          // 0x06B0(0x0060)(NoDestructor, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_710[0x10];                                     // 0x0710(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState)> m_OnMvpSet;              // 0x0720(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	struct FTotalExperienceData                   m_TotalExperienceData;                             // 0x0730(0x0018)(Edit, Net, Transient, EditConst, RepNotify, Protected, NativeAccessSpecifierProtected)
+	bool                                          m_bIsMVP;                                          // 0x0748(0x0001)(Edit, Net, ZeroConstructor, Transient, EditConst, IsPlainOldData, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_749[0x27];                                     // 0x0749(0x0027)(Fixing Size After Last Property [ Dumper-7 ])
+	class ARuntimeLevelSequenceActor*             m_ColorChoiceLevelSequenceActor;                   // 0x0770(0x0008)(Net, ZeroConstructor, Transient, RepNotify, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_778[0x8];                                      // 0x0778(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(class APlayerState* _playerState, class USCInputAction* _inputAction)> m_OnFinisherInputSet; // 0x0780(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMap<class USCInputAction*, struct FExtraAssetEnumHandler> m_FinisherExtraAssetsDependingInput;  // 0x0790(0x0050)(Edit, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	class USCInputAction*                         m_FinisherInputActionPressed;                      // 0x07E0(0x0008)(Net, ZeroConstructor, Transient, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class USCInputAction*                         m_DefaultFinisherInputAction;                      // 0x07E8(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class USCCustomizationLevelSequenceDataAsset* m_DefaultFinisherToPlay;                           // 0x07F0(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bForceUseDefaultFinisher;                        // 0x07F8(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7F9[0x7];                                      // 0x07F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FExtraAssetEnumHandler                 m_VictoryMoodExtraAssetEnumHandler;                // 0x0800(0x0060)(Edit, DisableEditOnInstance, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class ULevelSequence*                         m_DefaultVictoryMoodToPlay;                        // 0x0860(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          m_bForceUseDefaultVictoryMood;                     // 0x0868(0x0001)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_869[0x7];                                      // 0x0869(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState)> BPE_OnCustoChanged;      // 0x0870(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TSubclassOf<class USCCharacterCustomizationContainer> m_DefaultPlayerCustoClass;                 // 0x0880(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_888[0x20];                                     // 0x0888(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSCCharacterCustomizationDescription   m_CurrentCustomizationPreset;                      // 0x08A8(0x00F0)(Edit, BlueprintVisible, BlueprintReadOnly, Net, Transient, EditConst, RepNotify, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bIsCustoValid;                                   // 0x0998(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_999[0x7];                                      // 0x0999(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(class ARuntimePlayerState* _playerState)> m_OnPlayerProfileCustoReplicated; // 0x09A0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	struct FPlayerProfileDescription              m_CurrentPlayerProfileCustomization;               // 0x09B0(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Net, Transient, EditConst, RepNotify, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          m_bIsPlayerProfileCustoValid;                      // 0x09C0(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_9C1[0xF];                                      // 0x09C1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void BPE_ClientInitialize(class AController* _controller);
+	void BPF_ResetShowPrematchTeamDisplay();
+	void BPF_SetCaptain(bool _bIsCaptain);
+	void BPF_SetFinisherInputActionPressed(class USCInputAction* _inputAction);
+	void BPF_SetPlayerName(const class FString& _name);
+	void BPF_SetTeam(uint8 Team);
+	void BPF_ToggleShowPrematchTeamDisplay();
+	void OnCaptainSet(class ARuntimeMatchGameState* _gameState);
+	void OnInitialReplication(class ASCPlayerState* _playerState);
+	void OnRep_ColorChoiceSequenceActor(class ARuntimeLevelSequenceActor* _oldAnimSequence);
+	void OnRep_CurrentCusto();
+	void OnRep_CurrentPlayerProfileCusto();
+	void OnRep_IsCaptain();
+	void OnRep_IsMvp();
+	void OnRep_NumberInTeam();
+	void OnRep_Team();
+	void OnRep_TotalExperienceData();
+	void OnSetIsMVP(class ARuntimePlayerState* _playerState);
+	void SetTeamColorKitUsed(ETeamColorKitType _usedColorKit);
+
+	bool BPF_GetIsCaptain() const;
+	int32 BPF_GetNumberInTeam() const;
+	void BPF_GetOpponentTeamColor(struct FLinearColor* _mainColor, struct FLinearColor* _secondaryColor, struct FLinearColor* _tertiaryColor) const;
+	uint8 BPF_GetOtherTeam() const;
+	class AController* BPF_GetOwningController() const;
+	class FString BPF_GetPlayerProfileAvatarItemId() const;
+	class FString BPF_GetPlayerProfileBannerItemId() const;
+	class FString BPF_GetPlayerProfileTitleItemId() const;
+	class FString BPF_GetSanitizedName() const;
+	class UCustomizationARDataAsset* BPF_GetStageAR() const;
+	struct FGameplayTag BPF_GetStageARTag() const;
+	uint8 BPF_GetTeam() const;
+	void BPF_GetTeamColor(struct FLinearColor* _mainColor, struct FLinearColor* _secondaryColor, struct FLinearColor* _tertiaryColor) const;
+	float BPF_GetValueOfStat(TSubclassOf<class USCStatControllerBase> _statClass) const;
+	bool BPF_IsMvp() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MovieSceneTransitionSection")
+		STATIC_CLASS_IMPL("RuntimePlayerState")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MovieSceneTransitionSection")
+		STATIC_NAME_IMPL(L"RuntimePlayerState")
 	}
-	static class UMovieSceneTransitionSection* GetDefaultObj()
+	static class ARuntimePlayerState* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMovieSceneTransitionSection>();
+		return GetDefaultObjImpl<ARuntimePlayerState>();
 	}
 };
-DUMPER7_ASSERTS_UMovieSceneTransitionSection;
+DUMPER7_ASSERTS_ARuntimePlayerState;
 
-// Class Runtime.RuntimeSequencerBindingLibrary
-// 0x0000 (0x0028 - 0x0028)
-class URuntimeSequencerBindingLibrary final : public UBlueprintFunctionLibrary
+// Class Runtime.MovieSceneTransitionTrack
+// 0x0008 (0x00D0 - 0x00C8)
+class UMovieSceneTransitionTrack final : public UMovieScenePropertyTrack
 {
 public:
-	static struct FMovieSceneDynamicBindingResolveResult GetCharacterBodyPart(const struct FMovieSceneDynamicBindingResolveParams& Params_0, const struct FCharacterPartEnumHandler& BodyPart);
-	static struct FMovieSceneDynamicBindingResolveResult GoalScorer(class UObject* WorldContextObject);
+	uint8                                         Pad_C8[0x8];                                       // 0x00C8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("RuntimeSequencerBindingLibrary")
+		STATIC_CLASS_IMPL("MovieSceneTransitionTrack")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"RuntimeSequencerBindingLibrary")
+		STATIC_NAME_IMPL(L"MovieSceneTransitionTrack")
 	}
-	static class URuntimeSequencerBindingLibrary* GetDefaultObj()
+	static class UMovieSceneTransitionTrack* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<URuntimeSequencerBindingLibrary>();
+		return GetDefaultObjImpl<UMovieSceneTransitionTrack>();
 	}
 };
-DUMPER7_ASSERTS_URuntimeSequencerBindingLibrary;
+DUMPER7_ASSERTS_UMovieSceneTransitionTrack;
 
-// Class Runtime.RTStadiumARLevelStreaming
-// 0x0010 (0x01D0 - 0x01C0)
-class URTStadiumARLevelStreaming final : public ULevelStreamingDynamic
+// Class Runtime.RTBlendableReflectionComponent
+// 0x0010 (0x02E0 - 0x02D0)
+class URTBlendableReflectionComponent final : public UBoxReflectionCaptureComponent
 {
 public:
-	uint8                                         Pad_1C0[0x10];                                     // 0x01C0(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         m_fOpacity;                                        // 0x02C8(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fLightingIntensity;                              // 0x02CC(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fLightingFalloff;                                // 0x02D0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fLightingExtinction;                             // 0x02D4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         m_fLightingWrap;                                   // 0x02D8(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2DC[0x4];                                      // 0x02DC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void HandleLevelShown();
+	void SetOpacity(float _opacity);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("RTStadiumARLevelStreaming")
+		STATIC_CLASS_IMPL("RTBlendableReflectionComponent")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"RTStadiumARLevelStreaming")
+		STATIC_NAME_IMPL(L"RTBlendableReflectionComponent")
 	}
-	static class URTStadiumARLevelStreaming* GetDefaultObj()
+	static class URTBlendableReflectionComponent* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<URTStadiumARLevelStreaming>();
+		return GetDefaultObjImpl<URTBlendableReflectionComponent>();
 	}
 };
-DUMPER7_ASSERTS_URTStadiumARLevelStreaming;
+DUMPER7_ASSERTS_URTBlendableReflectionComponent;
 
-// Class Runtime.ItemThumbnailComponent
-// 0x00F8 (0x0480 - 0x0388)
-class UItemThumbnailComponent final : public UUserWidget
+// Class Runtime.RuntimeStadiumAR
+// 0x0308 (0x0468 - 0x0160)
+class URuntimeStadiumAR : public USCWorldSubsystem
 {
 public:
-	TDelegate<void()>                             SceneClassDelegate;                                // 0x0388(0x0010)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TDelegate<void()>                             MaterialDelegate;                                  // 0x0398(0x0010)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TDelegate<void(class UItemThumbnailScene* Scene)> OnSetupView;                                   // 0x03A8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3B8[0x10];                                     // 0x03B8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UItemThumbnailScene>        SceneClass;                                        // 0x03C8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FThumbnailMaterial                     Material;                                          // 0x03D0(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_3E0[0xA0];                                     // 0x03E0(0x00A0)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const struct FRuntimeARTransition& _params)> m_OnTransitionStarted; // 0x0160(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FRuntimeARTransition& _params)> m_OnTransitionFinished; // 0x0170(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FGameplayTag& _previousTag, const struct FGameplayTag& _newTag)> m_OnCurrentWorldTagChanged; // 0x0180(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TSoftClassPtr<class UClass>                   m_ActorClassToSpawn;                               // 0x0190(0x0028)(Edit, DisableEditOnInstance, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TMap<struct FGameplayTag, struct FRTStadiumARWorldContent> m_WorldInstances;                     // 0x01B8(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_208[0x20];                                     // 0x0208(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCustomizationARDataAsset*              m_CapturedWorldDataAsset;                          // 0x0228(0x0008)(Edit, BlueprintVisible, ZeroConstructor, Transient, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FGameplayTag                           m_CapturedWorldTag;                                // 0x0230(0x0008)(BlueprintVisible, Transient, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class ARTScenePortal*                         m_PortalActor;                                     // 0x0238(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ESCTransitionState                            m_CurrentTransitionState;                          // 0x0240(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, Interp, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_241[0x7];                                      // 0x0241(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class URTStadiumARConfig>      m_StadiumARConfig;                                 // 0x0248(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSoftObjectPtr<class URTFieldARConfig>        m_FieldARConfig;                                   // 0x0270(0x0028)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FRuntimeARTransitionEffect             m_DefaultTransitionEffectAR;                       // 0x0298(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	struct FRuntimeARTransitionEffect             m_DefaultTransitionEffectStadium;                  // 0x02A8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	struct FRuntimeARTransitionEffect             m_DefaultTranslucentTransitionEffectAR;            // 0x02B8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	struct FRuntimeARTransitionEffect             m_DefaultTranslucentTransitionEffectStadium;       // 0x02C8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	TMap<struct FGameplayTag, struct FRuntimeARTransitionEffect> m_TransitionEffectsAR;              // 0x02D8(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	TMap<struct FGameplayTag, struct FRuntimeARTransitionEffectStadium> m_TransitionEffectsStadium;  // 0x0328(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnInstance, Protected, NativeAccessSpecifierProtected)
+	class ALevelSequenceActor*                    m_StadiumTransitionSequenceActor;                  // 0x0378(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TSoftObjectPtr<class ARTScenePortalReflection> m_ReflectionActor;                                // 0x0380(0x0028)(BlueprintVisible, BlueprintReadOnly, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UMaterialParameterCollection*           m_TransitionMPC;                                   // 0x03A8(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FName                                   m_ScreenDisplayProperty;                           // 0x03B0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FName                                   m_TransitionDirectionProperty;                     // 0x03B8(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FName                                   m_WorldDisplayProperty;                            // 0x03C0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3C8[0x18];                                     // 0x03C8(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	class URTStadiumARConfig*                     m_pStadiumARConfig;                                // 0x03E0(0x0008)(ZeroConstructor, Transient, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_3E8[0x10];                                     // 0x03E8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	class URTFieldARConfig*                       m_pFieldARConfig;                                  // 0x03F8(0x0008)(ZeroConstructor, Transient, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_400[0x68];                                     // 0x0400(0x0068)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void InvalidateCamera();
-	void OnBeginLoading(const TSoftObjectPtr<class UObject>& AssetName, bool bIsInitialLoad);
-	void OnFinishLoading(const TSoftObjectPtr<class UObject>& AssetName);
-	void SetMaterial(const struct FThumbnailMaterial& InMaterial);
-	void SetSceneClass(TSubclassOf<class UItemThumbnailScene> InSceneClass);
+	static TArray<class UCustomizationARDataAsset*> BPF_EnumerateWorldConfigs();
+
+	void BPE_OnConfigChanged();
+	void BPE_OnCurrentWorldTagChanged();
+	void BPE_OnEditorMapOpened();
+	void BPE_OnGameStateValid();
+	void BPE_OnPlayTransition(const struct FRuntimeARTransition& _params);
+	void BPE_OnTransitionStateChanged(ESCTransitionState _state);
+	void BPE_OnTransitionValueChanged(float _weight, float _direction);
+	void BPF_AddProjectionMeshes();
+	class AActor* BPF_FindActorInCurrentWorld(TSoftObjectPtr<class AActor> _reference);
+	TArray<class AActor*> BPF_FindActorsInCurrentWorld(const struct FGameplayTagQuery& _query);
+	ESubworldStreamingState BPF_GetWorldStreamingState(const struct FGameplayTag& _tag);
+	void BPF_LoadWorld(const struct FGameplayTag& _tag);
+	void BPF_PlayTransitionSequence(const struct FRuntimeARTransition& _params);
+	void BPF_SetCapturedWorldFromTeamIndex(int32 _iTeamIdx);
+	void BPF_SetRenderScale(float _scale);
+	void BPF_SetTransitionState(class UObject* _worldContext, ESCTransitionState _transitionState);
+	class AActor* BPF_SpawnActorInCurrentWorld(TSubclassOf<class AActor> Class_0);
+	void BPF_StopTransitionSequence();
+	void BPF_TriggerTransitionFinishedEvent(const struct FRuntimeARTransition& _params);
+	void BPF_TriggerTransitionStartedEvent(const struct FRuntimeARTransition& _params);
+	class URTFieldARConfig* GetFieldARConfig();
+	class URTStadiumARConfig* GetStadiumARConfig();
+	void OnFinishedTransitionSequence();
+	void SetCapturedWorldByDataAsset(class UCustomizationARDataAsset* _pDataAsset);
+	void SetCapturedWorldByTag_Deprecated(const struct FGameplayTag& _worldContentTag);
+	void SetRenderScale(float _scale);
+	void SetTransitionState(ESCTransitionState _transitionState);
+
+	struct FRTStadiumARWorldConfig BPF_GetCurrentWorldConfig() const;
+	class UCustomizationARDataAsset* BPF_GetTeamWorld(int32 _iTeamIdx) const;
+	struct FGameplayTag BPF_GetTeamWorldTag(int32 _iTeamIdx) const;
+	struct FRuntimeARTransitionEffect BPF_GetTransitionEffectAR(const struct FGameplayTag& _tag) const;
+	struct FRuntimeARTransitionEffect BPF_GetTransitionEffectStadium(const struct FGameplayTag& _tag, bool GoalA) const;
+	void BPF_WorldTagUseOpaqueRendering(const struct FGameplayTag& _worldTag, bool* _bResult) const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("ItemThumbnailComponent")
+		STATIC_CLASS_IMPL("RuntimeStadiumAR")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"ItemThumbnailComponent")
+		STATIC_NAME_IMPL(L"RuntimeStadiumAR")
 	}
-	static class UItemThumbnailComponent* GetDefaultObj()
+	static class URuntimeStadiumAR* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UItemThumbnailComponent>();
+		return GetDefaultObjImpl<URuntimeStadiumAR>();
 	}
 };
-DUMPER7_ASSERTS_UItemThumbnailComponent;
+DUMPER7_ASSERTS_URuntimeStadiumAR;
 
 }
 

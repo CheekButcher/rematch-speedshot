@@ -21,7 +21,7 @@ namespace SDK
 // (Static, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class APlayerController*                InPlayer                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// class ACharacter*                       inTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class ACharacter*                       InTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 // const struct FVector&                   InVCrosshairPosition                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const struct FVector&                   InVCrosshairDirection                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // double                                  InHeight                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -32,7 +32,7 @@ namespace SDK
 // struct FVector*                         OutVUpAxis                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // struct FVector*                         OutVRightAxis                                          (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UBP_WidgetFunctionLibrary_C::CreatePassZoneByTarget(class APlayerController* InPlayer, class ACharacter* inTarget, const struct FVector& InVCrosshairPosition, const struct FVector& InVCrosshairDirection, double InHeight, double InWidth, bool bShowDebug, class UObject* __WorldContext, struct FVector* OutVCenter, struct FVector* OutVUpAxis, struct FVector* OutVRightAxis)
+void UBP_WidgetFunctionLibrary_C::CreatePassZoneByTarget(class APlayerController* InPlayer, class ACharacter* InTarget, const struct FVector& InVCrosshairPosition, const struct FVector& InVCrosshairDirection, double InHeight, double InWidth, bool bShowDebug, class UObject* __WorldContext, struct FVector* OutVCenter, struct FVector* OutVUpAxis, struct FVector* OutVRightAxis)
 {
 	static class UFunction* Func = nullptr;
 
@@ -42,7 +42,7 @@ void UBP_WidgetFunctionLibrary_C::CreatePassZoneByTarget(class APlayerController
 	Params::BP_WidgetFunctionLibrary_C_CreatePassZoneByTarget Parms{};
 
 	Parms.InPlayer = InPlayer;
-	Parms.inTarget = inTarget;
+	Parms.InTarget = InTarget;
 	Parms.InVCrosshairPosition = std::move(InVCrosshairPosition);
 	Parms.InVCrosshairDirection = std::move(InVCrosshairDirection);
 	Parms.InHeight = InHeight;

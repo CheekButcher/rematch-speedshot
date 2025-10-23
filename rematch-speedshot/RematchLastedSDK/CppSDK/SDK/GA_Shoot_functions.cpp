@@ -55,8 +55,9 @@ void UGA_Shoot_C::ExecuteUbergraph_GA_Shoot(int32 EntryPoint)
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // bool                                    IsKeyBoardController                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// int32                                   LockGameOption                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UGA_Shoot_C::InitOverrideComputationForKeyBoard(bool IsKeyBoardController)
+void UGA_Shoot_C::InitOverrideComputationForKeyBoard(bool IsKeyBoardController, int32 LockGameOption)
 {
 	static class UFunction* Func = nullptr;
 
@@ -66,6 +67,7 @@ void UGA_Shoot_C::InitOverrideComputationForKeyBoard(bool IsKeyBoardController)
 	Params::GA_Shoot_C_InitOverrideComputationForKeyBoard Parms{};
 
 	Parms.IsKeyBoardController = IsKeyBoardController;
+	Parms.LockGameOption = LockGameOption;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -564,28 +566,6 @@ void UGA_Shoot_C::OnTimeOut_2AA78B3F4B3D61AEE19D01A27D33DB17(const struct FGamep
 	Params::GA_Shoot_C_OnTimeOut_2AA78B3F4B3D61AEE19D01A27D33DB17 Parms{};
 
 	Parms.Data = std::move(Data);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function GA_Shoot.GA_Shoot_C.OverrideLockShoot
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// int32                                   GameOption                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    IsKeyboard                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UGA_Shoot_C::OverrideLockShoot(int32 GameOption, bool IsKeyboard)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GA_Shoot_C", "OverrideLockShoot");
-
-	Params::GA_Shoot_C_OverrideLockShoot Parms{};
-
-	Parms.GameOption = GameOption;
-	Parms.IsKeyboard = IsKeyboard;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

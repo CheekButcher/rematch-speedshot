@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "GameplayAbilities_structs.hpp"
-#include "GameplayTags_structs.hpp"
 #include "AkAudio_structs.hpp"
+#include "GameplayTags_structs.hpp"
 #include "Engine_structs.hpp"
 
 

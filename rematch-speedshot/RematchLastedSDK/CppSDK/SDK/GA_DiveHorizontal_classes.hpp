@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
 #include "Runtime_structs.hpp"
 #include "Runtime_classes.hpp"
-#include "EnumPredictionMarkerType_structs.hpp"
+#include "Engine_structs.hpp"
 #include "SCCore_structs.hpp"
+#include "EnumPredictionMarkerType_structs.hpp"
 
 
 namespace SDK
@@ -51,8 +51,10 @@ public:
 	void DebugPredictionSyncTime(const struct FPendingHit& PendingHit);
 	void OnStateInterrupted_464AA855450252AFA82A34B0051DDF1F();
 	void OnStateEnded_464AA855450252AFA82A34B0051DDF1F();
+	void StartStateTasks_464AA855450252AFA82A34B0051DDF1F();
 	void OnStateInterrupted_3D54D3FA445E84FE865A0FAD4BC25E45();
 	void OnStateEnded_3D54D3FA445E84FE865A0FAD4BC25E45();
+	void StartStateTasks_3D54D3FA445E84FE865A0FAD4BC25E45();
 	void m_BuildClientHitboxPayload_656DAED34DB820B9A83043834CAFDEAD(const struct FPendingHit& _hit, const struct FGameplayAbilityTargetDataHandle& _context, class UAbilityTask_HandleHitboxBase* _payloadTarget);
 	void m_OnHitRejected_656DAED34DB820B9A83043834CAFDEAD(const struct FPendingHit& _hit, const struct FGameplayAbilityTargetDataHandle& _context, class UAbilityTask_HandleHitboxBase* _payloadTarget);
 	void m_OnHitRecovery_656DAED34DB820B9A83043834CAFDEAD(const struct FPendingHit& _hit, const struct FGameplayAbilityTargetDataHandle& _context, class UAbilityTask_HandleHitboxBase* _payloadTarget);

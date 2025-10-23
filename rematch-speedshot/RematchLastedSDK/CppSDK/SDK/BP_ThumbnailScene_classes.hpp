@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "SCCharacterCustomization_structs.hpp"
-#include "Runtime_classes.hpp"
-#include "StructUtilsEngine_structs.hpp"
 #include "ECharacterPartTypes_structs.hpp"
+#include "Runtime_classes.hpp"
+#include "SCCharacterCustomization_structs.hpp"
+#include "Engine_structs.hpp"
+#include "StructUtilsEngine_structs.hpp"
 
 
 namespace SDK

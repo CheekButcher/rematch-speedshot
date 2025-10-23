@@ -10,19 +10,19 @@
 
 #include "Basic.hpp"
 
+#include "Runtime_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "Runtime_structs.hpp"
 #include "BallShootSFX_Struct_structs.hpp"
-#include "AkAudio_structs.hpp"
 #include "GameplayTags_structs.hpp"
+#include "AkAudio_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_BallSoundComponent.BP_BallSoundComponent_C
-// 0x0328 (0x03E0 - 0x00B8)
+// 0x0330 (0x03E8 - 0x00B8)
 class UBP_BallSoundComponent_C final : public UActorComponent
 {
 public:
@@ -33,39 +33,39 @@ public:
 	ESimulationStep                               PreviousSimulation_Step;                           // 0x00D8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_D9[0x7];                                       // 0x00D9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class USoundSurfaceDataAsset_C*               SurfaceDataAsset;                                  // 0x00E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FBallTrajectoryResult                  ShootTrajectory;                                   // 0x00E8(0x0068)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
-	struct FTimerHandle                           NoControlTimer;                                    // 0x0150(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FTimerHandle                           NoVolleyTimer;                                     // 0x0158(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FTimerHandle                           NoTackleTimer;                                     // 0x0160(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FTimerHandle                           HardDefenseTimer;                                  // 0x0168(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	bool                                          BallStopped;                                       // 0x0170(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_171[0x7];                                      // 0x0171(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UBallShootSFXDataAsset_C*               BallShootTypeSFX;                                  // 0x0178(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	double                                        HeightThreshold;                                   // 0x0180(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        KneeThreshold;                                     // 0x0188(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        ChestThreshold;                                    // 0x0190(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        BallSpeedRTPCValue;                                // 0x0198(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FBallShootSFX_Struct                   ShootTag;                                          // 0x01A0(0x0048)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
-	bool                                          IsOwned;                                           // 0x01E8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1E9[0x7];                                      // 0x01E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        MaxRangeAimedShootFadeOut;                         // 0x01F0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        MaxAimedInterpolationRTPC;                         // 0x01F8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FShootParams                           LastShootParam;                                    // 0x0200(0x0108)(Edit, BlueprintVisible, DisableEditOnInstance)
-	float                                         FreezeSFXDelay;                                    // 0x0308(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_30C[0x4];                                      // 0x030C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTimerHandle                           TimerStopSFX;                                      // 0x0310(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	TArray<int32>                                 FreezeSFXPlaying_ID;                               // 0x0318(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TArray<class UAkAudioEvent*>                  FreezeSFXEvent_Ref;                                // 0x0328(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
-	TArray<class AActor*>                         FreezeSFXActor;                                    // 0x0338(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
-	struct FGameplayTagContainer                  TagsToPlayRejectedShootSFX;                        // 0x0348(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class UGameplayTask_WaitDelay*                OnBallOwnershipChangedTask;                        // 0x0368(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	bool                                          CanRetriggerBallOwnershipChanged;                  // 0x0370(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_371[0x7];                                      // 0x0371(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FPredictProjectilePathPointData        Point_Detected_in_Goal_Collision;                  // 0x0378(0x0038)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor)
-	struct FGameplayTagContainer                  BypassOwnGoalTag;                                  // 0x03B0(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	int32                                         CurrentWhooshPlayingID;                            // 0x03D0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3D4[0x4];                                      // 0x03D4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAkAudioEvent*                          BallRollWhooshEvent;                               // 0x03D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FBallTrajectoryResult                  ShootTrajectory;                                   // 0x00E8(0x0070)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
+	struct FTimerHandle                           NoControlTimer;                                    // 0x0158(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FTimerHandle                           NoVolleyTimer;                                     // 0x0160(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FTimerHandle                           NoTackleTimer;                                     // 0x0168(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FTimerHandle                           HardDefenseTimer;                                  // 0x0170(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	bool                                          BallStopped;                                       // 0x0178(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_179[0x7];                                      // 0x0179(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UBallShootSFXDataAsset_C*               BallShootTypeSFX;                                  // 0x0180(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	double                                        HeightThreshold;                                   // 0x0188(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        KneeThreshold;                                     // 0x0190(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        ChestThreshold;                                    // 0x0198(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        BallSpeedRTPCValue;                                // 0x01A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FBallShootSFX_Struct                   ShootTag;                                          // 0x01A8(0x0048)(Edit, BlueprintVisible, DisableEditOnInstance, HasGetValueTypeHash)
+	bool                                          IsOwned;                                           // 0x01F0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1F1[0x7];                                      // 0x01F1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        MaxRangeAimedShootFadeOut;                         // 0x01F8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	double                                        MaxAimedInterpolationRTPC;                         // 0x0200(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FShootParams                           LastShootParam;                                    // 0x0208(0x0108)(Edit, BlueprintVisible, DisableEditOnInstance)
+	float                                         FreezeSFXDelay;                                    // 0x0310(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_314[0x4];                                      // 0x0314(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTimerHandle                           TimerStopSFX;                                      // 0x0318(0x0008)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	TArray<int32>                                 FreezeSFXPlaying_ID;                               // 0x0320(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TArray<class UAkAudioEvent*>                  FreezeSFXEvent_Ref;                                // 0x0330(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
+	TArray<class AActor*>                         FreezeSFXActor;                                    // 0x0340(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate, DisableEditOnInstance)
+	struct FGameplayTagContainer                  TagsToPlayRejectedShootSFX;                        // 0x0350(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
+	class UGameplayTask_WaitDelay*                OnBallOwnershipChangedTask;                        // 0x0370(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	bool                                          CanRetriggerBallOwnershipChanged;                  // 0x0378(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_379[0x7];                                      // 0x0379(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FPredictProjectilePathPointData        Point_Detected_in_Goal_Collision;                  // 0x0380(0x0038)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor)
+	struct FGameplayTagContainer                  BypassOwnGoalTag;                                  // 0x03B8(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
+	int32                                         CurrentWhooshPlayingID;                            // 0x03D8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3DC[0x4];                                      // 0x03DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAkAudioEvent*                          BallRollWhooshEvent;                               // 0x03E0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void AddSFXFreezeFrameInfos(const int32& PlayingID, const class UAkAudioEvent*& EventRef, const class AActor*& Actor);

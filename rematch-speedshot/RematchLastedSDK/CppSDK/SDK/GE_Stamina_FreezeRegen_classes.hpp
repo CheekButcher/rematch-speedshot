@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass GE_Stamina_FreezeRegen.GE_Stamina_FreezeRegen_C
-// 0x0000 (0x0B40 - 0x0B40)
+// 0x0000 (0x0B48 - 0x0B48)
 class UGE_Stamina_FreezeRegen_C final : public USCGameplayEffect
 {
 public:

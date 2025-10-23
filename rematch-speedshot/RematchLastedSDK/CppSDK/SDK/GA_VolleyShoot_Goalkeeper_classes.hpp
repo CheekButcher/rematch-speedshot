@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass GA_VolleyShoot_Goalkeeper.GA_VolleyShoot_Goalkeeper_C
-// 0x0000 (0x1000 - 0x1000)
+// 0x0000 (0x1010 - 0x1010)
 class UGA_VolleyShoot_Goalkeeper_C final : public UGA_VolleyShoot_C
 {
 public:

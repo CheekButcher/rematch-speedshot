@@ -12,8 +12,8 @@
 
 #include "EFrameType_structs.hpp"
 #include "Engine_structs.hpp"
-#include "WBP_Abstract_GenericButton_classes.hpp"
 #include "Enum_StoreBtnSize_structs.hpp"
+#include "WBP_Abstract_GenericButton_classes.hpp"
 
 
 namespace SDK

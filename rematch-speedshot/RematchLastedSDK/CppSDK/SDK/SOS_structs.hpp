@@ -482,17 +482,6 @@ enum class ESOSShouldDisconnectReason : uint8
 	ESOSShouldDisconnectReason_MAX           = 4,
 };
 
-// ScriptStruct SOS.SOSRPCRankingData
-// 0x000C (0x000C - 0x0000)
-struct FSOSRPCRankingData final
-{
-public:
-	uint32                                        m_uiRankedPoints;                                  // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        m_uiDivIdx;                                        // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        m_uiLeagueIdx;                                     // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSOSRPCRankingData;
-
 // ScriptStruct SOS.SOSErrorInfos
 // 0x0030 (0x0030 - 0x0000)
 struct FSOSErrorInfos final
@@ -506,6 +495,17 @@ public:
 	class FString                                 m_DebugInfo;                                       // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSOSErrorInfos;
+
+// ScriptStruct SOS.SOSRPCRankingData
+// 0x000C (0x000C - 0x0000)
+struct FSOSRPCRankingData final
+{
+public:
+	uint32                                        m_uiRankedPoints;                                  // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        m_uiDivIdx;                                        // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        m_uiLeagueIdx;                                     // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FSOSRPCRankingData;
 
 // ScriptStruct SOS.SOSServerNetworkEmulationSettings
 // 0x0034 (0x0034 - 0x0000)
@@ -529,7 +529,7 @@ public:
 DUMPER7_ASSERTS_FSOSServerNetworkEmulationSettings;
 
 // ScriptStruct SOS.SOSRPCPromotionStatus
-// 0x0014 (0x0014 - 0x0000)
+// 0x0018 (0x0018 - 0x0000)
 struct FSOSRPCPromotionStatus final
 {
 public:
@@ -538,12 +538,13 @@ public:
 	uint32                                        m_uiNbWins;                                        // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint32                                        m_uiNbLosses;                                      // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint32                                        m_uiVictoryTokens;                                 // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        m_uiDemotionProtectionCounter;                     // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        m_uiDivDemotionShieldCounter;                      // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        m_uiLeagueDemotionShieldCounter;                   // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSOSRPCPromotionStatus;
 
 // ScriptStruct SOS.SOSRPCPlayerRankingUpdate
-// 0x0074 (0x0074 - 0x0000)
+// 0x007C (0x007C - 0x0000)
 struct FSOSRPCPlayerRankingUpdate final
 {
 public:
@@ -554,17 +555,17 @@ public:
 	uint32                                        m_uiOldTotalRankedPoints;                          // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FSOSRPCRankingData                     m_PlayerRanking;                                   // 0x0010(0x000C)(NoDestructor, NativeAccessSpecifierPublic)
 	struct FSOSRPCRankingData                     m_OldPlayerRanking;                                // 0x001C(0x000C)(NoDestructor, NativeAccessSpecifierPublic)
-	struct FSOSRPCPromotionStatus                 m_PlayerPromotionStatus;                           // 0x0028(0x0014)(NoDestructor, NativeAccessSpecifierPublic)
-	struct FSOSRPCPromotionStatus                 m_OldPlayerPromotionStatus;                        // 0x003C(0x0014)(NoDestructor, NativeAccessSpecifierPublic)
-	uint32                                        m_uiPlacementMatchesLeft;                          // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bIsPlacementMatch;                               // 0x0054(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_55[0x3];                                       // 0x0055(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	uint32                                        m_uiCurrentSeasonIdx;                              // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        m_uiRankedPointsPerDivision;                       // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          m_bHasOldSeasonData;                               // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_61[0x3];                                       // 0x0061(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	uint32                                        m_uiLastPlayedSeasonIdx;                           // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FSOSRPCRankingData                     m_LastSeasonPlayerRanking;                         // 0x0068(0x000C)(NoDestructor, NativeAccessSpecifierPublic)
+	struct FSOSRPCPromotionStatus                 m_PlayerPromotionStatus;                           // 0x0028(0x0018)(NoDestructor, NativeAccessSpecifierPublic)
+	struct FSOSRPCPromotionStatus                 m_OldPlayerPromotionStatus;                        // 0x0040(0x0018)(NoDestructor, NativeAccessSpecifierPublic)
+	uint32                                        m_uiPlacementMatchesLeft;                          // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bIsPlacementMatch;                               // 0x005C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5D[0x3];                                       // 0x005D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	uint32                                        m_uiCurrentSeasonIdx;                              // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        m_uiRankedPointsPerDivision;                       // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          m_bHasOldSeasonData;                               // 0x0068(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	uint32                                        m_uiLastPlayedSeasonIdx;                           // 0x006C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FSOSRPCRankingData                     m_LastSeasonPlayerRanking;                         // 0x0070(0x000C)(NoDestructor, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSOSRPCPlayerRankingUpdate;
 

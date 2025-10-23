@@ -17,105 +17,21 @@
 namespace SDK
 {
 
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.BPE_OnClicked
-// (Event, Protected, BlueprintEvent)
-
-void UWBP_TabNavigation_Tab_C::BPE_OnClicked()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "BPE_OnClicked");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.Construct
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.PreConstruct
 // (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UWBP_TabNavigation_Tab_C::Construct()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "Construct");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.ExecuteUbergraph_WBP_TabNavigation_Tab
-// (Final, UbergraphFunction, HasDefaults)
 // Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_TabNavigation_Tab_C::ExecuteUbergraph_WBP_TabNavigation_Tab(int32 EntryPoint)
+void UWBP_TabNavigation_Tab_C::PreConstruct(bool IsDesignTime)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "ExecuteUbergraph_WBP_TabNavigation_Tab");
+		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "PreConstruct");
 
-	Params::WBP_TabNavigation_Tab_C_ExecuteUbergraph_WBP_TabNavigation_Tab Parms{};
+	Params::WBP_TabNavigation_Tab_C_PreConstruct Parms{};
 
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.FocusButton
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                                    ButtonFocused                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UWBP_TabNavigation_Tab_C::FocusButton(bool ButtonFocused)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "FocusButton");
-
-	Params::WBP_TabNavigation_Tab_C_FocusButton Parms{};
-
-	Parms.ButtonFocused = ButtonFocused;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.GotoStateTransitionFlow
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UWBP_TabNavigation_Tab_C::GotoStateTransitionFlow()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "GotoStateTransitionFlow");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.OnMouseEnter
-// (BlueprintCosmetic, Event, Public, HasOutParams, BlueprintEvent)
-// Parameters:
-// const struct FGeometry&                 MyGeometry                                             (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
-// const struct FPointerEvent&             MouseEvent                                             (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-
-void UWBP_TabNavigation_Tab_C::OnMouseEnter(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "OnMouseEnter");
-
-	Params::WBP_TabNavigation_Tab_C_OnMouseEnter Parms{};
-
-	Parms.MyGeometry = std::move(MyGeometry);
-	Parms.MouseEvent = std::move(MouseEvent);
+	Parms.IsDesignTime = IsDesignTime;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -141,23 +57,107 @@ void UWBP_TabNavigation_Tab_C::OnMouseLeave(const struct FPointerEvent& MouseEve
 }
 
 
-// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.PreConstruct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.OnMouseEnter
+// (BlueprintCosmetic, Event, Public, HasOutParams, BlueprintEvent)
 // Parameters:
-// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const struct FGeometry&                 MyGeometry                                             (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor)
+// const struct FPointerEvent&             MouseEvent                                             (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 
-void UWBP_TabNavigation_Tab_C::PreConstruct(bool IsDesignTime)
+void UWBP_TabNavigation_Tab_C::OnMouseEnter(const struct FGeometry& MyGeometry, const struct FPointerEvent& MouseEvent)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "PreConstruct");
+		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "OnMouseEnter");
 
-	Params::WBP_TabNavigation_Tab_C_PreConstruct Parms{};
+	Params::WBP_TabNavigation_Tab_C_OnMouseEnter Parms{};
 
-	Parms.IsDesignTime = IsDesignTime;
+	Parms.MyGeometry = std::move(MyGeometry);
+	Parms.MouseEvent = std::move(MouseEvent);
 
 	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.GotoStateTransitionFlow
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UWBP_TabNavigation_Tab_C::GotoStateTransitionFlow()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "GotoStateTransitionFlow");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.FocusButton
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    ButtonFocused                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_Tab_C::FocusButton(bool ButtonFocused)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "FocusButton");
+
+	Params::WBP_TabNavigation_Tab_C_FocusButton Parms{};
+
+	Parms.ButtonFocused = ButtonFocused;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.ExecuteUbergraph_WBP_TabNavigation_Tab
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UWBP_TabNavigation_Tab_C::ExecuteUbergraph_WBP_TabNavigation_Tab(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "ExecuteUbergraph_WBP_TabNavigation_Tab");
+
+	Params::WBP_TabNavigation_Tab_C_ExecuteUbergraph_WBP_TabNavigation_Tab Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.Construct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void UWBP_TabNavigation_Tab_C::Construct()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "Construct");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function WBP_TabNavigation_Tab.WBP_TabNavigation_Tab_C.BPE_OnClicked
+// (Event, Protected, BlueprintEvent)
+
+void UWBP_TabNavigation_Tab_C::BPE_OnClicked()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_TabNavigation_Tab_C", "BPE_OnClicked");
+
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

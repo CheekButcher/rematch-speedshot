@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // BlueprintGeneratedClass BP_GrassField94x64_01_A_1.BP_GrassField94x64_01_A_1_C
-// 0x0000 (0x02D8 - 0x02D8)
+// 0x0000 (0x0300 - 0x0300)
 class ABP_GrassField94x64_01_A_1_C final : public ABP_GrassField_C
 {
 public:

@@ -22,8 +22,9 @@ namespace SDK
 // Parameters:
 // class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 // EBallInteractionType                    _eBallInteractionType                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    _bIsSamePreviousOwner                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UBP_Binder_BallAnyOwnerChanged_C::BPE_OnBallInteraction(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType)
+void UBP_Binder_BallAnyOwnerChanged_C::BPE_OnBallInteraction(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner)
 {
 	static class UFunction* Func = nullptr;
 
@@ -34,6 +35,7 @@ void UBP_Binder_BallAnyOwnerChanged_C::BPE_OnBallInteraction(class UBallPlayersI
 
 	Parms._ballPlayersInteraction = _ballPlayersInteraction;
 	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -59,9 +61,10 @@ void UBP_Binder_BallAnyOwnerChanged_C::BPE_Reset()
 // class UBallPlayersInteractionComponent* BallPlayersInteraction                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 // const struct FShootParams&              ShootParams                                            (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 // EBallInteractionType                    _eBallInteractionType                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    _bIsSamePreviousOwner                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-bool UBP_Binder_BallAnyOwnerChanged_C::Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType)
+bool UBP_Binder_BallAnyOwnerChanged_C::Can_Trigger(class UBallPlayersInteractionComponent* BallPlayersInteraction, const struct FShootParams& ShootParams, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner)
 {
 	static class UFunction* Func = nullptr;
 
@@ -73,6 +76,7 @@ bool UBP_Binder_BallAnyOwnerChanged_C::Can_Trigger(class UBallPlayersInteraction
 	Parms.BallPlayersInteraction = BallPlayersInteraction;
 	Parms.ShootParams = std::move(ShootParams);
 	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
 
 	UObject::ProcessEvent(Func, &Parms);
 
@@ -105,8 +109,9 @@ void UBP_Binder_BallAnyOwnerChanged_C::ExecuteUbergraph_BP_Binder_BallAnyOwnerCh
 // Parameters:
 // class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 // EBallInteractionType                    _eBallInteractionType                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    _bIsSamePreviousOwner                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UBP_Binder_BallAnyOwnerChanged_C::OnAnyOwnersChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType)
+void UBP_Binder_BallAnyOwnerChanged_C::OnAnyOwnersChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner)
 {
 	static class UFunction* Func = nullptr;
 
@@ -117,6 +122,7 @@ void UBP_Binder_BallAnyOwnerChanged_C::OnAnyOwnersChanged(class UBallPlayersInte
 
 	Parms._ballPlayersInteraction = _ballPlayersInteraction;
 	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -127,8 +133,9 @@ void UBP_Binder_BallAnyOwnerChanged_C::OnAnyOwnersChanged(class UBallPlayersInte
 // Parameters:
 // class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 // EBallInteractionType                    _eBallInteractionType                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    _bIsSamePreviousOwner                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UBP_Binder_BallAnyOwnerChanged_C::PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType)
+void UBP_Binder_BallAnyOwnerChanged_C::PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner)
 {
 	static class UFunction* Func = nullptr;
 
@@ -139,6 +146,7 @@ void UBP_Binder_BallAnyOwnerChanged_C::PrepareData(class UBallPlayersInteraction
 
 	Parms._ballPlayersInteraction = _ballPlayersInteraction;
 	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -256,31 +264,6 @@ class ARuntimePlayerState* UBP_Binder_BallAnyOwnerChanged_C::GetPreviousInteract
 }
 
 
-// Function BP_Binder_BallAnyOwnerChanged.BP_Binder_BallAnyOwnerChanged_C.HasTeamInfluenceChanged
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-// EBallInteractionType                    _eBallInteractionType                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-bool UBP_Binder_BallAnyOwnerChanged_C::HasTeamInfluenceChanged(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Binder_BallAnyOwnerChanged_C", "HasTeamInfluenceChanged");
-
-	Params::BP_Binder_BallAnyOwnerChanged_C_HasTeamInfluenceChanged Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-	Parms._eBallInteractionType = _eBallInteractionType;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
 // Function BP_Binder_BallAnyOwnerChanged.BP_Binder_BallAnyOwnerChanged_C.IsCorrectPass
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:
@@ -294,31 +277,6 @@ bool UBP_Binder_BallAnyOwnerChanged_C::IsCorrectPass() const
 		Func = Class->GetFunction("BP_Binder_BallAnyOwnerChanged_C", "IsCorrectPass");
 
 	Params::BP_Binder_BallAnyOwnerChanged_C_IsCorrectPass Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function BP_Binder_BallAnyOwnerChanged.BP_Binder_BallAnyOwnerChanged_C.IsKickOff
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-// EBallInteractionType                    _eBallInteractionType                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-bool UBP_Binder_BallAnyOwnerChanged_C::IsKickOff(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Binder_BallAnyOwnerChanged_C", "IsKickOff");
-
-	Params::BP_Binder_BallAnyOwnerChanged_C_IsKickOff Parms{};
-
-	Parms._ballPlayersInteraction = _ballPlayersInteraction;
-	Parms._eBallInteractionType = _eBallInteractionType;
 
 	UObject::ProcessEvent(Func, &Parms);
 

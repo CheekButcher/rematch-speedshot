@@ -381,6 +381,20 @@ void UGA_LockMove_GoalKeeper_C::PrepareTargetData(const struct FGameplayAbilityT
 }
 
 
+// Function GA_LockMove_GoalKeeper.GA_LockMove_GoalKeeper_C.StartStateTasks_52E4A186449F66DB05C7DEA72A3782EB
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_LockMove_GoalKeeper_C::StartStateTasks_52E4A186449F66DB05C7DEA72A3782EB()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_LockMove_GoalKeeper_C", "StartStateTasks_52E4A186449F66DB05C7DEA72A3782EB");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function GA_LockMove_GoalKeeper.GA_LockMove_GoalKeeper_C.ValidateHit
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:

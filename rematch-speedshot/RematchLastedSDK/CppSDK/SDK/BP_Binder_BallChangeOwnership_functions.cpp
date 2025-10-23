@@ -22,8 +22,9 @@ namespace SDK
 // Parameters:
 // class UBallPlayersInteractionComponent* _ballPlayersInteraction                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 // EBallInteractionType                    _eBallInteractionType                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    _bIsSamePreviousOwner                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UBP_Binder_BallChangeOwnership_C::PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType)
+void UBP_Binder_BallChangeOwnership_C::PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner)
 {
 	static class UFunction* Func = nullptr;
 
@@ -34,6 +35,7 @@ void UBP_Binder_BallChangeOwnership_C::PrepareData(class UBallPlayersInteraction
 
 	Parms._ballPlayersInteraction = _ballPlayersInteraction;
 	Parms._eBallInteractionType = _eBallInteractionType;
+	Parms._bIsSamePreviousOwner = _bIsSamePreviousOwner;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

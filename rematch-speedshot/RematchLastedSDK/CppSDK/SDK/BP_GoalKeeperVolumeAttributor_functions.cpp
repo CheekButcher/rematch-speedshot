@@ -17,20 +17,6 @@
 namespace SDK
 {
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ABP_GoalKeeperVolumeAttributor_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.RemoveInvuEffects
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -51,27 +37,17 @@ void ABP_GoalKeeperVolumeAttributor_C::RemoveInvuEffects(class UAbilitySystemCom
 }
 
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.OnTagChanged
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const class USCAbilitySystemComponent*  _abilitySystem                                         (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-// const struct FGameplayTag&              _gameplayTag                                           (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, NoDestructor, HasGetValueTypeHash)
-// int32                                   _iCount                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
 
-void ABP_GoalKeeperVolumeAttributor_C::OnTagChanged(const class USCAbilitySystemComponent* _abilitySystem, const struct FGameplayTag& _gameplayTag, int32 _iCount)
+void ABP_GoalKeeperVolumeAttributor_C::ReceiveBeginPlay()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "OnTagChanged");
+		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "ReceiveBeginPlay");
 
-	Params::BP_GoalKeeperVolumeAttributor_C_OnTagChanged Parms{};
-
-	Parms._abilitySystem = _abilitySystem;
-	Parms._gameplayTag = std::move(_gameplayTag);
-	Parms._iCount = _iCount;
-
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -99,26 +75,6 @@ void ABP_GoalKeeperVolumeAttributor_C::OnShootAbilityTagChanged(const class USCA
 }
 
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_RemoveCurrentEffectOwner
-// (Event, Protected, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class AActor*                           _actor                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void ABP_GoalKeeperVolumeAttributor_C::BPE_RemoveCurrentEffectOwner(class AActor* _actor)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "BPE_RemoveCurrentEffectOwner");
-
-	Params::BP_GoalKeeperVolumeAttributor_C_BPE_RemoveCurrentEffectOwner Parms{};
-
-	Parms._actor = _actor;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.ExecuteUbergraph_BP_GoalKeeperVolumeAttributor
 // (Final, UbergraphFunction)
 // Parameters:
@@ -139,19 +95,19 @@ void ABP_GoalKeeperVolumeAttributor_C::ExecuteUbergraph_BP_GoalKeeperVolumeAttri
 }
 
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_CantRemoveEffectFromTarget
-// (Event, Protected, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_RemoveCurrentEffectOwner
+// (Event, Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class AActor*                           _actor                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void ABP_GoalKeeperVolumeAttributor_C::BPE_CantRemoveEffectFromTarget(class AActor* _actor)
+void ABP_GoalKeeperVolumeAttributor_C::BPE_RemoveCurrentEffectOwner(class AActor* _actor)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "BPE_CantRemoveEffectFromTarget");
+		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "BPE_RemoveCurrentEffectOwner");
 
-	Params::BP_GoalKeeperVolumeAttributor_C_BPE_CantRemoveEffectFromTarget Parms{};
+	Params::BP_GoalKeeperVolumeAttributor_C_BPE_RemoveCurrentEffectOwner Parms{};
 
 	Parms._actor = _actor;
 
@@ -179,29 +135,6 @@ void ABP_GoalKeeperVolumeAttributor_C::BPE_AssignCurrentEffectOwner(class AActor
 }
 
 
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.IsKeeperAndBlockedByAbility
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// class UAbilitySystemComponent*          ActorAsc                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-bool ABP_GoalKeeperVolumeAttributor_C::IsKeeperAndBlockedByAbility(class UAbilitySystemComponent* ActorAsc) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "IsKeeperAndBlockedByAbility");
-
-	Params::BP_GoalKeeperVolumeAttributor_C_IsKeeperAndBlockedByAbility Parms{};
-
-	Parms.ActorAsc = ActorAsc;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
 // Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_CanUseEffectAttributorVolume
 // (Event, Protected, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, Const)
 // Parameters:
@@ -215,29 +148,6 @@ bool ABP_GoalKeeperVolumeAttributor_C::BPE_CanUseEffectAttributorVolume() const
 		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "BPE_CanUseEffectAttributorVolume");
 
 	Params::BP_GoalKeeperVolumeAttributor_C_BPE_CanUseEffectAttributorVolume Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
-// Function BP_GoalKeeperVolumeAttributor.BP_GoalKeeperVolumeAttributor_C.BPE_CanRemoveEffectFromTarget
-// (Event, Protected, HasOutParams, BlueprintCallable, BlueprintEvent, Const)
-// Parameters:
-// const class AActor*                     _actor                                                 (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-bool ABP_GoalKeeperVolumeAttributor_C::BPE_CanRemoveEffectFromTarget(const class AActor* _actor) const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_GoalKeeperVolumeAttributor_C", "BPE_CanRemoveEffectFromTarget");
-
-	Params::BP_GoalKeeperVolumeAttributor_C_BPE_CanRemoveEffectFromTarget Parms{};
-
-	Parms._actor = _actor;
 
 	UObject::ProcessEvent(Func, &Parms);
 

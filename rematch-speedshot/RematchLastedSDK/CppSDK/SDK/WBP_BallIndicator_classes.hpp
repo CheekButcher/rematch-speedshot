@@ -19,7 +19,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass WBP_BallIndicator.WBP_BallIndicator_C
-// 0x0110 (0x0DD0 - 0x0CC0)
+// 0x00A0 (0x0D60 - 0x0CC0)
 class UWBP_BallIndicator_C final : public UWBP_BaseTarget_C
 {
 public:
@@ -30,31 +30,11 @@ public:
 	class UWidgetAnimation*                       Anim_VolleyPredict;                                // 0x0CD0(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, RepSkip, NoDestructor, HasGetValueTypeHash)
 	class USizeBox*                               Ball_SizeBox;                                      // 0x0CD8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class USizeBox*                               BallVolley_SizeBox;                                // 0x0CE0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UImage*                                 Image_BallIndicator;                               // 0x0CE8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UImage*                                 Image_Volley_Predict;                              // 0x0CF0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class ABall*                                  Ball;                                              // 0x0CF8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Current_Owning_Team;                               // 0x0D00(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Local_Player_Team;                                 // 0x0D01(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_D02[0x6];                                      // 0x0D02(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        Animation;                                         // 0x0D08(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	double                                        BlinkSpeed;                                        // 0x0D10(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTagContainer                  VolleyMustHaveTags;                                // 0x0D18(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	struct FGameplayTagContainer                  VolleyMustNotHaveTags;                             // 0x0D38(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	class ASCGameplayCueNotify_Actor*             SCGameplay;                                        // 0x0D58(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class AGC_ShootAbility_Base_C*                As_GC_Shoot_Ability_Base;                          // 0x0D60(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	struct FGameplayTagContainer                  VolleyValidationMustHaveTags;                      // 0x0D68(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
-	bool                                          IsVolleyAvailableVisibleHere;                      // 0x0D88(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsVolleyPredictActive;                             // 0x0D89(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_D8A[0x6];                                      // 0x0D8A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInstanceDynamic*               VolleyPredictMaterial;                             // 0x0D90(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class UMaterialInstanceDynamic*               BallIndicatorMaterial;                             // 0x0D98(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class ARuntimeCharacter*                      As_Runtime_Character;                              // 0x0DA0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class URuntimeAbilitySystemComponent*         RuntimeASC;                                        // 0x0DA8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	class UGA_VolleyShoot_C*                      VolleyAbility;                                     // 0x0DB0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsVolleyShooting;                                  // 0x0DB8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_DB9[0x7];                                      // 0x0DB9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameplayAbility*                       Gameplay_Ability;                                  // 0x0DC0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
-	class UUMGSequencePlayer*                     Sequence;                                          // 0x0DC8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	class ABall*                                  Ball;                                              // 0x0CE8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTagContainer                  VolleyMustHaveTags;                                // 0x0CF0(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FGameplayTagContainer                  VolleyMustNotHaveTags;                             // 0x0D10(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FGameplayTagContainer                  VolleyValidationMustHaveTags;                      // 0x0D30(0x0020)(Edit, BlueprintVisible, DisableEditOnInstance)
+	bool                                          IsVolleyAvailableVisibleHere;                      // 0x0D50(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void Construct();

@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "UniversalObjectLocator_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "UniversalObjectLocator_structs.hpp"
 
 
 namespace SDK

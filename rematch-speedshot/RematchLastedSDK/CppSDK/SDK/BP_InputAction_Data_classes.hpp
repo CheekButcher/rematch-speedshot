@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "InputCore_structs.hpp"
 #include "SCCore_structs.hpp"
 #include "SCCore_classes.hpp"
+#include "InputCore_structs.hpp"
 #include "UMG_structs.hpp"
 
 

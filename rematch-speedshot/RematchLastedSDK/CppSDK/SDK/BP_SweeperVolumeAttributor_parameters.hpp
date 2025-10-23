@@ -17,7 +17,7 @@ namespace SDK::Params
 {
 
 // Function BP_SweeperVolumeAttributor.BP_SweeperVolumeAttributor_C.BPE_CanUseEffectAttributorVolume
-// 0x00D0 (0x00D0 - 0x0000)
+// 0x00D8 (0x00D8 - 0x0000)
 struct BP_SweeperVolumeAttributor_C_BPE_CanUseEffectAttributorVolume final
 {
 public:
@@ -29,7 +29,7 @@ public:
 	bool                                          CallFunc_HasAuthority_ReturnValue;                 // 0x0019(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x001A(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_1B[0x5];                                       // 0x001B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeMatchParameters                CallFunc_BPF_GetMatchParameters_ReturnValue;       // 0x0020(0x00B0)(ConstParm)
+	struct FRuntimeMatchParameters                CallFunc_BPF_GetMatchParameters_ReturnValue;       // 0x0020(0x00B8)(ConstParm)
 };
 DUMPER7_ASSERTS_BP_SweeperVolumeAttributor_C_BPE_CanUseEffectAttributorVolume;
 

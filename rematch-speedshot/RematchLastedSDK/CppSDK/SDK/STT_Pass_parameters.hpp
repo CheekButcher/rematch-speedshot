@@ -12,10 +12,10 @@
 
 #include "SCCore_structs.hpp"
 #include "StateTreeModule_structs.hpp"
+#include "GameplayAbilities_structs.hpp"
 #include "EAbilityShootType_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Runtime_structs.hpp"
-#include "GameplayAbilities_structs.hpp"
 
 
 namespace SDK::Params

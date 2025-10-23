@@ -19,7 +19,7 @@ namespace SDK
 {
 
 // WidgetBlueprintGeneratedClass BP_InputActionKey_Data.BP_InputActionKey_Data_C
-// 0x0060 (0x0F30 - 0x0ED0)
+// 0x0050 (0x0F20 - 0x0ED0)
 class UBP_InputActionKey_Data_C final : public UControllerButtonWidget
 {
 public:
@@ -30,10 +30,9 @@ public:
 	class UAsyncImage*                            KeyImage;                                          // 0x0EF0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class USizeBox*                               MainSizeBox;                                       // 0x0EF8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UCommonTextBlock*                       Text_HoldText;                                     // 0x0F00(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UWidgetSwitcher*                        WidgetSwitcher_Type;                               // 0x0F08(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class FString                                 Separator;                                         // 0x0F10(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, HasGetValueTypeHash)
-	bool                                          Key_Exist;                                         // 0x0F20(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsBlack;                                           // 0x0F21(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FString                                 Separator;                                         // 0x0F08(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, HasGetValueTypeHash)
+	bool                                          Key_Exist;                                         // 0x0F18(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsBlack;                                           // 0x0F19(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
 	void BPE_OnDataUpdated();
@@ -43,6 +42,7 @@ public:
 	void PreConstruct(bool IsDesignTime);
 	void SetBlack(bool Black);
 	void SetHoldVisibility(bool Visible);
+	void ToggleTypeVisibility(bool IsController);
 
 public:
 	static class UClass* StaticClass()

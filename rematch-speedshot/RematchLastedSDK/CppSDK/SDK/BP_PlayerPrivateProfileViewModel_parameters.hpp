@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
+#include "Engine_structs.hpp"
 #include "SOS_structs.hpp"
 #include "UIRankedLeagues_structs.hpp"
 #include "BPE_StatUnit_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
 
 
 namespace SDK::Params
@@ -461,14 +461,14 @@ public:
 	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	double                                        CallFunc_Multiply_DoubleDouble_ReturnValue;        // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	double                                        CallFunc_Multiply_DoubleDouble_ReturnValue_1;      // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FTimespan                              CallFunc_FromSeconds_ReturnValue;                  // 0x0038(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class FText                                   CallFunc_AsDistance_Float_ReturnValue;             // 0x0040(0x0010)()
-	class FText                                   CallFunc_AsTimespan_Timespan_ReturnValue;          // 0x0050(0x0010)()
-	class FText                                   CallFunc_AsPercent_Float_ReturnValue;              // 0x0060(0x0010)()
-	class FText                                   CallFunc_Conv_DoubleToText_ReturnValue;            // 0x0070(0x0010)()
+	class FText                                   CallFunc_Conv_DoubleToText_ReturnValue;            // 0x0038(0x0010)()
+	class FText                                   CallFunc_AsDistance_Float_ReturnValue;             // 0x0048(0x0010)()
+	class FText                                   CallFunc_AsPercent_Float_ReturnValue;              // 0x0058(0x0010)()
+	struct FTimespan                              CallFunc_FromSeconds_ReturnValue;                  // 0x0068(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class FText                                   CallFunc_AsTimespan_Timespan_ReturnValue;          // 0x0070(0x0010)()
 	class FText                                   K2Node_Select_Default;                             // 0x0080(0x0010)()
-	float                                         CallFunc_AsPercent_Float_Value_ImplicitCast;       // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_FromSeconds_Seconds_ImplicitCast;         // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_FromSeconds_Seconds_ImplicitCast;         // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_AsPercent_Float_Value_ImplicitCast;       // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	float                                         CallFunc_AsDistance_Float_Value_ImplicitCast;      // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_PlayerPrivateProfileViewModel_C_GetStatFormattedValue;

@@ -86,6 +86,30 @@ void UBP_StoreViewModel_C::GetCatalogBundleAtIndex(int32 Index_0, class USOSBind
 }
 
 
+// Function BP_StoreViewModel.BP_StoreViewModel_C.GetCatalogBundleFromID
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// const class FString&                    BundleID                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
+// class USOSBindingsStoreBundleViewModel**BundleVM                                               (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+
+void UBP_StoreViewModel_C::GetCatalogBundleFromID(const class FString& BundleID, class USOSBindingsStoreBundleViewModel** BundleVM) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_StoreViewModel_C", "GetCatalogBundleFromID");
+
+	Params::BP_StoreViewModel_C_GetCatalogBundleFromID Parms{};
+
+	Parms.BundleID = std::move(BundleID);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (BundleVM != nullptr)
+		*BundleVM = Parms.BundleVM;
+}
+
+
 // Function BP_StoreViewModel.BP_StoreViewModel_C.GetCatalogBundlesFromIndex
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:

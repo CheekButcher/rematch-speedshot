@@ -46,13 +46,13 @@ public:
 DUMPER7_ASSERTS_SOSActorComponent_ClientUpdateFirstPartyRecentPlayers;
 
 // Function SOS.SOSActorComponent.OnMatchResultReceived
-// 0x00D8 (0x00D8 - 0x0000)
+// 0x00E0 (0x00E0 - 0x0000)
 struct SOSActorComponent_OnMatchResultReceived final
 {
 public:
 	struct FSOSRPCPlayerProgressUpdate            _progress;                                         // 0x0000(0x0060)(ConstParm, Parm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	struct FSOSRPCPlayerRankingUpdate             _ranking;                                          // 0x0060(0x0074)(ConstParm, Parm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D4[0x4];                                       // 0x00D4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FSOSRPCPlayerRankingUpdate             _ranking;                                          // 0x0060(0x007C)(ConstParm, Parm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_DC[0x4];                                       // 0x00DC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_SOSActorComponent_OnMatchResultReceived;
 

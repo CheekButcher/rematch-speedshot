@@ -154,5 +154,25 @@ void UBP_InputActionKey_Data_C::SetHoldVisibility(bool Visible)
 	UObject::ProcessEvent(Func, &Parms);
 }
 
+
+// Function BP_InputActionKey_Data.BP_InputActionKey_Data_C.ToggleTypeVisibility
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    IsController                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UBP_InputActionKey_Data_C::ToggleTypeVisibility(bool IsController)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_InputActionKey_Data_C", "ToggleTypeVisibility");
+
+	Params::BP_InputActionKey_Data_C_ToggleTypeVisibility Parms{};
+
+	Parms.IsController = IsController;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
 }
 

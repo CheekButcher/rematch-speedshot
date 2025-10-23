@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "EVFXFootSide_structs.hpp"
+#include "SCCharacterCustomization_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "SCCharacterCustomization_structs.hpp"
+#include "EVFXFootSide_structs.hpp"
 #include "EFootStepFXSize_structs.hpp"
 
 

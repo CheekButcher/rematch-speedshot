@@ -10,19 +10,19 @@
 
 #include "Basic.hpp"
 
-#include "Runtime_structs.hpp"
 #include "BP_Binder_BallAnyOwnerChanged_classes.hpp"
+#include "Runtime_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_Binder_BallChangeOwnership.BP_Binder_BallChangeOwnership_C
-// 0x0000 (0x03A8 - 0x03A8)
+// 0x0000 (0x0360 - 0x0360)
 class UBP_Binder_BallChangeOwnership_C : public UBP_Binder_BallAnyOwnerChanged_C
 {
 public:
-	void PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType);
+	void PrepareData(class UBallPlayersInteractionComponent* _ballPlayersInteraction, EBallInteractionType _eBallInteractionType, bool _bIsSamePreviousOwner);
 
 public:
 	static class UClass* StaticClass()

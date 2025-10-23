@@ -69,53 +69,6 @@ void ABP_LDCameraActor_C::ManageDebugIconVisibility()
 }
 
 
-// Function BP_LDCameraActor.BP_LDCameraActor_C.ExecuteUbergraph_BP_LDCameraActor
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_LDCameraActor_C::ExecuteUbergraph_BP_LDCameraActor(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_LDCameraActor_C", "ExecuteUbergraph_BP_LDCameraActor");
-
-	Params::BP_LDCameraActor_C_ExecuteUbergraph_BP_LDCameraActor Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_SwitchToLDCamera
-// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const class AActor*                     _actorToFollowRef                                      (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// const class AActor*                     _actorToLookAtRef                                      (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// TSubclassOf<class USCCameraData>        _overrideCamera                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-bool ABP_LDCameraActor_C::BPE_SwitchToLDCamera(const class AActor* _actorToFollowRef, const class AActor* _actorToLookAtRef, TSubclassOf<class USCCameraData> _overrideCamera)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_LDCameraActor_C", "BPE_SwitchToLDCamera");
-
-	Params::BP_LDCameraActor_C_BPE_SwitchToLDCamera Parms{};
-
-	Parms._actorToFollowRef = _actorToFollowRef;
-	Parms._actorToLookAtRef = _actorToLookAtRef;
-	Parms._overrideCamera = _overrideCamera;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	return Parms.ReturnValue;
-}
-
-
 // Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_SwitchToGameplayCamera
 // (Event, Public, BlueprintCallable, BlueprintEvent)
 
@@ -169,6 +122,53 @@ struct FTransform ABP_LDCameraActor_C::BPE_GetActorRefTransform(float _fDt)
 	Params::BP_LDCameraActor_C_BPE_GetActorRefTransform Parms{};
 
 	Parms._fDt = _fDt;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	return Parms.ReturnValue;
+}
+
+
+// Function BP_LDCameraActor.BP_LDCameraActor_C.ExecuteUbergraph_BP_LDCameraActor
+// (Final, UbergraphFunction)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_LDCameraActor_C::ExecuteUbergraph_BP_LDCameraActor(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_LDCameraActor_C", "ExecuteUbergraph_BP_LDCameraActor");
+
+	Params::BP_LDCameraActor_C_ExecuteUbergraph_BP_LDCameraActor Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_LDCameraActor.BP_LDCameraActor_C.BPE_SwitchToLDCamera
+// (Event, Public, HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// const class AActor*                     _actorToFollowRef                                      (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// const class AActor*                     _actorToLookAtRef                                      (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// TSubclassOf<class USCCameraData>        _overrideCamera                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+bool ABP_LDCameraActor_C::BPE_SwitchToLDCamera(const class AActor* _actorToFollowRef, const class AActor* _actorToLookAtRef, TSubclassOf<class USCCameraData> _overrideCamera)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_LDCameraActor_C", "BPE_SwitchToLDCamera");
+
+	Params::BP_LDCameraActor_C_BPE_SwitchToLDCamera Parms{};
+
+	Parms._actorToFollowRef = _actorToFollowRef;
+	Parms._actorToLookAtRef = _actorToLookAtRef;
+	Parms._overrideCamera = _overrideCamera;
 
 	UObject::ProcessEvent(Func, &Parms);
 

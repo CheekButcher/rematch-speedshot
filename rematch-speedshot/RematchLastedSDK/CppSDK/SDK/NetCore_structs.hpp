@@ -182,17 +182,6 @@ public:
 };
 DUMPER7_ASSERTS_FStateStruct;
 
-// ScriptStruct NetCore.FastArraySerializerItem
-// 0x000C (0x000C - 0x0000)
-struct FFastArraySerializerItem
-{
-public:
-	int32                                         ReplicationID;                                     // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, RepSkip, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ReplicationKey;                                    // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, RepSkip, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MostRecentArrayReplicationKey;                     // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, RepSkip, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FFastArraySerializerItem;
-
 // ScriptStruct NetCore.EscalationState
 // 0x0018 (0x0030 - 0x0018)
 struct FEscalationState : public FStateStruct
@@ -208,22 +197,16 @@ public:
 };
 DUMPER7_ASSERTS_FEscalationState;
 
-// ScriptStruct NetCore.NetFaultState
-// 0x0010 (0x0040 - 0x0030)
-struct FNetFaultState final : public FEscalationState
+// ScriptStruct NetCore.FastArraySerializerItem
+// 0x000C (0x000C - 0x0000)
+struct FFastArraySerializerItem
 {
 public:
-	bool                                          bCloseConnection;                                  // 0x0030(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_31[0x1];                                       // 0x0031(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int16                                         EscalateQuotaFaultsPerPeriod;                      // 0x0032(0x0002)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int8                                          EscalateQuotaFaultPercentPerPeriod;                // 0x0034(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_35[0x1];                                       // 0x0035(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int16                                         DescalateQuotaFaultsPerPeriod;                     // 0x0036(0x0002)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int8                                          DescalateQuotaFaultPercentPerPeriod;               // 0x0038(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int8                                          EscalateQuotaTimePeriod;                           // 0x0039(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3A[0x6];                                       // 0x003A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         ReplicationID;                                     // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, RepSkip, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ReplicationKey;                                    // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, RepSkip, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MostRecentArrayReplicationKey;                     // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, RepSkip, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FNetFaultState;
+DUMPER7_ASSERTS_FFastArraySerializerItem;
 
 // ScriptStruct NetCore.FastArraySerializer
 // 0x0110 (0x0110 - 0x0000)
@@ -248,6 +231,23 @@ public:
 	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FNetAnalyticsDataConfig;
+
+// ScriptStruct NetCore.NetFaultState
+// 0x0010 (0x0040 - 0x0030)
+struct FNetFaultState final : public FEscalationState
+{
+public:
+	bool                                          bCloseConnection;                                  // 0x0030(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0x1];                                       // 0x0031(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	int16                                         EscalateQuotaFaultsPerPeriod;                      // 0x0032(0x0002)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int8                                          EscalateQuotaFaultPercentPerPeriod;                // 0x0034(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_35[0x1];                                       // 0x0035(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	int16                                         DescalateQuotaFaultsPerPeriod;                     // 0x0036(0x0002)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int8                                          DescalateQuotaFaultPercentPerPeriod;               // 0x0038(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int8                                          EscalateQuotaTimePeriod;                           // 0x0039(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3A[0x6];                                       // 0x003A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FNetFaultState;
 
 }
 

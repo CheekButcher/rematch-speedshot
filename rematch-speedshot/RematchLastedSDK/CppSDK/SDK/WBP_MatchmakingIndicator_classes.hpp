@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "AkAudio_structs.hpp"
 #include "SOS_structs.hpp"
+#include "Engine_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "WBP_Abstract_Common_classes.hpp"
+#include "AkAudio_structs.hpp"
 
 
 namespace SDK

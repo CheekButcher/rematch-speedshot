@@ -29,7 +29,7 @@ public:
 	void Construct();
 	void ExecuteUbergraph_WBP_CustoKit_ColorDisplay(int32 EntryPoint);
 	void PreConstruct(bool IsDesignTime);
-	void SetColors(const struct FLinearColor& Color1, const struct FLinearColor& Color2, const struct FLinearColor& Color3);
+	void SetColors(const struct FLinearColor& color1, const struct FLinearColor& Color2, const struct FLinearColor& Color3);
 	void SetColorsFromArray(TArray<struct FLinearColor>& Colors);
 	void SetOneColor(const struct FLinearColor& MainColor);
 

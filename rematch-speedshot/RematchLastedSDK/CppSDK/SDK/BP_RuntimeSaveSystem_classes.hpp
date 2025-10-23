@@ -11,22 +11,27 @@
 #include "Basic.hpp"
 
 #include "Runtime_classes.hpp"
+#include "Engine_structs.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK
 {
 
 // BlueprintGeneratedClass BP_RuntimeSaveSystem.BP_RuntimeSaveSystem_C
-// 0x0040 (0x06B0 - 0x0670)
+// 0x0050 (0x06C0 - 0x0670)
 class UBP_RuntimeSaveSystem_C final : public URuntimeSaveSubsystem
 {
 public:
-	class FString                                 PIE_ID;                                            // 0x0670(0x0010)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, HasGetValueTypeHash)
-	class FString                                 Current_Save_Name;                                 // 0x0680(0x0010)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, HasGetValueTypeHash)
-	TArray<class FString>                         Unlocked_Achievements;                             // 0x0690(0x0010)(Edit, BlueprintVisible, Transient, DisableEditOnInstance)
-	TArray<class FString>                         Applied_Cheats;                                    // 0x06A0(0x0010)(Edit, BlueprintVisible, Transient, DisableEditOnInstance)
+	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0670(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class FString                                 PIE_ID;                                            // 0x0678(0x0010)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, HasGetValueTypeHash)
+	class FString                                 Current_Save_Name;                                 // 0x0688(0x0010)(Edit, BlueprintVisible, ZeroConstructor, Transient, DisableEditOnInstance, HasGetValueTypeHash)
+	TArray<class FString>                         Unlocked_Achievements;                             // 0x0698(0x0010)(Edit, BlueprintVisible, Transient, DisableEditOnInstance)
+	TArray<class FString>                         Applied_Cheats;                                    // 0x06A8(0x0010)(Edit, BlueprintVisible, Transient, DisableEditOnInstance)
 
 public:
+	void BPE_BroadcastOnSaveLoaded(ELoadResult _eLoadResult);
+	void ExecuteUbergraph_BP_RuntimeSaveSystem(int32 EntryPoint);
 	void Launch_Debug_Save();
 	void Print_Tags_To_String_Array(const TArray<class FString>& Strings_Array, const struct FGameplayTagContainer& GameplayTagContainer);
 	void Refresh_Debug_Infos();

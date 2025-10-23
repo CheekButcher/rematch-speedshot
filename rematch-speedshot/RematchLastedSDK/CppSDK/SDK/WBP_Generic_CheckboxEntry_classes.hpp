@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "SlateCore_structs.hpp"
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "WBP_Abstract_GenericButton_classes.hpp"
+#include "SlateCore_structs.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 namespace SDK

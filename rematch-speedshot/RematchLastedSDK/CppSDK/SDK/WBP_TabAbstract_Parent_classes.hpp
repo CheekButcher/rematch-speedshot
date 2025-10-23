@@ -27,11 +27,11 @@ public:
 	TMulticastInlineDelegate<void(class UWBP_TabAbstract_Parent_C* TabWidget)> OnTabClick;           // 0x0DD8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable, BlueprintCallable)
 
 public:
-	void BPE_OnClicked();
-	void Construct();
-	void ExecuteUbergraph_WBP_TabAbstract_Parent(int32 EntryPoint);
-	void FocusButton(bool ButtonFocused);
 	void PreConstruct(bool IsDesignTime);
+	void FocusButton(bool ButtonFocused);
+	void ExecuteUbergraph_WBP_TabAbstract_Parent(int32 EntryPoint);
+	void Construct();
+	void BPE_OnClicked();
 
 public:
 	static class UClass* StaticClass()

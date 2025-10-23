@@ -11,12 +11,12 @@
 #include "Basic.hpp"
 
 #include "FreezeFrameOverrideStruct_structs.hpp"
-#include "SCCombatSystem_structs.hpp"
-#include "Engine_structs.hpp"
-#include "SCCore_structs.hpp"
-#include "GameplayTags_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
 #include "Runtime_classes.hpp"
+#include "Engine_structs.hpp"
+#include "SCCombatSystem_structs.hpp"
+#include "GameplayTags_structs.hpp"
+#include "SCCore_structs.hpp"
 
 
 namespace SDK
@@ -124,6 +124,7 @@ public:
 	void OnStateInterrupted_8FEDA3454D8CA58A0F34EDB17243716D();
 	void OnSync_493B85524E6ECFF59ED3C1817CBB2484();
 	void OnSync_A2491CEA4F15DEF5C41FB4A60BC37716();
+	void StartStateTasks_8FEDA3454D8CA58A0F34EDB17243716D();
 	void UpdatePickerAndConfiguration(bool bIsInBuildPayload);
 
 	double ComputeFreezeFrame(const struct FPendingHit& InPendingHit) const;

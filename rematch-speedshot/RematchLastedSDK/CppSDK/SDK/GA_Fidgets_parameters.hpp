@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "FidgetOverrideStruct_structs.hpp"
 #include "SCCore_structs.hpp"
+#include "FidgetOverrideStruct_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
 
 

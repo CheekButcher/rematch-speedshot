@@ -12,8 +12,8 @@
 
 #include "SCCore_structs.hpp"
 #include "StateTreeModule_structs.hpp"
-#include "GameplayAbilities_structs.hpp"
 #include "GameplayTags_structs.hpp"
+#include "GameplayAbilities_structs.hpp"
 
 
 namespace SDK::Params
@@ -63,43 +63,45 @@ public:
 DUMPER7_ASSERTS_STT_DefenseMode_C_CheckSoftClassRefsValidity;
 
 // Function STT_DefenseMode.STT_DefenseMode_C.ExecuteUbergraph_STT_DefenseMode
-// 0x01F0 (0x01F0 - 0x0000)
+// 0x0258 (0x0258 - 0x0000)
 struct STT_DefenseMode_C_ExecuteUbergraph_STT_DefenseMode final
 {
 public:
 	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_CheckSoftClassRefsValidity_AreGAClassesValid; // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FStateTreeTransitionResult             K2Node_Event_Transition_1;                         // 0x0008(0x0030)(ConstParm)
-	class URuntimeAbilitySystemComponent*         CallFunc_BPF_GetRuntimeAbilitySystemComponent_ReturnValue; // 0x0038(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	struct FStateTreeTransitionResult             K2Node_Event_Transition;                           // 0x0040(0x0030)(ConstParm)
-	bool                                          CallFunc_GetGameplayAbilityFromSpecHandle_bIsInstance; // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_71[0x7];                                       // 0x0071(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	const class UGameplayAbility*                 CallFunc_GetGameplayAbilityFromSpecHandle_ReturnValue; // 0x0078(0x0008)(ConstParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGameplayAbilityTargetDataHandle       CallFunc_MakeTargetDataHandle__outHandle;          // 0x0088(0x0028)()
-	struct FInputGameplayAbilityTargetData        K2Node_MakeStruct_InputGameplayAbilityTargetData;  // 0x00B0(0x0058)()
-	struct FGameplayAbilityTargetDataHandle       CallFunc_MakeTargetDataHandle__outHandle_1;        // 0x0108(0x0028)()
-	TArray<struct FGameplayAbilityTargetDataHandle> K2Node_MakeArray_Array;                          // 0x0130(0x0010)(ConstParm, ReferenceParm)
-	struct FGameplayAbilityTargetDataHandle       CallFunc_BPF_CombineTargetDatas_ReturnValue;       // 0x0140(0x0028)()
-	struct FGameplayTagContainer                  CallFunc_MakeGameplayTagContainerFromTag_ReturnValue; // 0x0168(0x0020)()
-	TScriptInterface<class IGameplayTagAssetInterface> CallFunc_HasAnyMatchingGameplayTags_self_CastInput; // 0x0188(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_HasAnyMatchingGameplayTags_ReturnValue;   // 0x0198(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_199[0x7];                                      // 0x0199(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UObject>                    CallFunc_Conv_SoftClassReferenceToClass_ReturnValue; // 0x01A0(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	TSubclassOf<class UObject>                    CallFunc_Conv_SoftClassReferenceToClass_ReturnValue_1; // 0x01A8(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	class UClass*                                 K2Node_ClassDynamicCast_AsGameplay_Ability;        // 0x01B0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_ClassDynamicCast_bSuccess;                  // 0x01B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1B9[0x7];                                      // 0x01B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UClass*                                 K2Node_ClassDynamicCast_AsGameplay_Ability_1;      // 0x01C0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          K2Node_ClassDynamicCast_bSuccess_1;                // 0x01C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1C9[0x7];                                      // 0x01C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSubclassOf<class UGameplayAbility>           K2Node_Select_Default;                             // 0x01D0(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
-	struct FGameplayAbilitySpecHandle             CallFunc_BPF_TriggerAbilityFromTargetDataHandle__outAbilityHandle; // 0x01D8(0x0004)(NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1DC[0x4];                                      // 0x01DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UGameplayAbility*                       CallFunc_BPF_TriggerAbilityFromTargetDataHandle__abilityInstanceCreated; // 0x01E0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_BPF_TriggerAbilityFromTargetDataHandle_ReturnValue; // 0x01E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayTagQuery                      CallFunc_MakeGameplayTagQuery_ReturnValue;         // 0x0008(0x0048)()
+	struct FStateTreeTransitionResult             K2Node_Event_Transition_1;                         // 0x0050(0x0030)(ConstParm)
+	class URuntimeAbilitySystemComponent*         CallFunc_BPF_GetRuntimeAbilitySystemComponent_ReturnValue; // 0x0080(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	struct FStateTreeTransitionResult             K2Node_Event_Transition;                           // 0x0088(0x0030)(ConstParm)
+	bool                                          CallFunc_GetGameplayAbilityFromSpecHandle_bIsInstance; // 0x00B8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_B9[0x7];                                       // 0x00B9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	const class UGameplayAbility*                 CallFunc_GetGameplayAbilityFromSpecHandle_ReturnValue; // 0x00C0(0x0008)(ConstParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x00C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_C9[0x7];                                       // 0x00C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayAbilityTargetDataHandle       CallFunc_MakeTargetDataHandle__outHandle;          // 0x00D0(0x0028)()
+	struct FInputGameplayAbilityTargetData        K2Node_MakeStruct_InputGameplayAbilityTargetData;  // 0x00F8(0x0058)()
+	struct FGameplayAbilityTargetDataHandle       CallFunc_MakeTargetDataHandle__outHandle_1;        // 0x0150(0x0028)()
+	TArray<struct FGameplayAbilityTargetDataHandle> K2Node_MakeArray_Array;                          // 0x0178(0x0010)(ConstParm, ReferenceParm)
+	struct FGameplayAbilityTargetDataHandle       CallFunc_BPF_CombineTargetDatas_ReturnValue;       // 0x0188(0x0028)()
+	struct FGameplayTagContainer                  CallFunc_MakeGameplayTagContainerFromTag_ReturnValue; // 0x01B0(0x0020)()
+	TScriptInterface<class IGameplayTagAssetInterface> CallFunc_FilterGameplayTags_self_CastInput;   // 0x01D0(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FGameplayTagContainer                  CallFunc_FilterGameplayTags_ReturnValue;           // 0x01E0(0x0020)()
+	bool                                          CallFunc_DoesContainerMatchTagQuery_ReturnValue;   // 0x0200(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_201[0x7];                                      // 0x0201(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UObject>                    CallFunc_Conv_SoftClassReferenceToClass_ReturnValue; // 0x0208(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	TSubclassOf<class UObject>                    CallFunc_Conv_SoftClassReferenceToClass_ReturnValue_1; // 0x0210(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	class UClass*                                 K2Node_ClassDynamicCast_AsGameplay_Ability;        // 0x0218(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ClassDynamicCast_bSuccess;                  // 0x0220(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_221[0x7];                                      // 0x0221(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UClass*                                 K2Node_ClassDynamicCast_AsGameplay_Ability_1;      // 0x0228(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          K2Node_ClassDynamicCast_bSuccess_1;                // 0x0230(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_231[0x7];                                      // 0x0231(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSubclassOf<class UGameplayAbility>           K2Node_Select_Default;                             // 0x0238(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
+	bool                                          CallFunc_CheckSoftClassRefsValidity_AreGAClassesValid; // 0x0240(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_241[0x3];                                      // 0x0241(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGameplayAbilitySpecHandle             CallFunc_BPF_TriggerAbilityFromTargetDataHandle__outAbilityHandle; // 0x0244(0x0004)(NoDestructor, HasGetValueTypeHash)
+	class UGameplayAbility*                       CallFunc_BPF_TriggerAbilityFromTargetDataHandle__abilityInstanceCreated; // 0x0248(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_BPF_TriggerAbilityFromTargetDataHandle_ReturnValue; // 0x0250(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_STT_DefenseMode_C_ExecuteUbergraph_STT_DefenseMode;
 

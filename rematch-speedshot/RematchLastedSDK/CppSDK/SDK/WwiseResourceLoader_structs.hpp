@@ -55,29 +55,6 @@ enum class EWwiseReloadLanguage : uint8
 	EWwiseReloadLanguage_MAX                 = 3,
 };
 
-// ScriptStruct WwiseResourceLoader.WwiseObjectInfo
-// 0x0020 (0x0020 - 0x0000)
-struct FWwiseObjectInfo
-{
-public:
-	struct FGuid                                  WwiseGuid;                                         // 0x0000(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        WwiseShortId;                                      // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   WwiseName;                                         // 0x0014(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        HardCodedSoundBankShortId;                         // 0x001C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FWwiseObjectInfo;
-
-// ScriptStruct WwiseResourceLoader.WwiseEventInfo
-// 0x0004 (0x0024 - 0x0020)
-struct FWwiseEventInfo final : public FWwiseObjectInfo
-{
-public:
-	EWwiseEventSwitchContainerLoading             SwitchContainerLoading;                            // 0x0020(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EWwiseEventDestroyOptions                     DestroyOptions;                                    // 0x0021(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_22[0x2];                                       // 0x0022(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FWwiseEventInfo;
-
 // ScriptStruct WwiseResourceLoader.WwiseAcousticTextureCookedData
 // 0x000C (0x000C - 0x0000)
 struct FWwiseAcousticTextureCookedData final
@@ -97,6 +74,19 @@ public:
 	class FName                                   DebugName;                                         // 0x0004(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FWwiseAudioDeviceShareSetCookedData;
+
+// ScriptStruct WwiseResourceLoader.WwiseAuxBusCookedData
+// 0x0030 (0x0030 - 0x0000)
+struct FWwiseAuxBusCookedData final
+{
+public:
+	int32                                         AuxBusId;                                          // 0x0000(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FWwiseSoundBankCookedData>      SoundBanks;                                        // 0x0008(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, EditConst, NativeAccessSpecifierPublic)
+	TArray<struct FWwiseMediaCookedData>          Media;                                             // 0x0018(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, EditConst, NativeAccessSpecifierPublic)
+	class FName                                   DebugName;                                         // 0x0028(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FWwiseAuxBusCookedData;
 
 // ScriptStruct WwiseResourceLoader.WwiseGroupValueCookedData
 // 0x0014 (0x0014 - 0x0000)
@@ -123,19 +113,6 @@ public:
 };
 DUMPER7_ASSERTS_FWwiseSwitchContainerLeafCookedData;
 
-// ScriptStruct WwiseResourceLoader.WwiseAuxBusCookedData
-// 0x0030 (0x0030 - 0x0000)
-struct FWwiseAuxBusCookedData final
-{
-public:
-	int32                                         AuxBusId;                                          // 0x0000(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FWwiseSoundBankCookedData>      SoundBanks;                                        // 0x0008(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, EditConst, NativeAccessSpecifierPublic)
-	TArray<struct FWwiseMediaCookedData>          Media;                                             // 0x0018(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, EditConst, NativeAccessSpecifierPublic)
-	class FName                                   DebugName;                                         // 0x0028(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FWwiseAuxBusCookedData;
-
 // ScriptStruct WwiseResourceLoader.WwiseEventCookedData
 // 0x00A8 (0x00A8 - 0x0000)
 struct FWwiseEventCookedData final
@@ -154,6 +131,29 @@ public:
 	uint8                                         Pad_A4[0x4];                                       // 0x00A4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FWwiseEventCookedData;
+
+// ScriptStruct WwiseResourceLoader.WwiseObjectInfo
+// 0x0020 (0x0020 - 0x0000)
+struct FWwiseObjectInfo
+{
+public:
+	struct FGuid                                  WwiseGuid;                                         // 0x0000(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        WwiseShortId;                                      // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   WwiseName;                                         // 0x0014(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        HardCodedSoundBankShortId;                         // 0x001C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FWwiseObjectInfo;
+
+// ScriptStruct WwiseResourceLoader.WwiseEventInfo
+// 0x0004 (0x0024 - 0x0020)
+struct FWwiseEventInfo final : public FWwiseObjectInfo
+{
+public:
+	EWwiseEventSwitchContainerLoading             SwitchContainerLoading;                            // 0x0020(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EWwiseEventDestroyOptions                     DestroyOptions;                                    // 0x0021(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_22[0x2];                                       // 0x0022(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FWwiseEventInfo;
 
 // ScriptStruct WwiseResourceLoader.WwiseGameParameterCookedData
 // 0x000C (0x000C - 0x0000)

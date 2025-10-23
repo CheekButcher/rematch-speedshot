@@ -12,10 +12,10 @@
 
 #include "PhysicsControl_structs.hpp"
 #include "EPlayerTargetTypes_structs.hpp"
+#include "SCCharacterCustomization_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
-#include "SCCharacterCustomization_structs.hpp"
 #include "CustomizationPresetStruct_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "Runtime_structs.hpp"
@@ -627,7 +627,7 @@ DUMPER7_ASSERTS_BP_RuntimeTPC_C_Toggle_Ball_Look_At;
 struct BP_RuntimeTPC_C_TriggerLookAtGoal final
 {
 public:
-	class AActor*                                 inTarget;                                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class AActor*                                 InTarget;                                          // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 	class USCCameraComponent*                     SCCamera;                                          // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };

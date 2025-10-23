@@ -17,6 +17,29 @@
 namespace SDK::Params
 {
 
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.SetSquadVisibility
+// 0x0006 (0x0006 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C_SetSquadVisibility final
+{
+public:
+	ESOSClientCustomMatchState                    eCustomMatchStatus;                                // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable;                                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ESlateVisibility                              K2Node_Select_Default;                             // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C_SetSquadVisibility;
+
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.PreConstruct
+// 0x0001 (0x0001 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C_PreConstruct final
+{
+public:
+	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C_PreConstruct;
+
 // Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.ExecuteUbergraph_WBP_SocialPanel_TabHeaderParty
 // 0x0040 (0x0040 - 0x0000)
 struct WBP_SocialPanel_TabHeaderParty_C_ExecuteUbergraph_WBP_SocialPanel_TabHeaderParty final
@@ -36,163 +59,63 @@ public:
 };
 DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C_ExecuteUbergraph_WBP_SocialPanel_TabHeaderParty;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.PreConstruct
-// 0x0001 (0x0001 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C_PreConstruct final
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.SetNotificationsVisibility
+// 0x0014 (0x0014 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C_SetNotificationsVisibility final
 {
 public:
-	bool                                          IsDesignTime;                                      // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         InvitesCount;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         FriendRequestCount;                                // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsVisible_0;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C_PreConstruct;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C_SetNotificationsVisibility;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.SetSquadVisibility
-// 0x0006 (0x0006 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C_SetSquadVisibility final
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.GetGlobalNotifcount
+// 0x0030 (0x0030 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C_GetGlobalNotifcount final
 {
 public:
-	ESOSClientCustomMatchState                    eCustomMatchStatus;                                // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          Temp_bool_Variable;                                // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_EqualEqual_ByteByte_ReturnValue;          // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable;                                // 0x0003(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              Temp_byte_Variable_1;                              // 0x0004(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ESlateVisibility                              K2Node_Select_Default;                             // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         PartyInviteCount;                                  // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         FriendRequestCount;                                // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FString                                 Global_Notif_Count;                                // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 CallFunc_Conv_IntToString_ReturnValue;             // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C_SetSquadVisibility;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C_GetGlobalNotifcount;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__115b5d1c-4ac4-d08d-1e57-adb061dfc9a0_SourceToDest
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___115b5d1c_4ac4_d08d_1e57_adb061dfc9a0_SourceToDest final
-{
-public:
-	int32                                         OutputIndex;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_IsEmpty_OutputIndex;                      // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___115b5d1c_4ac4_d08d_1e57_adb061dfc9a0_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__1a724803-4cac-3100-db10-e0b79982c7d0_SourceToDest
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___1a724803_4cac_3100_db10_e0b79982c7d0_SourceToDest final
-{
-public:
-	int32                                         OutputIndex;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_IsEmpty_OutputIndex;                      // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___1a724803_4cac_3100_db10_e0b79982c7d0_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__1ac1c30e-4102-fac5-3017-b8804384f94c_SourceToDest
-// 0x0008 (0x0008 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___1ac1c30e_4102_fac5_3017_b8804384f94c_SourceToDest final
-{
-public:
-	int32                                         OutputIndex;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_IsEmpty_OutputIndex;                      // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___1ac1c30e_4102_fac5_3017_b8804384f94c_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__203a45d1-48e4-84af-bf83-5a9cc5411d26_SourceToDest
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__f9464a68-4421-ff9d-693d-da9d7ae61df5_SourceToDest
 // 0x0002 (0x0002 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___203a45d1_48e4_84af_bf83_5a9cc5411d26_SourceToDest final
+struct WBP_SocialPanel_TabHeaderParty_C___f9464a68_4421_ff9d_693d_da9d7ae61df5_SourceToDest final
 {
 public:
 	bool                                          IsOwner;                                           // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsOwner_IsOwner;                          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___203a45d1_48e4_84af_bf83_5a9cc5411d26_SourceToDest;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___f9464a68_4421_ff9d_693d_da9d7ae61df5_SourceToDest;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__658a904a-4394-d71b-7dc1-9fb4f5eb5530_SourceToDest
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___658a904a_4394_d71b_7dc1_9fb4f5eb5530_SourceToDest final
-{
-public:
-	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___658a904a_4394_d71b_7dc1_9fb4f5eb5530_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__69b01706-4650-e5b2-9474-ceb8ef902186_SourceToDest
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__e16b39a5-4098-c195-876e-258e00b992d9_SourceToDest
 // 0x0002 (0x0002 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___69b01706_4650_e5b2_9474_ceb8ef902186_SourceToDest final
+struct WBP_SocialPanel_TabHeaderParty_C___e16b39a5_4098_c195_876e_258e00b992d9_SourceToDest final
 {
 public:
 	bool                                          IsOwner;                                           // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsOwner_IsOwner;                          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___69b01706_4650_e5b2_9474_ceb8ef902186_SourceToDest;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___e16b39a5_4098_c195_876e_258e00b992d9_SourceToDest;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__6f061834-45a2-d455-5f9b-82be56b3e934_SourceToDest
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___6f061834_45a2_d455_5f9b_82be56b3e934_SourceToDest final
-{
-public:
-	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___6f061834_45a2_d455_5f9b_82be56b3e934_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__7ece07af-4063-6353-5ae8-4ea7cc198047_SourceToDest
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___7ece07af_4063_6353_5ae8_4ea7cc198047_SourceToDest final
-{
-public:
-	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___7ece07af_4063_6353_5ae8_4ea7cc198047_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__9612f3c9-4ac9-c28f-7c8a-a29c8a8c5ea5_SourceToDest
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___9612f3c9_4ac9_c28f_7c8a_a29c8a8c5ea5_SourceToDest final
-{
-public:
-	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___9612f3c9_4ac9_c28f_7c8a_a29c8a8c5ea5_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__ad62fe23-46a3-f6f0-fd78-5bb5dd2e3ebd_SourceToDest
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__c944efa4-4045-65ef-285a-8dafd224135d_SourceToDest
 // 0x0008 (0x0008 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___ad62fe23_46a3_f6f0_fd78_5bb5dd2e3ebd_SourceToDest final
+struct WBP_SocialPanel_TabHeaderParty_C___c944efa4_4045_65ef_285a_8dafd224135d_SourceToDest final
 {
 public:
 	int32                                         OutputIndex;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_IsEmpty_OutputIndex;                      // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___ad62fe23_46a3_f6f0_fd78_5bb5dd2e3ebd_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__adfd06ac-4c2c-a806-65bd-e9ba6fe96a56_SourceToDest
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___adfd06ac_4c2c_a806_65bd_e9ba6fe96a56_SourceToDest final
-{
-public:
-	bool                                          IsVisible_0;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_3[0x1];                                        // 0x0003(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_GetPartyInvitesNotifCount_InvitesCount;   // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         CallFunc_GetCrossplayInviteReceivedCount_Crossplay_Friend_Invite_Received_Value; // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_SetNotificationsVisibility_IsVisible;     // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___adfd06ac_4c2c_a806_65bd_e9ba6fe96a56_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__b3fefe60-40ee-7c07-85c6-98b6367a5c7a_SourceToDest
-// 0x0010 (0x0010 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___b3fefe60_40ee_7c07_85c6_98b6367a5c7a_SourceToDest final
-{
-public:
-	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___b3fefe60_40ee_7c07_85c6_98b6367a5c7a_SourceToDest;
-
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__c1520176-48c7-a6f4-8044-92980a7ef9de_SourceToDest
-// 0x0002 (0x0002 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___c1520176_48c7_a6f4_8044_92980a7ef9de_SourceToDest final
-{
-public:
-	bool                                          IsOwner;                                           // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_IsOwner_IsOwner;                          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___c1520176_48c7_a6f4_8044_92980a7ef9de_SourceToDest;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___c944efa4_4045_65ef_285a_8dafd224135d_SourceToDest;
 
 // Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__c6befb20-4f69-f96a-019f-3eabb91c7d1d_SourceToDest
 // 0x0030 (0x0030 - 0x0000)
@@ -210,63 +133,140 @@ public:
 };
 DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___c6befb20_4f69_f96a_019f_3eabb91c7d1d_SourceToDest;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__c944efa4-4045-65ef-285a-8dafd224135d_SourceToDest
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__c1520176-48c7-a6f4-8044-92980a7ef9de_SourceToDest
+// 0x0002 (0x0002 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___c1520176_48c7_a6f4_8044_92980a7ef9de_SourceToDest final
+{
+public:
+	bool                                          IsOwner;                                           // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsOwner_IsOwner;                          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___c1520176_48c7_a6f4_8044_92980a7ef9de_SourceToDest;
+
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__b3fefe60-40ee-7c07-85c6-98b6367a5c7a_SourceToDest
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___b3fefe60_40ee_7c07_85c6_98b6367a5c7a_SourceToDest final
+{
+public:
+	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___b3fefe60_40ee_7c07_85c6_98b6367a5c7a_SourceToDest;
+
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__adfd06ac-4c2c-a806-65bd-e9ba6fe96a56_SourceToDest
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___adfd06ac_4c2c_a806_65bd_e9ba6fe96a56_SourceToDest final
+{
+public:
+	bool                                          IsVisible_0;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue;                      // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_IsValid_ReturnValue_1;                    // 0x0002(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3[0x1];                                        // 0x0003(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CallFunc_GetPartyInvitesNotifCount_InvitesCount;   // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_GetCrossplayInviteReceivedCount_Crossplay_Friend_Invite_Received_Value; // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CallFunc_SetNotificationsVisibility_IsVisible;     // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___adfd06ac_4c2c_a806_65bd_e9ba6fe96a56_SourceToDest;
+
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__ad62fe23-46a3-f6f0-fd78-5bb5dd2e3ebd_SourceToDest
 // 0x0008 (0x0008 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___c944efa4_4045_65ef_285a_8dafd224135d_SourceToDest final
+struct WBP_SocialPanel_TabHeaderParty_C___ad62fe23_46a3_f6f0_fd78_5bb5dd2e3ebd_SourceToDest final
 {
 public:
 	int32                                         OutputIndex;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	int32                                         CallFunc_IsEmpty_OutputIndex;                      // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___c944efa4_4045_65ef_285a_8dafd224135d_SourceToDest;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___ad62fe23_46a3_f6f0_fd78_5bb5dd2e3ebd_SourceToDest;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__e16b39a5-4098-c195-876e-258e00b992d9_SourceToDest
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__9612f3c9-4ac9-c28f-7c8a-a29c8a8c5ea5_SourceToDest
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___9612f3c9_4ac9_c28f_7c8a_a29c8a8c5ea5_SourceToDest final
+{
+public:
+	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___9612f3c9_4ac9_c28f_7c8a_a29c8a8c5ea5_SourceToDest;
+
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__7ece07af-4063-6353-5ae8-4ea7cc198047_SourceToDest
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___7ece07af_4063_6353_5ae8_4ea7cc198047_SourceToDest final
+{
+public:
+	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___7ece07af_4063_6353_5ae8_4ea7cc198047_SourceToDest;
+
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__6f061834-45a2-d455-5f9b-82be56b3e934_SourceToDest
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___6f061834_45a2_d455_5f9b_82be56b3e934_SourceToDest final
+{
+public:
+	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___6f061834_45a2_d455_5f9b_82be56b3e934_SourceToDest;
+
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__69b01706-4650-e5b2-9474-ceb8ef902186_SourceToDest
 // 0x0002 (0x0002 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___e16b39a5_4098_c195_876e_258e00b992d9_SourceToDest final
+struct WBP_SocialPanel_TabHeaderParty_C___69b01706_4650_e5b2_9474_ceb8ef902186_SourceToDest final
 {
 public:
 	bool                                          IsOwner;                                           // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsOwner_IsOwner;                          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___e16b39a5_4098_c195_876e_258e00b992d9_SourceToDest;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___69b01706_4650_e5b2_9474_ceb8ef902186_SourceToDest;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__f9464a68-4421-ff9d-693d-da9d7ae61df5_SourceToDest
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__658a904a-4394-d71b-7dc1-9fb4f5eb5530_SourceToDest
+// 0x0010 (0x0010 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___658a904a_4394_d71b_7dc1_9fb4f5eb5530_SourceToDest final
+{
+public:
+	class UPartyMemberViewModel*                  PartyMember;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class UPartyMemberViewModel*                  CallFunc_GetPartyMember_PartyMember;               // 0x0008(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___658a904a_4394_d71b_7dc1_9fb4f5eb5530_SourceToDest;
+
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__203a45d1-48e4-84af-bf83-5a9cc5411d26_SourceToDest
 // 0x0002 (0x0002 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C___f9464a68_4421_ff9d_693d_da9d7ae61df5_SourceToDest final
+struct WBP_SocialPanel_TabHeaderParty_C___203a45d1_48e4_84af_bf83_5a9cc5411d26_SourceToDest final
 {
 public:
 	bool                                          IsOwner;                                           // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	bool                                          CallFunc_IsOwner_IsOwner;                          // 0x0001(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___f9464a68_4421_ff9d_693d_da9d7ae61df5_SourceToDest;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___203a45d1_48e4_84af_bf83_5a9cc5411d26_SourceToDest;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.GetGlobalNotifcount
-// 0x0030 (0x0030 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C_GetGlobalNotifcount final
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__1ac1c30e-4102-fac5-3017-b8804384f94c_SourceToDest
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___1ac1c30e_4102_fac5_3017_b8804384f94c_SourceToDest final
 {
 public:
-	int32                                         PartyInviteCount;                                  // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         FriendRequestCount;                                // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	class FString                                 Global_Notif_Count;                                // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 CallFunc_Conv_IntToString_ReturnValue;             // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         OutputIndex;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_IsEmpty_OutputIndex;                      // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C_GetGlobalNotifcount;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___1ac1c30e_4102_fac5_3017_b8804384f94c_SourceToDest;
 
-// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.SetNotificationsVisibility
-// 0x0014 (0x0014 - 0x0000)
-struct WBP_SocialPanel_TabHeaderParty_C_SetNotificationsVisibility final
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__1a724803-4cac-3100-db10-e0b79982c7d0_SourceToDest
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___1a724803_4cac_3100_db10_e0b79982c7d0_SourceToDest final
 {
 public:
-	int32                                         InvitesCount;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	int32                                         FriendRequestCount;                                // 0x0004(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsVisible_0;                                       // 0x0008(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CallFunc_Add_IntInt_ReturnValue;                   // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0010(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         OutputIndex;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_IsEmpty_OutputIndex;                      // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C_SetNotificationsVisibility;
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___1a724803_4cac_3100_db10_e0b79982c7d0_SourceToDest;
+
+// Function WBP_SocialPanel_TabHeaderParty.WBP_SocialPanel_TabHeaderParty_C.__115b5d1c-4ac4-d08d-1e57-adb061dfc9a0_SourceToDest
+// 0x0008 (0x0008 - 0x0000)
+struct WBP_SocialPanel_TabHeaderParty_C___115b5d1c_4ac4_d08d_1e57_adb061dfc9a0_SourceToDest final
+{
+public:
+	int32                                         OutputIndex;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         CallFunc_IsEmpty_OutputIndex;                      // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_WBP_SocialPanel_TabHeaderParty_C___115b5d1c_4ac4_d08d_1e57_adb061dfc9a0_SourceToDest;
 
 }
 

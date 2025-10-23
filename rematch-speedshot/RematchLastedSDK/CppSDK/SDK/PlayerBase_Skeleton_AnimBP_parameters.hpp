@@ -10,14 +10,14 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "TurnInPlaceSettings_structs.hpp"
-#include "SCCore_structs.hpp"
 #include "Runtime_structs.hpp"
+#include "Engine_structs.hpp"
+#include "SCCore_structs.hpp"
+#include "TurnInPlaceSettings_structs.hpp"
 #include "CoreUObject_structs.hpp"
+#include "BlendStack_structs.hpp"
 #include "AnimGraphRuntime_structs.hpp"
 #include "SingleTurnInPlaceSettings_structs.hpp"
-#include "BlendStack_structs.hpp"
 #include "GameplayTags_structs.hpp"
 #include "GameplayAbilities_structs.hpp"
 
@@ -354,6 +354,16 @@ public:
 };
 DUMPER7_ASSERTS_PlayerBase_Skeleton_AnimBP_C_InitLookAtTarget;
 
+// Function PlayerBase_Skeleton_AnimBP.PlayerBase_Skeleton_AnimBP_C.InvalidateTransitionStopReason
+// 0x0020 (0x0020 - 0x0000)
+struct PlayerBase_Skeleton_AnimBP_C_InvalidateTransitionStopReason final
+{
+public:
+	struct FAnimUpdateContext                     Context;                                           // 0x0000(0x0010)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	struct FAnimNodeReference                     Node;                                              // 0x0010(0x0010)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor)
+};
+DUMPER7_ASSERTS_PlayerBase_Skeleton_AnimBP_C_InvalidateTransitionStopReason;
+
 // Function PlayerBase_Skeleton_AnimBP.PlayerBase_Skeleton_AnimBP_C.LogTouchBallFoot
 // 0x0170 (0x0170 - 0x0000)
 struct PlayerBase_Skeleton_AnimBP_C_LogTouchBallFoot final
@@ -457,16 +467,6 @@ public:
 	class ARuntimeMatchGameState*                 _gameState;                                        // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_PlayerBase_Skeleton_AnimBP_C_OnCountdownOver_Event;
-
-// Function PlayerBase_Skeleton_AnimBP.PlayerBase_Skeleton_AnimBP_C.OnEnterIdleRun
-// 0x0020 (0x0020 - 0x0000)
-struct PlayerBase_Skeleton_AnimBP_C_OnEnterIdleRun final
-{
-public:
-	struct FAnimUpdateContext                     Context;                                           // 0x0000(0x0010)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-	struct FAnimNodeReference                     Node;                                              // 0x0010(0x0010)(ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm, NoDestructor)
-};
-DUMPER7_ASSERTS_PlayerBase_Skeleton_AnimBP_C_OnEnterIdleRun;
 
 // Function PlayerBase_Skeleton_AnimBP.PlayerBase_Skeleton_AnimBP_C.OnEnterIdleState
 // 0x0030 (0x0030 - 0x0000)

@@ -11,11 +11,11 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "CoreUObject_structs.hpp"
-#include "SCCore_structs.hpp"
-#include "EnumPredictionMarkerType_structs.hpp"
-#include "GameplayAbilities_classes.hpp"
 #include "AkAudio_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "EnumPredictionMarkerType_structs.hpp"
+#include "SCCore_structs.hpp"
+#include "GameplayAbilities_classes.hpp"
 
 
 namespace SDK
@@ -52,7 +52,7 @@ public:
 	void ReceiveBeginPlay();
 	void ReceiveEndPlay(EEndPlayReason EndPlayReason);
 	void ReceiveTick(float DeltaSeconds);
-	void ShowMarker(class UClass* InMarkerClass, const struct FPingDataContainer& InPingData, const struct FTransform& InTransform, class AActor* inTarget, class AActor* InRequester);
+	void ShowMarker(class UClass* InMarkerClass, const struct FPingDataContainer& InPingData, const struct FTransform& InTransform, class AActor* InTarget, class AActor* InRequester);
 	void TryToHideBallCallLine();
 	void UpdateBallCallLine();
 

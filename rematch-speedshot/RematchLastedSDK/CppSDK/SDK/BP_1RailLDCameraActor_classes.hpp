@@ -90,30 +90,30 @@ public:
 	void UpdateCameraPositionAndLookAt(double DeltaTime);
 	void SetLookAtActorRef(class AActor* TargetChar_0);
 	void UpdateTimeAndSplineFollowActor(double DeltaTime);
-	void SetActorRef(class AActor* TargetChar_0);
-	void ScrubDebugTime();
 	void ReceiveBeginPlay();
+	void PlaceholderBlend(double Blend_0, class UCurveFloat* BlendCurve_0);
 	void ManageDebugIconVisibility();
 	void GlobalUpdate(double DeltaTime);
+	void SetActorRef(class AActor* TargetChar_0);
 	void GlobalDebug();
-	void PlaceholderBlend(double Blend_0, class UCurveFloat* BlendCurve_0);
-	struct FTransform GetLookAtActorRefTransform(float _fDt);
+	void ScrubDebugTime();
 	void GetDebugTime(double* DebugTime_0);
 	void ExecuteUbergraph_BP_1RailLDCameraActor(int32 EntryPoint);
-	void DrawDebug(double Time, struct FVector* TargetPos);
+	struct FTransform GetLookAtActorRefTransform(float _fDt);
+	void ComputeLookAtTargetPos(double Dt, class USplineComponent* Spline, float Time);
 	bool BPE_SwitchToLDCamera(const class AActor* _actorToFollowRef, const class AActor* _actorToLookAtRef, TSubclassOf<class USCCameraData> _overrideCamera);
 	void BPE_SwitchToGameplayCamera();
-	void ComputeLookAtTargetPos(double Dt, class USplineComponent* Spline, float Time);
+	void DrawDebug(double Time, struct FVector* TargetPos);
+	struct FTransform BPE_GetActorRefTransform(float _fDt);
 	void BlendToTargetRailTimeline__UpdateFunc();
 	void BlendToTargetRailTimeline__FinishedFunc();
 	void BlendToTargetRail(double NewRailWeight);
-	struct FTransform BPE_GetActorRefTransform(float _fDt);
 
-	void GetLookAtTargetCharPos(struct FVector* LookAt_Target_Char_Pos_0) const;
 	void GetFollowTargetCharPos(struct FVector* TargetCharPos) const;
+	void GetCurrentTime(float* Current_Time) const;
+	void GetLookAtTargetCharPos(struct FVector* LookAt_Target_Char_Pos_0) const;
 	void GetCurrentLookAtTargetPos(struct FVector* LookAt_Target_Char_Pos_0) const;
 	void GetCurrentFramingSystemTime(double* Current_Framing_System_Time_0) const;
-	void GetCurrentTime(float* Current_Time) const;
 
 public:
 	static class UClass* StaticClass()

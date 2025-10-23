@@ -117,6 +117,46 @@ void UGA_LockMove_C::BPE_BuildPayload()
 }
 
 
+// Function GA_LockMove.GA_LockMove_C.ComputeBallControlPreAnimation
+// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// const struct FGameplayAbilityTargetDataHandle&InContext                                              (BlueprintVisible, BlueprintReadOnly, Parm)
+// class UAnimMontage**                    OutMontage                                             (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// bool*                                   bOutMirror                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// double*                                 OutWorldSyncTime                                       (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// double*                                 OutAnimSyncTime                                        (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// double*                                 OutAnimBlendOutTime                                    (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void UGA_LockMove_C::ComputeBallControlPreAnimation(const struct FGameplayAbilityTargetDataHandle& InContext, class UAnimMontage** OutMontage, bool* bOutMirror, double* OutWorldSyncTime, double* OutAnimSyncTime, double* OutAnimBlendOutTime)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_LockMove_C", "ComputeBallControlPreAnimation");
+
+	Params::GA_LockMove_C_ComputeBallControlPreAnimation Parms{};
+
+	Parms.InContext = std::move(InContext);
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (OutMontage != nullptr)
+		*OutMontage = Parms.OutMontage;
+
+	if (bOutMirror != nullptr)
+		*bOutMirror = Parms.bOutMirror;
+
+	if (OutWorldSyncTime != nullptr)
+		*OutWorldSyncTime = Parms.OutWorldSyncTime;
+
+	if (OutAnimSyncTime != nullptr)
+		*OutAnimSyncTime = Parms.OutAnimSyncTime;
+
+	if (OutAnimBlendOutTime != nullptr)
+		*OutAnimBlendOutTime = Parms.OutAnimBlendOutTime;
+}
+
+
 // Function GA_LockMove.GA_LockMove_C.EndToggleState
 // (BlueprintCallable, BlueprintEvent)
 
@@ -148,67 +188,6 @@ void UGA_LockMove_C::ExecuteUbergraph_GA_LockMove(int32 EntryPoint)
 	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function GA_LockMove.GA_LockMove_C.GetAnimationPicker
-// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// class UClass**                          Picker                                                 (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-
-void UGA_LockMove_C::GetAnimationPicker(class UClass** Picker)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GA_LockMove_C", "GetAnimationPicker");
-
-	Params::GA_LockMove_C_GetAnimationPicker Parms{};
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (Picker != nullptr)
-		*Picker = Parms.Picker;
-}
-
-
-// Function GA_LockMove.GA_LockMove_C.GetDefenseModePreAnimationParameters
-// (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// const struct FGameplayAbilityTargetDataHandle&InContext                                              (BlueprintVisible, BlueprintReadOnly, Parm)
-// class UAnimMontage**                    OutMontage                                             (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// bool*                                   bOutMirror                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// double*                                 OutWorldSyncTime                                       (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// double*                                 OutAnimSyncTime                                        (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// double*                                 OutAnimBlendOutTime                                    (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void UGA_LockMove_C::GetDefenseModePreAnimationParameters(const struct FGameplayAbilityTargetDataHandle& InContext, class UAnimMontage** OutMontage, bool* bOutMirror, double* OutWorldSyncTime, double* OutAnimSyncTime, double* OutAnimBlendOutTime)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GA_LockMove_C", "GetDefenseModePreAnimationParameters");
-
-	Params::GA_LockMove_C_GetDefenseModePreAnimationParameters Parms{};
-
-	Parms.InContext = std::move(InContext);
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	if (OutMontage != nullptr)
-		*OutMontage = Parms.OutMontage;
-
-	if (bOutMirror != nullptr)
-		*bOutMirror = Parms.bOutMirror;
-
-	if (OutWorldSyncTime != nullptr)
-		*OutWorldSyncTime = Parms.OutWorldSyncTime;
-
-	if (OutAnimSyncTime != nullptr)
-		*OutAnimSyncTime = Parms.OutAnimSyncTime;
-
-	if (OutAnimBlendOutTime != nullptr)
-		*OutAnimBlendOutTime = Parms.OutAnimBlendOutTime;
 }
 
 
@@ -1190,6 +1169,48 @@ void UGA_LockMove_C::Removed_E82AA0DE43AF2D51A424E1A7882A83B6()
 }
 
 
+// Function GA_LockMove.GA_LockMove_C.StartStateTasks_8BD98EE64E207074DB6DC4ADC9585F1D
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_LockMove_C::StartStateTasks_8BD98EE64E207074DB6DC4ADC9585F1D()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_LockMove_C", "StartStateTasks_8BD98EE64E207074DB6DC4ADC9585F1D");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function GA_LockMove.GA_LockMove_C.StartStateTasks_BC9CE18D488A0366A0CCE8A3D1E2B363
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_LockMove_C::StartStateTasks_BC9CE18D488A0366A0CCE8A3D1E2B363()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_LockMove_C", "StartStateTasks_BC9CE18D488A0366A0CCE8A3D1E2B363");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function GA_LockMove.GA_LockMove_C.StartStateTasks_C28279794F787B168CD1A39A47ACA682
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_LockMove_C::StartStateTasks_C28279794F787B168CD1A39A47ACA682()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_LockMove_C", "StartStateTasks_C28279794F787B168CD1A39A47ACA682");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
 // Function GA_LockMove.GA_LockMove_C.StopPreAnimation
 // (BlueprintCallable, BlueprintEvent)
 
@@ -1262,6 +1283,27 @@ double UGA_LockMove_C::ComputeFreezeFrame(const struct FPendingHit& InPendingHit
 	UObject::ProcessEvent(Func, &Parms);
 
 	return Parms.ReturnValue;
+}
+
+
+// Function GA_LockMove.GA_LockMove_C.GetAnimationPicker
+// (Public, HasOutParams, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
+// Parameters:
+// class UClass**                          Picker                                                 (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+
+void UGA_LockMove_C::GetAnimationPicker(class UClass** Picker) const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GA_LockMove_C", "GetAnimationPicker");
+
+	Params::GA_LockMove_C_GetAnimationPicker Parms{};
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	if (Picker != nullptr)
+		*Picker = Parms.Picker;
 }
 
 

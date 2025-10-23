@@ -12,8 +12,8 @@
 
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "EnumPredictionMarkerType_structs.hpp"
 #include "GameplayAbilities_classes.hpp"
+#include "EnumPredictionMarkerType_structs.hpp"
 
 
 namespace SDK

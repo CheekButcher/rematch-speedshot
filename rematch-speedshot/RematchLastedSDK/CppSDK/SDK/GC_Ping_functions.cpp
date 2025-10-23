@@ -235,10 +235,10 @@ void AGC_Ping_C::ReceiveTick(float DeltaSeconds)
 // class UClass*                           InMarkerClass                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 // const struct FPingDataContainer&        InPingData                                             (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 // const struct FTransform&                InTransform                                            (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class AActor*                           inTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class AActor*                           InTarget                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 // class AActor*                           InRequester                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void AGC_Ping_C::ShowMarker(class UClass* InMarkerClass, const struct FPingDataContainer& InPingData, const struct FTransform& InTransform, class AActor* inTarget, class AActor* InRequester)
+void AGC_Ping_C::ShowMarker(class UClass* InMarkerClass, const struct FPingDataContainer& InPingData, const struct FTransform& InTransform, class AActor* InTarget, class AActor* InRequester)
 {
 	static class UFunction* Func = nullptr;
 
@@ -250,7 +250,7 @@ void AGC_Ping_C::ShowMarker(class UClass* InMarkerClass, const struct FPingDataC
 	Parms.InMarkerClass = InMarkerClass;
 	Parms.InPingData = std::move(InPingData);
 	Parms.InTransform = std::move(InTransform);
-	Parms.inTarget = inTarget;
+	Parms.InTarget = InTarget;
 	Parms.InRequester = InRequester;
 
 	UObject::ProcessEvent(Func, &Parms);
